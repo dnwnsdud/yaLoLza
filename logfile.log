@@ -1,0 +1,4 @@
+2024-02-23T16:20:21.063+09:00  INFO 5296 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 26 class path changes (0 additions, 0 deletions, 26 modifications)
+2024-02-23T16:20:21.078+09:00  INFO 5296 --- [Thread-30] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-23T16:20:21.079+09:00  INFO 5296 --- [Thread-30] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2024-02-23T16:20:21.089+09:00  INFO 5296 --- [Thread-30] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
