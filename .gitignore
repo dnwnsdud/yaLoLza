@@ -4,7 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-
+*.log
+*.gzip
+*.7zip
+*.zip
 application.properties
 
 ### STS ###
