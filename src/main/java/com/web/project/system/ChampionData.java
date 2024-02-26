@@ -22,7 +22,7 @@ public class ChampionData {
 	public static List<Champion> data() {
 		String url1 = "https://ddragon.leagueoflegends.com/cdn/14.2.1/data/ko_KR/champion.json";
 		JSONObject cham1 = Ajax.JsonTObj(Ajax.GETO(url1));
-		List<Champion> data = new ArrayList()<Champion>();
+		List<Champion> data = new ArrayList<Champion>();
 		JSONObject cham2 = cham1.getJSONObject("data");
 		List<String> keylist = new ArrayList<String>(cham2.keySet());
 		Collections.sort(keylist);
@@ -137,7 +137,7 @@ public class ChampionData {
 		JSONObject cham2 = cham1.getJSONObject("data");
 		List<String> keylist = new ArrayList<String>(cham2.keySet());
 		Collections.sort(keylist);
-		Map<String,String> keymap = new HashMap()<String, String>();
+		Map<String,String> keymap = new HashMap<String, String>();
 		for(int i = 0; i < cham2.length(); i+=1) {
 			JSONObject cham3 = cham2.getJSONObject(keylist.get(i));
 			keymap.put(keylist.get(i), cham3.getString("name"));

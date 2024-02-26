@@ -31,7 +31,10 @@ public class SecurityConfig {
 						"/champions/**",
 						"/ranking/**",
 						"/statistics/**",
-						"/summoners/**"
+						"/summoners/**",
+						"/img/**",
+						"/css/**",
+						"/js/**"
 					)
 				)
 				.authorizeHttpRequests(auth->
@@ -46,7 +49,11 @@ public class SecurityConfig {
 							"/yalolza.gg/summoners/**", 
 							"/login", 
 							"/login/check", 
-							"/oauth2/authorization/**"
+							"/oauth2/authorization/**",
+							"/img/**",
+							"/css/**",
+							"/js/**",
+							"/info/**"
 						).permitAll()
 						.requestMatchers(
 							"/dashboard"

@@ -54,7 +54,7 @@
         </div>
         <ul class="champ-face">
           <li th:each="i : ${data}" th:with="champion=${i}">
-            <a th:href="'/lolkia.gg/champions/'+${champion.id}+'/build'"
+            <a th:href="'/yalolza.gg/champions/'+${champion.id}+'/build'"
               ><div><img alt="챔피언 이미지" th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}" /></div>
               <p th:text = "${champion.name}"></p></a
             >
