@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/commu_form.css}">
+    </head>
+<body>
+    <div class="commu_formbox">
+    <h5 class="commu_form_title" th:text="${boardName}"></h5>
+
+<!--            <select>-->
+<!--                <option value="free" th:href="@{/community/create/free}">자유게시판</option>-->
+<!--                <option value="humer" th:href="@{/community/create/humer}">유머게시판</option>-->
+<!--                <option value="video" th:href="@{/community/create/video}">영상게시판</option>-->
+<!--            </select>-->
+<!--    <div>-->
+<!--        <a th:href="@{/community/create/free}" >자유게시판</a>-->
+<!--        <a th:href="@{/community/create/humer}" >유머게시판</a>-->
+<!--        <a th:href="@{/community/create/video}" >영상게시판</a>-->
+<!--    </div>-->
+
+
+<!--        <select th:field="*{types}">-->
+<!--            <option th:each="communityEnum : ${communityEnums}"-->
+<!--                    th:value="${communityEnum}"-->
+<!--                    th:text="${communityEnum.getGroup()}"-->
+<!--                    th:selected="${communityEnum == type}"></option>-->
+<!--        </select>-->
+
+    <form  th:object="${communityForm}" method="post" enctype="multipart/form-data" >
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div th:if="${#fields.hasErrors()}">
+            <div th:each="err : ${#fields.errors()}" th:text="${error}"></div>
+        </div>
+<!--        <label>제목</label>-->
+    <input type="text" name="title" id="title" placeholder="제목" th:field="*{title}" style="height: 5vh; margin-bottom: 1rem; ">
+<!--    <label>내용</label>-->
+    <textarea name="content" placeholder="내용"  id="content"  th:field="*{content}" rows="28"></textarea>
+
+    <input type="file" name="file" multiple >
+    <div class="write_input">
+    <input type="submit" class="wrtiebtn" value="글쓰기" >
+    </div>
+    </form>
+
+    </div>
+
+</body>
+</html>

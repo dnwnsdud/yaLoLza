@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/yalolza.gg/ranking")
 public class RankingPage {
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String root() {
 		return "redirect:/tier";
 	}

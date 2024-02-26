@@ -9,6 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.web.project.api.controller.UserService;
 
 import jakarta.servlet.DispatcherType;
 
@@ -19,66 +22,104 @@ public class SecurityConfig {
 	UserService service;
 	@Autowired
 	OAuth2UserService oauth2service;
-	@Bean
-	PasswordEncoder bcrypt() {
-		return new BCryptPasswordEncoder();
-	}
+
+	
+  @Bean
+  PasswordEncoder passwordEncoder() {
+      return new BCryptPasswordEncoder();
+  }
+//	@Bean
+//	PasswordEncoder bcrypt() {
+//		return new BCryptPasswordEncoder();
+//	}
 	@Bean
 	SecurityFilterChain chain(HttpSecurity http) throws Exception{
 		return http
 				.csrf(csrf->
 					csrf.ignoringRequestMatchers(
+						"/api/all",
+						"/api/**",
+						"/login/check",
+						"/logout",
+						"/oauth2/authorization/**",	
 						"/champions/**",
 						"/ranking/**",
 						"/statistics/**",
-						"/summoners/**"
+						"/summoners/**",
+						"/**",
+						"/duo/**"
 					)
 				)
 				.authorizeHttpRequests(auth->
 					auth
 						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 						.requestMatchers(
+								"**",
+								"/**",
 							"/yalolza.gg",
 							"/yalolza.gg/**",
 							"/yalolza.gg/champions/**",
 							"/yalolza.gg/ranking/**",
 							"/yalolza.gg/statistics/**",
 							"/yalolza.gg/summoners/**", 
-							"/login", 
-							"/login/check", 
+							"/yalolza.gg/duo/**", 
+							"/yalolza.gg/duo/list/**", 
+							"/yalolza.gg/duo/save/**", 
+							"/yalolza.gg/duo/create/**", 
+							"/yalolza.gg/duo/edit/**", 
+							"/yalolza.gg/duo/view/**", 
+							"/yalolza.gg/duo/delete/**", 
+							"/yalolza.gg/community/**",
+							"/yalolza.gg/comment/**",
+							"/home",
+							"/index",
+							"/yalolza.gg/user/login",
+							"/yalolza.gg/user/signup",
+							"/files/**",
 							"/oauth2/authorization/**"
+							
 						).permitAll()
 						.requestMatchers(
-							"/dashboard"
-						).hasAnyRole("ADMIN")
+								"/user/mypage"
+								).hasAnyRole("USER", "ADMIN")
+						.requestMatchers(
+								"/admin/dashboard"
+								).hasAnyRole("ADMIN")
 						.anyRequest().authenticated()
 				)
 				.formLogin(login->
 					login
-						.loginPage("/login")
-						.loginProcessingUrl("/login/check")
+						.loginPage("/yalolza.gg/user/login")
+//						.loginPage("/members/login")
+//						.loginProcessingUrl("/login/check")
 						.usernameParameter("username")
+//						.usernameParameter("email")
 						.passwordParameter("password")
-						.defaultSuccessUrl("/", true)
-						.failureUrl("/login")
+						.defaultSuccessUrl("/yalolza.gg/", true)
+						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()
 				)
 				.oauth2Login(login->
 					login
-						.loginPage("/login")
+//						.loginPage("/members/login")
+						.loginPage("/yalolza.gg/user/login")
 						.userInfoEndpoint(end->
 							end
 								.userService(oauth2service)
 						)
-						.defaultSuccessUrl("/", true)
-						.failureUrl("/login")
+						.defaultSuccessUrl("/yalolza.gg/", true)
+//						.failureUrl("/members/login/error")
+						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()
 				)
 				
 				.logout(out->
 					out
-						.logoutUrl("/logout")
-						.logoutSuccessUrl("/")
+						.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+//						.logoutUrl("/members/logout")
+//						.logoutSuccessUrl("/main")
+//						.logoutUrl("/user/logout")
+						.logoutSuccessUrl("/user/login")
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.permitAll()
@@ -94,4 +135,13 @@ public class SecurityConfig {
 				)
 				.getOrBuild();
 	}
+	
+//    @Bean
+//    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+//        throws Exception {
+//        return authenticationConfiguration.getAuthenticationManager();
+//    }
+//    
+    
 }
+

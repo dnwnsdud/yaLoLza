@@ -1,0 +1,58 @@
+:root {
+    font-family: "Pretendard-Regular";
+    --point1: #050a53;
+    --point2: #213a96;
+    --point3: #007aff;
+    --point4: #181c2a;
+    --point5: #171b2f;
+    --point6: #10131c;
+    --gray1: #1e1e1e;
+    --gray2: #5f5f5f;
+    --gray3: #bbbbbb;
+    --white: #fff;
+    --white2: rgba(255, 255, 255, 0.8);
+    --gap-big: 50px;
+    --gap-small: 32px;
+    --gap-ss: 20px;
+    font-size: 10px;
+}
+form{
+    display: flex; flex-direction: column;  height:75vh;
+
+}
+.commu_form_title{
+    font-size: 1.4rem;
+    text-align: left;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray2);
+    margin: 2rem 0;
+}
+.commu_formbox{
+    width: 40%;
+    margin: 5rem auto 0 auto;
+}
+
+
+textarea{
+    resize: none;
+    margin-bottom: 1rem;
+}
+
+.wrtiebtn{
+    width: 5vw;
+    height: 4vh;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 2vw;
+    border: none;
+    float: right;
+
+    background-color: var(--point3);
+    color: var(--white);
+}
+
+.wrtiebtn:hover{
+    border: none;
+    background-color: rgba(59, 130, 246, 0.5);
+    color: var(--point6);
+}

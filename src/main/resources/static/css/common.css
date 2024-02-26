@@ -1,0 +1,206 @@
+@charset 'utf-8';
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+  format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  font-family: "Pretendard-Regular";
+  --point1: #1e2153;
+  --point2: #213a96;
+  --point3: #007aff;
+  --point4: #181c2a;
+  --point5: #171b2f;
+  --point6: #10131c;
+  --point7: #292a30;
+  --point8: #45464d;
+  --point9: #3e3e44;
+  --point10: #ff0558;
+  --point11: #e3464626;
+  --point12: #231a9626;
+  --point13: #2b3040;
+  --point14: #4f5770;
+  --point15: #31313c;
+  --point16: #424254;
+  --point17: #76480f;
+  --gray1: #1e1e1e;
+  --gray2: #5f5f5f;
+  --gray3: #bbbbbb;
+  --white: #fff;
+  --white2: rgba(255, 255, 255, 0.8);
+  --gap-big: 50px;
+  --gap-small: 32px;
+  --gap-ss: 20px;
+  font-size: 10px;
+}
+
+/* 자주 쓰이는 거 시작*/
+.item-flex {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.item-flex strong {
+  color: var(--white);
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+.item-flex span {
+  color: var(--gray3);
+  font-size: 1.3rem;
+}
+.vic-ratio {
+  color: var(--point3);
+  font-size: 1.3rem;
+}
+.img-wrap {
+  width: 40px;
+  height: 40px;
+}
+.img-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.img-wrap1 {
+  width: 40px;
+  height: 40px;
+}
+.img-wrap1 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+.img-wrap2 {
+  width: 80px;
+  height: 80px;
+}
+.img-wrap2 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+.img-wrap3 {
+  width: 20px;
+  height: 20px;
+}
+.img-wrap3 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+.img-wrap4 {
+  width: 20px;
+  height: 20px;
+}
+.img-wrap4 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+h2 {
+  padding: 15px;
+  color: var(--white);
+  font-size: 1.7rem;
+  border-bottom: 1px solid var(--gray1);
+}
+/* 자주 쓰이는 거 끝 */
+
+header {
+  width: 100%;
+  height: 50px;
+  background-color: var(--point2);
+}
+.mw {
+  max-width: 1320px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  gap: 30px;
+}
+h1 {
+  width: 100px;
+  height: 100%;
+  padding: 10px;
+}
+h1 img {
+  width: 100%;
+  height: 100%;
+}
+nav {
+  display: flex;
+  color: var(--white);
+  justify-content: space-between;
+  flex: 1;
+}
+.hd-nav {
+  display: flex;
+  margin: auto 0;
+  gap: 30px;
+  font-size: 2rem;
+}
+.btn {
+  margin: auto 0;
+}
+.btn button {
+  padding: 10px;
+  color: var(--white);
+  background-color: var(--point2);
+  border: none;
+  font-size: 2rem;
+  font-family: "Pretendard-Regular";
+}
+footer {
+  background-color: var(--point4);
+  color: var(--white);
+}
+.ft-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.idv {
+  display: flex;
+  gap: 30px;
+  font-size: 1.5rem;
+  padding: 30px;
+}
+.lol {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.lol p {
+  padding: 20px 0 60px 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/*커뮤 불러오기*/
+.commu_list{
+  display: flex;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.commu_list >  li:first-child               {width:10%;} /*태그*/
+.commu_list >  li:first-child +li           {width:40%;} /*제목*/
+.commu_list >  li:first-child +li+li           {width:30%;} /*글쓴이*/
+.commu_list >  li:first-child +li+li+li           {width:20%;} /*날짜*/
+
+.write_title{
+  color:var(--point3);
+  font-size: 1.8rem;
+}
+
+.commu_list > li {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 0 0.5rem 0;
+  text-align: center;
+}
+
+.commu_list:hover{
+  background-color: rgba(59, 130, 246, 0.1);
+}

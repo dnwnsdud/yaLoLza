@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/commu_detail.css}">
+</head>
+<body>
+<div class="commu_detailbox">
+    <div class="commu_detailbox2">
+    <h1 th:text="${community.title}" class="commu_title"></h1>
+    <div class="commu_detaildiv">
+        <div th:text="${community.category}" class="commu_cate"></div>
+        <div th:text="${#temporals.format(community.createDate, 'yyyy-MM-dd')}" class="commu_date"></div>
+        <div th:text="${community.siteUser.nickname}"></div>
+    </div>
+    <div th:text="${community.content}" class="commu_content"></div>
+    <div th:if="${community.filename} != null" th:each="files : ${community.filePath}" class="commu_file">
+        <img th:if="${!#strings.contains(files,'.mp4')}" th:src="@{/files/{img}(img=${files})}" alt="Image" >
+        <video th:if="${#strings.contains(files,'.mp4')}" controls autoplay th:src="@{/files/{mp4}(mp4=${files})}" ></video>
+    </div>
+        <div class="bottom_border"></div>
+        <div class="modify_deletebox">
+    <a href="javascript:void(0);" class="delete" th:data-uri="@{|/yalolza.gg/community/delete/${community.id}|}"
+       sec:authorize="isAuthenticated()"
+       th:if="${community.siteUser!= null and #authentication.getName() == community.siteUser.username}"
+       th:text="삭제" id="write_delete"></a>
+    <a class="modify" th:href="@{|/yalolza.gg/community/modify/${community.id}|}"
+       sec:authorize="isAuthenticated()"
+       th:if="${community.siteUser!= null and #authentication.getName() == community.siteUser.username}"
+       th:text="수정"
+       id="write_modify"></a>
+        </div>
+    </div>
+
+    <form th:action="@{|/yalolza.gg/comment/create/${community.id}|}" method="post" class="comment_form">
+        <textarea name="content" id="content" rows="10" class="comment"></textarea>
+        <input type="submit" value="등록" class="comment_input">
+    </form>
+    <div class="commentlist">
+        <ul th:each="comment : ${community.commentList}">
+            <li>
+                <div  class="commentname" th:if="${comment.author}!=null" th:text="${comment.author.nickname}" ></div>
+                <div th:text="${comment.content}"></div>
+                <div th:text="${#temporals.format(comment.createDate, 'yyyy-MM-dd')}"></div>
+                <a href="javascript:void(0);" class="delete" th:data-uri="@{|/yalolza.gg/comment/delete/${comment.id}|}"
+                   sec:authorize="isAuthenticated()"
+                   th:if="${comment.author!= null and #authentication.getName() == comment.author.username}"
+                   th:text="삭제" id="commentdelete"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type='text/javascript'>
+    const delete_elements = document.getElementsByClassName("delete");
+    Array.from(delete_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            if(confirm("정말로 삭제하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            };
+        });
+    });
+</script>

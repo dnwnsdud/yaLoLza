@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/yalolza.gg/statistics")
 public class StatisticsPage {
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String root() {
-		return "redirect:/champions";
+		return "redirect:/yalolza.gg/statistics/champions";
 	}
 	
 	
