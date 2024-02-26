@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/myrest.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/champ.css" />
+  </head>
+  <body>
+    <div class="con1-wrap">
+      <section class="con1">
+        <div class="champ-tier">
+          <select name="tier" id="tier">
+            <option value="Challenger">Challenger</option>
+            <option value="Grandmaster">Grandmaster</option>
+            <option value="Master">Master</option>
+            <option value="Diamond">Diamond</option>
+            <option value="Emerald">Emerald</option>
+            <option value="Platinum">Platinum</option>
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Iron">Iron</option>
+          </select>
+          <select name="version" id="version">
+            <option value="v14.03">v14.03</option>
+            <option value="v14.02">v14.02</option>
+            <option value="v14.01">v14.01</option>
+          </select>
+        </div>
+        <div class="champ-position">
+          <nav>
+            <button>전체</button>
+            <button>탑</button>
+            <button>정글</button>
+            <button>미드</button>
+            <button>원딜</button>
+            <button>서포터</button>
+          </nav>
+        </div>
+      </section>
+    </div>
+    <div class="champ-con">
+      <section class="con2">
+        <div class="champ-btn">
+          <button>전체</button>
+          <button>탑</button>
+          <button>정글</button>
+          <button>미드</button>
+          <button>원딜</button>
+          <button>서포터</button>
+        </div>
+        <ul class="champ-face">
+          <li th:each="i : ${data}" th:with="champion=${i}">
+            <a th:href="'/lolkia.gg/champions/'+${champion.id}+'/build'"
+              ><div><img alt="챔피언 이미지" th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}" /></div>
+              <p th:text = "${champion.name}"></p></a
+            >
+          </li>
+\
+        </ul>
+      </section>
+      <section class="con3">
+        <table>
+          <thead>
+            <tr>
+              <th>순위</th>
+              <th>챔피언</th>
+              <th>티어</th>
+              <th>포지션</th>
+              <th>승률</th>
+              <th>픽률</th>
+              <th>벤율</th>
+              <th>상대하기 어려운챔피언</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="champ-body">
+              <td>1</td>
+              <td>
+                <div class="img-wrap">
+                  <a href=""><img src="/img/Garen.webp" alt="" /></a>
+                </div>
+                <p class="champ-name"><a href="#">가렌</a></p>
+              </td>
+              <td>0</td>
+              <td>
+                <div class="img-wrap">
+                  <img src="/img/01-icon-01-lol-icon-position-top.svg" alt="" />
+                </div>
+              </td>
+              <td>55%</td>
+              <td>14%</td>
+              <td>24%</td>
+              <td>
+                <div class="img-wrap">
+                  <a href=""><img src="/img/Garen.webp" alt="" /></a>
+                </div>
+                <div class="img-wrap">
+                  <a href=""><img src="/img/Garen.webp" alt="" /></a>
+                </div>
+                <div class="img-wrap">
+                  <a href=""><img src="/img/Garen.webp" alt="" /></a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>
