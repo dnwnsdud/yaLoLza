@@ -14,7 +14,9 @@ import com.web.project.dto.Perk;
 import com.web.project.dto.Runes;
 import com.web.project.dto.Champion.Champion;
 import com.web.project.dto.Champion.Spell;
+import com.web.project.dto.item.Item;
 import com.web.project.system.ChampionData;
+import com.web.project.system.ItemData;
 import com.web.project.system.RuneData;
 import com.web.project.system.SummonerData;
 
@@ -65,9 +67,10 @@ public class ChampionsPage {
 		model.addAttribute("summoner3", spell);
 		spell = SummonerData.findspell("7");
 		model.addAttribute("summoner4", spell);
+		Item item = ItemData.item("1001");
+		model.addAttribute("item", item);
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
-		
 		return "champ_detail";
 	}
 

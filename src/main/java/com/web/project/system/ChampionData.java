@@ -132,9 +132,8 @@ public class ChampionData {
 	}
 	public static List<Champion> imagedata() {
 		String url1 = "https://ddragon.leagueoflegends.com/cdn/14.2.1/data/ko_KR/champion.json";
-		JSONObject cham1 = Ajax.JsonTObj(Ajax.GETO(url1));
 		List<Champion> data = new ArrayList<Champion>();
-		JSONObject cham2 = cham1.getJSONObject("data");
+		JSONObject cham2 = Ajax.JsonTObj(Ajax.GETO(url1)).getJSONObject("data");
 		List<String> keylist = new ArrayList<String>(cham2.keySet());
 		Collections.sort(keylist);
 		Map<String,String> keymap = new HashMap<String, String>();
@@ -162,5 +161,17 @@ public class ChampionData {
 			data.add(champion);
 		}
 		return data;
+	}
+	public static Map<String, String> keysChamName () {
+		String url1 = "https://ddragon.leagueoflegends.com/cdn/14.2.1/data/ko_KR/champion.json";
+		JSONObject cham2 = Ajax.JsonTObj(Ajax.GETO(url1)).getJSONObject("data");
+		List<String> keylist = new ArrayList<String>(cham2.keySet());
+		Collections.sort(keylist);
+		Map<String,String> keysChamName = new HashMap<String, String>();
+		for(int i = 0; i < cham2.length(); i+=1) {
+			JSONObject cham3 = cham2.getJSONObject(keylist.get(i));
+			keysChamName.put(keylist.get(i), cham3.getString("name"));
+		}
+		return keysChamName;
 	}
 }

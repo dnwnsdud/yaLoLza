@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.project.dto.Perk;
+import com.web.project.dto.Runes;
 import com.web.project.dto.Champion.*;
+import com.web.project.dto.item.Item;
 import com.web.project.dto.rune.Rune;
 import com.web.project.system.ChampionData;
+import com.web.project.system.ItemData;
 import com.web.project.system.RuneData;
 import com.web.project.system.SummonerData;
 
@@ -70,4 +73,47 @@ public class ChampionInfo {
 		model.addAttribute("summonerkey", summonerkey);
 		return "summonerspellinfo";
 	}
+	@GetMapping("/itemdetailinfo/{id}")
+	public String iteminfo(Model model,@PathVariable String id) {
+		log.info("itemdetailinfo");	
+		Item item = ItemData.item(id);
+		model.addAttribute("item", item);
+		return "itemdetailinfo";
+	}
+	@GetMapping("/mapping/{championid}/mainruneid/subruneid/sum1id/sum2id/sum3id/sum4id/itemid")
+	///mapping/Aatrox/8000/8400/6/21/1/7/1001
+	public String mapping(Model model,
+			@PathVariable String championid,
+			@PathVariable Integer mainruneid,
+			@PathVariable Integer subruneid,
+			@PathVariable String sum1id,
+			@PathVariable String sum2id,
+			@PathVariable String sum3id,
+			@PathVariable String sum4id,
+			@PathVariable String itemid
+			) {
+		log.info("mapping");
+		Champion champion = ChampionData.championinfo(championid);
+		model.addAttribute("champion",champion);
+		Runes runes = RuneData.runes(mainruneid);
+		model.addAttribute("mainRune", runes);
+		runes = RuneData.runes(subruneid);
+		model.addAttribute("subRune", runes);
+		List<Perk> perklist = RuneData.perklist();
+		model.addAttribute("perklist", perklist);
+		Spell spell = SummonerData.findspell(sum1id);
+		model.addAttribute("summoner1", spell);
+		spell = SummonerData.findspell(sum2id);
+		model.addAttribute("summoner2", spell);
+		spell = SummonerData.findspell(sum3id);
+		model.addAttribute("summoner3", spell);
+		spell = SummonerData.findspell(sum4id);
+		model.addAttribute("summoner4", spell);
+		Map<String, String> summonerkey = SummonerData.keysSumSpell();
+		model.addAttribute("summonerkey", summonerkey);
+		Item item = ItemData.item(itemid);
+		model.addAttribute("item", item);
+		return "mapping";
+	}
+	
 }

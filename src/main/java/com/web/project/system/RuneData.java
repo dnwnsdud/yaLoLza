@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.web.project.dto.Perk;
+import com.web.project.dto.Perks;
 import com.web.project.dto.Runes;
 import com.web.project.dto.rune.*;
 
@@ -290,5 +291,84 @@ public class RuneData {
 		}
 		return keysPerk;
 		
+	}
+
+	public static Perks perks () {
+		Perks perks = new Perks();
+		List<ArrayList<Perk>> slots = new ArrayList<ArrayList<Perk>>();
+		ArrayList<Perk> slot1 = new ArrayList<Perk>();
+		slot1.add(
+				Perk.builder()
+				.id(5008).name("적응형 능력치").group("OFFENSE")
+				.icon("perk-images/StatMods/StatModsAdaptiveForceIcon.png")
+				.tooltip("적응형 능력치 +9").build()
+				);
+		slot1.add(
+				Perk.builder()
+				.id(5005).name("공격 속도").group("OFFENSE")
+				.icon("perk-images/StatMods/StatModsAttackSpeedIcon.png")
+				.tooltip("공격 속도 +10%").build()
+				);
+		slot1.add(
+				Perk.builder()
+				.id(5007).name("스킬 가속").group("OFFENSE")
+				.icon("perk-images/StatMods/StatModsCDRScalingIcon.png")
+				.tooltip("스킬 가속 +8").build()
+				);
+		
+		slots.add(slot1);
+		ArrayList<Perk> slot2 = new ArrayList<Perk>();
+		slot2.add(
+				Perk.builder()
+				.id(5008).name("적응형 능력치").group("OFFENSE")
+				.icon("perk-images/StatMods/StatModsAdaptiveForceIcon.png")
+				.tooltip("적응형 능력치 +9").build()
+				);
+		slot2.add(
+				Perk.builder()
+				.id(5010).name("이동 속도").group("FLEX")
+				.icon("perk-images/StatMods/StatModsMovementSpeedIcon.png")
+				.tooltip("이동 속도 +2%").build()
+				);
+		slot2.add(
+				Perk.builder()
+				.id(5001).name("체력 증가").group("DEFENSE")
+				.icon("perk-images/StatMods/StatModsHealthPlusIcon.png")
+				.tooltip("체력 +15~140 (레벨에 비례)").build()
+				);
+		slots.add(slot2);
+		ArrayList<Perk> slot3 = new ArrayList<Perk>();
+		slot3.add(
+				Perk.builder()
+				.id(5011).name("체력").group("DEFENSE")
+				.icon("perk-images/StatMods/StatModsHealthScalingIcon.png")
+				.tooltip("체력 +65").build()
+				);
+		slot3.add(
+				Perk.builder()
+					.id(5013).name("강인함 및 둔화 저항").group("DEFENSE")
+					.icon("perk-images/StatMods/StatModsTenacityIcon.png")
+					.tooltip("강인함 및 둔화 저항 +10%").build()
+		);
+		slot3.add(
+				Perk.builder()
+					.id(5001).name("체력 증가").group("DEFENSE")
+					.icon("perk-images/StatMods/StatModsHealthPlusIcon.png")
+					.tooltip("체력 +15~140 (레벨에 비례)").build()
+				);
+		
+		slots.add(slot3);
+		perks.setSlots(slots);
+		return perks;
+	} 
+
+	public static Perk perkfind (Integer id) {
+		Perk perk = new Perk();
+		Perks perks = RuneData.perks();
+		for (int i = 0; i < 3; i+=1) {
+			ArrayList<Perk> perklots = perks.getSlots().get(i);
+			
+		}
+		return perk;
 	}
 }

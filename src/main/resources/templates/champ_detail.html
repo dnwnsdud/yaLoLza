@@ -261,11 +261,11 @@
 								<h3>시작 아이템</h3>
 								<div class="item-build">
 									<div>
-										<div>
-											<img src="" alt="">
+										<div th:id="${item.id}" class="item-buildstart">
+											<img th:src="@{'/img/item/'+${item.id}+'.png'}" alt="아이템 이미지">
 										</div>
-										<div>
-											<img src="" alt="">
+										<div th:id="${item.id}" class="item-buildstart">
+											<img th:src="@{'/img/item/'+${item.id}+'.png'}" alt="아이템 이미지">
 										</div>
 									</div>
 									<p>
@@ -831,6 +831,29 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
 	
 	document.querySelectorAll(".summoner-order ul li div div").forEach(async (element)=>{
 		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+  
+	</script>
+<script th:inline="javascript" defer>
+	
+	document.querySelectorAll(".item-buildstart").forEach(async (element)=>{
+		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
 		tooltip(
 				  element,
 				  target,
