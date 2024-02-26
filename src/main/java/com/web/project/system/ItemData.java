@@ -53,4 +53,19 @@ public class ItemData {
 		items.setData(data);
 		return items;
 	}
+	
+	public List<String> legendlist() {
+		String url3 = "https://ddragon.leagueoflegends.com/cdn/14.3.1/data/ko_KR/item.json";
+		JSONObject ite2 = Ajax.JsonTObj(Ajax.GETO(url3)).getJSONObject("data");
+		List<String> keylist = new ArrayList<String>(ite2.keySet());
+		Collections.sort(keylist);
+		List<String> list = new ArrayList<String>();
+		for(int i = 0; i < ite2.length(); i+=1) {
+			JSONObject ite3 = ite2.getJSONObject(keylist.get(i));
+			if(!ite3.has("into")) list.add(keylist.get(i));
+		}
+		System.out.println(list);
+		return list;
+		
+	}
 }

@@ -109,10 +109,16 @@ public class ChampionInfo {
 		model.addAttribute("summoner3", spell);
 		spell = SummonerData.findspell(sum4id);
 		model.addAttribute("summoner4", spell);
-		Map<String, String> summonerkey = SummonerData.keysSumSpell();
-		model.addAttribute("summonerkey", summonerkey);
 		Item item = ItemData.item(itemid);
 		model.addAttribute("item", item);
+		Map<String, String> summonerkey = SummonerData.keysSumSpell();
+		model.addAttribute("summonerkey", summonerkey);
+		Map<String, String> keysChamName = ChampionData.keysChamName();
+		model.addAttribute("keysChamName", keysChamName);
+		Map<Integer, String> keysRune = RuneData.keysRune();
+		model.addAttribute("keysRune", keysRune);
+		Map<Integer, String> keysPerk = RuneData.keysPerk();
+		model.addAttribute("keysPerk", keysPerk);
 		return "mapping";
 	}
 	
