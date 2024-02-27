@@ -51,7 +51,9 @@ public class SecurityConfig {
 							"/counter/**" ,
 							"/img/**" ,
 							"/css/**" ,
-							"/js/**" 
+							"/js/**",
+							"/json/**"
+							
 							
 						).permitAll()
 						.requestMatchers(
