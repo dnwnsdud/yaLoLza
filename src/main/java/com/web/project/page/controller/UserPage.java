@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.project.api.controller.UserService;
 import com.web.project.dto.PasswordForm;
@@ -82,15 +84,17 @@ public class UserPage {
             return "/user/mypage";
         }
         userService.deleteUser(id);
-        return "redirect:/user/logout";
+        return "redirect:/yalolzq.gg/user/logout";
 
     }
 
     @GetMapping("/mypage")
     public String userMypage(@AuthenticationPrincipal SiteUser user, Model model) {
         model.addAttribute("user", user);
-        return "/user/mypage";
+        return "mypage_form";
     }
+    
+   
 }
 
 

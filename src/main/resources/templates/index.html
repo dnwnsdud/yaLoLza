@@ -26,15 +26,20 @@
             <h1><img th:src="@{/img/mainlogo.png}" alt="" /></h1>
             <nav>
                 <div class="hd-nav">
-                    <div><a href="#">홈</a></div>
+                    <div><a href="/yalolza.gg/">홈</a></div>
                     <div><a href="#">칼바람</a></div>
                     <div><a href="#">통계</a></div>
                     <div><a href="#">랭킹</a></div>
-                    <div><a th:href="@{/yalolza.gg/community/}">커뮤니티</a></div>
+                    <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
                     <div><a href="#">관련 영상</a></div>
+                    <div><a th:href="@{/duo.yalolza.gg/duo/list}">DUO</a></div>
                 </div>
                 <div class="btn">
-                    <button><a th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+                    <button><a  sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+	
+     				<button><a sec:authorize="isAuthenticated()" 
+     				th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button><button><a sec:authorize="isAuthenticated()" 
+     				th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
                     <button>
                         <i class="fa-regular fa-sun"></i>
                     </button>

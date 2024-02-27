@@ -16,9 +16,9 @@
 
     <div class="search_best">
        <div class="best_all">
-        <a th:href="@{/yalolza.gg/community/list/all}" class="all">최신순</a>&nbsp;
+        <a th:href="@{/talk.yalolza.gg/community/list/all}" class="all">최신순</a>&nbsp;
 <!--           /&nbsp;-->
-        <a th:href="@{/yalolza.gg/community/list/best}" class="best">인기순</a>
+        <a th:href="@{/talk.yalolza.gg/community/list/best}" class="best">인기순</a>
        </div>
 
         <div class="search">
@@ -28,28 +28,28 @@
     </div>
         <div class="writebtnbox" >
             <div class="writebtnbox-1" >
-            <a th:if="${boardName=='인기'}" th:href="@{/yalolza.gg/community/create/free}" class="writebtn">글등록하기</a>
-            <a th:if="${boardName=='전체'}" th:href="@{/yalolza.gg/community/create/free}" class="writebtn">글등록하기</a>
-            <a th:if="${boardName=='자유'}" th:href="@{/yalolza.gg/community/create/free}" class="writebtn">자유글등록하기</a>
-            <a th:if="${boardName=='유머'}" th:href="@{/yalolza.gg/community/create/humer}" class="writebtn">유머글등록하기</a>
-            <a th:if="${boardName=='영상'}" th:href="@{/yalolza.gg/community/create/video}" class="writebtn">영상글등록하기</a>
-            <a th:if="${category=='QnA'}" th:href="@{/yalolza.gg/community/create/qna}" class="writebtn">글등록하기</a>
+            <a th:if="${boardName=='인기'}" th:href="@{/talk.yalolza.gg/community/create/free}" class="writebtn">글등록하기</a>
+            <a th:if="${boardName=='전체'}" th:href="@{/talk.yalolza.gg/community/create/free}" class="writebtn">글등록하기</a>
+            <a th:if="${boardName=='자유'}" th:href="@{/talk.yalolza.gg/community/create/free}" class="writebtn">자유글등록하기</a>
+            <a th:if="${boardName=='유머'}" th:href="@{/talk.yalolza.gg/community/create/humer}" class="writebtn">유머글등록하기</a>
+            <a th:if="${boardName=='영상'}" th:href="@{/talk.yalolza.gg/community/create/video}" class="writebtn">영상글등록하기</a>
+            <a th:if="${category=='QnA'}" th:href="@{/talk.yalolza.gg/community/create/qna}" class="writebtn">글등록하기</a>
             </div>
 
             <div class="commu_libox">
                 <ul>
                     <li class="allbtns">
-                        <a th:href="@{/yalolza.gg/community/list/all}" >전체</a>
+                        <a th:href="@{/talk.yalolza.gg/community/list/all}" >전체</a>
                     </li>
                     <li class="freebtns">
-                        <a th:href="@{/yalolza.gg/community/list/free}">자유</a>
+                        <a th:href="@{/talk.yalolza.gg/community/list/free}">자유</a>
                     </li>
                     <li class="humerbtns">
-                        <a th:href="@{/yalolza.gg/community/list/humer}">유머</a>
+                        <a th:href="@{/talk.yalolza.gg/community/list/humer}">유머</a>
                     </li>
                     <!--        선택시 active  되게 설정해야함-->
                     <li class="videobtns">
-                        <a th:href="@{/yalolza.gg/community/list/video}">영상</a>
+                        <a th:href="@{/talk.yalolza.gg/community/list/video}">영상</a>
                     </li>
                 </ul>
 
@@ -58,7 +58,7 @@
         <div class="commu_libox2">
             <ul>
                 <li class="qnabtns">
-                    <a th:href="@{/yalolza.gg/community/list/qna}">QnA</a>
+                    <a th:href="@{/talk.yalolza.gg/community/list/qna}">QnA</a>
                 </li>
             </ul>
         </div>
@@ -86,8 +86,8 @@
                         </li>
 
                         <li>
-                            <a th:href="@{|/yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
-                            <a th:href="@{|/yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
+                            <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
+                            <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
 <!--                            <a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
                             <span th:if="${#lists.size(community.commentList)>0}"
                                   th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number"></span>
@@ -157,25 +157,25 @@
 
 
 
-    if(location.href.indexOf('localhost:9998/yalolza.gg/community/list/best') > -1) {
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/best') > -1) {
             bestbtn.style.backgroundColor = "white";
             allbtn.style.backgroundColor = "transparent";
             allbtn.style.boxShadow = "none";
             bestbtn.style.boxShadow = " 1px 1px 1px 1px #ccc";
     }
-    if(location.href.indexOf('localhost:9998/yalolza.gg/community/list/all') > -1) {
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/all') > -1) {
         allntns.style.borderLeft = "4px solid black";
     }
-    if(location.href.indexOf('localhost:9998/yalolza.gg/community/list/free') > -1) {
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/free') > -1) {
         freebtns.style.borderLeft = "4px solid black";
     }
-    if(location.href.indexOf('localhost:9998/yalolza.gg/community/list/humer') > -1) {
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/humer') > -1) {
         humerbtns.style.borderLeft = "4px solid black";
     }
-    if(location.href.indexOf('localhost:9998/yalolza.gg/community/list/video') > -1) {
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/video') > -1) {
         videobtns.style.borderLeft = "4px solid black";
     }
-    if(location.href.indexOf('localhost:9998/yalolza.gg/community/list/qna') > -1) {
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/qna') > -1) {
         qnabtns.style.borderLeft = "4px solid black";
     }
 

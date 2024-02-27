@@ -3,6 +3,8 @@ package com.web.project.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +22,9 @@ import jakarta.servlet.DispatcherType;
 public class SecurityConfig {
 	@Autowired
 	UserService service;
+	
+	
+
 	@Autowired
 	OAuth2UserService oauth2service;
 
@@ -115,11 +120,11 @@ public class SecurityConfig {
 				
 				.logout(out->
 					out
-						.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+						.logoutRequestMatcher(new AntPathRequestMatcher("/yalolza.gg/user/logout"))
 //						.logoutUrl("/members/logout")
 //						.logoutSuccessUrl("/main")
 //						.logoutUrl("/user/logout")
-						.logoutSuccessUrl("/user/login")
+						.logoutSuccessUrl("/yalolza.gg/user/login")
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.permitAll()
@@ -141,7 +146,7 @@ public class SecurityConfig {
 //        throws Exception {
 //        return authenticationConfiguration.getAuthenticationManager();
 //    }
-//    
+    
     
 }
 

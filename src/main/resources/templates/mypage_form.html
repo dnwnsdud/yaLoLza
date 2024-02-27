@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+</head>
+<body>
+    <h1>My Page</h1>
+    
+    <span th:if="${user}" th:text="|${user.autho}-${user.nickname} 님 마이 페이지 입니다.|"> 아이디 존재</span>
+    <span th:unless="${user}">nono</span>
+    <!-- 닉네임 변경 버튼 -->
+    <div>
+        <a th:href="@{/user/mypage/change-nickname}" class="btn btn-primary">닉네임 변경</a>
+  		<a th:href="@{/yalolza.gg/}">home</a>
+  		<a th:href="@{/user/mypage/change-pass}" class="btn btn-primary">비밀번호 변경</a>
+    </div>s
+
+</body>
+</html>

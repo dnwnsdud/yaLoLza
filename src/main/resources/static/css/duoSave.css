@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+
+body {
+	background-color: #292a30;
+	color: white;
+}
+
+#duo-save.duo-find {
+	width: 800px;
+	margin: auto;
+	border: 1px solid black;
+	margin-top: 100px;
+	padding: 50px;
+	border-radius: 10px;
+	background-color: #45464d;
+
+}
+
+#duo-save .label-summonerName,
+#duo-save .for-memo {
+	margin-bottom: 10px;
+}
+
+#duo-save  .input-summonerName {
+	width: 300px;
+	font-size: 17px;
+	background-color: #292a30;
+}
+
+#duo-save  .for-yourposition {
+	margin-top: 20px;
+}
+
+#duo-save  .selectMenu {
+	display: flex;
+	justify-content: space-between;
+}
+
+#duo-save .relative>input {
+	color: white;
+}
+
+#duo-save .select-queue-container {
+	margin-top: 20px;
+	border-radius: 10px;
+}
+
+#duo-save #queuetype {
+	text-align: center;
+}
+
+#duo-save  .queuetype {
+	width: 100px;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #292a30;
+	color: white;
+	cursor: pointer;
+
+
+}
+
+#duo-save .queuetype>option {
+	cursor: pointer;
+}
+
+#duo-save .input-summonerName {
+	border: 1px solid gray;
+}
+
+#duo-save .memo {
+	width: 300px;
+	font-size: 17px;
+	color: white;
+	cursor: pointer;
+
+}
+
+#duo-save .duopassword {
+	border: 1px solid gray;
+	color: white;
+}
+
+#duo-save .for-register {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+#duo-save .register {
+	width: 400px;
+	padding: 17px 0;
+	border-radius: 10px;
+	border: 1px solid black;
+	background-color: #45464d;
+	color: white;
+	background-color: #00bba3;
+	cursor: pointer;
+
+}
+
+#duo-save .back {
+	padding: 18px 0;
+	width: 400px;
+	border: 1px solid black;
+	border-radius: 10px;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+#duo-save .Box {
+	width: 50px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#duo-save .mike,
+#duo-save .memo,
+#duo-save .duopassword,
+#duo-save .tier,
+#duo-save .chamption,
+#duo-save .winning,
+#duo-save .kda {
+	background-color: #292a30;
+
+}
+
+#duo-save input[type='radio'] {
+	display: none;
+}
+
+#duo-save input[type='radio']+label {
+	display: inline-block;
+	cursor: pointer;
+}
+
+#duo-save input[type='radio']:checked+label>div {
+	background-color: #00bba3;
+}
+
+#duo-save input[type='checkbox'] {
+	display: none;
+}
+
+#duo-save input[type='checkbox']+label {
+	display: inline-block;
+}
+
+#duo-save input[type='checkbox']:checked+label>div {
+	background-color: #00bba3;
+}
+
+#duo-save input[type='radio']+label>div>svg {
+	fill: gray
+}
+
+#duo-save input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
+	fill: white
+}
+
+#duo-save input[type='checkbox']+label>div>svg {
+	fill: gray
+}
+
+#duo-save input[type='checkbox']:checked+label>div>svg>path:nth-of-type(1) {
+	fill: white
+}
