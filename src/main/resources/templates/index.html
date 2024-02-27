@@ -86,7 +86,7 @@
 
     </figure>
     <div style="background-color: white; width: 40%;">
-            <div><a th:href="@{/yalolza.gg/community/list/all}" class="write_title">게시판 ></a></div>
+            <div><a th:href="@{/talk.yalolza.gg/community/list/all}" class="write_title">게시판 ></a></div>
             <ul th:each="community, loop : ${communityList}" class="commu_list">
                 <li th:text="${community.category}"></li>
 <!--                <li ><a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
