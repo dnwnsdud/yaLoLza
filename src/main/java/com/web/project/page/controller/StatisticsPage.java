@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.project.metrics.count.Connect;
+
 @Controller
 @RequestMapping("/yalolza.gg/statistics")
 public class StatisticsPage {
@@ -17,12 +19,14 @@ public class StatisticsPage {
 	
 	@GetMapping("/champions")
 	public String StatisticsChampions() {
+    	new Connect("yalolza.gg", "statistics", "champions");
 		return "NewFile";
 	}
 
 
 	@GetMapping("/tiers")
 	public String StatisticsTiers() {
+    	new Connect("yalolza.gg", "statistics", "tiers");
 		return "NewFile";
 	}
 
