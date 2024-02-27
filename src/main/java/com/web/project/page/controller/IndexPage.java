@@ -11,6 +11,7 @@ import com.web.project.api.controller.CommunityService;
 import com.web.project.api.controller.UserService;
 import com.web.project.dao.CommunityRepository;
 import com.web.project.dto.Community;
+import com.web.project.metrics.Counter;
 
 import lombok.RequiredArgsConstructor;
 
