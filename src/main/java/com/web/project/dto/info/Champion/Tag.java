@@ -1,4 +1,4 @@
-package com.web.project.dto.Champion;
+package com.web.project.dto.info.Champion;
 
 public enum Tag {
 	Fighter,

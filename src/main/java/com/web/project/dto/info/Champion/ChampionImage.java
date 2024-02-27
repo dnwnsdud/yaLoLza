@@ -1,4 +1,6 @@
-package com.web.project.dto.item;
+package com.web.project.dto.info.Champion;
+
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -8,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Component
 @Data
 @NoArgsConstructor
-public class ItemImage {
+public class ChampionImage {
 	public String full;
 	public String group;
 }

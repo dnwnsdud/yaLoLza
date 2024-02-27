@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
-import com.web.project.dto.Champion.Spell;
+import com.web.project.dto.info.Champion.Spell;
 
 public class SummonerData {
 	public final static Spell findspell(String id) {

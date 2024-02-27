@@ -10,13 +10,13 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.web.project.dto.Champion.Champion;
-import com.web.project.dto.Champion.ChampionImage;
-import com.web.project.dto.Champion.Passive;
-import com.web.project.dto.Champion.PassiveImage;
-import com.web.project.dto.Champion.Skin;
-import com.web.project.dto.Champion.Spell;
-import com.web.project.dto.Champion.Stat;
+import com.web.project.dto.info.Champion.Champion;
+import com.web.project.dto.info.Champion.ChampionImage;
+import com.web.project.dto.info.Champion.Passive;
+import com.web.project.dto.info.Champion.PassiveImage;
+import com.web.project.dto.info.Champion.Skin;
+import com.web.project.dto.info.Champion.Spell;
+import com.web.project.dto.info.Champion.Stat;
 
 public class ChampionData {
 	public static List<Champion> data() {

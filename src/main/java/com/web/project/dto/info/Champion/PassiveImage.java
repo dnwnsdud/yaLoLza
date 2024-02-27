@@ -1,4 +1,4 @@
-package com.web.project.dto.rune;
+package com.web.project.dto.info.Champion;
 
 import org.springframework.stereotype.Component;
 
@@ -8,10 +8,7 @@ import lombok.NoArgsConstructor;
 @Component
 @Data
 @NoArgsConstructor
-public class Rune {
-	Integer id;
-	String key;
-	String icon;
-	String name;
-	String longDesc;
+public class PassiveImage {
+	private String full;
+	private String group;
 }

@@ -1,4 +1,4 @@
-package com.web.project.dto;
+package com.web.project.dto.info;
 
 import org.springframework.stereotype.Component;
 

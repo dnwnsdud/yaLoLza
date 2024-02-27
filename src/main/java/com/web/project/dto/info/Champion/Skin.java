@@ -1,10 +1,8 @@
-package com.web.project.dto;
+package com.web.project.dto.info.Champion;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
-
-import com.web.project.dto.item.Item;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +10,9 @@ import lombok.NoArgsConstructor;
 @Component
 @Data
 @NoArgsConstructor
-public class Items {
-	public String type;
-	public String version;
-	public List<Item> data;
+public class Skin {
+	String id;
+	Integer num;
+	String name;
+	boolean chromas;
 }

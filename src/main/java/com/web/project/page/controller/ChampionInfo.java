@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.web.project.dto.Perk;
-import com.web.project.dto.Runes;
-import com.web.project.dto.Champion.*;
-import com.web.project.dto.item.Item;
-import com.web.project.dto.rune.Rune;
+import com.web.project.dto.info.Perk;
+import com.web.project.dto.info.Runes;
+import com.web.project.dto.info.Champion.*;
+import com.web.project.dto.info.item.Item;
+import com.web.project.dto.info.rune.Rune;
 import com.web.project.system.ChampionData;
 import com.web.project.system.ItemData;
 import com.web.project.system.RuneData;

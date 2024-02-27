@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.web.project.dto.Perk;
-import com.web.project.dto.Runes;
-import com.web.project.dto.Champion.Champion;
-import com.web.project.dto.Champion.Spell;
-import com.web.project.dto.item.Item;
+import com.web.project.dto.info.Perk;
+import com.web.project.dto.info.Runes;
+import com.web.project.dto.info.Champion.Champion;
+import com.web.project.dto.info.Champion.Spell;
+import com.web.project.dto.info.item.Item;
 import com.web.project.system.ChampionData;
 import com.web.project.system.ItemData;
 import com.web.project.system.RuneData;

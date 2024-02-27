@@ -1,6 +1,4 @@
-package com.web.project.dto.Champion;
-
-import java.util.List;
+package com.web.project.dto.info.item;
 
 import org.springframework.stereotype.Component;
 
@@ -10,8 +8,11 @@ import lombok.NoArgsConstructor;
 @Component
 @Data
 @NoArgsConstructor
-public class Passive {
+public class Item {
+	public String id;
 	public String name;
 	public String description;
-	public PassiveImage image;
+	public String plaintext;
+	public ItemImage image;
+	public Gold gold;
 }

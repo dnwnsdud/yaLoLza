@@ -1,15 +1,17 @@
-package com.web.project.dto;
+package com.web.project.dto.info.Champion;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Data
+
 @Component
+@Data
 @NoArgsConstructor
-public class Perks {
-	List<ArrayList<Perk>> slots;
+public class Passive {
+	public String name;
+	public String description;
+	public PassiveImage image;
 }

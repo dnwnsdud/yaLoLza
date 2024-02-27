@@ -9,10 +9,10 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.web.project.dto.Perk;
-import com.web.project.dto.Perks;
-import com.web.project.dto.Runes;
-import com.web.project.dto.rune.*;
+import com.web.project.dto.info.Perk;
+import com.web.project.dto.info.Perks;
+import com.web.project.dto.info.Runes;
+import com.web.project.dto.info.rune.*;
 
 public class RuneData {
 	public static Rune runedetail(Integer id) {

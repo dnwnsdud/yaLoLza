@@ -1,10 +1,10 @@
-package com.web.project.dto;
+package com.web.project.dto.info;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.web.project.dto.rune.Slots;
+import com.web.project.dto.info.rune.Slots;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,4 @@
-package com.web.project.dto.Champion;
-
-import java.util.List;
+package com.web.project.dto.info.item;
 
 import org.springframework.stereotype.Component;
 
@@ -10,9 +8,8 @@ import lombok.NoArgsConstructor;
 @Component
 @Data
 @NoArgsConstructor
-public class Skin {
-	String id;
-	Integer num;
-	String name;
-	boolean chromas;
+public class Gold {
+	public Long base;
+	public Long total;
+	public Long sell;
 }
