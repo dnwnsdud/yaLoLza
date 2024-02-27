@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<form id='duo-save' class="duo-find" th:action="@{/yalolza.gg/duo/create}" th:fragment="save" method="post"
+	<form id='duo-save' class="duo-find" th:action="@{/duo.yalolza.gg/duo/create}" th:fragment="save" method="post"
 		th:object="${duoDto}">
 		<div class="for-summonerName">
 			<div class="label-summonerName" id="summonerName">소환사 이름 (KR)</div>
@@ -234,7 +234,7 @@
 
 		<div class="for-register">
 			<div class="back">
-				<a th:href="@{/yalolza.gg/duo/list}">Duo 목록으로 돌아가기</a>
+				<a th:href="@{/duo.yalolza.gg/duo/list}">Duo 목록으로 돌아가기</a>
 			</div>
 			<button type="submit" class="register">등록</button>
 		</div>
