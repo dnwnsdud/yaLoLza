@@ -91,8 +91,8 @@
                 <li th:text="${community.category}"></li>
 <!--                <li ><a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
                 <li>
-                    <a th:href="@{|/yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
-                    <a th:href="@{|/yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
                     <span th:if="${#lists.size(community.commentList)>0}"
                           th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number" style="color: #aaa"></span>
                 </li>
