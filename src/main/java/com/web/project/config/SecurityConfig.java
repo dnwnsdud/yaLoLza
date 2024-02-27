@@ -46,7 +46,13 @@ public class SecurityConfig {
 							"/yalolza.gg/summoners/**", 
 							"/login", 
 							"/login/check", 
-							"/oauth2/authorization/**"
+							"/oauth2/authorization/**",
+							"/lol/**", 
+							"/counter/**" ,
+							"/img/**" ,
+							"/css/**" ,
+							"/js/**" 
+							
 						).permitAll()
 						.requestMatchers(
 							"/dashboard"
