@@ -100,7 +100,7 @@ public class SecurityConfig {
 						.usernameParameter("username")
 //						.usernameParameter("email")
 						.passwordParameter("password")
-						.defaultSuccessUrl("/yalolza.gg/", true)
+						.defaultSuccessUrl("/yalolza.gg", true)
 						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()
 				)
@@ -112,7 +112,7 @@ public class SecurityConfig {
 							end
 								.userService(oauth2service)
 						)
-						.defaultSuccessUrl("/yalolza.gg/", true)
+						.defaultSuccessUrl("/yalolza.gg", true)
 //						.failureUrl("/members/login/error")
 						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()

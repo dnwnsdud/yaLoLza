@@ -142,7 +142,7 @@ public class DuoPage {
 		}else {
 
 //			model.addAttribute("message","듀오 수정 성공"); 
-//	    	model.addAttribute("searchUrl","/duo.yalolza.gg/duo/list"); 
+//	    	model.addAttribute("searchUrl","/yalolza.gg/duo/list"); 
 	    	
 	    	duotemp.setMyposition(duoDto.getMyposition());
 	    	duotemp.setYourposition(duoDto.getYourposition());
@@ -175,7 +175,7 @@ public class DuoPage {
 		        return "message";
 		    }else { 
 //		    	model.addAttribute("message","듀오 삭제 성공"); 
-//		    	model.addAttribute("searchUrl","/duo.yalolza.gg/duo/list"); 
+//		    	model.addAttribute("searchUrl","/yalolza.gg/duo/list"); 
 		    	duotemp.setDuopassword2(duoDto.getDuopassword2());
 					duoService.duoDelete(id);
 		    
