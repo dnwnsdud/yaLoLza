@@ -1,5 +1,7 @@
 package com.web.project.page.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -15,14 +17,25 @@ import com.web.project.dto.info.Runes;
 import com.web.project.dto.info.Champion.Champion;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
+import com.web.project.dto.runeSpell.DataEntry;
 import com.web.project.system.ChampionData;
 import com.web.project.system.ItemData;
 import com.web.project.system.RuneData;
 import com.web.project.system.SummonerData;
+import com.web.project.system.ChampionStatistic;
+
 
 @Controller
 @RequestMapping("/yalolza.gg/champions")
 public class ChampionsPage {
+	// 참고로 perk = rune
+	private String defaultFilePath;
+
+	public ChampionsPage() {
+		System.out.println("CALL datafile");
+	    this.defaultFilePath = "src/main/resources/static/datas/RANKED_SOLO_5x5/";	    
+	    System.out.println(defaultFilePath);
+	}
 
 	@GetMapping("")
 	public String Champions(Model model,
@@ -49,13 +62,22 @@ public class ChampionsPage {
 	@GetMapping("/{champion}/build")
 	public String ChampionsDetail(
 			Model model,
+			@RequestParam("tier") String tier,
+			@RequestParam("position") String position,
 			@PathVariable("champion") String championid
 			) {
 		Champion champion = ChampionData.championinfo(championid);
 		model.addAttribute("champion",champion);
+		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+		String rawData = Files.readString(Paths.get(filePath));
+		List<DataEntry> data = parseJson(rawData);
+		List<DataEntry> filteredData = filterData(data, tier, position, championid);
 		Runes runes = RuneData.runes(8000);
+		String primaryStyleFirstPerk = calculatePrimaryStyleFirstPerk1(filteredData);
+        List<String> primaryStylePerks234 = calculatePrimaryStylePerks234(filteredData);
 		model.addAttribute("mainRune", runes);
 		runes = RuneData.runes(8400);
+		List<String> subStylePerks12 = calculateSubStylePerks12(filteredData);
 		model.addAttribute("subRune", runes);
 		List<Perk> perklist = RuneData.perklist();
 		model.addAttribute("perklist", perklist);
@@ -68,7 +90,11 @@ public class ChampionsPage {
 		spell = SummonerData.findspell("7");
 		model.addAttribute("summoner4", spell);
 		Item item = ItemData.item("1001");
-		model.addAttribute("item", item);
+		model.addAttribute("item1", item);
+		item = ItemData.item("1001");
+		model.addAttribute("item2", item);
+		item = ItemData.item("3364");
+		model.addAttribute("item3", item);
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
 		return "champ_detail";

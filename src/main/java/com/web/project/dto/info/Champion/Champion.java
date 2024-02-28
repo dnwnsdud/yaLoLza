@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Component
 @Data
 @NoArgsConstructor
@@ -22,4 +22,6 @@ public class Champion {
 	public List<Skin> skins;
 	public List<Spell> spells;
 	public Passive passive;
+
+	
 }
