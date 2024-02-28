@@ -27,7 +27,7 @@ public class TierPositionController {
 		this.jsonReader = jsonReader;
 	}
 
-	@GetMapping("/lol") // http://localhost:9997/lol?tier=IRON&position=TOP
+	@GetMapping("/lol") // http://localhost:9998/lol?tier=IRON&position=TOP
 	public String getChampionsData(@RequestParam(required = false) String tier,
 	        @RequestParam(required = false) String position, Model model) {
 	    try {
