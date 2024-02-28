@@ -31,7 +31,10 @@ public class SecurityConfig {
 						"/champions/**",
 						"/ranking/**",
 						"/statistics/**",
-						"/summoners/**"
+						"/summoners/**",
+						"/img/**",
+						"/css/**",
+						"/js/**"
 					)
 				)
 				.authorizeHttpRequests(auth->
@@ -52,9 +55,8 @@ public class SecurityConfig {
 							"/img/**" ,
 							"/css/**" ,
 							"/js/**",
-							"/json/**"
-							
-							
+							"/json/**",
+							"/info/**"
 						).permitAll()
 						.requestMatchers(
 							"/dashboard"
