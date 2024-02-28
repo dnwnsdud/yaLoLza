@@ -37,6 +37,7 @@ public class SecurityConfig {
 		return http
 				.csrf(csrf->
 					csrf.ignoringRequestMatchers(
+							"/yalolza.gg/community/index",
 						"/api/all",
 						"/api/**",
 						"/login/check",

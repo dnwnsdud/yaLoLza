@@ -70,11 +70,13 @@ public class UserPage {
             bindingResult.reject("signupFailed", e.getMessage());
             return "signup_form";
         }
-
+        Counter.Increment("user", 1);
         return "login_form";
     }
 
-    @GetMapping("/login")
+    
+
+	@GetMapping("/login")
     public String login() {
     	new Connect("yalolza.gg", "user", "login");
 		
@@ -100,6 +102,7 @@ public class UserPage {
             return "/user/mypage";
         }
         userService.deleteUser(id);
+        Counter.Decrement("user", 1);
         return "redirect:/user/logout";
 
     }

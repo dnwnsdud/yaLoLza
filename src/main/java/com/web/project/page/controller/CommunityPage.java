@@ -25,6 +25,7 @@ import com.web.project.dto.Community;
 import com.web.project.dto.CommunityForm;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.enumerated.CommunityEnum;
+import com.web.project.metrics.count.Connect;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +53,7 @@ public class CommunityPage {
 	    public String index(Model model){
 	        List<Community> communityList = this.communityRepository.findTop10ByOrderByCreateDateDesc();
 	        model.addAttribute("communityList", communityList);
+	    	new Connect("yalolza.gg", "community", "index");
 	        return "index";
 	    }
 
@@ -65,6 +67,7 @@ public class CommunityPage {
 
 	        model.addAttribute("paging", paging);
 	        model.addAttribute("category", category);
+	    	new Connect("yalolza.gg", "community", "qna");
 	        return "community";
 	    }
 
@@ -84,6 +87,7 @@ public class CommunityPage {
 	        model.addAttribute("boardName", category);
 	        Page<Community> paging = communityService.getList(page, category, keyword);
 	        model.addAttribute("paging", paging);
+	    	new Connect("yalolza.gg", "community", "list", type);
 	        return "community";
 	    }
 
@@ -92,6 +96,7 @@ public class CommunityPage {
 
 	        Community community = this.communityService.getCommu(id);
 	        model.addAttribute("community", community);
+	    	new Connect("yalolza.gg", "community", "detail" );
 	        return "commu_detail";
 	    }
 
