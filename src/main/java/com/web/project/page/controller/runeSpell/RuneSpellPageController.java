@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/statistics")
 public class RuneSpellPageController {
 
-	
-	@GetMapping("/RANK")
-	public String rune() {
-		return "RANK";
-	}
-	
-	@GetMapping("/howlingabyss")
-	public String myPage() {
-		return "howlingabyss";
-	}
-	
+    @GetMapping("/rune")
+    public String rune() {
+        return "rune"; 
+    }
+    
+
+    @GetMapping("/howlingabyss")
+    public String myPage() {
+        return "howlingabyss"; 
+    }
 }

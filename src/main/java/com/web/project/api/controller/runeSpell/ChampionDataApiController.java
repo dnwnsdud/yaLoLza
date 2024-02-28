@@ -20,27 +20,30 @@ import java.util.stream.Stream;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.web.project.dto.runeSpell.*;
-
+import com.web.project.dto.runeSpell.DataEntry;
+import com.web.project.dto.runeSpell.Selections;
+import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 
 
 @Controller
+@RequestMapping("/yalolza.gg/statistics")
 public class ChampionDataApiController {
 
 	// 참고로 perk = rune
 	private String defaultFilePath;
 
-    public ChampionDataApiController() {
-        this.defaultFilePath = "C:\\Users\\Administrator\\Desktop\\02-19riot\\temp_DB\\riot\\datas\\RANKED_SOLO_5x5\\";
-    }
-																				
-
-																				
-    @GetMapping("/")
+	public ChampionDataApiController() {
+		System.out.println("CALL datafile");
+	    this.defaultFilePath = "src/main/resources/static/datas/RANKED_SOLO_5x5/";	    
+	    System.out.println(defaultFilePath);
+	}
+	
+    @GetMapping("/rune")
     public String getRuneData(Model model,
                               @RequestParam("tier") String tier,
                               @RequestParam("position") String position,
@@ -50,8 +53,9 @@ public class ChampionDataApiController {
     	try {
             // 요청된 티어에 따라 파일 경로를 업데이트합니다.
     		System.out.println("file update");
-            String filePath = defaultFilePath + tier + "\\data.json";
-            System.out.println(defaultFilePath + tier + "\\data.json");
+            String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+
+            System.out.println(defaultFilePath + tier + "/data.json");
                         
             String rawData = Files.readString(Paths.get(filePath));
             //System.out.println(rawData);됨
@@ -105,10 +109,10 @@ public class ChampionDataApiController {
             
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("no RANK");
+            System.out.println("no DATA");
         }
 
-        return "RANK";
+        return "rune";
     }
 
 

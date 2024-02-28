@@ -1,6 +1,5 @@
 package com.web.project.dto.runeSpell;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
