@@ -5,6 +5,7 @@ import com.web.project.dto.CounterPositionDTO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,7 +14,9 @@ import java.nio.file.Paths;
 
 @Service
 public class CounterJsonReader {
-
+	@Value("${mainroot.json}")
+	private String jsonroot;
+	
     private static final Logger logger = LoggerFactory.getLogger(CounterJsonReader.class);
     private final ObjectMapper objectMapper;
 
@@ -22,7 +25,7 @@ public class CounterJsonReader {
     }
 
     public CounterPositionDTO readCounterJsonFile() throws IOException {
-        String path = "C:\\Users\\Administrator\\Desktop\\yaLoLza\\src\\main\\resources\\static\\json\\counter.json";
+        String path = jsonroot+"counter.json";
         logger.info("Reading Counter JSON file from: {}", path);
         
         try {

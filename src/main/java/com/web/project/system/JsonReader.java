@@ -4,6 +4,7 @@ import com.web.project.dto.TierDataDTO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.nio.file.Paths;
 
 @Service
 public class JsonReader {
+	@Value("${mainroot.json}")
+	private String jsonroot;
 
     private static final Logger logger = LoggerFactory.getLogger(JsonReader.class);
     private final ObjectMapper objectMapper;
@@ -21,7 +24,7 @@ public class JsonReader {
     }
 
     public TierDataDTO readJsonFile(String tierName) throws IOException {
-        String path = "C:\\Users\\Administrator\\Desktop\\yaLoLza\\src\\main\\resources\\static\\json\\" + tierName + ".json";
+        String path = jsonroot + tierName + ".json";
         logger.info("읽어온 파일 위치 : {}", path);
         
         try {
