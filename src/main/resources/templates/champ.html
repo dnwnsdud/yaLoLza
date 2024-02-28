@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/myrest.css" />
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/champ.css" />
+    <script src="/js/position.js" defer></script>
   </head>
   <body>
     <div class="con1-wrap">
@@ -57,10 +58,8 @@
           <li th:each="i : ${data}" th:with="champion=${i}">
             <a th:href="'/yalolza.gg/champions/'+${champion.id}+'/build'"
               ><div><img alt="챔피언 이미지" th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}" /></div>
-              <p th:text = "${champion.name}"></p></a
-            >
+              <p th:text = "${champion.name}"></p></a>
           </li>
-\
         </ul>
       </section>
       <section class="con3">
@@ -92,8 +91,12 @@
 				</td>
 				<td th:text="${champion.stats.champtier}"></td>
 				<td>
-					<div class="img-wrap">
-						<img src="/img/01-icon-01-lol-icon-position-top.svg" alt="" />
+					<div class="img-wrap" th:switch="${champion.position}">
+						<div class="TopBox" th:case="TOP"></div>
+						<div class="JungleBox" th:case="JUNGLE"></div>
+						<div class="MidBox" th:case="MIDDLE"></div>
+						<div class="BottomBox" th:case="BOTTOM"></div>
+						<div class="SupporterBox" th:case="UTILITY"></div>
 					</div>
 				</td>
 				<td th:text="${champion.stats.winrate} + '%'"></td>
