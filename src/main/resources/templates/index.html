@@ -23,11 +23,10 @@
 <div class="wrap">
     <header>
         <div class="mw">
-            <h1><img th:src="@{/img/mainlogo.png}" alt="" /></h1>
+            <h1><a th:href="@{/yalolza.gg}"><img th:src="@{/img/mainlogo.png}" alt="" /></a></h1>
             <nav>
                 <div class="hd-nav">
-                    <div><a href="/yalolza.gg">홈</a></div>
-                    <div><a href="#">칼바람</a></div>
+                    <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
                     <div><a href="#">통계</a></div>
                     <div><a href="#">랭킹</a></div>
                     <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
@@ -85,7 +84,7 @@
         </div>
 
     </figure>
-    <div style="background-color: white; width: 40%;">
+    <div style="background-color: #10131c; width: 40%;">
             <div><a th:href="@{/talk.yalolza.gg/community/list/all}" class="write_title">게시판 ></a></div>
             <ul th:each="community, loop : ${communityList}" class="commu_list">
                 <li th:text="${community.category}"></li>
