@@ -1,6 +1,5 @@
 package com.web.project.page.controller;
 
-import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -9,42 +8,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.project.api.controller.UserService;
 import com.web.project.dto.PasswordForm;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.UserCreateForm;
-import com.web.project.metrics.Counter;
-import com.web.project.metrics.Gauge;
-import com.web.project.metrics.Summary;
-import com.web.project.metrics.count.Connect;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import oracle.jdbc.proxy.annotation.Pre;
 
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/yalolza.gg/user")
 public class UserPage {
-	
+
     @Autowired
     PasswordEncoder encoder;
     private final UserService userService;
-    
-    @GetMapping("/test/{test}")
-    public String test(@PathVariable Double test) {
-    	Gauge.Set("Garen_win", 50);
-    	Gauge.Set("Atrox_fail", 30);
-    	return "login_form";
-    }
-    
+
     @GetMapping("/signup")
     public String signup(UserCreateForm userCreateForm) {
-    	new Connect("yalolza.gg", "user", "signup");
         return "signup_form";
     }
 
@@ -70,16 +57,12 @@ public class UserPage {
             bindingResult.reject("signupFailed", e.getMessage());
             return "signup_form";
         }
-        Counter.Increment("user", 1);
+
         return "login_form";
     }
 
-    
-
-	@GetMapping("/login")
+    @GetMapping("/login")
     public String login() {
-    	new Connect("yalolza.gg", "user", "login");
-		
         return "login_form";
     }
 
@@ -91,7 +74,6 @@ public class UserPage {
 
     @GetMapping("/unregist")
     public String userDelete(@AuthenticationPrincipal SiteUser user, Model model, PasswordForm passwordForm) {
-    	new Connect("yalolza.gg", "user", "unregist");
         model.addAttribute("user", user);
         return "/user/mypage";
     }
@@ -102,17 +84,17 @@ public class UserPage {
             return "/user/mypage";
         }
         userService.deleteUser(id);
-        Counter.Decrement("user", 1);
-        return "redirect:/user/logout";
+        return "redirect:/yalolzq.gg/user/logout";
 
     }
 
     @GetMapping("/mypage")
     public String userMypage(@AuthenticationPrincipal SiteUser user, Model model) {
-    	new Connect("yalolza.gg", "user", "mypage");
         model.addAttribute("user", user);
-        return "/user/mypage";
+        return "mypage_form";
     }
+    
+   
 }
 
 

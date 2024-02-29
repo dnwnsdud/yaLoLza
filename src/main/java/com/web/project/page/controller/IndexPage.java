@@ -35,5 +35,14 @@ public class IndexPage {
         return "index";
     }
 
+	@GetMapping("/useterms")
+	public String useterms() {
+		return "useterms";
+	}
+	
+	@GetMapping("/privacy")
+	public String privacy() {
+		return "privacy";
+	}
 	
 }

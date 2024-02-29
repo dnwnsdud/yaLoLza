@@ -23,18 +23,26 @@
 <div class="wrap">
     <header>
         <div class="mw">
-            <h1><img th:src="@{/img/mainlogo.png}" alt="" /></h1>
+            <h1><a th:href="@{/yalolza.gg}"><img th:src="@{/img/mainlogo.png}" alt="" /></a></h1>
             <nav>
                 <div class="hd-nav">
-                    <div><a href="#">홈</a></div>
+
+                    <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
+
+                    <div><a href="/yalolza.gg/">홈</a></div>
                     <div><a href="#">칼바람</a></div>
                     <div><a href="#">통계</a></div>
                     <div><a href="#">랭킹</a></div>
-                    <div><a th:href="@{/yalolza.gg/community/}">커뮤니티</a></div>
+                    <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
                     <div><a href="#">관련 영상</a></div>
+                    <div><a th:href="@{/duo.yalolza.gg/duo/list}">DUO</a></div>
                 </div>
                 <div class="btn">
-                    <button><a th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+                    <button><a  sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+	
+     				<button><a sec:authorize="isAuthenticated()" 
+     				th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button><button><a sec:authorize="isAuthenticated()" 
+     				th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
                     <button>
                         <i class="fa-regular fa-sun"></i>
                     </button>
@@ -80,14 +88,14 @@
         </div>
 
     </figure>
-    <div style="background-color: white; width: 40%;">
-            <div><a th:href="@{/yalolza.gg/community/list/all}" class="write_title">게시판 ></a></div>
+    <div style="background-color: #10131c; width: 40%;">
+            <div><a th:href="@{/talk.yalolza.gg/community/list/all}" class="write_title">게시판 ></a></div>
             <ul th:each="community, loop : ${communityList}" class="commu_list">
                 <li th:text="${community.category}"></li>
 <!--                <li ><a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
                 <li>
-                    <a th:href="@{|/yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
-                    <a th:href="@{|/yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
                     <span th:if="${#lists.size(community.commentList)>0}"
                           th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number" style="color: #aaa"></span>
                 </li>
@@ -98,8 +106,8 @@
     <footer>
         <div class="ft-wrap">
             <div class="idv">
-                <p><a href="#">이용약관</a></p>
-                <p><a href="#">개인정보처리방침</a></p>
+                <p><a th:href="@{/yalolza.gg/useterms}">이용약관</a></p>
+                <p><a th:href="@{/yalolza.gg/privacy}">개인정보처리방침</a></p>
             </div>
             <div class="lol">
             <span
