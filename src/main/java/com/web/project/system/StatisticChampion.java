@@ -41,41 +41,53 @@ public class StatisticChampion {
     }
    
     
-    //챔피언, 포지션 한정해서 가장 많이 등장한 메인룬 출력   
-	public static String calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
-        String primaryPerk = "";
+    //챔피언, 포지션 한정해서 가장 많이 등장한 메인룬 1,2 출력   
+	public static List<String> calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
+		List<String> primaryPerk = Collections.emptyList();
         if (!filteredData.isEmpty()) {
+        	
+        	//<perk 번호 : 등장 횟수>
             Map<Integer, Long> counter = filteredData.stream()
                     .flatMap(entry -> entry.getPerks().getStyles().stream())
                     .filter(style -> "primaryStyle".equals(style.getDescription()))
                     .flatMap(style -> style.getSelections().stream())
                     .collect(Collectors.groupingBy(Selections::getPerk, Collectors.counting()));
 
+            
             if (!counter.isEmpty()) {
-                Long maxCount = Collections.max(counter.values());
-                primaryPerk = counter.entrySet().stream()
-                        .filter(entry -> entry.getValue() == maxCount)
-                        .map(Map.Entry::getKey)
-                        .findFirst()
-                        .map(String::valueOf)
-                        .orElse("");
+            	//<perk 번호 : 등장 횟수> 리스트 만들어
+            	List<Map.Entry<Integer, Long>> counter12 = counter.entrySet().stream()
+            			.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                        .collect(Collectors.toList());
+
+                // 상위 2개의 룬을 선택
+            	primaryPerk = counter12.stream()
+                        .limit(2)
+                        .map(entry -> String.valueOf(entry.getKey()))
+                        .collect(Collectors.toList());
             }
         }
+    
         return primaryPerk;
     }
  
     //calculatePrimaryStyleFirstPerk1 에서 검색된 특성 종류, 메인룬, 해당 티어, 포지션, 챔피언id로 검색
   
 	//정밀, 마법, 영감 등등... 키 가져와요
-	public static String mainStyle(List<DataEntry> filteredData) {
+	//primaryPerk에는 calculatePrimaryStyleFirstPerk1의 가장 많이 등장한 룬, 두번째로 등장한 룬 넣을 예정
+	public static String mainStyle(List<DataEntry> filteredData, String primaryPerk) {
 		String mainStyle ="";
 		if (!filteredData.isEmpty()) {
+			//<perk 번호 : 등장 횟수>
             Map<Integer, Long> counter = filteredData.stream()
-                    .flatMap(entry -> entry.getPerks().getStyles().stream())
+                    .flatMap(entry -> entry.getPerks().getStyles().stream())//"styles":열어
                     .filter(style -> "primaryStyle".equals(style.getDescription()))
-                    .collect(Collectors.groupingBy(Styles::getStyle, Collectors.counting()));
-		
-            
+                    .flatMap(selection -> selection.getSelections().stream())// "selections":열어
+                    .filter(perk -> perk.getPerk() == Integer.parseInt(primaryPerk))//firstperk 가져와
+                    //숫자 : 등장횟수 모아줘요
+                    .collect(Collectors.groupingBy(Selections::getPerk, Collectors.counting()));
+
+            //
             if (!counter.isEmpty()) {
                 Long maxCount = Collections.max(counter.values());
                 mainStyle = counter.entrySet().stream()
@@ -83,18 +95,15 @@ public class StatisticChampion {
                         .map(Map.Entry::getKey)
                         .findFirst()
                         .map(String::valueOf)
-                        .orElse("");
-            
+                        .orElse("");      
             }
 		}
 		
 		return mainStyle;
 	}
-	
-	
-	
-	
-	
+
+
+	//메인 특성의 하위룬
 	public static List<String> calculatePrimaryStylePerks234(List<DataEntry> filteredData) {
         List<String> primaryStylePerks234 = new ArrayList<>();
         if (!filteredData.isEmpty()) {
@@ -119,6 +128,7 @@ public class StatisticChampion {
         return primaryStylePerks234;
     }
 
+	//서브룬
 	public static List<String> calculateSubStylePerks12(List<DataEntry> filteredData) {
         List<String> subStylePerks12 = new ArrayList<>();
         if (!filteredData.isEmpty()) {

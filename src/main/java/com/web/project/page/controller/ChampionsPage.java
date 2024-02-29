@@ -60,7 +60,9 @@ public class ChampionsPage {
 			List<DataEntry> filteredData = StatisticChampion.filterData(data, "EMERALD", "TOP", "Aatrox");
 			Runes runes = RuneData.runes(8000);
 			model.addAttribute("mainRune", runes);
-			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			
+			//######메인룬 가장 많이 선택된거 하나 반환해요
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData).get(0);
 			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
 			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
 			model.addAttribute("primaryPerk234", primaryStylePerks234);
@@ -98,20 +100,26 @@ public class ChampionsPage {
 			List<DataEntry> data = StatisticChampion.parseJson(rawData);
 			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
 			
-			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
-			System.out.println(mainStyle);
+			//인덱스 0 = 첫번째로 많이 등장한 메인룬
+			List<String> primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			System.out.println(primaryStyleFirstPerk.get(0));
+			System.out.println(primaryStyleFirstPerk.get(1));
+			//#####
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(0)));
+			System.out.println("mainStyle : " +mainStyle);
 			Runes runes = RuneData.runes(mainStyle);
+			//####
 			model.addAttribute("mainRune", runes);
-			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
 			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
 			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
 			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			
 			runes = RuneData.runes(8400);
 			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
 			model.addAttribute("secondaryPerk12", subStylePerks12);
 			model.addAttribute("subRune", runes);
 			List<Perk> perklist = RuneData.perklist();
-			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk.get(0));
             List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
             List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
             List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
