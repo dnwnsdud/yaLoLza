@@ -50,6 +50,9 @@ public class SecurityConfig {
 						"/summoners/**",
 						"/**",
 						"/duo/**"
+						"/img/**",
+						"/css/**",
+						"/js/**"
 					)
 				)
 				.authorizeHttpRequests(auth->
@@ -83,6 +86,13 @@ public class SecurityConfig {
 							"/files/**",
 							"/oauth2/authorization/**"
 							
+							"/login", 
+							"/login/check", 
+							"/oauth2/authorization/**",
+							"/img/**",
+							"/css/**",
+							"/js/**",
+							"/info/**"
 						).permitAll()
 						.requestMatchers(
 								"/user/mypage"
