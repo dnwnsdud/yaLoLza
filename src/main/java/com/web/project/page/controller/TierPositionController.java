@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.web.project.dto.ChampionStatsDTO;
-import com.web.project.dto.TierDataDTO;
+import com.web.project.dto.championstats.ChampionStatsDTO;
+import com.web.project.dto.championstats.TierDataDTO;
 import com.web.project.system.JsonReader;
 
 import java.util.List;
