@@ -36,6 +36,7 @@ public class ChampionsPage {
 	public ChampionsPage(JsonReader jsonReader) {
 		this.jsonReader = jsonReader;
 	}
+	//챔피언 전체 페이지 - 진성+진비
 	@GetMapping("")
 	public String Champions(@RequestParam(required = false) String tier,
 			Model model,
@@ -98,6 +99,7 @@ public class ChampionsPage {
 			) {
 		return "";
 	}
+	//챔피언 상세 페이지- 지수+진비
 	@GetMapping("/{champion}/build")
 	public String ChampionsDetail(
 			Model model,
