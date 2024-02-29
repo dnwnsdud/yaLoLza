@@ -10,11 +10,13 @@ public final class Counter {
 	public static void Increment(String key, double data) {
 		List<Tag> tags = new LinkedList<Tag>();
 		tags.add(Tag.of("type", "counter"));
+		tags.add(Tag.of("counttype", "increment"));
 		Metrics.counter(key, tags).increment(data);
 	}
 	public static void Decrement(String key, double data) {
 		List<Tag> tags = new LinkedList<Tag>();
 		tags.add(Tag.of("type", "counter"));
-		Metrics.counter(key, tags).increment(data * -1);
+		tags.add(Tag.of("counttype", "decrement"));
+		Metrics.counter(key, tags).increment(data);
 	}
 }

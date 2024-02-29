@@ -18,18 +18,18 @@ public class RankingPage {
 
 	@GetMapping("/tier")
 	public String rankingTier() {
-    	new Connect("yalolza.gg", "ranking", "tier");
+    	new Connect("total","yalolza.gg", "ranking", "tier");
 		return "NewFile";
 	}
 	@GetMapping("/champions")
 	public String rankingChampions() {
-    	new Connect("yalolza.gg", "ranking", "champions");
+    	new Connect("total","yalolza.gg", "ranking", "champions");
 
 		return "NewFile";
 	}
 	@GetMapping("/level")
 	public String rankinglevel() {
-    	new Connect("yalolza.gg", "ranking", "level");
+    	new Connect("total","yalolza.gg", "ranking", "level");
 		return "NewFile";
 	}
 	

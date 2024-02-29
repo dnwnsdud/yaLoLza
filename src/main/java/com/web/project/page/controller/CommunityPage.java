@@ -26,6 +26,7 @@ import com.web.project.dto.Community;
 import com.web.project.dto.CommunityForm;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.enumerated.CommunityEnum;
+import com.web.project.metrics.Counter;
 import com.web.project.metrics.count.Connect;
 
 import jakarta.validation.Valid;
@@ -55,7 +56,7 @@ public class CommunityPage {
 	    public String index(Model model){
 	        List<Community> communityList = this.communityRepository.findTop10ByOrderByCreateDateDesc();
 	        model.addAttribute("communityList", communityList);
-	    	new Connect("yalolza.gg", "community", "index");
+	    	new Connect("total","talk.yalolza.gg", "community", "index");
 	        return "index";
 	    }
 
@@ -89,7 +90,7 @@ public class CommunityPage {
 	        model.addAttribute("boardName", category);
 	        Page<Community> paging = communityService.getList(page, category, keyword);
 	        model.addAttribute("paging", paging);
-	    	new Connect("yalolza.gg", "community", "list", type);
+	    	new Connect("total","talk.yalolza.gg", "community", "list", type);
 	        return "community";
 	    }
 
@@ -98,7 +99,7 @@ public class CommunityPage {
 
 	        Community community = this.communityService.getCommu(id);
 	        model.addAttribute("community", community);
-	    	new Connect("yalolza.gg", "community", "detail" );
+	    	new Connect("total","talk.yalolza.gg", "community", "detail");
 	        return "commu_detail";
 	    }
 
@@ -114,6 +115,8 @@ public class CommunityPage {
 	            case "qna" -> model.addAttribute("boardName", "QnA");
 	            default -> throw new RuntimeException("올바르지 않습니다.");
 	        }
+	    	new Connect("total","talk.yalolza.gg", "community", "create", type);
+
 	        return "commu_form";
 	    }
 	//@ModelAttribute("communityEnums")
@@ -155,6 +158,7 @@ public class CommunityPage {
 	            SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	            communityService.create(communityForm.getTitle(),
 	                    communityForm.getContent(), category, file, siteUser);
+		        Counter.Increment("qnaCount",1);
 	        return "redirect:/talk.yalolza.gg/community/list/qna";
 	    }
 
@@ -179,6 +183,7 @@ public class CommunityPage {
 
 	        communityService.create(communityForm.getTitle(),
 	                communityForm.getContent(), category, file, siteUser);
+	        Counter.Increment("commuCount",1);
 	        return "redirect:/talk.yalolza.gg/community/list/%s".formatted(type);
 	    }
 
@@ -188,6 +193,7 @@ public class CommunityPage {
 	        Community community= this.communityService.getCommu(id);
 //	    if(!community.getAuthor().getU) 회원 넘어오면 해야돼
 	        this.communityService.delete(community);
+	        Counter.Decrement("commuCount",1);
 	        return "redirect:/talk.yalolza.gg/community/";
 	    }
 
@@ -202,6 +208,7 @@ public class CommunityPage {
 	        }
 	        communityForm.setTitle(community.getTitle());
 	        communityForm.setContent(community.getContent());
+	    	new Connect("total","talk.yalolza.gg", "community", "modify");
 	        return "commu_form";
 	    }
 

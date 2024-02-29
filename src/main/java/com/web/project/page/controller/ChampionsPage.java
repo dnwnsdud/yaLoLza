@@ -15,6 +15,7 @@ import com.web.project.dto.info.Runes;
 import com.web.project.dto.info.Champion.Champion;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
+import com.web.project.metrics.count.Connect;
 import com.web.project.system.ChampionData;
 import com.web.project.system.ItemData;
 import com.web.project.system.RuneData;
@@ -30,6 +31,7 @@ public class ChampionsPage {
 			) {
 		List<Champion> data = ChampionData.imagedata();
 		model.addAttribute("data", data);
+    	new Connect("total","yalolza.gg", "champions");
 		return "champ";
 	}
 	@GetMapping("/")
@@ -71,6 +73,7 @@ public class ChampionsPage {
 		model.addAttribute("item", item);
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
+    	new Connect("total","yalolza.gg", "champions","detail");
 		return "champ_detail";
 	}
 

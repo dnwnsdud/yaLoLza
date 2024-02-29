@@ -12,6 +12,7 @@ import com.web.project.api.controller.UserService;
 import com.web.project.dao.CommunityRepository;
 import com.web.project.dto.Community;
 import com.web.project.metrics.Counter;
+import com.web.project.metrics.count.Connect;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,16 +33,19 @@ public class IndexPage {
     public String index(Model model){
         List<Community> communityList = this.communityRepository.findTop10ByOrderByCreateDateDesc();
         model.addAttribute("communityList", communityList);
+    	new Connect("total","duo.yalolza.gg", "index");
         return "index";
     }
 
 	@GetMapping("/useterms")
 	public String useterms() {
+    	new Connect("total","duo.yalolza.gg", "useterms");
 		return "useterms";
 	}
 	
 	@GetMapping("/privacy")
 	public String privacy() {
+    	new Connect("total","duo.yalolza.gg", "privacy");
 		return "privacy";
 	}
 	
