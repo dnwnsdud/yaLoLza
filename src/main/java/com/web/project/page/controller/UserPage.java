@@ -97,7 +97,7 @@ public class UserPage {
     		model.addAttribute("usernameError", "이미 존재하는 닉네임 입니다.");
     		return "mypage_form";
     	}
-    	return "mypage_form";
+    	return "redirect:/yalolza.gg/user/mypage";
     }
 
     @PostMapping("/mypage/change-pass")

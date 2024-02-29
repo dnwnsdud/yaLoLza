@@ -10,5 +10,6 @@
     <p>오류가 발생했습니다. 죄송합니다. 다시 시도하십시오.</p>
       <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a>
       <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
+	  <a th:href="@{/yalolza.gg}" class=back>메인페이지</a><br/><br/>
 </body>
 </html>
