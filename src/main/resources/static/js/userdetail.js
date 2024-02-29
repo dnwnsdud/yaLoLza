@@ -1,14 +1,20 @@
 
 const ctx = document.getElementById("myChart");
 
+const s  = document.getElementById("siwwin");
+const w  = document.getElementById("sjwtotal");
+const sValue = parseInt(s.textContent || s.innerText, 10);
+const wValue = parseInt(w.textContent || w.innerText, 10);
+
+console.log("안녕 차트야 ");
 new Chart(ctx, {
   type: "doughnut",
   data: {
     datasets: [
       {
-        data: [40, 60],
+        data: [sValue,wValue],
         borderWidth: 0,
-        backgroundColor: ["#007aff", "#ff0558"],
+        backgroundColor: ["#ff0558","#007aff" ],
       },
     ],
   },

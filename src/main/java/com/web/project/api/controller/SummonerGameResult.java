@@ -70,14 +70,14 @@ import com.web.project.save.MatchService;
     
     @Autowired
     private MillisecondsConverter conveter;
-    
+      
     //매치비교클래스
     @Autowired
     private Calall calmatch;
     
 	@Value("${lol.apikey}") 
 	private String apiKey;  
-  
+   
   private final RestTemplate restTemplate;
   
   @Autowired 
@@ -489,6 +489,7 @@ import com.web.project.save.MatchService;
 			  		model.addAttribute("summonerall", allstatistics);
 			  	     //이름 판수 승수  k d a kda 킬관여
 			  		model.addAttribute("summonermost", championStatisticsss);
+			  		
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {
