@@ -143,27 +143,35 @@ public class CommunityPage {
 
 	    @PreAuthorize("isAuthenticated()")
 	        @PostMapping("/create/qna")
-	    public String CommuCreate(@RequestParam(value="title") String title, @RequestParam(value="content") String content,
-	        @Valid CommunityForm communityForm, String category, List<MultipartFile> file,
-	                              Principal principal) throws IOException {
-	        category = "QnA";
+	    public String CommuCreate(@RequestParam(value="title") String title,
+	    		@RequestParam(value="content") String content,
+									        @Valid CommunityForm communityForm,
+								            BindingResult bindingResult,
+									        String category, List<MultipartFile> file,
+									        Principal principal) throws IOException {
+	    	if(bindingResult.hasErrors()) {
+	    		return "commu_form";
+	    	}
+	       
+	    	category = "QnA";
 	            SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	            communityService.create(communityForm.getTitle(),
 	                    communityForm.getContent(), category, file, siteUser);
 	        return "redirect:/talk.yalolza.gg/community/list/qna";
 	    }
-
+ 
 	    @PreAuthorize("isAuthenticated()")
 	    @PostMapping("/create/{type}")
 	    public String CommuCreate(@Valid CommunityForm communityForm,
+                					BindingResult bindingResult,
 	                              @PathVariable String type,
-	                              BindingResult bindingResult,
 	                              List<MultipartFile> file,
 	                              Principal principal) throws IOException {
 	        SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	        if(bindingResult.hasErrors()){
 	            return "commu_form";
 	        }
+	     
 	        String category = switch (type) {
 	            case "all" -> CommunityEnum.All.getGroup();
 	            case "free" -> CommunityEnum.FREE.getGroup();

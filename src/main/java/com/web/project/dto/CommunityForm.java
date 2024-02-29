@@ -14,6 +14,7 @@ public class CommunityForm {
     private String title;
 
     @NotEmpty(message = "내용 필수로 입력해주세요.")
+    @Size(max=2000)
     private String content;
 
 

@@ -77,8 +77,10 @@
                 </li>
 
                 <li  class="commu_ul2">
-                    <ul th:each="community, loop : ${paging}"  class="commu_ul1_ul2">
-                        <li th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"
+                    <ul th:each="community, loop : ${paging}"  class="commu_ul1_ul2" >
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" style="display:flex; width: 100%">
+                  
+                        <li th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}" 
                         ></li>
 
                         <li>
@@ -86,9 +88,11 @@
                         </li>
 
                         <li>
-                            <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
-                            <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
+                            <!-- <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
+                            <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a> -->
 <!--                            <a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
+                           <p th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></p>
+                           <p th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></p>
                             <span th:if="${#lists.size(community.commentList)>0}"
                                   th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number"></span>
                         </li>
@@ -96,7 +100,9 @@
                         <li th:text="${#temporals.format(community.createDate, 'yyyy-MM-dd')}"></li>
 <!--                        <li th:text="${community.createDate}"></li>-->
                         <li th:text="${community.writeview}"></li>
+                        </a>
                     </ul>
+                    
                 </li>
             </ul>
     </div>
