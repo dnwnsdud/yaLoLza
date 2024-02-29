@@ -4,3 +4,7 @@
     width: 65%;
     margin: auto;
 }
+.userterms-box *{
+    border: none;
+    font-size: 1.7rem;
+}
