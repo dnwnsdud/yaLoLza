@@ -264,7 +264,7 @@ public class ChampionDataApiController {
         return winCount / totalCount;
     }
 
-    
+    //asdasd
     private List<SummonerSpellSetWinRate> calculateSummonerSpellSet(List<DataEntry> filteredData) {
         Map<Set<Integer>, Integer> spellSetCounts = new HashMap<>();//'등장' 횟수
         Map<Set<Integer>, Integer> spellSetWins = new HashMap<>();	//'승리' 횟수
@@ -293,6 +293,15 @@ public class ChampionDataApiController {
 
         return result;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 	
