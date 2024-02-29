@@ -20,7 +20,8 @@
 					<li class="counter-wrap1">
 						<div class="img-wrap">
 							<a
-								th:href="@{/counter_detail/{position}/champion/{championName}(position=${position},championName=${targetCounters[0].championName})}">
+								th:href="@{/yalolza.gg/champions/{championName}/counter/{position}(position=${position},championName=${targetCounters[0].championName})}">
+								<!--/yalolza.gg/champions/Aatrox/counter/top?champion=Riven-->
 								<img
 								th:src="@{'/img/champion/' + ${targetCounters[0].championName} + '.png'}"
 								alt="Champion Icon" />
@@ -43,7 +44,7 @@
 					<li class="counter-wrap2">
 						<div class="img-wrap">
 							<a
-								th:href="@{/counter_detail/{position}/champion/{championName}(position=${position},championName=${targetCounters[1].championName})}">
+								th:href="@{/yalolza.gg/champions/{championName}/counter/{position}(position=${position},championName=${targetCounters[1].championName})}">
 								<img
 								th:src="@{'/img/champion/' + ${targetCounters[1].championName} + '.png'}"
 								alt="Champion Icon" />
@@ -152,7 +153,8 @@
 							<div class="img-wrap1">
 
 								<a
-									th:href="@{/counter_detail/{position}/champion/{championName}(position=${position}, championName=${selectedChampionName}, champion=${champion.championName})}">
+									th:href="@{/yalolza.gg/champions/{championName}/counter/{position} (position=${position}, championName=${selectedChampionName}, champion=${champion.championName})}">
+									
 									<img
 									th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
 									alt="Champion Icon" />
