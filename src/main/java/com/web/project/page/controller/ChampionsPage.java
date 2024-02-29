@@ -68,16 +68,16 @@ public class ChampionsPage {
 			) {
 		Champion champion = ChampionData.championinfo(championid);
 		model.addAttribute("champion",champion);
-		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
-		String rawData = Files.readString(Paths.get(filePath));
-		List<DataEntry> data = parseJson(rawData);
-		List<DataEntry> filteredData = filterData(data, tier, position, championid);
+//		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+//		String rawData = Files.readString(Paths.get(filePath));
+//		List<DataEntry> data = parseJson(rawData);
+//		List<DataEntry> filteredData = filterData(data, tier, position, championid);
 		Runes runes = RuneData.runes(8000);
-		String primaryStyleFirstPerk = calculatePrimaryStyleFirstPerk1(filteredData);
-        List<String> primaryStylePerks234 = calculatePrimaryStylePerks234(filteredData);
+//		String primaryStyleFirstPerk = calculatePrimaryStyleFirstPerk1(filteredData);
+//        List<String> primaryStylePerks234 = calculatePrimaryStylePerks234(filteredData);
 		model.addAttribute("mainRune", runes);
 		runes = RuneData.runes(8400);
-		List<String> subStylePerks12 = calculateSubStylePerks12(filteredData);
+//		List<String> subStylePerks12 = calculateSubStylePerks12(filteredData);
 		model.addAttribute("subRune", runes);
 		List<Perk> perklist = RuneData.perklist();
 		model.addAttribute("perklist", perklist);
