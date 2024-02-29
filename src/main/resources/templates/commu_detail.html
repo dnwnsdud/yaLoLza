@@ -5,10 +5,14 @@
     <title>Insert title here</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}">
+    	    <link rel="stylesheet" href="/css/HeaderFooter.css" />
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/commu_detail.css}">
 </head>
 <body>
+	<header th:replace="~{/header :: header}"></header>
+	<br/>
+	<br/>
 <div class="commu_detailbox">
     <div class="commu_detailbox2">
     <h1 th:text="${community.title}" class="commu_title"></h1>
@@ -54,6 +58,9 @@
         </ul>
     </div>
 </div>
+   <br/>
+	<br/>
+          <footer th:replace="~{/footer :: footer}"></footer>
 </body>
 </html>
 <script type='text/javascript'>
