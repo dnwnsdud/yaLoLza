@@ -49,23 +49,13 @@ public class ChampionDataApiController {
                               @RequestParam("position") String position,
                               @RequestParam("championName") String championName
                               ) {
-    	System.out.println("start");
     	try {
             // 요청된 티어에 따라 파일 경로를 업데이트합니다.
-    		System.out.println("file update");
             String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
-
-            System.out.println(defaultFilePath + tier + "/data.json");
-                        
             String rawData = Files.readString(Paths.get(filePath));
-            //System.out.println(rawData);됨
-            
             List<DataEntry> data = parseJson(rawData);   
-            //System.out.println(data.get(0).getChampionName());됨
-            
             List<DataEntry> filteredData = filterData(data, tier, position, championName);
-            
-            System.out.println(filteredData);
+//            System.out.println(filteredData);
             
             String primaryStyleFirstPerk = calculatePrimaryStyleFirstPerk1(filteredData);
             List<String> primaryStylePerks234 = calculatePrimaryStylePerks234(filteredData);

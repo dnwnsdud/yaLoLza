@@ -89,23 +89,32 @@
 								</ul>
 								<ul class="main-first">
 									<li th:each="j : ${mainRune.slots[0].runes}"
-										th:with="rune=${j}" th:id="${rune.id}"><img alt="룬 이미지"
-										th:src="@{'/img/'+${rune.icon}}" /></li>
+										th:with="rune=${j}" th:id="${rune.id}">
+										<div th:class="${rune.id}==${primaryPerk1}? 'color-icon':'gray-icon'">
+											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+										</div>
+									</li>
 								</ul>
 								<ul class="main-second">
-									<li th:each="j : ${mainRune.slots[1].runes}"
-										th:with="rune=${j}" th:id="${rune.id}"><img alt="룬 이미지"
-										th:src="@{'/img/'+${rune.icon}}" /></li>
+									<li th:each="j : ${mainRune.slots[1].runes}" th:with="rune=${j}" th:id="${rune.id}">
+										<div th:class="${rune.id}==${primaryPerk234[1]}? 'color-icon':'gray-icon'">
+										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+										</div>
+									</li>
 								</ul>
 								<ul class="main-third">
-									<li th:each="j : ${mainRune.slots[2].runes}"
-										th:with="rune=${j}" th:id="${rune.id}"><img alt="룬 이미지"
-										th:src="@{'/img/'+${rune.icon}}" /></li>
+									<li th:each="j : ${mainRune.slots[2].runes}" th:with="rune=${j}" th:id="${rune.id}">
+										<div th:class="${rune.id}==${primaryPerk234[2]}? 'color-icon':'gray-icon'">
+										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+										</div>
+									</li>
 								</ul>
 								<ul class="main-fourth">
-									<li th:each="j : ${mainRune.slots[3].runes}"
-										th:with="rune=${j}" th:id="${rune.id}"><img alt="룬 이미지"
-										th:src="@{'/img/'+${rune.icon}}" /></li>
+									<li th:each="j : ${mainRune.slots[3].runes}" th:with="rune=${j}" th:id="${rune.id}">
+										<div th:class="${rune.id}==${primaryPerk234[3]}? 'color-icon':'gray-icon'">
+										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+										</div>
+									</li>
 								</ul>
 								<p th:text="${mainRune.name}"></p>
 							</div>
@@ -118,17 +127,23 @@
 								</ul>
 								<ul>
 									<li th:each="j : ${subRune.slots[1].runes}" th:with="rune=${j}"  th:id="${rune.id}">
+										<div th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
 										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}"/>
+										</div>
 									</li>
 								</ul>
 								<ul>
 									<li th:each="j : ${subRune.slots[2].runes}" th:with="rune=${j}"  th:id="${rune.id}">
+										<div th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
 										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}"/>
+										</div>
 									</li>
 								</ul>
 								<ul>
 									<li th:each="j : ${subRune.slots[3].runes}" th:with="rune=${j}" th:id="${rune.id}">
+										<div th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
 										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+										</div>
 									</li>
 								</ul>
 								<p th:text="${subRune.name}"></p>

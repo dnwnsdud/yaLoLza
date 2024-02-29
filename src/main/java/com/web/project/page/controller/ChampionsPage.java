@@ -1,5 +1,6 @@
 package com.web.project.page.controller;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -22,7 +23,7 @@ import com.web.project.system.ChampionData;
 import com.web.project.system.ItemData;
 import com.web.project.system.RuneData;
 import com.web.project.system.SummonerData;
-import com.web.project.system.ChampionStatistic;
+import com.web.project.system.StatisticChampion;
 
 
 @Controller
@@ -46,9 +47,30 @@ public class ChampionsPage {
 		return "champ";
 	}
 	@GetMapping("/")
-	public String Champions(
-			@RequestParam(required = false) String position
+	public String NewFile(
+			Model model
+//			@RequestParam(required = false) String position
 			) {
+		String filePath = defaultFilePath + "EMERALD" + "/data.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, "EMERALD", "TOP", "Aatrox");
+			Runes runes = RuneData.runes(8000);
+			model.addAttribute("mainRune", runes);
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			runes = RuneData.runes(8400);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			System.out.println(subStylePerks12);
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+		} catch (IOException e) {
+			e.printStackTrace();
+            System.out.println("no DATA");
+		}
 		return "NewFile";
 	}
 	
@@ -59,7 +81,7 @@ public class ChampionsPage {
 			) {
 		return "";
 	}
-	@GetMapping("/{champion}/build")
+	@GetMapping("/{champion}/build")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
 	public String ChampionsDetail(
 			Model model,
 			@RequestParam("tier") String tier,
@@ -68,17 +90,25 @@ public class ChampionsPage {
 			) {
 		Champion champion = ChampionData.championinfo(championid);
 		model.addAttribute("champion",champion);
-//		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
-//		String rawData = Files.readString(Paths.get(filePath));
-//		List<DataEntry> data = parseJson(rawData);
-//		List<DataEntry> filteredData = filterData(data, tier, position, championid);
-		Runes runes = RuneData.runes(8000);
-//		String primaryStyleFirstPerk = calculatePrimaryStyleFirstPerk1(filteredData);
-//        List<String> primaryStylePerks234 = calculatePrimaryStylePerks234(filteredData);
-		model.addAttribute("mainRune", runes);
-		runes = RuneData.runes(8400);
-//		List<String> subStylePerks12 = calculateSubStylePerks12(filteredData);
-		model.addAttribute("subRune", runes);
+		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			Runes runes = RuneData.runes(8000);
+			model.addAttribute("mainRune", runes);
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			runes = RuneData.runes(8400);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+		} catch (IOException e) {
+			e.printStackTrace();
+            System.out.println("no DATA");
+		}
 		List<Perk> perklist = RuneData.perklist();
 		model.addAttribute("perklist", perklist);
 		Spell spell = SummonerData.findspell("6");
@@ -99,6 +129,10 @@ public class ChampionsPage {
 		model.addAttribute("summonerkey", summonerkey);
 		return "champ_detail";
 	}
+
+
+
+	
 
 	
 

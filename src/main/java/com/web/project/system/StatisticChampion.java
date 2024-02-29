@@ -18,7 +18,7 @@ import com.web.project.dto.runeSpell.DataEntry;
 import com.web.project.dto.runeSpell.Selections;
 import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 
-public class ChampionStatistic {
+public class StatisticChampion {
 	public static List<DataEntry> parseJson(String rawData) {
         ObjectMapper objectMapper = new ObjectMapper();//json parse하는 함수래요
         try {
@@ -30,7 +30,7 @@ public class ChampionStatistic {
         }
     }
     
-    private List<DataEntry> filterData(List<DataEntry> data, String tier, String position, String championName) {
+	public static List<DataEntry> filterData(List<DataEntry> data, String tier, String position, String championName) {
         return data.stream()
                 .filter(entry -> entry.getIndividualPosition().equals(position)
                         && entry.getChampionName().equals(championName))
@@ -39,7 +39,7 @@ public class ChampionStatistic {
    
     
     //메인룬 출력   
-    private String calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
+	public static String calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
         String primaryPerk = "";
         if (!filteredData.isEmpty()) {
             Map<Integer, Long> counter = filteredData.stream()
@@ -64,7 +64,7 @@ public class ChampionStatistic {
     //calculatePrimaryStyleFirstPerk1 에서 검색된 메인룬, 해당 티어, 포지션, 챔피언id로 검색
     // 
     
-    private List<String> calculatePrimaryStylePerks234(List<DataEntry> filteredData) {
+	public static List<String> calculatePrimaryStylePerks234(List<DataEntry> filteredData) {
         List<String> primaryStylePerks234 = new ArrayList<>();
         if (!filteredData.isEmpty()) {
             Map<Integer, Long> counter = filteredData.stream()
@@ -88,7 +88,7 @@ public class ChampionStatistic {
         return primaryStylePerks234;
     }
 
-    private List<String> calculateSubStylePerks12(List<DataEntry> filteredData) {
+	public static List<String> calculateSubStylePerks12(List<DataEntry> filteredData) {
         List<String> subStylePerks12 = new ArrayList<>();
         if (!filteredData.isEmpty()) {
             Map<Integer, Long> counter = filteredData.stream()
@@ -114,7 +114,7 @@ public class ChampionStatistic {
     
     
      
-    private List<Integer> calculateItemPreference(List<DataEntry> filteredData) {
+	public static List<Integer> calculateItemPreference(List<DataEntry> filteredData) {
         List<Integer> itemPreference = new ArrayList<>();
         
         if (!filteredData.isEmpty()) {
@@ -135,7 +135,7 @@ public class ChampionStatistic {
         //아이템선호? 키는 뭐냐?
     }
     
-    private double calculateWinrate(List<DataEntry> filteredData) {
+	public static double calculateWinrate(List<DataEntry> filteredData) {
         double winCount = 0;
         double totalCount = filteredData.size();
         if (totalCount > 0) {
@@ -147,7 +147,7 @@ public class ChampionStatistic {
     }
     
     
-    private double calculateRuneWinRate(List<DataEntry> filteredData, String primaryStyleFirstPerk1) {
+	public static double calculateRuneWinRate(List<DataEntry> filteredData, String primaryStyleFirstPerk1) {
         double winCount = filteredData.stream()
                 .filter(entry -> entry.getPerks().getStyles().stream()
                         .anyMatch(style -> style.getDescription().equals("primaryStyle") &&
@@ -170,7 +170,7 @@ public class ChampionStatistic {
     }
 
     
-    private List<SummonerSpellSetWinRate> calculateSummonerSpellSet(List<DataEntry> filteredData) {
+	public static List<SummonerSpellSetWinRate> calculateSummonerSpellSet(List<DataEntry> filteredData) {
         Map<Set<Integer>, Integer> spellSetCounts = new HashMap<>();//'등장' 횟수
         Map<Set<Integer>, Integer> spellSetWins = new HashMap<>();	//'승리' 횟수
 
