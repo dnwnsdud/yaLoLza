@@ -1,6 +1,7 @@
 package com.web.project.api.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -40,5 +41,15 @@ public class CommentService {
             throw new DataNotFoundException("comment not");
         }
     }
+    
+	public List<Comment> getAllComments() {
+		return commentRepository.findAllByOrderByIdDesc();
+	}
+	public void deleteComment(Integer id) {
+        Optional<Comment> commentOptional = commentRepository.findById(id);
+        commentOptional.ifPresent(commentRepository::delete);
+      
+    }
+
 }
 

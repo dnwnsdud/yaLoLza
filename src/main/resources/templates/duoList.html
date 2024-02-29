@@ -7,6 +7,7 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" th:href="@{/css/myrest.css}">
 	<link rel="stylesheet" th:href="@{/css/duoList.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
 	<script src="https://kit.fontawesome.com/286b044825.js" crossorigin="anonymous"></script>
 
 	<script src="/js/position.js" defer></script>
@@ -53,10 +54,10 @@
 </head>
 
 <body>
-	<div>
-		<div class="title">
-			<div>DUO</div>
-		</div>
+<div id="duo-title">
+<h1>DUO</h1>
+</div>
+	<div class="mw1">
 		<div class="container">
 			<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -328,7 +329,7 @@
 
 		}
 		function redirectToView(id) {
-			window.location.href = '/yalolza.gg/duo/view/' + id;
+			window.location.href = '/duo.yalolza.gg/duo/view/' + id;
 		}
 		const modal = document.querySelector('.modal');
 		const btnOpenModal = document.querySelector('.btn-open-modal');

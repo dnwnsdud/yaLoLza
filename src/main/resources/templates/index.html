@@ -26,7 +26,7 @@
             <h1><img th:src="@{/img/mainlogo.png}" alt="" /></h1>
             <nav>
                 <div class="hd-nav">
-                    <div><a href="/yalolza.gg/">홈</a></div>
+                    <div><a href="/yalolza.gg">홈</a></div>
                     <div><a href="#">칼바람</a></div>
                     <div><a href="#">통계</a></div>
                     <div><a href="#">랭킹</a></div>
@@ -35,11 +35,14 @@
                     <div><a th:href="@{/duo.yalolza.gg/duo/list}">DUO</a></div>
                 </div>
                 <div class="btn">
-                    <button><a  sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+                    <button><a sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
 	
-     				<button><a sec:authorize="isAuthenticated()" 
-     				th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button><button><a sec:authorize="isAuthenticated()" 
-     				th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
+     				<button><a sec:authorize="hasRole('USER')" th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button>
+     				<button><a sec:authorize="hasRole('USER')" th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
+                    <button>
+						
+     				<button><a sec:authorize="hasRole('ADMIN')" th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button>
+     				<button><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}">관리자페이지</a></button>
                     <button>
                         <i class="fa-regular fa-sun"></i>
                     </button>
@@ -91,8 +94,8 @@
                 <li th:text="${community.category}"></li>
 <!--                <li ><a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
                 <li>
-                    <a th:href="@{|/yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
-                    <a th:href="@{|/yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
                     <span th:if="${#lists.size(community.commentList)>0}"
                           th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number" style="color: #aaa"></span>
                 </li>

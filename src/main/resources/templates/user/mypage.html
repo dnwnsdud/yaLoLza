@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Mypage</title>
+</head>
+<body>
+	마이페이지<br/>
+	<span th:if="${user}" th:text="|${user.autho}-${user.nickname} 님 마이페이지 입니다.|">아이디 존재</span><br/>
+	<span th:unless="${user}">아이디 비존재</span><br/><br/><br/>
+	
+	
+	  <form action="/user/mypage/change-username" method="post">
+        <label for="newNickname">새로운 닉네임:</label>
+        <input type="text" id="newNickname" name="newNickname" required>
+        <button type="submit">변경하기</button>
+    </form>
+
+    <!-- 에러 메시지 출력 부분 (서버로부터 에러 메시지가 전달된 경우) -->
+    <div th:if="${usernameError}" th:text="${usernameError}" style="color: red;"></div>
+
+    <!-- 성공 메시지 출력 부분 (닉네임 변경 성공 시) -->
+    <div th:if="${successMessage}" th:text="${successMessage}" style="color: green;"></div>
+	
+	
+	<p>로그인 상태면 로그아웃이 활성///로그아웃 상태면 로그인이 활성
+		임시로 로그인 유지여부 확인용 나중에 삭제할거임</p>
+	 <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a>
+     <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
+     <br/><br/><br/>
+	
+	<div class="unregist">
+    <form th:action="@{/yalolza.gg/user/unregist}" method="post" th:object="${passwordForm}">
+      <input type="text" name="id" th:value="${user.id}">
+      <input type="hidden" name="password" th:value="${user.password}">
+
+      <input type="submit" value="회원 탈퇴" onclick="return confirmDelete();">
+    </form>
+  </div> <br/><br/>
+  
+  <a th:href="@{/home}">home 으로</a> <br/><br/>
+  <a th:href="@{/yalolza.gg/}" class=back>메인페이지</a><br/><br/>
+</body>
+<script>
+    function confirmDelete() {
+        // 사용자에게 경고창을 띄워 확인 여부를 물어봅니다.
+        var confirmDelete = confirm("정말로 회원 탈퇴하시겠습니까?");
+        
+        // 사용자가 확인을 선택한 경우에만 양식을 제출합니다.
+        return confirmDelete;
+    }
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>전체 게시글</title>
+</head>
+<body>
+    <h1>Admin Community List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>글번호</th>
+                <th>분류</th>
+                <th>제목</th>
+                <th>작성날짜</th>
+                <th>새로운 창으로 열기</th>
+                <th>글삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="community : ${communities}">
+                <td th:text="${community.id}"></td>
+                <td th:text="${community.category}"></td>
+                <td th:text="${community.title}"></td>
+                <td th:text="${#temporals.format(community.createDate, 'yyyy-MM-dd')}"></td>
+                <td>
+        		<!-- 게시글 클릭 링크 - 새 창으로 열기 -->
+        			<a th:href="@{/talk.yalolza.gg/community/detail/{id}(id=${community.id})}" target="_blank">View</a>
+    			</td>
+                <td>
+                    <form th:action="@{/admin/deletecommunity}" method="post">
+                        <input type="hidden" name="id" th:value="${community.id}">
+                        <button type="submit">글삭제</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

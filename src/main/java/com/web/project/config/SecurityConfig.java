@@ -29,14 +29,11 @@ public class SecurityConfig {
 	OAuth2UserService oauth2service;
 
 	
-  @Bean
-  PasswordEncoder passwordEncoder() {
-      return new BCryptPasswordEncoder();
-  }
-//	@Bean
-//	PasswordEncoder bcrypt() {
-//		return new BCryptPasswordEncoder();
-//	}
+//  @Bean
+//  PasswordEncoder passwordEncoder() {
+//      return new BCryptPasswordEncoder();
+//  }
+
 	@Bean
 	SecurityFilterChain chain(HttpSecurity http) throws Exception{
 		return http
@@ -59,28 +56,34 @@ public class SecurityConfig {
 					auth
 						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 						.requestMatchers(
-								"**",
-								"/**",
+//								"**",
+//								"/**",
 							"/yalolza.gg",
 							"/yalolza.gg/**",
 							"/yalolza.gg/champions/**",
 							"/yalolza.gg/ranking/**",
 							"/yalolza.gg/statistics/**",
 							"/yalolza.gg/summoners/**", 
-							"/yalolza.gg/duo/**", 
-							"/yalolza.gg/duo/list/**", 
-							"/yalolza.gg/duo/save/**", 
-							"/yalolza.gg/duo/create/**", 
-							"/yalolza.gg/duo/edit/**", 
-							"/yalolza.gg/duo/view/**", 
-							"/yalolza.gg/duo/delete/**", 
-							"/yalolza.gg/community/**",
-							"/yalolza.gg/comment/**",
+							"/duo.yalolza.gg/duo/**", 
+							"/duo.yalolza.gg/duo/list/**", 
+							"/duo.yalolza.gg/duo/save/**", 
+							"/duo.yalolza.gg/duo/create/**", 
+							"/duo.yalolza.gg/duo/edit/**", 
+							"/duo.yalolza.gg/duo/view/**", 
+							"/duo.yalolza.gg/duo/delete/**", 
+							"/talk.yalolza.gg/community/index",
+							"/talk.yalolza.gg/community/list/**",
+							"/talk.yalolza.gg/community/detail/**",
+							"/talk.yalolza.gg/community/",
+//							"/talk.yalolza.gg/comment/**",
 							"/home",
 							"/index",
 							"/yalolza.gg/user/login",
 							"/yalolza.gg/user/signup",
 							"/files/**",
+							"/css/**",
+							"/img/**",
+							"/js/**",
 							"/oauth2/authorization/**"
 							
 						).permitAll()
@@ -100,7 +103,7 @@ public class SecurityConfig {
 						.usernameParameter("username")
 //						.usernameParameter("email")
 						.passwordParameter("password")
-						.defaultSuccessUrl("/yalolza.gg/", true)
+						.defaultSuccessUrl("/yalolza.gg", true)
 						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()
 				)
@@ -112,7 +115,7 @@ public class SecurityConfig {
 							end
 								.userService(oauth2service)
 						)
-						.defaultSuccessUrl("/yalolza.gg/", true)
+						.defaultSuccessUrl("/yalolza.gg", true)
 //						.failureUrl("/members/login/error")
 						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()
@@ -124,7 +127,7 @@ public class SecurityConfig {
 //						.logoutUrl("/members/logout")
 //						.logoutSuccessUrl("/main")
 //						.logoutUrl("/user/logout")
-						.logoutSuccessUrl("/yalolza.gg/user/login")
+						.logoutSuccessUrl("/yalolza.gg")
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.permitAll()
