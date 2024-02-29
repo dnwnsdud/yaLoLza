@@ -1,6 +1,6 @@
 package com.web.project.system;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.web.project.dto.TierDataDTO;
+import com.web.project.dto.championstats.TierDataDTO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

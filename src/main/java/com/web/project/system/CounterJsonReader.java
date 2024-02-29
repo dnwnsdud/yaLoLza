@@ -1,7 +1,7 @@
 package com.web.project.system;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.web.project.dto.CounterPositionDTO;
+import com.web.project.dto.championstats.CounterPositionDTO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

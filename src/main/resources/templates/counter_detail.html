@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+
+<link rel="stylesheet" href="/css/myrest.css" />
+<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/counter_detail.css" />
+</head>
+<body>
+	<div class="mw">
+		<!--카운터 비교-->
+		<div class="countdetail-left">
+			<section class="champ-comparison">
+				<h2
+					th:text="${targetCounters[0].championName} + ' vs ' + ${targetCounters[1].championName}">챔피언vs챔피언</h2>
+				<ul class="champ-counterdet">
+					<li class="counter-wrap1">
+						<div class="img-wrap">
+							<a
+								th:href="@{/counter_detail/{position}/champion/{championName}(position=${position},championName=${targetCounters[0].championName})}">
+								<img
+								th:src="@{'/champion/' + ${targetCounters[0].championName} + '.png'}"
+								alt="Champion Icon" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="counter-per">
+							<p th:text="${targetCounters[0].stats.winRate + '%'}"></p>
+							<p th:text="${targetCounters[1].stats.winRate + '%'}"></p>
+						</div>
+						<div class="progress-bar">
+							<div class="filler"></div>
+							<div id="progresschamp-name1"
+								th:text="${targetCounters[0].championName}">챔피언</div>
+							<div id="progresschamp-name2"
+								th:text="${targetCounters[1].championName}">챔피언</div>
+						</div>
+					</li>
+					<li class="counter-wrap2">
+						<div class="img-wrap">
+							<a
+								th:href="@{/counter_detail/{position}/champion/{championName}(position=${position},championName=${targetCounters[1].championName})}">
+								<img
+								th:src="@{'/champion/' + ${targetCounters[1].championName} + '.png'}"
+								alt="Champion Icon" />
+							</a>
+						</div>
+					</li>
+				</ul>
+				<ul class="counter-pa">
+					<li>
+						<div class="counter-detailti">
+							<p th:text="${targetCounters[0].stats.kda}"></p>
+							<p>KDA</p>
+							<p th:text="${targetCounters[1].stats.kda}"></p>
+						</div>
+						<div class="progress-bar1">
+							<div class="filler1"></div>
+						</div>
+					</li>
+				</ul>
+				<ul class="counter-pa">
+					<li>
+						<div class="counter-detailti">
+							<p>48%</p>
+							<p>킬관여율</p>
+							<p>52%</p>
+						</div>
+						<div class="progress-bar2">
+							<div class="filler2"></div>
+						</div>
+					</li>
+				</ul>
+				<ul class="counter-pa">
+					<li>
+						<div class="counter-detailti">
+							<p th:text="${targetCounters[0].stats.avgDamageDealt}"></p>
+							<p>챔피언에게 가한 피해량</p>
+							<p th:text="${targetCounters[1].stats.avgDamageDealt}"></p>
+						</div>
+						<div class="progress-bar3">
+							<div class="filler3"></div>
+						</div>
+					</li>
+				</ul>
+				<ul class="counter-pa">
+					<li>
+						<div class="counter-detailti">
+							<p th:text="${targetCounters[0].stats.winRate + '%'}"></p>
+							<p>승률</p>
+							<p th:text="${targetCounters[1].stats.winRate + '%'}"></p>
+						</div>
+						<div class="progress-bar4">
+							<div class="filler4"></div>
+						</div>
+					</li>
+				</ul>
+				<ul class="counter-pa">
+					<li>
+						<div class="counter-detailti">
+							<p>51%</p>
+							<p>포지션 승률</p>
+							<p>49%</p>
+						</div>
+						<div class="progress-bar5">
+							<div class="filler5"></div>
+						</div>
+					</li>
+				</ul>
+				<ul class="counter-pa">
+					<li>
+						<div class="counter-detailti">
+							<p th:text="${targetCounters[0].stats.pickRate + '%'}"></p>
+							<p>포지션 픽률</p>
+							<p th:text="${targetCounters[1].stats.pickRate + '%'}"></p>
+						</div>
+						<div class="progress-bar6">
+							<div class="filler6"></div>
+						</div>
+					</li>
+				</ul>
+				<ul class="counter-pa">
+					<li>
+						<div class="counter-detailti">
+							<p th:text="${targetCounters[0].stats.banRate + '%'}"></p>
+							<p>밴률</p>
+							<p th:text="${targetCounters[1].stats.banRate + '%'}"></p>
+						</div>
+						<div class="progress-bar7">
+							<div class="filler7"></div>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+		<!-- 카운터 챔프들 -->
+		<div class="counterdetail-right">
+			<section class="counterde-champs">
+				<ul>
+					<li>챔피언</li>
+					<li></li>
+					<li>승률</li>
+					<li>게임 횟수</li>
+				</ul>
+				<th:block th:each="champion : ${otherChampions}">
+					<ul class="counter-list">
+						<li>
+							<div class="img-wrap1">
+
+								<a
+									th:href="@{/counter_detail/{position}/champion/{championName}(position=${position}, championName=${selectedChampionName}, champion=${champion.championName})}">
+									<img
+									th:src="@{'/champion/' + ${champion.championName} + '.png'}"
+									alt="Champion Icon" />
+								</a>
+							</div>
+						</li>
+						<li><span th:text="${champion.championName}">챔피언</span></li>
+						<li style="color: var(--point3)"
+							th:text="${champion.stats.winRate + '%'}">승률</li>
+						<li style="color: var(--gray3)"
+							th:text="${matchCounts[champion.championName]}">게임 횟수</li>
+					</ul>
+				</th:block>
+			</section>
+		</div>
+	</div>
+</body>
+</html>

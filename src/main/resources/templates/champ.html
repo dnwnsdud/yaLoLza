@@ -126,17 +126,14 @@
 			window.location.href = url.href;
 		}
 		document.addEventListener('DOMContentLoaded', function() {
-		    var url = new URL(window.location.href);
-		    var tier = url.searchParams.get("tier");
-		    var version = url.searchParams.get("version");
+			var url = new URL(window.location.href);
+			var tier = url.searchParams.get("tier");
+			var position = url.searchParams.get("position");
 
-		    if (tier) {
-		        document.getElementById("tier").value = tier;
-		    }
-		    if (version) {
-		        document.getElementById("version").value = version;
-		    }
+			if (!tier && !position) {
+				window.location.href = '/lol?tier=EMERALD&position=TOP';
+			}
 		});
 	</script>
-  </body>
+</body>
 </html>
