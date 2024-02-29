@@ -22,10 +22,10 @@ public class IndexPage {
 	 private final CommunityRepository communityRepository;
 	 
 	 
-	@GetMapping("")
-	public String index1(Model model){
-		return "index";
-    }
+//	@GetMapping("/")
+//	public String index(Model model){
+//		return "index";
+//    }
 	
 	@GetMapping("/")
     public String index(Model model){
@@ -34,5 +34,14 @@ public class IndexPage {
         return "index";
     }
 
+	@GetMapping("/useterms")
+	public String useterms() {
+		return "useterms";
+	}
+	
+	@GetMapping("/privacy")
+	public String privacy() {
+		return "privacy";
+	}
 	
 }

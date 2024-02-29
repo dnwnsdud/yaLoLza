@@ -13,7 +13,7 @@ public class UserCreateForm {
     @NotEmpty(message = "사용자ID는 필수항목입니다.")
     private String username;
 
-    @Size(min = 2, max = 25)
+    @Size(min = 3, max = 25)
     @NotEmpty(message = "닉네임은 필수항목입니다.")
     private String nickname;
 

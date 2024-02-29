@@ -1,6 +1,5 @@
 package com.web.project.api.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +22,13 @@ import com.web.project.dto.enumerated.UserRole;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+
 @Service
 public class UserService extends DefaultOAuth2UserService implements UserDetailsService{
+	 private final UserRepository userRepository;
+
+	 
 	
-	private final UserRepository userRepository;
 
 	    public SiteUser create(String username, String nickname, String email, String password) {
 	        SiteUser user = new SiteUser();
@@ -50,79 +52,65 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 	    }
 
 	    @Override
-		public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-			OAuth2User user = super.loadUser(userRequest);
-			String provider = userRequest.getClientRegistration().getRegistrationId();
-			
-			System.out.println(provider);
-			
-			SiteUser dto = new SiteUser();
-			
-			if(provider.equalsIgnoreCase("naver")) {
-				Map<String, Object> response = user.getAttribute("response");
+	    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+	        OAuth2User user = super.loadUser(userRequest);
+	        String provider = userRequest.getClientRegistration().getRegistrationId();
 
-				String id = response.get("id").toString().substring(0, 6);
-				
-				dto.setUsername(provider + "_" + id);
-				dto.setNickname(provider + "/" + id);
-				dto.setAutho(UserRole.USER);
-				dto.setProvider(provider);
-				SiteUser find = userRepository.findByUsername(dto.getUsername());
-				if(find !=null) return find;			
+	        System.out.println(provider);
+
+	        SiteUser dto = new SiteUser();
+
+	        if (provider.equalsIgnoreCase("naver")) {
+	            Map<String, Object> response = user.getAttribute("response");
+
+	            dto.setUsername(provider + "_" + response.get("id").toString());
+	            dto.setNickname(provider + response.get("id").toString());
+//				dto.AddAuth("USER");
+	            dto.setAutho(UserRole.USER);
+	            dto.setProvider(provider);
+	            SiteUser find = userRepository.findByUsername(dto.getUsername());
+	            if (find != null) return find;
 //				for(String key : response.keySet()) {
 //					System.out.printf("%s = %s\n", key, response.get(key));
 //				}
-				
-				userRepository.save(dto);
-			}
-			else if(provider.equalsIgnoreCase("google")) {
-				Map<String, Object> response = user.getAttributes();
-				
-				String id = response.get("sub").toString().substring(0, 6);
-				
-				dto.setUsername(provider + "_" + id);
-				dto.setNickname(provider + "/" + id);
-				SiteUser find = userRepository.findByUsername(dto.getUsername());
-				if(find !=null) return find;		
-					for(String key : response.keySet()) {
-						System.out.printf("%s = %s\n", key, response.get(key));
-					}
+
+	            userRepository.save(dto);
+	        } else if (provider.equalsIgnoreCase("google")) {
+	            Map<String, Object> response = user.getAttributes();
+	            dto.setUsername(provider + "_" + response.get("sub").toString());
+	            dto.setNickname(provider + response.get("sub").toString());
+	            SiteUser find = userRepository.findByUsername(dto.getUsername());
+	            if (find != null) return find;
+//					for(String key : response.keySet()) {
+//						System.out.printf("%s = %s\n", key, response.get(key));
+//					}
 //				dto.AddAuth("USER");
-				dto.setAutho(UserRole.USER);
-				dto.setProvider(provider);
-				userRepository.save(dto);			
-			}
-			else if(provider.equalsIgnoreCase("kakao")) {
-				Map<String, Object> response = user.getAttributes();
-				
-				String id = response.get("id").toString().substring(0, 6);
-				
-				dto.setUsername(provider + "_" + id);
-				dto.setNickname(provider + "/" + id);
-				SiteUser find = userRepository.findByUsername(dto.getUsername());
-				if(find !=null) return find;			
-					for(String key : response.keySet()) {
-						System.out.printf("%s = %s\n", key, response.get(key));
-					}
+	            dto.setAutho(UserRole.USER);
+	            dto.setProvider(provider);
+	            userRepository.save(dto);
+	        } else if (provider.equalsIgnoreCase("kakao")) {
+	            Map<String, Object> response = user.getAttributes();
+	            dto.setUsername(provider + "_" + response.get("id").toString());
+	            dto.setNickname(provider + response.get("id").toString());
+	            SiteUser find = userRepository.findByUsername(dto.getUsername());
+	            if (find != null) return find;
+//					for(String key : response.keySet()) {
+//						System.out.printf("%s = %s\n", key, response.get(key));
+//					}
 //				dto.AddAuth("USER");
-				dto.setAutho(UserRole.USER);
-				dto.setProvider(provider);
-				userRepository.save(dto);
-			}
-			else throw new OAuth2AuthenticationException("Not Found");
-			
+	            dto.setAutho(UserRole.USER);
+	            dto.setProvider(provider);
+	            userRepository.save(dto);
+	        } else throw new OAuth2AuthenticationException("Not Found");
+
 //			Map<String, Object> attrs = user.getAttributes();
 //			for(String key : attrs.keySet()) {
 //				System.out.printf("%s = %s\n", key, attrs.get(key).toString());
 //			}
-			return dto;
-		}
+	        return dto;
+	    }
+	    
+	    
+	
 
-		public List<SiteUser> getAllUsers() {
-			return userRepository.findAllByOrderByIdDesc();
-		}
-
-		
-		
-
-	}
+}

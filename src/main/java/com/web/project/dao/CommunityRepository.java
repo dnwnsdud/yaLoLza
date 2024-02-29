@@ -59,7 +59,5 @@ Page<Community> findAllNotQnA(@Param("keyword") String keyword ,Pageable pageabl
 //    List<Community> findTop10ByOrderByCategory();
 
     List<Community> findTop10ByOrderByCreateDateDesc();
-    
-	List<Community> findAllByOrderByIdDesc();
 
 }

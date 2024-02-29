@@ -32,7 +32,7 @@
     <form  th:object="${communityForm}" method="post" enctype="multipart/form-data" >
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <div th:if="${#fields.hasErrors()}">
-            <div th:each="err : ${#fields.errors()}" th:text="${error}"></div>
+				<div th:each="error : ${#fields.errors()}" th:text="${error}"></div>
         </div>
 <!--        <label>제목</label>-->
     <input type="text" name="title" id="title" placeholder="제목" th:field="*{title}" style="height: 5vh; margin-bottom: 1rem; ">

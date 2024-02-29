@@ -20,7 +20,7 @@ import com.web.project.dto.SiteUser;
 import ch.qos.logback.core.model.Model;
 import lombok.RequiredArgsConstructor;
 
-@RequestMapping("/yalolza.gg/comment")
+@RequestMapping("/talk.yalolza.gg/comment")
 @RequiredArgsConstructor
 @Controller
 public class CommentPage {
@@ -37,14 +37,14 @@ public class CommentPage {
 	        Community community = this.communityService.getCommu(id);
 	        SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	        this.commentService.commentcreate(community, content, siteUser);
-	        return String.format("redirect:/yalolza.gg/community/detail/%s", id);
+	        return String.format("redirect:/talk.yalolza.gg/community/detail/%s", id);
 	    }
 
 	    @GetMapping("/delete/{id}")
 	    public String deleteComment(@PathVariable("id") Integer id) {
 	        Comment comment = this.commentService.getComment(id);
 	        this.commentService.delete(comment);
-	        return String.format("redirect:/yalolza.gg/community/detail/%s", comment.getCommunity().getId());
+	        return String.format("redirect:/talk.yalolza.gg/community/detail/%s", comment.getCommunity().getId());
 	    }
 	    
 }
