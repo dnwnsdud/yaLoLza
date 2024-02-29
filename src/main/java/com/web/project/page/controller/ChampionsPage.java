@@ -1,10 +1,14 @@
 package com.web.project.page.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.project.dto.ChampionStatsDTO;
+import com.web.project.dto.CounterChampionDTO;
+import com.web.project.dto.CounterCountDTO;
+import com.web.project.dto.CounterPositionDTO;
 import com.web.project.dto.TierDataDTO;
 import com.web.project.dto.info.Perk;
 import com.web.project.dto.info.Runes;
@@ -22,6 +29,7 @@ import com.web.project.dto.info.Champion.Champion;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
 import com.web.project.system.ChampionData;
+import com.web.project.system.CounterJsonReader;
 import com.web.project.system.ItemData;
 import com.web.project.system.JsonReader;
 import com.web.project.system.RuneData;
@@ -31,76 +39,175 @@ import com.web.project.system.SummonerData;
 @RequestMapping("/yalolza.gg/champions")
 public class ChampionsPage {
 	private final JsonReader jsonReader;
+	private final CounterJsonReader counterJsonReader;
 
 	@Autowired
-	public ChampionsPage(JsonReader jsonReader) {
-		this.jsonReader = jsonReader;
-	}
+    public ChampionsPage(JsonReader jsonReader, CounterJsonReader counterJsonReader) {
+        this.jsonReader = jsonReader;
+        this.counterJsonReader = counterJsonReader;
+    }
+
 	@GetMapping("")
-	public String Champions(@RequestParam(required = false) String tier,
-			Model model,
-			@RequestParam(required = false) String position
-			) {
-		List<Champion> data = ChampionData.imagedata();
-		model.addAttribute("data", data);
+	public String getChampionsData(@RequestParam(required = false, defaultValue = "EMERALD") String tier,
+			@RequestParam(required = false, defaultValue = "TOP") String position, Model model) {
 		try {
-	        if (tier != null && position != null) {
-	            TierDataDTO tierData = jsonReader.readJsonFile(tier);
-	            List<ChampionStatsDTO> allPositionData = new ArrayList<>();
-	            
-	            // 포지션 전체 ALL 추가
-	            if (position.equals("ALL")) {	                
-	                for (List<ChampionStatsDTO> positionData : tierData.getPositions().values()) {
-	                    allPositionData.addAll(positionData);
-	                }
-	            } else {
-	                allPositionData = tierData.getPositions().get(position);
-	            }
+			if (tier != null && position != null) {
+// 티어에 따른 JSON 파일
+				TierDataDTO tierData = jsonReader.readJsonFile(tier);
+				List<ChampionStatsDTO> allPositionData = new ArrayList<>();
 
-	            // TierScore로 정렬
-	            allPositionData.sort((champ1, champ2) -> Double.compare(champ2.getStats().getTierScore(),
-	                    champ1.getStats().getTierScore()));
+// 선택한 포지션의 모든 챔피언 데이터를 가져옴
+				if (position.equals("ALL")) {
+					for (List<ChampionStatsDTO> positionData : tierData.getPositions().values()) {
+						allPositionData.addAll(positionData);
+					}
+				} else {
+					allPositionData = tierData.getPositions().get(position);
+				}
 
-	            // ALL 중복 챔피언 제거
-	            List<ChampionStatsDTO> uniqueChampions = new ArrayList<>();
-	            Set<String> addedChampions = new HashSet<>();
-	            for (ChampionStatsDTO champion : allPositionData) {
-	                if (!addedChampions.contains(champion.getChampionName())) {
-	                    uniqueChampions.add(champion);
-	                    addedChampions.add(champion.getChampionName());
-	                }
-	            }
+// 챔피언 데이터를 티어 점수를 기준으로 내림차순으로 정렬
+				allPositionData.sort((champ1, champ2) -> Double.compare(champ2.getStats().getTierScore(),
+						champ1.getStats().getTierScore()));
 
-	            model.addAttribute("positionData", uniqueChampions);
-	        } else {
-	            model.addAttribute("error", "Invalid tier or position");
-	        }
-	    } catch (Exception e) {
-	        model.addAttribute("error", "ERROR: " + e.getMessage());
-	    }
-		return "champ";
-	}
-	@GetMapping("/")
-	public String Champions(
-			@RequestParam(required = false) String position
-			) {
-		return "NewFile";
+// 중복된 챔피언을 제거
+				List<ChampionStatsDTO> uniqueChampions = new ArrayList<>();
+				Set<String> addedChampions = new HashSet<>();
+				for (ChampionStatsDTO champion : allPositionData) {
+					if (!addedChampions.contains(champion.getChampionName())) {
+						uniqueChampions.add(champion);
+						addedChampions.add(champion.getChampionName());
+					}
+				}
+				model.addAttribute("selectedTier", tier);
+				model.addAttribute("positionData", uniqueChampions);
+			} else {
+				model.addAttribute("error", "Invalid tier or position");
+			}
+		} catch (Exception e) {
+			model.addAttribute("error", "ERROR: " + e.getMessage());
+		}
+		return "cham"; // 포지션 뷰 페이지로 이동
 	}
 	
+	// 챔피언의 카운터 데이터를 가져와서 처리하는 컨트롤러 메서드
+    @GetMapping("")
+    public String getCounterData(@PathVariable String position, @PathVariable("champion") String champion,
+                                 @RequestParam(name = "additionalChampion", required = false) String additionalChampion, Model model) {
+        try {
+            // 카운터 데이터를 읽어옴
+            CounterPositionDTO counterData = counterJsonReader.readCounterJsonFile();
+            List<CounterCountDTO> positionData = getPositionData(position, counterData);
+
+            if (positionData == null) {
+                return "error"; // 오류 페이지로 이동
+            }
+
+            List<CounterChampionDTO> targetCounters = new ArrayList<>();
+            List<CounterChampionDTO> otherChampions = new ArrayList<>();
+            Map<String, Integer> matchCounts = new HashMap<>();
+
+            for (CounterCountDTO countDTO : positionData) {
+                if (additionalChampion == null) {
+                    if (countDTO.getCounter().stream()
+                            .anyMatch(championDTO -> championDTO.getChampionName().equalsIgnoreCase(champion))) {
+                        targetCounters.addAll(countDTO.getCounter());
+                    }
+                } else {
+                    List<CounterChampionDTO> matchedCounters = countDTO.getCounter().stream()
+                            .filter(championDTO -> championDTO.getChampionName().equalsIgnoreCase(champion)
+                                    || championDTO.getChampionName().equalsIgnoreCase(additionalChampion))
+                            .collect(Collectors.toList());
+
+                    boolean containsBothChampions = matchedCounters.stream()
+                            .anyMatch(championDTO -> championDTO.getChampionName().equalsIgnoreCase(champion))
+                            && matchedCounters.stream().anyMatch(
+                            championDTO -> championDTO.getChampionName().equalsIgnoreCase(additionalChampion));
+
+                    if (containsBothChampions) {
+                        targetCounters.addAll(matchedCounters);
+                        Collections.swap(targetCounters, 0,
+                                targetCounters.indexOf(matchedCounters.stream()
+                                        .filter(championDTO -> championDTO.getChampionName().equalsIgnoreCase(champion))
+                                        .findFirst().orElse(null)));
+                    }
+                }
+
+                if (!targetCounters.isEmpty()) {
+                    CounterChampionDTO selectedChampion = targetCounters.stream()
+                            .filter(championDTO -> championDTO.getChampionName().equalsIgnoreCase(champion)).findFirst()
+                            .orElse(null);
+
+                    if (selectedChampion != null) {
+                        targetCounters.remove(selectedChampion);
+                        targetCounters.add(0, selectedChampion);
+                    }
+                }
+
+                for (CounterCountDTO countDTO1 : positionData) {
+                    // 선택된 챔피언이 포함된 CounterChampionDTO 객체만 찾기
+                    if (countDTO1.getCounter().stream().anyMatch(championDTO -> championDTO.getChampionName().equalsIgnoreCase(champion))) {
+                        for (CounterChampionDTO championDTO : countDTO1.getCounter()) {
+                            if (!championDTO.getChampionName().equalsIgnoreCase(champion) && !otherChampions.contains(championDTO)) {
+                                otherChampions.add(championDTO);
+                                matchCounts.put(championDTO.getChampionName(), countDTO1.getCount());
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 다른 챔피언의 리스트를 승률을 기준으로 내림차순으로 정렬
+            otherChampions.sort((champion1, champion2) -> Double.compare(champion2.getStats().getWinRate(), champion1.getStats().getWinRate()));
+
+            model.addAttribute("selectedChampionName", champion);
+            model.addAttribute("additionalChampionName", additionalChampion);
+            model.addAttribute("targetCounters", targetCounters);
+            model.addAttribute("otherChampions", otherChampions);
+            model.addAttribute("matchCounts", matchCounts);
+
+            return "cham";
+        } catch (IOException e) {
+            model.addAttribute("error", "Data loading error: " + e.getMessage());
+            return "error"; // 오류 페이지로 이동
+        }
+    }
+
+    // 포지션
+    private List<CounterCountDTO> getPositionData(String position, CounterPositionDTO counterData) {
+        switch (position.toUpperCase()) {
+            case "TOP":
+                return counterData.getTop();
+            case "JUNGLE":
+                return counterData.getJungle();
+            case "MIDDLE":
+                return counterData.getMiddle();
+            case "BOTTOM":
+                return counterData.getBottom();
+            case "UTILITY":
+                return counterData.getUtility();
+            default:
+                return null;
+        }
+    }
+
+
+	
+
+	@GetMapping("/")
+	public String Champions(@RequestParam(required = false) String position) {
+		return "NewFile";
+	}
+
 	@GetMapping("/{champion}/build/{position}")
-	public String ChampionsDetail(
-			@PathVariable("champion") String champion, 
-			@PathVariable("position") String position
-			) {
+	public String ChampionsDetail(@PathVariable("champion") String champion,
+			@PathVariable("position") String position) {
 		return "";
 	}
+
 	@GetMapping("/{champion}/build")
-	public String ChampionsDetail(
-			Model model,
-			@PathVariable("champion") String championid
-			) {
+	public String ChampionsDetail(Model model, @PathVariable("champion") String championid) {
 		Champion champion = ChampionData.championinfo(championid);
-		model.addAttribute("champion",champion);
+		model.addAttribute("champion", champion);
 		Runes runes = RuneData.runes(8000);
 		model.addAttribute("mainRune", runes);
 		runes = RuneData.runes(8400);
@@ -121,9 +228,5 @@ public class ChampionsPage {
 		model.addAttribute("summonerkey", summonerkey);
 		return "champ_detail";
 	}
-
-	
-
-
 
 }
