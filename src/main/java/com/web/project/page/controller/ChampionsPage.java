@@ -97,7 +97,10 @@ public class ChampionsPage {
 			String rawData = Files.readString(Paths.get(filePath));
 			List<DataEntry> data = StatisticChampion.parseJson(rawData);
 			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
-			Runes runes = RuneData.runes(8000);
+			
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
+			System.out.println(mainStyle);
+			Runes runes = RuneData.runes(mainStyle);
 			model.addAttribute("mainRune", runes);
 			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
 			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);

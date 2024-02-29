@@ -16,11 +16,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.project.dto.runeSpell.DataEntry;
 import com.web.project.dto.runeSpell.Selections;
+import com.web.project.dto.runeSpell.Styles;
 import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 
 public class StatisticChampion {
-	public static List<DataEntry> parseJson(String rawData) {
-        ObjectMapper objectMapper = new ObjectMapper();//json parse하는 함수래요
+	
+	public static List<DataEntry> parseJson(String rawData) {//json parse하는 함수
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(rawData, new TypeReference<List<DataEntry>>() {});
  
@@ -29,7 +31,8 @@ public class StatisticChampion {
             return Collections.emptyList(); // 빈 리스트 반환
         }
     }
-    
+	
+    //받아온 데이터 티어, 포지션, 챔 이른으로 거름
 	public static List<DataEntry> filterData(List<DataEntry> data, String tier, String position, String championName) {
         return data.stream()
                 .filter(entry -> entry.getIndividualPosition().equals(position)
@@ -38,7 +41,7 @@ public class StatisticChampion {
     }
    
     
-    //메인룬 출력   
+    //챔피언, 포지션 한정해서 가장 많이 등장한 메인룬 출력   
 	public static String calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
         String primaryPerk = "";
         if (!filteredData.isEmpty()) {
@@ -61,9 +64,37 @@ public class StatisticChampion {
         return primaryPerk;
     }
  
-    //calculatePrimaryStyleFirstPerk1 에서 검색된 메인룬, 해당 티어, 포지션, 챔피언id로 검색
-    // 
-    
+    //calculatePrimaryStyleFirstPerk1 에서 검색된 특성 종류, 메인룬, 해당 티어, 포지션, 챔피언id로 검색
+  
+	//정밀, 마법, 영감 등등... 키 가져와요
+	public static String mainStyle(List<DataEntry> filteredData) {
+		String mainStyle ="";
+		if (!filteredData.isEmpty()) {
+            Map<Integer, Long> counter = filteredData.stream()
+                    .flatMap(entry -> entry.getPerks().getStyles().stream())
+                    .filter(style -> "primaryStyle".equals(style.getDescription()))
+                    .collect(Collectors.groupingBy(Styles::getStyle, Collectors.counting()));
+		
+            
+            if (!counter.isEmpty()) {
+                Long maxCount = Collections.max(counter.values());
+                mainStyle = counter.entrySet().stream()
+                        .filter(entry -> entry.getValue() == maxCount)
+                        .map(Map.Entry::getKey)
+                        .findFirst()
+                        .map(String::valueOf)
+                        .orElse("");
+            
+            }
+		}
+		
+		return mainStyle;
+	}
+	
+	
+	
+	
+	
 	public static List<String> calculatePrimaryStylePerks234(List<DataEntry> filteredData) {
         List<String> primaryStylePerks234 = new ArrayList<>();
         if (!filteredData.isEmpty()) {
