@@ -50,6 +50,8 @@ public class ChampionsPage {
 	@GetMapping("")
 	public String getChampionsData(@RequestParam(required = false, defaultValue = "EMERALD") String tier,
 			@RequestParam(required = false, defaultValue = "TOP") String position, Model model) {
+		List<Champion> data = ChampionData.imagedata();
+		model.addAttribute("data", data);
 		try {
 	        if (tier != null && position != null) {
 	            TierDataDTO tierData = jsonReader.readJsonFile(tier);
@@ -102,9 +104,9 @@ public class ChampionsPage {
 		return "champ";
 	}
 
-	@GetMapping("")
+	@GetMapping("/{champion}/counter/{position}")
 	public String getCounterData(@PathVariable String position, @PathVariable("champion") String champion,
-			@RequestParam(name = "additionalChampion", required = false) String additionalChampion, Model model) {
+			@RequestParam(name = "champion", required = false) String additionalChampion, Model model) {
 		try {
 			// 카운터 데이터를 읽어옴
 			CounterPositionDTO counterData = counterJsonReader.readCounterJsonFile();
@@ -180,7 +182,7 @@ public class ChampionsPage {
 			model.addAttribute("otherChampions", otherChampions);
 			model.addAttribute("matchCounts", matchCounts);
 
-			return "champ";
+			return "counter_detail";
 		} catch (IOException e) {
 			model.addAttribute("error", "Data loading error: " + e.getMessage());
 			return "error";

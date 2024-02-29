@@ -22,7 +22,7 @@
 							<a
 								th:href="@{/counter_detail/{position}/champion/{championName}(position=${position},championName=${targetCounters[0].championName})}">
 								<img
-								th:src="@{'/champion/' + ${targetCounters[0].championName} + '.png'}"
+								th:src="@{'/img/champion/' + ${targetCounters[0].championName} + '.png'}"
 								alt="Champion Icon" />
 							</a>
 						</div>
@@ -45,7 +45,7 @@
 							<a
 								th:href="@{/counter_detail/{position}/champion/{championName}(position=${position},championName=${targetCounters[1].championName})}">
 								<img
-								th:src="@{'/champion/' + ${targetCounters[1].championName} + '.png'}"
+								th:src="@{'/img/champion/' + ${targetCounters[1].championName} + '.png'}"
 								alt="Champion Icon" />
 							</a>
 						</div>
@@ -154,7 +154,7 @@
 								<a
 									th:href="@{/counter_detail/{position}/champion/{championName}(position=${position}, championName=${selectedChampionName}, champion=${champion.championName})}">
 									<img
-									th:src="@{'/champion/' + ${champion.championName} + '.png'}"
+									th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
 									alt="Champion Icon" />
 								</a>
 							</div>
