@@ -49,7 +49,7 @@ public class SecurityConfig {
 						"/statistics/**",
 						"/summoners/**",
 						"/**",
-						"/duo/**"
+						"/duo/**",
 						"/img/**",
 						"/css/**",
 						"/js/**"
@@ -84,7 +84,7 @@ public class SecurityConfig {
 							"/yalolza.gg/user/login",
 							"/yalolza.gg/user/signup",
 							"/files/**",
-							"/oauth2/authorization/**"
+							"/oauth2/authorization/**",
 							
 							"/login", 
 							"/login/check", 

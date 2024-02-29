@@ -478,6 +478,7 @@ import com.web.project.save.MatchService;
 		  		 Summoner  collectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
 		   		  
+		  		 
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);

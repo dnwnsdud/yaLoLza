@@ -665,15 +665,62 @@
                 <!-- 유저 룬 정보 -->
                 <section class="usergame-runeinfo">
                   <div class="champ-rune">
-                    <div class="main-rune" th:include="fragments/header :: ${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></div>
-                    <div class="sub-rune" th:include="fragments/header :: ${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}"></div>
-                    <div class="fragments-rune">
-                      <ul class="fragments-runegrid" 
-                  th:with="defenseValue=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.defense},
-                           attack=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.attack},
-                           offenseValue=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.offense}
-                           ">
-                        <li class="img-wrap" ts:wh th:class="${rune.id} == ${primaryPerk1} ? 'color-icon' : 'gray-icon'"><img src="" alt="" /></li>
+                <div class="main-rune" th:fragment="81100">
+                      <ul class="main-zero">
+                     <li class="img-wrap"><img src="" alt="" /></li>
+                     <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></span>
+                      </ul>
+                      <ul class="main-first">
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[0].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul class="main-second">
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[1].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul class="main-third">
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[2].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul class="main-fourth">
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[3].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                   </div>
+                  <div class="sub-rune">
+                      <ul class="sub-main">
+					     <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[0].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[1].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                    </div>
+                   <div class="fragments-rune">
+                      <ul class="fragments-runegrid">
+                        <li class="img-wrap"><img src="" alt="" /></li>
                         <li class="img-wrap"><img src="" alt="" /></li>
                         <li class="img-wrap"><img src="" alt="" /></li>                    
                         <li class="img-wrap"><img src="" alt="" /></li>

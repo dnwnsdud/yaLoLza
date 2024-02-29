@@ -6,7 +6,7 @@
 </head>
 <body>
 	
-	              <div class="main-rune">
+	              <div class="main-rune" th:fragment="81100">
                       <ul class="main-zero">
                      <li class="img-wrap"><img src="" alt="" /></li>
                      <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></span>
@@ -39,7 +39,7 @@
                     
                     
                     
-             	  <div class="main-rune">
+             	  <div class="main-rune" th:fragment="header">
                       <ul class="main-zero">
                      <li class="img-wrap"><img src="" alt="" /></li>
                      <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></span>
@@ -71,7 +71,7 @@
                     </div>
                     
                     
-                   <div class="main-rune">
+                   <div class="main-rune" th:fragment="header">
                       <ul class="main-zero">
                      <li class="img-wrap"><img src="" alt="" /></li>
                      <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></span>
@@ -104,7 +104,7 @@
                     
                     
                     
-                   <div class="main-rune">
+                   <div class="main-rune" th:fragment="header">
                       <ul class="main-zero">
                      <li class="img-wrap"><img src="" alt="" /></li>
                      <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></span>
@@ -133,7 +133,82 @@
                         <li class="img-wrap"><img src="" alt="" /></li>
                         <li class="img-wrap"><img src="" alt="" /></li>
                       </ul>
-                    </div>       
+                    </div>  
+                    
+                    
+                     <div class="sub-rune">
+                      <ul class="sub-main">
+					     <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[0].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[1].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                    </div>
+                    
+                    
+                     <div class="sub-rune">
+                      <ul class="sub-main">
+					     <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[0].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[1].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                    </div>
+                    
+                    
+                     <div class="sub-rune">
+                      <ul class="sub-main">
+					     <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[0].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[1].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                    </div>     
                     
                     
 	
