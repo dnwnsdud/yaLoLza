@@ -216,7 +216,7 @@ public class RuneData {
 				);
 		perklist.add(
 				Perk.builder()
-				.id(5008).name("적응형 능력치").group("OFFENSE")
+				.id(5008).name("적응형 능력치").group("FLEX")
 				.icon("perk-images/StatMods/StatModsAdaptiveForceIcon.png")
 				.tooltip("적응형 능력치 +9").build()
 				);
@@ -228,7 +228,7 @@ public class RuneData {
 				);
 		perklist.add(
 				Perk.builder()
-				.id(5001).name("체력 증가").group("DEFENSE")
+				.id(5001).name("체력 증가").group("FLEX")
 				.icon("perk-images/StatMods/StatModsHealthPlusIcon.png")
 				.tooltip("체력 +15~140 (레벨에 비례)").build()
 				);

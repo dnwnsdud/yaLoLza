@@ -3,6 +3,7 @@ package com.web.project.page.controller;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ import com.web.project.dto.info.Champion.Champion;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
 import com.web.project.dto.runeSpell.DataEntry;
+import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 import com.web.project.system.ChampionData;
 import com.web.project.system.ItemData;
 import com.web.project.system.RuneData;
@@ -105,20 +107,27 @@ public class ChampionsPage {
 			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
 			model.addAttribute("secondaryPerk12", subStylePerks12);
 			model.addAttribute("subRune", runes);
+			List<Perk> perklist = RuneData.perklist();
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
+            List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
+            List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
+            List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+            출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+			model.addAttribute("perklist", perklist);
+			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
+			model.addAttribute("summoner1", spell);
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());
+			model.addAttribute("summoner2", spell);
+			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
+			spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			model.addAttribute("summoner3", spell);
+			spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			model.addAttribute("summoner4", spell);
+			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
 		} catch (IOException e) {
 			e.printStackTrace();
             System.out.println("no DATA");
 		}
-		List<Perk> perklist = RuneData.perklist();
-		model.addAttribute("perklist", perklist);
-		Spell spell = SummonerData.findspell("6");
-		model.addAttribute("summoner1", spell);
-		spell = SummonerData.findspell("21");
-		model.addAttribute("summoner2", spell);
-		spell = SummonerData.findspell("1");
-		model.addAttribute("summoner3", spell);
-		spell = SummonerData.findspell("7");
-		model.addAttribute("summoner4", spell);
 		Item item = ItemData.item("1001");
 		model.addAttribute("item1", item);
 		item = ItemData.item("1001");

@@ -25,7 +25,7 @@
 						alt="챔피언 이미지" />
 				</div>
 				<h1>
-					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong>
+					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong><!--아무도 없음-->
 					<span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
 						style="font-size: 1.3rem" class="tier">1티어</span>
 					<div class="champ-skill">
@@ -53,7 +53,7 @@
 						</div>
 				</h1>
 			</div>
-			<div class="champ-statistics">
+			<div class="champ-statistics"><!--진성님-->
 				<div>
 					<span>승률</span><br /> <strong>50.55%</strong>
 				</div>
@@ -82,7 +82,7 @@
 							<a href="#"></a>
 						</h2>
 						<div class="champ-rune">
-							<div class="main-rune">
+							<div class="main-rune"><!--이지수-->
 								<ul class="main-zero">
 									<li th:id="${mainRune.id}"><img alt="룬모음 이미지"
 										th:src="@{'/img/'+${mainRune.icon}}" /></li>
@@ -118,7 +118,7 @@
 								</ul>
 								<p th:text="${mainRune.name}"></p>
 							</div>
-							<div class="sub-rune">
+							<div class="sub-rune"><!--이지수-->
 								<ul>
 									<li></li>
 								</ul>
@@ -179,7 +179,7 @@
 									<li th:id="${perklist[8].id}"><img alt="스탯 이미지"
 										th:src="@{'/img/'+${perklist[8].icon}}" /></li>
 								</ul>
-								<p>능력치 파편</p>
+								<p>능력치 파편</p> <!--이지수-->
 							</div>
 							<div class="rune-select">
 								<ul class="select-first">
@@ -225,7 +225,7 @@
 					</section>
 					<!-- 스킬 빌드 -->
 					<section class="con3">
-						<h2>가렌 스킬 빌드 ></h2>
+						<h2>가렌 스킬 빌드 ></h2><!--아무도 없음-->
 						<ul>
 							<li>
 								<div class="champ-skillbuild">
@@ -270,7 +270,7 @@
 					</section>
 					<!-- 아이템 빌드 -->
 					<section class="con4">
-						<h2>가렌 아이템 빌드</h2>
+						<h2>가렌 아이템 빌드</h2><!--이지수-->
 						<ul>
 							<li>
 								<h3>시작 아이템</h3>
@@ -349,7 +349,7 @@
 								</div>
 							</li>
 						</ul>
-						<h3>가렌 추천 빌드</h3>
+						<h3>가렌 추천 빌드</h3><!--이지수-->
 						<ul>
 							<li>
 								<div class="item-recommendation">
@@ -490,7 +490,7 @@
 				<div class="con-right">
 					<!-- 소환사 주문 -->
 					<section class="summoner-order">
-						<h2>소환사 주문</h2>
+						<h2>소환사 주문</h2> <!--이지수-->
 						<ul>
 							<li>
 								<div>
@@ -505,7 +505,7 @@
 								<div class="order-block">
 									<strong>선택비율</strong> <span>게임수asdasdas</span>
 								</div>
-								<div class="order-vic">승률</div>
+								<div class="order-vic" th:text="${summonerSpellSet1Win}"></div>
 								</p>
 							</li>
 							<li>
@@ -521,14 +521,14 @@
 								<div class="order-block">
 									<strong>선택비율</strong> <span>게임수asdasdas</span>
 								</div>
-								<div class="order-vic">승률</div>
+								<div class="order-vic" th:text="${summonerSpellSet2Win}"></div>
 								</p>
 							</li>
 						</ul>
 					</section>
 					<!-- 카운터 -->
 					<section class="counter">
-						<h2>카운터 ></h2>
+						<h2>카운터 ></h2> <!--진성님-->
 						<ul>
 							<li>
 								<h3>상대하기 어려운 챔피언</h3>
@@ -667,7 +667,7 @@
                   </li> -->
 						</ul>
 					</section>
-					<!-- 장인 랭킹 -->
+					<!-- 장인 랭킹 --><!--진성님-->
 					<section class="champ-rank">
 						<h2>가렌 장인 랭킹 ></h2>
 						<ul>
