@@ -55,19 +55,11 @@ public class ChampionsPage {
 	            
 	            // 포지션 전체 ALL 추가
 	            if (position.equals("ALL")) {	                
-//	            	List<String> positionlist = new ArrayList<String>(tierData.getPositions().keySet());
-//	            	for (String position1 : positionlist) {
-//	            		List<ChampionStatsDTO> positionData = tierData.getPositions().get(position1);
-//	            		allPositionData.addAll(positionData);
-//	            		System.out.println(position1);
-//		                model.addAttribute("position", position1);
-//	            	}
 	                for (List<ChampionStatsDTO> positionData : tierData.getPositions().values()) {
 	                    allPositionData.addAll(positionData);
 	                }
 	            } else {
 	                allPositionData = tierData.getPositions().get(position);
-	                //model.addAttribute("position", position);
 	            }
 
 	            // TierScore로 정렬
