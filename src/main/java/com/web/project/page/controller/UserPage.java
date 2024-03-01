@@ -1,5 +1,7 @@
 package com.web.project.page.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -58,7 +60,7 @@ public class UserPage {
             return "signup_form";
         }
 
-        return "login_form";
+        return "redirect:/yalolza.gg/user/login";
     }
 
     @GetMapping("/login")
@@ -66,36 +68,62 @@ public class UserPage {
         return "login_form";
     }
 
-
-//    @GetMapping("/delete")
-//    public String deleteUser() {
-//        return "home";
-//    }
-
     @GetMapping("/unregist")
-    public String userDelete(@AuthenticationPrincipal SiteUser user, Model model, PasswordForm passwordForm) {
+    public String userDelete(@AuthenticationPrincipal SiteUser user, Model model, @Valid PasswordForm passwordForm) {
         model.addAttribute("user", user);
-        return "/user/mypage";
+        return "/mypage_form";
     }
 
     @PostMapping("/unregist")
     public String userDelete(@Valid PasswordForm passwordForm, BindingResult bindingResult, SiteUser user, Long id) {
         if (bindingResult.hasErrors()) {
-            return "/user/mypage";
+            return "/mypage_form";
         }
         userService.deleteUser(id);
-        return "redirect:/yalolzq.gg/user/logout";
+        return "redirect:/yalolza.gg/user/logout";
 
     }
-
+    
     @GetMapping("/mypage")
     public String userMypage(@AuthenticationPrincipal SiteUser user, Model model) {
         model.addAttribute("user", user);
         return "mypage_form";
     }
-    
-   
-}
+//
+//    @PostMapping("/mypage/change-username")
+//    public String changeUsername (@RequestParam("newNickname")  String newNickname, Model model) {
+//       boolean result = userService.changeNickname(newNickname);
+//       if(!result) {
+//          model.addAttribute("usernameError", "이미 존재하는 닉네임 입니다.");
+//          return "mypage_form";
+//       }
+//       return "redirect:/yalolza.gg/user/mypage";
+//    }
+//
+//    @PostMapping("/mypage/change-pass")
+//   public String changeUserPass (@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass, @RequestParam("newPassConfirm") String newPassConfirm, @AuthenticationPrincipal SiteUser currentUser, RedirectAttributes redirectAttributes, Model model) {
+//      Long userId = currentUser.getId();
+//
+//      boolean result = userService.changePass(userId, oldPass, newPass, newPassConfirm);
+//      
+//      if (result) {
+//         redirectAttributes.addFlashAttribute("message", "비밀번호가 성공적으로 변경되었습니다.");
+//          return "redirect:/yalolza.gg/user/mypage";
+//       } else {
+//           model.addAttribute("errorMessage", "비밀번호 변경에 실패했습니다. 입력 정보를 확인해 주세요.");
+//           return "mypage_form";
+//       }
+//   }
 
+//   @GetMapping("/mypage/change-pass")
+//   public String showChangPassForm (Model model) {
+//      return "pass_form";
+//   }
+//
+//   @GetMapping("/mypage/change-nickname")
+//   public String showChangeNicknameForm (Model model) {
+//      return "nickname_form";
+//    }
+}
 
 

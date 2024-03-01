@@ -142,7 +142,7 @@ public class CommunityPage {
 //	    }
 
 	    @PreAuthorize("isAuthenticated()")
-	        @PostMapping("/create/qna")
+        @PostMapping("/create/qna")
 	    public String CommuCreate(@RequestParam(value="title") String title,
 	    		@RequestParam(value="content") String content,
 									        @Valid CommunityForm communityForm,
