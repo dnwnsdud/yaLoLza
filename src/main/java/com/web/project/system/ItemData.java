@@ -8,7 +8,9 @@ import java.util.stream.Collectors;
 import org.json.JSONObject;
 
 import com.web.project.dto.info.Items;
-import com.web.project.dto.info.item.*;
+import com.web.project.dto.info.item.Gold;
+import com.web.project.dto.info.item.Item;
+import com.web.project.dto.info.item.ItemImage;
 
 public class ItemData {
 	public static Item item(String id) {

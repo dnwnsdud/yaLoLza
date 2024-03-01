@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,18 +30,30 @@ import com.web.project.dto.info.Runes;
 import com.web.project.dto.info.Champion.Champion;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
+import com.web.project.dto.runeSpell.DataEntry;
+import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 import com.web.project.system.ChampionData;
 import com.web.project.system.CounterJsonReader;
 import com.web.project.system.ItemData;
 import com.web.project.system.JsonReader;
 import com.web.project.system.RuneData;
 import com.web.project.system.SummonerData;
+import com.web.project.system.StatisticChampion;
+
 
 @Controller
 @RequestMapping("/yalolza.gg/champions")
 public class ChampionsPage {
 	private final JsonReader jsonReader;
 	private final CounterJsonReader counterJsonReader;
+	// 참고로 perk = rune
+	private String defaultFilePath;
+
+	public ChampionsPage() {
+		System.out.println("CALL datafile");
+	    this.defaultFilePath = "src/main/resources/static/datas/RANKED_SOLO_5x5/";	    
+	    System.out.println(defaultFilePath);
+	}
 
 	@Autowired
 	public ChampionsPage(JsonReader jsonReader, CounterJsonReader counterJsonReader) {
@@ -217,27 +231,60 @@ public class ChampionsPage {
 			@PathVariable("position") String position) {
 		return "";
 	}
-	//챔피언 상세 페이지- 지수+진비
-	@GetMapping("/{champion}/build")
-	public String ChampionsDetail(Model model, @PathVariable("champion") String championid) {
+	@GetMapping("/{champion}/build")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
+	public String ChampionsDetail(
+			Model model,
+			@RequestParam("tier") String tier,
+			@RequestParam("position") String position,
+			@PathVariable("champion") String championid
+			) {
 		Champion champion = ChampionData.championinfo(championid);
-		model.addAttribute("champion", champion);
-		Runes runes = RuneData.runes(8000);
-		model.addAttribute("mainRune", runes);
-		runes = RuneData.runes(8400);
-		model.addAttribute("subRune", runes);
-		List<Perk> perklist = RuneData.perklist();
-		model.addAttribute("perklist", perklist);
-		Spell spell = SummonerData.findspell("6");
-		model.addAttribute("summoner1", spell);
-		spell = SummonerData.findspell("21");
-		model.addAttribute("summoner2", spell);
-		spell = SummonerData.findspell("1");
-		model.addAttribute("summoner3", spell);
-		spell = SummonerData.findspell("7");
-		model.addAttribute("summoner4", spell);
+		model.addAttribute("champion",champion);
+		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
+			System.out.println(mainStyle);
+			Runes runes = RuneData.runes(mainStyle);
+			model.addAttribute("mainRune", runes);
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			runes = RuneData.runes(8400);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+			List<Perk> perklist = RuneData.perklist();
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
+            List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
+            List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
+            List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+            출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+			model.addAttribute("perklist", perklist);
+			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
+			model.addAttribute("summoner1", spell);
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());
+			model.addAttribute("summoner2", spell);
+			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
+			spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			model.addAttribute("summoner3", spell);
+			spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			model.addAttribute("summoner4", spell);
+			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+		} catch (IOException e) {
+			e.printStackTrace();
+            System.out.println("no DATA");
+		}
 		Item item = ItemData.item("1001");
-		model.addAttribute("item", item);
+		model.addAttribute("item1", item);
+		item = ItemData.item("1001");
+		model.addAttribute("item2", item);
+		item = ItemData.item("3364");
+		model.addAttribute("item3", item);
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
 		return "champ_detail";
