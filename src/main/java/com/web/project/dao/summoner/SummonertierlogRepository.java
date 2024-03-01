@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.web.project.dto.summoner.Summoner;
-import com.web.project.dto.summoner.Summonermatchs;
-import com.web.project.dto.summoner.Summonertierlog;
+import com.web.project.dto.sjw.summoner.Summoner;
+import com.web.project.dto.sjw.summoner.Summonermatchs;
+import com.web.project.dto.sjw.summoner.Summonertierlog;
 
 public interface SummonertierlogRepository extends JpaRepository<Summonertierlog, Long> {
 	

@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.web.project.dto.summoner.Summoner;
-import com.web.project.dto.summoner.Summonerchampions;
+import com.web.project.dto.sjw.summoner.Summoner;
+import com.web.project.dto.sjw.summoner.Summonerchampions;
 
 public interface SummonerchampionsRepository extends JpaRepository<Summonerchampions, Long> {
        

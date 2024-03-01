@@ -28,23 +28,24 @@ import com.web.project.dao.summoner.SummonerRepository;
 import com.web.project.dao.summoner.SummonerchampionsRepository;
 import com.web.project.dao.summoner.SummonermatchsRepository;
 import com.web.project.dao.summoner.SummonertierlogRepository;
-import com.web.project.dto.TimeLine.Events;
-import com.web.project.dto.TimeLine.Frames;
-import com.web.project.dto.TimeLine.TimeLine;
-import com.web.project.dto.match.Match;
-import com.web.project.dto.match.Participants;
-import com.web.project.dto.summoner.Summoner;
-import com.web.project.dto.summoner.SummonerLeagInfo;
-import com.web.project.dto.summoner.SummonerResponse;
-import com.web.project.dto.summoner.Summonerchampions;
-import com.web.project.dto.summoner.Summonermatchs;
-import com.web.project.dto.summoner.Summonertierlog;
+import com.web.project.dto.sjw.TimeLine.Events;
+import com.web.project.dto.sjw.TimeLine.Frames;
+import com.web.project.dto.sjw.TimeLine.TimeLine;
+import com.web.project.dto.sjw.match.Match;
+import com.web.project.dto.sjw.match.Participants;
+import com.web.project.dto.sjw.summoner.Summoner;
+import com.web.project.dto.sjw.summoner.SummonerLeagInfo;
+import com.web.project.dto.sjw.summoner.SummonerResponse;
+import com.web.project.dto.sjw.summoner.Summonerchampions;
+import com.web.project.dto.sjw.summoner.Summonermatchs;
+import com.web.project.dto.sjw.summoner.Summonertierlog;
 import com.web.project.function.Calall;
 import com.web.project.function.MillisecondsConverter;
 import com.web.project.function.SummonerTimeList;
 import com.web.project.function.SummonerTimeListSS;
 import com.web.project.save.MatchRepository;
 import com.web.project.save.MatchService;
+import com.web.project.system.ChampionData;
  
 
   @Controller  
@@ -477,8 +478,8 @@ import com.web.project.save.MatchService;
 		  		  
 		  		 Summoner  collectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
-		   		  
-		  		 
+		   		  //진비 챔피언 이름 영어-> 한글
+		  		 Map<String, String> keysChamName = ChampionData.keysChamName();
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
@@ -490,6 +491,7 @@ import com.web.project.save.MatchService;
 			  		model.addAttribute("summonerall", allstatistics);
 			  	     //이름 판수 승수  k d a kda 킬관여
 			  		model.addAttribute("summonermost", championStatisticsss);
+			  		model.addAttribute("keysChamName", keysChamName);
 			  		
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import org.hibernate.annotations.Comment;
 import org.springframework.stereotype.Component;
 
-import com.web.project.dto.summoner.Summonermatchs;
+import com.web.project.dto.sjw.summoner.Summonermatchs;
 
 @Component
  public class Calall {

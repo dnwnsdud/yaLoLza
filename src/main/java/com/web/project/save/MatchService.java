@@ -5,7 +5,7 @@
   org.springframework.http.ResponseEntity; import
   org.springframework.stereotype.Component;
 
-import com.web.project.dto.match.Match;
+import com.web.project.dto.sjw.match.Match;
   
   @Component
   public class MatchService {

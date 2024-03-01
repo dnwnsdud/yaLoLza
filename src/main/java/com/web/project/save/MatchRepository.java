@@ -3,7 +3,7 @@
   
   import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.web.project.dto.match.Match;
+import com.web.project.dto.sjw.match.Match;
   
   
   public interface MatchRepository extends JpaRepository<Match, Long> {
