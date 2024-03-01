@@ -28,6 +28,7 @@ import com.web.project.dao.summoner.SummonerRepository;
 import com.web.project.dao.summoner.SummonerchampionsRepository;
 import com.web.project.dao.summoner.SummonermatchsRepository;
 import com.web.project.dao.summoner.SummonertierlogRepository;
+import com.web.project.dto.info.Runes;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.sjw.TimeLine.Events;
 import com.web.project.dto.sjw.TimeLine.Frames;
@@ -487,6 +488,7 @@ import com.web.project.system.SummonerData;
 		  		//matchsssinfoList.get(0).getBody().getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getStyle().get
 		  		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
 		  		Map<String, List<Spell>> keysChamSkill = ChampionData.keysChamSkill();
+		  		List<Runes> runeslist = RuneData.runeslist();
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
@@ -506,6 +508,8 @@ import com.web.project.system.SummonerData;
 			  		model.addAttribute("keysChamSpell", keysChamSpell);  
 			  		//챔피언당 스킬 불러오기
 			  		model.addAttribute("keysChamSkill", keysChamSkill);
+			  		//룬리스트
+			  		model.addAttribute("runeslist", runeslist);
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {

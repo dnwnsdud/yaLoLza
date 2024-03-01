@@ -666,8 +666,8 @@
                 </section>
                 <!-- 유저 룬 정보 -->
                 <section class="usergame-runeinfo">
-                  <div class="champ-rune">
-                <div class="main-rune" th:fragment="81100">
+                 <div class="champ-rune">
+                <div class="main-rune" th:fragment="81100" th:switch="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}">
                       <ul class="main-zero">
                      <li class="img-wrap"><img src="" alt="" /></li>
                      <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></span>
@@ -733,6 +733,7 @@
                         <li class="img-wrap"><img src="" alt="" /></li>
                       </ul>
                     </div>
+                    
                 </section>
               </div>
             </div>
