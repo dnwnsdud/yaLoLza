@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Component
 @Data
 @NoArgsConstructor
-public class Summoner {
+public class Summoners {
 	String type;
 	String version;
 	List<Spell> data;
