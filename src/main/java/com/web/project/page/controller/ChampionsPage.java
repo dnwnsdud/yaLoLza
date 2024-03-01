@@ -38,6 +38,9 @@ import com.web.project.system.ItemData;
 import com.web.project.system.JsonReader;
 import com.web.project.system.RuneData;
 import com.web.project.system.SummonerData;
+
+import lombok.NoArgsConstructor;
+
 import com.web.project.system.StatisticChampion;
 
 
@@ -49,16 +52,17 @@ public class ChampionsPage {
 	// 참고로 perk = rune
 	private String defaultFilePath;
 
-	public ChampionsPage() {
-		System.out.println("CALL datafile");
-	    this.defaultFilePath = "src/main/resources/static/datas/RANKED_SOLO_5x5/";	    
-	    System.out.println(defaultFilePath);
-	}
+//	public ChampionsPage() {
+//		System.out.println("CALL datafile");
+//	    this.defaultFilePath = "src/main/resources/static/datas/RANKED_SOLO_5x5/";	    
+//	    System.out.println(defaultFilePath);
+//	}
 
-	@Autowired
+
 	public ChampionsPage(JsonReader jsonReader, CounterJsonReader counterJsonReader) {
 		this.jsonReader = jsonReader;
 		this.counterJsonReader = counterJsonReader;
+		this.defaultFilePath = "src/main/resources/static/datas/RANKED_SOLO_5x5/";	  
 	}
 	//챔피언 전체 페이지 - 진성+진비
 	@GetMapping("")
@@ -221,7 +225,7 @@ public class ChampionsPage {
 		}
 	}
 
-	@GetMapping("/")
+	@GetMapping("/res")
 	public String Champions(@RequestParam(required = false) String position) {
 		return "NewFile";
 	}
@@ -234,8 +238,8 @@ public class ChampionsPage {
 	@GetMapping("/{champion}/build")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
 	public String ChampionsDetail(
 			Model model,
-			@RequestParam("tier") String tier,
-			@RequestParam("position") String position,
+			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
+			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
 			@PathVariable("champion") String championid
 			) {
 		Champion champion = ChampionData.championinfo(championid);

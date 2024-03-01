@@ -43,6 +43,7 @@ public class SecurityConfig {
 						.requestMatchers(
 							"/yalolza.gg",
 							"/yalolza.gg/**",
+							"/yalolza.gg/champions",
 							"/yalolza.gg/champions/**",
 							"/yalolza.gg/ranking/**",
 							"/yalolza.gg/statistics/**",
