@@ -15,12 +15,12 @@
 <a th:href="@{/yalolza.gg}"><img th:src="@{/img/logo.png}" class="logo" alt="logo"></a>
 <!-- 메인페이지로 이동하게 href 설정 -->
 <div class="login-box">
-	<div sec:authorize="isAuthenticated()">
-		<div>이미 로그인한 유저입니다. 메인페이지로 돌아가세요</div>
-		<a th:href="@{/yalolza.gg}" class=back>메인페이지</a>
-	</div>
+   <div sec:authorize="isAuthenticated()">
+      <div>이미 로그인한 유저입니다. 메인페이지로 돌아가세요</div>
+      <a th:href="@{/yalolza.gg}" class=back>메인페이지</a>
+   </div>
     <div sec:authorize="isAnonymous()">
-	<div>	
+   <div>   
         <form th:action="@{/yalolza.gg/user/login}" method="post">
             <div class="login-title">로그인</div>
             <div class="login-subtitle">
@@ -35,13 +35,16 @@
                 <div>
                     <!-- <label for="username" class="form-label">사용자ID</label> -->
                     <input type="text" name="username" id="username" placeholder="사용자ID" class="form-control" 
-                    	required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
+                       required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
                 </div>
                 <div>
                     <!-- <label for="password" class="form-label">비밀번호</label> -->
                     <input type="password" name="password" id="password" placeholder="비밀번호" class="form-control" 
-
                        required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
+                </div>
+                <button type="submit" class="btn btn-primary">로그인</button>
+
+            </div>
         </form>
     </div>
     <div style="display: flex;">
@@ -69,9 +72,4 @@
     </div>
 </div>
 </body>
-    <script th:if="${param.error}">
-        window.onload = function() {
-            alert("사용자ID 또는 비밀번호가 잘못되었습니다.");
-        }
-    </script>
 </html>
