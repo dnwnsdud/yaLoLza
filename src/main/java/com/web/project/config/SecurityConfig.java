@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.web.project.api.controller.UserService;
@@ -103,8 +105,8 @@ public class SecurityConfig {
 						.usernameParameter("username")
 //						.usernameParameter("email")
 						.passwordParameter("password")
-						.defaultSuccessUrl("/yalolza.gg", true)
-						.failureUrl("/yalolza.gg/user/login")
+//						.defaultSuccessUrl("/yalolza.gg", true)
+						.failureUrl("/yalolza.gg/user/login?error")
 						.permitAll()
 				)
 				.oauth2Login(login->
@@ -115,7 +117,7 @@ public class SecurityConfig {
 							end
 								.userService(oauth2service)
 						)
-						.defaultSuccessUrl("/yalolza.gg", true)
+//						.defaultSuccessUrl("/yalolza.gg", true)
 //						.failureUrl("/members/login/error")
 						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()
@@ -149,7 +151,13 @@ public class SecurityConfig {
 //        throws Exception {
 //        return authenticationConfiguration.getAuthenticationManager();
 //    }
-    
+
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        SimpleUrlAuthenticationSuccessHandler successHandler = new SimpleUrlAuthenticationSuccessHandler();
+        successHandler.setUseReferer(true); // 성공 후 referer를 사용하여 이전 페이지로 이동
+        successHandler.setDefaultTargetUrl("/yalolza.gg"); // 기본적으로 이동할 페이지 설정
+        return successHandler;
+    }
     
 }
 

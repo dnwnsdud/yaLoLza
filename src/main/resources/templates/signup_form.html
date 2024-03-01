@@ -30,22 +30,22 @@
 
 		<div>
 <!--			<label for="username" class="form-label">사용자ID</label>-->
-			<input type="text" th:field="*{username}" class="form-control" placeholder="아이디"  pattern=".{3,10}" required title="최소 4글자 최대 10글자">
+			<input type="text" th:field="*{username}" class="form-control" placeholder="아이디" required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
 
 		</div>
 		<div>
 <!--			<label for="nickname" class="form-label">사용자Nickname</label>-->
-			<input type="text" th:field="*{nickname}" class="form-control" placeholder="닉네임" pattern=".{2,10}" required title="최소 4글자 최대 10글자">
+			<input type="text" th:field="*{nickname}" class="form-control" placeholder="닉네임" required pattern=".{2,10}" title="2에서 10글자 사이의 문자열을 입력하세요">
 
 		</div>
 		<div>
 <!--			<label for="password1" class="form-label">비밀번호</label>-->
-			<input type="password" th:field="*{password1}" class="form-control" placeholder="비밀번호" pattern=".{4,10}" required title="최소 4글자 최대 10글자">
+			<input type="password" th:field="*{password1}" class="form-control" placeholder="비밀번호" required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
 
 		</div>
 		<div>
 <!--			<label for="password2" class="form-label">비밀번호 확인</label>-->
-			<input type="password" th:field="*{password2}" placeholder="비밀번호 확인" class="form-control">
+			<input type="password" th:field="*{password2}" placeholder="비밀번호 확인" class="form-control" required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
 
 		</div>
 		<div>

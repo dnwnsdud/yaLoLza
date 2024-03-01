@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/duo.yalolza.gg/duo")
+@RequestMapping("/duo.yalolza.gg")
 public class DuoPage {
 
 	@Autowired
@@ -67,7 +67,7 @@ public class DuoPage {
 
 		 if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
 	            model.addAttribute("message", "듀오 등록 실패: 2개의 패스워드가 일치하지 않습니다.");
-	            model.addAttribute("searchUrl","/duo.yalolza.gg/duo/save");
+	            model.addAttribute("searchUrl","/duo.yalolza.gg/save");
 	            return "message"; // 패스워드가 일치하지 않을 경우 메시지 페이지 반환
 	        }
 
@@ -82,10 +82,10 @@ public class DuoPage {
 
 	        try {
 	            duoDao.save(duoDto); // Duo 엔티티 저장
-	            return "redirect:/duo.yalolza.gg/duo/list"; // 리스트 페이지로 리다이렉트
+	            return "redirect:/duo.yalolza.gg/list"; // 리스트 페이지로 리다이렉트
 	        } catch (Exception e) {
 	            model.addAttribute("message", "듀오 등록 실패: " + e.getMessage());
-	            model.addAttribute("searchUrl","/duo.yalolza.gg/duo/save");
+	            model.addAttribute("searchUrl","/duo.yalolza.gg/save");
 	            return "message"; // 저장 중 문제 발생 시 메시지 페이지 반환
 	        }
 	    }
@@ -137,7 +137,7 @@ public class DuoPage {
 	    if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
 		    
 		        model.addAttribute("message","듀오 수정 실패 패스워드가 일치하지 않습니다.");
-		        model.addAttribute("searchUrl","/duo.yalolza.gg/duo/edit/" + id);
+		        model.addAttribute("searchUrl","/duo.yalolza.gg/edit/" + id);
 		        return "message"; // 리다이렉트 대신 페이지에 그대로 남도록 수정
 		}else {
 
@@ -156,7 +156,7 @@ public class DuoPage {
 			duoDao.save(duotemp);
 		    
 //		return "message"; 
-			return "redirect:/duo.yalolza.gg/duo/list"; 
+			return "redirect:/duo.yalolza.gg/list"; 
 		    }
 	}
 
@@ -170,7 +170,7 @@ public class DuoPage {
 	    if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
 		   
 		        model.addAttribute("message","듀오 삭제 실패 패스워드가 일치하지 않습니다.");
-		        model.addAttribute("searchUrl","/duo.yalolza.gg/duo/view/" + id);
+		        model.addAttribute("searchUrl","/duo.yalolza.gg/view/" + id);
 		        
 		        return "message";
 		    }else { 
@@ -180,7 +180,7 @@ public class DuoPage {
 					duoService.duoDelete(id);
 		    
 //				return "message"; 
-					return "redirect:/duo.yalolza.gg/duo/list"; 
+					return "redirect:/duo.yalolza.gg/list"; 
 		    }
 
 	}

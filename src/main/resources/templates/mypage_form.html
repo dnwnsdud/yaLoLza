@@ -13,6 +13,7 @@
         return confirmDelete;
     }
 	</script>
+	
 </head>
 <body>
     <h1>My Page</h1>
@@ -24,7 +25,7 @@
        <h2>닉네임 변경</h2>
 
     <form action="/yalolza.gg/user/mypage/change-username" method="post">
-        <label for="newNickname">새로운 닉네임:</label>
+        <label for="newNickname" th:text="|${user.nickname}|" th:value="|${user.nickname}|"></label>
         <input type="text" id="newNickname" name="newNickname" required>
         <button type="submit">변경하기</button>
     </form>
@@ -36,7 +37,6 @@
     <div th:if="${successMessage}" th:text="${successMessage}" style="color: green;"></div>
     </div>
     <div>
-      <h2>비밀번호 변경</h2>
 
 <!-- 에러 메시지 출력 -->
 <div th:if="${errorMessage}" style="color: red;">
@@ -44,8 +44,9 @@
 </div>
 
 
-<div th:if="${user.provider}" th:text="|${user.nickname} 소셜 로그인 유저는 비번을 변경 안합니다.|">아이디 존재</div><br/>
+
 <div th:unless="${user.provider}">
+      <h2>비밀번호 변경</h2>
 <form action="/yalolza.gg/user/mypage/change-pass" method="post">
     <div>
         <label for="oldPassword">현재 비밀번호:</label>

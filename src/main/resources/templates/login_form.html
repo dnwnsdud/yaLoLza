@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/login_form.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/community.css}">
     <title>로그인</title>
+
+    <!-- 새로운 스크립트 -->
+
 </head>
 <body>
 
@@ -19,23 +22,25 @@
     <div sec:authorize="isAnonymous()">
 	<div>	
         <form th:action="@{/yalolza.gg/user/login}" method="post">
+            <div class="login-title">로그인</div>
+            <div class="login-subtitle">
+                롤 게이머들을 위한 yaLoLza 커뮤니티에 오신 것을 환영합니다.
+            </div>
             <div th:if="${param.error}">
                 <div class="alert alert-danger">
                     사용자ID 또는 비밀번호를 확인해 주세요.
                 </div>
             </div>
-            <div class="login-title">로그인</div>
-            <div class="login-subtitle">
-                롤 게이머들을 위한 yaLoLza 커뮤니티에 오신 것을 환영합니다.
-            </div>
             <div class="login_input">
                 <div>
                     <!-- <label for="username" class="form-label">사용자ID</label> -->
-                    <input type="text" name="username" id="username" placeholder="사용자ID" class="form-control">
+                    <input type="text" name="username" id="username" placeholder="사용자ID" class="form-control" 
+                    	required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
                 </div>
                 <div>
                     <!-- <label for="password" class="form-label">비밀번호</label> -->
-                    <input type="password" name="password" id="password" placeholder="비밀번호" class="form-control">
+                    <input type="password" name="password" id="password" placeholder="비밀번호" class="form-control" 
+                    	required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
                 </div>
                 <button type="submit" class="btn btn-primary">로그인</button>
 

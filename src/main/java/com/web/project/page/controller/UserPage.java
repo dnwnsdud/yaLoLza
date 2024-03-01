@@ -60,7 +60,7 @@ public class UserPage {
             return "signup_form";
         }
 
-        return "login_form";
+        return "redirect:/yalolza.gg/user/login";
     }
 
     @GetMapping("/login")
@@ -108,10 +108,10 @@ public class UserPage {
 		
 		if (result) {
 			redirectAttributes.addFlashAttribute("message", "비밀번호가 성공적으로 변경되었습니다.");
-	        return "mypage_form";
+	    	return "redirect:/yalolza.gg/user/mypage";
 	    } else {
 	        model.addAttribute("errorMessage", "비밀번호 변경에 실패했습니다. 입력 정보를 확인해 주세요.");
-	        return "mypage_form";
+	        return "redirect:/yalolza.gg/user/mypage";
 	    }
 	}
 
