@@ -19,14 +19,14 @@ public class StatisticsPage {
 	
 	@GetMapping("/champions")
 	public String StatisticsChampions() {
-    	new Connect("yalolza.gg", "statistics", "champions");
+    	new Connect("total","yalolza.gg", "statistics", "champions");
 		return "NewFile";
 	}
 
 
 	@GetMapping("/tiers")
 	public String StatisticsTiers() {
-    	new Connect("yalolza.gg", "statistics", "tiers");
+    	new Connect("total","yalolza.gg", "statistics", "tiers");
 		return "NewFile";
 	}
 

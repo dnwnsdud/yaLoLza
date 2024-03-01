@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.userterms-box{
+    width: 65%;
+    margin: auto;
+}
+.userterms-box *{
+    border: none;
+    font-size: 1.7rem;
+}

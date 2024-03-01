@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,7 @@ import com.web.project.dto.Community;
 import com.web.project.dto.CommunityForm;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.enumerated.CommunityEnum;
+import com.web.project.metrics.Counter;
 import com.web.project.metrics.count.Connect;
 
 import jakarta.validation.Valid;
@@ -32,7 +34,8 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/yalolza.gg/community")
+@RequestMapping("/talk.yalolza.gg/community")
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class CommunityPage {
 	 private final CommunityRepository communityRepository;
 	    private final CommunityService communityService;
@@ -40,7 +43,7 @@ public class CommunityPage {
 
 	    @GetMapping("/")
 	    public String first() {
-	        return "redirect:/yalolza.gg/community/list/all";
+	        return "redirect:/talk.yalolza.gg/community/list/all";
 	    }
 	    //    @GetMapping("/list")
 //	    public String list(Model model){
@@ -53,7 +56,7 @@ public class CommunityPage {
 	    public String index(Model model){
 	        List<Community> communityList = this.communityRepository.findTop10ByOrderByCreateDateDesc();
 	        model.addAttribute("communityList", communityList);
-	    	new Connect("yalolza.gg", "community", "index");
+	    	new Connect("total","talk.yalolza.gg", "community", "index");
 	        return "index";
 	    }
 
@@ -87,7 +90,7 @@ public class CommunityPage {
 	        model.addAttribute("boardName", category);
 	        Page<Community> paging = communityService.getList(page, category, keyword);
 	        model.addAttribute("paging", paging);
-	    	new Connect("yalolza.gg", "community", "list", type);
+	    	new Connect("total","talk.yalolza.gg", "community", "list", type);
 	        return "community";
 	    }
 
@@ -96,7 +99,7 @@ public class CommunityPage {
 
 	        Community community = this.communityService.getCommu(id);
 	        model.addAttribute("community", community);
-	    	new Connect("yalolza.gg", "community", "detail" );
+	    	new Connect("total","talk.yalolza.gg", "community", "detail");
 	        return "commu_detail";
 	    }
 
@@ -112,6 +115,8 @@ public class CommunityPage {
 	            case "qna" -> model.addAttribute("boardName", "QnA");
 	            default -> throw new RuntimeException("올바르지 않습니다.");
 	        }
+	    	new Connect("total","talk.yalolza.gg", "community", "create", type);
+
 	        return "commu_form";
 	    }
 	//@ModelAttribute("communityEnums")
@@ -153,7 +158,8 @@ public class CommunityPage {
 	            SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	            communityService.create(communityForm.getTitle(),
 	                    communityForm.getContent(), category, file, siteUser);
-	        return "redirect:/yalolza.gg/community/list/qna";
+		        Counter.Increment("qnaCount",1);
+	        return "redirect:/talk.yalolza.gg/community/list/qna";
 	    }
 
 	    @PreAuthorize("isAuthenticated()")
@@ -177,7 +183,8 @@ public class CommunityPage {
 
 	        communityService.create(communityForm.getTitle(),
 	                communityForm.getContent(), category, file, siteUser);
-	        return "redirect:/yalolza.gg/community/list/%s".formatted(type);
+	        Counter.Increment("commuCount",1);
+	        return "redirect:/talk.yalolza.gg/community/list/%s".formatted(type);
 	    }
 
 	    @GetMapping("/delete/{id}")
@@ -186,7 +193,8 @@ public class CommunityPage {
 	        Community community= this.communityService.getCommu(id);
 //	    if(!community.getAuthor().getU) 회원 넘어오면 해야돼
 	        this.communityService.delete(community);
-	        return "redirect:/yalolza.gg/community/";
+	        Counter.Decrement("commuCount",1);
+	        return "redirect:/talk.yalolza.gg/community/";
 	    }
 
 
@@ -200,6 +208,7 @@ public class CommunityPage {
 	        }
 	        communityForm.setTitle(community.getTitle());
 	        communityForm.setContent(community.getContent());
+	    	new Connect("total","talk.yalolza.gg", "community", "modify");
 	        return "commu_form";
 	    }
 
@@ -215,7 +224,7 @@ public class CommunityPage {
 	            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정 권한이 없습니다.");
 	        }
 	        this.communityService.modify(community, communityForm.getTitle(), communityForm.getContent(), file);
-	        return String.format("redirect:/yalolza.gg/community/detail/%s", id);
+	        return String.format("redirect:/talk.yalolza.gg/community/detail/%s", id);
 	    }
 
 	    

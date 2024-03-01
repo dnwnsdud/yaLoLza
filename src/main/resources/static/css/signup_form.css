@@ -37,7 +37,7 @@
 }
 
 .signupbox{
-    width: 30%;
+    width: 25%;
     margin: auto;
     display: block;
     align-items: center;
@@ -84,7 +84,7 @@ input {
 
 .logingobox{
     display: flex;
-    width: 45%;
+    width: 40%;
     margin: auto;
     margin-top: 3rem;
 }

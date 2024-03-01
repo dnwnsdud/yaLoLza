@@ -2,15 +2,19 @@ package com.web.project.api.controller;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import com.web.project.config.SecurityConfig;
 import com.web.project.dao.UserRepository;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.enumerated.UserRole;
@@ -18,10 +22,13 @@ import com.web.project.dto.enumerated.UserRole;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+
 @Service
 public class UserService extends DefaultOAuth2UserService implements UserDetailsService{
 	 private final UserRepository userRepository;
 
+	 
+	
 
 	    public SiteUser create(String username, String nickname, String email, String password) {
 	        SiteUser user = new SiteUser();
@@ -102,5 +109,8 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 //			}
 	        return dto;
 	    }
+	    
+	    
+	
 
 }
