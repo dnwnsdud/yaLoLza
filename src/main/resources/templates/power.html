@@ -144,8 +144,8 @@
                     <div class="usergame-grade">
                       <div class="img-wrap2"><img th:src="@{'/img/champion/'+${match.body.info.participants[summonermatchnum[i.index]].championName} + '.png'}" alt="" /></div>
                       <div class="usergame-flex">
-                        <div class="img-wrap1"><img th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].style} + '.png'}" alt="" /></div>
-                        <div class="img-wrap1"><img th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style} + '.png'}" alt="" /></div>
+                        <div class="img-wrap1"><img th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].style]} + '.png'}" alt="" /></div>
+                        <div class="img-wrap1"><img th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style]} + '.png'}" alt="" /></div>
                       </div>
                       <div class="usergame-flex">
                         <div class="img-wrap1"><img th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]].summoner1Id} + '.png'}" alt="" /></div>

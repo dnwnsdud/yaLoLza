@@ -46,6 +46,7 @@ import com.web.project.function.SummonerTimeListSS;
 import com.web.project.save.MatchRepository;
 import com.web.project.save.MatchService;
 import com.web.project.system.ChampionData;
+import com.web.project.system.RuneData;
  
 
   @Controller  
@@ -480,6 +481,7 @@ import com.web.project.system.ChampionData;
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
 		   		  //진비 챔피언 이름 영어-> 한글
 		  		 Map<String, String> keysChamName = ChampionData.keysChamName();
+		  		Map<Integer, String> keysRuneImage = RuneData.keysRuneImage();
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
@@ -492,6 +494,7 @@ import com.web.project.system.ChampionData;
 			  	     //이름 판수 승수  k d a kda 킬관여
 			  		model.addAttribute("summonermost", championStatisticsss);
 			  		model.addAttribute("keysChamName", keysChamName);
+			  		model.addAttribute("keysRuneImage", keysRuneImage);
 			  		
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
