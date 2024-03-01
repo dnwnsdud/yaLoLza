@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.web.project.api.controller.UserService;
@@ -20,29 +22,27 @@ import jakarta.servlet.DispatcherType;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	@Autowired
-	UserService service;
-	
-	
+   @Autowired
+   UserService service;
+   
+   
 
-	@Autowired
-	OAuth2UserService oauth2service;
+   @Autowired
+   OAuth2UserService oauth2service;
 
-	
-  @Bean
-  PasswordEncoder passwordEncoder() {
-      return new BCryptPasswordEncoder();
-  }
-//	@Bean
-//	PasswordEncoder bcrypt() {
-//		return new BCryptPasswordEncoder();
-//	}
+   
+//  @Bean
+//  PasswordEncoder passwordEncoder() {
+//      return new BCryptPasswordEncoder();
+//  }
+
 	@Bean
 	SecurityFilterChain chain(HttpSecurity http) throws Exception{
 		return http
 				.csrf(csrf->
 					csrf.ignoringRequestMatchers(
-							"/yalolza.gg/community/index",
+							"**",
+							"**/**",
 						"/api/all",
 						"/api/**",
 						"/login/check",
@@ -53,7 +53,10 @@ public class SecurityConfig {
 						"/statistics/**",
 						"/summoners/**",
 						"/**",
-						"/duo/**"
+						"/duo/**",
+						"/img/**",
+						"/css/**",
+						"/js/**"
 					)
 				)
 				.authorizeHttpRequests(auth->
@@ -62,28 +65,43 @@ public class SecurityConfig {
 						.requestMatchers(
 								"**",
 								"/**",
+								"/newlolkia",
+								"/newlolkia/userinfo",
+								"/newlolkia/userinfo/**",
+//								"**",
+//								"/**",
 							"/yalolza.gg",
 							"/yalolza.gg/**",
+							"/yalolza.gg/champions",
 							"/yalolza.gg/champions/**",
 							"/yalolza.gg/ranking/**",
 							"/yalolza.gg/statistics/**",
 							"/yalolza.gg/summoners/**", 
-							"/yalolza.gg/duo/**", 
-							"/yalolza.gg/duo/list/**", 
-							"/yalolza.gg/duo/save/**", 
-							"/yalolza.gg/duo/create/**", 
-							"/yalolza.gg/duo/edit/**", 
-							"/yalolza.gg/duo/view/**", 
-							"/yalolza.gg/duo/delete/**", 
-							"/yalolza.gg/community/**",
-							"/yalolza.gg/comment/**",
+							"/duo.yalolza.gg/**", 
+							"/duo.yalolza.gg/list/**", 
+							"/duo.yalolza.gg/save/**", 
+							"/duo.yalolza.gg/create/**", 
+							"/duo.yalolza.gg/edit/**", 
+							"/duo.yalolza.gg/view/**", 
+							"/duo.yalolza.gg/delete/**", 
+							"/talk.yalolza.gg/community/index",
+							"/talk.yalolza.gg/community/list/**",
+							"/talk.yalolza.gg/community/detail/**",
+							"/talk.yalolza.gg/community/",
+//							"/talk.yalolza.gg/comment/**",
 							"/home",
 							"/index",
 							"/yalolza.gg/user/login",
 							"/yalolza.gg/user/signup",
 							"/files/**",
-							"/oauth2/authorization/**"
-							
+							"/oauth2/authorization/**",
+							"/lol/**", 
+							"/counter/**" ,
+							"/img/**" ,
+							"/css/**" ,
+							"/js/**",
+							"/json/**",
+							"/info/**"
 						).permitAll()
 						.requestMatchers(
 								"/user/mypage"
@@ -101,8 +119,8 @@ public class SecurityConfig {
 						.usernameParameter("username")
 //						.usernameParameter("email")
 						.passwordParameter("password")
-						.defaultSuccessUrl("/yalolza.gg/", true)
-						.failureUrl("/yalolza.gg/user/login")
+//						.defaultSuccessUrl("/yalolza.gg", true)
+						.failureUrl("/yalolza.gg/user/login?error")
 						.permitAll()
 				)
 				.oauth2Login(login->
@@ -113,7 +131,7 @@ public class SecurityConfig {
 							end
 								.userService(oauth2service)
 						)
-						.defaultSuccessUrl("/yalolza.gg/", true)
+//						.defaultSuccessUrl("/yalolza.gg", true)
 //						.failureUrl("/members/login/error")
 						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()
@@ -125,7 +143,7 @@ public class SecurityConfig {
 //						.logoutUrl("/members/logout")
 //						.logoutSuccessUrl("/main")
 //						.logoutUrl("/user/logout")
-						.logoutSuccessUrl("/yalolza.gg/user/login")
+						.logoutSuccessUrl("/yalolza.gg")
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.permitAll()
@@ -147,7 +165,12 @@ public class SecurityConfig {
 //        throws Exception {
 //        return authenticationConfiguration.getAuthenticationManager();
 //    }
-    
+
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        SimpleUrlAuthenticationSuccessHandler successHandler = new SimpleUrlAuthenticationSuccessHandler();
+        successHandler.setUseReferer(true); // 성공 후 referer를 사용하여 이전 페이지로 이동
+        successHandler.setDefaultTargetUrl("/yalolza.gg"); // 기본적으로 이동할 페이지 설정
+        return successHandler;
+    }
     
 }
-

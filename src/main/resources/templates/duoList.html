@@ -302,15 +302,20 @@
 			}
 		}
 
-		function searchDuoByQueuetype(selectedPosition) {
-			document.querySelectorAll(`#duoTableBody > :not(ul[data-queue=${selectedPosition}])`).forEach(element => {
-				element.dataset.invisible3 = "TRUE";
-			});
-			document.querySelectorAll(`#duoTableBody > ul[data-queue=${selectedPosition}]`).forEach(element => {
-				element.dataset.invisible3 = "FALSE";
-			});
-
-		}
+      function searchDuoByQueuetype(selectedPosition) {
+         if (selectedPosition === 'ALL') {
+                document.querySelectorAll(`#duoTableBody > ul`).forEach(element => {
+                  element.dataset.invisible3 = "FALSE";
+              });
+             } else {
+            document.querySelectorAll(`#duoTableBody > :not(ul[data-queue=${selectedPosition}])`).forEach(element => {
+               element.dataset.invisible3 = "TRUE";
+            });
+            document.querySelectorAll(`#duoTableBody > ul[data-queue=${selectedPosition}]`).forEach(element => {
+               element.dataset.invisible3 = "FALSE";
+            });
+         }
+      }
 
 
 		function searchDuoByYourposition(selectedPosition) {

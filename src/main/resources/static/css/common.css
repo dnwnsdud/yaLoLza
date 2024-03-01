@@ -2,13 +2,13 @@
 @font-face {
   font-family: "Pretendard-Regular";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
-  format("woff");
+    format("woff");
   font-weight: 400;
   font-style: normal;
 }
 :root {
   font-family: "Pretendard-Regular";
-  --point1: #1e2153;
+  --point1: #050a53;
   --point2: #213a96;
   --point3: #007aff;
   --point4: #181c2a;
@@ -18,8 +18,8 @@
   --point8: #45464d;
   --point9: #3e3e44;
   --point10: #ff0558;
-  --point11: #e3464626;
-  --point12: #231a9626;
+  --point11: #fc7ba6;
+  --point12: #13457a;
   --point13: #2b3040;
   --point14: #4f5770;
   --point15: #31313c;
@@ -178,4 +178,37 @@ footer {
   text-align: center;
 }
 
+/*커뮤 불러오기*/
+.commu_list {
+  display: flex;
+  color: black;
+  font-size: 1.5rem;
+}
 
+.commu_list > li:first-child {
+  width: 10%;
+} /*태그*/
+.commu_list > li:first-child + li {
+  width: 40%;
+} /*제목*/
+.commu_list > li:first-child + li + li {
+  width: 30%;
+} /*글쓴이*/
+.commu_list > li:first-child + li + li + li {
+  width: 20%;
+} /*날짜*/
+
+.write_title {
+  color: var(--point3);
+  font-size: 1.8rem;
+}
+
+.commu_list > li {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 0 0.5rem 0;
+  text-align: center;
+}
+
+.commu_list:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}

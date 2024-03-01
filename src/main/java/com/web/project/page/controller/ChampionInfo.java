@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.project.dto.info.Perk;
 import com.web.project.dto.info.Runes;
-import com.web.project.dto.info.Champion.Champion;
-import com.web.project.dto.info.Champion.Passive;
-import com.web.project.dto.info.Champion.Spell;
+import com.web.project.dto.info.Champion.*;
 import com.web.project.dto.info.item.Item;
 import com.web.project.dto.info.rune.Rune;
 import com.web.project.system.ChampionData;

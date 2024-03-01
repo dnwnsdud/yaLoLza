@@ -12,9 +12,7 @@ import org.json.JSONObject;
 import com.web.project.dto.info.Perk;
 import com.web.project.dto.info.Perks;
 import com.web.project.dto.info.Runes;
-import com.web.project.dto.info.rune.Rune;
-import com.web.project.dto.info.rune.Slots;
-
+import com.web.project.dto.info.rune.*;
 
 public class RuneData {
 	public static Rune runedetail(Integer id) {
@@ -218,7 +216,7 @@ public class RuneData {
 				);
 		perklist.add(
 				Perk.builder()
-				.id(5008).name("적응형 능력치").group("OFFENSE")
+				.id(5008).name("적응형 능력치").group("FLEX")
 				.icon("perk-images/StatMods/StatModsAdaptiveForceIcon.png")
 				.tooltip("적응형 능력치 +9").build()
 				);
@@ -230,7 +228,7 @@ public class RuneData {
 				);
 		perklist.add(
 				Perk.builder()
-				.id(5001).name("체력 증가").group("DEFENSE")
+				.id(5001).name("체력 증가").group("FLEX")
 				.icon("perk-images/StatMods/StatModsHealthPlusIcon.png")
 				.tooltip("체력 +15~140 (레벨에 비례)").build()
 				);
@@ -282,6 +280,23 @@ public class RuneData {
 			}
 		}
 		return keysRune;
+	}
+	public static Map<Long, String> keysRuneImage () {
+		String url4 = "https://ddragon.leagueoflegends.com/cdn/14.3.1/data/ko_KR/runesReforged.json";
+		JSONArray ru1 = Ajax.JsonTArr(Ajax.GETO(url4));
+		Map<Long, String> keysRuneImage= new HashMap<Long, String>();
+		for (int i = 0; i < ru1.length(); i+=1) {
+			JSONObject ru2 = ru1.getJSONObject(i);
+			keysRuneImage.put(ru2.getLong("id"),ru2.getString("icon"));
+			for (int j = 0; j < ru2.getJSONArray("slots").length(); j+=1) {
+				JSONObject ru4 = ru2.getJSONArray("slots").getJSONObject(j);
+				for (int k = 0; k < ru4.getJSONArray("runes").length(); k+=1) {
+					JSONObject ru5 = ru4.getJSONArray("runes").getJSONObject(k);
+					keysRuneImage.put(ru5.getLong("id"),ru5.getString("icon"));
+				}
+			}
+		}
+		return keysRuneImage;
 	}
 
 	public static Map<Integer, String> keysPerk () {

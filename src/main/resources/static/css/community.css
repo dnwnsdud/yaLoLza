@@ -193,17 +193,18 @@
 .commu_ul1_ul >  li:first-child +li+li+li+li      {width:15%;} /*작성일 열 크기*/
 .commu_ul1_ul >  li:first-child +li+li+li+li+li        {width:10%;} /*조회수 열 크기*/
 
-.commu_ul1_ul2 >  li:first-child               {width:10%;
+.commu_ul1_ul2 >  a > li:first-child               {width:10%;
     color:#aaa} /*No 열 크기*/
-.commu_ul1_ul2 >  li:first-child +li           {width:10%;} /*채그 열 크기*/
-.commu_ul1_ul2 >  li:first-child +li+li        {width:40%;
+.commu_ul1_ul2 >  a > li:first-child +li           {width:10%;} /*채그 열 크기*/
+.commu_ul1_ul2 >  a > li:first-child +li+li        {width:40%;
     font-size: 1.5rem;} /*제목 열 크기*/
-.commu_ul1_ul2 >  li:first-child +li+li+li        {width:15%;
+.commu_ul1_ul2 >  a > li:first-child +li+li+li        {width:15%;
     font-size: 1.5rem;} /*제목 열 크기*/
-.commu_ul1_ul2 >  li:first-child +li+li+li+li       {width:15%;
+.commu_ul1_ul2 > a > li:first-child +li+li+li+li       {width:15%;
     font-size: 1.5rem; color:#aaa} /*작성일 열 크기*/
-.commu_ul1_ul2 >  li:first-child +li+li+li+li+li       {width:10%;
+.commu_ul1_ul2 >  a > li:first-child +li+li+li+li+li       {width:10%;
     font-size: 1.5rem; color:#aaa} /*조회수 열 크기*/
+    
 
 .category_box{
     /*border:1px solid black;*/

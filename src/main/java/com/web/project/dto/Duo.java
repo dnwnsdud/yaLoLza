@@ -57,7 +57,6 @@ public class Duo {
 	@Enumerated(EnumType.STRING)
 	Myposition myposition; // enum
 	
-
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	@ElementCollection
