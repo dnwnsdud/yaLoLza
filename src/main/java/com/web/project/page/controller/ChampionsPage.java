@@ -106,28 +106,52 @@ public class ChampionsPage {
 			System.out.println("1빠 메인룬 : " + primaryStyleFirstPerk.get(0));
 			System.out.println("2빠 메인룬 : " + primaryStyleFirstPerk.get(1));
 			
-			int RuneGameCount = StatisticChampion.calculateRuneGameCount(filteredData, primaryStyleFirstPerk.get(0));
-			System.out.println("playedrunecount :" +RuneGameCount);
+			
+			
+			
+			double runePickRate = StatisticChampion.calculateRunePickRate(filteredData, primaryStyleFirstPerk.get(0));
+			System.out.println("runepickrate :" + runePickRate);
+			
+			int runeGameCount = StatisticChampion.calculateRuneGameCount(filteredData, primaryStyleFirstPerk.get(0));
+			System.out.println("playedrunecount :" +runeGameCount);			
+			
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData, primaryStyleFirstPerk.get(0));
+			System.out.println("runewinrate :" +runeWinRate);
+			
+			
 			//#####
 			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(0)));
 			System.out.println("mainStyle : " +mainStyle);
 			Runes runes = RuneData.runes(mainStyle);
 			//####
 			model.addAttribute("mainRune", runes);
-			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0));
+			List<Integer> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0));
 			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
 			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			System.out.println("이제부터 메인룬 4개 : "+primaryStylePerks234.get(0));
+			System.out.println(primaryStylePerks234.get(1));
+			System.out.println(primaryStylePerks234.get(2));
+			System.out.println(primaryStylePerks234.get(3));
 			
-			runes = RuneData.runes(8400);
-			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0));
+			Integer substyle = Integer.parseInt(StatisticChampion.subStyle(filteredData,primaryStyleFirstPerk.get(0)));
+			System.out.println("서브스타일 : "+substyle);
+			runes = RuneData.runes(substyle);
+			
+			
+			
+			List<Integer> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0));
+			
+			System.out.println("secondaryPerk12 : "+subStylePerks12.get(0));
+			System.out.println("secondaryPerk12 : "+subStylePerks12.get(1));
+			
 			model.addAttribute("secondaryPerk12", subStylePerks12);
 			model.addAttribute("subRune", runes);
 			List<Perk> perklist = RuneData.perklist();
-			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk.get(0));
             List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
             List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
             List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
-            출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+            
+            //출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
 			model.addAttribute("perklist", perklist);
 			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
 			model.addAttribute("summoner1", spell);
