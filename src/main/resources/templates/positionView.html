@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link rel="stylesheet" href="/css/myrest.css" />
+<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/champ.css" />
+</head>
+<body>
+	<div class="con1-wrap">
+		<section class="con1">
+			<div class="champ-tier">
+				<select name="tier" id="tier"
+					onchange="updateUrl('tier', this.value)">
+					<option value="CHALLENGER">Challenger</option>
+					<option value="GRANDMASTER">Grandmaster</option>
+					<option value="MASTER">Master</option>
+					<option value="DIAMOND">Diamond</option>
+					<option value="EMERALD">Emerald</option>
+					<option value="PLATINUM">Platinum</option>
+					<option value="GOLD">Gold</option>
+					<option value="SILVER">Silver</option>
+					<option value="BRONZE">Bronze</option>
+					<option value="IRON">Iron</option>
+				</select> <select name="version" id="version">
+					<option value="v14.03">v14.03</option>
+					<option value="v14.02">v14.02</option>
+					<option value="v14.01">v14.01</option>
+				</select>
+			</div>
+			<div class="champ-position">
+				<nav>
+					<button onclick="updateUrl('position', 'ALL')">전체</button>
+					<button onclick="updateUrl('position', 'TOP')">탑</button>
+					<button onclick="updateUrl('position', 'JUNGLE')">정글</button>
+					<button onclick="updateUrl('position', 'MIDDLE')">미드</button>
+					<button onclick="updateUrl('position', 'BOTTOM')">원딜</button>
+					<button onclick="updateUrl('position', 'UTILITY')">서포터</button>
+				</nav>
+			</div>
+		</section>
+	</div>
+	<div class="champ-con">
+		<section class="con2">
+			<div class="champ-btn">
+				<button>전체</button>
+				<button>탑</button>
+				<button>정글</button>
+				<button>미드</button>
+				<button>원딜</button>
+				<button>서포터</button>
+			</div>
+			<ul class="champ-face">
+				<li><a href="#"><div>
+							<img src="/img/Garen.webp" alt="" />
+						</div>
+						<p>가렌</p></a></li>
+				<li><a href="#"><div>
+							<img src="/img/Garen.webp" alt="" />
+						</div>
+						<p>가렌</p></a></li>
+				<li><a href="#"><div>
+							<img src="/img/Garen.webp" alt="" />
+						</div>
+						<p>가렌</p></a></li>
+				<li><a href="#"><div>
+							<img src="/img/Garen.webp" alt="" />
+						</div>
+						<p>가렌</p></a></li>
+				<li><a href="#"><div>
+							<img src="/img/Garen.webp" alt="" />
+						</div>
+						<p>가렌</p></a></li>
+				<li><a href="#"><div>
+							<img src="/img/Garen.webp" alt="" />
+						</div>
+						<p>가렌</p></a></li>
+			</ul>
+		</section>
+		<section class="con3">
+			<table>
+				<thead>
+					<tr>
+						<th>순위</th>
+						<th>챔피언</th>
+						<th>티어</th>
+						<th>포지션</th>
+						<th>승률</th>
+						<th>픽률</th>
+						<th>벤율</th>
+						<th>상대하기 어려운챔피언</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="champion, stat : ${positionData}" class="champ-body">
+						<td th:text="${stat.count}"></td>
+						<td>
+							<div class="img-wrap">
+								<a th:href="@{/img/champion/{championName}(championName=${champion.championName})}">
+								<img th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}" alt="Champion Icon" />
+								</a>
+							</div>
+							<p class="champ-name">
+								<a th:text="${champion.krchampionName}" href="#"></a>
+							</p>
+						</td>
+						<td th:text="${champion.stats.champtier}"></td>
+						<td>
+							<div class="img-wrap">
+								<img src="/img/01-icon-01-lol-icon-position-top.svg" alt="" />
+							</div>
+						</td>
+						<td th:text="${champion.stats.winrate} + '%'"></td>
+						<td th:text="${champion.stats.pickrate} + '%'"></td>
+						<td th:text="${champion.stats.banrate} + '%'"></td>
+						<td>
+							<div class="img-wrap">
+								<a href=""><img src="/img/Garen.webp" alt="" /></a>
+							</div>
+							<div class="img-wrap">
+								<a href=""><img src="/img/Garen.webp" alt="" /></a>
+							</div>
+							<div class="img-wrap">
+								<a href=""><img src="/img/Garen.webp" alt="" /></a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<script>
+		// URL 업데이트
+		function updateUrl(key, value) {
+			var url = new URL(window.location.href);
+			url.searchParams.set(key, value);
+			window.location.href = url.href;
+		}
+		document.addEventListener('DOMContentLoaded', function() {
+		    var url = new URL(window.location.href);
+		    var tier = url.searchParams.get("tier");
+		    var version = url.searchParams.get("version");
+
+		    if (tier) {
+		        document.getElementById("tier").value = tier;
+		    }
+		    if (version) {
+		        document.getElementById("version").value = version;
+		    }
+		});
+	</script>
+</body>
+</html>

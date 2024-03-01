@@ -10,7 +10,8 @@ const swiper = new Swiper(".champskin", {
 function tooltip(
   currentTarget,
   tag,
-  options = { gap: 5, backgroundColor: "black", borderRadius: "2px" }, styleOptions = {}
+  options = { gap: 5, backgroundColor: "black", borderRadius: "2px" },
+  styleOptions = {}
 ) {
   if (typeof currentTarget === "string") {
     let targets = document.getElementsByClassName(currentTarget);
@@ -64,9 +65,9 @@ function tooltip(
       div.style.minHeight = "16px";
       div.style.overflow = "hidden";
       div.style.borderRadius = options.borderRadius || "0";
-      for (let key in styleOptions){
-		  div.style[key] = styleOptions[key];
-	  }
+      for (let key in styleOptions) {
+        div.style[key] = styleOptions[key];
+      }
       arrow.style.backgroundColor = options.backgroundColor || "black";
       arrow.style.position = "absolute";
       arrow.style.display = "inline-block";
@@ -96,7 +97,8 @@ function tooltip(
           divRect.height -
           arrowRect.height / 2 -
           gap -
-          currRect.height / 2
+          currRect.height / 2 +
+          window.scrollY
         }px`;
       } else if (currRect.realCenter.y - divRect.height / 2 > 0) {
         if (
@@ -108,7 +110,9 @@ function tooltip(
           0
         ) {
           arrow.style.right = `${-arrowRect.width / 2 + 3}px`;
-          arrow.style.top = `${3 + divRect.center.y - arrowRect.height / 2}px`;
+          arrow.style.top = `${
+            3 + divRect.center.y - arrowRect.height / 2 + window.scrollY
+          }px`;
           div.style.left = `${
             currRect.realCenter.x -
             gap -
@@ -116,27 +120,34 @@ function tooltip(
             currRect.width / 2 -
             divRect.width
           }px`;
-          div.style.top = `${currRect.realCenter.y - divRect.height / 2}px`;
+          div.style.top = `${
+            currRect.realCenter.y - divRect.height / 2 + window.scrollY
+          }px`;
         } else {
           arrow.style.left = `${-arrowRect.width / 2 + 4}px`;
-          arrow.style.top = `${3 + divRect.center.y - arrowRect.height / 2}px`;
+          arrow.style.top = `${
+            3 + divRect.center.y - arrowRect.height / 2 + window.scrollY
+          }px`;
           div.style.left = `${
             currRect.realCenter.x +
             gap +
             arrowRect.width / 2 +
             currRect.width / 2
           }px`;
-          div.style.top = `${currRect.realCenter.y - divRect.height / 2}px`;
+          div.style.top = `${
+            currRect.realCenter.y - divRect.height / 2 + window.scrollY
+          }px`;
         }
       } else {
         arrow.style.left = `${divRect.width / 2 - arrowRect.width / 2 + 3}px`;
-        arrow.style.top = `${-8}px`;
+        arrow.style.top = `${-8 + window.scrollY}px`;
         div.style.left = `${currRect.realCenter.x - divRect.width / 2}px`;
         div.style.top = `${
           currRect.realCenter.y +
           currRect.height / 2 +
           gap +
-          arrowRect.height / 2
+          arrowRect.height / 2 +
+          window.scrollY
         }px`;
       }
     },
@@ -149,4 +160,3 @@ function tooltip(
   ];
   currentTarget.addEventListener("mouseenter", enter);
 }
-

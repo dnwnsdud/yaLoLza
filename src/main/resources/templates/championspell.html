@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>spell</title>
+</head>
+<body>
+	<div th:text = "${spell.name}"></div>
+	<div th:text = "'재사용대기시간(초): '+${spell.cooldownBurn}"></div>	
+	<div th:text = "'소모: '+${spell.costBurn}"></div>	
+	<div th:text = "'범위: '+${spell.rangeBurn}"></div>	
+	<div  th:text = "${spell.tooltip}"></div>
+	<div th:text = "${spell.description}"></div>
+</body>
+</html>

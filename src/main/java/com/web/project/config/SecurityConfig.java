@@ -48,6 +48,9 @@ public class SecurityConfig {
 						"/summoners/**",
 						"/**",
 						"/duo/**"
+						"/img/**",
+						"/css/**",
+						"/js/**"
 					)
 				)
 				.authorizeHttpRequests(auth->
@@ -58,6 +61,7 @@ public class SecurityConfig {
 								"/**",
 							"/yalolza.gg",
 							"/yalolza.gg/**",
+							"/yalolza.gg/champions",
 							"/yalolza.gg/champions/**",
 							"/yalolza.gg/ranking/**",
 							"/yalolza.gg/statistics/**",
@@ -76,8 +80,16 @@ public class SecurityConfig {
 							"/yalolza.gg/user/login",
 							"/yalolza.gg/user/signup",
 							"/files/**",
-							"/oauth2/authorization/**"
-							
+							"/oauth2/authorization/**",
+							"/login", 
+							"/login/check", 
+							"/lol/**", 
+							"/counter/**" ,
+							"/img/**" ,
+							"/css/**" ,
+							"/js/**",
+							"/json/**",
+							"/info/**"
 						).permitAll()
 						.requestMatchers(
 								"/user/mypage"
