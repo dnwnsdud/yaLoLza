@@ -19,6 +19,8 @@ import com.web.project.api.controller.UserService;
 import com.web.project.dto.PasswordForm;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.UserCreateForm;
+import com.web.project.metrics.Counter;
+import com.web.project.metrics.count.Connect;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +36,7 @@ public class UserPage {
 
     @GetMapping("/signup")
     public String signup(UserCreateForm userCreateForm) {
+    	new Connect("total","yalolza.gg", "user");
         return "signup_form";
     }
 
@@ -60,33 +63,38 @@ public class UserPage {
             return "signup_form";
         }
 
+        Counter.Increment("userCount", 1);
         return "redirect:/yalolza.gg/user/login";
     }
 
     @GetMapping("/login")
     public String login() {
+    	new Connect("total","yalolza.gg", "user");
         return "login_form";
     }
 
     @GetMapping("/unregist")
     public String userDelete(@AuthenticationPrincipal SiteUser user, Model model, @Valid PasswordForm passwordForm) {
         model.addAttribute("user", user);
-        return "/mypage_form";
+    	new Connect("total","yalolza.gg", "user");
+        return "mypage_form";
     }
 
     @PostMapping("/unregist")
     public String userDelete(@Valid PasswordForm passwordForm, BindingResult bindingResult, SiteUser user, Long id) {
         if (bindingResult.hasErrors()) {
-            return "/mypage_form";
+            return "mypage_form";
         }
         userService.deleteUser(id);
-        return "redirect:/yalolza.gg/user/logout";
+        Counter.Decrement("userCount", 1);
+        return "redirect:/yalolzq.gg/user/logout";
 
     }
     
     @GetMapping("/mypage")
     public String userMypage(@AuthenticationPrincipal SiteUser user, Model model) {
         model.addAttribute("user", user);
+    	new Connect("total","yalolza.gg", "user");
         return "mypage_form";
     }
 

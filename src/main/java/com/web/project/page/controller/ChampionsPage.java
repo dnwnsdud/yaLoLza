@@ -32,6 +32,7 @@ import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
 import com.web.project.dto.runeSpell.DataEntry;
 import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
+import com.web.project.metrics.count.Connect;
 import com.web.project.system.ChampionData;
 import com.web.project.system.CounterJsonReader;
 import com.web.project.system.ItemData;
@@ -119,6 +120,7 @@ public class ChampionsPage {
 		} catch (Exception e) {
 			model.addAttribute("error", "ERROR: " + e.getMessage());
 		}
+    	new Connect("total","yalolza.gg", "champions");
 		return "champ";
 	}
 
@@ -291,6 +293,7 @@ public class ChampionsPage {
 		model.addAttribute("item3", item);
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
+    	new Connect("total","yalolza.gg", "champions","detail");
 		return "champ_detail";
 	}
 

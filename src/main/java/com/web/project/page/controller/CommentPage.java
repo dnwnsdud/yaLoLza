@@ -16,6 +16,7 @@ import com.web.project.api.controller.UserService;
 import com.web.project.dto.Comment;
 import com.web.project.dto.Community;
 import com.web.project.dto.SiteUser;
+import com.web.project.metrics.Counter;
 
 import ch.qos.logback.core.model.Model;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,7 @@ public class CommentPage {
 	        Community community = this.communityService.getCommu(id);
 	        SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	        this.commentService.commentcreate(community, content, siteUser);
+	        Counter.Increment("commentCount", 1);
 	        return String.format("redirect:/talk.yalolza.gg/community/detail/%s", id);
 	    }
 

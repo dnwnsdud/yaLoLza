@@ -5,9 +5,14 @@
     <title>Insert title here</title>
     <script src="https://kit.fontawesome.com/286b044825.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}">
+    	    <link rel="stylesheet" href="/css/HeaderFooter.css" />
+
     <link rel="stylesheet" type="text/css" th:href="@{/css/community.css}">
 </head>
 <body>
+	<header th:replace="~{/header :: header}"></header>
+	<br/>
+	<br/>
 <div class="community">
     <div>
         <h2 class="community-title">커뮤니티</h2>
@@ -127,6 +132,8 @@
         </ul>
     </div>
 </div>
+          <footer th:replace="~{/footer :: footer}"></footer>
+
 <script>
     function searchQuestion() {
         var searchKeyword = document.getElementById('search_keyword').value;

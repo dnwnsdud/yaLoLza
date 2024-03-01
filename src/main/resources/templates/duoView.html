@@ -1,107 +1,152 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <link rel="stylesheet" th:href="@{/css/myrest.css}" />
+    <link rel="stylesheet" th:href="@{/css/duoView.css}" />
+    <script src="/js/position.js" defer></script>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Insert title here</title>
-	<link rel="stylesheet" th:href="@{/css/myrest.css}">
-	<link rel="stylesheet" th:href="@{/css/duoView.css}">
-	<script src="/js/position.js" defer></script>
+  <body>
+    <div class="duoView">
+      <div class="viewtitle">
+        <h2 th:text="${duoview.summonerName}"></h2>
+        <li>
+          <div class="mikeBox" th:if="${duoview.ismike}">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="yellow"
+              aria-hidden="true"
+              class="w-3 h-3 text-yellow-400"
+            >
+              <path
+                d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z"
+              ></path>
+              <path
+                d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.751 6.751 0 01-6 6.709v2.291h3a.75.75 0 010 1.5h-7.5a.75.75 0 010-1.5h3v-2.291a6.751 6.751 0 01-6-6.709v-1.5A.75.75 0 016 10.5z"
+              ></path>
+            </svg>
+          </div>
+          <div class="mikeBox" th:unless="${duoview.ismike}">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="gray"
+              aria-hidden="true"
+              class="w-3 h-3 text-yellow-400"
+            >
+              <path
+                d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z"
+              ></path>
+              <path
+                d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.751 6.751 0 01-6 6.709v2.291h3a.75.75 0 010 1.5h-7.5a.75.75 0 010-1.5h3v-2.291a6.751 6.751 0 01-6-6.709v-1.5A.75.75 0 016 10.5z"
+              ></path>
+            </svg>
+          </div>
+        </li>
+      </div>
 
-</head>
+      <ul>
+        <br />
+        <span>티어</span>
+        <li th:text="${duoview.tier}"></li>
+        <br />
+        <span>주포지션</span>
+        <li>
+          <div
+            id="positionBox"
+            class="positionBox"
+            th:switch="${duoview.myposition.name()}"
+          >
+            <div class="AllBox Box" th:case="ALL"></div>
+            <div class="TopBox Box" th:case="TOP"></div>
+            <div class="JungleBox Box" th:case="JUNGLE"></div>
+            <div class="MidBox Box" th:case="MID"></div>
+            <div class="BottomBox Box" th:case="BOTTOM"></div>
+            <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+          </div>
+        </li>
+        <br />
+        <span>찾는포지션</span>
+        <li>
+          <div
+            class="yourBox"
+            th:each="position : ${duoview.yourposition}"
+            th:switch="${position.name()}"
+          >
+            <div class="AllBox Box" th:case="ALL"></div>
+            <div class="TopBox Box" th:case="TOP"></div>
+            <div class="JungleBox Box" th:case="JUNGLE"></div>
+            <div class="MidBox Box" th:case="MID"></div>
+            <div class="BottomBox Box" th:case="BOTTOM"></div>
+            <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+          </div>
+        </li>
+        <br />
+        <span>큐타입</span>
+        <li th:switch="${duoview.queuetype.name()}">
+          <div th:case="RANKED_SOLO">솔로랭크</div>
+          <div th:case="RANKED_FLEX">자유랭크</div>
+          <div th:case="NOMAR">빠른대전</div>
+        </li>
+        <br />
+        <span>최근선호챔피언</span>
+        <li th:text="${duoview.chamption}"></li>
+        <br />
+        <span>메모</span>
+        <li th:text="${duoview.memo}"></li>
+        <br />
+        <li th:hidden="${duoview.id}"></li>
+        <br />
+        <a
+          th:href="@{/duo.yalolza.gg/edit/{id}(id=${duoview.id})}"
+          class="btn btn-info"
+          >수정</a
+        >
+        <a th:href="@{/duo.yalolza.gg/list}" class="btn btn-info"
+          >Duo 목록으로 돌아가기</a
+        >
+        <!--<a th:href="@{/yalolza.gg/delete/{id}(id=${duoview.id})}" class="btn btn-info">삭제</a>-->
+        <form
+          th:action="@{/duo.yalolza.gg/delete/{id}(id=${duoview.id})}"
+          method="post"
+          class="menuForm"
+        >
+          <input type="hidden" name="id" th:value="${duoview.id}" />
+          <div class="for-password">
+            <input
+              type="hidden"
+              autocomplete="off"
+              class="duopassword1 btn"
+              required
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+              placeholder="4자리 숫자로 입력해주세요."
+              name="duopassword1"
+              minlength="4"
+              maxlength="4"
+              th:value="${duoview.duopassword1}"
+              readonly
+            />
+          </div>
 
-<body>
-	<div class="duoView">
-		<div class="viewtitle">
-			<h2 th:text="${duoview.summonerName}"></h2>
-			<li>
-				<div class="mikeBox" th:if="${duoview.ismike}">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" aria-hidden="true"
-						class="w-3 h-3 text-yellow-400">
-						<path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z"></path>
-						<path
-							d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.751 6.751 0 01-6 6.709v2.291h3a.75.75 0 010 1.5h-7.5a.75.75 0 010-1.5h3v-2.291a6.751 6.751 0 01-6-6.709v-1.5A.75.75 0 016 10.5z">
-						</path>
-					</svg>
-				</div>
-				<div class="mikeBox" th:unless="${duoview.ismike}">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" aria-hidden="true"
-						class="w-3 h-3 text-yellow-400">
-						<path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z"></path>
-						<path
-							d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.751 6.751 0 01-6 6.709v2.291h3a.75.75 0 010 1.5h-7.5a.75.75 0 010-1.5h3v-2.291a6.751 6.751 0 01-6-6.709v-1.5A.75.75 0 016 10.5z">
-						</path>
-					</svg>
-				</div>
-			</li>
-		</div>
-
-		<ul>
-			<br />
-			<span>티어</span>
-			<li th:text="${duoview.tier}"></li>
-			<br />
-			<span>주포지션</span>
-			<li>
-				<div id="positionBox" class="positionBox" th:switch="${duoview.myposition.name()}">
-					<div class="AllBox Box" th:case="ALL"></div>
-					<div class="TopBox Box" th:case="TOP"></div>
-					<div class="JungleBox Box" th:case="JUNGLE"></div>
-					<div class="MidBox Box" th:case="MID"></div>
-					<div class="BottomBox Box" th:case="BOTTOM"></div>
-					<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-				</div>
-			</li>
-			<br />
-			<span>찾는포지션</span>
-			<li>
-				<div class="yourBox" th:each="position : ${duoview.yourposition}" th:switch="${position.name()}">
-					<div class="AllBox Box" th:case="ALL"></div>
-					<div class="TopBox Box" th:case="TOP"></div>
-					<div class="JungleBox Box" th:case="JUNGLE"></div>
-					<div class="MidBox Box" th:case="MID"></div>
-					<div class="BottomBox Box" th:case="BOTTOM"></div>
-					<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-				</div>
-			</li>
-			<br />
-			<span>큐타입</span>
-			<li th:switch="${duoview.queuetype.name()}">
-				<div th:case="RANKED_SOLO">솔로랭크</div>
-				<div th:case="RANKED_FLEX">자유랭크</div>
-				<div th:case="NOMAR">빠른대전</div>
-			</li>
-			<br />
-			<span>최근선호챔피언</span>
-			<li th:text="${duoview.chamption}"></li>
-			<br />
-			<span>메모</span>
-			<li th:text="${duoview.memo}"></li>
-			<br />
-			<li th:hidden="${duoview.id}"></li>
-			<br />
-			<a th:href="@{/duo.yalolza.gg/edit/{id}(id=${duoview.id})}" class="btn btn-info">수정</a>
-			<a th:href="@{/duo.yalolza.gg/list}" class="btn btn-info">Duo 목록으로 돌아가기</a>
-			<!--<a th:href="@{/yalolza.gg/delete/{id}(id=${duoview.id})}" class="btn btn-info">삭제</a>-->
-			<form th:action="@{/duo.yalolza.gg/delete/{id}(id=${duoview.id})}" method="post" class="menuForm">
-				<input type="hidden" name="id" th:value="${duoview.id}">
-				<div class="for-password">
-					<input type="hidden" autocomplete="off" class="duopassword1 btn" required
-						oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="4자리 숫자로 입력해주세요."
-						name="duopassword1" minlength="4" maxlength="4" th:value="${duoview.duopassword1}" readonly>
-				</div>
-
-				<div class="for-password">
-					<input type="text" autocomplete="off" class="duopassword2 btn" required
-						oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="4자리 숫자로 입력해주세요."
-						name="duopassword2" minlength="4" maxlength="4">
-					<input type="submit" value="듀오 삭제" class="submitBtn">
-				</div>
-
-			</form>
-		</ul>
-	</div>
-
-</body>
-
-</html>	
+          <div class="for-password">
+            <input
+              type="text"
+              autocomplete="off"
+              class="duopassword2 btn"
+              required
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+              placeholder="4자리 숫자로 입력해주세요."
+              name="duopassword2"
+              minlength="4"
+              maxlength="4"
+            />
+            <input type="submit" value="듀오 삭제" class="submitBtn" />
+          </div>
+        </form>
+      </ul>
+    </div>
+  </body>
+</html>

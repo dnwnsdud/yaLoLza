@@ -24,6 +24,8 @@ import com.web.project.dto.SiteUser;
 import com.web.project.dto.enumerated.Myposition;
 import com.web.project.dto.enumerated.Queuetype;
 import com.web.project.dto.enumerated.Yourposition;
+import com.web.project.metrics.Counter;
+import com.web.project.metrics.count.Connect;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -53,11 +55,13 @@ public class DuoPage {
 	public String index(Model model) {
 		List<Duo> duoList = duoService.getAllDuos();
 		model.addAttribute("duoList", duoList);
+    	new Connect("total","duo.yalolza.gg", "list");
 		return "duoList";
 	}
 
 	@GetMapping("/save")
 	public String saveForm() {
+    	new Connect("total","duo.yalolza.gg", "save");
 		return "duoSave";
 	}
 	
@@ -82,6 +86,7 @@ public class DuoPage {
 
 	        try {
 	            duoDao.save(duoDto); // Duo 엔티티 저장
+		        Counter.Increment("duoCount",1);
 	            return "redirect:/duo.yalolza.gg/list"; // 리스트 페이지로 리다이렉트
 	        } catch (Exception e) {
 	            model.addAttribute("message", "듀오 등록 실패: " + e.getMessage());
@@ -117,6 +122,7 @@ public class DuoPage {
 	@GetMapping("/view/{id}")
 	public String view(@PathVariable Long id, Model model) {
 		model.addAttribute("duoview", duoService.duoview(id));
+    	new Connect("total","duo.yalolza.gg", "view");
 		return "duoView";
 	}
 
@@ -124,6 +130,7 @@ public class DuoPage {
 	public String editDuo(@PathVariable Long id, Model model) {
 		Duo duoDto = duoDao.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 Article이 없습니다."));
 		model.addAttribute("duoDto", duoDto);
+    	new Connect("total","duo.yalolza.gg");
 		return "duoEdit";
 	}
 
@@ -180,6 +187,7 @@ public class DuoPage {
 					duoService.duoDelete(id);
 		    
 //				return "message"; 
+			        Counter.Decrement("duoCount", 1);
 					return "redirect:/duo.yalolza.gg/list"; 
 		    }
 

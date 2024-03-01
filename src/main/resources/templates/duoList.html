@@ -39,7 +39,7 @@
 		.close {
 			width:30px;
 			background-color: transparent;
-			border: none;
+			border: none;	
 			cursor: pointer;
 			position: absolute;
 			right: 50px;
@@ -54,6 +54,8 @@
 </head>
 
 <body>
+	<header th:replace="~{/header :: header}"></header>
+		
 <div id="duo-title">
 <h1>DUO</h1>
 </div>
@@ -273,7 +275,9 @@
 			</div>
 		</div>
 	</div>
-
+<br/>
+	<br/>
+          <footer th:replace="~{/footer :: footer}"></footer>
 	<script>
 		$(document).ready(function () {
 			$("#duoTableBody").on("click", "ul", function () {
