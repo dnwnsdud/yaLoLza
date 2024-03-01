@@ -158,7 +158,7 @@ public class CommunityPage {
 	            SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	            communityService.create(communityForm.getTitle(),
 	                    communityForm.getContent(), category, file, siteUser);
-		        Counter.Increment("qnaCount",1);
+		        Counter.Increment("commuCount",1);
 	        return "redirect:/talk.yalolza.gg/community/list/qna";
 	    }
 

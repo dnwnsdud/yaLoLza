@@ -16,7 +16,7 @@ public class SummonersPage {
 	public String Summoners(
 			@PathVariable("username") String username
 			) {
-    	new Connect("total","duo.yalolza.gg", "summoners");
+    	new Connect("total","yalolza.gg", "summoners");
 		return "NewFile";
 	}
 
@@ -26,7 +26,7 @@ public class SummonersPage {
 			@PathVariable("puuid") String puuid,
 			@PathVariable("gamecreation") String gamecreation
 			) {
-    	new Connect("total","duo.yalolza.gg", "summoners");
+    	new Connect("total","yalolza.gg", "summoners");
 		return "NewFile";
 	}
 
