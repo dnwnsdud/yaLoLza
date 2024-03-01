@@ -40,4 +40,19 @@ public class SummonerData {
 //		System.out.println(keysSumSpell);
 		return keysSumSpell;
 	}
+	
+	
+	public static Map<Long, String> keysSumSpellLong () {
+		String url5 = "https://ddragon.leagueoflegends.com/cdn/14.2.1/data/ko_KR/summoner.json";
+		JSONObject sum2 = Ajax.JsonTObj(Ajax.GETO(url5)).getJSONObject("data");
+		Map<Long, String> keysSumSpell= new HashMap<Long, String>();
+		List<String> keylist = new ArrayList<String>(sum2.keySet());
+		Collections.sort(keylist);
+		for(int i = 0; i < sum2.length(); i+=1) {
+			JSONObject sum3 = sum2.getJSONObject(keylist.get(i));
+			keysSumSpell.put(sum3.getLong("key"), sum3.getString("id"));
+		}
+//		System.out.println(keysSumSpell);
+		return keysSumSpell;
+	}
 }

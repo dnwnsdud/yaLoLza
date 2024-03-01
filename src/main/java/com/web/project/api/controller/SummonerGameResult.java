@@ -47,6 +47,7 @@ import com.web.project.save.MatchRepository;
 import com.web.project.save.MatchService;
 import com.web.project.system.ChampionData;
 import com.web.project.system.RuneData;
+import com.web.project.system.SummonerData;
  
 
   @Controller  
@@ -97,7 +98,7 @@ import com.web.project.system.RuneData;
 	    String encryptedSummonerId;
 	    String leag4url;
 	    //조회할 매치 갯수
-	    long matchnum = 20; 
+	    long matchnum = 5; 
 	    //매치인포 리스트
 	    List<ResponseEntity<Match>> matchsssinfoList = new ArrayList<>();
 	    //찾을 소환사
@@ -481,7 +482,9 @@ import com.web.project.system.RuneData;
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
 		   		  //진비 챔피언 이름 영어-> 한글
 		  		 Map<String, String> keysChamName = ChampionData.keysChamName();
-		  		Map<Integer, String> keysRuneImage = RuneData.keysRuneImage();
+		  		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
+		  		//matchsssinfoList.get(0).getBody().getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getStyle().get
+		  		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
@@ -493,9 +496,12 @@ import com.web.project.system.RuneData;
 			  		model.addAttribute("summonerall", allstatistics);
 			  	     //이름 판수 승수  k d a kda 킬관여
 			  		model.addAttribute("summonermost", championStatisticsss);
+			  		//챔피언이름 변환
 			  		model.addAttribute("keysChamName", keysChamName);
+			  		//룬 아이디 이름으로 변환
 			  		model.addAttribute("keysRuneImage", keysRuneImage);
-			  		
+			  		//소환사 주문 넘버 스트링변환
+			  		model.addAttribute("keysChamSpell", keysChamSpell);  
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {
