@@ -28,6 +28,7 @@ import com.web.project.dao.summoner.SummonerRepository;
 import com.web.project.dao.summoner.SummonerchampionsRepository;
 import com.web.project.dao.summoner.SummonermatchsRepository;
 import com.web.project.dao.summoner.SummonertierlogRepository;
+import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.sjw.TimeLine.Events;
 import com.web.project.dto.sjw.TimeLine.Frames;
 import com.web.project.dto.sjw.TimeLine.TimeLine;
@@ -475,8 +476,8 @@ import com.web.project.system.SummonerData;
 			     summnnerItemTimeStempSS.add(resultList);        
                  summonerskilllups.add(summonerskilllup);
 	      }
-
-	  
+ 
+	    
 		  		  
 		  		 Summoner  collectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
@@ -485,6 +486,7 @@ import com.web.project.system.SummonerData;
 		  		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
 		  		//matchsssinfoList.get(0).getBody().getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getStyle().get
 		  		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
+		  		Map<String, List<Spell>> keysChamSkill = ChampionData.keysChamSkill();
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
@@ -502,6 +504,8 @@ import com.web.project.system.SummonerData;
 			  		model.addAttribute("keysRuneImage", keysRuneImage);
 			  		//소환사 주문 넘버 스트링변환
 			  		model.addAttribute("keysChamSpell", keysChamSpell);  
+			  		//챔피언당 스킬 불러오기
+			  		model.addAttribute("keysChamSkill", keysChamSkill);
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {

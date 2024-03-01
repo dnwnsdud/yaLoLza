@@ -609,7 +609,7 @@
                         Q
                       </li>
                       
-                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${match.body.info.participants[summonermatchnum[i.index]].championName}+'Q'+ '.png'}" alt="" /></li>
+                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${keysChamSkill[match.body.info.participants[summonermatchnum[i.index]].championName][0].id}+ '.png'}" alt="" /></li>
                       <li th:each="skill , s : ${matchsskill[i.index]}" 
                           th:text="${skill == 1 ? (s.index +1) : ''}">  
 					  </li>
@@ -627,7 +627,7 @@
                       >
                         W
                       </li>
-                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${match.body.info.participants[summonermatchnum[i.index]].championName}+'W'+ '.png'}" alt="" /></li>
+                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${keysChamSkill[match.body.info.participants[summonermatchnum[i.index]].championName][1].id}+ '.png'}" alt="" /></li>
                             <li th:each="skill , s : ${matchsskill[i.index]}" 
                           th:text="${skill == 2 ? (s.index +1) : ''}">  
 					  </li>
@@ -642,7 +642,7 @@
                       >
                         E
                       </li>
-                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${match.body.info.participants[summonermatchnum[i.index]].championName}+'E'+ '.png'}" alt="" /></li>
+                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${keysChamSkill[match.body.info.participants[summonermatchnum[i.index]].championName][2].id}+ '.png'}" alt="" /></li>
                       <li th:each="skill , s : ${matchsskill[i.index]}" 
                           th:text="${skill == 3 ? (s.index +1) : ''}">  
 					  </li>
@@ -657,7 +657,7 @@
                       >
                         R
                       </li>
-                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${match.body.info.participants[summonermatchnum[i.index]].championName}+'R'+ '.png'}" alt="" /></li>
+                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${keysChamSkill[match.body.info.participants[summonermatchnum[i.index]].championName][3].id}+ '.png'}" alt="" /></li>
 					 <li th:each="skill , s : ${matchsskill[i.index]}" 
                           th:text="${skill == 4 ? (s.index +1) : ''}">  
 					  </li>				

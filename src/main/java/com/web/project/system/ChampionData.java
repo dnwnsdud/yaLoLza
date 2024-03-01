@@ -175,5 +175,29 @@ public class ChampionData {
 		}
 		return keysChamName;
 	}
+	public static Map<String, List<Spell>> keysChamSkill () {
+		Map<String, List<Spell>> keysChamSkill = new HashMap<>();
+		String url1 = "https://ddragon.leagueoflegends.com/cdn/14.2.1/data/ko_KR/champion.json";
+		JSONObject cham2 = Ajax.JsonTObj(Ajax.GETO(url1)).getJSONObject("data");
+		List<String> keylist = new ArrayList<String>(cham2.keySet());
+		Collections.sort(keylist);
+		String url2 = "https://ddragon.leagueoflegends.com/cdn/14.3.1/data/ko_KR/champion/";
+		for(int i = 0; i < cham2.length(); i+=1) {
+			JSONArray cham6 = Ajax.JsonTObj(Ajax.GETO(url2+keylist.get(i)+".json"))
+					.getJSONObject("data")
+					.getJSONObject(keylist.get(i))
+					.getJSONArray("spells");
+			List<Spell> spells = new ArrayList<Spell>();
+			for(int j = 0; j < cham6.length(); j+=1) {
+				JSONObject cham7 = cham6.getJSONObject(j);
+				Spell spell = new Spell();
+				spell.setId(cham7.getString("id"));
+				spells.add(spell);
+			}
+			keysChamSkill.put(keylist.get(i), spells);
+		}
+		
+		return keysChamSkill;
+	}
 }
 
