@@ -23,7 +23,7 @@ public class StatisticChampion {
 	
 	public static List<DataEntry> parseJson(String rawData) {//json parse하는 함수
         ObjectMapper objectMapper = new ObjectMapper();
-        try {
+        try {											//selections같은 타입 유지
             return objectMapper.readValue(rawData, new TypeReference<List<DataEntry>>() {});
  
         } catch (Exception e) {
@@ -43,33 +43,19 @@ public class StatisticChampion {
     
     //챔피언, 포지션 한정해서 가장 많이 등장한 메인룬 1,2 출력   
 	public static List<String> calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
-		List<String> primaryPerk = Collections.emptyList();
-        if (!filteredData.isEmpty()) {
-        	
-        	//<perk 번호 : 등장 횟수>
-            Map<Integer, Long> counter = filteredData.stream()
-                    .flatMap(entry -> entry.getPerks().getStyles().stream())
-                    .filter(style -> "primaryStyle".equals(style.getDescription()))
-                    .flatMap(style -> style.getSelections().stream())
-                    .collect(Collectors.groupingBy(Selections::getPerk, Collectors.counting()));
+	    List<String> primaryPerk = Collections.emptyList();
+	    if (!filteredData.isEmpty()) {
+	        primaryPerk = filteredData.stream()
+	                .flatMap(entry -> entry.getPerks().getStyles().stream())
+	                .filter(style -> "primaryStyle".equals(style.getDescription()))
+	                .map(style -> style.getSelections().stream().findFirst().map(selection -> String.valueOf(selection.getPerk())).orElse(null)) 	                .limit(2) // 최대 두 개의 perk만 선택
+	                .limit(2) // 최대 두 개의 perk만 선택
+	                .filter(perk -> perk != null) // null이 아닌 perk만 필터링
+	                .collect(Collectors.toList()); // 리스트로 변환
+	    }
+	    return primaryPerk;
+	}
 
-            
-            if (!counter.isEmpty()) {
-            	//<perk 번호 : 등장 횟수> 리스트 만들어
-            	List<Map.Entry<Integer, Long>> counter12 = counter.entrySet().stream()
-            			.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                        .collect(Collectors.toList());
-
-                // 상위 2개의 룬을 선택
-            	primaryPerk = counter12.stream()
-                        .limit(2)
-                        .map(entry -> String.valueOf(entry.getKey()))
-                        .collect(Collectors.toList());
-            }
-        }
-    
-        return primaryPerk;
-    }
  
     //calculatePrimaryStyleFirstPerk1 에서 검색된 특성 종류, 메인룬, 해당 티어, 포지션, 챔피언id로 검색
   
@@ -187,6 +173,31 @@ public class StatisticChampion {
         return winCount / totalCount;
     }
     
+	public static int calculateRuneGameCount(List<DataEntry> filteredData, String primaryStyleFirstPerk1) {
+	    return (int) filteredData.stream()
+	            .filter(entry -> entry.getPerks().getStyles().stream()
+	                    .anyMatch(style -> style.getDescription().equals("primaryStyle") &&
+	                            style.getSelections().stream()
+	                                    .anyMatch(selection -> selection.getPerk() == Integer.parseInt(primaryStyleFirstPerk1))))
+	            .count();
+	}
+	public static double calculateRunePickRate(List<DataEntry> filteredData, String primaryStyleFirstPerk1) {
+	    double pickCount = filteredData.stream()
+	            .filter(entry -> entry.getPerks().getStyles().stream()
+	                    .anyMatch(style -> style.getDescription().equals("primaryStyle") &&
+	                            style.getSelections().stream()
+	                                    .anyMatch(selection -> selection.getPerk() == Integer.parseInt(primaryStyleFirstPerk1))))
+	            .count();
+	    double totalCount = filteredData.size();
+
+	    if (totalCount == 0) {
+	        return 0; // 분모가 0이면 안돼
+	    }
+
+	    return pickCount / totalCount;
+	}
+
+	
     
 	public static double calculateRuneWinRate(List<DataEntry> filteredData, String primaryStyleFirstPerk1) {
         double winCount = filteredData.stream()
