@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<!--	<meta http-equiv="Refresh" content="200">-->
+	<title>Insert title here</title>
+	<link rel="stylesheet" th:href="@{/css/myrest.css}">
+	<link rel="stylesheet" th:href="@{/css/duoList.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<script src="https://kit.fontawesome.com/286b044825.js" crossorigin="anonymous"></script>
+
+	<script src="/js/position.js" defer></script>
+	<style>
+		.modal {
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: rgba(0, 0, 0, 0.5);
+			display: none;
+			
+		}
+
+		.modal_body {
+
+			border-radius: 10px;
+			position: absolute;
+			background-color: #ffffff;
+			width: 800px;
+			height: 800px;
+			position: relative;
+		}
+
+		.close {
+			width:30px;
+			background-color: transparent;
+			border: none;	
+			cursor: pointer;
+			position: absolute;
+			right: 50px;
+			top:50px;
+			z-index: 999;
+		}
+	</style>
+
+
+
+
+</head>
+
+<body>
+	<header th:replace="~{/header :: header}"></header>
+		
+<div id="duo-title">
+<h1>DUO</h1>
+</div>
+	<div class="mw1">
+		<div class="container">
+			<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+			<div>
+				<div class="menuContainer">
+					<div class="for-myposition">
+						<div class="label-myposition" id="myposition">내 포지션</div>
+						<input type="radio" id="mypositionAll" name="myposition" value="ALL"
+							onclick="searchDuoByPosition(this.value)">
+						<label for="mypositionAll">
+							<div class="AllBox Box">
+							</div>
+						</label> <input type="radio" id="myposition1" name="myposition" value="TOP"
+							onclick="searchDuoByPosition(this.value)"> <label for="myposition1">
+							<div class="TopBox Box">
+
+							</div>
+						</label> <input type="radio" id="myposition2" name="myposition" value="JUNGLE"
+							onclick="searchDuoByPosition(this.value)"> <label for="myposition2">
+							<div class="JungleBox Box">
+
+							</div>
+						</label>
+						<input type="radio" id="myposition3" name="myposition" value="MID"
+							onclick="searchDuoByPosition(this.value)"> <label for="myposition3">
+							<div class="MidBox Box">
+
+							</div>
+						</label> <input type="radio" id="myposition4" name="myposition" value="BOTTOM"
+							onclick="searchDuoByPosition(this.value)"> <label for="myposition4">
+							<div class="BottomBox Box">
+
+							</div>
+						</label> <input type="radio" id="myposition5" name="myposition" value="SUPPORTER"
+							onclick="searchDuoByPosition(this.value)">
+						<label for="myposition5">
+							<div class="SupporterBox Box">
+
+							</div>
+						</label>
+					</div>
+					<div class="for-yourposition">
+						<div class="label-yourposition" id="yourposition">찾는 포지션</div>
+						<input type="radio" id="yourpositionAll" name="yourposition" value="ALL"
+							onclick="searchDuoByYourposition(this.value)">
+						<label for="yourpositionAll">
+							<div class="AllBox Box">
+							</div>
+						</label>
+						<input type="radio" id="yourposition1" name="yourposition" value="TOP"
+							onclick="searchDuoByYourposition(this.value)">
+						<label for="yourposition1">
+							<div class="TopBox Box">
+							</div>
+						</label> <input type="radio" id="yourposition2" name="yourposition" value="JUNGLE"
+							onclick="searchDuoByYourposition(this.value)">
+						<label for="yourposition2">
+							<div class="JungleBox Box">
+							</div>
+						</label> <input type="radio" id="yourposition3" name="yourposition" value="MID"
+							onclick="searchDuoByYourposition(this.value)">
+						<label for="yourposition3">
+							<div class="MidBox Box">
+							</div>
+						</label> <input type="radio" id="yourposition4" name="yourposition" value="BOTTOM"
+							onclick="searchDuoByYourposition(this.value)">
+						<label for="yourposition4">
+							<div class="BottomBox Box">
+							</div>
+						</label> <input type="radio" id="yourposition5" name="yourposition" value="SUPPORTER"
+							onclick="searchDuoByYourposition(this.value)">
+						<label for="yourposition5">
+							<div class="SupporterBox Box">
+							</div>
+						</label>
+					</div>
+				</div>
+			</div>
+			</br> </br>
+			<div class="selectType">
+				<div class="select-queue-container">
+					<select name="queuetype" class="queuetype" onchange="searchDuoByQueuetype(this.value)">
+						<option value="RANKED_SOLO">솔로랭크</option>
+						<option value="NORMAL">빠른대전</option>
+					</select>
+				</div>
+				<div class="select-queue-container">
+					<select name="tier" class="tier">
+						<option value="Unrank">언랭크</option>
+						<option value="Iron">아이언</option>
+						<option value="Bronze">브론즈</option>
+						<option value="Silver">실버</option>
+						<option value="Gold">골드</option>
+						<option value="Platinum">플레티넘</option>
+						<option value="Emerald">에메랄드</option>
+						<option value="Diamond">다이아</option>
+						<option value="Master">마스터</option>
+						<option value="Grandmaster">그랜드마스터</option>
+						<option value="Challenger">챌린저</option>
+					</select>
+				</div>
+				<div class="text">
+					<a class="btn-open-modal">글 등록하기</a>
+				</div>
+			</div>
+			<div class="layout">
+				<div>
+					<ul id="descriptor">
+						<li style="display: none;">글 번호</li>
+						<li>소환사 이름</li>
+						<li>마이크</li>
+						<li>주 포지션</li>
+						<li>티어</li>
+						<li>찾는 포지션</li>
+						<li>최근선호챔피언</li>
+						<li>승률</li>
+						<li>KDA</li>
+						<li>메모</li>
+						<li>등록일시</li>
+					</ul>
+					<div id="duoTableBody">
+						<ul id="item" th:each="duo : ${duoList}" onclick="redirectToView()"
+							th:data-type="${duo.myposition.name()}" th:data-queue="${duo.queuetype.name()}">
+
+
+							<li style="display: none;" th:text="${duo.id}"></li>
+							<li th:each="pos : ${duo.yourposition}" th:data-type="${pos}" style="display:none;"></li>
+							<li th:text="${duo.summonerName}"></li>
+							<li>
+								<div class="mikeBox" th:if="${duo.ismike}">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow"
+										aria-hidden="true" class="w-3 h-3 text-yellow-400">
+										<path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z"></path>
+										<path
+											d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.751 6.751 0 01-6 6.709v2.291h3a.75.75 0 010 1.5h-7.5a.75.75 0 010-1.5h3v-2.291a6.751 6.751 0 01-6-6.709v-1.5A.75.75 0 016 10.5z">
+										</path>
+									</svg>
+								</div>
+								<div class="mikeBox" th:unless="${duo.ismike}">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray"
+										aria-hidden="true" class="w-3 h-3 text-yellow-400">
+										<path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z"></path>
+										<path
+											d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.751 6.751 0 01-6 6.709v2.291h3a.75.75 0 010 1.5h-7.5a.75.75 0 010-1.5h3v-2.291a6.751 6.751 0 01-6-6.709v-1.5A.75.75 0 016 10.5z">
+										</path>
+									</svg>
+								</div>
+							</li>
+							<li>
+								<div id="positionBox" class="positionBox" th:switch="${duo.myposition.name()}">
+									<div class="AllBox Box" th:case="ALL"></div>
+									<div class="TopBox Box" th:case="TOP"></div>
+									<div class="JungleBox Box" th:case="JUNGLE"></div>
+									<div class="MidBox Box" th:case="MID"></div>
+									<div class="BottomBox Box" th:case="BOTTOM"></div>
+									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
+								</div>
+							</li>
+							<li th:text="${duo.tier}"></li>
+							<li>
+
+								<div th:if="${duo.yourposition.size() < 4}" class="yourBox"
+									th:each="position : ${duo.yourposition}" th:switch="${position.name()}">
+									<div class="AllBox Box" th:case="ALL"></div>
+									<div class="TopBox Box" th:case="TOP"></div>
+									<div class="JungleBox Box" th:case="JUNGLE"></div>
+									<div class="MidBox Box" th:case="MID"></div>
+									<div class="BottomBox Box" th:case="BOTTOM"></div>
+									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
+								</div>
+								<div th:unless="${duo.yourposition.size() < 4}">
+									<div class="yourBox" th:switch="${duo.yourposition.get(0).name()}">
+										<div class="AllBox Box" th:case="ALL"></div>
+										<div class="TopBox Box" th:case="TOP"></div>
+										<div class="JungleBox Box" th:case="JUNGLE"></div>
+										<div class="MidBox Box" th:case="MID"></div>
+										<div class="BottomBox Box" th:case="BOTTOM"></div>
+										<div class="SupporterBox Box" th:case="SUPPORTER"></div>
+									</div>
+									<div class="yourBox" th:switch="${duo.yourposition.get(1).name()}">
+										<div class="AllBox Box" th:case="ALL"></div>
+										<div class="TopBox Box" th:case="TOP"></div>
+										<div class="JungleBox Box" th:case="JUNGLE"></div>
+										<div class="MidBox Box" th:case="MID"></div>
+										<div class="BottomBox Box" th:case="BOTTOM"></div>
+										<div class="SupporterBox Box" th:case="SUPPORTER"></div>
+									</div>
+									<div class="plus Box" style="border: none;">
+										<svg xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 448 448"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+											<path
+												d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+										</svg>
+									</div>
+								</div>
+							</li>
+							<li th:text="${duo.chamption}"></li>
+							<li th:text="${duo.winning}"></li>
+							<li th:text="${duo.kda}"></li>
+							<li th:text="${duo.memo}"></li>
+							<li th:text="${duo.createdDate}" class="createdDate"></li>
+
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal">
+			<div class="modal_body">
+				<from th:replace="~{/duoSave :: save}"></from>
+				<button class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></button>
+			</div>
+		</div>
+	</div>
+<br/>
+	<br/>
+          <footer th:replace="~{/footer :: footer}"></footer>
+	<script>
+		$(document).ready(function () {
+			$("#duoTableBody").on("click", "ul", function () {
+				let duoId = $(this).find("li:first-child").text();
+				redirectToView(duoId);
+			});
+		});
+
+		function searchDuoByPosition(selectedPosition) {
+			if (selectedPosition === 'ALL') {
+				document.querySelectorAll(`#duoTableBody > ul`).forEach(element => {
+					element.dataset.invisible = "FALSE";
+				});
+			}
+			else {
+				document.querySelectorAll(`#duoTableBody > :not(ul[data-type=${selectedPosition}])`).forEach(element => {
+					element.dataset.invisible = "TRUE";
+				});
+				document.querySelectorAll(`#duoTableBody > ul[data-type=${selectedPosition}]`).forEach(element => {
+					element.dataset.invisible = "FALSE";
+				});
+			}
+		}
+
+      function searchDuoByQueuetype(selectedPosition) {
+         if (selectedPosition === 'ALL') {
+                document.querySelectorAll(`#duoTableBody > ul`).forEach(element => {
+                  element.dataset.invisible3 = "FALSE";
+              });
+             } else {
+            document.querySelectorAll(`#duoTableBody > :not(ul[data-queue=${selectedPosition}])`).forEach(element => {
+               element.dataset.invisible3 = "TRUE";
+            });
+            document.querySelectorAll(`#duoTableBody > ul[data-queue=${selectedPosition}]`).forEach(element => {
+               element.dataset.invisible3 = "FALSE";
+            });
+         }
+      }
+
+
+		function searchDuoByYourposition(selectedPosition) {
+			if (selectedPosition === 'ALL') {
+				document.querySelectorAll(`#duoTableBody > ul`).forEach(element => {
+					element.dataset.invisible2 = "FALSE";
+				});
+			}
+			else {
+				document.querySelectorAll(`#duoTableBody > ul`).forEach(element => {
+					if (element.querySelector(`li[data-type=${selectedPosition}]`))
+						element.dataset.invisible2 = "FALSE";
+					else
+						element.dataset.invisible2 = "TRUE";
+				});
+			}
+		}
+
+		function pageRefresh() {
+
+		}
+		function redirectToView(id) {
+			window.location.href = '/duo.yalolza.gg/view/' + id;
+		}
+		const modal = document.querySelector('.modal');
+		const btnOpenModal = document.querySelector('.btn-open-modal');
+		const close = document.querySelector('.close');
+
+		btnOpenModal.addEventListener("click", () => {
+			modal.style.display = "flex";
+		});
+		close.addEventListener("click", () => {
+			modal.style.display = "none";
+		})
+
+
+
+ function timeSince(date) {
+        var seconds = Math.floor((new Date() - date) / 1000);
+        var interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+            return interval + " 분 전";
+        }
+        return "1분 이하";
+    }
+
+    // Thymeleaf 변수를 사용하여 선택자 동적 생성
+   var duoDateElements = document.querySelectorAll("#duoTableBody .createdDate"); // Thymeleaf 변수를 사용한 동적 선택자
+    duoDateElements.forEach(function (element) {
+        var date = new Date(element.textContent); // 엘리먼트에서 날짜를 가져옵니다.
+        element.textContent = timeSince(date); // 변경된 형식으로 엘리먼트의 텍스트를 설정합니다.
+    });
+
+
+
+
+
+
+
+	</script>
+</body>
+
+</html>

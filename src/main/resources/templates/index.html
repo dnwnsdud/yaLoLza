@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="/js/home.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <div class="mw">
+            <h1><a th:href="@{/yalolza.gg/}"><img th:src="@{/img/mainlogo.png}" alt="" /></a></h1>
+            <nav>
+                <div class="hd-nav">
+
+                    <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
+
+                    <div><a href="/yalolza.gg/">홈</a></div>
+                    <div><a href="#">칼바람</a></div>
+                    <div><a href="#">통계</a></div>
+                    <div><a href="#">랭킹</a></div>
+                    <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
+                    <div><a href="#">관련 영상</a></div>
+                    <div><a th:href="@{/duo.yalolza.gg/list}">DUO</a></div>
+                </div>
+                <div class="btn">
+                    <button><a sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+	
+     				<button><a sec:authorize="hasRole('USER')" th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button>
+     				<button><a sec:authorize="hasRole('USER')" th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
+                    <button>
+						
+     				<button><a sec:authorize="hasRole('ADMIN')" th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button>
+     				<button><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}">관리자페이지</a></button>
+                    <button>
+                        <i class="fa-regular fa-sun"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <figure>
+        <div class="homesearch">
+            <input type="text" placeholder="챔피언 혹은 ID를 검색하세요.">
+            <button>검색</button>
+        </div>
+
+        <h2>주목해야 할 챔피언(KR)</h2>
+        <div class="swiper homeswiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="swiper-champion">
+                        <div class="swiperimg-wrap1">
+                            <img
+                                    src="https://cdn.lol.ps/assets/img/champion-loading/62.webp"
+                                    alt=""
+                            />
+                        </div>
+                        <div class="swiperimg-name1">
+                            <h3>오공</h3>
+                            <small style="font-size: 2rem; font-weight: bold">(탑)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 4</div>
+            </div>
+        <div class="swiper-button-next next1"></div>
+        <div class="swiper-button-prev prev1"></div>
+        </div>
+
+    </figure>
+    <div style="background-color: #10131c; width: 40%;">
+            <div><a th:href="@{/talk.yalolza.gg/community/list/all}" class="write_title">게시판 ></a></div>
+            <ul th:each="community, loop : ${communityList}" class="commu_list">
+                <li th:text="${community.category}"></li>
+<!--                <li ><a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
+                <li>
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a>
+                    <span th:if="${#lists.size(community.commentList)>0}"
+                          th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number" style="color: #aaa"></span>
+                </li>
+                <li th:if="${community.siteUser != null}" th:text="${community.siteUser.nickname}"></li>
+                <li th:text="${#temporals.format(community.createDate, 'MM-dd')}"></li>
+            </ul>
+    </div>
+    <footer>
+        <div class="ft-wrap">
+            <div class="idv">
+                <p><a th:href="@{/yalolza.gg/useterms}">이용약관</a></p>
+                <p><a th:href="@{/yalolza.gg/privacy}">개인정보처리방침</a></p>
+            </div>
+            <div class="lol">
+            <span
+            >LOL.GG is hosted by LOL Analytics, Inc. LOL.GG isn’t endorsed by
+              Riot Games and doesn’t reflect the views or opinions of Riot Games
+              or anyone officially involved in producing or managing League of
+              Legends. League of Legends and Riot Games are trademarks or
+              registered trademarks of Riot Games, Inc. League of Legends © Riot
+              Games, Inc.</span
+            ><br />
+                <p>LOL Analytics, Inc. © 2024</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,11 +1,15 @@
 HELP.md
 target/
 exec/
+logfile/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-
+*.log
+*.gz
+*.7zip
+*.zip
 application.properties
 
 ### STS ###
@@ -35,3 +39,6 @@ build/
 
 ### VS Code ###
 .vscode/
+logfile.log
+*.gz
+logfile.log

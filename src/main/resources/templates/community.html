@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://kit.fontawesome.com/286b044825.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}">
+    	    <link rel="stylesheet" href="/css/HeaderFooter.css" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/community.css}">
+</head>
+<body>
+	<header th:replace="~{/header :: header}"></header>
+	<br/>
+	<br/>
+<div class="community">
+    <div>
+        <h2 class="community-title">커뮤니티</h2>
+    </div>
+    <div style=" height: 67rem;">
+
+    <div class="search_best">
+       <div class="best_all">
+        <a th:href="@{/talk.yalolza.gg/community/list/all}" class="all">최신순</a>&nbsp;
+<!--           /&nbsp;-->
+        <a th:href="@{/talk.yalolza.gg/community/list/best}" class="best">인기순</a>
+       </div>
+
+        <div class="search">
+            <input type="text" name="keyword" id="search_keyword" placeholder="게시물검색" th:value="${param.keyword}">
+            <button type="button" id="btn_search"  onclick="searchQuestion()" class="searchbtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </div>
+        <div class="writebtnbox" >
+            <div class="writebtnbox-1" >
+            <a th:if="${boardName=='인기'}" th:href="@{/talk.yalolza.gg/community/create/free}" class="writebtn">글등록하기</a>
+            <a th:if="${boardName=='전체'}" th:href="@{/talk.yalolza.gg/community/create/free}" class="writebtn">글등록하기</a>
+            <a th:if="${boardName=='자유'}" th:href="@{/talk.yalolza.gg/community/create/free}" class="writebtn">자유글등록하기</a>
+            <a th:if="${boardName=='유머'}" th:href="@{/talk.yalolza.gg/community/create/humer}" class="writebtn">유머글등록하기</a>
+            <a th:if="${boardName=='영상'}" th:href="@{/talk.yalolza.gg/community/create/video}" class="writebtn">영상글등록하기</a>
+            <a th:if="${category=='QnA'}" th:href="@{/talk.yalolza.gg/community/create/qna}" class="writebtn">글등록하기</a>
+            </div>
+
+            <div class="commu_libox">
+                <ul>
+                    <li class="allbtns">
+                        <a th:href="@{/talk.yalolza.gg/community/list/all}" >전체</a>
+                    </li>
+                    <li class="freebtns">
+                        <a th:href="@{/talk.yalolza.gg/community/list/free}">자유</a>
+                    </li>
+                    <li class="humerbtns">
+                        <a th:href="@{/talk.yalolza.gg/community/list/humer}">유머</a>
+                    </li>
+                    <!--        선택시 active  되게 설정해야함-->
+                    <li class="videobtns">
+                        <a th:href="@{/talk.yalolza.gg/community/list/video}">영상</a>
+                    </li>
+                </ul>
+
+
+            </div>
+        <div class="commu_libox2">
+            <ul>
+                <li class="qnabtns">
+                    <a th:href="@{/talk.yalolza.gg/community/list/qna}">QnA</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    <div style="margin: auto; width: 90%; background-color: white">
+            <ul class="commuul">
+                <li class="commu_ul1">
+                    <ul class="commu_ul1_ul">
+                        <li>번호</li>
+                        <li></li>
+                        <li>제목</li>
+                        <li>작성자</li>
+                        <li>날짜</li>
+                        <li>조회수</li>
+                    </ul>
+                </li>
+
+                <li  class="commu_ul2">
+                    <ul th:each="community, loop : ${paging}"  class="commu_ul1_ul2" >
+                    <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" style="display:flex; width: 100%">
+                  
+                        <li th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}" 
+                        ></li>
+
+                        <li>
+                            <span  th:text="${community.category}" class="category_box"></span>
+                        </li>
+
+                        <li>
+                            <!-- <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></a>
+                            <a th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}" th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></a> -->
+<!--                            <a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
+                           <p th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></p>
+                           <p th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></p>
+                            <span th:if="${#lists.size(community.commentList)>0}"
+                                  th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number"></span>
+                        </li>
+                        <li th:if="${community.siteUser != null}" th:text="${community.siteUser.nickname}"></li>
+                        <li th:text="${#temporals.format(community.createDate, 'yyyy-MM-dd')}"></li>
+<!--                        <li th:text="${community.createDate}"></li>-->
+                        <li th:text="${community.writeview}"></li>
+                        </a>
+                    </ul>
+                    
+                </li>
+            </ul>
+    </div>
+
+    </div>
+    <div th:if="${!paging.isEmpty()}" class="paging">
+        <ul>
+            <li th:if="${paging.number} != 0">
+                <a th:href="@{|?page=${paging.number-1}|}">
+                    <span>이전</span>
+                </a>
+            </li>
+            <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+                th:if="${page >= paging.number-5 and page <= paging.number+5}"  >
+                <a th:text="${page+1}" th:href="@{|?page=${page}|}"> </a>
+            </li>
+            <li th:if="${#lists.size(paging) >= paging.number}">
+                <a th:href="@{|?page=${paging.number+1}|}">
+                    <span>다음</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+          <footer th:replace="~{/footer :: footer}"></footer>
+
+<script>
+    function searchQuestion() {
+        var searchKeyword = document.getElementById('search_keyword').value;
+        var currentPath = '';
+        var redirectUrl = currentPath + "?keyword=" + searchKeyword;
+        window.location.href = redirectUrl;
+    }
+
+
+    const allbtn = document.querySelector('.all');
+    const bestbtn = document.querySelector('.best');
+    const allntns = document.querySelector('.allbtns');
+    const freebtns = document.querySelector('.freebtns');
+    const humerbtns = document.querySelector('.humerbtns');
+    const videobtns = document.querySelector('.videobtns');
+    const qnabtns = document.querySelector('.qnabtns');
+    // allbtn.addEventListener("click", (e) => {
+    //     allbtn.style.backgroundColor = "white";
+    //     bestbtn.style.backgroundColor = "transparent";
+    //     allbtn.style.boxShadow = " 1px 1px 1px 1px #ccc";
+    //     bestbtn.style.boxShadow = "none";
+    // });
+    // bestbtn.addEventListener("click", (e) => {
+    //     bestbtn.style.backgroundColor = "white";
+    //     allbtn.style.backgroundColor = "transparent";
+    //     allbtn.style.boxShadow = "none";
+    //     bestbtn.style.boxShadow = " 1px 1px 1px 1px #ccc";
+    // });
+    //
+    // const allbtns = document.querySelector(".allbtns");
+    // allbtns.addEventListener("click", (e) => {
+    //     allbtns.style.borderLeft = "3px solid black";
+    // });
+
+
+
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/best') > -1) {
+            bestbtn.style.backgroundColor = "white";
+            allbtn.style.backgroundColor = "transparent";
+            allbtn.style.boxShadow = "none";
+            bestbtn.style.boxShadow = " 1px 1px 1px 1px #ccc";
+    }
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/all') > -1) {
+        allntns.style.borderLeft = "4px solid black";
+    }
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/free') > -1) {
+        freebtns.style.borderLeft = "4px solid black";
+    }
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/humer') > -1) {
+        humerbtns.style.borderLeft = "4px solid black";
+    }
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/video') > -1) {
+        videobtns.style.borderLeft = "4px solid black";
+    }
+    if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/qna') > -1) {
+        qnabtns.style.borderLeft = "4px solid black";
+    }
+
+</script>
+</body>
+</html>
+

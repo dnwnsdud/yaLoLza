@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>로그인</title>
+
+
+	<link rel="stylesheet" type="text/css" th:href="@{/css/signup_form.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/community.css}">
+</head>
+<body>
+<a th:href="@{/yalolza.gg/}"><img th:src="@{/img/logo.png}" class="logo"></a>
+<div class="signupbox">
+	<div sec:authorize="isAuthenticated()">
+		<div>이미 로그인한 유저입니다. 메인페이지로 돌아가세요</div>
+		<a th:href="@{/yalolza.gg}" class=back>메인페이지</a>
+	</div>
+    <div sec:authorize="isAnonymous()">
+	<div class="signuptitle">회원가입</div>
+	<form th:action="@{/yalolza.gg/user/signup}" th:object="${userCreateForm}" method="post">
+
+		<div class="input_box">
+		<div th:if="${#fields.hasErrors()}">
+			<p>입력하신 정보에 오류가 있습니다:</p>
+			<ul>
+				<!-- 모든 오류를 반복하여 출력 -->
+				<li th:each="error : ${#fields.errors()}" th:text="${error}"></li>
+			</ul>
+		</div>
+
+		<div>
+<!--			<label for="username" class="form-label">사용자ID</label>-->
+			<input type="text" th:field="*{username}" class="form-control" placeholder="아이디" required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
+
+		</div>
+		<div>
+<!--			<label for="nickname" class="form-label">사용자Nickname</label>-->
+			<input type="text" th:field="*{nickname}" class="form-control" placeholder="닉네임" required pattern=".{2,10}" title="2에서 10글자 사이의 문자열을 입력하세요">
+
+		</div>
+		<div>
+<!--			<label for="password1" class="form-label">비밀번호</label>-->
+			<input type="password" th:field="*{password1}" class="form-control" placeholder="비밀번호" required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
+
+		</div>
+		<div>
+<!--			<label for="password2" class="form-label">비밀번호 확인</label>-->
+			<input type="password" th:field="*{password2}" placeholder="비밀번호 확인" class="form-control" required pattern="[a-zA-Z0-9]{4,10}" title="알파벳 대소문자와 숫자로 이루어진 4에서 10글자 사이의 문자열을 입력하세요">
+
+		</div>
+		<div>
+<!--			<label for="email" class="form-label">이메일</label>-->
+			<input type="email" th:field="*{email}"  placeholder="이메일"  class="form-control">
+
+		</div>
+		<button type="submit" class="btn btn-primary">회원가입</button>
+		</div>
+	</form>
+
+	<div style="display: flex;">
+		<div style="width: 30%; border: 0.5px solid #ccc; margin: 2rem auto;"></div>
+		<div style="margin-top: 1.7rem; font-weight: 300;">OR</div>
+		<div style="width: 30%; border: 0.5px solid #ccc; margin: 2rem auto;"></div>
+	</div>
+	<div class="btns">
+		<a href="/oauth2/authorization/kakao">
+			<img th:src="@{/img/kakao.png}" class="kakao">
+		</a>
+		<a href="/oauth2/authorization/google">
+			<img th:src="@{/img/google.png}" class="google">
+		</a>
+		<a href="/oauth2/authorization/naver">
+			<img th:src="@{/img/naver.png}" class="naver">
+		</a>
+	</div>
+	<div class="logingobox">
+		<div>이미 계정이 있으신가요?</div>
+		<a th:href="@{/yalolza.gg/user/login}" class="logingo">로그인</a>
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,191 @@
+figure {
+    width: 100%;
+    /* height: 100px; */
+    background-color: #1c284a;
+    border: 1px solid red;
+    /* background-image:url("/img/mainbg.webp");
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: cover; */
+}
+.homesearch {
+    max-width: 1000px;
+    margin: 50px auto;
+    display: flex;
+    height: 70px;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.homesearch input {
+    width: 90%;
+    padding-left: 20px;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+}
+.homesearch button {
+    width: 10%;
+    height: 100%;
+    border: none;
+    background-color: var(--point3);
+    font-size: 2rem;
+    color: var(--white);
+    font-family: inherit;
+    cursor: pointer;
+}
+h2 {
+    color: var(--gray3);
+    display: flex;
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    color: var(--white);
+    font-size: 2.5rem;
+    padding: 20px 0 20px 0;
+    margin-bottom: 20px;
+    border: none;
+}
+.homeswiper {
+    width: 100%;
+    height: 600px;
+    /* height: 100%; */
+}
+.homeswiper .swiper-wrapper {
+    height: 600px;
+    display: flex;
+    align-items: flex-end;
+}
+.swiper-slide {
+    width: 250px;
+    height: 350px;
+    border: 1px red solid;
+}
+
+.swiper-champdetail {
+    display: none;
+}
+.swiperimg-name1 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gray3);
+}
+.swiperimg-name1 h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.swiperimg-wrap1 {
+    width: 100%;
+    height: 100%;
+}
+.swiperimg-wrap1 img {
+    width: 100%;
+    height: 100%;
+}
+
+.homeswiper .swiper-slide-active {
+    width: 900px;
+    height: 100%;
+}
+/* .homeswiper.swiper-slide:active .swiperimg-wrap .swiperimg-wrap {
+  width: 20%;
+} */
+.homeswiper .swiper-slide-active .swiper-champion {
+    display: none;
+}
+.homeswiper .swiper-slide-active .swiper-champdetail {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #1f2331;
+}
+.swiper-champdetail .swiperimg-wrap {
+    width: 35%;
+}
+.swiper-champdetail .swiperimg-wrap img {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide-active .swiperimg-right {
+    width: 65%;
+    height: 100%;
+    color: var(--gray3);
+    padding: 30px;
+}
+.swiperimg-name {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+.swiperimg-name h3 {
+    font-size: 4rem;
+}
+
+.swiper-slide-active table {
+    width: 100%;
+    color: var(--white);
+    font-size: 2rem;
+    text-align: center;
+}
+.swiper-slide-active table tbody td {
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.swiper-slide-active table tbody td:nth-of-type(5) p {
+    background-color: #ffffff14;
+    padding: 10px;
+    border-radius: 1rem;
+}
+.champ-point {
+    font-size: 1.7rem;
+}
+h4 {
+    padding-top: 20px;
+}
+.champ-point button {
+    font-family: inherit;
+    padding: 10px;
+    display: flex;
+    margin-left: auto;
+    color: var(--point2);
+    background-color: var(--white);
+    font-weight: bold;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+}
+
+
+/*커뮤 불러오기*/
+.commu_list{
+  display: flex;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.commu_list >  li:first-child               {width:10%;} /*태그*/
+.commu_list >  li:first-child +li           {width:40%;} /*제목*/
+.commu_list >  li:first-child +li+li           {width:30%;} /*글쓴이*/
+.commu_list >  li:first-child +li+li+li           {width:20%;} /*날짜*/
+
+.write_title{
+  color:var(--point3);
+  font-size: 1.8rem;
+}
+
+.commu_list > li {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 0 0.5rem 0;
+  text-align: center;
+}
+
+.commu_list:hover{
+  background-color: rgba(59, 130, 246, 0.1);
+}

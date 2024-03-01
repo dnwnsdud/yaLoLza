@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.project.metrics.count.Connect;
+
 @Controller
 @RequestMapping("/yalolza.gg/summoners")
 public class SummonersPage {
@@ -14,6 +16,7 @@ public class SummonersPage {
 	public String Summoners(
 			@PathVariable("username") String username
 			) {
+    	new Connect("total","duo.yalolza.gg", "summoners");
 		return "NewFile";
 	}
 
@@ -23,6 +26,7 @@ public class SummonersPage {
 			@PathVariable("puuid") String puuid,
 			@PathVariable("gamecreation") String gamecreation
 			) {
+    	new Connect("total","duo.yalolza.gg", "summoners");
 		return "NewFile";
 	}
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+ 	  <meta charset="UTF-8">
+ 	  <title>Insert title here</title>
+</head>
+<body>
+	<header th:fragment="header">
+        <div class="mw">
+            <h1><a th:href="@{/yalolza.gg/}"><img th:src="@{/img/mainlogo.png}" alt="" /></a></h1>
+            <nav>
+                <div class="hd-nav">
+
+                    <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
+
+                    <div><a href="/yalolza.gg/">홈</a></div>
+                    <div><a href="#">칼바람</a></div>
+                    <div><a href="#">통계</a></div>
+                    <div><a href="#">랭킹</a></div>
+                    <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
+                    <div><a href="#">관련 영상</a></div>
+                    <div><a th:href="@{/duo.yalolza.gg/list}">DUO</a></div>
+                </div>
+                <div class="btn">
+                    <button><a  sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+	
+     				<button><a sec:authorize="isAuthenticated()" 
+     				th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button><button><a sec:authorize="isAuthenticated()" 
+     				th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
+                    <button>
+                        <i class="fa-regular fa-sun"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <!-- 메시지 띄우기 -->
+    <script th:inline="javascript">
+        /* 메시지와 검색 URL이 비어있지 않은지 확인 */
+        var message = /*[[${message}]]*/ '';
+        var searchUrl = /*[[${searchUrl}]]*/ '';
+
+        /* 메시지와 검색 URL이 유효한지 확인 후 경고창과 리다이렉트 수행 */
+        if (message.trim() !== '' && searchUrl.trim() !== '') {
+            alert(message);
+            window.location.href = searchUrl;
+        } else {
+            console.error('메시지 또는 검색 URL이 유효하지 않습니다.');
+        }
+    </script>
+</body>
+</html>

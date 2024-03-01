@@ -1,0 +1,209 @@
+.countdetail-left {
+  width: 70%;
+}
+.counterdetail-right {
+  width: 30%;
+}
+.champ-comparison,
+.counterde-champs {
+  background-color: var(--point8);
+  margin-top: 10px;
+  border-radius: 1rem;
+  width: 100%;
+  padding-bottom: 20px;
+}
+.champ-counterdet {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+}
+.counter-pa {
+  padding: 0 50px 10px 50px;
+  color: var(--gray3);
+  font-size: 1.5rem;
+}
+.counter-per {
+  display: flex;
+  justify-content: space-between;
+  color: var(--white);
+  font-size: 2.5rem;
+  padding-bottom: 10px;
+}
+.progress-bar {
+  width: 300px;
+  height: 25px;
+  background-color: #7d59ea;
+  border-radius: 0.5rem;
+  position: relative;
+}
+.filler {
+  height: 100%;
+  width: 55%;
+  background-color: #00bba3;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+#progresschamp-name1 {
+  position: absolute;
+  color: var(--gray1);
+  font-size: 1.1rem;
+  bottom: 25%;
+  left: 5%;
+}
+#progresschamp-name2 {
+  position: absolute;
+  color: var(--gray1);
+  font-size: 1.1rem;
+  bottom: 25%;
+  right: 5%;
+}
+.counter-wrap1 {
+  width: 70px;
+  height: 70px;
+  border: 4px solid #00bba3;
+  border-radius: 50%;
+}
+.counter-wrap2 {
+  width: 70px;
+  height: 70px;
+  border: 4px solid #7d59ea;
+  border-radius: 50%;
+}
+.counter-wrap1 img,
+.counter-wrap2 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+/* 카운터 비교 시작 */
+
+/* 카운터 비교 끝 */
+.counter-detailti {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+/* progress bar 정리 시작 */
+.progress-bar1 {
+  width: 100%;
+  height: 15px;
+  background-color: #7d59ea;
+  border-radius: 0.5rem;
+}
+.filler1 {
+  height: 100%;
+  width: 70%;
+  background-color: #00bba3;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.progress-bar2 {
+  width: 100%;
+  height: 15px;
+  background-color: #7d59ea;
+  border-radius: 0.5rem;
+}
+.filler2 {
+  height: 100%;
+  width: 55%;
+  background-color: #00bba3;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.progress-bar3 {
+  width: 100%;
+  height: 15px;
+  background-color: #7d59ea;
+  border-radius: 0.5rem;
+}
+.filler3 {
+  height: 100%;
+  width: 55%;
+  background-color: #00bba3;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.progress-bar4 {
+  width: 100%;
+  height: 15px;
+  background-color: #7d59ea;
+  border-radius: 0.5rem;
+}
+.filler4 {
+  height: 100%;
+  width: 55%;
+  background-color: #00bba3;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.progress-bar5 {
+  width: 100%;
+  height: 15px;
+  background-color: #7d59ea;
+  border-radius: 0.5rem;
+}
+.filler5 {
+  height: 100%;
+  width: 55%;
+  background-color: #00bba3;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.progress-bar6 {
+  width: 100%;
+  height: 15px;
+  background-color: #7d59ea;
+  border-radius: 0.5rem;
+}
+.filler6 {
+  height: 100%;
+  width: 55%;
+  background-color: #00bba3;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.progress-bar7 {
+  width: 100%;
+  height: 15px;
+  background-color: #7d59ea;
+  border-radius: 0.5rem;
+}
+.filler7 {
+  height: 100%;
+  width: 55%;
+  background-color: #00bba3;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+/* progress bar 정리 끝 */
+/* 카운터 챔피언 모음 시작 */
+.counterde-champs ul {
+  display: grid;
+  grid-template-columns: 1fr 4fr 3fr 3fr;
+  font-size: 1.3rem;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+}
+
+.counterde-champs ul:nth-of-type(1) {
+  color: var(--gray3);
+  background-color: var(--point9);
+  font-size: 1.2rem;
+}
+.counter-list {
+  border-top: 1px dotted var(--gray1);
+  border-bottom: 1px dotted var(--gray1);
+  cursor: pointer;
+}
+.counter-list li:nth-of-type(1) {
+  padding-right: 15px;
+}
+.counterde-champs .counter-list li:nth-of-type(2) {
+  display: flex;
+  color: var(--white);
+  gap: 10px;
+  align-items: center;
+}
+/* 카운터 챔피언 모음 끝 */

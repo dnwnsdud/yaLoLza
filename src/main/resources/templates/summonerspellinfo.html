@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>summonerspellinfo</title>
+</head>
+<body>
+	<div>
+		<!-- <img alt="소환사 스펠 이미지" th:src="@{'/img/summoner-spell/'+${spell.id}+'.png'}" />
+		<div th:text = "${spell.id}"></div>	 -->
+		<div th:text = "${spell.name}"></div>
+		<div th:text = "${spell.description}"></div>
+		<!--<div th:text = "${'rew : '+summonerkey[spell.key]}"></div>
+		<img alt="소환사 스펠 이미지" th:src="@{'/img/summoner-spell/'+${summonerkey[spell.key]}+'.png'}" />-->
+		<!-- <div th:text = "${spell.key}"></div> -->
+	</div>
+</body>
+</html>

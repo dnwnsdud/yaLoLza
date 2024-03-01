@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+</head>
+<body>
+	홈화면 입니다.<br/>
+	
+	<span th:if="${user}" th:text="|${user.nickname} 님 환영합니다.|">아이디 존재</span><br/>
+	<span th:unless="${user}">아이디 비존재</span><br/>
+	
+	<p>로그인 상태면 로그아웃이 활성///로그아웃 상태면 로그인이 활성</p>
+	 <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+     <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+     <br/><br/><br/>
+	     
+	
+	
+
+	
+	<a th:href="@{/user/login}">login 페이지로 이동</a> <br/><br/>
+	<a th:href="@{/user/logout}">logout</a> <br/><br/>
+	<a th:href="@{/user/signup}">회원 가입 페이지로 이동</a> <br/><br/>
+</body>
+</html>

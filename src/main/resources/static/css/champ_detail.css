@@ -1,0 +1,472 @@
+body {
+  background-color: var(--point7);
+}
+/* 챔피언 정보 시작*/
+.con1 {
+  background-color: var(--point8);
+}
+.dec,
+.champ-statistics,
+.champ-tip {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+}
+.dec {
+  padding: 30px;
+  gap: 30px;
+  border-top: 1px solid var(--gray1);
+}
+.champ-main {
+  width: 90px;
+  height: 90px;
+}
+.champ-main img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+h1 {
+  flex: 1;
+  color: var(--gray3);
+}
+h1 strong {
+  font-weight: bold;
+  color: var(--white);
+  padding-right: 10px;
+}
+.tier {
+  line-height: 4rem;
+}
+.champ-skill {
+  display: flex;
+  gap: 10px;
+}
+.champ-skill div {
+  width: 25px;
+  height: 25px;
+}
+.champ-skill div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+.champ-statistics {
+  padding: 0 3rem 3rem 3rem;
+  border-bottom: 1px solid var(--gray1);
+}
+.champ-statistics div {
+  width: 150px;
+  border-left: 1px solid var(--gray1);
+  padding-left: 1rem;
+}
+.champ-statistics span {
+  color: var(--gray3);
+  font-size: 1.7rem;
+}
+.champ-statistics strong {
+  color: var(--white);
+  font-size: 2rem;
+}
+.champ-tip {
+  padding: 10px;
+  gap: 30px;
+  text-align: center;
+}
+.champ-tip button {
+  background-color: var(--point8);
+  font-family: inherit;
+  color: var(--white);
+  font-size: 1.7rem;
+  padding: 15px 30px 15px 30px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.champ-tip button:hover {
+  font-weight: bold;
+}
+.champ-tip button:focus {
+  background-color: var(--point7);
+  border-radius: 0.5rem;
+}
+/* 챔피언 정보 끝*/
+/* 글자 지정 시작*/
+section strong {
+  color: var(--white);
+  font-size: 1.3rem;
+}
+section span {
+  color: var(--gray3);
+  font-size: 1.2rem;
+}
+.order-vic {
+  justify-content: center;
+  align-items: center;
+  color: var(--point3);
+  font-size: 1.5rem;
+}
+/* 글자 지정 끝*/
+/* flex 사전 설정 시작 */
+.wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.flex-wrap {
+  display: flex;
+  gap: 10px;
+}
+.con-left {
+  width: 60%;
+}
+.con-right {
+  width: 40%;
+}
+/* flex 사전 설정 끝 */
+/* 챔피언 룬세팅 시작*/
+.con2,
+.con3,
+.con4,
+.con5,
+.summoner-order,
+.counter,
+.champ-rank {
+  background-color: var(--point8);
+  margin-top: 10px;
+  border-radius: 1rem;
+  width: 100%;
+}
+h2 {
+  padding: 15px;
+  color: var(--white);
+  font-size: 1.7rem;
+  border-bottom: 1px solid var(--gray1);
+}
+.con2 .champ-rune {
+  display: flex;
+  padding: 10px;
+}
+.con2 .main-rune,
+.sub-rune {
+  padding: 0 10px 0 10px;
+  width: 25%;
+  border-right: 1px solid var(--gray2);
+}
+.con2 .main-zero,
+.main-first,
+.sub-main {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+}
+.con2 ul {
+  justify-content: space-between;
+  display: flex;
+}
+.con2 .main-second,
+.main-third,
+.main-fourth {
+  padding: 10px 5px 10px 5px;
+}
+.con2 li {
+  width: 25px;
+  height: 25px;
+}
+.con2 li img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.main-rune p,
+.sub-rune p,
+.fragments-rune p {
+  padding: 20px 20px 0 20px;
+  display: flex;
+  justify-content: center;
+  color: var(--gray3);
+  font-size: 1.3rem;
+}
+.con2 .sub-rune .sub-main {
+  display: flex;
+  justify-content: center;
+}
+.sub-rune ul {
+  padding: 10px 5px 10px 5px;
+}
+.con2 .fragments-rune {
+  width: 20%;
+  padding-bottom: 30px;
+}
+.con2 .fragments-rune ul {
+  padding: 10px;
+}
+.con2 .rune-select {
+  width: 40%;
+}
+.rune-select ul {
+  border: 1px solid var(--gray2);
+  width: 100%;
+  height: 130px;
+  display: block;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 1rem;
+}
+.select-first li,
+.select-second li {
+  display: flex;
+  width: 100%;
+  height: 50%;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+}
+.select-first li div,
+.select-second li div {
+  width: 25px;
+  height: 25px;
+}
+.select-first li div img,
+.select-second li div img {
+  width: 100%;
+  height: 100%;
+}
+.rune-select .select-ratio {
+  display: flex;
+  justify-content: space-between;
+}
+.select-first li strong,
+.select-second li strong {
+  color: var(--white);
+  line-height: 2rem;
+}
+.select-first li span,
+.select-second li span {
+  color: var(--gray3);
+}
+.select-ratio p:nth-child(2) {
+  color: var(--point3);
+  font-size: 1.3rem;
+}
+/* 챔피언 룬세팅 끝*/
+/* 챔피언 스킬 빌드 시작*/
+.con3 {
+  height: 170px;
+}
+.con3 ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.con3 ul li div {
+  display: flex;
+  padding-bottom: 5px;
+  gap: 10px;
+}
+.con3 ul li div div {
+  width: 40px;
+  height: 40px;
+}
+.con3 ul li div div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+.con3 .skill-build {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.con3 p {
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 8px;
+  background-color: var(--gray2);
+  border-radius: 0.5rem;
+}
+.con3 li:nth-child(2) {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.con3 li:nth-child(2) div {
+  flex-direction: column;
+}
+/* 챔피언 스킬 빌드 끝*/
+/* 챔피언 아이템 빌드 시작 */
+
+.con4 h3,
+.counter h3 {
+  padding: 15px;
+  color: var(--gray3);
+  font-size: 1.7rem;
+  background-color: var(--point9);
+}
+.con4 ul {
+  width: 100%;
+  display: flex;
+}
+.con4 ul li {
+  width: 100%;
+}
+.item-build {
+  display: flex;
+  justify-content: space-between;
+}
+.item-build div {
+  display: flex;
+  padding: 5px;
+}
+.item-build div div {
+  width: 40px;
+  height: 40px;
+}
+.item-build div div img {
+  width: 100%;
+  height: 100%;
+}
+.item-recommendation {
+  display: flex;
+  justify-content: space-between;
+}
+.item-recommendation div {
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.item-recommendation .recommendation {
+  gap: 10px;
+}
+.item-recommendation div div {
+  width: 50px;
+  height: 50px;
+}
+.item-recommendation div div img {
+  width: 100%;
+  height: 100%;
+}
+/* 챔피언 아이템 빌드 끝 */
+/* 챔피언 스킨 시작 */
+.con5 .champskin div div {
+  height: 300px;
+  padding: 10px;
+  position: relative;
+}
+.con5 .champskin div div .skin-name {
+  position: absolute;
+  color: var(--white);
+  font-size: 1.8rem;
+  line-height: 2rem;
+  bottom: -230px;
+}
+.con5 .champskin div div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+/* 챔피언 스킨 끝 */
+/* 소환사 주문 시작 */
+.summoner-order {
+  height: 190px;
+}
+.summoner-order h2 {
+  padding-bottom: 15px;
+}
+.summoner-order ul li {
+  border-top: 1px solid var(--gray2);
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.summoner-order ul li div {
+  display: flex;
+  gap: 10px;
+}
+.summoner-order ul li div div {
+  width: 40px;
+  height: 40px;
+}
+.summoner-order ul li div div img {
+  width: 100%;
+  height: 100%;
+}
+.order-block {
+  flex-direction: column;
+  text-align: center;
+}
+.summoner-order strong {
+  color: var(--white);
+  font-size: 1.3rem;
+}
+.summoner-order span {
+  color: var(--gray3);
+  font-size: 1.2rem;
+}
+/* 소환사 주문 끝 */
+/* 카운터 시작 */
+.counter .counter-champ {
+  display: flex;
+  justify-content: space-between;
+}
+.counter .counter-champ > div {
+  padding: 20px;
+}
+.counter .counter-wrap {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+.counter .counter-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.counter .counter-ratio {
+  color: var(--point10);
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+}
+.counter .counter-game {
+  color: var(--gray3);
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  border-top: 1px solid var(--gray1);
+  padding-top: 10px;
+  text-align: center;
+}
+
+/* 카운터 끝 */
+/* 장인랭킹 시작 */
+.champ-rank ul li {
+  display: flex;
+  padding: 10px 30px 10px 30px;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.champ-rank ul li div {
+  width: 40px;
+  height: 40px;
+}
+.champ-rank ul li ul {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.champ-rank ul li div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.champ-rank p {
+  color: var(--gray3);
+  font-size: 1.3rem;
+}
+/* 장인랭킹 끝 */

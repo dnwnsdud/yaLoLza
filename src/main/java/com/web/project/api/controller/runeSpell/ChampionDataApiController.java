@@ -162,6 +162,8 @@ public class ChampionDataApiController {
     //calculatePrimaryStyleFirstPerk1 에서 검색된 메인룬, 해당 티어, 포지션, 챔피언id로 검색
     // 
     
+    //calculatePrimaryStyleFirstPerk1 에서 검색된 메인룬 사용
+    //해당 티어, 포지션, 챔피언id로 검색
     private List<String> calculatePrimaryStylePerks234(List<DataEntry> filteredData) {
         List<String> primaryStylePerks234 = new ArrayList<>();
         if (!filteredData.isEmpty()) {
