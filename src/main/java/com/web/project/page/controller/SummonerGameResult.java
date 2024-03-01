@@ -1,5 +1,5 @@
 
-  package com.web.project.api.controller;
+  package com.web.project.page.controller;
   
   import java.util.ArrayList;
 import java.util.Arrays;
