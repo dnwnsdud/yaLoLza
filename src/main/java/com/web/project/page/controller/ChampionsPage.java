@@ -62,15 +62,15 @@ public class ChampionsPage {
 			model.addAttribute("mainRune", runes);
 			
 			//######메인룬 가장 많이 선택된거 하나 반환해요
-			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData).get(0);
-			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
-			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
-			model.addAttribute("primaryPerk234", primaryStylePerks234);
-			runes = RuneData.runes(8400);
-			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
-			System.out.println(subStylePerks12);
-			model.addAttribute("secondaryPerk12", subStylePerks12);
-			model.addAttribute("subRune", runes);
+//			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData).get(0);
+//			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+//			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+//			model.addAttribute("primaryPerk234", primaryStylePerks234);
+//			runes = RuneData.runes(8400);
+//			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+//			System.out.println(subStylePerks12);
+//			model.addAttribute("secondaryPerk12", subStylePerks12);
+//			model.addAttribute("subRune", runes);
 		} catch (IOException e) {
 			e.printStackTrace();
             System.out.println("no DATA");
@@ -100,22 +100,26 @@ public class ChampionsPage {
 			List<DataEntry> data = StatisticChampion.parseJson(rawData);
 			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
 			
+			
 			//인덱스 0 = 첫번째로 많이 등장한 메인룬
 			List<String> primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
-			System.out.println(primaryStyleFirstPerk.get(0));
-			System.out.println(primaryStyleFirstPerk.get(1));
+			System.out.println("1빠 메인룬 : " + primaryStyleFirstPerk.get(0));
+			System.out.println("2빠 메인룬 : " + primaryStyleFirstPerk.get(1));
+			
+			int RuneGameCount = StatisticChampion.calculateRuneGameCount(filteredData, primaryStyleFirstPerk.get(0));
+			System.out.println("playedrunecount :" +RuneGameCount);
 			//#####
 			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(0)));
 			System.out.println("mainStyle : " +mainStyle);
 			Runes runes = RuneData.runes(mainStyle);
 			//####
 			model.addAttribute("mainRune", runes);
-			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0));
 			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
 			model.addAttribute("primaryPerk234", primaryStylePerks234);
 			
 			runes = RuneData.runes(8400);
-			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0));
 			model.addAttribute("secondaryPerk12", subStylePerks12);
 			model.addAttribute("subRune", runes);
 			List<Perk> perklist = RuneData.perklist();
