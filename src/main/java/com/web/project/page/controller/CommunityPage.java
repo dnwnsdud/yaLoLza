@@ -70,7 +70,7 @@ public class CommunityPage {
 
 	        model.addAttribute("paging", paging);
 	        model.addAttribute("category", category);
-	    	new Connect("yalolza.gg", "community", "qna");
+	    	new Connect("total","yalolza.gg", "community", "qna");
 	        return "community";
 	    }
 
@@ -208,7 +208,7 @@ public class CommunityPage {
 	        }
 	        communityForm.setTitle(community.getTitle());
 	        communityForm.setContent(community.getContent());
-	    	new Connect("total","talk.yalolza.gg", "community", "modify");
+	    	new Connect("total","talk.yalolza.gg", "community");
 	        return "commu_form";
 	    }
 

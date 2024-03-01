@@ -39,13 +39,13 @@ public class IndexPage {
 
 	@GetMapping("/useterms")
 	public String useterms() {
-    	new Connect("total","duo.yalolza.gg", "useterms");
+    	new Connect("total","yalolza.gg", "useterms");
 		return "useterms";
 	}
 	
 	@GetMapping("/privacy")
 	public String privacy() {
-    	new Connect("total","duo.yalolza.gg", "privacy");
+    	new Connect("total","yalolza.gg", "privacy");
 		return "privacy";
 	}
 	
