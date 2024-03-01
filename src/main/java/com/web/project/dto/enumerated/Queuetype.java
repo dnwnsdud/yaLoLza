@@ -5,3 +5,4 @@ public enum Queuetype {
 	RANKED_FLEX,
 	NORMAL;
 }
+ 

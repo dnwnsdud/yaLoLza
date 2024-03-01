@@ -99,7 +99,7 @@
                            <p th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></p>
                            <p th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></p>
                             <span th:if="${#lists.size(community.commentList)>0}"
-                                  th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number"></span>
+                                  th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number" ></span>
                         </li>
                         <li th:if="${community.siteUser != null}" th:text="${community.siteUser.nickname}"></li>
                         <li th:text="${#temporals.format(community.createDate, 'yyyy-MM-dd')}"></li>

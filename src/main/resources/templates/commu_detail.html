@@ -5,21 +5,19 @@
     <title>Insert title here</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}">
-    	    <link rel="stylesheet" href="/css/HeaderFooter.css" />
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/commu_detail.css}">
 </head>
 <body>
-	<header th:replace="~{/header :: header}"></header>
-	<br/>
-	<br/>
 <div class="commu_detailbox">
     <div class="commu_detailbox2">
     <h1 th:text="${community.title}" class="commu_title"></h1>
     <div class="commu_detaildiv">
+    	<div class="commu_box">
         <div th:text="${community.category}" class="commu_cate"></div>
         <div th:text="${#temporals.format(community.createDate, 'yyyy-MM-dd')}" class="commu_date"></div>
-        <div th:text="${community.siteUser.nickname}"></div>
+        </div>
+        <div th:text="${community.siteUser.nickname}" class="nickname"></div>
     </div>
     <div th:text="${community.content}" class="commu_content"></div>
     <div th:if="${community.filename} != null" th:each="files : ${community.filePath}" class="commu_file">
@@ -48,19 +46,18 @@
         <ul th:each="comment : ${community.commentList}">
             <li>
                 <div  class="commentname" th:if="${comment.author}!=null" th:text="${comment.author.nickname}" ></div>
-                <div th:text="${comment.content}"></div>
-                <div th:text="${#temporals.format(comment.createDate, 'yyyy-MM-dd')}"></div>
-                <a href="javascript:void(0);" class="delete" th:data-uri="@{|/talk.yalolza.gg/comment/delete/${comment.id}|}"
-                   sec:authorize="isAuthenticated()"
-                   th:if="${comment.author!= null and #authentication.getName() == comment.author.username}"
-                   th:text="삭제" id="commentdelete"></a>
+                <div th:text="${comment.content}" class="comment_content"></div>
+               <div class="commentdate_delete">
+                	<div th:text="${#temporals.format(comment.createDate, 'yyyy-MM-dd')}" class="comment_date"></div>
+                	<a href="javascript:void(0);" class="delete" th:data-uri="@{|/talk.yalolza.gg/comment/delete/${comment.id}|}"
+                   	sec:authorize="isAuthenticated()"
+                   	th:if="${comment.author!= null and #authentication.getName() == comment.author.username}"
+                   	th:text="삭제" id="commentdelete"></a>
+            	</div>
             </li>
         </ul>
     </div>
 </div>
-   <br/>
-	<br/>
-          <footer th:replace="~{/footer :: footer}"></footer>
 </body>
 </html>
 <script type='text/javascript'>

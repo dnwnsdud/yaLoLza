@@ -8,3 +8,4 @@ public enum Yourposition {
 	BOTTOM,
 	SUPPORTER;
 }
+ 
