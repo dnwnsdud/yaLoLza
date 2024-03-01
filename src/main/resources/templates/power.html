@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/myrest.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/userdetail.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
+    <script src="/js/userdetail.js" defer></script>
+    <script src="/js/position.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <!-- 유저 정보 -->
+      <section class="con1">
+        <div class="dec">
+          <div class="champ-main"><img th:src="@{'/img/profileicon/'+${summoner.profileIconId} + '.png'}" alt="Item Image"/></div>
+          <h1>
+            <strong style="font-size: 3rem" th:text="${summoner.summonername}"></strong>
+            <span style="font-size: 2rem"  th:text=" '#'+${summoner.tag}">#444</span><br />
+            <p class="user-id">
+              <span th:text="${'소환사 레벨'+summoner.summonerLevel}"></span>
+            </p>
+            <div class="user-tier">
+              <div>S2023 S2 티어</div>
+              <div>S2023 S1 티어</div>
+              <div>S2022 티어</div>
+            </div>
+          </h1>
+        </div>
+        <div class="user-statistics"></div>
+        <div class="user-tip">
+          <button>종합</button>
+          <button>챔피언</button>
+        </div>
+        <!--솔로랭크-->
+      </section>
+      <div class="mw">
+        <div class="item-flex">
+          <div class="user-left">
+            <!-- 솔로 랭크 -->
+            <section class="user-ranktier">
+              <h2>솔로랭크</h2>
+              <ul>
+                <li class="ranktier2">
+                  <div class="img-wrap2"><img src="" alt="" /></div>
+                  <div>
+                    <h3 th:text="${summoner.recenttier}"></h3>
+                    <br />
+                    <span th:text="${summoner.leaguePoints}+'LP'"></span>
+                  </div>
+                </li>
+                
+                <li class="ranktier3">
+                  <span th:text="${summoner.wins}+'승'"></span><br/>
+                  <span th:text="${summoner.losses+'패'}"></span>
+                </li>
+              </ul>
+            </section>
+            <!-- 모스트 10 챔피언 -->
+            <section class="user-most">
+              <h2>모스트 10 챔피언</h2>
+              <ul  th:each="chamsper : ${summonerchamsper}">
+                <li class="most-champname">
+                  <div class="img-wrap"><img th:src="@{'/img/champion/'+${chamsper[0]} + '.png'}" alt="" /></div>
+                  <strong style="font-size: 2rem" th:text="${keysChamName[chamsper[0]]}">챔피언 이름</strong>
+                </li>
+                <li style="text-align: center">
+                  <strong style="font-size: 1.5rem" th:text="${chamsper[1]} +' 평점'">4.4평점</strong><br/>  
+
+                </li>
+                <li class="most-champtext">
+					
+                  <strong th:text="'승수 '+${chamsper[6]}">승률</strong>
+                  <br />
+                  <span th:text="'판수 '+${chamsper[5]}">게임수</span>
+                </li>
+              </ul>
+           
+              <button><a href="#">더보기</a></button>
+            </section>
+          </div>
+          <div class="user-right">
+            <!-- 최근 20전 -->
+            <section class="user-result">
+              <ul class="user-graphtitle">
+                <li>
+                  <h3 th:text="${ summonerall[7] + '전 ' + summonerall[0] + '승 ' + (summonerall[7] - summonerall[0]) + '패'}">20전 8승 12패</h3>
+                  <div class="graph-wrap">
+					  <span id="siwwin" th:text="${summonerall[0]}"></span>
+					  <span id="sjwtotal" th:text="${summonerall[7]}"></span>
+                    <canvas id="myChart" style="width: 100px; height: 100px">
+                    </canvas>
+                    <span class="graph-donut"  th:text="${summonerall[6] +'%'}">50%</span>
+                  </div>
+                </li>
+                <li>
+                  <p class="user-kda">
+                    <span th:text="${summonerall[1] + '/'+ summonerall[2] + '/'+ summonerall[3] }">킬/데스/어시</span><br />
+                    <strong th:text="${summonerall[4] + 'KDA' }">2.8 KDA</strong><br />
+                    <span style="color: var(--point10); font-size: 1.5rem" th:text="${ '킬관여 ' +summonerall[5] + '%' }">
+                   </span>
+                  </p>
+                </li>
+              </ul>
+              <ul class="user-most3">
+                <h3>모스트3 챔피언</h3>
+                <div class="most-flex">
+                  <li th:each="stats, statIndex : ${summonermost}" th:if="${statIndex.index < 3}">
+                    <div class="user-most3kda">
+                      <div class="img-wrap2"><img th:src="@{'/img/champion/'+${stats[0]} + '.png'}" alt="" /></div>
+                      <p>
+                        <strong th:text="${stats[2]*100/stats[1] + '%'}">70%</strong><br />
+                        <span th:text="${stats[2] + '승 ' + (stats[1] - stats[2]) + '패'}">3승 2패</span><br />
+                        <span th:text="${stats[6]}">2.78 KDA</span>
+                      </p>
+                    </div>
+                  </li>
+                </div>
+              </ul>
+            </section>
+            <!-- 유저 게임 정보 -->
+            <!-- 반복점 시작 -->
+           <div th:each="match , i : ${matchsssinfoList}"> 
+            <section class="usergame-result" >
+              <ul>
+                <li class="usergame-times">
+                  <strong style="font-size: 1.8rem" th:text="${match.body.info.queueId}"></strong><br />
+                  <span style="font-size: 1.8rem" th:text="${match.body.caludate}">몇시간 전</span>
+                </li>
+                <li class="usergame-timess">
+                  <span style="font-size: 1.8rem" th:text="${match.body.info.participants[summonermatchnum[i.index]].win == true ? '승리':'패배'}"></span><br />
+                  <span style="font-size: 1.8rem" th:text="${(match.body.info.gameDuration) / 60} + '분'">게임 시간</span>
+                </li>
+              </ul>
+              <ul>
+                <div>
+                  <li class="usergame-grade">
+                    <div class="usergame-grade">
+                      <div class="img-wrap2"><img th:src="@{'/img/champion/'+${match.body.info.participants[summonermatchnum[i.index]].championName} + '.png'}" alt="" /></div>
+                      <div class="usergame-flex">
+                        <div class="img-wrap1"><img th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].style]} + '.png'}" alt="" /></div>
+                        <div class="img-wrap1"><img th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style]} + '.png'}" alt="" /></div>
+                      </div>
+                      <div class="usergame-flex">
+                        <div class="img-wrap1"><img th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]].summoner1Id} + '.png'}" alt="" /></div>
+                        <div class="img-wrap1"><img th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]].summoner2Id} + '.png'}" alt="" /></div>
+                      </div>
+                      <div class="usergame-kda">
+	              <span th:text="${match.body.info.participants[summonermatchnum[i.index]].kills + '/' + 
+	                               match.body.info.participants[summonermatchnum[i.index]].deaths + '/' +
+	                               match.body.info.participants[summonermatchnum[i.index]].assists
+	              }"> </span><br />
+	              
+	              
+	              
+	              <span th:if="${match.body.info.participants[summonermatchnum[i.index]].deaths == 0}" th:text="perpect"></span>
+	              
+                 <div th:unless="${match.body.info.participants[summonermatchnum[i.index]].deaths == 0}">          
+                  <span th:if="${(match.body.info.participants[summonermatchnum[i.index]].kills + 0.0 +
+					                     match.body.info.participants[summonermatchnum[i.index]].assists) /
+					                    match.body.info.participants[summonermatchnum[i.index]].deaths < 10}" th:text="${' ' + #numbers.formatDecimal((match.body.info.participants[summonermatchnum[i.index]].kills + 0.0 +
+					                     match.body.info.participants[summonermatchnum[i.index]].assists) /
+					                    match.body.info.participants[summonermatchnum[i.index]].deaths ,1, 2)}"/>
+	              <span th:unless="${(match.body.info.participants[summonermatchnum[i.index]].kills + 0.0 +
+					                     match.body.info.participants[summonermatchnum[i.index]].assists) /
+					                    match.body.info.participants[summonermatchnum[i.index]].deaths < 10}" th:text="${#numbers.formatDecimal((match.body.info.participants[summonermatchnum[i.index]].kills + 0.0 +
+					                     match.body.info.participants[summonermatchnum[i.index]].assists) /
+					                    match.body.info.participants[summonermatchnum[i.index]].deaths ,2, 2)}"/>
+        
+                   </div> 
+					                 
+
+                      </div>
+                    </div>
+                    <div>
+                      <span style="color: var(--point10)" th:with=" sss = ${match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? 0 : 1}"
+                     th:text="${'킬관여 '+ ((match.body.info.participants[summonermatchnum[i.index]].kills+match.body.info.participants[summonermatchnum[i.index]].assists) * 100 / match.body.info.teams[sss].objectives.champion.kills) +'%'}">킬관여 45%</span ><br />
+                      
+                      <span th:text="'제어 와드'+${match.body.info.participants[summonermatchnum[i.index]].visionWardsBoughtInGame}"></span><br />
+                      <span th:text="'CS '+${match.body.info.participants[summonermatchnum[i.index]].totalMinionsKilled}"></span><br />
+
+                      <span>티어</span>
+                    </div>
+                  </li>
+                </div>
+               
+					<div class="usergame-items">
+					    <li class="img-wrap1" th:each="itemIndex : ${#numbers.sequence(0, 6)}">
+					        <img th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]} + '.png'}" alt="" />
+					    </li>    
+					</div>
+			 </ul>		
+              <ul class="usergame-ten">
+                <li>
+                  <div class="usergame-id"  th:each=" i  : ${#numbers.sequence(0, 4)}">
+                    <div class="img-wrap3"><img th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt=""/></div>
+                    <span th:text="${match.body.info.participants[i].summonerName} == '' ? ${match.body.info.participants[i].riotIdGameName} : ${match.body.info.participants[i].riotIdGameName}">아이디</span>
+                    
+                  </div>
+                </li>
+                <li>
+                  <div class="usergame-id"  th:each=" i  : ${#numbers.sequence(5, 9)}">
+                    <div class="img-wrap3"><img th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt=""/></div>
+                    <span th:text="${match.body.info.participants[i].summonerName} == '' ? ${match.body.info.participants[i].riotIdGameName} : ${match.body.info.participants[i].riotIdGameName}">아이디</span>
+                  </div>                
+                </li>
+                <li class="usergame-btn">
+                  <button>∨</button>
+                </li>
+              </ul>        
+            </section>
+            <!-- 버튼 클릭하면 나올곳 -->
+            <div class="usergame-click">
+              <section class="usergame-menunavi">
+                <button class="btn-all">종합</button>
+                <button class="btn-build">빌드</button>
+              </section>
+              <!-- 유저 승리 정보 -->
+         <div class="buildbtn-all">     
+              <section class="user-victory">                     
+                <ul class="victory-nav">
+                  <li>
+                    <span style="color: var(--point3)" th:text="${match.body.info.participants[summonermatchnum[i.index]].win == true ? '승리' : '패배' }">승리</span>
+                    <span th:text="${'(' + (match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? '블루팀' : '레드팀') + ')'}">(레드팀)</span>
+                  </li>
+                  <li>
+                    <h3>KDA</h3>
+                  </li>
+                  <li>
+                    <h3>가한 피해량</h3>
+                  </li>
+                  <li>
+                    <h3>받은 피해량</h3>
+                  </li>
+                  <li>
+                    <h3>와드</h3>
+                  </li>
+                  <li>
+                    <h3>CS</h3>
+                  </li>
+                  <li>
+                    <h3>아이템</h3>
+                  </li>
+                </ul>
+              <div th:with="www=${summonermatchnum[i.index] >= 5 ? 5 : 0}">  
+                <ul class="vic-team" th:each="z : ${#numbers.sequence(www, www + 4)}">
+                 <li>
+                    <div>
+                      <div class="img-wrap"><img th:src="@{'/img/champion/'+${match.body.info.participants[z].championName} + '.png'}" alt="" /></div>
+                    </div>
+                    <div class="vic-spell">
+                      <div>
+                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[z].Perks.Styles[0].style} + '.png'}" alt="" /></div>
+                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[z].Perks.Styles[1].style} + '.png'}" alt="" /></div>
+                      </div>
+                      <div>
+                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[z].summoner1Id} + '.png'}" alt="" /></div>
+                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[z].summoner2Id} + '.png'}" alt="" /></div>
+                      </div>
+                    </div>
+                    <p>
+                      <strong th:text="${match.body.info.participants[z].summonerName} == '' ? ${match.body.info.participants[z].riotIdGameName} : ${match.body.info.participants[z].riotIdGameName}">아이디</strong><br/>
+                      <span>티어</span>
+                    </p>
+                  </li> 
+                  <li>
+                    <p>
+                      <span th:text="${match.body.info.participants[z].kills + '/' + 
+	                               match.body.info.participants[z].deaths + '/' +
+	                               match.body.info.participants[z].assists
+	              }">3/4/6(45%)</span><br />
+	              
+	              <span style="color: var(--point10)" th:with=" sss = ${match.body.info.participants[z].teamId == 100 ? 0 : 1}"
+                     th:text="${'킬관여 '+ ((match.body.info.participants[z].kills+match.body.info.participants[z].assists) * 100 / match.body.info.teams[sss].objectives.champion.kills) +'%'}">킬관여 45%</span ><br />
+	              
+	              <span style="color: var(--point10)" th:if="${match.body.info.participants[summonermatchnum[i.index]].deaths == 0}" th:text="perpect"></span>
+	              
+	      <div th:unless="${match.body.info.participants[z].deaths == 0}">          
+                  <span th:if="${(match.body.info.participants[z].kills + 0.0 +
+					                     match.body.info.participants[z].assists) /
+					                    match.body.info.participants[z].deaths < 10}" th:text="${' ' + #numbers.formatDecimal((match.body.info.participants[z].kills + 0.0 +
+					                     match.body.info.participants[z].assists) /
+					                    match.body.info.participants[z].deaths ,1, 2)}"/>
+	              <span th:unless="${(match.body.info.participants[z].kills + 0.0 +
+					                     match.body.info.participants[z].assists) /
+					                    match.body.info.participants[z].deaths < 10}" th:text="${#numbers.formatDecimal((match.body.info.participants[z].kills + 0.0 +
+					                     match.body.info.participants[z].assists) /
+					                    match.body.info.participants[z].deaths ,2, 2)}"/>
+        
+                   </div> 
+	              
+                    </p>
+                  </li>
+                  <li>
+                    <div th:with=" dmg =${match.body.info.participants[z].totalDamageDealtToChampions}">
+                      <span th:text="${dmg}">4554</span><br />
+                      <progress
+                        id="progress1"
+                        th:value="${dmg}"
+                        min="0"
+                        th:max="${match.body.maxdmg}"
+                      ></progress>
+                    </div>
+                  </li>
+                  <li>
+                    <div th:with=" dfs =${match.body.info.participants[z].totalDamageTaken}">
+                      <span th:text="${dfs}">4554</span><br />
+                      <progress
+                        id="progress2"
+                        th:value="${dfs}"
+                        min="0"
+                        th:max="${match.body.maxdmged}"
+                      ></progress>
+                    </div>
+                  </li>
+                  <li>
+                    <p>
+                      <span th:text="${match.body.info.participants[z].visionWardsBoughtInGame}">4(제어)</span><br />
+                      <span th:text="${match.body.info.participants[z].wardsPlaced+'/'+
+                       match.body.info.participants[z].wardsKilled}">14/3</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <span th:text="${match.body.info.participants[z].totalMinionsKilled + match.body.info.participants[z].totalAllyJungleMinionsKilled +match.body.info.participants[z].totalEnemyJungleMinionsKilled}">211</span><br />
+                      <span th:text=" '분당 ' + ${(match.body.info.participants[z].totalMinionsKilled + match.body.info.participants[z].totalAllyJungleMinionsKilled +match.body.info.participants[z].totalEnemyJungleMinionsKilled) /(match.body.info.gameDuration/ 60 )}">분당 4.6</span>
+                    </p>
+                  </li>
+                  <li>
+
+                    <ul class="victotal-items">
+                      <div class="img-wrap3" th:each="itemIndex : ${#numbers.sequence(0, 6)}">
+                      <img th:src="@{'/img/item/'+${match.body.info.participants[z]['item' + itemIndex]} + '.png'}" alt="" />
+                      </div>
+
+                    </ul>
+                  </li>
+                </ul>
+           </div>     
+ 
+              </section>
+              <!-- 오브젝트 -->
+              <section class="usergame-object" 
+              th:with="sss=${match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? 0 : 1},
+                       nsss=${match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? 1 : 0}">
+
+              <ul class="usergame-objects" th:with="tt=${match.body.info.teams[sss]}">
+                  <li>
+                    <div class="img-wrap4 baron"></div>
+                    <span th:text="${tt.objectives.baron.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 dragon"></div>
+                    <span th:text="${tt.objectives.dragon.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 bug"></div>
+                    <span th:text="${tt.objectives.horde.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 larva"></div>
+                    <span th:text="${tt.objectives.riftHerald.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 tower"></div>
+                    <span th:text="${tt.objectives.tower.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 suppressor"></div>
+                    <span th:text="${tt.objectives.inhibitor.kills}">1</span>
+                  </li>
+                </ul>
+                
+                <ul class="object-progress">
+                <div th:with="hh=${match.body.info.teams[sss]}">
+                  <li>
+                    <progress
+                      id="progress3"
+                      th:value="${match.body.info.teams[sss].objectives.champion.kills}"
+                      min="0"
+                      th:max="${match.body.info.teams[0].objectives.champion.kills + match.body.info.teams[1].objectives.champion.kills}"
+                    ></progress>
+                    <p>Total Kill</p>
+                  </li>
+                  <li th:with="kk=${match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? 0 : 5}">
+                    <progress
+                      id="progress4"
+                      th:value="${
+						  match.body.info.participants[kk].goldEarned +
+					      match.body.info.participants[kk+1].goldEarned +
+					      match.body.info.participants[kk+2].goldEarned +
+					      match.body.info.participants[kk+3].goldEarned +
+					      match.body.info.participants[kk+4].goldEarned 
+					  }"
+                      min="0"
+                      th:max="${
+					      match.body.info.participants[0].goldEarned +
+					      match.body.info.participants[1].goldEarned +
+					      match.body.info.participants[2].goldEarned +
+					      match.body.info.participants[3].goldEarned +
+					      match.body.info.participants[4].goldEarned +
+					      match.body.info.participants[5].goldEarned +
+					      match.body.info.participants[6].goldEarned +
+					      match.body.info.participants[7].goldEarned +
+					      match.body.info.participants[8].goldEarned +
+					      match.body.info.participants[9].goldEarned 
+                      }"
+                    ></progress>
+                    <p>Total Gold</p>
+                  </li>
+                  </div>
+                </ul>
+                <ul class="usergame-objects" th:with="ntt=${match.body.info.teams[nsss]}">
+                                 <li>
+                    <div class="img-wrap4 baron"></div>
+                    <span th:text="${ntt.objectives.baron.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 dragon"></div>
+                    <span th:text="${ntt.objectives.dragon.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 bug"></div>
+                    <span th:text="${ntt.objectives.horde.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 larva"></div>
+                    <span th:text="${ntt.objectives.riftHerald.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 tower"></div>
+                    <span th:text="${ntt.objectives.tower.kills}">1</span>
+                  </li>
+                  <li>
+                    <div class="img-wrap4 suppressor"></div>
+                    <span th:text="${ntt.objectives.inhibitor.kills}">1</span>
+                  </li>
+                </ul>
+             
+              </section>
+              <!-- 유저 패배 정보 -->
+              
+              <section class="user-defeated">
+                <ul class="victory-nav">
+                  <li>
+                 <span style="color: var(--point3)" th:text="${match.body.info.participants[summonermatchnum[i.index]].win == true ? '패배' : '승리' }">승리</span>
+                  <span th:text="${ '(' + (match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? '레드팀' : '블루팀') + ')'}">(레드팀)</span>
+                  </li>
+                  <li>
+                    <h3>KDA</h3>
+                  </li>
+                  <li>
+                    <h3>가한 피해량</h3>
+                  </li>
+                  <li>
+                    <h3>받은 피해량</h3>
+                  </li>
+                  <li>
+                    <h3>와드</h3>
+                  </li>
+                  <li>
+                    <h3>CS</h3>
+                  </li>
+                  <li>
+                    <h3>아이템</h3>
+                  </li>
+                </ul>
+              <div th:with="nww=${summonermatchnum[i.index] >= 5 ? 0 : 5}">  
+                <ul class="vic-team" style="background-color: var(--point11)" th:each="nz : ${#numbers.sequence(nww, nww + 4)}">
+                  <li>
+                    <div>
+                      <div class="img-wrap"><img th:src="@{'/img/champion/'+${match.body.info.participants[nz].championName} + '.png'}" alt="" /></div>
+                    </div>
+                    <div class="vic-spell">
+                      <div>
+                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[nz].Perks.Styles[0].style} + '.png'}" alt="" /></div>
+                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[nz].Perks.Styles[1].style} + '.png'}" alt="" /></div>
+                      </div>
+                      <div>
+                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[nz].summoner1Id} + '.png'}" alt="" /></div>
+                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[nz].summoner2Id} + '.png'}" alt="" /></div>
+                      </div>
+                    </div>
+                    <p>
+                      <strong th:text="${match.body.info.participants[nz].summonerName} == '' ? ${match.body.info.participants[nz].riotIdGameName} : ${match.body.info.participants[nz].riotIdGameName}">아이디</strong><br/>
+                      <span>티어</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                   <span th:text="${match.body.info.participants[nz].kills + '/' + 
+	                               match.body.info.participants[nz].deaths + '/' +
+	                               match.body.info.participants[nz].assists
+	              }">3/4/6(45%)</span><br />
+	              
+	              <span style="color: var(--point10)" th:with=" nsss = ${match.body.info.participants[nz].teamId == 100 ? 0 : 1}"
+                     th:text="${'킬관여 '+ ((match.body.info.participants[nz].kills+match.body.info.participants[nz].assists) * 100 / match.body.info.teams[nsss].objectives.champion.kills) +'%'}">킬관여 45%</span ><br />
+	              
+	              <span style="color: var(--point10)" th:if="${match.body.info.participants[summonermatchnum[i.index]].deaths == 0}" th:text="perpect"></span>
+	              
+	      <div th:unless="${match.body.info.participants[nz].deaths == 0}">          
+                  <span th:if="${(match.body.info.participants[nz].kills + 0.0 +
+					                     match.body.info.participants[nz].assists) /
+					                    match.body.info.participants[nz].deaths < 10}" th:text="${' ' + #numbers.formatDecimal((match.body.info.participants[nz].kills + 0.0 +
+					                     match.body.info.participants[nz].assists) /
+					                    match.body.info.participants[nz].deaths ,1, 2)}"/>
+	              <span th:unless="${(match.body.info.participants[nz].kills + 0.0 +
+					                     match.body.info.participants[nz].assists) /
+					                    match.body.info.participants[nz].deaths < 10}" th:text="${#numbers.formatDecimal((match.body.info.participants[nz].kills + 0.0 +
+					                     match.body.info.participants[nz].assists) /
+					                    match.body.info.participants[nz].deaths ,2, 2)}"/>
+        
+                   </div>
+                    
+                    </p>
+                  </li>
+                <li>
+                    <div th:with=" ndmg =${match.body.info.participants[nz].totalDamageDealtToChampions}">
+                      <span th:text="${ndmg}">4554</span><br />
+                      <progress
+                        id="progress1"
+                        th:value="${ndmg}"
+                        min="0"
+                        th:max="${match.body.maxdmg}"
+                      ></progress>
+                    </div>
+                  </li>
+                  <li>
+                    <div th:with=" ndfs =${match.body.info.participants[nz].totalDamageTaken}">
+                      <span th:text="${ndfs}">4554</span><br />
+                      <progress
+                        id="progress2"
+                        th:value="${ndfs}"
+                        min="0"
+                        th:max="${match.body.maxdmged}"
+                      ></progress>
+                    </div>
+                  </li>
+                  </li>
+                               <li>
+                    <p>
+                      <span th:text="${match.body.info.participants[nz].visionWardsBoughtInGame}">4(제어)</span><br />
+                      <span th:text="${match.body.info.participants[nz].wardsPlaced+'/'+
+                       match.body.info.participants[nz].wardsKilled}">14/3</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <span th:text="${match.body.info.participants[nz].totalMinionsKilled + match.body.info.participants[nz].totalAllyJungleMinionsKilled +match.body.info.participants[nz].totalEnemyJungleMinionsKilled}">211</span><br />
+                      <span th:text=" '분당 ' + ${(match.body.info.participants[nz].totalMinionsKilled + match.body.info.participants[nz].totalAllyJungleMinionsKilled +match.body.info.participants[nz].totalEnemyJungleMinionsKilled) /(match.body.info.gameDuration/ 60 )}">분당 4.6</span>
+                    </p>
+                  </li>
+                  <li>
+
+                    <ul class="victotal-items">
+                      <div class="img-wrap3" th:each="itemIndex : ${#numbers.sequence(0, 6)}">
+                      <img th:src="@{'/img/item/'+${match.body.info.participants[nz]['item' + itemIndex]} + '.png'}" alt="" />
+                      </div>
+
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              </section>
+           </div>                 
+              <!-- 유저 아이템 빌드 -->
+          
+              <div class="buildbtn-build">
+                <section class="usergame-itembuild">
+                  <ul class="itembuild-start">
+                   <li th:each="purchase : ${matchspurchase[i.index]}">
+					    <div class="itembuild-group">
+				          <div th:each="key: ${#numbers.sequence(1, purchase.size() - 1)}">
+					            <div class="img-wrap1">
+					                <img th:src="@{'/img/item/'+${purchase[key]} + '.png'}" alt="" />
+					            </div>
+					        </div>
+					        <p th:text="${purchase[0]} + '분'">0:00</p>
+					    </div>
+					    <div class="item-arrow">-></div>
+					</li>
+                  </ul>
+                </section>
+                
+                <section class="usergame-skillbuild">
+                  <ul class="userskill-qwe">
+                    <li class="img-wrap3"><img src="" alt="" /></li>
+                    <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
+                    <li class="img-wrap3"><img src="" alt="" /></li>
+                    <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">->
+                    </li>
+                    <li class="img-wrap3"><img src="" alt="" /></li>
+                  </ul>
+                  <ul >
+                    <div class="skillbuild-grid">
+                    <li
+                        style="
+                          color: var(--white);
+                          font-size: 1.3rem;
+                          font-weight: bold;
+                        "
+                      >
+                        Q
+                      </li>
+                      
+                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${match.body.info.participants[summonermatchnum[i.index]].championName}+'Q'+ '.png'}" alt="" /></li>
+                      <li th:each="skill , s : ${matchsskill[i.index]}" 
+                          th:text="${skill == 1 ? (s.index +1) : ''}">  
+					  </li>
+                    </div>
+                    
+                    
+                    
+                    <div class="skillbuild-grid">
+                      <li
+                        style="
+                          color: var(--white);
+                          font-size: 1.3rem;
+                          font-weight: bold;
+                        "
+                      >
+                        W
+                      </li>
+                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${match.body.info.participants[summonermatchnum[i.index]].championName}+'W'+ '.png'}" alt="" /></li>
+                            <li th:each="skill , s : ${matchsskill[i.index]}" 
+                          th:text="${skill == 2 ? (s.index +1) : ''}">  
+					  </li>
+                    </div>
+                    <div class="skillbuild-grid">
+                      <li
+                        style="
+                          color: var(--white);
+                          font-size: 1.3rem;
+                          font-weight: bold;
+                        "
+                      >
+                        E
+                      </li>
+                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${match.body.info.participants[summonermatchnum[i.index]].championName}+'E'+ '.png'}" alt="" /></li>
+                      <li th:each="skill , s : ${matchsskill[i.index]}" 
+                          th:text="${skill == 3 ? (s.index +1) : ''}">  
+					  </li>
+                    </div>
+                    <div class="skillbuild-grid">
+                      <li
+                        style="
+                          color: var(--white);
+                          font-size: 1.3rem;
+                          font-weight: bold;
+                        "
+                      >
+                        R
+                      </li>
+                      <li class="img-wrap4"><img th:src="@{'/img/spell/'+${match.body.info.participants[summonermatchnum[i.index]].championName}+'R'+ '.png'}" alt="" /></li>
+					 <li th:each="skill , s : ${matchsskill[i.index]}" 
+                          th:text="${skill == 4 ? (s.index +1) : ''}">  
+					  </li>				
+                    </div>
+                    
+                </section>
+                <!-- 유저 룬 정보 -->
+                <section class="usergame-runeinfo">
+                  <div class="champ-rune">
+                <div class="main-rune" th:fragment="81100">
+                      <ul class="main-zero">
+                     <li class="img-wrap"><img src="" alt="" /></li>
+                     <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></span>
+                      </ul>
+                      <ul class="main-first">
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[0].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul class="main-second">
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[1].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul class="main-third">
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[2].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul class="main-fourth">
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[3].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                   </div>
+                  <div class="sub-rune">
+                      <ul class="sub-main">
+					     <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[0].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+						  <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[1].perk}"></span>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                      <ul>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                    </div>
+                   <div class="fragments-rune">
+                      <ul class="fragments-runegrid">
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>                    
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>                      
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                        <li class="img-wrap"><img src="" alt="" /></li>
+                      </ul>
+                    </div>
+                </section>
+              </div>
+            </div>
+           <!--감싼것-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

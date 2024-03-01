@@ -37,6 +37,8 @@ public class SecurityConfig {
 		return http
 				.csrf(csrf->
 					csrf.ignoringRequestMatchers(
+							"**",
+							"**/**",
 						"/api/all",
 						"/api/**",
 						"/login/check",
@@ -47,7 +49,7 @@ public class SecurityConfig {
 						"/statistics/**",
 						"/summoners/**",
 						"/**",
-						"/duo/**"
+						"/duo/**",
 						"/img/**",
 						"/css/**",
 						"/js/**"
@@ -59,6 +61,9 @@ public class SecurityConfig {
 						.requestMatchers(
 								"**",
 								"/**",
+								"/newlolkia",
+								"/newlolkia/userinfo",
+								"/newlolkia/userinfo/**",
 							"/yalolza.gg",
 							"/yalolza.gg/**",
 							"/yalolza.gg/champions",
