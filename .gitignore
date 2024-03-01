@@ -1,12 +1,13 @@
 HELP.md
 target/
 exec/
+logfile/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 *.log
-*.gzip
+*.gz
 *.7zip
 *.zip
 application.properties

@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+
+body {
+	background-color: #292a30;
+	color: white;
+}
+
+.duoView {
+	width: 800px;
+	margin: auto;
+	border: 1px solid black;
+	margin-top: 150px;
+	border-radius: 10px;
+	background-color: #45464d;
+	margin-bottom: 50px;
+	
+
+}
+
+.duoView>.viewtitle {
+	font-size: 25px;
+	padding: 15px;
+	border-bottom: 1px solid black;
+}
+
+.duoView>.viewtitle>li,
+.duoView>.viewtitle>h2 {
+	display: inline-block;
+}
+
+
+.mikeBox {
+	width: 18px;
+}
+
+.mikeBox>svg {
+	width: 100%;
+}
+
+.duoView ul>li,
+.duoView ul>a,.duoView ul>span {
+	padding: 15px;
+}
+
+.btn {
+	display: inline-block;
+	border: 1px solid gray;
+	border-radius: 10px;
+	text-align: center;
+	margin-left: 10px;
+	width: 380px;
+}
+
+.back {
+	display: block;
+	border: 1px solid gray;
+	border-radius: 10px;
+	text-align: center;
+	margin: 10px;
+	width: 777px;
+	background-color: #00bba3;
+
+}
+
+div.yourBox {
+
+	display: inline-block;
+}
+
+.Box {
+	width: 50px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+	display: inline-block;
+}
+
+#positionBox>.Box>svg>path:nth-of-type(1),
+.yourBox>.Box>svg>path:nth-of-type(1) {
+	fill: #00bba3
+}
+#positionBox>.Box>svg>path:nth-of-type(2),
+.yourBox>.Box>svg>path:nth-of-type(2) {
+	fill: gray
+}
+
+.for-password {
+	display: flex;
+	
+}
+.menuForm{
+	padding: 0px;
+}
+
+.for-password>input {
+		width: 355px;
+		background-color: #45464d;
+		border: 1px solid gray;
+		border-radius: 10px;
+		padding: 10px;
+		color: white;
+		margin:10px;
+		padding: 13px;
+		font-size:16px;
+}
+
+input.submitBtn{
+	width:380px;
+	margin-left:4px;
+}
+form{
+	padding:0px;
+}

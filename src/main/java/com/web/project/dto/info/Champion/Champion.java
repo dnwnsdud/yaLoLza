@@ -22,6 +22,4 @@ public class Champion {
 	public List<Skin> skins;
 	public List<Spell> spells;
 	public Passive passive;
-
-	
 }

@@ -18,6 +18,7 @@ import com.web.project.dto.info.Champion.Skin;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.Champion.Stat;
 
+
 public class ChampionData {
 	public static List<Champion> data() {
 		String url1 = "https://ddragon.leagueoflegends.com/cdn/14.2.1/data/ko_KR/champion.json";
@@ -175,3 +176,4 @@ public class ChampionData {
 		return keysChamName;
 	}
 }
+

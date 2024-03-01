@@ -24,11 +24,11 @@
     </div>
         <div class="bottom_border"></div>
         <div class="modify_deletebox">
-    <a href="javascript:void(0);" class="delete" th:data-uri="@{|/yalolza.gg/community/delete/${community.id}|}"
+    <a href="javascript:void(0);" class="delete" th:data-uri="@{|/talk.yalolza.gg/community/delete/${community.id}|}"
        sec:authorize="isAuthenticated()"
        th:if="${community.siteUser!= null and #authentication.getName() == community.siteUser.username}"
        th:text="삭제" id="write_delete"></a>
-    <a class="modify" th:href="@{|/yalolza.gg/community/modify/${community.id}|}"
+    <a class="modify" th:href="@{|/talk.yalolza.gg/community/modify/${community.id}|}"
        sec:authorize="isAuthenticated()"
        th:if="${community.siteUser!= null and #authentication.getName() == community.siteUser.username}"
        th:text="수정"
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <form th:action="@{|/yalolza.gg/comment/create/${community.id}|}" method="post" class="comment_form">
+    <form th:action="@{|/talk.yalolza.gg/comment/create/${community.id}|}" method="post" class="comment_form">
         <textarea name="content" id="content" rows="10" class="comment"></textarea>
         <input type="submit" value="등록" class="comment_input">
     </form>
@@ -46,7 +46,7 @@
                 <div  class="commentname" th:if="${comment.author}!=null" th:text="${comment.author.nickname}" ></div>
                 <div th:text="${comment.content}"></div>
                 <div th:text="${#temporals.format(comment.createDate, 'yyyy-MM-dd')}"></div>
-                <a href="javascript:void(0);" class="delete" th:data-uri="@{|/yalolza.gg/comment/delete/${comment.id}|}"
+                <a href="javascript:void(0);" class="delete" th:data-uri="@{|/talk.yalolza.gg/comment/delete/${comment.id}|}"
                    sec:authorize="isAuthenticated()"
                    th:if="${comment.author!= null and #authentication.getName() == comment.author.username}"
                    th:text="삭제" id="commentdelete"></a>

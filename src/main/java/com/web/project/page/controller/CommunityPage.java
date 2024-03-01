@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,7 +32,8 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/yalolza.gg/community")
+@RequestMapping("/talk.yalolza.gg/community")
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class CommunityPage {
 	 private final CommunityRepository communityRepository;
 	    private final CommunityService communityService;
@@ -39,7 +41,7 @@ public class CommunityPage {
 
 	    @GetMapping("/")
 	    public String first() {
-	        return "redirect:/yalolza.gg/community/list/all";
+	        return "redirect:/talk.yalolza.gg/community/list/all";
 	    }
 	    //    @GetMapping("/list")
 //	    public String list(Model model){
@@ -140,28 +142,36 @@ public class CommunityPage {
 //	    }
 
 	    @PreAuthorize("isAuthenticated()")
-	        @PostMapping("/create/qna")
-	    public String CommuCreate(@RequestParam(value="title") String title, @RequestParam(value="content") String content,
-	        @Valid CommunityForm communityForm, String category, List<MultipartFile> file,
-	                              Principal principal) throws IOException {
-	        category = "QnA";
+        @PostMapping("/create/qna")
+	    public String CommuCreate(@RequestParam(value="title") String title,
+	    		@RequestParam(value="content") String content,
+									        @Valid CommunityForm communityForm,
+								            BindingResult bindingResult,
+									        String category, List<MultipartFile> file,
+									        Principal principal) throws IOException {
+	    	if(bindingResult.hasErrors()) {
+	    		return "commu_form";
+	    	}
+	       
+	    	category = "QnA";
 	            SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	            communityService.create(communityForm.getTitle(),
 	                    communityForm.getContent(), category, file, siteUser);
-	        return "redirect:/yalolza.gg/community/list/qna";
+	        return "redirect:/talk.yalolza.gg/community/list/qna";
 	    }
-
+ 
 	    @PreAuthorize("isAuthenticated()")
 	    @PostMapping("/create/{type}")
 	    public String CommuCreate(@Valid CommunityForm communityForm,
+                					BindingResult bindingResult,
 	                              @PathVariable String type,
-	                              BindingResult bindingResult,
 	                              List<MultipartFile> file,
 	                              Principal principal) throws IOException {
 	        SiteUser siteUser = (SiteUser) this.userService.loadUserByUsername(principal.getName());
 	        if(bindingResult.hasErrors()){
 	            return "commu_form";
 	        }
+	     
 	        String category = switch (type) {
 	            case "all" -> CommunityEnum.All.getGroup();
 	            case "free" -> CommunityEnum.FREE.getGroup();
@@ -172,7 +182,7 @@ public class CommunityPage {
 
 	        communityService.create(communityForm.getTitle(),
 	                communityForm.getContent(), category, file, siteUser);
-	        return "redirect:/yalolza.gg/community/list/%s".formatted(type);
+	        return "redirect:/talk.yalolza.gg/community/list/%s".formatted(type);
 	    }
 
 	    @GetMapping("/delete/{id}")
@@ -181,7 +191,7 @@ public class CommunityPage {
 	        Community community= this.communityService.getCommu(id);
 //	    if(!community.getAuthor().getU) 회원 넘어오면 해야돼
 	        this.communityService.delete(community);
-	        return "redirect:/yalolza.gg/community/";
+	        return "redirect:/talk.yalolza.gg/community/";
 	    }
 
 
@@ -210,7 +220,7 @@ public class CommunityPage {
 	            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정 권한이 없습니다.");
 	        }
 	        this.communityService.modify(community, communityForm.getTitle(), communityForm.getContent(), file);
-	        return String.format("redirect:/yalolza.gg/community/detail/%s", id);
+	        return String.format("redirect:/talk.yalolza.gg/community/detail/%s", id);
 	    }
 
 	    

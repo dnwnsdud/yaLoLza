@@ -33,3 +33,4 @@ public class Ajax {
 		return new JSONArray(json);
 	}
 }
+

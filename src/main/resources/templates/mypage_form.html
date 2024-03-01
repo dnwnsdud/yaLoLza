@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <script>
+    function confirmDelete() {
+        // 사용자에게 경고창을 띄워 확인 여부를 물어봅니다.
+        var confirmDelete = confirm("정말로 회원 탈퇴하시겠습니까?");
+        
+        // 사용자가 확인을 선택한 경우에만 양식을 제출합니다.
+        return confirmDelete;
+    }
+	</script>
+	
+</head>
+<body>
+    <h1>My Page</h1>
+    
+    <span th:if="${user}" th:text="|${user.autho}-${user.nickname} 님 마이 페이지 입니다.|"> 아이디 존재</span>
+    <span th:unless="${user}">nono</span>
+    <!-- 닉네임 변경 버튼 -->
+    <div>
+       <h2>닉네임 변경</h2>
+
+    <form action="/yalolza.gg/user/mypage/change-username" method="post">
+        <label for="newNickname" th:text="|${user.nickname}|" th:value="|${user.nickname}|"></label>
+        <input type="text" id="newNickname" name="newNickname" required>
+        <button type="submit">변경하기</button>
+    </form>
+
+    <!-- 에러 메시지 출력 부분 (서버로부터 에러 메시지가 전달된 경우) -->
+    <div th:if="${usernameError}" th:text="${usernameError}" style="color: red;"></div>
+
+    <!-- 성공 메시지 출력 부분 (닉네임 변경 성공 시) -->
+    <div th:if="${successMessage}" th:text="${successMessage}" style="color: green;"></div>
+    </div>
+    <div>
+
+<!-- 에러 메시지 출력 -->
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+
+
+<div th:unless="${user.provider}">
+      <h2>비밀번호 변경</h2>
+<form action="/yalolza.gg/user/mypage/change-pass" method="post">
+    <div>
+        <label for="oldPassword">현재 비밀번호:</label>
+        <input type="password" id="oldPassword" name="oldPass" required>
+    </div>
+    <div>
+        <label for="newPassword">새 비밀번호:</label>
+        <input type="password" id="newPassword" name="newPass" required>
+    </div>
+    <div>
+        <label for="newPasswordConfirm">새 비밀번호 확인:</label>
+        <input type="password" id="newPasswordConfirm" name="newPassConfirm" required>
+    </div>
+    <div>
+        <button type="submit">비밀번호 변경</button>
+    </div>
+</form>
+    </div>
+    </div>
+    
+    <div class="unregist">
+		<h2>회원탈퇴</h2>
+    <form th:action="@{/yalolza.gg/user/unregist}" method="post" th:object="${passwordForm}">
+      <input type="hidden" name="id" th:value="${user.id}">
+      <input type="hidden" name="password" th:value="${user.password}">
+
+      <input type="submit" value="회원 탈퇴" onclick="return confirmDelete();">
+    </form>
+  </div> <br/><br/>
+    
+      <a th:href="@{/yalolza.gg}" class=back>메인페이지</a><br/><br/>
+
+</body>
+</html>

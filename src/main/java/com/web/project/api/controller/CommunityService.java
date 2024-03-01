@@ -194,6 +194,16 @@ public class CommunityService {
     public void delete(Community community) {
         this.communityRepository.delete(community);
     }
-
+	public List<Community> getAllCommunities() {
+		return communityRepository.findAllByOrderByIdDesc();
+	}
+	public void deleteCommunity(Integer communityId) {
+        Optional<Community> communityOptional = communityRepository.findById(communityId);
+        communityOptional.ifPresent(communityRepository::delete);
+    }
+	public Community getCommunity(Integer id) {
+        Optional<Community> communityOptional = communityRepository.findById(id);
+        return communityOptional.orElse(null);
+	}
 
 }

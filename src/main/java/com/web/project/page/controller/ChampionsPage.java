@@ -294,4 +294,5 @@ public class ChampionsPage {
 		return "champ_detail";
 	}
 
+
 }

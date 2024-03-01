@@ -2,6 +2,8 @@ package com.web.project.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +13,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.web.project.dto.enumerated.UserRole;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,6 +21,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -55,16 +61,44 @@ public class SiteUser implements UserDetails, OAuth2User {
 
 	    String provider;
 
+		private Date createdDate;
+	    private Date lastModifiedDate;
+	    @PrePersist
+	    protected void onCreate() {
+	        createdDate = new Date();
+	        lastModifiedDate = new Date();
+	    }
+
+	    @PreUpdate
+	    protected void onUpdate() {
+	        lastModifiedDate = new Date();
+	    }
+	    
+	    
 	    @Enumerated(EnumType.STRING) // UserRole enum의 문자열을 사용하도록 지정
 	    private UserRole autho = UserRole.USER; // 기본값으로 USER 설정
 
-	    @Override
-	    public Collection<? extends GrantedAuthority> getAuthorities() {
-	        ArrayList<GrantedAuthority> autho = new ArrayList<>();
-	        // ROLE_ 권한을 넣어줘야 한다
-	        autho.add(new SimpleGrantedAuthority("ROLE_" + autho));
-	        return autho;
-	    }
+	    
+	    @OneToMany(mappedBy = "siteUser", cascade = CascadeType.REMOVE)
+	    private List<Community> community;
+	    
+	    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+	    private List<Comment> comment;
+	    
+	    @OneToMany(mappedBy = "siteUser", cascade = CascadeType.REMOVE)
+	    private List<Duo> duo;
+	    
+	    
+	    
+	    
+		@Override
+		public Collection<? extends GrantedAuthority> getAuthorities() {
+			ArrayList<GrantedAuthority> autho = new ArrayList<>();
+			// ROLE_ 권한을 넣어줘야 한다
+//			auth.add(new SimpleGrantedAuthority("ROLE_" + auth));
+			autho.add(new SimpleGrantedAuthority("ROLE_" + this.autho.name()));
+			return autho;
+		}
 
 	    //인증 (Authentication)
 	    //인가 (Authorization)
@@ -112,4 +146,7 @@ public class SiteUser implements UserDetails, OAuth2User {
 	        return username;
 	    }
 
+		public String getNickname() {
+			return nickname;
+		}
 }

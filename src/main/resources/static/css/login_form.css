@@ -31,7 +31,7 @@
 }
 
 .login-box{
-    width: 30%;
+    width: 25%;
     margin: auto;
     display: block;
     align-items: center;
@@ -96,7 +96,7 @@
 
 .joingobox{
     display: flex;
-    width: 70%;
+    width: 65%;
     margin: auto;
     margin-top: 5rem;
 }

@@ -10,6 +10,8 @@ import org.json.JSONObject;
 
 import com.web.project.dto.info.Champion.Spell;
 
+
+
 public class SummonerData {
 	public final static Spell findspell(String id) {
 		String url5 = "https://ddragon.leagueoflegends.com/cdn/14.2.1/data/ko_KR/summoner.json";

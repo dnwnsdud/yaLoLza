@@ -40,8 +40,8 @@ public class Community {
 	    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")
 	    private Integer id;
 		@Column(nullable = false)
-	    private String title;
-		@Column(nullable = false)
+	    private String title;      
+		@Column(nullable = false, length = 10000)
 	    private String content;
 
 	    private LocalDateTime createDate;
