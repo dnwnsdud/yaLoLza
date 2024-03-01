@@ -89,40 +89,40 @@ public class UserPage {
         model.addAttribute("user", user);
         return "mypage_form";
     }
-//
-//    @PostMapping("/mypage/change-username")
-//    public String changeUsername (@RequestParam("newNickname")  String newNickname, Model model) {
-//       boolean result = userService.changeNickname(newNickname);
-//       if(!result) {
-//          model.addAttribute("usernameError", "이미 존재하는 닉네임 입니다.");
-//          return "mypage_form";
-//       }
-//       return "redirect:/yalolza.gg/user/mypage";
-//    }
-//
-//    @PostMapping("/mypage/change-pass")
-//   public String changeUserPass (@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass, @RequestParam("newPassConfirm") String newPassConfirm, @AuthenticationPrincipal SiteUser currentUser, RedirectAttributes redirectAttributes, Model model) {
-//      Long userId = currentUser.getId();
-//
-//      boolean result = userService.changePass(userId, oldPass, newPass, newPassConfirm);
-//      
-//      if (result) {
-//         redirectAttributes.addFlashAttribute("message", "비밀번호가 성공적으로 변경되었습니다.");
-//          return "redirect:/yalolza.gg/user/mypage";
-//       } else {
-//           model.addAttribute("errorMessage", "비밀번호 변경에 실패했습니다. 입력 정보를 확인해 주세요.");
-//           return "mypage_form";
-//       }
-//   }
 
-//   @GetMapping("/mypage/change-pass")
-//   public String showChangPassForm (Model model) {
-//      return "pass_form";
-//   }
+    @PostMapping("/mypage/change-username")
+    public String changeUsername (@RequestParam("newNickname")  String newNickname, Model model) {
+    	boolean result = userService.changeNickname(newNickname);
+    	if(!result) {
+    		model.addAttribute("usernameError", "이미 존재하는 닉네임 입니다.");
+    		return "mypage_form";
+    	}
+    	return "redirect:/yalolza.gg/user/mypage";
+    }
+
+    @PostMapping("/mypage/change-pass")
+	public String changeUserPass (@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass, @RequestParam("newPassConfirm") String newPassConfirm, @AuthenticationPrincipal SiteUser currentUser, RedirectAttributes redirectAttributes, Model model) {
+		Long userId = currentUser.getId();
+
+		boolean result = userService.changePass(userId, oldPass, newPass, newPassConfirm);
+		
+		if (result) {
+			redirectAttributes.addFlashAttribute("message", "비밀번호가 성공적으로 변경되었습니다.");
+	    	return "redirect:/yalolza.gg/user/mypage";
+	    } else {
+	        model.addAttribute("errorMessage", "비밀번호 변경에 실패했습니다. 입력 정보를 확인해 주세요.");
+	        return "redirect:/yalolza.gg/user/mypage";
+	    }
+	}
+
+//	@GetMapping("/mypage/change-pass")
+//	public String showChangPassForm (Model model) {
+//		return "pass_form";
+//	}
 //
-//   @GetMapping("/mypage/change-nickname")
-//   public String showChangeNicknameForm (Model model) {
-//      return "nickname_form";
+//	@GetMapping("/mypage/change-nickname")
+//	public String showChangeNicknameForm (Model model) {
+//		return "nickname_form";
 //    }
 }
 
