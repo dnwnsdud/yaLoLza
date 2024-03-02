@@ -10,6 +10,9 @@
     <script src="/js/position.js" defer></script>
   </head>
   <body>
+	  <header th:replace="~{/header :: header}"></header>
+	  <br/>
+	<br/>
     <div class="con1-wrap">
       <section class="con1">
         <div class="champ-tier">
@@ -28,11 +31,6 @@
             <option value="Silver">Silver</option>
             <option value="Bronze">Bronze</option>
             <option value="Iron">Iron</option>
-          </select>
-          <select name="version" id="version">
-            <option value="v14.03">v14.03</option>
-            <option value="v14.02">v14.02</option>
-            <option value="v14.01">v14.01</option>
           </select>
         </div>
         <div class="champ-position">
@@ -103,15 +101,27 @@
                   <a th:text="${champion.krchampionName}" href="#"></a>
                 </p>
               </td>
-              <td th:text="${champion.stats.champtier}"></td>
               <td>
+				  <center>
+				  <div class="img-wrap" th:switch="${champion.stats.champtier}">
+					  <div th:case="OP"><img src="/img/tier/icon-tier-op.svg"></div>
+					  <div th:case="'1 티어'"><img src="/img/tier/icon-tier-1.svg"></div>
+					  <div th:case="'2 티어'"><img src="/img/tier/icon-tier-2.svg"></div>
+					  <div th:case="'3 티어'"><img src="/img/tier/icon-tier-3.svg"></div>
+					  <div th:case="'4 티어'"><img src="/img/tier/icon-tier-4.svg"></div>
+				  </div>
+				  </center>
+			  </td>
+              <td>
+				  <center>
                 <div class="img-wrap" th:switch="${champion.position}">
-                  <div class="TopBox" th:case="TOP"></div>
-                  <div class="JungleBox" th:case="JUNGLE"></div>
-                  <div class="MidBox" th:case="MIDDLE"></div>
-                  <div class="BottomBox" th:case="BOTTOM"></div>
-                  <div class="SupporterBox" th:case="UTILITY"></div>
+                  <div class="TopBox box" th:case="TOP"></div>
+                  <div class="JungleBox box" th:case="JUNGLE"></div>
+                  <div class="MidBox box" th:case="MIDDLE"></div>
+                  <div class="BottomBox box" th:case="BOTTOM"></div>
+                  <div class="SupporterBox box" th:case="UTILITY"></div>
                 </div>
+                </center>
               </td>
               <td th:text="${champion.stats.winrate} + '%'"></td>
               <td th:text="${champion.stats.pickrate} + '%'"></td>
@@ -150,5 +160,8 @@
         }
       });
     </script>
+    <br/>
+	<br/>
+    <footer th:replace="~{/footer :: footer}"></footer>
   </body>
 </html>
