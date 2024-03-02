@@ -103,7 +103,7 @@
                   <a th:text="${champion.krchampionName}" href="#"></a>
                 </p>
               </td>
-              <td th:text="${champion.stats.champtier}"></td>
+              <td th:text="${champion.stats.champtier}" th:data-champ="${champion.stats.champtier}"></td>
               <td>
                 <div class="img-wrap" th:switch="${champion.position}">
                   <div class="TopBox" th:case="TOP"></div>

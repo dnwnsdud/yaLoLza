@@ -58,7 +58,7 @@ public class UserPage {
             bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
             return "signup_form";
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();	
             bindingResult.reject("signupFailed", e.getMessage());
             return "signup_form";
         }
@@ -86,7 +86,7 @@ public class UserPage {
         }
         userService.deleteUser(id);
         Counter.Decrement("userCount", 1);
-        return "redirect:/yalolzq.gg/user/logout";
+        return "redirect:/yalolza.gg/user/logout";
 
     }
     
