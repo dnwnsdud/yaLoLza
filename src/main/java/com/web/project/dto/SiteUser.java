@@ -42,12 +42,12 @@ import lombok.NoArgsConstructor;
         sequenceName = "seq_SiteUsers",
         initialValue = 100000,
         allocationSize = 1
-)
+) 
 public class SiteUser implements UserDetails, OAuth2User {
 	  	@Id
 	    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
 	    private Long id;
-
+ 
 	    @Column(unique = true, nullable = false)
 	    private String username;
 
