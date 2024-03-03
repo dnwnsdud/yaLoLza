@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -15,6 +17,7 @@ import java.util.stream.Stream;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.project.dto.runeSpell.DataEntry;
+import com.web.project.dto.runeSpell.RuneWinRate;
 import com.web.project.dto.runeSpell.Selections;
 import com.web.project.dto.runeSpell.Styles;
 import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
@@ -32,7 +35,7 @@ public class StatisticChampion {
         }
     }
 	
-    //받아온 데이터 티어, 포지션, 챔 이른으로 거름
+    //받아온 데이터 티어, 포지션, 챔 이름으로 거름
 	public static List<DataEntry> filterData(List<DataEntry> data, String tier, String position, String championName) {
         return data.stream()
                 .filter(entry -> entry.getIndividualPosition().equals(position)
@@ -41,20 +44,49 @@ public class StatisticChampion {
     }
    
     
-    //챔피언, 포지션 한정해서 가장 많이 등장한 메인룬 1,2 출력   
-	public static List<String> calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
-	    List<String> primaryPerk = Collections.emptyList();
-	    if (!filteredData.isEmpty()) {
-	        primaryPerk = filteredData.stream()
-	                .flatMap(entry -> entry.getPerks().getStyles().stream())
+	public static List<RuneWinRate> calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
+	    Map<Integer, Integer> mainRuneCounts = new HashMap<>();
+	    Map<Integer, Integer> mainRuneWins = new HashMap<>();
+	    int totalChampionCount = filteredData.size();
+
+	    // 각 챔피언의 메인 룬 등장 횟수와 승리 횟수를 계산
+	    for (DataEntry entry : filteredData) {
+	        Optional<Integer> mainRune = entry.getPerks().getStyles().stream()
 	                .filter(style -> "primaryStyle".equals(style.getDescription()))
-	                .map(style -> style.getSelections().stream().findFirst().map(selection -> String.valueOf(selection.getPerk())).orElse(null)) 	                .limit(2) // 최대 두 개의 perk만 선택
-	                .limit(2) // 최대 두 개의 perk만 선택
-	                .filter(perk -> perk != null) // null이 아닌 perk만 필터링
-	                .collect(Collectors.toList()); // 리스트로 변환
+	                .flatMap(style -> style.getSelections().stream().map(Selections::getPerk))
+	                .findFirst();
+
+	        if (mainRune.isPresent()) {
+	            int runeId = mainRune.get();
+	            mainRuneCounts.put(runeId, mainRuneCounts.getOrDefault(runeId, 0) + 1);
+	            if (entry.isWin()) {
+	                mainRuneWins.put(runeId, mainRuneWins.getOrDefault(runeId, 0) + 1);
+	            }
+	        }
 	    }
-	    return primaryPerk;
+
+	    List<RuneWinRate> result = mainRuneCounts.entrySet().stream()
+	            .map(entry -> {
+	                int runeId = entry.getKey();
+	                int runeCount = entry.getValue();
+	                double appearanceRate = (double) runeCount / totalChampionCount;
+	                int wins = mainRuneWins.getOrDefault(runeId, 0);
+	                double winRate = (double) wins / runeCount;
+
+	                return new RuneWinRate(String.valueOf(runeId), winRate, runeCount, appearanceRate);
+	            })
+	            .collect(Collectors.toList());
+
+	    // 결과를 등장 횟수가 많은 순서로 정렬하고 상위 두 개의 메인 룬만 선택
+	    result.sort(Comparator.comparingInt(RuneWinRate::getSetCount).reversed());
+	    if (result.size() > 2) {
+	        result = result.subList(0, 2);
+	    }
+
+	    return result;
 	}
+
+
 
  
     //calculatePrimaryStyleFirstPerk1 에서 검색된 특성 종류, 메인룬, 해당 티어, 포지션, 챔피언id로 검색
@@ -70,7 +102,7 @@ public class StatisticChampion {
                     .flatMap(entry -> entry.getPerks().getStyles().stream())//"styles":열어
                     .filter(style -> "primaryStyle".equals(style.getDescription()))//primary 검색
                     .map(Styles::getStyle) // 각 "styles에서 "style"만 선택해서 map에 넣어
-                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));//그냥 모아서 숫자만 셈
 
            
             if (!counter.isEmpty()) {
@@ -81,6 +113,8 @@ public class StatisticChampion {
                         .findFirst()
                         .map(String::valueOf)
                         .orElse("");      
+            }else {
+            	return "8000";//정밀 반환
             }
 		}
 		
@@ -88,32 +122,34 @@ public class StatisticChampion {
 	}
 
 
-	//메인 특성의 하위룬
-	public static List<String> calculatePrimaryStylePerks234(List<DataEntry> filteredData, String primaryPerk) {
-        List<String> primaryStylePerks234 = new ArrayList<>();
-        
-        if (!filteredData.isEmpty()) {
-            Map<Integer, Long> counter = filteredData.stream()
-                    .flatMap(entry -> entry.getPerks().getStyles().stream())
-                    .filter(style -> "primaryStyle".equals(style.getDescription()))
-                    .flatMap(style -> style.getSelections().stream())
-                    .collect(Collectors.groupingBy(Selections::getPerk, Collectors.counting()));
+	public static List<Integer> calculatePrimaryStylePerks234(List<DataEntry> filteredData, String primaryPerk) {
+	    List<Integer> primaryStylePerks234 = new ArrayList<>();
 
-            for (int i = 0; i < 4; i++) {
-                Long maxCount = Collections.max(counter.values());
-                String perk = counter.entrySet().stream()
-                        .filter(entry -> entry.getValue() == maxCount)
-                        .map(Map.Entry::getKey)
-                        .findFirst()
-                        .map(String::valueOf)
-                        .orElse("");
-                primaryStylePerks234.add(perk);
-                counter.remove(Integer.parseInt(perk)); // 최대 등장 횟수의 perk를 리스트에 추가한 후 제거합니다.
-            }
-        }
-        return primaryStylePerks234;
-    }
+	    if (!filteredData.isEmpty()) {
+	        Map<List<Integer>, Long> counter = filteredData.stream()
+	                .flatMap(entry -> entry.getPerks().getStyles().stream())
+	                .filter(styles -> "primaryStyle".equals(styles.getDescription()))
+	                .flatMap(styles -> styles.getSelections().stream())
+	                .filter(mainRune -> primaryPerk.equals(mainRune.getPerk(0)))
+	                .map(selections -> {
+	                    List<Integer> perks = new ArrayList<>();
+	                    for (int i = 0; i < 4; i++) {
+	                        perks.add(selections.getPerk(i));
+	                    }
+	                    return perks;
+	                })
+	                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+	                		
+	                		
+	               // 		.stream().map(Selections::getPerk).sorted().collect(Collectors.toList())
+	               // .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
+	        // 가장 많이 등장한 값을 찾음
+	                List<Integer> maxEntry = Collections.max(counter.entrySet(), Map.Entry.comparingByValue()).getKey();
+
+	    }
+	    return maxEntry;
+	}
 	
 		//서브 스타일
 		public static String subStyle(List<DataEntry> filteredData, String primaryPerk) {
@@ -252,8 +288,9 @@ public class StatisticChampion {
 
     
 	public static List<SummonerSpellSetWinRate> calculateSummonerSpellSet(List<DataEntry> filteredData) {
-        Map<Set<Integer>, Integer> spellSetCounts = new HashMap<>();//'등장' 횟수
-        Map<Set<Integer>, Integer> spellSetWins = new HashMap<>();	//'승리' 횟수
+        Map<Set<Integer>, Integer> spellSetCounts = new HashMap<>();//스펠의 '등장' 횟수
+        Map<Set<Integer>, Integer> spellSetWins = new HashMap<>();	//스펠의 '승리' 횟수
+        int totalChampionCount = 0;									//해당 챔피언 '총' 등장 횟수
 
         // 각 소환사 주문 세트의 등장 횟수와 승리 횟수를 계산
         for (DataEntry entry : filteredData) {
@@ -264,19 +301,36 @@ public class StatisticChampion {
             if (entry.isWin()) {
                 spellSetWins.put(spellSet, spellSetWins.getOrDefault(spellSet, 0) + 1);
             }
-        }//승률구함
+            totalChampionCount++;
+        }//승률, 챔피언 총 등장 횟수 구함
 
-        List<Map.Entry<Set<Integer>, Integer>> sortedSpellSets = new ArrayList<>(spellSetCounts.entrySet());
-        sortedSpellSets.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));//비교해요
+//        List<Map.Entry<Set<Integer>, Integer>> sortedSpellSets = new ArrayList<>(spellSetCounts.entrySet());
+//        sortedSpellSets.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));//1등 비교해요
 
         List<SummonerSpellSetWinRate> result = new ArrayList<>();
-        for (int i = 0; i < Math.min(sortedSpellSets.size(), 2); i++) {
-            Map.Entry<Set<Integer>, Integer> entry = sortedSpellSets.get(i);
+        
+        for (Map.Entry<Set<Integer> , Integer> entry : spellSetCounts.entrySet()) {
             Set<Integer> spellSet = entry.getKey();
-            double winRate = (double) spellSetWins.getOrDefault(spellSet, 0) / entry.getValue();
-            result.add(new SummonerSpellSetWinRate(spellSet, winRate));
+            int setCount = entry.getValue();
+            double appearanceRate = (double) setCount / totalChampionCount;
+            int wins = spellSetWins.getOrDefault(spellSet, 0);
+            double winRate = (double) wins / setCount;
+            result.add(new SummonerSpellSetWinRate(spellSet, winRate, setCount, appearanceRate));
         }
+        result.sort(Comparator.comparingInt(SummonerSpellSetWinRate::getSetCount).reversed());
 
-        return result;
+        // 2개의 소환사 주문 세트만 선택
+        
+        if (!result.isEmpty()) {
+            result = result.subList(0, Math.min(result.size(), 2));
+        } else {
+            // 빈 리스트면 점멸, 점멸 반환함
+            Set<Integer> defaultSpellSet = new HashSet<>();
+            defaultSpellSet.add(4); // 4 = 점멸
+            result.add(new SummonerSpellSetWinRate(defaultSpellSet, 0.0, 0, 0.0));
+        }
+        return result; 
+        
+
     }
 }

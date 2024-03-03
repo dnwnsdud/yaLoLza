@@ -1,18 +1,17 @@
 package com.web.project.page.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +30,7 @@ import com.web.project.dto.info.Champion.Champion;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
 import com.web.project.dto.runeSpell.DataEntry;
+import com.web.project.dto.runeSpell.RuneWinRate;
 import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 import com.web.project.metrics.count.Connect;
 import com.web.project.system.ChampionData;
@@ -38,11 +38,8 @@ import com.web.project.system.CounterJsonReader;
 import com.web.project.system.ItemData;
 import com.web.project.system.JsonReader;
 import com.web.project.system.RuneData;
-import com.web.project.system.SummonerData;
-
-import lombok.NoArgsConstructor;
-
 import com.web.project.system.StatisticChampion;
+import com.web.project.system.SummonerData;
 
 
 @Controller
@@ -254,28 +251,34 @@ public class ChampionsPage {
 			
 			
 			//인덱스 0 = 첫번째로 많이 등장한 메인룬
-			List<String> primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
-			System.out.println("1빠 메인룬 : " + primaryStyleFirstPerk.get(0));
-			System.out.println("2빠 메인룬 : " + primaryStyleFirstPerk.get(1));
+			List<RuneWinRate> primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			System.out.println("1빠 메인룬 : " + primaryStyleFirstPerk.get(0).getMainRune());
+			System.out.println("2빠 메인룬 : " + primaryStyleFirstPerk.get(1).getMainRune());
 			
-			int RuneGameCount = StatisticChampion.calculateRuneGameCount(filteredData, primaryStyleFirstPerk.get(0));
+			//룬 등장 횟수
+			int RuneGameCount = StatisticChampion.calculateRuneGameCount(filteredData, primaryStyleFirstPerk.get(0).getMainRune());
 			System.out.println("playedrunecount :" +RuneGameCount);
 			//#####
-			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(0)));
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));
 			System.out.println("mainStyle : " +mainStyle);
 			Runes runes = RuneData.runes(mainStyle);
 			//####
 			model.addAttribute("mainRune", runes);
-			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0));
+			List<Integer> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
 			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
 			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			System.out.println("메인룬 1 : " + primaryStylePerks234.get(0));
+			System.out.println("룬 2 : " + primaryStylePerks234.get(1));
+			System.out.println("룬 3 : " + primaryStylePerks234.get(2));
+			System.out.println("룬 4 : " + primaryStylePerks234.get(3));
 			
+
 			runes = RuneData.runes(8400);
-			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0));
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
 			model.addAttribute("secondaryPerk12", subStylePerks12);
 			model.addAttribute("subRune", runes);
 			List<Perk> perklist = RuneData.perklist();
-			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk.get(0));
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
             List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
             List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
             List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
