@@ -26,6 +26,13 @@
             <p class="user-id">
               <span th:text="${'소환사 레벨'+summoner.summonerLevel}"></span>
             </p>
+             <form th:action="@{'/newlolkia/userinfo/' + ${summoner.summonername} + '-'+ ${summoner.tag}}" method="get">
+
+				    
+				    <input type="hidden" id="keyword" name="keyword">
+				
+				    <button type="submit">갱신하기</button>
+				</form>
             <div class="user-tier">
               <div>S2023 S2 티어</div>
               <div>S2023 S1 티어</div>
@@ -65,7 +72,7 @@
             <!-- 모스트 10 챔피언 -->
             <section class="user-most">
               <h2>모스트 10 챔피언</h2>
-              <ul  th:each="chamsper : ${summonerchamsper}">
+              <ul  th:each="chamsper , iterStat : ${summonerchamsper}" th:if="${iterStat.index lt 10}">
                 <li class="most-champname">
                   <div class="img-wrap"><img th:src="@{'/img/champion/'+${chamsper[0]} + '.png'}" alt="" /></div>
                   <strong style="font-size: 2rem" th:text="${keysChamName[chamsper[0]]}">챔피언 이름</strong>
@@ -93,7 +100,7 @@
                   <h3 th:text="${ summonerall[7] + '전 ' + summonerall[0] + '승 ' + (summonerall[7] - summonerall[0]) + '패'}">20전 8승 12패</h3>
                   <div class="graph-wrap">
 					  <span id="siwwin" th:text="${summonerall[0]}"></span>
-					  <span id="sjwtotal" th:text="${summonerall[7]}"></span>
+					  <span id="sjwtotal" th:text="${summonerall[7] - summonerall[0]}"></span>
                     <canvas id="myChart" style="width: 100px; height: 100px">
                     </canvas>
                     <span class="graph-donut"  th:text="${summonerall[6] +'%'}">50%</span>
@@ -255,13 +262,13 @@
                       <div class="img-wrap"><img th:src="@{'/img/champion/'+${match.body.info.participants[z].championName} + '.png'}" alt="" /></div>
                     </div>
                     <div class="vic-spell">
-                      <div>
-                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[z].Perks.Styles[0].style} + '.png'}" alt="" /></div>
-                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[z].Perks.Styles[1].style} + '.png'}" alt="" /></div>
+                      <div>            
+                         <div class="img-wrap3"><img th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[z].summoner1Id]} + '.png'}" alt="" /></div>
+                        <div class="img-wrap3"><img th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[z].summoner2Id]} + '.png'}" alt="" /></div>
                       </div>
                       <div>
-                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[z].summoner1Id} + '.png'}" alt="" /></div>
-                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[z].summoner2Id} + '.png'}" alt="" /></div>
+                         <div class="img-wrap3"><img th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[z].Perks.Styles[0].selections[0].perk]}}" alt="" /></div>
+                        <div class="img-wrap3"><img th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[z].Perks.Styles[1].style]}}" alt="" /></div>                   
                       </div>
                     </div>
                     <p>
@@ -477,14 +484,14 @@
                     <div>
                       <div class="img-wrap"><img th:src="@{'/img/champion/'+${match.body.info.participants[nz].championName} + '.png'}" alt="" /></div>
                     </div>
-                    <div class="vic-spell">
-                      <div>
-                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[nz].Perks.Styles[0].style} + '.png'}" alt="" /></div>
-                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[nz].Perks.Styles[1].style} + '.png'}" alt="" /></div>
+                     <div class="vic-spell">
+                      <div>            
+                         <div class="img-wrap3"><img th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[nz].summoner1Id]} + '.png'}" alt="" /></div>
+                        <div class="img-wrap3"><img th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[nz].summoner2Id]} + '.png'}" alt="" /></div>
                       </div>
                       <div>
-                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[nz].summoner1Id} + '.png'}" alt="" /></div>
-                        <div class="img-wrap3"><img th:src="@{'/img/item/'+${match.body.info.participants[nz].summoner2Id} + '.png'}" alt="" /></div>
+                         <div class="img-wrap3"><img th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[nz].Perks.Styles[0].selections[0].perk]}}" alt="" /></div>
+                        <div class="img-wrap3"><img th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[nz].Perks.Styles[1].style]}}" alt="" /></div>                   
                       </div>
                     </div>
                     <p>
@@ -589,13 +596,12 @@
                 </section>
                 
                 <section class="usergame-skillbuild">
-                  <ul class="userskill-qwe">
-                    <li class="img-wrap3"><img src="" alt="" /></li>
+                  <ul class="userskill-qwe" th:with="tree=${matchsskilltree[i.index]}">
+                    <li class="img-wrap3"><img th:src="@{'/img/spell/'+${keysChamSkill[match.body.info.participants[summonermatchnum[i.index]].championName][tree[0] - 1].id}+ '.png'}" alt="" /></li>
                     <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
-                    <li class="img-wrap3"><img src="" alt="" /></li>
-                    <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">->
-                    </li>
-                    <li class="img-wrap3"><img src="" alt="" /></li>
+                    <li class="img-wrap3"><img th:src="@{'/img/spell/'+${keysChamSkill[match.body.info.participants[summonermatchnum[i.index]].championName][tree[1] - 1].id}+ '.png'}" alt="" /></li>
+                    <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
+                    <li class="img-wrap3"><img th:src="@{'/img/spell/'+${keysChamSkill[match.body.info.participants[summonermatchnum[i.index]].championName][tree[2 - 1]].id}+ '.png'}" alt="" /></li>
                   </ul>
                   <ul >
                     <div class="skillbuild-grid">
