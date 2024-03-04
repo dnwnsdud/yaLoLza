@@ -1,19 +1,18 @@
 package com.web.project.system;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +25,8 @@ import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 
 public class StatisticChampion {
 	
+
+
 	public static List<DataEntry> parseJson(String rawData) {//json parse하는 함수
         ObjectMapper objectMapper = new ObjectMapper();
         try {											//selections같은 타입 유지
@@ -88,7 +89,7 @@ public class StatisticChampion {
 	    return result;
 	}
 
-
+ 
 
  
     //calculatePrimaryStyleFirstPerk1 에서 검색된 특성 종류, 메인룬, 해당 티어, 포지션, 챔피언id로 검색
@@ -125,44 +126,53 @@ public class StatisticChampion {
 
 
 	public static List<Integer> calculatePrimaryStylePerks234(List<DataEntry> filteredData, String primaryPerk) {
-	    List<Integer> primaryStylePerks234 = new ArrayList<>();
+	    List<Integer> primaryStylePerks234 = new ArrayList<>();	    
+	    List< List<Integer> > perklist = new ArrayList<>();
+	    
+	    	if (!filteredData.isEmpty()) {
+	    		filteredData.stream()
+	    				.flatMap(entry -> entry.getPerks().getStyles().stream())
+	                    .filter(style -> "primaryStyle".equals(style.getDescription()))
+	                    .forEach(style -> {
+	                                 List<Integer> temp = new ArrayList<>();               
+	                                 style.getSelections().stream()
+	                                         .map(Selections::getPerk)
+	                                         .forEach(perk -> temp.add(perk));      
+	                                 perklist.add(temp);
+	                             });
+	                   
+	    	}  
+	    	System.out.println(perklist);
+	    	
+	    	
+	    	Map<List<Integer>, Long> perkCountMap = perklist.stream()
+	    	         .filter(list -> list.contains(Integer.parseInt(primaryPerk)))
+	    	         .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-	    if (!filteredData.isEmpty()) {
-	        Map<String, Long> counter = filteredData.stream()
-	                .flatMap(entry -> entry.getPerks().getStyles().stream())
-	                .filter(styles -> "primaryStyle".equals(styles.getDescription()))
-	                .flatMap(styles -> styles.getSelections().stream()
-	                        .map(selection -> String.valueOf(selection.getPerk())))
-	                .collect(Collectors.groupingBy(perks -> perks, Collectors.counting()));
+	    	 // 가장 많이 등장한 리스트를 찾습니다.
+	    	 Optional<Map.Entry<List<Integer>, Long>> maxEntry = perkCountMap.entrySet().stream()
+	    	         .max(Map.Entry.comparingByValue());
 
+	    	 // 가장 많이 등장한 리스트가 존재하면 그 값을 primaryStylePerks234에 추가합니다.
+	    	 if (maxEntry.isPresent()) {
+	    	     primaryStylePerks234 = maxEntry.get().getKey();
+	    	
+	    	 }
+		    return primaryStylePerks234;
+		}
+    
+        		
 	        
-	        Optional<Map.Entry<String, Long>> maxEntry = counter.entrySet().stream()
-	        		.filter(entry -> entry.getKey().contains(primaryPerk))
-	                .max(Map.Entry.comparingByValue());
-
-	        if (maxEntry.isPresent()) {
-	            String mostFrequentPerks = maxEntry.get().getKey();
-	            // 가장 많이 등장한 조합을 List<Integer>로 변환하여 반환
-	            primaryStylePerks234 = Arrays.stream(mostFrequentPerks.split(","))
-	                    .map(Integer::parseInt)
-	                    .collect(Collectors.toList());
-	        }
-	    }
-
-	    return primaryStylePerks234;
-	}
-	
+	      
 		//서브 스타일
 		public static String subStyle(List<DataEntry> filteredData, String primaryPerk) {
 			String subStyle ="";
 			if (!filteredData.isEmpty()) {
 				//<perk 번호 : 등장 횟수>
 	            Map<Integer, Long> counter = filteredData.stream()
-	                    .flatMap(entry -> entry.getPerks().getStyles().stream())//"styles":열어
-	                    .filter(style -> style.getSelections().stream()//Selections에서 메인 룬 가진애만 찾아
-	                    		.anyMatch(selection -> primaryPerk.equals(String.valueOf(selection.getPerk()))))
+	                    .flatMap(entry -> entry.getPerks().getStyles().stream())//"styles":열어	                    
 	                    .filter(style -> "subStyle".equals(style.getDescription()))
-	                    .map(Styles::getStyle) // 각 "styles에서 "style"만 선택해서 map에 넣어
+	                    .map(Styles::getStyle) 							// 각 "styles에서 "style"만 선택해서 map에 넣어
 	                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
 	       
@@ -175,6 +185,8 @@ public class StatisticChampion {
 	                        .findFirst()
 	                        .map(String::valueOf)
 	                        .orElse("");      
+	            }else {
+	            	return "8400";
 	            }
 			}
 			
@@ -183,29 +195,63 @@ public class StatisticChampion {
 	
 	
 	//서브 특성의 하위룬
-	public static List<String> calculateSubStylePerks12(List<DataEntry> filteredData, String primaryPerk) {
-        List<String> subStylePerks12 = new ArrayList<>();
-        if (!filteredData.isEmpty()) {
-            Map<Integer, Long> counter = filteredData.stream()
-                    .flatMap(entry -> entry.getPerks().getStyles().stream())
+	public static List<Integer> calculateSubStylePerks12(List<DataEntry> filteredData, String primaryPerk) {
+        List<Integer> subStylePerks12 = new ArrayList<>();
+        List< List<Integer> > perklist2 = new ArrayList<>();
+	    
+    	if (!filteredData.isEmpty()) {
+    		filteredData.stream()
+    				.flatMap(entry -> entry.getPerks().getStyles().stream())
                     .filter(style -> "subStyle".equals(style.getDescription()))
-                    .flatMap(style -> style.getSelections().stream())
-                    .collect(Collectors.groupingBy(Selections::getPerk, Collectors.counting()));
+                    .forEach(style -> {
+                                 List<Integer> temp = new ArrayList<>();                                
+                                 style.getSelections().stream()
+                                         .map(Selections::getPerk)
+                                         .forEach(perk -> temp.add(perk));
+                                 
+                                 perklist2.add(temp);
+                             });
+                   
+    	}  
+    	System.out.println(perklist2);
+    	
+    	
+    	Map<List<Integer>, Long> perkCountMap = perklist2.stream()
+    	         .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-            for (int i = 0; i < 2; i++) {
-                Long maxCount = Collections.max(counter.values());
-                String perk = counter.entrySet().stream()
-                        .filter(entry -> entry.getValue() == maxCount)
-                        .map(Map.Entry::getKey)
-                        .findFirst()
-                        .map(String::valueOf)
-                        .orElse("");
-                subStylePerks12.add(perk);
-                counter.remove(Integer.parseInt(perk)); // 최대 등장 횟수의 perk를 리스트에 추가한 후 제거합니다.
-            }
-        }
-        return subStylePerks12;
-    }
+    	 // 가장 많이 등장한 리스트를 찾습니다.
+    	 Optional<Map.Entry<List<Integer>, Long>> maxEntry = perkCountMap.entrySet().stream()
+    	         .max(Map.Entry.comparingByValue());
+
+    	 // 가장 많이 등장한 리스트가 존재하면 그 값을 추가합니다.
+    	 if (maxEntry.isPresent()) {
+    		 subStylePerks12 = maxEntry.get().getKey();
+    	
+    	 }
+	    return subStylePerks12;
+	}
+// 
+//        if (!filteredData.isEmpty()) {
+//            Map<Integer, Long> counter = filteredData.stream()
+//                    .flatMap(entry -> entry.getPerks().getStyles().stream())
+//                    .filter(style -> "subStyle".equals(style.getDescription()))
+//                    .flatMap(style -> style.getSelections().stream())
+//                    .collect(Collectors.groupingBy(Selections::getPerk, Collectors.counting()));
+//
+//            for (int i = 0; i < 2; i++) {
+//                Long maxCount = Collections.max(counter.values());
+//                String perk = counter.entrySet().stream()
+//                        .filter(entry -> entry.getValue() == maxCount)
+//                        .map(Map.Entry::getKey)
+//                        .findFirst()
+//                        .map(String::valueOf)
+//                        .orElse("");
+//                subStylePerks12.add(perk);
+//                counter.remove(Integer.parseInt(perk)); // 최대 등장 횟수의 perk를 리스트에 추가한 후 제거합니다.
+//            }
+//        }
+//        return subStylePerks12;
+//    }
     
     
      
@@ -214,8 +260,8 @@ public class StatisticChampion {
 		 		    2065, 2502, 2504, 3001, 3002, 3003, 3004, 3011, 3026, 3033, 3036, 3039, 3046, 3050, 3053, 3065, 3068, 3071, 3072, 3073, 3074, 3075, 3078, 3083, 3084, 3085, 3087, 3091, 3094, 3095, 3100, 3102, 3107, 3109, 
 		 		    3110, 3115, 3116, 3118, 3119, 3124, 3128, 3131, 3135, 3137, 3139, 3142, 3143, 3152, 3153, 3156, 3157, 3161, 3165, 3179, 3181, 3190, 3193, 3222, 3302, 3504, 3508, 3742, 3748, 3814, 4003, 4005, 4401, 4402, 
 		 		    4403, 4628, 4629, 4633, 4636, 4637, 4644, 4645, 4646, 6035, 6333, 6609, 6610, 6616, 6617, 6620, 6621, 6630, 6631, 6632, 6653, 6655, 6656, 6657, 6662, 6664, 6665, 6667, 6671, 6672, 6673, 6675, 6676, 6691, 
-		 		    6692, 6693, 6694, 6695, 6696, 6697, 6698, 6699, 6700, 6701, 7003, 7031, 8001, 8020
-		 		   ,3042,3121,3040);//여눈 3상위
+		 		    6692, 6693, 6694, 6695, 6696, 6697, 6698, 6699, 6700, 6701, 7003, 7031, 8001, 8020,
+		 		    3042,3121,3040);//여눈 3상위
 			List<ItemWinRate> result = new ArrayList<>();
 		 	Map<Integer, Integer> itemCounts = new HashMap<>();	//템 '등장' 횟수
 	        Map<Integer, Integer> itemWins = new HashMap<>();	//템 '승리' 횟수

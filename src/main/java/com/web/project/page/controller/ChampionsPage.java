@@ -255,18 +255,23 @@ public class ChampionsPage {
 			//인덱스 0 = 첫번째로 많이 등장한 메인룬
 			List<RuneWinRate> primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
 			
-			model.addAttribute("runePickRate1",primaryStyleFirstPerk.get(0).getPickRate());
+			
+			model.addAttribute("runePickRate1",(double)Math.round(primaryStyleFirstPerk.get(0).getPickRate()*10000)/100);
 			model.addAttribute("runeCount1",primaryStyleFirstPerk.get(0).getSetCount());
-			model.addAttribute("runeWinRate1",primaryStyleFirstPerk.get(0).getWinRate());
+			model.addAttribute("runeWinRate1",(double)Math.round(primaryStyleFirstPerk.get(0).getWinRate()*10000)/100);
+			
+			model.addAttribute("runePickRate2",(double)Math.round(primaryStyleFirstPerk.get(1).getPickRate()*10000)/100);
+			model.addAttribute("runeCount2",primaryStyleFirstPerk.get(1).getSetCount());
+			model.addAttribute("runeWinRate2",(double)Math.round(primaryStyleFirstPerk.get(1).getWinRate()*10000)/100);
+	
 			
 			
 			
 			
 			System.out.println("1빠 메인룬 : " + primaryStyleFirstPerk.get(0).getMainRune());
 			System.out.println("승률 : " + primaryStyleFirstPerk.get(0).getWinRate());
-			System.out.println("횟수 : " + primaryStyleFirstPerk.get(0).getPickRate());
-			System.out.println("픽률 : " + primaryStyleFirstPerk.get(0).getSetCount());
-			
+			System.out.println("픽률 : " + primaryStyleFirstPerk.get(0).getPickRate());
+			System.out.println("횟수 : " + primaryStyleFirstPerk.get(0).getSetCount());
 			System.out.println("2빠 메인룬 : " + primaryStyleFirstPerk.get(1).getMainRune());
 			
 			//룬 등장 횟수
@@ -281,6 +286,7 @@ public class ChampionsPage {
 			List<Integer> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
 			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
 			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			System.out.println(primaryStylePerks234);
 			System.out.println("메인룬 1 : " + primaryStylePerks234.get(0));
 			System.out.println("룬 2 : " + primaryStylePerks234.get(1));
 			System.out.println("룬 3 : " + primaryStylePerks234.get(2));
@@ -288,10 +294,13 @@ public class ChampionsPage {
 			
 
 			
-			Integer subStyle = Integer.parseInt(StatisticChampion.subStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));
-			
+			Integer subStyle = Integer.parseInt(StatisticChampion.subStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));			
+			System.out.println("서브룬 : " +subStyle);
 			runes = RuneData.runes(subStyle);
-			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
+			
+			List<Integer> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
+			System.out.println(subStylePerks12);
+			
 			model.addAttribute("secondaryPerk12", subStylePerks12);
 			model.addAttribute("subRune", runes);
 			List<Perk> perklist = RuneData.perklist();
@@ -312,22 +321,44 @@ public class ChampionsPage {
 			model.addAttribute("summoner4", spell);
 			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
 			
-			model.addAttribute("summonerSpellSetCountRate", summonerSpellSet12.get(0).getCountRate());
-			model.addAttribute("summonerSpellSet1Count", summonerSpellSet12.get(0).getSetCount());
+			model.addAttribute("summonerSpellSetCountRate1", ((double)Math.round(summonerSpellSet12.get(0).getCountRate()*10000)/100));
+			model.addAttribute("summonerSpellSet1Count1", summonerSpellSet12.get(0).getSetCount());
+			model.addAttribute("summonerSpellSetCountRate2", ((double)Math.round(summonerSpellSet12.get(1).getCountRate()*10000)/100));
+			model.addAttribute("summonerSpellSet1Count2", summonerSpellSet12.get(1).getSetCount());
 			
-			
+			Map<Long, String> keysRuneImage=RuneData.keysRuneImage();
+			keysRuneImage.get(8321);
+			model.addAttribute("keysRuneImage", keysRuneImage.get(8429));
+			System.out.println(keysRuneImage.get(8429));  
 			List<String> statperks = StatisticChampion.caculateStatPerks(filteredData);
 			
 			model.addAttribute("statperks1",statperks.get(0));		
 			model.addAttribute("statperks2",statperks.get(1));		
 			model.addAttribute("statperks3",statperks.get(2));	
-			
+			System.out.println(statperks.get(0));
+			System.out.println(statperks.get(1));
+			System.out.println(statperks.get(2));
 			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
 			String item1 =  String.valueOf(items.get(0).getItemId());
+			String itemCount1 =  String.valueOf(items.get(0).getItemCount());
+			String itemPickRate1 =  String.valueOf(items.get(0).getpickRate());
+			String itemWinRate1 =  String.valueOf(items.get(0).getWinRate());
+			System.out.println("아이템 등장횟수" +itemCount1);
+			
 			String item2 =  String.valueOf(items.get(1).getItemId());
 			String item3 =  String.valueOf(items.get(2).getItemId());
+			
+			
+			
 			Item item = ItemData.item(item1);
 			model.addAttribute("item1", item);
+			model.addAttribute("itemCount1", itemCount1);			
+			model.addAttribute("itemPickRate1", ((double)Math.round(Double.parseDouble(itemPickRate1)*10000)/100));
+			System.out.println("선택 비율" + itemPickRate1);
+			model.addAttribute("itemWinRate1", ((double)Math.round(Double.parseDouble(itemWinRate1)*10000)/100));
+			System.out.println("승률" + itemWinRate1);
+			
+			
 			item = ItemData.item(item2);
 			model.addAttribute("item2", item);
 			item = ItemData.item(item3);
