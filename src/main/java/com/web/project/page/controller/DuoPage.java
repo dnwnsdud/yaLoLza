@@ -67,8 +67,9 @@ public class DuoPage {
 	
 	 @PostMapping("/create")
 	 public String saveDuo(@ModelAttribute Duo duoDto, Model model, Principal principal) {
+		 
 	        // 폼에서 받은 Duo 객체를 받음
-
+		 
 		 if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
 	            model.addAttribute("message", "듀오 등록 실패: 2개의 패스워드가 일치하지 않습니다.");
 	            model.addAttribute("searchUrl","/duo.yalolza.gg/save");
@@ -81,6 +82,7 @@ public class DuoPage {
 
 	            if (user != null) {
 	                duoDto.setSiteUser(user); // 조회한 사용자 엔티티를 Duo 엔티티에 설정
+	            
 	            }
 	        }
 
@@ -157,7 +159,6 @@ public class DuoPage {
 	    	duotemp.setDuopassword2(duoDto.getDuopassword2());
 	    	duotemp.setMemo(duoDto.getMemo());
 	    	duotemp.setIsmike(duoDto.getIsmike());
-		    duotemp.setTier(duoDto.getTier());
 			duotemp.setLastModifiedDate(duoDto.getLastModifiedDate());
 			
 			duoDao.save(duotemp);

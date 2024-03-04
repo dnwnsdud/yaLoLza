@@ -33,6 +33,7 @@ import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.sjw.TimeLine.Events;
 import com.web.project.dto.sjw.TimeLine.Frames;
 import com.web.project.dto.sjw.TimeLine.TimeLine;
+import com.web.project.dto.sjw.match.Info;
 import com.web.project.dto.sjw.match.Match;
 import com.web.project.dto.sjw.match.Participants;
 import com.web.project.dto.sjw.summoner.Summoner;
@@ -100,7 +101,7 @@ import com.web.project.system.SummonerData;
 	    String encryptedSummonerId;
 	    String leag4url;
 	    //조회할 매치 갯수
-	    long matchnum = 20; 
+	    long matchnum = 12; 
 	    //매치인포 리스트
 	    List<ResponseEntity<Match>> matchsssinfoList = new ArrayList<>();
 	    //찾을 소환사
@@ -237,7 +238,7 @@ import com.web.project.system.SummonerData;
 		  		    String finalmatch5url = match5url + "/ids?start=0&count="+matchnum+"&api_key=" + apiKey;
 		  		    ResponseEntity<String[]> match5s = restTemplate.getForEntity(finalmatch5url, String[].class);
 		  		    String[] matchids =match5s.getBody();
-	  
+	   
 
 		  		  System.out.println("이게리스트다" + Arrays.toString(matchids));
 		  		    //match-v5로 각 매치 정보 추출		    
@@ -247,7 +248,7 @@ import com.web.project.system.SummonerData;
 		  		      String matchinfoUrl = "https://asia.api.riotgames.com/lol/match/v5/matches/" + matchids[i] + "/?api_key=" + apiKey;
 		  		      matchsssList.add(matchinfoUrl);
 		  		    }
-		  		    
+		  		     
 		  		  
 		  		    //1)mattime 큐id이용  타임스탬프 추출
 		  		    List<String> matchstimestamp = new ArrayList<>();
@@ -331,7 +332,12 @@ import com.web.project.system.SummonerData;
 			  			    matchsssinfoList.add(matchdata2);
 
 			  			}  
-			  		    
+		  		       for(int i =0 ; i< matchsssinfoList.size(); i++) {
+		  		    	   
+		  		    	  System.err.println("사이즈야" + matchsssinfoList.get(i).getBody().getInfo().getParticipants().size());
+		  		    	   
+		  		       }
+			  		  
   
 		  		  //모스트추출
 		  		    
@@ -416,6 +422,7 @@ import com.web.project.system.SummonerData;
 		  		   //타임 스탬프 시작
 		  		    for(int i = 0; i < matchstimestamp.size(); i++) {
 		  		    int summnosss = summonerGameNumber.get(i) + 1;
+		  		    
 		  		   //타임스탬프트들어갔고 	
 		            matchdatatimeList = restTemplate.getForEntity(matchstimestamp.get(i), TimeLine.class);
                    
@@ -489,7 +496,8 @@ import com.web.project.system.SummonerData;
                  summonerskillluptree.add(skilltree);
 	      }
      
-   
+   System.out.println("리스트야" +summonerskillluptree);
+   System.out.println("리스트 개수야" +summonerskillluptree.size());
 		  		  
 		  		 Summoner  collectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
@@ -504,9 +512,17 @@ import com.web.project.system.SummonerData;
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
 				    model.addAttribute("summonerchamsper", summonerchamsper);
 				    model.addAttribute("matchsssinfoList", matchsssinfoList);
+				    
 			  		model.addAttribute("matchspurchase", summnnerItemTimeStempSS);
 			  		model.addAttribute("matchsskill", summonerskilllups);
 			  		model.addAttribute("matchsskilltree", summonerskillluptree);
+			  		
+			  		for(int j = 0; j<matchsssinfoList.size();j++) {
+			  			Info a = matchsssinfoList.get(j).getBody().getInfo();
+			  			for(int k=0;k<a.getParticipants().size() ; k++) {
+			  				System.out.println("ㅎㅇ"+a.getParticipants().get(k).getChampionName());
+			  			}
+			  		}
 			  		//전체 경기
 			  		model.addAttribute("summonerall", allstatistics);
 			  	     //이름 판수 승수  k d a kda 킬관여
@@ -780,6 +796,7 @@ import com.web.project.system.SummonerData;
 		    model.addAttribute("summonermatchnum", summonerGameNumber);
 		    model.addAttribute("summonerchamsper", summonerchamsper);
 		    model.addAttribute("matchsssinfoList", matchsssinfoList);
+
 	  		model.addAttribute("matchspurchase", summnnerItemTimeStempSS);
 	  		model.addAttribute("matchsskill", summonerskilllups);
 	  		model.addAttribute("matchsskilltree", summonerskillluptree);
