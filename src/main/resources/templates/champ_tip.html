@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+ 	  <meta charset="UTF-8">
+ 	  <title>Insert title here</title>
+ 	  <link rel="stylesheet" href="/css/champ_tip.css" />
+
+</head>
+<body>
+	<div class=gridContainer>
+		<h2>YouTube Video List</h2>
+		<div class="videoBox" th:each="video : ${youtubeVideos}"
+			th:utext="${video}"></div>
+	</div>
+</body>
+</html>

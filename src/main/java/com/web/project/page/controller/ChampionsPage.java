@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.project.api.controller.YoutubeService;
 import com.web.project.dto.championstats.ChampionStatsDTO;
 import com.web.project.dto.championstats.CounterChampionDTO;
 import com.web.project.dto.championstats.CounterCountDTO;
@@ -48,6 +49,11 @@ import com.web.project.system.StatisticChampion;
 @Controller
 @RequestMapping("/yalolza.gg/champions")
 public class ChampionsPage {
+	
+	 @Autowired
+	    private YoutubeService youtubeService;
+	
+	
 	private final JsonReader jsonReader;
 	private final CounterJsonReader counterJsonReader;
 	// 참고로 perk = rune
@@ -296,6 +302,11 @@ public class ChampionsPage {
     	new Connect("total","yalolza.gg", "champions","detail");
 		return "champ_detail";
 	}
-
+	
+	 @GetMapping("/tip")
+	    public String youtubeVideos(@RequestParam String query, Model model) {
+	        model.addAttribute("youtubeVideos", youtubeService.youtubeGenerator(query));
+	        return "champ_tip"; 
+	    }
 
 }
