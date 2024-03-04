@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.web.project.function.Calall;
 
 
-
+ 
 @Controller
 @RequestMapping("/newlolkia22") 
 public class DuoTestController {

@@ -58,7 +58,7 @@
             <h2>솔로랭크</h2>
             <ul>
               <li class="ranktier2">
-                <div class="img-wrap2"><img loading="lazy" src="" alt="" /></div>
+                <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/tier/'+${summoner.recenttier} + '.png'}" alt="" /></div>
                 <div>
                   <h3 th:text="${summoner.recenttier}"></h3>
                   <br />
