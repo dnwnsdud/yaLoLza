@@ -218,7 +218,7 @@
 									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
 								</div>
 							</li>
-							<li th:text="${duo.tier}"></li>
+							<!-- <li th:text="${duo.tier}"></li> -->
 							<li>
 
 								<div th:if="${duo.yourposition.size() < 4}" class="yourBox"
@@ -256,9 +256,26 @@
 									</div>
 								</div>
 							</li>
-							<li th:text="${duo.chamption}"></li>
-							<li th:text="${duo.winning}"></li>
-							<li th:text="${duo.kda}"></li>
+							<li></li>
+							<li>
+						    <div th:each="mostChampion : ${duo.MostChampions}">
+						        <img th:src="@{'/img/champion/' + ${mostChampion.name} + '.png'}" alt="이미지_설명">
+						      <span th:text="${mostChampion.wins * 100 / mostChampion.round} + '%'"></span>
+						    </div>
+						   </li>
+							<li th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins + duo.MostChampions[2].wins},
+							    rounds=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}">
+							    <span th:text="${wins * 100 / rounds} + '%'"></span>
+							</li>
+							<li th:with="kill=${duo.MostChampions[0].kills + duo.MostChampions[1].kills + duo.MostChampions[2].kills},
+							    death=${duo.MostChampions[0].deaths + duo.MostChampions[1].deaths + duo.MostChampions[2].deaths},
+							    assist=${duo.MostChampions[0].assists + duo.MostChampions[1].assists + duo.MostChampions[2].assists},
+							    round=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}
+							    ">
+							    <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + '/' +  ${#numbers.formatDecimal(death / round, 1, 1)} +'/'+ ${#numbers.formatDecimal(assist / round, 1, 1)}"></span>
+							    
+
+							</li>
 							<li th:text="${duo.memo}"></li>
 							<li th:text="${duo.createdDate}" class="createdDate"></li>
 

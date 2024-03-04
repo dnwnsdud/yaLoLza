@@ -49,6 +49,6 @@ public class MostChampions {
 	 Double deaths;
 	 Double assists;
 	 Double kda;
-	 Long  Contribution;
+	 Double  Contribution;
 	
 }

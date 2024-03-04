@@ -997,7 +997,7 @@ import com.web.project.system.SummonerData;
 							       if(matchname.equals(summonername)) {
 				                  //매치에서 소환사 정보 넣어주기
 							    	    summonerGameNumber.add(z);
-				                   
+				                    
 					  			    	  long totalteamkills =
 					  			    			  matchdata2.getBody().getInfo().getParticipants().get(z).getTeamId() == 100 ? 
 					  			    			  matchdata2.getBody().getInfo().getTeams().get(0).getObjectives().getChampion().getKills()	:
