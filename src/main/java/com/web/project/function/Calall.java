@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -70,21 +71,34 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
 	    //스킬 순서 코드
 	    public static List<Long> getTopNFrequentNumbers(List<Long> inputList, int n) {
 	        // 숫자별 빈도수를 저장하는 맵
-	        Map<Long, Integer> frequencyMap = new HashMap<>();
-
-	        // 빈도수를 계산하고 맵에 저장
-	        for (Long num : inputList) {
-	            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
-	        }
+	        Map<Long, Long> frequencyMap = inputList.stream()
+	                .collect(Collectors.groupingBy(num -> num, Collectors.counting()));
 
 	        // 빈도수를 기준으로 내림차순으로 정렬
-	        List<Map.Entry<Long, Integer>> entries = new ArrayList<>(frequencyMap.entrySet());
-	        entries.sort(Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()));
+	        List<Long> sortedNumbers = frequencyMap.entrySet().stream()
+	                .sorted(Map.Entry.<Long, Long>comparingByValue().reversed())
+	                .map(Map.Entry::getKey)
+	                .collect(Collectors.toList());
 
-	        // 상위 n개의 숫자를 추출하여 결과 리스트에 추가
+	        // 결과 리스트에 추가
 	        List<Long> result = new ArrayList<>();
-	        for (int i = 0; i < n && i < entries.size(); i++) {
-	            result.add(entries.get(i).getKey());
+	        Iterator<Long> iterator = sortedNumbers.iterator();
+
+	        while (iterator.hasNext() && result.size() < n) {
+	            Long currentNumber = iterator.next();
+
+	            // 숫자 4가 있으면 4를 제외하고 다음 조회 숫자를 넣어줌
+	            if (currentNumber == 4) {
+	                while (iterator.hasNext()) {
+	                    Long nextNumber = iterator.next();
+	                    if (nextNumber != 4) {
+	                        result.add(nextNumber);
+	                        break;
+	                    }
+	                }
+	            } else {
+	                result.add(currentNumber);
+	            }
 	        }
 
 	        return result;

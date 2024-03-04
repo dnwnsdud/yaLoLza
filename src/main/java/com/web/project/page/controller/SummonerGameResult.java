@@ -449,7 +449,7 @@ import com.web.project.system.SummonerData;
 			        	   for(Long s : summonerTimeskill) {
 			        		   summonerskilllup.add(s);
 			        	   }
-			      //스킬트리순서정립     
+			      //스킬트리순서정립
 			      skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
 
                       
@@ -489,8 +489,7 @@ import com.web.project.system.SummonerData;
                  summonerskillluptree.add(skilltree);
 	      }
      
-       
-	      System.out.println("리스트다" + summonerskillluptree);
+   
 		  		  
 		  		 Summoner  collectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
