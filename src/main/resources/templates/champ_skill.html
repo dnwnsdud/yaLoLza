@@ -73,11 +73,7 @@
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/tip?query=' + ${champion.name}}"><button>팁</button></a>
 			</div>
 		</section>
-		<div class=gridContainer>
-			<h2>챔피언 장인 영상</h2>
-			<div class="videoBox" th:each="video : ${youtubeVideos}"
-				th:utext="${video}"></div>
-		</div>
+		
 	</div>
 </body>
 </html>
