@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>runeview</title>
+</head>
+<body>
+	<!--<div th:text="${mainRune}">
+	</div>-->
+	<!--<div th:text="${num1}==8000? ${runeslist[2]}:${runeslist[1]}"></div>-->
+	<!--<div th:text="${num1}==8000? ${runeslist[2]}:(${num1}==8100? ${runeslist[0]}:(${num1}==8200? ${runeslist[4]}:(${num1}==8300? ${runeslist[1]}:${runeslist[3]})))"></div>-->
+	<!--<div th:with="${num1}==8000? mainRune=${runeslist[2]}:(${num1}==8100? mainRune=${runeslist[0]}:(${num1}==8200? mainRune=${runeslist[4]}:(${num1}==8300? mainRune=${runeslist[1]}:mainRune=${runeslist[3]})))">
+		<div th:text="${mainRune.id}"></div>
+	</div>-->
+	<!--<div th:with="mainRune=${runeslist[keysRunes[num1]]}">
+		<div th:text="${mainRune.id}"></div>
+	</div>-->
+<!--	<div th:text="${runeslist[keysRunes[__${num1}__]]}"></div>
+	<div th:with="mainRune=${runeslist[keysRunes[__${num1}__]]}">
+		<div th:text="${mainRune.icon}"></div>
+		<div th:text="${mainRune.slots[1].runes[1].id}"></div>
+	</div>-->
+	<!--<div th:text="${keysRunes[__${num1}__]}"></div>-->
+	<!--<div th:text="${num1}"></div>-->
+<!--<div class="main-rune" th:with="mainRune=${runeslist[keysRunes[__${num1}__]]}">-->
+<div class="main-rune" >
+	<ul class="main-zero">
+		<li th:id="${mainRune.id}"><img alt="룬모음 이미지"
+			th:src="@{'/img/'+${mainRune.icon}}" /></li>
+	</ul>
+	<ul class="main-first">
+		<li th:each="j : ${mainRune.slots[0].runes}"
+			th:with="rune=${j}" th:id="${rune.id}">
+			<div th:class="${rune.id}==${primaryPerk1}? 'color-icon':'gray-icon'">
+				<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+			</div>
+		</li>
+	</ul>
+	<ul class="main-second">
+		<li th:each="j : ${mainRune.slots[1].runes}" th:with="rune=${j}" th:id="${rune.id}">
+			<div th:class="${rune.id}==${primaryPerk234[1]}? 'color-icon':'gray-icon'">
+			<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+			</div>
+		</li>
+	</ul>
+	<ul class="main-third">
+		<li th:each="j : ${mainRune.slots[2].runes}" th:with="rune=${j}" th:id="${rune.id}">
+			<div th:class="${rune.id}==${primaryPerk234[2]}? 'color-icon':'gray-icon'">
+			<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+			</div>
+		</li>
+	</ul>
+	<ul class="main-fourth">
+		<li th:each="j : ${mainRune.slots[3].runes}" th:with="rune=${j}" th:id="${rune.id}">
+			<div th:class="${rune.id}==${primaryPerk234[3]}? 'color-icon':'gray-icon'">
+			<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+			</div>
+		</li>
+	</ul>
+	<p th:text="${mainRune.name}"></p>
+</div>
+</body>
+</html>

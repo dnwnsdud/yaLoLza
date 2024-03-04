@@ -298,6 +298,15 @@ public class RuneData {
 		}
 		return keysRuneImage;
 	}
+	public static Map<Integer, Integer> keysRunes () {
+		Map<Integer, Integer> keysRunes= new HashMap<>();
+		keysRunes.put(8000, 2);
+		keysRunes.put(8100, 0);
+		keysRunes.put(8200, 4);
+		keysRunes.put(8300, 1);
+		keysRunes.put(8400, 3);
+		return keysRunes;
+	}
 
 	public static Map<Integer, String> keysPerk () {
 		Map<Integer, String> keysPerk= new HashMap<Integer, String>();

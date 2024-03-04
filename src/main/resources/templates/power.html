@@ -667,7 +667,7 @@
                 <!-- 유저 룬 정보 -->
                 <section class="usergame-runeinfo">
                   <div class="champ-rune">
-                <div class="main-rune" th:fragment="81100">
+                <!--<div class="main-rune" th:fragment="81100">
                       <ul class="main-zero">
                      <li class="img-wrap"><img src="" alt="" /></li>
                      <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}"></span>
@@ -696,8 +696,44 @@
                         <li class="img-wrap"><img src="" alt="" /></li>
                         <li class="img-wrap"><img src="" alt="" /></li>
                       </ul>
-                   </div>
-                  <div class="sub-rune">
+                   </div>-->
+                   	<div class="main-rune" th:with="mainRune=${runeslist[keysRunes[__${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].style}__]]}">
+						<ul class="main-zero">
+							<li class="img-wrap" th:id="${mainRune.id}"><img alt="룬모음 이미지"
+								th:src="@{'/img/'+${mainRune.icon}}" /></li>
+						</ul>
+						<ul class="main-first">
+							<li class="img-wrap" th:each="j : ${mainRune.slots[0].runes}"
+								th:with="rune=${j}" th:id="${rune.id}">
+								<div th:class="${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[0].perk}? 'color-icon':'gray-icon'">
+									<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+								</div>
+							</li>
+						</ul>
+						<ul class="main-second">
+							<li class="img-wrap" th:each="j : ${mainRune.slots[1].runes}" th:with="rune=${j}" th:id="${rune.id}">
+								<div th:class="${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[1].perk}? 'color-icon':'gray-icon'">
+								<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+								</div>
+							</li>
+						</ul>
+						<ul class="main-third">
+							<li class="img-wrap" th:each="j : ${mainRune.slots[2].runes}" th:with="rune=${j}" th:id="${rune.id}">
+								<div th:class="${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[2].perk}? 'color-icon':'gray-icon'">
+								<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+								</div>
+							</li>
+						</ul>
+						<ul class="main-fourth">
+							<li class="img-wrap" th:each="j : ${mainRune.slots[3].runes}" th:with="rune=${j}" th:id="${rune.id}">
+								<div th:class="${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[0].selections[3].perk}? 'color-icon':'gray-icon'">
+								<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+								</div>
+							</li>
+						</ul>
+						<p th:text="${mainRune.name}"></p>
+					</div>
+                  <!--<div class="sub-rune">
                       <ul class="sub-main">
 					     <span th:text="${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}"></span>
                         <li class="img-wrap"><img src="" alt="" /></li>
@@ -719,8 +755,38 @@
                         <li class="img-wrap"><img src="" alt="" /></li>
                         <li class="img-wrap"><img src="" alt="" /></li>
                       </ul>
-                    </div>
-                   <div class="fragments-rune">
+                    </div>-->
+                    <div class="sub-rune" th:with="subRune=${runeslist[keysRunes[__${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}__]]}">
+						<ul>
+							<li></li>
+						</ul>
+						<ul class="sub-main">
+							<li class="img-wrap" th:id="${subRune.id}"><img alt="룬모음 이미지" th:src="@{'/img/'+${subRune.icon}}" /></li>
+						</ul>
+						<ul>
+							<li class="img-wrap" th:each="j : ${subRune.slots[1].runes}" th:with="rune=${j}"  th:id="${rune.id}">
+								<div th:class="${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[0].perk}? 'color-icon':(${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[1].perk}? 'color-icon':'gray-icon')">
+								<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}"/>
+								</div>
+							</li>
+						</ul>
+						<ul>
+							<li class="img-wrap" th:each="j : ${subRune.slots[2].runes}" th:with="rune=${j}"  th:id="${rune.id}">
+								<div th:class="${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[0].perk}? 'color-icon':(${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[1].perk}? 'color-icon':'gray-icon')">
+								<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}"/>
+								</div>
+							</li>
+						</ul>
+						<ul>
+							<li class="img-wrap" th:each="j : ${subRune.slots[3].runes}" th:with="rune=${j}" th:id="${rune.id}">
+								<div th:class="${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[0].perk}? 'color-icon':(${rune.id}==${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].selections[1].perk}? 'color-icon':'gray-icon')">
+								<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+								</div>
+							</li>
+						</ul>
+						<p th:text="${subRune.name}"></p>
+					</div>
+                  <!-- <div class="fragments-rune">
                       <ul class="fragments-runegrid">
                         <li class="img-wrap"><img src="" alt="" /></li>
                         <li class="img-wrap"><img src="" alt="" /></li>
@@ -732,7 +798,67 @@
                         <li class="img-wrap"><img src="" alt="" /></li>
                         <li class="img-wrap"><img src="" alt="" /></li>
                       </ul>
-                    </div>
+                    </div>-->
+                    <div class="fragments-rune" th:with="value=5112"> <!--perk 임의의 값-->
+						<ul>
+							<li></li>
+						</ul>
+						<ul>
+							<li></li>
+						</ul>
+						<ul class="perkslot1">
+							<li th:id="${perklist[0].id}">
+								<div th:class="${perklist[0].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
+								</div>
+							</li>
+							<li th:id="${perklist[1].id}">
+								<div th:class="${perklist[1].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[1].icon}}" />
+								</div>
+							</li>
+							<li th:id="${perklist[2].id}">
+								<div th:class="${perklist[2].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[2].icon}}" />
+								</div>
+							</li>
+						</ul>
+						<ul class="perkslot2">
+							<li th:id="${perklist[3].id}">
+								<div th:class="${perklist[3].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[3].icon}}" />
+								</div>
+							</li>
+							<li th:id="${perklist[4].id}">
+								<div th:class="${perklist[4].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[4].icon}}" />
+									</div>
+							</li>
+							<li th:id="${perklist[5].id}">
+								<div th:class="${perklist[5].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[5].icon}}" />
+								</div>
+							</li>
+						</ul>
+						<ul class="perkslot3">
+							<li th:id="${perklist[6].id}">
+								<div th:class="${perklist[6].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[6].icon}}" />
+									</div>
+							</li>
+							<li th:id="${perklist[7].id}">
+								<div th:class="${perklist[7].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[7].icon}}" />
+								</div>
+							</li>
+							<li th:id="${perklist[8].id}">
+								<div th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'">
+									<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[8].icon}}" />
+								</div>
+							</li>
+						</ul>
+						<p>능력치 파편</p> <!--이지수-->
+					</div>
                 </section>
               </div>
             </div>

@@ -28,6 +28,8 @@ import com.web.project.dao.summoner.SummonerRepository;
 import com.web.project.dao.summoner.SummonerchampionsRepository;
 import com.web.project.dao.summoner.SummonermatchsRepository;
 import com.web.project.dao.summoner.SummonertierlogRepository;
+import com.web.project.dto.info.Perk;
+import com.web.project.dto.info.Runes;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.sjw.TimeLine.Events;
 import com.web.project.dto.sjw.TimeLine.Frames;
@@ -487,6 +489,9 @@ import com.web.project.system.SummonerData;
 		  		//matchsssinfoList.get(0).getBody().getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getStyle().get
 		  		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
 		  		Map<String, List<Spell>> keysChamSkill = ChampionData.keysChamSkill();
+		  		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
+		  		List<Runes> runeslist = RuneData.runeslist();
+		  		List<Perk> perklist = RuneData.perklist();
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
@@ -506,6 +511,12 @@ import com.web.project.system.SummonerData;
 			  		model.addAttribute("keysChamSpell", keysChamSpell);  
 			  		//챔피언당 스킬 불러오기
 			  		model.addAttribute("keysChamSkill", keysChamSkill);
+			  		//룬 총 데이터
+			  		model.addAttribute("runeslist", runeslist);
+			  		//핵심룬의 아이디 -> 해당 룬이 룬리스트의 index 변환 맵
+			  		model.addAttribute("keysRunes", keysRunes);
+			  		//perk 데이터 리스트
+			  		model.addAttribute("perklist", perklist);
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {
