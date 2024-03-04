@@ -231,7 +231,20 @@ public class ChampionsPage {
 	public String Champions(@RequestParam(required = false) String position) {
 		return "NewFile";
 	}
-
+	@GetMapping("/runeview")
+	public String runeview(Model model) {
+		model.addAttribute("num1", 8000);
+		model.addAttribute("num2", 8100);
+		List<Runes> runeslist = RuneData.runeslist();
+		model.addAttribute("runeslist", runeslist);
+		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
+		model.addAttribute("keysRunes", keysRunes);
+		Runes runes = RuneData.runes(8100);
+		model.addAttribute("mainRune", runes);
+		model.addAttribute("subRune", runes);
+		return "runeview";
+	}
+ 
 	@GetMapping("/{champion}/build/{position}")
 	public String ChampionsDetail(@PathVariable("champion") String champion,
 			@PathVariable("position") String position) {
@@ -296,6 +309,6 @@ public class ChampionsPage {
     	new Connect("total","yalolza.gg", "champions","detail");
 		return "champ_detail";
 	}
-
+ 
 
 }
