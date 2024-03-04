@@ -283,3 +283,12 @@ div.yourBox {
 	grid-template-columns: 1fr 1fr;
 	color: white;
 }
+
+/*--------------------------youtube------------------*/
+
+.youtubeContainer{
+	max-width: 1320px;
+	margin: 50px auto 50px;
+	color: white;
+	
+}

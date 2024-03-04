@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.web.project.api.controller.CommunityService;
 import com.web.project.api.controller.Duoservice;
 import com.web.project.api.controller.UserService;
+import com.web.project.api.controller.YoutubeMainService;
 import com.web.project.dao.CommunityRepository;
 import com.web.project.dao.DuoRepository;
 import com.web.project.dto.Community;
@@ -32,7 +33,8 @@ public class IndexPage {
 	 @Autowired
 	 private final Duoservice duoService;
 		
-
+	 @Autowired
+	    private YoutubeMainService youtubeService;
 	 
 	 
 	 
@@ -48,6 +50,7 @@ public class IndexPage {
 			List<Duo> duoList = duoService.getAllDuos();
 	        model.addAttribute("communityList", communityList);
 			model.addAttribute("duoList", duoList);
+	        model.addAttribute("youtubeVideos", youtubeService.youtubeGenerator());
 	    	new Connect("total","duo.yalolza.gg", "index");
         return "index";
     }
