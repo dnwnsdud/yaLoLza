@@ -35,12 +35,12 @@
         </div>
         <div class="champ-position">
           <nav>
-            <button onclick="updateUrl('position', 'ALL')" checked>전체</button>
-            <button onclick="updateUrl('position', 'TOP')">탑</button>
-            <button onclick="updateUrl('position', 'JUNGLE')">정글</button>
-            <button onclick="updateUrl('position', 'MIDDLE')">미드</button>
-            <button onclick="updateUrl('position', 'BOTTOM')">원딜</button>
-            <button onclick="updateUrl('position', 'UTILITY')">서포터</button>
+            <button class="position-btn" id="ALL" onclick="updateUrl('position', 'ALL')">전체</button>
+            <button class="position-btn" id="TOP" onclick="updateUrl('position', 'TOP')">탑</button>
+            <button class="position-btn" id="JUNGLE" onclick="updateUrl('position', 'JUNGLE')">정글</button>
+            <button class="position-btn" id="MIDDLE" onclick="updateUrl('position', 'MIDDLE')">미드</button>
+            <button class="position-btn" id="BOTTOM" onclick="updateUrl('position', 'BOTTOM')">원딜</button>
+            <button class="position-btn" id="UTILITY" onclick="updateUrl('position', 'UTILITY')">서포터</button>
           </nav>
         </div>
       </section>
@@ -143,23 +143,43 @@
       </section>
     </div>
     <script>
-      // URL 업데이트
-      function updateUrl(key, value) {
-        var url = new URL(window.location.href);
-        url.searchParams.set(key, value);
-        window.location.href = url.href;
-      }
-      document.addEventListener("DOMContentLoaded", function () {
-        var url = new URL(window.location.href);
-        var tier = url.searchParams.get("tier");
-        var position = url.searchParams.get("position");
+		const btn = document.querySelectorAll(".champ-position>nav>button")
+		console.log(btn)
+  // URL 업데이트
+  function updateUrl(key, value) {
+    var url = new URL(window.location.href);
+    url.searchParams.set(key, value);
+    window.location.href = url.href;
+  }
+	
+		
+	
+  document.addEventListener("DOMContentLoaded", function () {
+    var url = new URL(window.location.href);
+    var tier = url.searchParams.get("tier");
+    var position = url.searchParams.get("position");
+	
+	btn.forEach((e)=>{
+		console.log(btn.id)
+		e.id.replace(`${position}`)
+		if(e.id == position)e.id = 'on'
+	})
+	
+	
+    // 티어 옵션 초기화
+    var tierSelect = document.getElementById("tier");
+    if (tier) {
+      tierSelect.value = tier;
+    }
 
-        if (!tier && !position) {
-          window.location.href =
-            "/yalolza.gg/champions?tier=EMERALD&position=TOP";
-        }
-      });
-    </script>
+    // 포지션 옵션 초기화
+    var positionSelect = document.getElementById("position");
+    if (position) {
+      positionSelect.value = position;
+    }
+  });
+
+</script>
     <br/>
 	<br/>
     <footer th:replace="~{/footer :: footer}"></footer>

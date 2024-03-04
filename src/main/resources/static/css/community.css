@@ -277,3 +277,6 @@
 .commu_ul1_ul2:hover{
     background-color: rgba(59, 130, 246, 0.1);
 }
+.alert{
+	color: red;
+}

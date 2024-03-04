@@ -50,11 +50,12 @@
             th:text="|${user.nickname}|"
             style="font-size: 3rem"
           ></label>
+          <div th:if="${nicknameError}" th:text="${nicknameError}" style="color: var(--point10); font-size: 1.5rem;"></div>
+        <div th:if="${nicknameChange}" th:text="${nicknameChange}" style="color: var(--point3); font-size: 1.5rem;"></div>
           <a class="btn-open-modal"
             ><div style="color: var(--point3); font-size: 2rem">수정</div></a
-          ><br/>
-             <div th:if="${nicknameError}" th:text="${nicknameError}" style="color: red;"></div>
-        <div th:if="${nicknameChange}" th:text="${nicknameChange}" style="color: blue;"></div>
+          >
+             
         </form>
         <div class="modal">
           <div class="modal_body">
@@ -82,8 +83,8 @@
                 비밀번호 재설정하기
               </div></a
             >
-      <div th:if="${passwordError}" th:text="${passwordError}" style="color: red;"></div>
-        <div th:if="${passwordChange}" th:text="${passwordChange}" style="color: blue;"></div>
+      <div th:if="${passwordError}" th:text="${passwordError}" style="color: var(--point10); font-size: 1.5rem; padding-top:10px;"></div>
+        <div th:if="${passwordChange}" th:text="${passwordChange}" style="color: --point3; font-size: 1.5rem; padding-top:10px;"></div>
           </form>
             <div class="modal2">
               <div class="modal_body2">

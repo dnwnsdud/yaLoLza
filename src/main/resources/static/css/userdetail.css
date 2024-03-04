@@ -296,7 +296,6 @@ h1 p {
 .usergame-btn {
   height: 100%;
   width: 100%;
-  border: 1px solid red;
 }
 .usergame-btn button {
   height: 100%;
@@ -519,6 +518,7 @@ h1 p {
 }
 .usergame-itembuild .itembuild-start {
   display: flex;
+  flex-wrap: wrap;
 }
 .itembuild-start li {
   display: flex;
