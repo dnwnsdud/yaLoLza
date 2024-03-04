@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 public class CommunityForm {
 //   vaild 를 사용하기 위해 만듬 제목이랑 내용을 입력안하면 경고창이 뜸
-    @NotEmpty(message = "제목은 필수로 입력해주세요.")
+    @NotEmpty(message = "제목을 필수로 입력해주세요.")
     @Size(max=200)
     private String title;
 
-    @NotEmpty(message = "내용 필수로 입력해주세요.")
+    @NotEmpty(message = "내용을 필수로 입력해주세요.")
     @Size(max=2000)
     private String content;
 

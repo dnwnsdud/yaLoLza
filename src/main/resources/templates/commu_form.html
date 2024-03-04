@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/commu_form.css}">
     </head>
-<body>
+<body class="back">
 	<header th:replace="~{/header :: header}"></header>
 	<br/>
 	<br/>
@@ -36,19 +36,20 @@
 
     <form  th:object="${communityForm}" method="post" enctype="multipart/form-data" >
             
-		<div th:if="${#fields.hasAnyErrors()}">
+		<div th:if="${#fields.hasAnyErrors()}" class="error">
 				<p th:each="error : ${#fields.errors()}" th:text="${error}"></p>
         </div>
         
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
 <!--        <label>제목</label>-->
-    <input type="text" name="title" id="title" placeholder="제목" th:field="*{title}" style="height: 5vh; margin-bottom: 1rem; ">
+    <input type="text" name="title" id="title" placeholder="제목" th:field="*{title}" class="titlewrite">
 <!--    <label>내용</label>-->
     <textarea name="content" placeholder="내용"  id="content"  th:field="*{content}" rows="28"></textarea>
 
-    <input type="file" name="file" multiple >
+    <input type="file" name="file" multiple class="file" >
     <div class="write_input">
+    
     <input type="submit" class="wrtiebtn" value="글쓰기" >
     </div>
     </form>

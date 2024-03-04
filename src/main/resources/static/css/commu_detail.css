@@ -20,6 +20,7 @@
 .commu_detailbox{
     width: 45%;
     margin: 4rem auto;
+    height: 70rem;
 }
 
 .commu_detailbox2{
@@ -32,12 +33,13 @@
 
 .commu_title{
     font-size: 2rem;
+    color:white;
 }
 
 .commu_cate{
     border-radius: 10px;
     text-align: center;
-    color: var(--point2);
+    color: var(--point3);
     font-size: 1.2rem;
     display:inline-block;
     height: 2rem;
@@ -67,6 +69,7 @@
     font-size: 1.3rem;
     line-height: 1.5rem;
     font-weight: bold;
+    color:white;
 }
 
 .commu_content{
@@ -74,7 +77,8 @@
     padding-bottom: 1.5rem;
     /*border-bottom: 1px solid #ccc;*/
     font-size: 1.4rem;
-    color: var(--gray2);
+    color: white;
+    height: 5rem;
 }
 .bottom_border{
 
@@ -83,7 +87,7 @@
 }
 .comment_form{
     margin: 2rem auto 2rem auto;
-    width: 85%;
+    width: 93%;
     vertical-align: middle;
 }
 textarea {
@@ -91,8 +95,9 @@ textarea {
     height: 7rem;
     border: 1px solid #ccc;
     border-radius: 7px;
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: var(--point4);
     resize: none;
+    color:white;
 }
 .comment{
     position: relative;
@@ -104,11 +109,10 @@ textarea {
     left: 63rem;
     width: 4rem;
     height: 2.3rem;
-    background-color: rgba(59, 130, 246, 0.3);
-    color:var(--point2);
+    background-color: var(--point3);
+    color:var(--white);
     border: none;
     border-radius: 7px;
-    font-size: 1.4rem;
 }
 
 .comment_input:hover,
@@ -122,7 +126,7 @@ textarea {
 }
 
 .commentlist{
-    width: 85%;
+    width: 93%;
     margin:3rem auto;
     height:8rem;
 }
@@ -155,11 +159,12 @@ textarea {
     margin: 1rem 0;
     font-size: 1.3rem;
     font-weight: bold;
-    
+    color:white;
 }
 .comment_content,
 .comment_date{
 	font-size: 1.3rem;
+	color:white;
 }
 .comment_date{
 	margin-bottom: 0.8rem;
@@ -173,8 +178,8 @@ textarea {
     height: 2rem;
     font-size: 1.4rem;
     border-radius: 3px;
-    background-color: rgba(59, 130, 246, 0.3);
-    color: var(--point1);
+    background-color: var(--point3);
+    color:var(--white);
     float: right;
 }
 
@@ -193,11 +198,17 @@ textarea {
     text-align: center;
     font-size:1.3rem;
     border-radius: 5px;
-    background-color: rgba(59, 130, 246, 0.3);
-    color: var(--point1);
+    background-color: var(--point3);
+    color:var(--white);
 }
 
 .commentdate_delete{
 	float: right;
 	height: 5rem;
+}
+
+
+
+.back{
+	background-color: #10131c;
 }
