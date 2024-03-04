@@ -241,6 +241,7 @@ public class ChampionsPage {
 			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
 			@PathVariable("champion") String championid
 			) {
+		
 		Champion champion = ChampionData.championinfo(championid);
 		model.addAttribute("champion",champion);
 		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
@@ -252,7 +253,13 @@ public class ChampionsPage {
 			
 			//인덱스 0 = 첫번째로 많이 등장한 메인룬
 			List<RuneWinRate> primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			
+			
 			System.out.println("1빠 메인룬 : " + primaryStyleFirstPerk.get(0).getMainRune());
+			System.out.println("승률 : " + primaryStyleFirstPerk.get(0).getWinRate());
+			System.out.println("횟수 : " + primaryStyleFirstPerk.get(0).getPickRate());
+			System.out.println("픽률 : " + primaryStyleFirstPerk.get(0).getSetCount());
+			
 			System.out.println("2빠 메인룬 : " + primaryStyleFirstPerk.get(1).getMainRune());
 			
 			//룬 등장 횟수
@@ -273,7 +280,10 @@ public class ChampionsPage {
 			System.out.println("룬 4 : " + primaryStylePerks234.get(3));
 			
 
-			runes = RuneData.runes(8400);
+			
+			Integer subStyle = Integer.parseInt(StatisticChampion.subStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));
+			
+			runes = RuneData.runes(subStyle);
 			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
 			model.addAttribute("secondaryPerk12", subStylePerks12);
 			model.addAttribute("subRune", runes);
@@ -282,11 +292,11 @@ public class ChampionsPage {
             List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
             List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
             List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
-            출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+            //출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
 			model.addAttribute("perklist", perklist);
 			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
 			model.addAttribute("summoner1", spell);
-			spell = SummonerData.findspell(Spelllist1.get(1).toString());
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());			
 			model.addAttribute("summoner2", spell);
 			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
 			spell = SummonerData.findspell(Spelllist2.get(0).toString());
