@@ -42,3 +42,4 @@ build/
 logfile.log
 *.gz
 logfile.log
+/bin/
