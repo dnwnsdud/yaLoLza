@@ -230,15 +230,17 @@
                   </li>
                 </div>
               </ul>
-              <ul class="usergame-ten">
+              <ul class="usergame-ten" th:with="part = ${match.body.info}">
                 <li>
                   <div class="usergame-id" th:each=" i  : ${#numbers.sequence(0, 4)}">
                     <div class="img-wrap3"><img loading="lazy"
                         th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt="" />
                     </div>
-                    <span
-                      th:text="${match.body.info.participants[i].summonerName} == '' ? ${match.body.info.participants[i].riotIdGameName} : ${match.body.info.participants[i].riotIdGameName}">아이디</span>
-
+                    <span>
+					<a th:href="@{'/newlolkia/userinfo/' + ${ match.body.info.participants[i].riotIdGameName + '-' + match.body.info.participants[i].riotIdTagline}}"
+					   th:text="${match.body.info.participants[i].summonerName == '' ? match.body.info.participants[i].riotIdGameName : match.body.info.participants[i].riotIdGameName}">
+					</a>
+                      </span>
                   </div>
                 </li>
                 <li>
@@ -246,8 +248,11 @@
                     <div class="img-wrap3"><img loading="lazy"
                         th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt="" />
                     </div>
-                    <span
-                      th:text="${match.body.info.participants[i].summonerName} == '' ? ${match.body.info.participants[i].riotIdGameName} : ${match.body.info.participants[i].riotIdGameName}">아이디</span>
+                   <span>
+					<a th:href="@{'/newlolkia/userinfo/' + ${ match.body.info.participants[i].riotIdGameName + '-' + match.body.info.participants[i].riotIdTagline}}"
+					   th:text="${match.body.info.participants[i].summonerName == '' ? match.body.info.participants[i].riotIdGameName : match.body.info.participants[i].riotIdGameName}">
+					</a>
+                   </span>
                   </div>
                 </li>
                 <li class="usergame-btn">
@@ -317,9 +322,11 @@
                           </div>
                         </div>
                         <p>
-                          <strong
-                            th:text="${match.body.info.participants[z].summonerName} == '' ? ${match.body.info.participants[z].riotIdGameName} : ${match.body.info.participants[z].riotIdGameName}">아이디</strong><br />
-                          <span>티어</span>
+                   <strong>
+					<a th:href="@{'/newlolkia/userinfo/' + ${ match.body.info.participants[z].riotIdGameName + '-' + match.body.info.participants[z].riotIdTagline}}"
+					   th:text="${match.body.info.participants[z].summonerName == '' ? match.body.info.participants[z].riotIdGameName : match.body.info.participants[z].riotIdGameName}">
+					</a>
+                   </strong>
                         </p>
                       </li>
                       <li>
@@ -544,9 +551,12 @@
                           </div>
                         </div>
                         <p>
-                          <strong
-                            th:text="${match.body.info.participants[nz].summonerName} == '' ? ${match.body.info.participants[nz].riotIdGameName} : ${match.body.info.participants[nz].riotIdGameName}">아이디</strong><br />
-                          <span>티어</span>
+                    <strong>
+					<a th:href="@{'/newlolkia/userinfo/' + ${ match.body.info.participants[nz].riotIdGameName + '-' + match.body.info.participants[nz].riotIdTagline}}"
+					   th:text="${match.body.info.participants[nz].summonerName == '' ? match.body.info.participants[nz].riotIdGameName : match.body.info.participants[nz].riotIdGameName}">
+					</a>
+                   </strong><br/>
+                         <!--  <span>티어</span> -->
                         </p>
                       </li>
                       <li>

@@ -519,13 +519,6 @@ import com.web.project.system.SummonerData;
 			  		model.addAttribute("matchspurchase", summnnerItemTimeStempSS);
 			  		model.addAttribute("matchsskill", summonerskilllups);
 			  		model.addAttribute("matchsskilltree", summonerskillluptree);
-			  		
-			  		for(int j = 0; j<matchsssinfoList.size();j++) {
-			  			Info a = matchsssinfoList.get(j).getBody().getInfo();
-			  			for(int k=0;k<a.getParticipants().size() ; k++) {
-			  				System.out.println("ㅎㅇ"+a.getParticipants().get(k).getChampionName());
-			  			}
-			  		}
 			  		//전체 경기
 			  		model.addAttribute("summonerall", allstatistics);
 			  	     //이름 판수 승수  k d a kda 킬관여
@@ -793,8 +786,9 @@ import com.web.project.system.SummonerData;
  		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
  		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
  		Map<String, List<Spell>> keysChamSkill = ChampionData.keysChamSkill();
+ 		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
  		List<Runes> runeslist = RuneData.runeslist();
-
+ 		List<Perk> perklist = RuneData.perklist();
 /////////////////////////////////////////////////////////////////////////////////////////////////////		    
 		    model.addAttribute("test", "디비정보다 시키들아");
 		    model.addAttribute("summoner", collectsummoner);
@@ -820,6 +814,9 @@ import com.web.project.system.SummonerData;
 	  		model.addAttribute("keysChamSkill", keysChamSkill);
 	  		//룬리스트
 	  		model.addAttribute("runeslist", runeslist);
+	  		model.addAttribute("keysRunes", keysRunes);
+	  		//perk 데이터 리스트
+	  		model.addAttribute("perklist", perklist);
 /////////////////////////////////////////////////////////////////////////////////////////////////////
       } 
     	  else {
@@ -1195,8 +1192,9 @@ import com.web.project.system.SummonerData;
 				 		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
 				 		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
 				 		Map<String, List<Spell>> keysChamSkill = ChampionData.keysChamSkill();
+				 		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
 				 		List<Runes> runeslist = RuneData.runeslist();
-					     
+				 		List<Perk> perklist = RuneData.perklist();
 	/////////////////////////////////////////////////////////////////////////////////////////////////////				     
 					     //따끈한 서머너
 					   Summoner  newcollectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
@@ -1226,8 +1224,10 @@ import com.web.project.system.SummonerData;
 				  		model.addAttribute("keysChamSkill", keysChamSkill);
 				  		//룬리스트
 				  		model.addAttribute("runeslist", runeslist);
-               
-    		  
+				  		model.addAttribute("keysRunes", keysRunes);
+				  		//perk 데이터 리스트
+				  		model.addAttribute("perklist", perklist);
+    		   
     	    }
     	       
     }
