@@ -63,13 +63,13 @@ import com.web.project.system.SummonerData;
       
     @Autowired
     private SummonerRepository summonerRepository;
-    
+     
     @Autowired
     private SummonermatchsRepository summonermatchsRepository;
     
     @Autowired
     private SummonertierlogRepository summonertierlogRepository;
-    
+     
     @Autowired
     private SummonerchampionsRepository summonerchampionsRepository; 
     
@@ -82,7 +82,7 @@ import com.web.project.system.SummonerData;
     
 	@Value("${lol.apikey}") 
 	private String apiKey;  
-   
+  
   private final RestTemplate restTemplate;
   
   @Autowired 
@@ -1209,7 +1209,7 @@ import com.web.project.system.SummonerData;
     	    }
     	       
     }
-
+ 
 		
 	  return "power"; 
 
