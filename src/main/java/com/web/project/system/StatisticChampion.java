@@ -216,7 +216,6 @@ public class StatisticChampion {
 		 		    4403, 4628, 4629, 4633, 4636, 4637, 4644, 4645, 4646, 6035, 6333, 6609, 6610, 6616, 6617, 6620, 6621, 6630, 6631, 6632, 6653, 6655, 6656, 6657, 6662, 6664, 6665, 6667, 6671, 6672, 6673, 6675, 6676, 6691, 
 		 		    6692, 6693, 6694, 6695, 6696, 6697, 6698, 6699, 6700, 6701, 7003, 7031, 8001, 8020
 		 		   ,3042,3121,3040);//여눈 3상위
-		 	
 			List<ItemWinRate> result = new ArrayList<>();
 		 	Map<Integer, Integer> itemCounts = new HashMap<>();	//템 '등장' 횟수
 	        Map<Integer, Integer> itemWins = new HashMap<>();	//템 '승리' 횟수
@@ -374,4 +373,33 @@ public class StatisticChampion {
         
 
     }
+	
+	public static List<String> caculateStatPerks(List<DataEntry> filteredData) {
+	    List<String> result = new ArrayList<>();
+	    
+	    if (!filteredData.isEmpty()) {
+	        Map<String, Integer> counter = new HashMap<>();
+	        
+	        // 각 데이터 항목에서 statPerks 조합을 추출하고 등장 횟수를 계산
+	        for (DataEntry entry : filteredData) {
+	            String statPerksCombination = entry.getPerks().getStatPerks().toString();
+	            counter.put(statPerksCombination, counter.getOrDefault(statPerksCombination, 0) + 1);
+	        }
+	        
+	        // 가장 많이 등장한 조합을 찾음
+	        int maxCount = Collections.max(counter.values());
+	        for (Map.Entry<String, Integer> entry : counter.entrySet()) {
+	            if (entry.getValue() == maxCount) {
+	                result.add(entry.getKey());
+	            }
+	        }
+	    }
+	    
+	    return result;
+	}
+	
+	
+	
+	
+	
 }

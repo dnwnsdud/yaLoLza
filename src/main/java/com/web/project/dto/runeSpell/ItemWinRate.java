@@ -7,13 +7,13 @@ public class ItemWinRate {
 	private int itemId;
 	private double winRate; 		// 템 승률
 	private int itemCount;			// 템 등장 횟수
-	private double countRate;		// 템 등장 비율
+	private double pickRate;		// 템 등장 비율
 	
-	public ItemWinRate(int itemId, double winRate, int setCount, double countRate) {
+	public ItemWinRate(int itemId, double winRate, int itemCount, double pickRate) {
 		this.itemId = itemId;
 		this.winRate = winRate;
-		this.itemCount = setCount;
-		this.countRate = countRate;
+		this.itemCount = itemCount;
+		this.pickRate = pickRate;
 	}
 
 	public int getItemId() {
@@ -28,8 +28,8 @@ public class ItemWinRate {
         return itemCount;
     }
     
-    public double getCountRate() {
-        return countRate;
+    public double getpickRate() {
+        return pickRate;
     }
 
 

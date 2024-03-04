@@ -157,11 +157,17 @@
 								</ul>
 								<ul class="perkslot1">
 									<li th:id="${perklist[0].id}"><img alt="스탯 이미지"
-										th:src="@{'/img/'+${perklist[0].icon}}" /></li>
+										th:src="@{'/img/'+${perklist[0].icon}}" />
+										<div th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')">											
+										</li>			
 									<li th:id="${perklist[1].id}"><img alt="스탯 이미지"
-										th:src="@{'/img/'+${perklist[1].icon}}" /></li>
+										th:src="@{'/img/'+${perklist[1].icon}}" />
+										<div th:class="${perklist[1].id}==${statperks1}? 'color-icon':(${perklist[1].id}==${statperks1}? 'color-icon':'gray-icon')">
+										</li>
 									<li th:id="${perklist[2].id}"><img alt="스탯 이미지"
-										th:src="@{'/img/'+${perklist[2].icon}}" /></li>
+										th:src="@{'/img/'+${perklist[2].icon}}" />
+										<div th:class="${perklist[2].id}==${statperks1}? 'color-icon':(${perklist[2].id}==${statperks1}? 'color-icon':'gray-icon')">
+										</li>
 								</ul>
 								<ul class="perkslot2">
 									<li th:id="${perklist[3].id}"><img alt="스탯 이미지"
@@ -196,9 +202,11 @@
 									</li>
 									<li class="select-ratio">
 										<p>
-											<strong>룬선택비율</strong> <br /> <span>1223654게임</span>
+											<strong th:id="${runePickRate1}" th:text="${runePickRate1}">룬선택비율</strong> 
+											<br /> 
+											<span th:id="${runeCount1}" th:text="${runeCount1}">1223654게임</span>
 										</p>
-										<p>승률</p>
+										<p th:id="${runeWinRate1}" th:text="${runeWinRate1}">승률</p>
 									</li>
 								</ul>
 								<ul class="select-second">
@@ -503,7 +511,9 @@
 								</div>
 								<p>
 								<div class="order-block">
-									<strong>선택비율</strong> <span>게임수asdasdas</span>
+									<strong th:id="${summonerSpellSetCountRate}" th:text="${summonerSpellSetCountRate}">선택비율</strong> 
+									
+									<span th:id="${summonerSpellSet1Count}" th:text="${summonerSpellSet1Count}">게임수asdasdas</span>
 								</div>
 								<div class="order-vic" th:text="${summonerSpellSet1Win}"></div>
 								</p>

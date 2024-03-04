@@ -30,6 +30,7 @@ import com.web.project.dto.info.Champion.Champion;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
 import com.web.project.dto.runeSpell.DataEntry;
+import com.web.project.dto.runeSpell.ItemWinRate;
 import com.web.project.dto.runeSpell.RuneWinRate;
 import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 import com.web.project.metrics.count.Connect;
@@ -254,6 +255,12 @@ public class ChampionsPage {
 			//인덱스 0 = 첫번째로 많이 등장한 메인룬
 			List<RuneWinRate> primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
 			
+			model.addAttribute("runePickRate1",primaryStyleFirstPerk.get(0).getPickRate());
+			model.addAttribute("runeCount1",primaryStyleFirstPerk.get(0).getSetCount());
+			model.addAttribute("runeWinRate1",primaryStyleFirstPerk.get(0).getWinRate());
+			
+			
+			
 			
 			System.out.println("1빠 메인룬 : " + primaryStyleFirstPerk.get(0).getMainRune());
 			System.out.println("승률 : " + primaryStyleFirstPerk.get(0).getWinRate());
@@ -304,16 +311,40 @@ public class ChampionsPage {
 			spell = SummonerData.findspell(Spelllist2.get(1).toString());
 			model.addAttribute("summoner4", spell);
 			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+			
+			model.addAttribute("summonerSpellSetCountRate", summonerSpellSet12.get(0).getCountRate());
+			model.addAttribute("summonerSpellSet1Count", summonerSpellSet12.get(0).getSetCount());
+			
+			
+			List<String> statperks = StatisticChampion.caculateStatPerks(filteredData);
+			
+			model.addAttribute("statperks1",statperks.get(0));		
+			model.addAttribute("statperks2",statperks.get(1));		
+			model.addAttribute("statperks3",statperks.get(2));	
+			
+			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
+			String item1 =  String.valueOf(items.get(0).getItemId());
+			String item2 =  String.valueOf(items.get(1).getItemId());
+			String item3 =  String.valueOf(items.get(2).getItemId());
+			Item item = ItemData.item(item1);
+			model.addAttribute("item1", item);
+			item = ItemData.item(item2);
+			model.addAttribute("item2", item);
+			item = ItemData.item(item3);
+			model.addAttribute("item3", item);
+			
+			
+			
+			
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
             System.out.println("no DATA");
 		}
-		Item item = ItemData.item("1001");
-		model.addAttribute("item1", item);
-		item = ItemData.item("1001");
-		model.addAttribute("item2", item);
-		item = ItemData.item("3364");
-		model.addAttribute("item3", item);
+		
+		
+		
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
     	new Connect("total","yalolza.gg", "champions","detail");
