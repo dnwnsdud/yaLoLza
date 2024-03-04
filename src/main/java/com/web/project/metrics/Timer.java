@@ -7,12 +7,13 @@ import java.util.concurrent.TimeUnit;
 import io.micrometer.core.instrument.Metrics;
 import io.micrometer.core.instrument.Tag;
 
-public final class Gauge {
-	private Gauge() {};
-	public static <T extends Number> void Set(String key, T data) {
+public final class Timer {
+	private Timer() {};
+	public static void Set(String key, Runnable act) {
 		List<Tag> tags = new LinkedList<Tag>();
-		tags.add(Tag.of("type", "gauge"));
-		Metrics.gauge(key, tags, data);
+		tags.add(Tag.of("type", "timer"));
+		io.micrometer.core.instrument.Timer timer = Metrics.timer(key, tags);
+		timer.record(act);
 	}
 
 }

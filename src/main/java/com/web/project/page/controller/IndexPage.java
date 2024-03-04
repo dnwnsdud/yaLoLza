@@ -2,18 +2,24 @@ package com.web.project.page.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.project.api.controller.CommunityService;
+import com.web.project.api.controller.Duoservice;
 import com.web.project.api.controller.UserService;
 import com.web.project.dao.CommunityRepository;
+import com.web.project.dao.DuoRepository;
 import com.web.project.dto.Community;
+import com.web.project.dto.Duo;
 import com.web.project.metrics.Counter;
+import com.web.project.metrics.Timer;
 import com.web.project.metrics.count.Connect;
 
+import io.micrometer.core.instrument.Metrics;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -22,6 +28,12 @@ import lombok.RequiredArgsConstructor;
 public class IndexPage {
 
 	 private final CommunityRepository communityRepository;
+	
+	 @Autowired
+	 private final Duoservice duoService;
+		
+
+	 
 	 
 	 
 	@GetMapping("")
@@ -31,9 +43,12 @@ public class IndexPage {
 	
 	@GetMapping("/")
     public String index(Model model){
-        List<Community> communityList = this.communityRepository.findTop10ByOrderByCreateDateDesc();
-        model.addAttribute("communityList", communityList);
-    	new Connect("total","duo.yalolza.gg", "index");
+		
+			List<Community> communityList = this.communityRepository.findTop10ByOrderByCreateDateDesc();
+			List<Duo> duoList = duoService.getAllDuos();
+	        model.addAttribute("communityList", communityList);
+			model.addAttribute("duoList", duoList);
+	    	new Connect("total","duo.yalolza.gg", "index");
         return "index";
     }
 

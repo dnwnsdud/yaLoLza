@@ -183,8 +183,6 @@
 					<div id="duoTableBody">
 						<ul id="item" th:each="duo : ${duoList}" onclick="redirectToView()"
 							th:data-type="${duo.myposition.name()}" th:data-queue="${duo.queuetype.name()}">
-
-
 							<li style="display: none;" th:text="${duo.id}"></li>
 							<li th:each="pos : ${duo.yourposition}" th:data-type="${pos}" style="display:none;"></li>
 							<li th:text="${duo.summonerName}"></li>
