@@ -95,7 +95,7 @@
 					</select>
 				</div>
 			</div>
-			<div>
+			<div class="mike-po">
 				<div class="label-mike" id="mike">마이크 OFF/ON</div>
 				<br /> <label class="toggle_switch"> <input type="checkbox" name="ismike"> <span class="slider"></span>
 					<input type="hidden" name="_ismike" value="on" class="mike" />
@@ -233,12 +233,12 @@
 
 
 		<div class="for-register">
-			<div class="back">
-				<a th:href="@{/duo.yalolza.gg/list}">Duo 목록으로 돌아가기</a>
-			</div>
+			<button class="back">
+				<a th:href="@{/duo.yalolza.gg/list}" class="back">돌아가기</a>
+			</button>
 			<button type="submit" class="register">등록</button>
 		</div>
-
+	
 	</form>
 
 

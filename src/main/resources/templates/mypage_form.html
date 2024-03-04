@@ -52,7 +52,9 @@
           ></label>
           <a class="btn-open-modal"
             ><div style="color: var(--point3); font-size: 2rem">수정</div></a
-          >
+          ><br/>
+             <div th:if="${nicknameError}" th:text="${nicknameError}" style="color: red;"></div>
+        <div th:if="${nicknameChange}" th:text="${nicknameChange}" style="color: blue;"></div>
         </form>
         <div class="modal">
           <div class="modal_body">
@@ -71,39 +73,25 @@
           </div>
         </div>
 
-        <!-- 에러 메시지 출력 부분 (서버로부터 에러 메시지가 전달된 경우) -->
-        <div
-          th:if="${usernameError}"
-          th:text="${usernameError}"
-          style="color: red"
-        ></div>
-
-        <!-- 성공 메시지 출력 부분 (닉네임 변경 성공 시) -->
-        <div
-          th:if="${successMessage}"
-          th:text="${successMessage}"
-          style="color: green"
-        ></div>
-      </div>
-      <div>
-        <!-- 에러 메시지 출력 -->
-        <div th:if="${errorMessage}" style="color: red">
-          <p th:text="${errorMessage}"></p>
-        </div>
-
         <!-- 비밀번호 변경 -->
-        <div th:unless="${user.provider}">
+        <div class="pass-change" th:unless="${user.provider}">
           <div class="nicktitle">비밀번호 변경</div>
           <form action="/yalolza.gg/user/mypage/change-pass" method="post">
             <a class="btn-open-modal2"
-              ><div style="color: var(--point3); font-size: 2rem">
+              ><div class="passreset" style="color: var(--point3); font-size: 2rem">
                 비밀번호 재설정하기
               </div></a
             >
+      <div th:if="${passwordError}" th:text="${passwordError}" style="color: red;"></div>
+        <div th:if="${passwordChange}" th:text="${passwordChange}" style="color: blue;"></div>
+          </form>
             <div class="modal2">
               <div class="modal_body2">
                 <form th:replace="~{/infofix :: mypassword}"></form>
                 <button class="close2">
+               
+   
+            
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="gray"
@@ -116,12 +104,10 @@
             </button>
               </div>
             </div>
-          </form>
         </div>
       </div>
 
       <div class="unregist">
-        <h2>회원탈퇴</h2>
         <form
           th:action="@{/yalolza.gg/user/unregist}"
           method="post"
@@ -138,6 +124,7 @@
         </form>
       </div>
       <br /><br />
+
     </div>
   </body>
 </html>

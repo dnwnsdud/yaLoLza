@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /* 모달창(닉네임) 시작*/
 .modal,
 .modal2 {
@@ -71,7 +70,8 @@
   padding-left: 10px;
 }
 .modal input[type="submit"],
-.modal2 input[type="submit"] {
+.modal2 input[type="submit"]
+ {
   cursor: pointer;
   width: 100%;
   height: 60px;
@@ -93,9 +93,10 @@
   font-family: inherit;
   font-size: 1.5rem;
 }
-.modal2 input[type="text"] {
+.modal2 input[type="text"],
+.modal2 input[type="password"] {
   cursor: pointer;
-  width: 550px;
+  width: 500px;
   height: 50px;
   font-size: 15px;
   border: 5px solid rgba(0, 122, 255, 0.5);
@@ -116,7 +117,7 @@
 h1 {
   font-size: 4rem;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 250px;
 }
 .nickform {
   display: flex;
@@ -157,4 +158,27 @@ h2 {
 .modal2 .close > svg {
   width: 100%;
   height: 100%;
+}
+.pass-change{
+	border-bottom: 1px dotted var(--gray3);
+	padding-bottom: 10px;
+}
+.passreset{
+	padding-top: 10px;
+}
+.unregist{
+	padding-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: right;	
+}
+.unregist input[type="submit"]{
+	width: 130px;
+	font-family: inherit;
+	font-size: 1.8rem;
+	padding: 15px;
+	background-color: var(--gray3);
+	color: var(--white);
+	border: none;
+	border-radius: 0.5rem;
 }
