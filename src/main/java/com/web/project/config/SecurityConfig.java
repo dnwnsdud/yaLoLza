@@ -156,7 +156,7 @@ public class SecurityConfig {
 						.rememberMeParameter("remember")
 						.userDetailsService(service)
 						.alwaysRemember(false)
-				)
+				) 
 				.getOrBuild();
 	}
 	
