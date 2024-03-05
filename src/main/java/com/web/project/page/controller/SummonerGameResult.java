@@ -294,10 +294,10 @@ import com.web.project.system.SummonerData;
 		  					           } 
 
 	                         //소환사 이름 받아오기
-				  			    String  matchname = matchParticipants.get(z).getSummonerName();
-				  			    String  matchname2 = matchParticipants.get(z).getRiotIdGameName();	
-				  			       if(matchname.equals(summonername) || matchname2.equals(summonername)) {
-				  			     	   
+				  			    String  matchname = matchParticipants.get(z).getSummonerName().toLowerCase();
+				  			    String  matchname2 = matchParticipants.get(z).getRiotIdGameName().toLowerCase();	
+				  			       if(matchname.equals(summonername.toLowerCase()) || matchname2.equals(summonername.toLowerCase())) {
+				  			     	   System.out.println("여기안들어와있나봐");
 				  			    	 summonerGameNumber.add(z);
 				  			    	System.out.println("사이즈" +summonerGameNumber.size());
 	                                //매치에서 소환사 정보 넣어주기
@@ -333,13 +333,9 @@ import com.web.project.system.SummonerData;
 			  			    matchsssinfoList.add(matchdata2);
 
 			  			}  
-		  		       for(int i =0 ; i< matchsssinfoList.size(); i++) {
-		  		    	   
-		  		    	  System.err.println("사이즈야" + matchsssinfoList.get(i).getBody().getInfo().getParticipants().size());
-		  		    	   
-		  		       }
+
 			  		  
-  
+             System.out.println("서머너사이즈"+summonermost.size());
 		  		  //모스트추출
 		  		    
 		  		 //일단 전체 
@@ -510,12 +506,13 @@ import com.web.project.system.SummonerData;
 		  		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
 		  		List<Runes> runeslist = RuneData.runeslist();
 		  		List<Perk> perklist = RuneData.perklist();
+		  		System.out.println("이제넣을꺼야");
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
 				    model.addAttribute("summonerchamsper", summonerchamsper);
 				    model.addAttribute("matchsssinfoList", matchsssinfoList);
-				    
+	 			    
 			  		model.addAttribute("matchspurchase", summnnerItemTimeStempSS);
 			  		model.addAttribute("matchsskill", summonerskilllups);
 			  		model.addAttribute("matchsskilltree", summonerskillluptree);
@@ -587,8 +584,9 @@ import com.web.project.system.SummonerData;
 			        	 kdacalresult=10.0; 
 				           } 
 			       //솬사이름
-		           String  matchname = matchParticipants.get(z).getSummonerName();
-			       if(matchname.equals(summonername)) {
+	  			    String  matchname = matchParticipants.get(z).getSummonerName().toLowerCase();
+	  			    String  matchname2 = matchParticipants.get(z).getRiotIdGameName().toLowerCase();
+			       if(matchname.equals(summonername.toLowerCase()) || matchname2.equals(summonername.toLowerCase())) {
                   //매치에서 소환사 정보 넣어주기
 			    	    summonerGameNumber.add(z);
                    
@@ -993,8 +991,9 @@ import com.web.project.system.SummonerData;
 							        	 kdacalresult=10.0; 
 								           } 
 							       //솬사이름
-						           String  matchname = matchParticipants.get(z).getSummonerName();
-							       if(matchname.equals(summonername)) {
+					  			    String  matchname = matchParticipants.get(z).getSummonerName().toLowerCase();
+					  			    String  matchname2 = matchParticipants.get(z).getRiotIdGameName().toLowerCase();
+							       if(matchname.equals(summonername.toLowerCase()) || matchname2.equals(summonername.toLowerCase())) {
 				                  //매치에서 소환사 정보 넣어주기
 							    	    summonerGameNumber.add(z);
 				                    

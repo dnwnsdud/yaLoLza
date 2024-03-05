@@ -20,24 +20,23 @@
 <script src="/js/home.js" defer></script>
 <script src="/js/position.js" defer></script>
 <script defer>
-   function submitForm(event) {
-	   console.log("실행")
-    event.preventDefault(); 
-    var inputValue = document.getElementById('searchInput').value;
-    var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
-    if (inputValue.includes('#')) {
-		console.log("첫번째")
-        var modifiedValue = inputValue.replace(/@/g, '-');
-        var submitURL = "localhost:9998/yalolza/summoners/" + modifiedValue;
-    } else {
-       console.log("예외")
-        var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
-        
-        window.location.href = submitURL;
+    function submitForm(event) {
+        event.preventDefault();
+        var inputValue = document.getElementById('searchInput').value;
+
+        if (inputValue.includes('#')) {
+            var modifiedValue = inputValue.replace(/@/g, '-');
+            var submitURL = "http://localhost:9998/yalolza.gg/summoners/" + modifiedValue;
+        } else {
+            var submitURL = "http://localhost:9998/yalolza.gg/summoners/" + encodeURIComponent(inputValue)+"-KR1";
+        }
+
+        // URL에서 쿼리 스트링 제거
+        var newURL = submitURL.split('?')[0];
+
+        // 새로운 URL로 이동
+        window.location.href = newURL;
     }
-    console.log("마지막")
-    window.location.href = submitURL;
-}
 </script>
 </head>
 
@@ -79,7 +78,7 @@
     <figure>
         <form class="homesearch" id="searchForm"  method="get" >
             <input type="text" id="searchInput" name="name" placeholder="챔피언 혹은 ID를 검색하세요.">
-            <button onclick="submitForm()">검색</button>
+            <button onclick="submitForm(event)">검색</button>
         </form>
 
 
