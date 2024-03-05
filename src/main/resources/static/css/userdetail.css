@@ -1,3 +1,6 @@
+
+
+
 /* 유저 정보 시작*/
 .con1 {
   background-color: var(--point8);
@@ -102,8 +105,8 @@ h1 p {
 /* 유저 정보 끝*/
 /* 유저 랭크 시작 */
 .img-wrap2 {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,9 +116,34 @@ h1 p {
 }
 
 .img-wrap2 img {
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 120%;
   border-radius: 50%;
+}
+.summonerchamps-level{
+	
+	position: relative;
+	left:-10px;
+	bottom:-30px;
+	color:white;
+	z-index: 10;
+	background-color:black;
+	border-radius: 15px;
+}
+.summonerchamps-level span{
+	
+   display:block;
+   position:absolute;
+   font-size:12px;
+   text-align:center;
+   line-height:30px;
+    right:-10px;
+    bottom:-10px;  
+	width:30px;
+	height:30px;
+	color:white;
+	background-color:black;
+	border-radius: 15px;
 }
 .ranktier2 {
   width: 100%;
@@ -183,6 +211,9 @@ h1 p {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+.most-champname{
+	width:150px
 }
 .user-most .most-champtext {
   text-align: right;

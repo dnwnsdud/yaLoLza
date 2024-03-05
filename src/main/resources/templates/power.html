@@ -161,7 +161,11 @@
                     <div class="usergame-grade">
                       <div class="img-wrap2"><img loading="lazy"
                           th:src="@{'/img/champion/'+${match.body.info.participants[summonermatchnum[i.index]].championName} + '.png'}"
-                          alt="" /></div>
+                          alt="" />
+                          <div class="summonerchamps-level">
+                          <span  th:text="${match.body.info.participants[summonermatchnum[i.index]].champLevel}"></span>
+                          </div>
+                          </div>
                       <div class="usergame-flex">
                         <div class="img-wrap1"><img loading="lazy"
                             th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner1Id]} + '.png'}"
