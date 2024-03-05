@@ -46,6 +46,13 @@ public class StatisticChampion {
                 .collect(Collectors.toList());
     }
    
+	//칼바람용 
+	public static List<DataEntry> filterData(List<DataEntry> data, String championName) {
+        return data.stream()
+                .filter(entry -> entry.getChampionName().equals(championName))
+                .collect(Collectors.toList());
+    }
+	
     
 	public static List<RuneWinRate> calculatePrimaryStyleFirstPerk1(List<DataEntry> filteredData) {
 	    Map<Integer, Integer> mainRuneCounts = new HashMap<>();
@@ -172,6 +179,7 @@ public class StatisticChampion {
 	            Map<Integer, Long> counter = filteredData.stream()
 	                    .flatMap(entry -> entry.getPerks().getStyles().stream())//"styles":열어	                    
 	                    .filter(style -> "subStyle".equals(style.getDescription()))
+	                    
 	                    .map(Styles::getStyle) 							// 각 "styles에서 "style"만 선택해서 map에 넣어
 	                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 

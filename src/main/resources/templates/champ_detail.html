@@ -194,14 +194,13 @@
 								<ul class="select-first">
 									<li>
 										<div>
-											<div th:text="${keysRuneImage}"></div>
 											<img th:src="@{'/img/'+${keysRuneImage}}" alt="룬 이미지" />
 										</div>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keyPerk}}" alt="룬 이미지" />
 										</div>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keysSubRuneImage}}" alt="룬 이미지" />
 										</div>
 									</li>
 									<li class="select-ratio">
@@ -216,13 +215,13 @@
 								<ul class="select-second">
 									<li>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keysRuneImage2}}" alt="룬 이미지" />
 										</div>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keyPerk2}}" alt="룬 이미지" />
 										</div>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keysSubRuneImage2}}" alt="룬 이미지" />
 										</div>
 									</li>
 									<li class="select-ratio">

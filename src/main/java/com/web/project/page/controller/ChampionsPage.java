@@ -122,6 +122,7 @@ public class ChampionsPage {
 		return "champ";
 	}
 
+	
 	@GetMapping("/{champion}/counter/{position}")
 	public String getCounterData(@PathVariable String position, @PathVariable("champion") String champion,
 			@RequestParam(name = "champion", required = false) String additionalChampion, Model model) {
@@ -235,6 +236,12 @@ public class ChampionsPage {
 			@PathVariable("position") String position) {
 		return "";
 	}
+	
+	
+	
+	
+	
+	
 	@GetMapping("/{champion}/build")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
 	public String ChampionsDetail(
 			Model model,
@@ -250,6 +257,181 @@ public class ChampionsPage {
 			String rawData = Files.readString(Paths.get(filePath));
 			List<DataEntry> data = StatisticChampion.parseJson(rawData);
 			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			
+			
+			//인덱스 0 = 첫번째로 많이 등장한 메인룬
+			List<RuneWinRate> primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			
+			
+			model.addAttribute("runePickRate1",(double)Math.round(primaryStyleFirstPerk.get(0).getPickRate()*10000)/100);
+			model.addAttribute("runeCount1",primaryStyleFirstPerk.get(0).getSetCount());
+			model.addAttribute("runeWinRate1",(double)Math.round(primaryStyleFirstPerk.get(0).getWinRate()*10000)/100);
+			
+			model.addAttribute("runePickRate2",(double)Math.round(primaryStyleFirstPerk.get(1).getPickRate()*10000)/100);
+			model.addAttribute("runeCount2",primaryStyleFirstPerk.get(1).getSetCount());
+			model.addAttribute("runeWinRate2",(double)Math.round(primaryStyleFirstPerk.get(1).getWinRate()*10000)/100);
+	
+
+			
+			//룬 등장 횟수
+			int RuneGameCount = StatisticChampion.calculateRuneGameCount(filteredData, primaryStyleFirstPerk.get(0).getMainRune());
+			System.out.println("playedrunecount :" +RuneGameCount);
+			//#####
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));
+			System.out.println("mainStyle : " +mainStyle);
+			Runes runes = RuneData.runes(mainStyle);
+			//####
+			model.addAttribute("mainRune", runes);
+			List<Integer> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			System.out.println(primaryStylePerks234);
+			System.out.println("메인룬 1 : " + primaryStylePerks234.get(0));
+			System.out.println("룬 2 : " + primaryStylePerks234.get(1));
+			System.out.println("룬 3 : " + primaryStylePerks234.get(2));
+			System.out.println("룬 4 : " + primaryStylePerks234.get(3));
+			
+
+			
+			Integer subStyle = Integer.parseInt(StatisticChampion.subStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));			
+			System.out.println("서브룬 : " +subStyle);
+			runes = RuneData.runes(subStyle);
+			
+			List<Integer> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
+			System.out.println(subStylePerks12);
+			
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+			List<Perk> perklist = RuneData.perklist();
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
+            List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
+            List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
+            List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+            //출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+			model.addAttribute("perklist", perklist);
+			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
+			model.addAttribute("summoner1", spell);
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());			
+			model.addAttribute("summoner2", spell);
+			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
+			spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			model.addAttribute("summoner3", spell);
+			spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			model.addAttribute("summoner4", spell);
+			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+			
+			model.addAttribute("summonerSpellSetCountRate1", ((double)Math.round(summonerSpellSet12.get(0).getCountRate()*10000)/100));
+			model.addAttribute("summonerSpellSet1Count1", summonerSpellSet12.get(0).getSetCount());
+			model.addAttribute("summonerSpellSetCountRate2", ((double)Math.round(summonerSpellSet12.get(1).getCountRate()*10000)/100));
+			model.addAttribute("summonerSpellSet1Count2", summonerSpellSet12.get(1).getSetCount());
+			
+			
+			
+			Map<Long, String> keysRuneImage=RuneData.keysRuneImage();							
+
+			Long Runeimage = Long.valueOf(mainStyle);				
+			keysRuneImage.get(Runeimage);			
+			model.addAttribute("keysRuneImage", keysRuneImage.get(Runeimage));
+			
+			Long perkImage = Long.valueOf(primaryStylePerks234.get(0));				
+			keysRuneImage.get(perkImage);			
+			model.addAttribute("keyPerk", keysRuneImage.get(perkImage));
+			
+			Long SubRuneimage = Long.valueOf(subStyle);	
+			keysRuneImage.get(SubRuneimage);
+			model.addAttribute("keysSubRuneImage", keysRuneImage.get(SubRuneimage));
+			
+			
+									   System.out.println("2빠 메인룬 : " + primaryStyleFirstPerk.get(1).getMainRune());			
+			String mainStyle2 = StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(1).getMainRune());
+			String subStyle2 = StatisticChampion.subStyle(filteredData, primaryStyleFirstPerk.get(1).getMainRune());
+			
+			System.out.println(mainStyle2);
+			
+			
+			Long Runeimage2 = Long.valueOf(mainStyle2);				
+			keysRuneImage.get(Runeimage2);			
+			model.addAttribute("keysRuneImage2", keysRuneImage.get(Runeimage2));
+			
+			Long perkImage2 = Long.valueOf(primaryStyleFirstPerk.get(1).getMainRune());				
+			keysRuneImage.get(perkImage2);			
+			model.addAttribute("keyPerk2", keysRuneImage.get(perkImage2));
+			
+			Long SubRuneimage2 = Long.valueOf(subStyle);	
+			keysRuneImage.get(SubRuneimage2);
+			model.addAttribute("keysSubRuneImage2", keysRuneImage.get(SubRuneimage2));
+			
+			
+
+			
+			
+			
+			
+			List<String> statperks = StatisticChampion.caculateStatPerks(filteredData);
+			
+			model.addAttribute("statperks1",statperks.get(0));		
+			model.addAttribute("statperks2",statperks.get(1));		
+			model.addAttribute("statperks3",statperks.get(2));	
+			System.out.println(statperks.get(0));
+			System.out.println(statperks.get(1));
+			System.out.println(statperks.get(2));
+			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
+			String item1 =  String.valueOf(items.get(0).getItemId());
+			String itemCount1 =  String.valueOf(items.get(0).getItemCount());
+			String itemPickRate1 =  String.valueOf(items.get(0).getpickRate());
+			String itemWinRate1 =  String.valueOf(items.get(0).getWinRate());
+			System.out.println("아이템 등장횟수" +itemCount1);
+			
+			String item2 =  String.valueOf(items.get(1).getItemId());
+			String item3 =  String.valueOf(items.get(2).getItemId());
+			
+			
+			
+			Item item = ItemData.item(item1);
+			model.addAttribute("item1", item);
+			model.addAttribute("itemCount1", itemCount1);			
+			model.addAttribute("itemPickRate1", ((double)Math.round(Double.parseDouble(itemPickRate1)*10000)/100));
+			System.out.println("선택 비율" + itemPickRate1);
+			model.addAttribute("itemWinRate1", ((double)Math.round(Double.parseDouble(itemWinRate1)*10000)/100));
+			System.out.println("승률" + itemWinRate1);
+			
+			
+			item = ItemData.item(item2);
+			model.addAttribute("item2", item);
+			item = ItemData.item(item3);
+			model.addAttribute("item3", item);
+			
+			
+			
+			
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+            System.out.println("no DATA");
+		}
+		
+		
+		
+		Map<String, String> summonerkey = SummonerData.keysSumSpell();
+		model.addAttribute("summonerkey", summonerkey);
+    	new Connect("total","yalolza.gg", "champions","detail");
+		return "champ_detail";
+	}
+
+	@GetMapping("/{champion}/calvbaram/build")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
+	public String howlingAbyssChampionsDetail(
+			Model model,
+			@PathVariable("champion") String championid
+			) {
+		
+		Champion champion = ChampionData.championinfo(championid);
+		model.addAttribute("champion",champion);
+		String filePath = defaultFilePath + "/howlingAbyssData.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, championid);
 			
 			
 			//인덱스 0 = 첫번째로 많이 등장한 메인룬
@@ -382,5 +564,7 @@ public class ChampionsPage {
 		return "champ_detail";
 	}
 
+	
+	
 
 }
