@@ -263,22 +263,18 @@
     							<li><span th:text="${mostChampion.kills} + '/'+${mostChampion.deaths} + '/'+${mostChampion.assists}"></span></li>
 							</ul>-->
 							<li>
-    							<span th:each="mostChampion : ${duo.mostChampions}" th:text="${mostChampion.mostChampion} + ' '">
-    							</span>
+							<img th:each="mostChampion : ${duo.mostChampions}" th:src="@{/img/champion/{championName}.png(championName=${mostChampion.mostChampion})}" alt="Champion Icon" />
 							</li>
-
 							<li>
     							<span th:each="mostChampion : ${duo.mostChampions}" th:text="${mostChampion.round} + ' 경기 '+${mostChampion.wins} + ' 승 / '">
     							</span>
 							</li>
-
 							<li>
     							<span th:each="mostChampion : ${duo.mostChampions}" th:text="${mostChampion.kills} + '/'+${mostChampion.deaths} + '/'+${mostChampion.assists}+ ' '">
     							</span>
 							</li>
 							<li th:text="${duo.memo}"></li>
 							<li th:text="${duo.createdDate}" class="createdDate"></li>
-
 						</ul>
 
 					</div>

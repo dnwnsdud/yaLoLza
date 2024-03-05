@@ -107,7 +107,8 @@
         </thead>
 <tbody>
     <tr th:each="champion : ${mostChampions}">
-        <td th:text="${champion.mostChampion}"></td> <!-- 챔피언 이름 -->
+     
+		<td><img th:src="@{/img/champion/{championName}.png(championName=${champion.mostChampion})}" alt="Champion Icon" /></td>				
         <td th:text="${champion.round}"></td> <!-- 라운드 수 -->
         <td th:text="${champion.wins}"></td> <!-- 승리 수 -->
         <td th:text="${champion.kills}"></td> <!-- 킬 수 -->

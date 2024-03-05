@@ -76,35 +76,35 @@ public class DuoPage {
 		return "duoSave";
 	}
 	
-	@GetMapping("/duo/{name}")  
-	public String getDuoInfo(@PathVariable String  name, Model model) {
-	    try {
-	        // 실시간 정보를 가져옴
-	        List<Object[]> most = cal.calDuoMost(name);
-	        
-	        // MostChampions 엔티티에 데이터 매핑하여 저장
-	        for (Object[] data : most) {
-	            MostChampions mostChampion = new MostChampions();
-	            mostChampion.setMostChampion(data[0].toString());
-	            mostChampion.setRound(Long.parseLong(data[1].toString()));
-	            mostChampion.setWins(Long.parseLong(data[2].toString()));
-	            mostChampion.setKills(Double.parseDouble(data[3].toString()));
-	            mostChampion.setDeaths(Double.parseDouble(data[4].toString()));
-	            mostChampion.setAssists(Double.parseDouble(data[5].toString()));
-	            // 필요한 정보에 대해 추가 설정
-	            
-	            // MostChampions 엔티티를 디비에 저장
-	            mostChampions.save(mostChampion);
-	        }
-
-	        // 모델에 실시간 정보를 추가하여 뷰로 전달
-	        model.addAttribute("most", most);
-	        
-	        return "testduopage"; // 실시간 정보를 표시할 페이지로 이동
-	    } catch (Exception e) {
-	        return "xpage"; // 예외 처리 페이지로 이동
-	    }
-	}
+//	@GetMapping("/duo/{name}")  
+//	public String getDuoInfo(@PathVariable String  name, Model model) {
+//	    try {
+//	        // 실시간 정보를 가져옴
+//	        List<Object[]> most = cal.calDuoMost(name);
+//	        
+//	        // MostChampions 엔티티에 데이터 매핑하여 저장
+//	        for (Object[] data : most) {
+//	            MostChampions mostChampion = new MostChampions();
+//	            mostChampion.setMostChampion(data[0].toString());
+//	            mostChampion.setRound(Long.parseLong(data[1].toString()));
+//	            mostChampion.setWins(Long.parseLong(data[2].toString()));
+//	            mostChampion.setKills(Double.parseDouble(data[3].toString()));
+//	            mostChampion.setDeaths(Double.parseDouble(data[4].toString()));
+//	            mostChampion.setAssists(Double.parseDouble(data[5].toString()));
+//	            // 필요한 정보에 대해 추가 설정
+//	            
+//	            // MostChampions 엔티티를 디비에 저장
+//	            mostChampions.save(mostChampion);
+//	        }
+//
+//	        // 모델에 실시간 정보를 추가하여 뷰로 전달
+//	        model.addAttribute("most", most);
+//	        
+//	        return "testduopage"; // 실시간 정보를 표시할 페이지로 이동
+//	    } catch (Exception e) {
+//	        return "message"; // 예외 처리 페이지로 이동
+//	    }
+//	}
 		
 	@PostMapping("/create")
 	public String saveDuo(@ModelAttribute Duo duoDto, Model model, RedirectAttributes redirectAttributes, Principal principal) {
