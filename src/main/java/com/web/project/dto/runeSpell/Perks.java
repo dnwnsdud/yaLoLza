@@ -4,8 +4,11 @@ import java.util.Collection;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
-@Data
+
+
 public class Perks {
 
 	private StatPerks statPerks;

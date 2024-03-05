@@ -142,6 +142,7 @@
 			<div class="selectType">
 				<div class="select-queue-container">
 					<select name="queuetype" class="queuetype" onchange="searchDuoByQueuetype(this.value)">
+						<option value="ALL">ALL</option>
 						<option value="RANKED_SOLO">솔로랭크</option>
 						<option value="NORMAL">빠른대전</option>
 					</select>
@@ -175,7 +176,7 @@
 						<li>티어</li>
 						<li>찾는 포지션</li>
 						<li>최근선호챔피언</li>
-						<li>승률</li>
+						<li>최근 전적</li>
 						<li>KDA</li>
 						<li>메모</li>
 						<li>등록일시</li>
@@ -183,8 +184,6 @@
 					<div id="duoTableBody">
 						<ul id="item" th:each="duo : ${duoList}" onclick="redirectToView()"
 							th:data-type="${duo.myposition.name()}" th:data-queue="${duo.queuetype.name()}">
-
-
 							<li style="display: none;" th:text="${duo.id}"></li>
 							<li th:each="pos : ${duo.yourposition}" th:data-type="${pos}" style="display:none;"></li>
 							<li th:text="${duo.summonerName}"></li>
@@ -218,7 +217,7 @@
 									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
 								</div>
 							</li>
-							<li th:text="${duo.tier}"></li>
+							 <li th:text="${duo.tier}"></li> 
 							<li>
 
 								<div th:if="${duo.yourposition.size() < 4}" class="yourBox"
@@ -256,12 +255,27 @@
 									</div>
 								</div>
 							</li>
-							<li th:text="${duo.chamption}"></li>
-							<li th:text="${duo.winning}"></li>
-							<li th:text="${duo.kda}"></li>
+<!--							<ul th:each="mostChampion : ${duo.mostChampions}">
+    							<li><span th:text="${mostChampion.mostChampion}"></span></li>
+    							<li><span th:text="${mostChampion.round} + '경기 '+${mostChampion.wins} + '승'"></span></li>
+    							<li><span th:text="${mostChampion.kills} + '/'+${mostChampion.deaths} + '/'+${mostChampion.assists}"></span></li>
+							</ul>-->
+							                     <li>
+                     <img th:each="mostChampion : ${duo.mostChampions}" th:src="@{/img/champion/{championName}.png(championName=${mostChampion.mostChampion})}" alt="Champion Icon" />
+                     </li>
+                        <li th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins + duo.MostChampions[2].wins},
+                                  rounds=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}">
+                               <span th:text="${wins * 100 / rounds} + '%'"></span>
+                     </li>
+                     <li th:with="kill=${duo.MostChampions[0].kills + duo.MostChampions[1].kills + duo.MostChampions[2].kills},
+                         death=${duo.MostChampions[0].deaths + duo.MostChampions[1].deaths + duo.MostChampions[2].deaths},
+                         assist=${duo.MostChampions[0].assists + duo.MostChampions[1].assists + duo.MostChampions[2].assists},
+                         round=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}
+                         ">
+                         <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + '/' +  ${#numbers.formatDecimal(death / round, 1, 1)} +'/'+ ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
+                     </li>
 							<li th:text="${duo.memo}"></li>
 							<li th:text="${duo.createdDate}" class="createdDate"></li>
-
 						</ul>
 
 					</div>
@@ -271,7 +285,7 @@
 		<div class="modal">
 			<div class="modal_body">
 				<from th:replace="~{/duoSave :: save}"></from>
-				<button class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></button>
+				<button class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="gray"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg></button>
 			</div>
 		</div>
 	</div>

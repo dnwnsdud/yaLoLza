@@ -3,7 +3,6 @@ package com.web.project.api.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +14,6 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import com.web.project.config.SecurityConfig;
 import com.web.project.dao.UserRepository;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.enumerated.UserRole;
@@ -158,5 +156,11 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 			 return true; // 비밀번호 변경 성공
 		 }
 		
+		  // userEmail check
+			public boolean userEmailCheck (String userEmail, String userName){
+				SiteUser user = userRepository.findByEmail(userEmail);
+				return user != null && user.getUsername().equalsIgnoreCase(userName);
+			}
 
+			
 	}

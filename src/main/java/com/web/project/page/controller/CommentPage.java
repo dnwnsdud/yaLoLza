@@ -46,6 +46,7 @@ public class CommentPage {
 	    public String deleteComment(@PathVariable("id") Integer id) {
 	        Comment comment = this.commentService.getComment(id);
 	        this.commentService.delete(comment);
+	        Counter.Decrement("commentCount", 1);
 	        return String.format("redirect:/talk.yalolza.gg/community/detail/%s", comment.getCommunity().getId());
 	    }
 	    

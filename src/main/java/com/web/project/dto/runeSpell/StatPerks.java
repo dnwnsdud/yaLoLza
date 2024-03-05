@@ -1,5 +1,9 @@
 package com.web.project.dto.runeSpell;
 
+import org.springframework.stereotype.Component;
+
+import lombok.Data;
+
 public class StatPerks {
 
 	

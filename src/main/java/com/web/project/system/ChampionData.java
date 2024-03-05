@@ -33,7 +33,7 @@ public class ChampionData {
 		}
 		return data;
 	}
-	
+	 
 	public static Champion championinfo(String id) {
 		String url2 = "https://ddragon.leagueoflegends.com/cdn/14.3.1/data/ko_KR/champion/";
 		JSONObject cham3 = Ajax.JsonTObj(Ajax.GETO(url2+id+".json"))

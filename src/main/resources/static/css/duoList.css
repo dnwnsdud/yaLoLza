@@ -1,21 +1,21 @@
 @charset "UTF-8";
 
 body {
-	
-	background-color: #10131c;
-	color: var(--white);
+   
+   background-color: #10131c;
+   color: var(--white);
 }
 
 ul#item[data-invisible="TRUE"]:has(:not(.modal)) {
-	display: none;
+   display: none;
 }
 
 ul#item[data-invisible2="TRUE"] {
-	display: none;
+   display: none;
 }
 
 ul#item[data-invisible3="TRUE"] {
-	display: none;
+   display: none;
 }
 .mw1{
   max-width: 1320px;
@@ -24,289 +24,307 @@ ul#item[data-invisible3="TRUE"] {
   gap: 30px;
 }
 #duo-title{
-	width: 100%;
-	padding: 30px 0 30px 0;
-	background-color: #232D3F;
+   width: 100%;
+   padding: 30px 0 30px 0;
+   background-color: #232D3F;
 }
 #duo-title h1{
-	width: 100%;
-	max-width: 1320px;
-	margin: 0 auto;
-	font-weight: bold;
-	font-size: 4rem;
+   width: 100%;
+   max-width: 1320px;
+   margin: 0 auto;
+   font-weight: bold;
+   font-size: 4rem;
 }
 
 .menuContainer {
-	display: flex;
-	margin-top: 16px;
-	gap: 100px;
-	justify-content: space-between;
+   display: flex;
+   margin-top: 16px;
+   gap: 100px;
+   justify-content: space-between;
 }
 
 .container .for-myposition {
-	background-color: rgba(0, 34, 255, 0.1);
-	filter: brightness(1.8);
+   background-color: rgba(0, 34, 255, 0.1);
+   filter: brightness(1.8);
 }
 .container .for-yourposition{
-	background-color: rgba(117, 14, 33, 0.5);
-	filter: brightness(1.8);
+   background-color: rgba(117, 14, 33, 0.5);
+   filter: brightness(1.8);
 }
 
 .container .for-myposition,
 .container .for-yourposition {
-	padding: 10px;
-	border-radius: 10px;
-	margin: 0px 10px;
+   padding: 10px;
+   border-radius: 10px;
+   margin: 0px 10px;
 }
 
 #myposition,
 #yourposition {
-	margin-bottom: 10px;
-	font-size: 1.5rem;
+   margin-bottom: 10px;
+   font-size: 1.5rem;
 }
 
 .selectType {
-	display: flex;
-	width: 100%;
-	justify-content: right;
-	gap: 30px;
-	align-items: center;
+   display: flex;
+   width: 100%;
+   justify-content: right;
+   gap: 30px;
+   align-items: center;
 }
 
 .queuetype,
 .tier {
-	width: 130px;
-	padding:10px;
-	border-radius: 10px;
-	border: none;
-	background-color: 
-#292e45
-;
-	color: var(--white);
-	cursor: pointer;
-	font-family: inherit;
-	font-size: 1.4rem;
+   width: 130px;
+   padding:10px;
+   border-radius: 10px;
+   border: none;
+   background-color: #292e45;
+   color: var(--white);
+   cursor: pointer;
+   font-family: inherit;
+   font-size: 1.4rem;
 
 }
 
 .queuetype option,
 .tier option {
-	cursor: pointer;
+   cursor: pointer;
 }
 
 .text {
-	padding: 10px 30px 10px 30px;
-	font-size: 1.5rem;
-	border: none;
-	border-radius: 0.7rem;
-	text-align: center;
-	margin-right: 15px;
-	background-color:#282830;
+   padding: 10px 30px 10px 30px;
+   font-size: 1.5rem;
+   border: none;
+   border-radius: 0.7rem;
+   text-align: center;
+   margin-right: 15px;
+   background-color:#282830;
 }
 
 .text>a {
-	z-index: 10;
-	cursor: pointer;
+   z-index: 10;
+   cursor: pointer;
 }
 
 .layout {
-	border-radius: 0.5rem;
-	margin: 10px;
-	background-color:#292e45;
-	overflow: hidden;
-	padding-bottom: 1rem;
+   border-radius: 0.5rem;
+   margin: 10px;
+   background-color:#292e45;
+   overflow: hidden;
+   padding-bottom: 1rem;
 }
 
 .mikeBox {
-	width: 30px;
+   width: 30px;
 }
 
 .mikeBox>svg {
-	width: 100%;
+   width: 100%;
 }
 
 
 .layout>div>ul#descriptor {
-	background-color: #1e2233;
-	font-size: 1.3rem;
+   background-color: #1e2233;
+   font-size: 1.3rem;
 }
 
 .layout>div>ul,
 .layout>div>div>ul {
-	display: grid;
-	grid-template-columns: 2fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 2fr 2fr;
-	padding: 10px;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	font-size: 1.2rem;
+   display: grid;
+   grid-template-columns: 2fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 2fr 2fr;
+   padding: 10px;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   font-size: 1.2rem;
 }
 
 .layout>div>div>ul {
-	border-bottom: 1px solid gray;
-	cursor: pointer;
+   border-bottom: 1px solid gray;
+   cursor: pointer;
 }
 
 div.yourBox {
 
-	display: inline-block;
+   display: inline-block;
 }
 
 .Box {
-	width: 50px;
-	border: 1px solid gray;
-	border-radius: 5px;
-	padding: 10px;
-	display: inline-block;
+   width: 50px;
+   border: 1px solid gray;
+   border-radius: 5px;
+   padding: 10px;
+   display: inline-block;
 }
 
 #positionBox>.Box>svg>path:nth-of-type(1),
 .yourBox>.Box>svg>path:nth-of-type(1) {
-	fill: var(--point3)
+   fill: var(--point3)
 }
 #positionBox>.Box>svg>path:nth-of-type(2),
 .yourBox>.Box>svg>path:nth-of-type(2) {
-	fill: gray
+   fill: gray
 }
 
 .mikeBox {
-	display: inline-block;
+   display: inline-block;
 }
 
 input[type='radio'] {
-	display: none;
+   display: none;
 }
 
 input[type='radio']+label {
-	display: inline-block;
-	cursor: pointer;
+   display: inline-block;
+   cursor: pointer;
 }
 
 input[type='radio']:checked+label>div {
-	background-color: var(--point3);
+   background-color: var(--point3);
 }
 
 input[type='radio']+label>div>svg {
-	fill: gray
+   fill: gray
 }
 
 input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
-	fill: white
+   fill: white
 }
 
 /*-----------------------------------duosave--------------------------------------*/
 
 .modal .duo-find {
-	width: 800px;
-	margin: auto;
-	border: 1px solid black;
-	padding: 50px;
-	border-radius: 10px;
-	background-color: #45464d;
+   width: 800px;
+   height: 100%;
+   margin: auto;
+   border: 1px solid var(--gray1);
+   padding: 50px;
+   border-radius: 10px;
+   background-color: #45464d;
 
 }
 
 .modal input[type=text],
 .modal input[type=password],
 .modal .relative>input{
-	color:white;
+   color:var(--white);
 }
-
+.modal .label-myposition{
+	padding-top: 10px
+}
  .modal .label-summonerName,
  .modal .for-memo {
-	margin-bottom: 10px;
+   margin-bottom: 10px;
+  font-size: 2rem;
 }
-
 .modal  .input-summonerName {
-	width: 300px;
-	font-size: 17px;
-	background-color: #292a30;
+   width: 300px;
+   font-size: 1.5rem;
+   padding: 10px;
+   border-radius: 1rem;
+   background-color: #292a30;
+   border: none;
 }
 
-.modal  .for-yourposition {
-	margin-top: 20px;
+.modal  .for-yourposition {	
+   margin-top: 20px;
 }
-
+.modal  #memo{
+	font-size: 1.5rem;
+	padding: 10px 0 10px 0;
+}
+.modal .memo{
+	padding: 10px;
+	font-size: 1rem;
+}
 .modal  .selectMenu {
-	display: flex;
-	justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
 }
 
 
 .modal .select-queue-container {
-	margin-top: 20px;
-	border-radius: 10px;	
+   margin-top: 20px;
+   border-radius: 10px;   
 }
 
 .modal #queuetype {
-	text-align: center;
+   text-align: center;
+   font-size: 2rem;
 }
 
-.modal  .queuetype {
-	width: 100px;
-	padding: 10px;
-	border-radius: 10px;
-	background-color: #292a30;
-	color: white;
-	cursor: pointer;
+.modal .queuetype {
+   width: 150px;
+   padding: 10px;
+   border-radius: 10px;
+   background-color: #292a30;
+   color: white;
+   cursor: pointer;
+   font-size: 1.7rem;
 
 
 }
 
 .modal .queuetype>option {
-	cursor: pointer;
+   cursor: pointer;
 }
-
-.modal .input-summonerName {
-	border: 1px solid gray;
+.modal #mike-position{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 }
-
+.modal #mike{
+	font-size: 2rem;
+	padding-bottom: 10px;
+}
 .modal .memo {
-	width: 300px;
-	font-size: 17px;
-	color: white;
-	cursor: pointer;
-
+   width: 300px;
+   font-size: 1.5rem;
+   color: white;
+   cursor: pointer;
+   border-radius: 1rem;
 }
 
 .modal .duopassword {
-	border: 1px solid gray;
-	color: white;
+   color: white;
 }
 
 .modal .for-register {
-	display: flex;
-	align-items: center;
-	gap: 10px;
+   display: flex;
+   align-items: center;
+   gap: 10px;
 }
 
-.modal .register {
-	width: 400px;
-	padding: 17px 0;
-	border-radius: 10px;
-	border: 1px solid black;
-	background-color: #45464d;
-	color: white;
-	background-color: #00bba3;
-	cursor: pointer;
-
-}
-
+.modal .register,
 .modal .back {
-	padding: 18px 0;
-	width: 400px;
-	border: 1px solid black;
-	border-radius: 10px;
-	text-align: center;
-	cursor: pointer;
-
+   width: 400px;
+   padding: 17px 0;
+   border-radius: 10px;
+   background-color: #45464d;
+   color: var(--white);
+   background-color: var(--point3);
+   cursor: pointer;
+   border: none;
+   font-family: inherit;
+   font-size: 2rem;
 }
 
-.modal .Box {
-	width: 50px;
-	border: 1px solid gray;
-	border-radius: 5px;
-	padding: 5px;
+.modal .label-password{
+	font-size: 1.5rem;
+	padding: 5px 0 5px 0;
+}
+.modal .duopassword1,
+.modal .duopassword2{
+	font-size: 1.5rem;
+	padding: 10px;
+	border-radius: 0.5rem;
+}
+.modal .Box {	
+   width: 50px;
+   border: 1px solid gray;
+   border-radius: 5px;
+   padding: 5px;
 }
 
 .modal .mike,
@@ -317,57 +335,64 @@ input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
 .modal .winning,
 .modal .kda,
 .modal .for-password input {
-	background-color: #292a30;
-	border: 1px solid gray;
-
+   background-color: #292a30;
+   border: none;
 }
 
 .modal input[type='radio'] {
-	display: none;
+   display: none;
 }
-
+.modal .memo{
+	color: var(--gray3);
+}
 .modal input[type='radio']+label {
-	display: inline-block;
-	cursor: pointer;
+   display: inline-block;
+   cursor: pointer;
 }
 
 .modal input[type='radio']:checked+label>div {
-	background-color: #00bba3;
+   background-color: var(--point3);
 }
 
 .modal input[type='checkbox'] {
-	display: none;
+   display: none;
 }
 
 .modal input[type='checkbox']+label {
-	display: inline-block;
+   display: inline-block;
 }
 
 .modal input[type='checkbox']:checked+label>div {
-	background-color: #00bba3;
+   background-color: var(--point3);
 }
 
 .modal input[type='radio']+label>div>svg {
-	fill: gray
+   fill: gray
 }
 
 .modal input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
-	fill: white
+   fill: white
 }
 
 .modal input[type='checkbox']+label>div>svg {
-	fill: gray
+   fill: gray
 }
 
 .modal input[type='checkbox']:checked+label>div>svg>path:nth-of-type(1) {
-	fill: white
+   fill: white
 }
 
+.plus>svg>path {
+	fill: var(--point3);
+}
 .modal .close > svg{
-	width: 100%;
+   width: 100%;
 }
 
 .modal .passwordBox{
-	display:flex;
-	gap:20px;
+   display:flex;
+   gap:20px;
+}
+.mike-po{
+	text-align: center;
 }
