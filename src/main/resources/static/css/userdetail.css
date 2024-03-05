@@ -95,8 +95,8 @@ h1 p {
 /* 유저 정보 끝*/
 /* 유저 랭크 시작 */
 .img-wrap2 {
-  width: 100px;
-    height: 100px;
+  width: 80px;
+    height: 80px;
      display: flex;
     align-items: center;
     justify-content: center;
@@ -299,18 +299,22 @@ h1 p {
   height: 100%;
   line-height: 2rem;
 }
-.usergame-id {
+.usergame-id { 	
   display: flex;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .usergame-id > span {
+  width: 100px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .usergame-btn {
   height: 100%;
   width: 100%;
-  border: 1px solid red;
+  border: 0px solid red;
 }
 .usergame-btn button {
   height: 100%;
@@ -487,6 +491,11 @@ h1 p {
   padding: 10px;
   margin: 0 10px 0 10px;
 }
+.object-progress div {
+	margin: 0 auto;
+  width: 80%;
+
+}
 .object-progress li:nth-of-type(1) {
   position: relative;
   width: 400px;
@@ -520,10 +529,15 @@ h1 p {
 .usergame-objects {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
+  padding-left: 20px
 }
 .usergame-objects li {
   display: flex;
   align-items: center;
+  height: 30px;
+  flex-basis: calc(33.33% - 16px);
+  box-sizing: border-box;
 }
 /* 오브젝트 끝 */
 /* 유저 아이템 빌드 시작*/
@@ -532,7 +546,9 @@ h1 p {
   padding: 20px;
 }
 .usergame-itembuild .itembuild-start {
+  with: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 .itembuild-start li {
   display: flex;
@@ -642,7 +658,9 @@ h1 p {
 }
 
 /*  유저 룬 정보 끝 */
-
+.gray-icon img{
+	filter: grayscale(100%);
+}
 /* 토글 시작 */
 .usergame-click,
 .buildbtn-all,

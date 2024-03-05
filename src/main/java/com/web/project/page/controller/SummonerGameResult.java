@@ -203,7 +203,7 @@ import com.web.project.system.SummonerData;
 		    leag4url =
 		  		  "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encryptedSummonerId + "?api_key=" + apiKey;
 		    sommenerleagueinfo = restTemplate.getForEntity(leag4url, SummonerLeagInfo[].class);
-		 String recenttier  =  sommenerleagueinfo.getBody().length != 0 ?  sommenerleagueinfo.getBody()[0].getTier() : "없어";               
+		 String recenttier  =  sommenerleagueinfo.getBody().length != 0 ?  sommenerleagueinfo.getBody()[0].getTier() : "unranked";               
          Long leaguePoints = sommenerleagueinfo.getBody().length != 0 ?  sommenerleagueinfo.getBody()[0].getLeaguePoints() : 0; 
          Long summonerwins = sommenerleagueinfo.getBody().length != 0 ?  sommenerleagueinfo.getBody()[0].getWins() : 0; 
          Long summonerlosses = sommenerleagueinfo.getBody().length != 0 ?  sommenerleagueinfo.getBody()[0].getLosses() : 0;
@@ -225,7 +225,7 @@ import com.web.project.system.SummonerData;
 	                     //나중에 여기서 if문으로 자랭도 추가해보쟈
 	                     .build();
 	             summonerRepository.save(newSummoner);
-			  
+			   
 	            tierlog = Summonertierlog.builder()
 	            		.summoner(newSummoner)
 	            		.summonertier(recenttier)

@@ -641,7 +641,7 @@
               <div class="buildbtn-build">
                 <section class="usergame-itembuild">
                   <ul class="itembuild-start">
-                    <li th:each="purchase : ${matchspurchase[i.index]}">
+                    <li th:each="purchase,z : ${matchspurchase[i.index]}">
                       <div class="itembuild-group">
                         <div th:each="key: ${#numbers.sequence(1, purchase.size() - 1)}">
                           <div class="img-wrap1">
@@ -650,7 +650,7 @@
                         </div>
                         <p th:text="${purchase[0]} + '분'">0:00</p>
                       </div>
-                      <div class="item-arrow">-></div>
+                     <div class="item-arrow" th:if="${z.index + 1 < matchspurchase[i.index].size()}">-></div>
                     </li>
                   </ul>
                 </section>
