@@ -485,7 +485,7 @@ import com.web.project.system.SummonerData;
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
 		   		  //진비 챔피언 이름 영어-> 한글
 		  		 Map<String, String> keysChamName = ChampionData.keysChamName();
-		  		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
+		  		Map<Long, String> keysRuneImage = RuneData.keysRuneImageLong();
 		  		//matchsssinfoList.get(0).getBody().getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getStyle().get
 		  		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
 		  		Map<String, List<Spell>> keysChamSkill = ChampionData.keysChamSkill();
@@ -520,7 +520,7 @@ import com.web.project.system.SummonerData;
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {
-
+ 
     	  //키워드 유무는 갱신버튼의 유무
     	  // 키워드가 없는 경우의 처리
     	  if (keyword == null) { 
