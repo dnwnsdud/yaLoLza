@@ -88,6 +88,7 @@
         <span>큐타입</span>
         <li th:switch="${duoview.queuetype.name()}">
           <div th:case="RANKED_SOLO">솔로랭크</div>
+          <div th:case="RANKED_FLEX">자유랭크</div>
           <div th:case="NORMAL">빠른대전</div>
         </li>
         <br /><br />

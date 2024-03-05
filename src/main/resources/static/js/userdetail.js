@@ -12,17 +12,16 @@ new Chart(ctx, {
   data: {
     datasets: [
       {
-        data: [sValue,wValue],
+        data: [wValue,sValue ],
         borderWidth: 0,
-        backgroundColor: ["#ff0558","#007aff" ],
+        backgroundColor: ["#ff0558", "#007aff"],
       },
     ],
   },
   options: {
     plugins: {
       tooltip: { enabled: false },
-
-      id: "myChart",
+      title: "myChart", // 수정된 부분: "id" 대신 "title"
     },
   },
 });

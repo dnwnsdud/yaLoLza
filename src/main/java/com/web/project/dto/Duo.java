@@ -78,8 +78,8 @@ public class Duo {
 //	Date duodate;
 	
 	// api
-    @OneToMany(mappedBy = "duo", cascade = CascadeType.ALL)
-	private List<MostChampions> mostChampions;
+	  @OneToMany(mappedBy = "duo", cascade = CascadeType.ALL)
+	   private List<MostChampions> mostChampions;
 	
 	private Date createdDate;
     private Date lastModifiedDate;

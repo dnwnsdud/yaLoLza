@@ -1,6 +1,11 @@
 body {
   background-color: var(--point7);
 }
+.gray-icon{
+	filter:grayscale(1)
+}
+
+
 /* 챔피언 정보 시작*/
 .con1 {
   background-color: var(--point8);
@@ -68,6 +73,7 @@ h1 strong {
   color: var(--white);
   font-size: 2rem;
 }
+
 .champ-tip {
   padding: 10px;
   gap: 30px;
@@ -470,3 +476,6 @@ h2 {
   font-size: 1.3rem;
 }
 /* 장인랭킹 끝 */
+.gray-icon{
+	filter:grayscale(1)
+}

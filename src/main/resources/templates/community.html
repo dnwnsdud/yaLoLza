@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/community.css}">
 </head>
-<body>
+<body class="back">
 	<header th:replace="~{/header :: header}"></header>
 	<br/>
 	<br/>
@@ -21,7 +21,7 @@
 
     <div class="search_best">
        <div class="best_all">
-        <a th:href="@{/talk.yalolza.gg/community/list/all}" class="all">최신순</a>&nbsp;
+        <a th:href="@{/talk.yalolza.gg/community/list/all}" class="all" style="color: black;">최신순</a>&nbsp;
 <!--           /&nbsp;-->
         <a th:href="@{/talk.yalolza.gg/community/list/best}" class="best">인기순</a>
        </div>
@@ -99,7 +99,7 @@
                            <p th:if="${#strings.length(community.title) <= 15}" th:text="${community.title}"></p>
                            <p th:if="${#strings.length(community.title) > 15}" th:text="${community.title.substring(0, 15)} + '...'"></p>
                             <span th:if="${#lists.size(community.commentList)>0}"
-                                  th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number"></span>
+                                  th:text="'[' + ${#lists.size(community.commentList)} + ']'" class="comment_number" ></span>
                         </li>
                         <li th:if="${community.siteUser != null}" th:text="${community.siteUser.nickname}"></li>
                         <li th:text="${#temporals.format(community.createDate, 'yyyy-MM-dd')}"></li>
@@ -175,21 +175,23 @@
             allbtn.style.backgroundColor = "transparent";
             allbtn.style.boxShadow = "none";
             bestbtn.style.boxShadow = " 1px 1px 1px 1px #ccc";
+            bestbtn.style.color="black";
+            allbtn.style.color="white";
     }
     if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/all') > -1) {
-        allntns.style.borderLeft = "4px solid black";
+        allntns.style.borderLeft = "4px solid #213a96";
     }
     if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/free') > -1) {
-        freebtns.style.borderLeft = "4px solid black";
+        freebtns.style.borderLeft = "4px solid #213a96";
     }
     if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/humer') > -1) {
-        humerbtns.style.borderLeft = "4px solid black";
+        humerbtns.style.borderLeft = "4px solid #213a96";
     }
     if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/video') > -1) {
-        videobtns.style.borderLeft = "4px solid black";
+        videobtns.style.borderLeft = "4px solid #213a96";
     }
     if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/qna') > -1) {
-        qnabtns.style.borderLeft = "4px solid black";
+        qnabtns.style.borderLeft = "4px solid #213a96";
     }
 
 </script>

@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Insert title here</title>
-</head>
-<body>
+    <title>Insert title here</title>
+  </head>
+  <body>
     <h1>듀오페이지</h1>
 
     <table>
-        <thead>
-            <tr>
-                <th>Column1</th>
-                <th>Column2</th>
-              
-            </tr>
-        </thead>
-        <tbody>
-           <!-- 이름 횟수  승리합  킬 데스 어시 kda 킬관여 -->
-            <tr th:each="row : ${most}">
-                <td th:text="'이름' +${row[0]}"></td> 
-                <td th:text="'집계수' +${row[1]}"></td> 
-                <td th:text="'승리수' +${row[2]}"></td> 
-                <td th:text="'kda' +${row[3]} +'/' + ${row[4]} +'/'+ ${row[5]}"></td> 
-                <td th:text="'킬관여' +${row[7]}"></td>                
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Column1</th>
+          <th>Column2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 이름 횟수  승리합  킬 데스 어시 kda 킬관여 -->
+        <tr th:each="row : ${most}">
+          <td th:text="'이름' +${row[0]}"></td>
+          <td th:text="'집계수' +${row[1]}"></td>
+          <td th:text="'승리수' +${row[2]}"></td>
+          <td th:text="'킬' +${row[3]}"></td>
+          <td th:text="'데스' +${row[4]}"></td>
+          <td th:text="'어시' +${row[5]}"></td>
+          <td th:text="'kda' +${row[6]}"></td>
+          <td th:text="'킬관여' +${row[7]}"></td>
+        </tr>
+      </tbody>
     </table>
-</body>
+  </body>
 </html>
