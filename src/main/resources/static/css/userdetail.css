@@ -39,6 +39,13 @@ h1 .user-id span {
 h1 p {
   padding-top: 10px;
 }
+#gangsin{
+	padding:5px;
+	font-size: 1.3rem;
+    border-radius: 0.5rem;
+    color:white;
+	background-color: var(--gray1);
+}
 .user-tier {
   display: flex;
   gap: 10px;
@@ -153,9 +160,13 @@ h1 p {
   font-size: 2.5rem;
   font-weight: bold;
 }
-.ranktier3 {
+.ranktier3  {
+
   line-height: 2rem;
-  text-align: right;
+  text-align: left;
+}
+.ranktier3 span{
+	  white-space: nowrap;
 }
 /* 유저 랭크 끝 */
 /* 모스트 10 시작 */
@@ -303,9 +314,9 @@ h1 p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .usergame-id > span {
   width: 100px;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -614,6 +625,10 @@ h1 p {
 .sub-rune {
   padding: 0 20px 0 20px;
 }
+.sub-rune{
+	border-right: 1px solid #f0f0f0;;
+	border-left: 1px solid #f0f0f0;;
+}
 .usergame-runeinfo .main-zero,
 .main-first,
 .sub-main {
@@ -645,6 +660,11 @@ h1 p {
 .usergame-runeinfo {
   padding-bottom: 40px;
 }
+.rune-subject{
+	text-align: center;
+	color: white;
+	font-size: 15px
+}
 .usergame-runeinfo .fragments-runegrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -652,9 +672,28 @@ h1 p {
   padding: 50px 20px 20px 20px;
   gap: 20px;
 }
+.sub-rune{
+	 margin-top: 40px;
+   
+}
+.fragments-rune{
+	
+	padding-left:15px;
+	 margin-top: 130px;
+  
+}
+.fragments-rune ul{
+	padding:5px;
+	gap: 10px;
+}
+.fragments-rune ul img{
+	padding:5px;
+	gap: 10px;
+}
 
 /*  유저 룬 정보 끝 */
 .gray-icon img {
+  opacity:0.5;
   filter: grayscale(100%);
 }
 /* 토글 시작 */

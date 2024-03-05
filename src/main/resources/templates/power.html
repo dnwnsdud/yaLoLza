@@ -34,12 +34,12 @@
 
             <input type="hidden" id="keyword" name="keyword">
 
-            <button type="submit">갱신하기</button>
+            <button id="gangsin" type="submit">전적 갱신</button>
           </form>
           <div class="user-tier">
-            <div>S2023 S2 티어</div>
+       <!--      <div>S2023 S2 티어</div>
             <div>S2023 S1 티어</div>
-            <div>S2022 티어</div>
+            <div>S2022 티어</div> -->
           </div>
         </h1>
       </div>
@@ -74,7 +74,7 @@
           </section>
           <!-- 모스트 10 챔피언 -->
           <section class="user-most">
-            <h2>모스트 10 챔피언</h2>
+            <h2>모스트 5 챔피언</h2>           
             <ul th:each="chamsper , iterStat : ${summonerchamsper}" th:if="${iterStat.index lt 5}">
               <li class="most-champname">
                 <div class="img-wrap"><img loading="lazy" th:src="@{'/img/champion/'+${chamsper[0]} + '.png'}" alt="" />
@@ -124,7 +124,7 @@
               </li>
             </ul>
             <ul class="user-most3">
-              <h3>모스트3 챔피언</h3>
+              <h3 th:text="${'플레이한 챔피언 (최근 '+ summonerall[7] + ' 게임)'}"></h3>
               <div class="most-flex">
                 <li th:each="stats, statIndex : ${summonermost}" th:if="${statIndex.index < 3}">
                   <div class="user-most3kda">
@@ -146,7 +146,7 @@
             <section class="usergame-result">
               <ul>
                 <li class="usergame-times">
-                  <strong style="font-size: 1.8rem" th:text="${match.body.info.queueId}"></strong><br />
+                  <strong style="font-size: 1.8rem" th:text="${keysquetype[match.body.info.queueId]}"></strong><br />
                   <span style="font-size: 1.8rem" th:text="${match.body.caludate}">몇시간 전</span>
                 </li>
                 <li class="usergame-timess">
@@ -774,7 +774,7 @@
                           </div>
                         </li>
                       </ul>
-                      <p th:text="${mainRune.name}"></p>
+                      <p class="rune-subject" th:text="${mainRune.name}"></p>
                     </div>
                     <div class="sub-rune"
                       th:with="subRune=${runeslist[keysRunes[__${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}__]]}">
@@ -812,9 +812,13 @@
                           </div>
                         </li>
                       </ul>
-                      <p th:text="${subRune.name}"></p>
+                      <p class="rune-subject" th:text="${subRune.name}"></p>
                     </div>
-                    <div class="fragments-rune" th:with="value=5112"> <!--perk 임의의 값-->
+                    <div class="fragments-rune"
+                         th:with="value1=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.offense},
+                                 value2=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.flex},
+                                 value3=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.defense}                            
+                         "> 
                       <ul>
                         <li></li>
                       </ul>
@@ -823,56 +827,57 @@
                       </ul>
                       <ul class="perkslot1">
                         <li class="img-wrap" th:id="${perklist[0].id}">
-                          <div th:class="${perklist[0].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[0].id}==${value1}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[1].id}">
-                          <div th:class="${perklist[1].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[1].id}==${value1}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[1].icon}}" />
+                            
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[2].id}">
-                          <div th:class="${perklist[2].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[2].id}==${value1}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[2].icon}}" />
                           </div>
                         </li>
                       </ul>
                       <ul class="perkslot2">
                         <li class="img-wrap" th:id="${perklist[3].id}">
-                          <div th:class="${perklist[3].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[3].id}==${value2}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[3].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[4].id}">
-                          <div th:class="${perklist[4].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[4].id}==${value2}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[4].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[5].id}">
-                          <div th:class="${perklist[5].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[5].id}==${value2}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[5].icon}}" />
                           </div>
                         </li>
                       </ul>
                       <ul class="perkslot3">
                         <li class="img-wrap" th:id="${perklist[6].id}">
-                          <div th:class="${perklist[6].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[6].id}==${value3}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[6].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[7].id}">
-                          <div th:class="${perklist[7].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[7].id}==${value3}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[7].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[8].id}">
-                          <div th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[8].id}==${value3}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[8].icon}}" />
                           </div>
                         </li>
                       </ul>
-                      <p>능력치 파편</p> <!--이지수-->
+                      <p class="rune-subject">능력치 파편</p>
                     </div>
                   </div>
                 </section>

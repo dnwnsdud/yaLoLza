@@ -102,7 +102,7 @@ import com.web.project.system.SummonerData;
 	    String encryptedSummonerId;
 	    String leag4url;
 	    //조회할 매치 갯수
-	    long matchnum = 12; 
+	    long matchnum = 10; 
 	    //매치인포 리스트
 	    List<ResponseEntity<Match>> matchsssinfoList = new ArrayList<>();
 	    //찾을 소환사
@@ -261,13 +261,13 @@ import com.web.project.system.SummonerData;
 		  		   //2)메치인포 추출  이게 좀 걸린다
 		  		    System.out.println(matchsssList.size());
 		  		    for (int i = 0; i < matchsssList.size(); i++) {
-		  		    	
+	 	   		    	
 		  		    	System.out.println("시작 터지나 " + i);
 		  			    matchdata2 = restTemplate.getForEntity(matchsssList.get(i), Match.class);
 		  			    matchdata2.getBody().updateCaludate();
 		  			    matchdata2.getBody().teammaxdfs();
 		  			    matchdata2.getBody().teammaxdmg();
-                        
+                         
 		  			    //메치아이디 큐타입아이디 저장
 		  			  System.out.println("큐타입아이디");
 			  			  summonermatchs = Summonermatchs.builder()
@@ -495,9 +495,11 @@ import com.web.project.system.SummonerData;
      
    System.out.println("리스트야" +summonerskillluptree);
    System.out.println("리스트 개수야" +summonerskillluptree.size());
-		  		  
+	 	  		  
 		  		 Summoner  collectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
+		  		 
+		  		Map<Long, String>keysquetype = Calall.createQueueTypeMap();
 		   		  //진비 챔피언 이름 영어-> 한글
 		  		 Map<String, String> keysChamName = ChampionData.keysChamName();
 		  		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
@@ -512,7 +514,7 @@ import com.web.project.system.SummonerData;
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
 				    model.addAttribute("summonerchamsper", summonerchamsper);
 				    model.addAttribute("matchsssinfoList", matchsssinfoList);
-	 			    
+	 	 		    
 			  		model.addAttribute("matchspurchase", summnnerItemTimeStempSS);
 			  		model.addAttribute("matchsskill", summonerskilllups);
 			  		model.addAttribute("matchsskilltree", summonerskillluptree);
@@ -534,6 +536,8 @@ import com.web.project.system.SummonerData;
 			  		model.addAttribute("keysRunes", keysRunes);
 			  		//perk 데이터 리스트
 			  		model.addAttribute("perklist", perklist);
+			  		//큐타입 추가 
+			  		model.addAttribute("keysquetype", keysquetype);
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {
@@ -559,7 +563,7 @@ import com.web.project.system.SummonerData;
   		      matchsssList.add(matchinfoUrl);
   		    }
   		    
-  		    
+  		     
   		    
 		    for (int i = 0; i < matchsssList.size(); i++) {
   			    matchdata2 = restTemplate.getForEntity(matchsssList.get(i), Match.class);
@@ -615,7 +619,7 @@ import com.web.project.system.SummonerData;
 	  					  //모스트정리  
 	  					  summonermost.add(summonerchampions);      
 			    	      	    
-			    	    
+			    	     
 		    }			  				   
 		   }
 		    }
@@ -779,7 +783,7 @@ import com.web.project.system.SummonerData;
 		      summonerskilllups.add(summonerskilllup);
 		      summonerskillluptree.add(skilltree);
 		}
-
+  		  Map<Long, String>keysquetype = Calall.createQueueTypeMap();
  		 Map<String, String> keysChamName = ChampionData.keysChamName();
  		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
  		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
@@ -815,6 +819,8 @@ import com.web.project.system.SummonerData;
 	  		model.addAttribute("keysRunes", keysRunes);
 	  		//perk 데이터 리스트
 	  		model.addAttribute("perklist", perklist);
+	  		//큐타입 추가 
+	  		model.addAttribute("keysquetype", keysquetype);
 /////////////////////////////////////////////////////////////////////////////////////////////////////
       } 
     	  else {
@@ -1186,7 +1192,7 @@ import com.web.project.system.SummonerData;
 						      summonerskillluptree.add(skilltree);
 						}  		  
 				  		  
-				     
+					  		Map<Long, String>keysquetype = Calall.createQueueTypeMap();
 			 		   Map<String, String> keysChamName = ChampionData.keysChamName();
 				 		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
 				 		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
@@ -1226,7 +1232,8 @@ import com.web.project.system.SummonerData;
 				  		model.addAttribute("keysRunes", keysRunes);
 				  		//perk 데이터 리스트
 				  		model.addAttribute("perklist", perklist);
-    		   
+				  		//큐타입 추가 
+				  		model.addAttribute("keysquetype", keysquetype);
     	    }
     	       
     }
