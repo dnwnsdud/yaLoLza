@@ -1,0 +1,183 @@
+@charset "UTF-8";
+/* 모달창(닉네임) 시작*/
+.modal,
+.modal2 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.modal_body {
+  position: absolute;
+  background-color: #ffffff;
+  width: 600px;
+  height: 430px;
+  padding: 15px;
+  border-radius: 0.5rem;
+}
+.modal_body2 {
+  position: absolute;
+  background-color: #ffffff;
+  width: 600px;
+  height: 550px;
+  padding: 15px;
+  border-radius: 0.5rem;
+}
+.modal .close,
+.modal2 .close2 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.modal form,
+.modal2 form {
+  position: relative;
+  margin: 20px;
+}
+.modal .nick-name,
+.modal2 .password-name {
+  font-size: 3rem;
+  color: var(--gray1);
+  text-align: center;
+  margin-top: 20px;
+}
+.modal .nick-input {
+  padding: 20px;
+}
+.modal .nick-input h3,
+.modal2 .password-input h3 {
+  color: var(--gray2);
+  padding: 10px;
+  font-size: 1.5rem;
+}
+.modal input[type="text"] {
+  cursor: pointer;
+  width: 470px;
+  height: 50px;
+  font-size: 15px;
+  border: 5px solid rgba(0, 122, 255, 0.5);
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+}
+.modal input[type="submit"],
+.modal2 input[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  height: 60px;
+  border: none;
+  background-color: rgba(187, 187, 187, 0.5);
+  font-family: inherit;
+  color: var(--white);
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+}
+.modal input[type="reset"],
+.modal2 input[type="reset"] {
+  cursor: pointer;
+  width: 100%;
+  height: 60px;
+  border: 1px solid var(--gray3);
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+}
+.modal2 input[type="text"],
+.modal2 input[type="password"] {
+  cursor: pointer;
+  width: 500px;
+  height: 50px;
+  font-size: 15px;
+  border: 5px solid rgba(0, 122, 255, 0.5);
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+}
+/* 모달창 끝 */
+.logo {
+  width: 15rem;
+  margin: 2.5rem 0 0 3rem;
+}
+.mw2 {
+  max-width: 800px;
+  margin: 0 auto;
+  height: 100%;
+}
+h1 {
+  font-size: 4rem;
+  width: 100%;
+  margin-top: 250px;
+}
+.nickform {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+  border-bottom: 1px dotted var(--gray3);
+}
+h2 {
+  border: none;
+}
+.nicktitle {
+  margin-top: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.my-info {
+  margin-top: 30px;
+  font-size: 3rem;
+}
+.mypage-nick {
+  font-size: 2rem;
+}
+.modal .close {
+  width: 30px;
+  height: 30px;
+}
+.modal .close > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.modal2 .close2 {
+  width: 30px;
+  height: 30px;
+}
+.modal2 .close > svg {
+  width: 100%;
+  height: 100%;
+}
+.pass-change {
+  border-bottom: 1px dotted var(--gray3);
+  padding-bottom: 10px;
+}
+.passreset {
+  padding-top: 10px;
+}
+.unregist {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.unregist input[type="submit"] {
+  width: 130px;
+  font-family: inherit;
+  font-size: 1.8rem;
+  padding: 15px;
+  background-color: var(--gray3);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+}

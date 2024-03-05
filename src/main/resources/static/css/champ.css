@@ -1,278 +1,290 @@
 body {
-	background-color: var(--point7);
+   background-color: var(--point7);
 }
 /* 챔피언 네비바 시작 */
 .con1-wrap {
-	max-width: 1320px;
-	margin: 0 auto;
+   max-width: 1320px;
+   margin: 0 auto;
 }
 
 .con1 {
-	width: 100%;
-	height: 60px;
-	background-color: var(--point5);
-	margin-bottom: 5px;
-	display: flex;
-	justify-content: space-between;
-	border-radius: 0.5rem;
+   width: 100%;
+   height: 60px;
+   background-color: var(--point5);
+   margin-bottom: 5px;
+   display: flex;
+   justify-content: space-between;
+   border-radius: 0.5rem;
 }
 
 .champ-tier {
-	padding: 10px;
-	display: flex;
-	gap: 20px;
+   padding: 10px;
+   display: flex;
+   gap: 20px;
 }
 
-#tier, #version {
-	font-family: inherit;
-	font-size: 1.5rem;
-	width: 200px;
-	height: 40px;
-	background-color: var(--point5);
-	color: var(--white);
-	text-align: center;
-	border-radius: 0.5rem;
-	border: 1px solid var(--gray2);
+#tier {
+   font-family: inherit;
+   font-size: 1.5rem;
+   width: 200px;
+   height: 40px;
+   background-color: var(--point5);
+   color: var(--white);
+   text-align: center;
+   border-radius: 0.5rem;
+   border: 1px solid var(--gray2);
 }
 
 .champ-position {
-	padding: 10px;
+   padding: 10px;
 }
 
-.champ-position button {
-	color: var(--white);
-	background-color: var(--point5);
-	font-family: inherit;
-	font-size: 1.5rem;
-	height: 40px;
-	width: 130px;
-	border: 1px solid var(--gray2);
-	border-radius: 0.5rem;
-	cursor: pointer;
+.champ-position .position-btn {
+   color: var(--white);
+   background-color: var(--point5);
+   font-family: inherit;
+   font-size: 1.5rem;
+   height: 40px;
+   width: 130px;
+   border: 1px solid var(--gray2);
+   border-radius: 0.5rem;
+   cursor: pointer;
 }
 
+.position-btn .asd{
+  background-color: var(--point7)!important;
+  border-radius: 0.5rem;
+}
 .champ-position button:hover {
-	font-weight: bold;
+   font-weight: bold;
 }
 
 .champ-position button:focus {
-	background-color: var(--point3);
+   background-color: var(--point3);
 }
 /* 챔피언 종류 시작*/
 .champ-con {
-	max-width: 1320px;
-	margin: 0 auto;
-	display: flex;
-	gap: 10px;
+   max-width: 1320px;
+   margin: 0 auto;
+   display: flex;
+   gap: 10px;
 }
 
 .con2 {
-	width: 30%;
-	height: 100%;
-	background-color: var(--point5);
-	border-radius: 0.5rem;
+   width: 30%;
+   height: 100%;
+   background-color: var(--point5);
+   border-radius: 0.5rem;
 }
 
 .champ-btn {
-	width: 100%;
-	padding: 10px;
-	display: flex;
-	justify-content: space-between;
-	background-color: var(--point6);
-	border-radius: 0.5rem;
+   width: 100%;
+   padding: 10px;
+   display: flex;
+   justify-content: space-between;
+   background-color: var(--point6);
+   border-radius: 0.5rem;
 }
 
 .champ-btn button {
-	background-color: var(--point6);
-	border: none;
-	color: var(--white);
-	font-size: 1.5rem;
-	padding: 10px;
-	cursor: pointer;
-	border-radius: 1rem;
+   background-color: var(--point6);
+   border: none;
+   color: var(--white);
+   font-size: 1.5rem;
+   padding: 10px;
+   cursor: pointer;
+   border-radius: 1rem;
 }
 
 .champ-btn button:hover {
-	font-weight: bold;
+   font-weight: bold;
 }
 
 .champ-btn button:focus {
-	background: var(--point3);
+   background: var(--point3);
 }
 
 .champ-face {
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
-	font-size: 1rem;
-	color: var(--gray3);
-	border-top: 1px solid var(--gray1);
+   display: grid;
+   grid-template-columns: repeat(6, 1fr);
+   font-size: 1rem;
+   color: var(--gray3);
+   border-top: 1px solid var(--gray1);
 }
 
 .champ-face li {
-	padding: 5px;
+   padding: 5px;
 }
 
 .champ-face li div {
-	overflow: hidden;
-	border-radius: 10px
+   overflow: hidden;
+   border-radius: 10px
 }
 
 .champ-face li div img {
-	width: 100%;
-	height: 100%;
-	scale: 1.2;
+   width: 100%;
+   height: 100%;
+   scale: 1.2;
 }
 
 .champ-face p {
-	margin-top: 5px;
-	width: 100%;
-	height: 10px;
-	overflow: hidden;
-	text-overflow: ellipsis;
+   margin-top: 5px;
+   width: 100%;
+   height: 10px;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 /* 챔피언 상세 */
 .con3 {
-	width: 70%;
-	/* height: 100%; */
-	color: var(--gray3);
-	font-size: 1.5rem;
+   width: 70%;
+   /* height: 100%; */
+   color: var(--gray3);
+   font-size: 1.5rem;
 }
 
 .con3 table {
-	width: 100%;
+   width: 100%;
 }
 
 .con3 tr {
-	width: 100%;
-	font-size: 1.8rem;
-	height: 30px;
+   width: 100%;
+   font-size: 1.8rem;
+   height: 30px;
 }
 
 .con3 th {
-	background-color: var(--point6);
-	vertical-align: middle;
+   background-color: var(--point6);
+   vertical-align: middle;
 }
 
 .con3 th:nth-child(1) {
-	width: 7%;
-	height: 100%;
+   width: 7%;
+   height: 100%;
 }
 
 .con3 th:nth-child(2) {
-	width: 23%;
-	height: 100%;
-	text-align: left;
+   width: 23%;
+   height: 100%;
+   text-align: left;
 }
 
 .con3 th:nth-child(3) {
-	width: 10%;
-	height: 100%;
+   width: 10%;
+   height: 100%;
 }
 
 .con3 th:nth-child(4) {
-	width: 10%;
-	height: 100%;
+   width: 10%;
+   height: 100%;
 }
 
 .con3 th:nth-child(5) {
-	width: 10%;
-	height: 100%;
+   width: 10%;
+   height: 100%;
 }
 
 .con3 th:nth-child(6) {
-	width: 10%;
-	height: 100%;
+   width: 10%;
+   height: 100%;
 }
 
 .con3 th:nth-child(7) {
-	width: 10%;
-	height: 100%;
+   width: 10%;
+   height: 100%;
 }
 
 .con2 th:nth-child(8) {
-	width: 20%;
-	height: 100%;
+   width: 20%;
+   height: 100%;
 }
 
 .con3 .champ-body {
-	background-color: var(--point5);
-	/* width: 100%; */
-	height: 40px;
-	width: 100%;
-	color: var(--white);
+   background-color: var(--point5);
+   /* width: 100%; */
+   height: 40px;
+   width: 100%;
+   color: var(--white);
 }
 
 .con3 .champ-body td {
-	height: 40px;
-	vertical-align: middle;
+   height: 40px;
+   vertical-align: middle;
 }
-
+.box svg path:nth-of-type(1){
+   fill: var(--gray3);
+}
+.box svg path:nth-of-type(2){
+   fill:var(--gray2)
+}
 .con3 td:nth-child(1) {
-	width: 7%;
-	text-align: center;
+   width: 7%;
+   text-align: center;
 }
 
 .con3 td:nth-child(2) {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	gap: 10px;
-	font-size: 2rem;
-	justify-items: s;
-	align-items: center;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   gap: 10px;
+   font-size: 2rem;
+   align-items: center;
 }
 
 .champ-name {
-	flex: 1;
-	height: 40px;
-	line-height: 40px;
+   flex: 1;
+   height: 40px;
+   line-height: 40px;
 }
 
 .con3 td:nth-child(3) {
-	width: 10%;
-	text-align: center;
+   width: 10%;
+   text-align: center;
 }
 
 .con3 td:nth-child(4) {
-	width: 10%;
-	text-align: center;
+   width: 10%;
+   text-align: center;
 }
 
 .con3 td:nth-child(5) {
-	width: 10%;
-	text-align: center;
+   width: 10%;
+   text-align: center;
 }
 
 .con3 td:nth-child(6) {
-	width: 10%;
-	text-align: center;
+   width: 10%;
+   text-align: center;
 }
 
 .con3 td:nth-child(7) {
-	width: 10%;
-	text-align: center;
+   width: 10%;
+   text-align: center;
 }
 
 .con3 td:nth-child(8) {
-	display: flex;
-	gap: 1px;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
+   display: flex;
+   gap: 1px;
+   width: 100%;
+   justify-content: center;
+   align-items: center;
 }
 
 .con3 tbody .champ-body .img-wrap {
-	height: 40px;
+   height: 40px;
 }
 
 .con3 td:nth-child(8) img {
-	border-radius: 50%;
+   border-radius: 50%;
 }
 
 .con3 tbody img {
-	border-radius: 0.7rem;
-	padding: 2px;
-	width: 100%;
-	height: 100%;
+   border-radius: 0.7rem;
+   padding: 2px;
+   width: 100%;
+   height: 100%;
+}
+
+#on{
+   background-color: var(--point3);
 }

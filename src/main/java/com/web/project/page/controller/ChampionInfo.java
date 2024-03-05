@@ -80,6 +80,14 @@ public class ChampionInfo {
 		model.addAttribute("item", item);
 		return "itemdetailinfo";
 	}
+	@GetMapping("/championNameinfo/{id}")
+	public String championNameinfo(Model model,@PathVariable String id) {
+		log.info("championNameinfo");	
+		Map<String, String> keysChamName = ChampionData.keysChamName();
+		model.addAttribute("keysChamName", keysChamName);
+		model.addAttribute("chamid", id);
+		return "championName";
+	}
 	@GetMapping("/mapping/{championid}/mainruneid/subruneid/sum1id/sum2id/sum3id/sum4id/itemid")
 	///mapping/Aatrox/8000/8400/6/21/1/7/1001
 	public String mapping(Model model,

@@ -41,7 +41,7 @@ public class IndexPage {
 	 
 	@GetMapping("")
 	public String index1(Model model){
-		return "index";
+		return "index"; 
     }
 	
 	@GetMapping("/")

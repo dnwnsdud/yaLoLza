@@ -19,7 +19,26 @@
 
 <script src="/js/home.js" defer></script>
 <script src="/js/position.js" defer></script>
-
+<script defer>
+   function submitForm(event) {
+	   console.log("실행")
+    event.preventDefault(); 
+    var inputValue = document.getElementById('searchInput').value;
+    var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
+    if (inputValue.includes('#')) {
+		console.log("첫번째")
+        var modifiedValue = inputValue.replace(/@/g, '-');
+        var submitURL = "localhost:9998/yalolza/summoners/" + modifiedValue;
+    } else {
+       console.log("예외")
+        var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
+        
+        window.location.href = submitURL;
+    }
+    console.log("마지막")
+    window.location.href = submitURL;
+}
+</script>
 </head>
 
 <body>
@@ -33,242 +52,229 @@
 				<nav>
 					<div class="hd-nav">
 
-						<div>
-							<a th:href="@{/yalolza.gg/champions}">챔피언</a>
-						</div>
 
-						<div>
-							<a href="/yalolza.gg/">홈</a>
-						</div>
-						<div>
-							<a href="#">칼바람</a>
-						</div>
-						<div>
-							<a href="#">통계</a>
-						</div>
-						<div>
-							<a href="#">랭킹</a>
-						</div>
-						<div>
-							<a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a>
-						</div>
-						<div>
-							<a href="#">관련 영상</a>
-						</div>
-						<div>
-							<a th:href="@{/duo.yalolza.gg/list}">DUO</a>
-						</div>
-					</div>
-					<div class="btn">
-						<button>
-							<a sec:authorize="isAnonymous()"
-								th:href="@{/yalolza.gg/user/login}">로그인</a>
-						</button>
+                    <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
+                    <div><a href="#">칼바람</a></div>
+                    <div><a href="#">통계</a></div>
+                    <div><a href="#">랭킹</a></div>
+                    <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
+                    <div><a th:href="@{/duo.yalolza.gg/list}">DUO</a></div>
+                </div>
+                <div class="btn">
+                    <button><a sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+	
+     				<button><a sec:authorize="hasRole('USER')" th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button>
+     				<button><a sec:authorize="hasRole('USER')" th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
+                    <button>
+						
+     				<button><a sec:authorize="hasRole('ADMIN')" th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button>
+     				<button><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}">관리자페이지</a></button>
+                    <button>
+                        <i class="fa-regular fa-sun"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <figure>
+        <form class="homesearch" id="searchForm"  method="get" >
+            <input type="text" id="searchInput" name="name" placeholder="챔피언 혹은 ID를 검색하세요.">
+            <button onclick="submitForm()">검색</button>
+        </form>
 
-						<button>
-							<a sec:authorize="hasRole('USER')"
-								th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
-						</button>
-						<button>
-							<a sec:authorize="hasRole('USER')"
-								th:href="@{/yalolza.gg/user/mypage}">마이페이지</a>
-						</button>
-						<button>
 
-							<button>
-								<a sec:authorize="hasRole('ADMIN')"
-									th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
-							</button>
-							<button>
-								<a sec:authorize="hasRole('ADMIN')"
-									th:href="@{/admin/dashboard}">관리자페이지</a>
-							</button>
-							<button>
-								<i class="fa-regular fa-sun"></i>
-							</button>
-					</div>
-				</nav>
-			</div>
-		</header>
-		<figure>
-			<div class="homesearch">
-				<input type="text" placeholder="챔피언 혹은 ID를 검색하세요.">
-				<button>검색</button>
-			</div>
-
-			<h2>주목해야 할 챔피언(KR)</h2>
-			<div class="swiper homeswiper">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div class="swiper-champion">
-							<div class="swiperimg-wrap1">
-								<img
-									src="https://cdn.lol.ps/assets/img/champion-loading/62.webp"
-									alt="" />
-							</div>
-							<div class="swiperimg-name1">
-								<h3>오공</h3>
-								<small style="font-size: 2rem; font-weight: bold">(탑)</small>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">Slide 3</div>
-					<div class="swiper-slide">Slide 4</div>
-					<div class="swiper-slide">Slide 4</div>
-					<div class="swiper-slide">Slide 4</div>
-					<div class="swiper-slide">Slide 4</div>
-					<div class="swiper-slide">Slide 4</div>
-					<div class="swiper-slide">Slide 4</div>
-					<div class="swiper-slide">Slide 4</div>
-					<div class="swiper-slide">Slide 4</div>
+        <h2>주목해야 할 챔피언(KR)</h2>
+        <div class="swiper homeswiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="swiper-champion" th:replace="~{/swiperchamp :: Renekton}"></div>
+                    <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Renekton}"></div>
+                </div>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: Ari}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Ari}"></div>
 				</div>
-				<div class="swiper-button-next next1"></div>
-				<div class="swiper-button-prev prev1"></div>
-			</div>
-
-		</figure>
-		<div class="layoutBox">
-			<div class="layout">
-				<div class="writeBox">
-					<a th:href="@{/talk.yalolza.gg/community/list/all}"
-						class="write_title">게시판 ></a>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: Jayce}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Jayce}"></div>
 				</div>
-				<ul id="commuDescriptor">
-					<li></li>
-					<li>제목</li>
-					<li>작성자</li>
-					<li>날짜</li>
-				</ul>
-				<ul th:each="community, loop : ${communityList}" class="commu_list">
-					<li th:text="${community.category}"></li>
-					<!--                <li ><a th:href="@{|/community/detail/${community.id}|}" th:text="${community.title}"></a>-->
-					<li><a
-						th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}"
-						th:if="${#strings.length(community.title) <= 15}"
-						th:text="${community.title}"></a> <a
-						th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}"
-						th:if="${#strings.length(community.title) > 15}"
-						th:text="${community.title.substring(0, 15)} + '...'"></a> <span
-						th:if="${#lists.size(community.commentList)>0}"
-						th:text="'[' + ${#lists.size(community.commentList)} + ']'"
-						class="comment_number" style="color: #aaa"></span></li>
-					<li th:if="${community.siteUser != null}"
-						th:text="${community.siteUser.nickname}"></li>
-					<li th:text="${#temporals.format(community.createDate, 'MM-dd')}"></li>
-				</ul>
-			</div>
-			<div class="layout">
-				<div class="writeBox">
-					<a th:href="@{/duo.yalolza.gg/list}" class="write_title">DUO ></a>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: Sol}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Sol}"></div>
 				</div>
-				<div>
-					<ul id="descriptor">
-						<li style="display: none;">글 번호</li>
-						<li>소환사 이름</li>
-						<li>주 포지션</li>
-						<li>티어</li>
-						<li>찾는 포지션</li>
-						<li>메모</li>
-					</ul>
-					<div id="duoTableBody">
-						<div th:each="duo : ${duoList}">
-							<a th:href="@{|/duo.yalolza.gg/view/${duo.id}|}">
-								<ul id="item">
-									<li style="display: none;" th:text="${duo.id}"></li>
-									<li th:each="pos : ${duo.yourposition}" th:data-type="${pos}"
-										style="display: none;"></li>
-									<li th:text="${duo.summonerName}"></li>
-
-									<li>
-										<div id="positionBox" class="positionBox"
-											th:switch="${duo.myposition.name()}">
-											<div class="AllBox Box" th:case="ALL"></div>
-											<div class="TopBox Box" th:case="TOP"></div>
-											<div class="JungleBox Box" th:case="JUNGLE"></div>
-											<div class="MidBox Box" th:case="MID"></div>
-											<div class="BottomBox Box" th:case="BOTTOM"></div>
-											<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-										</div>
-									</li>
-									<li th:text="${duo.tier}"></li>
-									<li>
-
-										<div th:if="${duo.yourposition.size() < 4}" class="yourBox"
-											th:each="position : ${duo.yourposition}"
-											th:switch="${position.name()}">
-											<div class="AllBox Box" th:case="ALL"></div>
-											<div class="TopBox Box" th:case="TOP"></div>
-											<div class="JungleBox Box" th:case="JUNGLE"></div>
-											<div class="MidBox Box" th:case="MID"></div>
-											<div class="BottomBox Box" th:case="BOTTOM"></div>
-											<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-										</div>
-										<div th:unless="${duo.yourposition.size() < 4}">
-											<div class="yourBox"
-												th:switch="${duo.yourposition.get(0).name()}">
-												<div class="AllBox Box" th:case="ALL"></div>
-												<div class="TopBox Box" th:case="TOP"></div>
-												<div class="JungleBox Box" th:case="JUNGLE"></div>
-												<div class="MidBox Box" th:case="MID"></div>
-												<div class="BottomBox Box" th:case="BOTTOM"></div>
-												<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-											</div>
-											<div class="yourBox"
-												th:switch="${duo.yourposition.get(1).name()}">
-												<div class="AllBox Box" th:case="ALL"></div>
-												<div class="TopBox Box" th:case="TOP"></div>
-												<div class="JungleBox Box" th:case="JUNGLE"></div>
-												<div class="MidBox Box" th:case="MID"></div>
-												<div class="BottomBox Box" th:case="BOTTOM"></div>
-												<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-											</div>
-											<div class="plus Box" style="border: none;">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													viewBox="0 0 448 448">
-													<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-											<path
-														d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-										</svg>
-											</div>
-										</div>
-									</li>
-
-									<li th:text="${duo.memo}"></li>
-
-								</ul>
-							</a>
-						</div>
-					</div>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: Fate}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Fate}"></div>
 				</div>
-			</div>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: Kaisa}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Kaisa}"></div>
+				</div>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: Varus}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Varus}"></div>
+				</div>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: smol}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: smol}"></div>
+				</div>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: bard}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: bard}"></div>
+				</div>
+                <div class="swiper-slide">
+					<div class="swiper-champion" th:replace="~{/swiperchamp :: Zyra}"></div>
+                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Zyra}"></div>
+				</div>
+            </div>
+        <div class="swiper-button-next next1"></div>
+        <div class="swiper-button-prev prev1"></div>
+        </div>
+</figure>
+<div class="layoutBox">
+	<div class="layout">
+		<div class="writeBox">
+			<a th:href="@{/talk.yalolza.gg/community/list/all}"
+				class="write_title">게시판 ></a>
 		</div>
-		<div class=youtubeContainer>
-			<h2>소환사 협곡 인기 동영상</h2>
-			<div class="videoBox" th:each="video : ${youtubeVideos}"
-				th:utext="${video}"></div>
-		</div>
-		<footer>
-			<div class="ft-wrap">
-				<div class="idv">
-					<p>
-						<a th:href="@{/yalolza.gg/useterms}">이용약관</a>
-					</p>
-					<p>
-						<a th:href="@{/yalolza.gg/privacy}">개인정보처리방침</a>
-					</p>
-				</div>
-				<div class="lol">
-					<span>YALOLZA.GG is hosted by LOL Analytics, Inc. YALOLZA.GG
-						isn’t endorsed by Riot Games and doesn’t reflect the views or
-						opinions of Riot Games or anyone officially involved in producing
-						or managing League of Legends. League of Legends and Riot Games
-						are trademarks or registered trademarks of Riot Games, Inc. League
-						of Legends © Riot Games, Inc.</span><br />
-					<p>LOL Analytics, Inc. © 2024</p>
-				</div>
-			</div>
-		</footer>
+		<ul id="commuDescriptor">
+			<li></li>
+			<li>제목</li>
+			<li>작성자</li>
+			<li>날짜</li>
+		</ul>
+		<ul th:each="community, loop : ${communityList}" class="commu_list">
+			<li th:text="${community.category}"></li>
+			
+			<li><a
+				th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}"
+				th:if="${#strings.length(community.title) <= 15}"
+				th:text="${community.title}"></a> <a
+				th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}"
+				th:if="${#strings.length(community.title) > 15}"
+				th:text="${community.title.substring(0, 15)} + '...'"></a> <span
+				th:if="${#lists.size(community.commentList)>0}"
+				th:text="'[' + ${#lists.size(community.commentList)} + ']'"
+				class="comment_number" style="color: #aaa"></span></li>
+			<li th:if="${community.siteUser != null}"
+				th:text="${community.siteUser.nickname}"></li>
+			<li th:text="${#temporals.format(community.createDate, 'MM-dd')}"></li>
+		</ul>
 	</div>
+	<div class="layout">
+		<div class="writeBox">
+			<a th:href="@{/duo.yalolza.gg/list}" class="write_title">DUO ></a>
+		</div>
+		<div>
+			<ul id="descriptor">
+				<li style="display: none;">글 번호</li>
+				<li>소환사 이름</li>
+				<li>주 포지션</li>
+				<li>티어</li>
+				<li>찾는 포지션</li>
+				<li>메모</li>
+			</ul>
+			<div id="duoTableBody">
+				<div th:each="duo : ${duoList}">
+					<a th:href="@{|/duo.yalolza.gg/view/${duo.id}|}">
+						<ul id="item">
+							<li style="display: none;" th:text="${duo.id}"></li>
+							<li th:each="pos : ${duo.yourposition}" th:data-type="${pos}"
+								style="display: none;"></li>
+							<li th:text="${duo.summonerName}"></li>
+
+							<li>
+								<div id="positionBox" class="positionBox"
+									th:switch="${duo.myposition.name()}">
+									<div class="AllBox Box" th:case="ALL"></div>
+									<div class="TopBox Box" th:case="TOP"></div>
+									<div class="JungleBox Box" th:case="JUNGLE"></div>
+									<div class="MidBox Box" th:case="MID"></div>
+									<div class="BottomBox Box" th:case="BOTTOM"></div>
+									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
+								</div>
+							</li>
+							<li th:text="${duo.tier}"></li>
+							<li>
+
+								<div th:if="${duo.yourposition.size() < 4}" class="yourBox"
+									th:each="position : ${duo.yourposition}"
+									th:switch="${position.name()}">
+									<div class="AllBox Box" th:case="ALL"></div>
+									<div class="TopBox Box" th:case="TOP"></div>
+									<div class="JungleBox Box" th:case="JUNGLE"></div>
+									<div class="MidBox Box" th:case="MID"></div>
+									<div class="BottomBox Box" th:case="BOTTOM"></div>
+									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
+								</div>
+								<div th:unless="${duo.yourposition.size() < 4}">
+									<div class="yourBox"
+										th:switch="${duo.yourposition.get(0).name()}">
+										<div class="AllBox Box" th:case="ALL"></div>
+										<div class="TopBox Box" th:case="TOP"></div>
+										<div class="JungleBox Box" th:case="JUNGLE"></div>
+										<div class="MidBox Box" th:case="MID"></div>
+										<div class="BottomBox Box" th:case="BOTTOM"></div>
+										<div class="SupporterBox Box" th:case="SUPPORTER"></div>
+									</div>
+									<div class="yourBox"
+										th:switch="${duo.yourposition.get(1).name()}">
+										<div class="AllBox Box" th:case="ALL"></div>
+										<div class="TopBox Box" th:case="TOP"></div>
+										<div class="JungleBox Box" th:case="JUNGLE"></div>
+										<div class="MidBox Box" th:case="MID"></div>
+										<div class="BottomBox Box" th:case="BOTTOM"></div>
+										<div class="SupporterBox Box" th:case="SUPPORTER"></div>
+									</div>
+									<div class="plus Box" style="border: none;">
+										<svg xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 448 448">
+											
+									<path
+												d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+								</svg>
+									</div>
+								</div>
+							</li>
+
+							<li th:text="${duo.memo}"></li>
+
+						</ul>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class=youtubeContainer>
+	<h2>소환사 협곡 인기 동영상</h2>
+	<div class="videoBox" th:each="video : ${youtubeVideos}"
+		th:utext="${video}"></div>
+</div>
+<footer>
+	<div class="ft-wrap">
+		<div class="idv">
+			<p>
+				<a th:href="@{/yalolza.gg/useterms}">이용약관</a>
+			</p>
+			<p>
+				<a th:href="@{/yalolza.gg/privacy}">개인정보처리방침</a>
+			</p>
+		</div>
+		<div class="lol">
+			<span>YALOLZA.GG is hosted by LOL Analytics, Inc. YALOLZA.GG
+				isn’t endorsed by Riot Games and doesn’t reflect the views or
+				opinions of Riot Games or anyone officially involved in producing
+				or managing League of Legends. League of Legends and Riot Games
+				are trademarks or registered trademarks of Riot Games, Inc. League
+				of Legends © Riot Games, Inc.</span><br />
+			<p>LOL Analytics, Inc. © 2024</p>
+		</div>
+	</div>
+</footer>
+</div>
+					
+
 
 </body>
 

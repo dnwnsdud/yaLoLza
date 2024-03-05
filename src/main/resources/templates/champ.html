@@ -10,6 +10,9 @@
     <script src="/js/position.js" defer></script>
   </head>
   <body>
+    <header th:replace="~{/header :: header}"></header>
+    <br />
+    <br />
     <div class="con1-wrap">
       <section class="con1">
         <div class="champ-tier">
@@ -29,45 +32,71 @@
             <option value="Bronze">Bronze</option>
             <option value="Iron">Iron</option>
           </select>
-          <select name="version" id="version">
-            <option value="v14.03">v14.03</option>
-            <option value="v14.02">v14.02</option>
-            <option value="v14.01">v14.01</option>
-          </select>
         </div>
         <div class="champ-position">
           <nav>
-            <button onclick="updateUrl('position', 'ALL')">전체</button>
-            <button onclick="updateUrl('position', 'TOP')">탑</button>
-            <button onclick="updateUrl('position', 'JUNGLE')">정글</button>
-            <button onclick="updateUrl('position', 'MIDDLE')">미드</button>
-            <button onclick="updateUrl('position', 'BOTTOM')">원딜</button>
-            <button onclick="updateUrl('position', 'UTILITY')">서포터</button>
+            <button
+              class="position-btn"
+              id="ALL"
+              onclick="updateUrl('position', 'ALL')"
+            >
+              전체
+            </button>
+            <button
+              class="position-btn"
+              id="TOP"
+              onclick="updateUrl('position', 'TOP')"
+            >
+              탑
+            </button>
+            <button
+              class="position-btn"
+              id="JUNGLE"
+              onclick="updateUrl('position', 'JUNGLE')"
+            >
+              정글
+            </button>
+            <button
+              class="position-btn"
+              id="MIDDLE"
+              onclick="updateUrl('position', 'MIDDLE')"
+            >
+              미드
+            </button>
+            <button
+              class="position-btn"
+              id="BOTTOM"
+              onclick="updateUrl('position', 'BOTTOM')"
+            >
+              원딜
+            </button>
+            <button
+              class="position-btn"
+              id="UTILITY"
+              onclick="updateUrl('position', 'UTILITY')"
+            >
+              서포터
+            </button>
           </nav>
         </div>
       </section>
     </div>
     <div class="champ-con">
       <section class="con2">
-        <div class="champ-btn">
-          <button>전체</button>
-          <button>탑</button>
-          <button>정글</button>
-          <button>미드</button>
-          <button>원딜</button>
-          <button>서포터</button>
-        </div>
+        <div class="champ-btn"></div>
         <ul class="champ-face">
-          <li th:each="i : ${data}" th:with="champion=${i}">
-            <a th:href="'/yalolza.gg/champions/'+${champion.id}+'/build'"
-              ><div>
+          <li th:each="champion : ${positionData}">
+            <a
+              th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position}, championName=${champion.championName})}"
+            >
+              <div>
                 <img
-                  alt="챔피언 이미지"
-                  th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}"
+                  th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
+                  alt=""
                 />
               </div>
-              <p th:text="${champion.name}"></p
-            ></a>
+              <p th:text="${champion.krchampionName}"></p>
+            </a>
           </li>
         </ul>
       </section>
@@ -91,7 +120,7 @@
               <td>
                 <div class="img-wrap">
                   <a
-                    th:href="@{/img/champion/{championName}(championName=${champion.championName})}"
+                    th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position}, championName=${champion.championName})}"
                   >
                     <img
                       th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
@@ -103,15 +132,37 @@
                   <a th:text="${champion.krchampionName}" href="#"></a>
                 </p>
               </td>
-              <td th:text="${champion.stats.champtier}" th:data-champ="${champion.stats.champtier}"></td>
               <td>
-                <div class="img-wrap" th:switch="${champion.position}">
-                  <div class="TopBox" th:case="TOP"></div>
-                  <div class="JungleBox" th:case="JUNGLE"></div>
-                  <div class="MidBox" th:case="MIDDLE"></div>
-                  <div class="BottomBox" th:case="BOTTOM"></div>
-                  <div class="SupporterBox" th:case="UTILITY"></div>
-                </div>
+                <center>
+                  <div class="img-wrap" th:switch="${champion.stats.champtier}">
+                    <div th:case="OP">
+                      <img src="/img/tier/icon-tier-op.svg" />
+                    </div>
+                    <div th:case="'1 티어'">
+                      <img src="/img/tier/icon-tier-1.svg" />
+                    </div>
+                    <div th:case="'2 티어'">
+                      <img src="/img/tier/icon-tier-2.svg" />
+                    </div>
+                    <div th:case="'3 티어'">
+                      <img src="/img/tier/icon-tier-3.svg" />
+                    </div>
+                    <div th:case="'4 티어'">
+                      <img src="/img/tier/icon-tier-4.svg" />
+                    </div>
+                  </div>
+                </center>
+              </td>
+              <td>
+                <center>
+                  <div class="img-wrap" th:switch="${champion.position}">
+                    <div class="TopBox box" th:case="TOP"></div>
+                    <div class="JungleBox box" th:case="JUNGLE"></div>
+                    <div class="MidBox box" th:case="MIDDLE"></div>
+                    <div class="BottomBox box" th:case="BOTTOM"></div>
+                    <div class="SupporterBox box" th:case="UTILITY"></div>
+                  </div>
+                </center>
               </td>
               <td th:text="${champion.stats.winrate} + '%'"></td>
               <td th:text="${champion.stats.pickrate} + '%'"></td>
@@ -133,22 +184,32 @@
       </section>
     </div>
     <script>
+      const btn = document.querySelectorAll(".champ-position>nav>button");
       // URL 업데이트
       function updateUrl(key, value) {
         var url = new URL(window.location.href);
         url.searchParams.set(key, value);
         window.location.href = url.href;
       }
+
       document.addEventListener("DOMContentLoaded", function () {
         var url = new URL(window.location.href);
         var tier = url.searchParams.get("tier");
         var position = url.searchParams.get("position");
 
+        btn.forEach((e) => {
+          console.log(btn.id);
+          e.id.replace(`${position}`);
+          if (e.id == position) e.id = "on";
+        });
         if (!tier && !position) {
           window.location.href =
             "/yalolza.gg/champions?tier=EMERALD&position=TOP";
         }
       });
     </script>
+    <br />
+    <br />
+    <footer th:replace="~{/footer :: footer}"></footer>
   </body>
 </html>
