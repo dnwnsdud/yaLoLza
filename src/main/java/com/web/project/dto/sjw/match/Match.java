@@ -76,10 +76,17 @@ public class Match {
       
         if(hoursDiff < 24) {
         	caludate =  hoursDiff +"시간전";
-        }else if(24 < hoursDiff && hoursDiff < 720) {
+        }else if(24 <= hoursDiff && hoursDiff < 720) {
+        	
         	long classDate = Math.round((double) hoursDiff / 24);
+        	if(classDate == 0 || classDate ==1 ) {
+        		caludate =  classDate +"하루전";
+        	}
         	 caludate =  classDate +"일전";
-        }
+        }else if(hoursDiff >= 720) {
+        	long classDate = Math.round((double) hoursDiff / 720);
+       	 caludate =  classDate +"달전";
+       }
     }  
         
         public void teammaxdmg() {

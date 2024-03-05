@@ -2,6 +2,7 @@ package com.web.project.page.controller;
 
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,12 @@ import com.web.project.api.controller.Duoservice;
 import com.web.project.api.controller.UserService;
 import com.web.project.dao.DuoRepository;
 import com.web.project.dto.Duo;
+import com.web.project.dto.MostChampions;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.enumerated.Myposition;
 import com.web.project.dto.enumerated.Queuetype;
 import com.web.project.dto.enumerated.Yourposition;
+import com.web.project.function.Calall;
 import com.web.project.metrics.Counter;
 import com.web.project.metrics.count.Connect;
 
@@ -44,6 +47,9 @@ public class DuoPage {
 	
 	@Autowired
 	PasswordEncoder encoder;
+	
+	@Autowired
+	Calall summoenrsmost;
 
 	@Autowired
 	public DuoPage(Duoservice duoService, UserService userService) {
@@ -67,8 +73,37 @@ public class DuoPage {
 	
 	 @PostMapping("/create")
 	 public String saveDuo(@ModelAttribute Duo duoDto, Model model, Principal principal) {
+		 System.out.println("여기맞아?");
+		 String name = null;
+		 List<Object[]> duoMostList=null;
+		 List<MostChampions>  most3 = new ArrayList<MostChampions>();
+		 name = duoDto.getSummonerName();
+		 try {
+			 duoMostList = summoenrsmost.calDuoMost(name);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 for(int i = 0 ; i<duoMostList.size() ; i++ ) {
+			 Object[] duoInfo = duoMostList.get(i);
+		 MostChampions mostchampion = MostChampions.builder()
+				    .duo(duoDto)
+		            .name( (String)duoInfo[0])
+		            .round((Long)duoInfo[1])
+		            .wins((Long) duoInfo[2])
+		            .kills(((Number)duoInfo[3]).doubleValue())
+		            .deaths(((Number)duoInfo[4]).doubleValue())
+		            .assists(((Number)duoInfo[5]).doubleValue())
+		            .kda(((Number)duoInfo[6]).doubleValue())
+		            .Contribution(((Number)duoInfo[7]).doubleValue())
+				.build();
+		  
+           most3.add(mostchampion);
+		 }
+		 duoDto.setMostChampions(most3);
+		   
 	        // 폼에서 받은 Duo 객체를 받음
-
+		 
 		 if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
 	            model.addAttribute("message", "듀오 등록 실패: 2개의 패스워드가 일치하지 않습니다.");
 	            model.addAttribute("searchUrl","/duo.yalolza.gg/save");
@@ -81,6 +116,7 @@ public class DuoPage {
 
 	            if (user != null) {
 	                duoDto.setSiteUser(user); // 조회한 사용자 엔티티를 Duo 엔티티에 설정
+	            
 	            }
 	        }
 
@@ -118,14 +154,14 @@ public class DuoPage {
 	public List<Duo> searchDuoByYourposition(@RequestParam Yourposition  yourposition) {
 		return duoService.getDuoByYourposition(yourposition);
 	}
-
+  
 	@GetMapping("/view/{id}")
 	public String view(@PathVariable Long id, Model model) {
 		model.addAttribute("duoview", duoService.duoview(id));
     	new Connect("total","duo.yalolza.gg", "view");
 		return "duoView";
 	}
-
+ 
 	@GetMapping("/edit/{id}")
 	public String editDuo(@PathVariable Long id, Model model) {
 		Duo duoDto = duoDao.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 Article이 없습니다."));
@@ -133,7 +169,7 @@ public class DuoPage {
     	new Connect("total","duo.yalolza.gg");
 		return "duoEdit";
 	}
-
+ 
 	@PostMapping("/update/{id}")
 	public String duoUpdate(@PathVariable("id") Long id, @Valid Duo duoDto,
 	        @RequestParam(value = "duopassword2", required = false) Long duopassword2, Model model) {
@@ -157,7 +193,6 @@ public class DuoPage {
 	    	duotemp.setDuopassword2(duoDto.getDuopassword2());
 	    	duotemp.setMemo(duoDto.getMemo());
 	    	duotemp.setIsmike(duoDto.getIsmike());
-		    duotemp.setTier(duoDto.getTier());
 			duotemp.setLastModifiedDate(duoDto.getLastModifiedDate());
 			
 			duoDao.save(duotemp);
