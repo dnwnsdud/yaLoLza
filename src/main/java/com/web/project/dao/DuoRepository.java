@@ -19,4 +19,5 @@ public interface DuoRepository extends JpaRepository<Duo, Long>{
     List<Duo> findByYourpositionOrderByIdDesc(Yourposition yourposition);
     List<Duo> findByQueuetypeOrderByIdDesc(Queuetype queuetype);
     Optional<Duo> findById(Long id);
+    List<Duo> findAllByOrderByCreatedDateDesc();
 }

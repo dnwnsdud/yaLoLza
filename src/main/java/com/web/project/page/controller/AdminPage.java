@@ -66,7 +66,8 @@ public class AdminPage {
 	 @PostMapping("/delete_user")
 	 public String deleteUser(@RequestParam Long id) {
 		 userService.deleteUser(id);
-		 return "redirect:/admin/dashboard";
+		 return "/admin/dashboard";
+//		 return "redirect:/admin/dashboard";
 	    }    
     
 	 @PostMapping("/delete_community")

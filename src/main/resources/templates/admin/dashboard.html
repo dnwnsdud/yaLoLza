@@ -3,6 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>admin</title>
+	    <script>
+    function confirmDelete() {
+        // 사용자에게 경고창을 띄워 확인 여부를 물어봅니다.
+        var confirmDelete = confirm("정말로 회원삭제 하시겠습니까?");
+        
+        // 사용자가 확인을 선택한 경우에만 양식을 제출합니다.
+        return confirmDelete;
+    }
+	</script>
 </head>
 <body>
 관리자 페이지입니다.<br/><br/><br/>
@@ -31,7 +40,7 @@
             	<td>
                 <form th:if="${user.id gt 100} "th:action="@{/admin/delete_user}" method="post">
                     <input type="hidden" th:name="id" th:value="${user.id}">
-                    <button type="submit">Delete</button>
+                    <button type="submit" onclick="return confirmDelete();">회원삭제</button>
                 </form>
             </td>
             </tr>

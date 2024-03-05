@@ -142,6 +142,7 @@
 			<div class="selectType">
 				<div class="select-queue-container">
 					<select name="queuetype" class="queuetype" onchange="searchDuoByQueuetype(this.value)">
+						<option value="ALL">ALL</option>
 						<option value="RANKED_SOLO">솔로랭크</option>
 						<option value="NORMAL">빠른대전</option>
 					</select>
@@ -175,7 +176,7 @@
 						<li>티어</li>
 						<li>찾는 포지션</li>
 						<li>최근선호챔피언</li>
-						<li>승률</li>
+						<li>최근 전적</li>
 						<li>KDA</li>
 						<li>메모</li>
 						<li>등록일시</li>
@@ -256,9 +257,25 @@
 									</div>
 								</div>
 							</li>
-							<li th:text="${duo.chamption}"></li>
-							<li th:text="${duo.winning}"></li>
-							<li th:text="${duo.kda}"></li>
+<!--							<ul th:each="mostChampion : ${duo.mostChampions}">
+    							<li><span th:text="${mostChampion.mostChampion}"></span></li>
+    							<li><span th:text="${mostChampion.round} + '경기 '+${mostChampion.wins} + '승'"></span></li>
+    							<li><span th:text="${mostChampion.kills} + '/'+${mostChampion.deaths} + '/'+${mostChampion.assists}"></span></li>
+							</ul>-->
+							<li>
+    							<span th:each="mostChampion : ${duo.mostChampions}" th:text="${mostChampion.mostChampion} + ' '">
+    							</span>
+							</li>
+
+							<li>
+    							<span th:each="mostChampion : ${duo.mostChampions}" th:text="${mostChampion.round} + ' 경기 '+${mostChampion.wins} + ' 승 / '">
+    							</span>
+							</li>
+
+							<li>
+    							<span th:each="mostChampion : ${duo.mostChampions}" th:text="${mostChampion.kills} + '/'+${mostChampion.deaths} + '/'+${mostChampion.assists}+ ' '">
+    							</span>
+							</li>
 							<li th:text="${duo.memo}"></li>
 							<li th:text="${duo.createdDate}" class="createdDate"></li>
 

@@ -15,13 +15,9 @@
 		th:object="${duoDto}">
 		<div class="for-summonerName">
 			<div class="label-summonerName" id="summonerName">소환사 이름 (KR)</div>
-			<div class="summonerName">
+			<div class="summonerName">		
 				<input type="text" autocomplete="off" class="input-summonerName" placeholder="플레이어 이름 + #KR1"
-					name="summonerName" readonly rerequired th:if="${#authorization.expression('isAuthenticated()')}"
-					th:value="${#authentication.principal.nickname}">
-				<!-- 로그인하지 않은 경우에는 비어있는 입력란을 보여줍니다. -->
-				<input type="text" autocomplete="off" class="input-summonerName" placeholder="플레이어 이름 + #KR1"
-					name="summonerName" required th:unless="${#authorization.expression('isAuthenticated()')}">
+					name="summonerName" required >
 			</div>
 		</div>
 		<br />
@@ -174,21 +170,6 @@
 			</select>
 		</div>
 		<br />
-		<div class="passwordBox">
-			<div class="for-password">
-				<div class="label-password" id="password">듀오 비밀번호</div>
-				<br /> <input type="password" security="true" autocomplete="off" id="duopassword1" class="duopassword1"
-					required oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="4자리 숫자로 입력해주세요."
-					name="duopassword1" minlength="4" maxlength="4">
-			</div>
-			<div class="for-password">
-				<div class="label-password" id="password">듀오 비밀번호 재확인</div>
-				<br /> <input type="password" security="true" autocomplete="off" id="duopassword2" class="duopassword2"
-					required oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="4자리 숫자로 입력해주세요."
-					name="duopassword2" minlength="4" maxlength="4">
-			</div>
-		</div>
-		<br /> <label>여기부턴 롤api 로 받아와야 하는 자료</label><br />
 		<div class="for-tier" id="tier">티어</div>
 		<div class="tier-select-container">
 			<select name="tier" class="tier">
@@ -206,31 +187,21 @@
 			</select>
 		</div>
 		<br />
-
-		<div class="for-chamption" id="chamption">최근 플레이한 챔피언</div>
-		</br>
-		<div class="chamption-container">
-			<input type="text" class="chamption" placeholder="최근 플레이한 챔피언은?." name="chamption"> <input type="text"
-				class="chamption" placeholder="최근 플레이한 챔피언은?." name="chamption"> <input type="text" class="chamption"
-				placeholder="최근 플레이한 챔피언은?." name="chamption">
+		<div class="passwordBox">
+			<div class="for-password">
+				<div class="label-password" id="password">듀오 비밀번호</div>
+				<br /> <input type="password" security="true" autocomplete="off" id="duopassword1" class="duopassword1"
+					required oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="4자리 숫자로 입력해주세요."
+					name="duopassword1" minlength="4" maxlength="4">
+			</div>
+			<div class="for-password">
+				<div class="label-password" id="password">듀오 비밀번호 재확인</div>
+				<br /> <input type="password" security="true" autocomplete="off" id="duopassword2" class="duopassword2"
+					required oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="4자리 숫자로 입력해주세요."
+					name="duopassword2" minlength="4" maxlength="4">
+			</div>
 		</div>
 		<br />
-
-		<div class="for-winning" id="winning">승률</div>
-		<div class="winning-container">
-			<input type="text" class="winning" placeholder="최근 승?." name="winning">
-			<input type="text" class="winning" placeholder="최근 패?." name="winning">
-		</div>
-		<br />
-
-		<div class="for-kda" id="kda">kda</div>
-		<div class="kda-container">
-			<input type="text" class="kda" placeholder="최근 킬?." name="kda">
-			<input type="text" class="kda" placeholder="최근 데스?." name="kda">
-			<input type="text" class="kda" placeholder="최근 어시?." name="kda">
-		</div>
-		<br />
-
 
 		<div class="for-register">
 			<div class="back">

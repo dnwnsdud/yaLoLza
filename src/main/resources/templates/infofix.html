@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/myrest.css}" />
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/mypage.css}" />
+    <script
+      src="https://kit.fontawesome.com/286b044825.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="infofix" class="nick-fix" th:action="@{/yalolza.gg/user/mypage/change-username}" th:fragment="nick" method="post">
+      <h2 class="nick-name">닉네임 변경하기</h2>
+      <div class="nick-input">
+        <h3>닉네임</h3>
+        <input type="text" id="newNickname" name="newNickname" required><br><br><br><br>
+        <input type="submit" value="변경사항 저장하기"><br><br>
+        <input class="cancel" type="reset" value="취소">
+       
+      </div>
+   </form> 
+
+    <!-- 패스워드 -->
+    <form
+      id="infofix1"
+      class="my-password"
+      th:action="@{/yalolza.gg/user/mypage/change-pass}"
+      th:fragment="mypassword"
+      method="post"
+    >
+      <h2 class="password-name">비밀번호 변경하기</h2>
+      <div class="password-input">
+        <h3>현재 비밀번호</h3>
+        <input type="password" id="oldPassword" name="oldPass" required />
+        <h3>변경할 비밀번호</h3>
+        <input type="password" id="newPassword" name="newPass" required/>
+        <h3>변경할 비밀번호 확인</h3>
+        <input type="password" id="newPasswordConfirm" name="newPassConfirm" required/><br /><br/><br/>
+        <input type="submit" value="변경사항 저장하기" /><br /><br />
+        <input class="cancel2" type="reset" value="취소" />
+      </div>
+    </form>
+  </body>
+</html>

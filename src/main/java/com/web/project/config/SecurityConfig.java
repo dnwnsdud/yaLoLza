@@ -63,8 +63,6 @@ public class SecurityConfig {
 					auth
 						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 						.requestMatchers(
-								"**",
-								"/**",
 								"/newlolkia",
 								"/newlolkia/userinfo",
 								"/newlolkia/userinfo/**",
@@ -101,6 +99,7 @@ public class SecurityConfig {
 							"/css/**" ,
 							"/js/**",
 							"/json/**",
+							"/datas/**",
 							"/info/**"
 						).permitAll()
 						.requestMatchers(
@@ -143,7 +142,7 @@ public class SecurityConfig {
 //						.logoutUrl("/members/logout")
 //						.logoutSuccessUrl("/main")
 //						.logoutUrl("/user/logout")
-						.logoutSuccessUrl("/yalolza.gg")
+						.logoutSuccessUrl("/yalolza.gg/")
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.permitAll()

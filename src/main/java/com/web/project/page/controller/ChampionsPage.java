@@ -269,7 +269,7 @@ public class ChampionsPage {
             List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
             List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
             List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
-            출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+            //출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
 			model.addAttribute("perklist", perklist);
 			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
 			model.addAttribute("summoner1", spell);
