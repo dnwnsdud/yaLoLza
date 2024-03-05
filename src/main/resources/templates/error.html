@@ -3,13 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Error</title>
-
+    <link rel="stylesheet" th:href="@{/css/myrest.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}"> 
+	<link rel="stylesheet" th:href="@{/css/error.css}">
 </head>
 <body>
-    <h2>Error</h2>
-    <p>오류가 발생했습니다. 죄송합니다. 다시 시도하십시오.</p>
-      <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a>
-      <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
-	  <a th:href="@{/yalolza.gg}" class=back>메인페이지</a><br/><br/>
+<div class="mw2">
+      <h1>다시 한번 확인해 주세요!</h1>
+      <p>지금 입력하신 주소의 페이지는</p>
+      <p>사라졌거나 다른 페이지로 변경되었습니다.</p>
+      <p>주소를 다시 확인해주세요.</p>
+      <p>관련 문의사항은 오피지지 고객센터에 알려주시면</p>
+      <p>친절하게 안내해 드리겠습니다.</p>
+      <div class="error-img">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD9OaxkvPeUSbDomXMGiM-sJKYTbpXrw8GwejVsG58KQ&s"
+          alt=""
+        />
+      </div>
+      <div class="error-btn">
+        <input type="button" value="이전 페이지" onClick="history.go(-1)"> 
+        <a th:href="@{/yalolza.gg/}"><button>홈</button></a>
+      </div>
+    </div>
 </body>
 </html>

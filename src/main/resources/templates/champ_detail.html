@@ -5,35 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/css/myrest.css" />
 <link rel="stylesheet" href="/css/common.css" />
 <link rel="stylesheet" href="/css/champ_detail.css" />
 <script
-	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+   src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/champ_detail.js" defer></script>
 
 </head>
 <body>
-	<div>
-		<!-- 챔피언 정보-->
-		<section class="con1">
-			<div class="dec">
-				<div class="champ-main">
-					<img
-						th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}"
-						alt="챔피언 이미지" />
-				</div>
-				<h1>
-					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong><!--아무도 없음-->
-					<span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
-						style="font-size: 1.3rem" class="tier">1티어</span>
-					<div class="champ-skill">
+   <div>
+      <!-- 챔피언 정보-->
+      <section class="con1">
+         <div class="dec">
+            <div class="champ-main">
+               <img
+                  th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}"
+                  alt="챔피언 이미지" />
+            </div>
+            <h1>
+               <strong style="font-size: 3rem;" th:text="${champion.name}"></strong><!--아무도 없음-->
+               <span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
+                  style="font-size: 1.3rem" class="tier">1티어</span>
+               <div class="champ-skill">
 
-						<div class="champ-passivetooltip">
-							<img alt="패시브 이미지"
-								th:src="@{'/img/'+${champion.passive.image.group}+'/'+${champion.passive.image.full}}">
-						</div>
+                  <div class="champ-passivetooltip">
+                     <img alt="패시브 이미지"
+                        th:src="@{'/img/'+${champion.passive.image.group}+'/'+${champion.passive.image.full}}">
+                  </div>
 
 						<div class="champ-spelltooltip" id='Q'>
 							<img th:src="@{'/img/spell/'+${champion.spells[0].id}+'.png'}"
@@ -692,227 +692,227 @@
                           </div>
                       </div>
                   </li> -->
-						</ul>
-					</section>
-					<!-- 장인 랭킹 --><!--진성님-->
-					<section class="champ-rank">
-						<h2>가렌 장인 랭킹 ></h2>
-						<ul>
-							<li>
-								<ul>
-									<p>1</p>
-									<div>
-										<img src="" alt="">
-									</div>
-									<strong style="font-size: 1.7rem;">아이디</strong>
-								</ul>
-								<p class="rank-flex">게임수</p>
-							</li>
-							<li>
-								<ul>
-									<p>2</p>
-									<div>
-										<img src="" alt="">
-									</div>
-									<strong style="font-size: 1.7rem;">아이디</strong>
-								</ul>
-								<p class="rank-flex">게임수</p>
-							</li>
-							<li>
-								<ul>
-									<p>3</p>
-									<div>
-										<img src="" alt="">
-									</div>
-									<strong style="font-size: 1.7rem;">아이디</strong>
-								</ul>
-								<p class="rank-flex">게임수</p>
-							</li>
-							<li>
-								<ul>
-									<p>4</p>
-									<div>
-										<img src="" alt="">
-									</div>
-									<strong style="font-size: 1.7rem;">아이디</strong>
-								</ul>
-								<p class="rank-flex">게임수</p>
-							</li>
-							<li>
-								<ul>
-									<p>5</p>
-									<div>
-										<img src="" alt="">
-									</div>
-									<strong style="font-size: 1.7rem;">아이디</strong>
-								</ul>
-								<p class="rank-flex">게임수</p>
-							</li>
-						</ul>
-					</section>
-				</div>
-			</div>
-		</div>
-	</div>
+                  </ul>
+               </section>
+               <!-- 장인 랭킹 --><!--진성님-->
+               <section class="champ-rank">
+                  <h2>가렌 장인 랭킹 ></h2>
+                  <ul>
+                     <li>
+                        <ul>
+                           <p>1</p>
+                           <div>
+                              <img src="" alt="">
+                           </div>
+                           <strong style="font-size: 1.7rem;">아이디</strong>
+                        </ul>
+                        <p class="rank-flex">게임수</p>
+                     </li>
+                     <li>
+                        <ul>
+                           <p>2</p>
+                           <div>
+                              <img src="" alt="">
+                           </div>
+                           <strong style="font-size: 1.7rem;">아이디</strong>
+                        </ul>
+                        <p class="rank-flex">게임수</p>
+                     </li>
+                     <li>
+                        <ul>
+                           <p>3</p>
+                           <div>
+                              <img src="" alt="">
+                           </div>
+                           <strong style="font-size: 1.7rem;">아이디</strong>
+                        </ul>
+                        <p class="rank-flex">게임수</p>
+                     </li>
+                     <li>
+                        <ul>
+                           <p>4</p>
+                           <div>
+                              <img src="" alt="">
+                           </div>
+                           <strong style="font-size: 1.7rem;">아이디</strong>
+                        </ul>
+                        <p class="rank-flex">게임수</p>
+                     </li>
+                     <li>
+                        <ul>
+                           <p>5</p>
+                           <div>
+                              <img src="" alt="">
+                           </div>
+                           <strong style="font-size: 1.7rem;">아이디</strong>
+                        </ul>
+                        <p class="rank-flex">게임수</p>
+                     </li>
+                  </ul>
+               </section>
+            </div>
+         </div>
+      </div>
+   </div>
 </body>
 <script>
     </script>
 <script th:inline="javascript" defer>
 document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
-	let target = await fetch("/info/passive/"+[[${champion.id}]]).then(data=>data.text());
-	tooltip(
-			  element,
-			  target,
-		      {
-		        gap: 20,
-		        backgroundColor: "var(--gray2)",
-		        borderRadius: "1rem",
-		      },
-		      {
-		        fontSize: "15px",
-		        width: "250px",
-		        padding:"10px"
-		      }
-		    );
-	
+   let target = await fetch("/info/passive/"+[[${champion.id}]]).then(data=>data.text());
+   tooltip(
+           element,
+           target,
+            {
+              gap: 20,
+              backgroundColor: "var(--gray2)",
+              borderRadius: "1rem",
+            },
+            {
+              fontSize: "15px",
+              width: "250px",
+              padding:"10px"
+            }
+          );
+   
 });
 
-	</script>
+   </script>
 
 <script th:inline="javascript" defer>
-	 
-	document.querySelectorAll(".champ-spelltooltip").forEach(async (element)=>{
-		let target = await fetch("/info/spell/"+[[${champion.id}]]+"/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+    
+   document.querySelectorAll(".champ-spelltooltip").forEach(async (element)=>{
+      let target = await fetch("/info/spell/"+[[${champion.id}]]+"/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".main-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".main-rune ul li").forEach(async (element)=>{
+      let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".sub-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".sub-rune ul li").forEach(async (element)=>{
+      let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 color:"#48C4B7",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".fragments-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/perkdetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".fragments-rune ul li").forEach(async (element)=>{
+      let target = await fetch("/info/perkdetailinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 color:"#48C4B7",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".summoner-order ul li div div").forEach(async (element)=>{
-		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".summoner-order ul li div div").forEach(async (element)=>{
+      let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 color:"#48C4B7",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".item-buildstart").forEach(async (element)=>{
-		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".item-buildstart").forEach(async (element)=>{
+      let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 color:"#48C4B7",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 </html>
