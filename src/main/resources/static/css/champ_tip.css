@@ -1,0 +1,9 @@
+.gridContainer{
+	width:1320px;
+	margin:50px auto;
+}
+.videoBox{
+	display:grid;
+	grid-template-columns:repeat(3, 1fr);
+	gap:15px;
+}

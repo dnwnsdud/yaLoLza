@@ -4,3 +4,4 @@ public enum Queuetype {
 	RANKED_SOLO,
 	NORMAL;
 }
+ 

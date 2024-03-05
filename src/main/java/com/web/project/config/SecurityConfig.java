@@ -63,11 +63,8 @@ public class SecurityConfig {
 					auth
 						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 						.requestMatchers(
-								"/newlolkia",
-								"/newlolkia/userinfo",
-								"/newlolkia/userinfo/**",
-//								"**",
-//								"/**",
+								"/admin",
+								"/admin/**",
 							"/yalolza.gg",
 							"/yalolza.gg/**",
 							"/yalolza.gg/champions",
@@ -86,7 +83,6 @@ public class SecurityConfig {
 							"/talk.yalolza.gg/community/list/**",
 							"/talk.yalolza.gg/community/detail/**",
 							"/talk.yalolza.gg/community/",
-//							"/talk.yalolza.gg/comment/**",
 							"/home",
 							"/index",
 							"/yalolza.gg/user/login",
@@ -113,25 +109,18 @@ public class SecurityConfig {
 				.formLogin(login->
 					login
 						.loginPage("/yalolza.gg/user/login")
-//						.loginPage("/members/login")
-//						.loginProcessingUrl("/login/check")
 						.usernameParameter("username")
-//						.usernameParameter("email")
 						.passwordParameter("password")
-//						.defaultSuccessUrl("/yalolza.gg", true)
 						.failureUrl("/yalolza.gg/user/login?error")
 						.permitAll()
 				)
 				.oauth2Login(login->
 					login
-//						.loginPage("/members/login")
 						.loginPage("/yalolza.gg/user/login")
 						.userInfoEndpoint(end->
 							end
 								.userService(oauth2service)
 						)
-//						.defaultSuccessUrl("/yalolza.gg", true)
-//						.failureUrl("/members/login/error")
 						.failureUrl("/yalolza.gg/user/login")
 						.permitAll()
 				)
@@ -139,10 +128,7 @@ public class SecurityConfig {
 				.logout(out->
 					out
 						.logoutRequestMatcher(new AntPathRequestMatcher("/yalolza.gg/user/logout"))
-//						.logoutUrl("/members/logout")
-//						.logoutSuccessUrl("/main")
-//						.logoutUrl("/user/logout")
-						.logoutSuccessUrl("/yalolza.gg/")
+						.logoutSuccessUrl("/yalolza.gg")
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.permitAll()
@@ -155,15 +141,10 @@ public class SecurityConfig {
 						.rememberMeParameter("remember")
 						.userDetailsService(service)
 						.alwaysRemember(false)
-				)
+				) 
 				.getOrBuild();
 	}
 	
-//    @Bean
-//    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
-//        throws Exception {
-//        return authenticationConfiguration.getAuthenticationManager();
-//    }
 
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         SimpleUrlAuthenticationSuccessHandler successHandler = new SimpleUrlAuthenticationSuccessHandler();

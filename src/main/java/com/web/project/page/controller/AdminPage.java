@@ -1,6 +1,5 @@
 package com.web.project.page.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,7 @@ import com.web.project.dto.Community;
 import com.web.project.dto.PasswordForm;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.UserCreateForm;
+import com.web.project.metrics.Counter;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -38,55 +38,57 @@ public class AdminPage {
 
 	@Autowired
 	private final UserService userService;
-	
-    @Autowired
-    private CommunityService communityService;
-    
-    @Autowired
-    private CommentService commentService;
-	
 
-    @GetMapping("/dashboard")
-    public String adminpage(@AuthenticationPrincipal SiteUser user, Model model) {
-    	System.out.println("관리자 페이지 들어간다");
-    	
-    	model.addAttribute("user", user);
-    
-    	 List<SiteUser> users = userService.getAllUsers();
-         List<Community> communities = communityService.getAllCommunities();
-         List<Comment> comments = commentService.getAllComments();
+	@Autowired
+	private CommunityService communityService;
 
-         model.addAttribute("users", users);
-         model.addAttribute("communities", communities);
-         model.addAttribute("comments", comments);
+	@Autowired
+	private CommentService commentService;
 
-         return "/admin/dashboard";
-    }
+	@GetMapping("/dashboard")
+	public String adminpage(@AuthenticationPrincipal SiteUser user, Model model) {
+		System.out.println("관리자 페이지 들어간다");
 
-	 @PostMapping("/delete_user")
-	 public String deleteUser(@RequestParam Long id) {
-		 userService.deleteUser(id);
-		 return "/admin/dashboard";
-//		 return "redirect:/admin/dashboard";
-	    }    
-    
-	 @PostMapping("/delete_community")
-	 public String deleteCommunity(@RequestParam Integer id) {
-		 communityService.deleteCommunity(id);
-		 return "redirect:/admin/dashboard";
-	    }
-	 @PostMapping("/delete_comment")
-	 public String deleteComment(@RequestParam Integer id) {
-		 commentService.deleteComment(id);
-		 return "redirect:/admin/dashboard";
-	 }
-	 
-	 @GetMapping("/view_community")
- 	 public String viewCommunity(@RequestParam Integer id, Model model) {
-		 Community community = communityService.getCommunity(id);
-		 	model.addAttribute("community", community);
-		 	return "commu_detail";
-	    }
+		model.addAttribute("user", user);
+
+		List<SiteUser> users = userService.getAllUsers();
+		List<Community> communities = communityService.getAllCommunities();
+		List<Comment> comments = commentService.getAllComments();
+
+		model.addAttribute("users", users);
+		model.addAttribute("communities", communities);
+		model.addAttribute("comments", comments);
+
+		return "/admin/dashboard";
+	}
+
+	@PostMapping("/delete_user")
+	public String deleteUser(@RequestParam Long id) {
+		userService.deleteUser(id);
+		Counter.Decrement("userCount", 1);
+		return "redirect:/admin/dashboard";
+	}
+
+	@PostMapping("/delete_community")
+	public String deleteCommunity(@RequestParam Integer id) {
+		communityService.deleteCommunity(id);
+		Counter.Decrement("commuCount",1);
+		return "redirect:/admin/dashboard";
+	}
+
+	@PostMapping("/delete_comment")
+	public String deleteComment(@RequestParam Integer id) {
+		commentService.deleteComment(id);
+		Counter.Decrement("commentCount", 1);
+		return "redirect:/admin/dashboard";
+	}
+
+	@GetMapping("/view_community")
+	public String viewCommunity(@RequestParam Integer id, Model model) {
+		Community community = communityService.getCommunity(id);
+		model.addAttribute("community", community);
+		return "commu_detail";
+	}
 //	 @GetMapping("/view_comment")
 //	 public String viewComment(@RequestParam Integer id, Model model) {
 //		 Comment comment = commentService.getComment(id);

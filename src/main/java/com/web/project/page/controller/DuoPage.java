@@ -55,6 +55,9 @@ public class DuoPage {
 	
 	@Autowired
 	PasswordEncoder encoder;
+	
+	@Autowired
+	Calall summoenrsmost;
 
 	@Autowired
 	public DuoPage(Duoservice duoService, UserService userService) {
@@ -188,7 +191,7 @@ public class DuoPage {
 	    new Connect("total","duo.yalolza.gg", "view");
 	    return "duoView";
 	}
-
+ 
 	@GetMapping("/edit/{id}")
 	public String editDuo(@PathVariable Long id, Model model) {
 		Duo duoDto = duoDao.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 Article이 없습니다."));
@@ -196,7 +199,7 @@ public class DuoPage {
     	new Connect("total","duo.yalolza.gg");
 		return "duoEdit";
 	}
-
+ 
 	@PostMapping("/update/{id}")
 	public String duoUpdate(@PathVariable("id") Long id, @Valid Duo duoDto,
 	        @RequestParam(value = "duopassword2", required = false) Long duopassword2, Model model) {
@@ -220,7 +223,6 @@ public class DuoPage {
 	    	duotemp.setDuopassword2(duoDto.getDuopassword2());
 	    	duotemp.setMemo(duoDto.getMemo());
 	    	duotemp.setIsmike(duoDto.getIsmike());
-		    duotemp.setTier(duoDto.getTier());
 			duotemp.setLastModifiedDate(duoDto.getLastModifiedDate());
 			
 			duoDao.save(duotemp);
