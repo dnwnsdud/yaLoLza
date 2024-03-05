@@ -304,3 +304,9 @@ div.yourBox {
 	color: white;
 	
 }
+
+.videoBox{
+	padding:100px 160px;
+	background-color:#292e45;
+	border-radius:10px;
+}
