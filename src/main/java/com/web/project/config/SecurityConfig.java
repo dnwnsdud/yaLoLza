@@ -95,6 +95,7 @@ public class SecurityConfig {
 							"/css/**" ,
 							"/js/**",
 							"/json/**",
+							"/datas/**",
 							"/info/**"
 						).permitAll()
 						.requestMatchers(

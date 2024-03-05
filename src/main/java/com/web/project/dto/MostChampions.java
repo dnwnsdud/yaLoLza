@@ -42,13 +42,13 @@ public class MostChampions {
      @JoinColumn(name = "duo_id") // 수정: 테이블에 맞게 칼럼명 변경
      private Duo duo;
 	 
-	 String name;
+	 String mostChampion;
 	 Long round;
 	 Long wins;
 	 Double kills;
 	 Double deaths;
 	 Double assists;
 	 Double kda;
-	 Double  Contribution;
-	
+	 Long  Contribution;
+
 }

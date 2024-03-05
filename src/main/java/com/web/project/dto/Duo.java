@@ -71,6 +71,8 @@ public class Duo {
 	Boolean ismike;
 	@Column(nullable = false)
 	String memo;
+	@Column
+	String tier;
 //	@Column
 //	@Temporal(TemporalType.TIMESTAMP)
 //	Date duodate;
@@ -96,7 +98,6 @@ public class Duo {
 //	private void showduodate() {
 //        duodate = new Date();
 //    }
-
 
     @ManyToOne
 	@JoinColumn(name = "site_user_id")

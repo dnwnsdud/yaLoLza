@@ -156,5 +156,11 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 			 return true; // 비밀번호 변경 성공
 		 }
 		
+		  // userEmail check
+			public boolean userEmailCheck (String userEmail, String userName){
+				SiteUser user = userRepository.findByEmail(userEmail);
+				return user != null && user.getUsername().equalsIgnoreCase(userName);
+			}
 
+			
 	}

@@ -1,6 +1,8 @@
 package com.web.project.page.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -13,9 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.web.project.api.controller.SendEmailService;
 import com.web.project.api.controller.UserService;
+import com.web.project.dto.MailDTO;
 import com.web.project.dto.PasswordForm;
 import com.web.project.dto.SiteUser;
 import com.web.project.dto.UserCreateForm;
@@ -34,6 +39,9 @@ public class UserPage {
     PasswordEncoder encoder;
     private final UserService userService;
 
+    @Autowired
+	private final SendEmailService ms;
+    
     @GetMapping("/signup")
     public String signup(UserCreateForm userCreateForm) {
     	new Connect("total","yalolza.gg", "user","signup");
@@ -134,5 +142,27 @@ public class UserPage {
 //   public String showChangeNicknameForm (Model model) {
 //      return "nickname_form";
 //    }
+ // Email + name 일치하는지
+ 	@GetMapping("/check/findPw")
+ 	public @ResponseBody Map<String,Boolean> pwFind (@RequestParam("userEmail") String userEmail, @RequestParam("userName") String userName) {
+ 		Map<String, Boolean> json = new HashMap<>();
+ 		boolean pwFindCheck = userService.userEmailCheck(userEmail, userName);
+ 		json.put("check", pwFindCheck);
+ 		return json;
+ 	}
+
+ 	// 등록된 이메일로 발송 + 비밀번호 임시 변경
+ 	@PostMapping("/check/findPw/sendEmail")
+ 	public @ResponseBody void sendEmail(String userEmail, String userName){
+ 		MailDTO dto = ms.createMailAndChargePassword(userEmail, userName);
+ 		ms.mailSend(dto);
+ 	}
+ 	
+ 	
+ 	// 비밀번호 찾기 페이지로 이동
+ 	@GetMapping("/FindPw_show")
+ 	public String FindPw_show() {
+ 		return "FindPw_form";
+ 	}
 }
 

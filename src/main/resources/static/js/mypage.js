@@ -26,7 +26,7 @@ btnOpenModal2.addEventListener("click", () => {
 });
 close2.addEventListener("click", () => {
   modal2.style.display = "none";
-});	
+});
 close12.addEventListener("click", () => {
   modal2.style.display = "none";
 });

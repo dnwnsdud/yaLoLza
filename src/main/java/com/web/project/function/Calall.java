@@ -244,7 +244,8 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
 		  		                    Math.round(killsStats.getAverage() * 10) / 10,        // kills 평균
 		  		                    Math.round(deathsStats.getAverage() * 10) / 10,       // deaths 평균
 		  		                    Math.round(assistsStats.getAverage() * 10) / 10,      // assists 평균 
-		  		                    Math.round( kdaStats.getAverage() * 10) / 10,           // kda 평균		  		                           
+		  		                    // Math.round( kdaStats.getAverage() * 10) / 10,           // kda 평균		  		                           
+		  		                    String.format("%.2f", kdaStats.getAverage()),         // kda 평균
 		  		                    Math.round(killperStats.getAverage() * 10) / 10       //킬관여 평균
 		  		            };
 		  		        })

@@ -4,6 +4,7 @@ package com.web.project.page.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.project.api.controller.Duoservice;
 import com.web.project.api.controller.UserService;
 import com.web.project.dao.DuoRepository;
+import com.web.project.dao.MostChampionsRepository;
 import com.web.project.dto.Duo;
 import com.web.project.dto.MostChampions;
 import com.web.project.dto.SiteUser;
@@ -43,7 +46,12 @@ public class DuoPage {
 	private final UserService userService;
 
 	@Autowired
+	Calall cal;
+	
+	@Autowired
 	DuoRepository duoDao;
+	@Autowired
+	MostChampionsRepository mostChampions;
 	
 	@Autowired
 	PasswordEncoder encoder;
@@ -71,67 +79,74 @@ public class DuoPage {
 		return "duoSave";
 	}
 	
-	 @PostMapping("/create")
-	 public String saveDuo(@ModelAttribute Duo duoDto, Model model, Principal principal) {
-		 System.out.println("여기맞아?");
-		 String name = null;
-		 List<Object[]> duoMostList=null;
-		 List<MostChampions>  most3 = new ArrayList<MostChampions>();
-		 name = duoDto.getSummonerName();
-		 try {
-			 duoMostList = summoenrsmost.calDuoMost(name);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 for(int i = 0 ; i<duoMostList.size() ; i++ ) {
-			 Object[] duoInfo = duoMostList.get(i);
-		 MostChampions mostchampion = MostChampions.builder()
-				    .duo(duoDto)
-		            .name( (String)duoInfo[0])
-		            .round((Long)duoInfo[1])
-		            .wins((Long) duoInfo[2])
-		            .kills(((Number)duoInfo[3]).doubleValue())
-		            .deaths(((Number)duoInfo[4]).doubleValue())
-		            .assists(((Number)duoInfo[5]).doubleValue())
-		            .kda(((Number)duoInfo[6]).doubleValue())
-		            .Contribution(((Number)duoInfo[7]).doubleValue())
-				.build();
-		  
-           most3.add(mostchampion);
-		 }
-		 duoDto.setMostChampions(most3);
-		   
-	        // 폼에서 받은 Duo 객체를 받음
-		 
-		 if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
-	            model.addAttribute("message", "듀오 등록 실패: 2개의 패스워드가 일치하지 않습니다.");
-	            model.addAttribute("searchUrl","/duo.yalolza.gg/save");
-	            return "message"; // 패스워드가 일치하지 않을 경우 메시지 페이지 반환
-	        }
+//	@GetMapping("/duo/{name}")  
+//	public String getDuoInfo(@PathVariable String  name, Model model) {
+//	    try {
+//	        // 실시간 정보를 가져옴
+//	        List<Object[]> most = cal.calDuoMost(name);
+//	        
+//	        // MostChampions 엔티티에 데이터 매핑하여 저장
+//	        for (Object[] data : most) {
+//	            MostChampions mostChampion = new MostChampions();
+//	            mostChampion.setMostChampion(data[0].toString());
+//	            mostChampion.setRound(Long.parseLong(data[1].toString()));
+//	            mostChampion.setWins(Long.parseLong(data[2].toString()));
+//	            mostChampion.setKills(Double.parseDouble(data[3].toString()));
+//	            mostChampion.setDeaths(Double.parseDouble(data[4].toString()));
+//	            mostChampion.setAssists(Double.parseDouble(data[5].toString()));
+//	            // 필요한 정보에 대해 추가 설정
+//	            
+//	            // MostChampions 엔티티를 디비에 저장
+//	            mostChampions.save(mostChampion);
+//	        }
+//
+//	        // 모델에 실시간 정보를 추가하여 뷰로 전달
+//	        model.addAttribute("most", most);
+//	        
+//	        return "testduopage"; // 실시간 정보를 표시할 페이지로 이동
+//	    } catch (Exception e) {
+//	        return "message"; // 예외 처리 페이지로 이동
+//	    }
+//	}
+		
+	@PostMapping("/create")
+	public String saveDuo(@ModelAttribute Duo duoDto, Model model, RedirectAttributes redirectAttributes, Principal principal) {
+	    // 폼에서 받은 Duo 객체를 받음
 
-		 if (principal != null) { // 로그인한 사용자인 경우
-	            String username = principal.getName(); // 현재 사용자의 아이디 가져오기
-	            SiteUser user = (SiteUser) userService.loadUserByUsername(username); // 사용자의 아이디로 사용자 엔티티 조회
-
-	            if (user != null) {
-	                duoDto.setSiteUser(user); // 조회한 사용자 엔티티를 Duo 엔티티에 설정
-	            
-	            }
-	        }
-
-	        try {
-	            duoDao.save(duoDto); // Duo 엔티티 저장
-		        Counter.Increment("duoCount",1);
-	            return "redirect:/duo.yalolza.gg/list"; // 리스트 페이지로 리다이렉트
-	        } catch (Exception e) {
-	            model.addAttribute("message", "듀오 등록 실패: " + e.getMessage());
-	            model.addAttribute("searchUrl","/duo.yalolza.gg/save");
-	            return "message"; // 저장 중 문제 발생 시 메시지 페이지 반환
-	        }
+	    if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
+	        model.addAttribute("message", "듀오 등록 실패: 2개의 패스워드가 일치하지 않습니다.");
+	        model.addAttribute("searchUrl", "/duo.yalolza.gg/save");
+	        return "message"; // 패스워드가 일치하지 않을 경우 메시지 페이지 반환
 	    }
 
+	    try {
+	        // Duo 엔티티 저장
+	        duoDao.save(duoDto); 
 
+	        // MostChampions 정보 저장
+	        List<Object[]> most = cal.calDuoMost(duoDto.getSummonerName()); // 해당 듀오의 정보를 가져옴
+	        for (Object[] data : most) {
+	            MostChampions mostChampion = new MostChampions();
+	            mostChampion.setMostChampion(data[0].toString());
+	            mostChampion.setRound(Long.parseLong(data[1].toString()));
+	            mostChampion.setWins(Long.parseLong(data[2].toString()));
+	            mostChampion.setKills(Double.parseDouble(data[3].toString()));
+	            mostChampion.setDeaths(Double.parseDouble(data[4].toString()));
+	            mostChampion.setAssists(Double.parseDouble(data[5].toString()));
+	            mostChampion.setDuo(duoDto); // 해당 MostChampion이 어떤 Duo에 속하는지 설정
+
+	            // MostChampions 엔티티를 디비에 저장
+	            mostChampions.save(mostChampion);
+	        }
+
+	        // 리다이렉트
+	        return "redirect:/duo.yalolza.gg/list"; 
+	    } catch (Exception e) {
+	        model.addAttribute("message", "소환사 검색 결과가 없습니다. 리스트로 돌아갑니다.: " + e.getMessage());
+	        model.addAttribute("searchUrl", "/duo.yalolza.gg/list");
+	        return "message"; // 저장 중 문제 발생 시 메시지 페이지 반환
+	    }
+	}
 
 	@GetMapping("/searchByPosition")
 	@ResponseBody
@@ -154,12 +169,27 @@ public class DuoPage {
 	public List<Duo> searchDuoByYourposition(@RequestParam Yourposition  yourposition) {
 		return duoService.getDuoByYourposition(yourposition);
 	}
-  
+
+//	@GetMapping("/view/{id}")
+//	public String view(@PathVariable Long id, Model model) {
+//		
+//		  Duo duoview = duoService.duoview(id);
+//		  Optional<MostChampions> mostChampions = duoService.findMostChampionsByDuoId(id);
+//		
+//		  model.addAttribute("duoview", duoview);
+//		  model.addAttribute("mostChampions", mostChampions);
+//    	new Connect("total","duo.yalolza.gg", "view");
+//		return "duoView";
+//	}
 	@GetMapping("/view/{id}")
 	public String view(@PathVariable Long id, Model model) {
-		model.addAttribute("duoview", duoService.duoview(id));
-    	new Connect("total","duo.yalolza.gg", "view");
-		return "duoView";
+	    Duo duoview = duoService.duoview(id);
+	    List<MostChampions> mostChampionsList = duoService.findMostChampionsByDuoId(id);
+	    
+	    model.addAttribute("duoview", duoview);
+	    model.addAttribute("mostChampions", mostChampionsList);
+	    new Connect("total","duo.yalolza.gg", "view");
+	    return "duoView";
 	}
  
 	@GetMapping("/edit/{id}")
