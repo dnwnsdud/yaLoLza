@@ -20,7 +20,7 @@ public class YoutubeMainService {
 
 	public String youtubeGenerator() {
 
-		String query = "롤 리그오브레전드";
+		String query = "롤 이슈";
 
 		String apiUrl = "https://www.googleapis.com/youtube/v3/search";
 		String part = "snippet";
