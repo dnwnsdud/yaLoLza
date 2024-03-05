@@ -36,7 +36,7 @@ public class UserPage {
 
     @GetMapping("/signup")
     public String signup(UserCreateForm userCreateForm) {
-       new Connect("total","yalolza.gg", "user");
+    	new Connect("total","yalolza.gg", "user","signup");
         return "signup_form";
     }
 
@@ -58,7 +58,7 @@ public class UserPage {
             bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
             return "signup_form";
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();	
             bindingResult.reject("signupFailed", e.getMessage());
             return "signup_form";
         }
@@ -69,14 +69,13 @@ public class UserPage {
 
     @GetMapping("/login")
     public String login() {
-       new Connect("total","yalolza.gg", "user");
+    	new Connect("total","yalolza.gg", "user","login");
         return "login_form";
     }
 
     @GetMapping("/unregist")
     public String userDelete(@AuthenticationPrincipal SiteUser user, Model model, @Valid PasswordForm passwordForm) {
         model.addAttribute("user", user);
-       new Connect("total","yalolza.gg", "user");
         return "mypage_form";
     }
 
@@ -94,7 +93,7 @@ public class UserPage {
     @GetMapping("/mypage")
     public String userMypage(@AuthenticationPrincipal SiteUser user, Model model) {
         model.addAttribute("user", user);
-       new Connect("total","yalolza.gg", "user");
+    	new Connect("total","yalolza.gg", "user","mypage");
         return "mypage_form";
     }
 

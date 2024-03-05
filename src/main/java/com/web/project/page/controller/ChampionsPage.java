@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.project.api.controller.YoutubeService;
 import com.web.project.dto.championstats.ChampionStatsDTO;
 import com.web.project.dto.championstats.CounterChampionDTO;
 import com.web.project.dto.championstats.CounterCountDTO;
@@ -48,6 +49,11 @@ import com.web.project.system.StatisticChampion;
 @Controller
 @RequestMapping("/yalolza.gg/champions")
 public class ChampionsPage {
+	
+	 @Autowired
+	    private YoutubeService youtubeService;
+	
+	
 	private final JsonReader jsonReader;
 	private final CounterJsonReader counterJsonReader;
 	// 참고로 perk = rune
@@ -320,5 +326,305 @@ public class ChampionsPage {
 		return "champ_detail";
 	}
  
+	@GetMapping("/{champion}/counter")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
+	public String ChampionsCounter(
+			Model model,
+			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
+			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
+			@PathVariable("champion") String championid
+			) {
+		Champion champion = ChampionData.championinfo(championid);
+		model.addAttribute("champion",champion);
+		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
+			System.out.println(mainStyle);
+			Runes runes = RuneData.runes(mainStyle);
+			model.addAttribute("mainRune", runes);
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			runes = RuneData.runes(8400);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+			List<Perk> perklist = RuneData.perklist();
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
+			List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
+			List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
+			List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+			출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+				model.addAttribute("perklist", perklist);
+			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
+			model.addAttribute("summoner1", spell);
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());
+			model.addAttribute("summoner2", spell);
+			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
+			spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			model.addAttribute("summoner3", spell);
+			spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			model.addAttribute("summoner4", spell);
+			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("no DATA");
+		}
+		Item item = ItemData.item("1001");
+		model.addAttribute("item1", item);
+		item = ItemData.item("1001");
+		model.addAttribute("item2", item);
+		item = ItemData.item("3364");
+		model.addAttribute("item3", item);
+		Map<String, String> summonerkey = SummonerData.keysSumSpell();
+		model.addAttribute("summonerkey", summonerkey);
+		new Connect("total","yalolza.gg", "champions","detail");
+		return "champ_counter";
+	}
+	@GetMapping("/{champion}/rune")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
+	public String ChampionsRune(
+			Model model,
+			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
+			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
+			@PathVariable("champion") String championid
+			) {
+		Champion champion = ChampionData.championinfo(championid);
+		model.addAttribute("champion",champion);
+		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
+			System.out.println(mainStyle);
+			Runes runes = RuneData.runes(mainStyle);
+			model.addAttribute("mainRune", runes);
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			runes = RuneData.runes(8400);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+			List<Perk> perklist = RuneData.perklist();
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
+			List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
+			List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
+			List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+			출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+				model.addAttribute("perklist", perklist);
+			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
+			model.addAttribute("summoner1", spell);
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());
+			model.addAttribute("summoner2", spell);
+			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
+			spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			model.addAttribute("summoner3", spell);
+			spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			model.addAttribute("summoner4", spell);
+			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("no DATA");
+		}
+		Item item = ItemData.item("1001");
+		model.addAttribute("item1", item);
+		item = ItemData.item("1001");
+		model.addAttribute("item2", item);
+		item = ItemData.item("3364");
+		model.addAttribute("item3", item);
+		Map<String, String> summonerkey = SummonerData.keysSumSpell();
+		model.addAttribute("summonerkey", summonerkey);
+		new Connect("total","yalolza.gg", "champions","detail");
+		return "champ_rune";
+	}
+	@GetMapping("/{champion}/item")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
+	public String ChampionsItem(
+			Model model,
+			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
+			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
+			@PathVariable("champion") String championid
+			) {
+		Champion champion = ChampionData.championinfo(championid);
+		model.addAttribute("champion",champion);
+		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
+			System.out.println(mainStyle);
+			Runes runes = RuneData.runes(mainStyle);
+			model.addAttribute("mainRune", runes);
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			runes = RuneData.runes(8400);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+			List<Perk> perklist = RuneData.perklist();
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
+			List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
+			List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
+			List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+			출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+				model.addAttribute("perklist", perklist);
+			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
+			model.addAttribute("summoner1", spell);
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());
+			model.addAttribute("summoner2", spell);
+			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
+			spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			model.addAttribute("summoner3", spell);
+			spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			model.addAttribute("summoner4", spell);
+			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("no DATA");
+		}
+		Item item = ItemData.item("1001");
+		model.addAttribute("item1", item);
+		item = ItemData.item("1001");
+		model.addAttribute("item2", item);
+		item = ItemData.item("3364");
+		model.addAttribute("item3", item);
+		Map<String, String> summonerkey = SummonerData.keysSumSpell();
+		model.addAttribute("summonerkey", summonerkey);
+		new Connect("total","yalolza.gg", "champions","detail");
+		return "champ_item";
+	}
+	@GetMapping("/{champion}/skill")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
+	public String ChampionsSkill(
+			Model model,
+			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
+			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
+			@PathVariable("champion") String championid
+			) {
+		Champion champion = ChampionData.championinfo(championid);
+		model.addAttribute("champion",champion);
+		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
+			System.out.println(mainStyle);
+			Runes runes = RuneData.runes(mainStyle);
+			model.addAttribute("mainRune", runes);
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			runes = RuneData.runes(8400);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+			List<Perk> perklist = RuneData.perklist();
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
+			List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
+			List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
+			List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+			출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+				model.addAttribute("perklist", perklist);
+			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
+			model.addAttribute("summoner1", spell);
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());
+			model.addAttribute("summoner2", spell);
+			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
+			spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			model.addAttribute("summoner3", spell);
+			spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			model.addAttribute("summoner4", spell);
+			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("no DATA");
+		}
+		Item item = ItemData.item("1001");
+		model.addAttribute("item1", item);
+		item = ItemData.item("1001");
+		model.addAttribute("item2", item);
+		item = ItemData.item("3364");
+		model.addAttribute("item3", item);
+		Map<String, String> summonerkey = SummonerData.keysSumSpell();
+		model.addAttribute("summonerkey", summonerkey);
+		new Connect("total","yalolza.gg", "champions","detail");
+		return "champ_skill";
+	}
+	@GetMapping("/{champion}/tip")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
+	public String ChampionsTip(
+			Model model,
+			@RequestParam String query,
+			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
+			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
+			@PathVariable("champion") String championid
+			) {
+		Champion champion = ChampionData.championinfo(championid);
+		model.addAttribute("champion",champion);
+        model.addAttribute("youtubeVideos", youtubeService.youtubeGenerator(query));
+
+		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
+		try {
+			String rawData = Files.readString(Paths.get(filePath));
+			List<DataEntry> data = StatisticChampion.parseJson(rawData);
+			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			
+			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
+			System.out.println(mainStyle);
+			Runes runes = RuneData.runes(mainStyle);
+			model.addAttribute("mainRune", runes);
+			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
+			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
+			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
+			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			runes = RuneData.runes(8400);
+			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
+			model.addAttribute("secondaryPerk12", subStylePerks12);
+			model.addAttribute("subRune", runes);
+			List<Perk> perklist = RuneData.perklist();
+			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
+			List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
+			List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
+			List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+			출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
+				model.addAttribute("perklist", perklist);
+			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
+			model.addAttribute("summoner1", spell);
+			spell = SummonerData.findspell(Spelllist1.get(1).toString());
+			model.addAttribute("summoner2", spell);
+			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
+			spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			model.addAttribute("summoner3", spell);
+			spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			model.addAttribute("summoner4", spell);
+			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("no DATA");
+		}
+		Item item = ItemData.item("1001");
+		model.addAttribute("item1", item);
+		item = ItemData.item("1001");
+		model.addAttribute("item2", item);
+		item = ItemData.item("3364");
+		model.addAttribute("item3", item);
+		Map<String, String> summonerkey = SummonerData.keysSumSpell();
+		model.addAttribute("summonerkey", summonerkey);
+		new Connect("total","yalolza.gg", "champions","detail");
+		return "champ_tip";
+	}
+	
+	 
 
 }

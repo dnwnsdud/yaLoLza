@@ -65,12 +65,12 @@
 				</div>
 			</div>
 			<div class="champ-tip">
-				<button>빌드</button>
-				<button>카운터</button>
-				<button>룬</button>
-				<button>아이템</button>
-				<button>스킬</button>
-				<button>팁</button>
+				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/build'}"><button>빌드</button></a>
+				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/counter'}"><button>카운터</button></a>
+				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/rune'}"><button>룬</button></a>
+				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/item'}"><button>아이템</button></a>
+				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/skill'}"><button>스킬</button></a>
+				<a th:href="@{'/yalolza.gg/champions/'+${champion.id}+'/tip?query=' + ${champion.name}}"><button>팁</button></a>
 			</div>
 		</section>
 		<!-- 룬 세팅 -->
