@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link rel="stylesheet" href="/css/myrest.css" />
+<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/static.css" />
+</head>
+<body>
+	<div>
+		<!-- 챔피언 통계 -->
+		<section class="con1">
+			<div class="dec">
+				<h2>통계</h2>
+				<div class="user-tip">
+					<button>챔피언별 통계</button>
+					<button>티어별 통계</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- 조건 버튼 -->
+		<div class="mw1">
+			<section id="champbtn">
+				<ul>
+					<li>
+						<h3>큐 타입</h3>
+						<div>
+							<button onclick="updateUrl('queueType', 'RANKED')">솔로랭크</button>
+							<button onclick="updateUrl('queueType', 'ARAM')">칼바람</button>
+						</div>
+					</li>
+					<li>
+						<h3>티어</h3>
+						<div>
+							<button>전체</button>
+							<button>Iron</button>
+							<button>Bronze</button>
+							<button>Silver</button>
+							<button>Gold</button>
+							<button>Platinum</button>
+							<button>Emerald</button>
+							<button>Diamond</button>
+							<button>Master</button>
+							<button>Grandmaster</button>
+							<button>Challenger</button>
+						</div>
+					</li>
+					<li>
+						<h3>포지션</h3>
+						<div>
+							<button>전체</button>
+							<button>탑</button>
+							<button>정글</button>
+							<button>미드</button>
+							<button>원딜</button>
+							<button>서포터</button>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<section id="champstatic_rank">
+				<ul>
+					<li>#</li>
+					<li>챔피언</li>
+					<li>플레이수</li>
+					<li>평점</li>
+					<li>승률</li>
+					<li>게임당 픽률</li>
+					<li>게임당 밴율</li>
+					<li>CS</li>
+					<li>골드</li>
+				</ul>
+				<div th:each="champion : ${aramChampions}">
+					<ul>
+						<li>1</li>
+						<li>
+							<div class="img-wrap">
+								<a
+									th:href="@{/img/champion/{championName}(championName=${champion.championName})}">
+									<img
+									th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
+									alt="Champion Icon" />
+								</a>
+							</div>
+							<p th:text="${champion.krchampionName}"></p>
+						</li>
+						<li th:text="${champion.stats.picks}">Plays</li>
+						<li th:text="${champion.stats.kda}">KDA</li>
+						<li>
+							<div class="progress-bar">
+								<div class="filler"
+									th:style="'width:' + ${champion.stats.winrate} + '%'"></div>
+							</div> <span th:text="${champion.stats.winrate} + '%'"></span>
+						</li>
+						<li>
+							<div class="progress-bar1">
+								<div class="filler1"
+									th:style="'width:' + ${champion.stats.pickrate} + '%'"></div>
+							</div> <span th:text="${champion.stats.pickrate} + '%'"></span>
+						</li>
+						<li>0</li>
+						<!-- 항상 0으로 표시 -->
+						<li th:text="${champion.stats.cs}"></li>
+						<li th:text="${champion.stats.goldEarned}"></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+		<script>
+			// URL 업데이트
+			function updateUrl(key, value) {
+				var url = new URL(window.location.href);
+				url.searchParams.set(key, value);
+
+				window.location.href = url.href;
+			}
+		</script>
+</body>
+</html>
