@@ -25,8 +25,9 @@
 						alt="챔피언 이미지" />
 				</div>
 				<h1>
-					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong><!--아무도 없음-->
-					<span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
+					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong>
+					<!--아무도 없음-->
+					<span style="font-size: 2rem">빌드 - 포지션</span><br/> <span
 						style="font-size: 1.3rem" class="tier">1티어</span>
 					<div class="champ-skill">
 
@@ -53,15 +54,17 @@
 						</div>
 				</h1>
 			</div>
-			<div class="champ-statistics"><!--진성님-->
+			<div class="champ-statistics">
+				<!--진성님-->
 				<div>
-					<span>승률</span><br /> <strong>50.55%</strong>
+					<span>승률</span><br /> 
+					<strong th:text = "${winrate}+ '%'">50.55%</strong>
 				</div>
 				<div>
-					<span>픽률</span><br /> <strong>6.5%</strong>
+					<span>픽률</span><br /> <strong th:text = "${pickrate}+ '%'">6.5%</strong>
 				</div>
 				<div>
-					<span>밴율</span><br /> <strong>5.23%</strong>
+					<span>밴율</span><br /> <strong th:text = "${banrate}+ '%'">5.23%</strong>
 				</div>
 			</div>
 			<div class="champ-tip">
@@ -82,7 +85,8 @@
 							<a href="#"></a>
 						</h2>
 						<div class="champ-rune">
-							<div class="main-rune"><!--이지수-->
+							<div class="main-rune">
+								<!--이지수-->
 								<ul class="main-zero">
 									<li th:id="${mainRune.id}"><img alt="룬모음 이미지"
 										th:src="@{'/img/'+${mainRune.icon}}" /></li>
@@ -90,59 +94,74 @@
 								<ul class="main-first">
 									<li th:each="j : ${mainRune.slots[0].runes}"
 										th:with="rune=${j}" th:id="${rune.id}">
-										<div th:class="${rune.id}==${primaryPerk1}? 'color-icon':'gray-icon'">
+										<div
+											th:class="${rune.id}==${primaryPerk234[0]}? 'color-icon':'gray-icon'">
 											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
 								</ul>
 								<ul class="main-second">
-									<li th:each="j : ${mainRune.slots[1].runes}" th:with="rune=${j}" th:id="${rune.id}">
-										<div th:class="${rune.id}==${primaryPerk234[1]}? 'color-icon':'gray-icon'">
-										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+									<li th:each="j : ${mainRune.slots[1].runes}"
+										th:with="rune=${j}" th:id="${rune.id}">
+										<div
+											th:class="${rune.id}==${primaryPerk234[1]}? 'color-icon':'gray-icon'">
+											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
 								</ul>
 								<ul class="main-third">
-									<li th:each="j : ${mainRune.slots[2].runes}" th:with="rune=${j}" th:id="${rune.id}">
-										<div th:class="${rune.id}==${primaryPerk234[2]}? 'color-icon':'gray-icon'">
-										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+									<li th:each="j : ${mainRune.slots[2].runes}"
+										th:with="rune=${j}" th:id="${rune.id}">
+										<div
+											th:class="${rune.id}==${primaryPerk234[2]}? 'color-icon':'gray-icon'">
+											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
 								</ul>
 								<ul class="main-fourth">
-									<li th:each="j : ${mainRune.slots[3].runes}" th:with="rune=${j}" th:id="${rune.id}">
-										<div th:class="${rune.id}==${primaryPerk234[3]}? 'color-icon':'gray-icon'">
-										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+									<li th:each="j : ${mainRune.slots[3].runes}"
+										th:with="rune=${j}" th:id="${rune.id}">
+										<div
+											th:class="${rune.id}==${primaryPerk234[3]}? 'color-icon':'gray-icon'">
+											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
 								</ul>
 								<p th:text="${mainRune.name}"></p>
 							</div>
-							<div class="sub-rune"><!--이지수-->
+							<div class="sub-rune">
+								<!--이지수-->
 								<ul>
 									<li></li>
 								</ul>
 								<ul class="sub-main">
-									<li th:id="${subRune.id}"><img alt="룬모음 이미지" th:src="@{'/img/'+${subRune.icon}}" /></li>
+									<li th:id="${subRune.id}"><img alt="룬모음 이미지"
+										th:src="@{'/img/'+${subRune.icon}}" /></li>
 								</ul>
 								<ul>
-									<li th:each="j : ${subRune.slots[1].runes}" th:with="rune=${j}"  th:id="${rune.id}">
-										<div th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
-										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}"/>
+									<li th:each="j : ${subRune.slots[1].runes}" th:with="rune=${j}"
+										th:id="${rune.id}">
+										<div
+											th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
+											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
 								</ul>
 								<ul>
-									<li th:each="j : ${subRune.slots[2].runes}" th:with="rune=${j}"  th:id="${rune.id}">
-										<div th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
-										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}"/>
+									<li th:each="j : ${subRune.slots[2].runes}" th:with="rune=${j}"
+										th:id="${rune.id}">
+										<div
+											th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
+											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
 								</ul>
 								<ul>
-									<li th:each="j : ${subRune.slots[3].runes}" th:with="rune=${j}" th:id="${rune.id}">
-										<div th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
-										<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
+									<li th:each="j : ${subRune.slots[3].runes}" th:with="rune=${j}"
+										th:id="${rune.id}">
+										<div
+											th:class="${rune.id}==${secondaryPerk12[0]}? 'color-icon':(${rune.id}==${secondaryPerk12[1]}? 'color-icon':'gray-icon')">
+											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
 								</ul>
@@ -156,12 +175,24 @@
 									<li></li>
 								</ul>
 								<ul class="perkslot1">
-									<li th:id="${perklist[0].id}"><img alt="스탯 이미지"
-										th:src="@{'/img/'+${perklist[0].icon}}" /></li>
-									<li th:id="${perklist[1].id}"><img alt="스탯 이미지"
-										th:src="@{'/img/'+${perklist[1].icon}}" /></li>
-									<li th:id="${perklist[2].id}"><img alt="스탯 이미지"
-										th:src="@{'/img/'+${perklist[2].icon}}" /></li>
+									<li th:id="${perklist[0].id}">
+										<div
+											th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')">
+											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
+										</div>
+									</li>
+									<li th:id="${perklist[1].id}">
+										<div
+											th:class="${perklist[1].id}==${statperks1}? 'color-icon':(${perklist[1].id}==${statperks1}? 'color-icon':'gray-icon')">
+											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[1].icon}}" />
+										</div>
+									</li>
+									<li th:id="${perklist[2].id}">
+										<div
+											th:class="${perklist[2].id}==${statperks1}? 'color-icon':(${perklist[2].id}==${statperks1}? 'color-icon':'gray-icon')">
+											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[2].icon}}" />
+										</div>
+									</li>
 								</ul>
 								<ul class="perkslot2">
 									<li th:id="${perklist[3].id}"><img alt="스탯 이미지"
@@ -179,45 +210,50 @@
 									<li th:id="${perklist[8].id}"><img alt="스탯 이미지"
 										th:src="@{'/img/'+${perklist[8].icon}}" /></li>
 								</ul>
-								<p>능력치 파편</p> <!--이지수-->
+								<p>능력치 파편</p>
+								<!--이지수-->
 							</div>
 							<div class="rune-select">
 								<ul class="select-first">
 									<li>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keysRuneImage}}" alt="룬 이미지" />
 										</div>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keyPerk}}" alt="룬 이미지" />
 										</div>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keysSubRuneImage}}" alt="룬 이미지" />
 										</div>
 									</li>
 									<li class="select-ratio">
 										<p>
-											<strong>룬선택비율</strong> <br /> <span>1223654게임</span>
+											<strong th:id="${runePickRate1}"
+												th:text="${runePickRate1} + '%'">룬선택비율</strong> <br /> <span
+												th:id="${runeCount1}" th:text="${runeCount1} + 게임">1223654게임</span>
 										</p>
-										<p>승률</p>
+										<p th:id="${runeWinRate1}" th:text="${runeWinRate1} + '%'">승률</p>
 									</li>
 								</ul>
 								<ul class="select-second">
 									<li>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keysRuneImage2}}" alt="룬 이미지" />
 										</div>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keyPerk2}}" alt="룬 이미지" />
 										</div>
 										<div>
-											<img src="/img/GarenE.webp" alt="" />
+											<img th:src="@{'/img/'+${keysSubRuneImage2}}" alt="룬 이미지" />
 										</div>
 									</li>
 									<li class="select-ratio">
 										<p>
-											<strong>룬선택비율</strong> <br /> <span>1223654게임</span>
+											<strong th:id="${runePickRate2}"
+												th:text="${runePickRate2} + '%'">룬선택비율</strong> <br /> <span
+												th:id="${runeCount2}" th:text="${runeCount2} + 게임">1223654게임</span>
 										</p>
-										<p>승률</p>
+										<p th:id="${runeWinRate2}" th:text="${runeWinRate2} + '%'">승률</p>
 									</li>
 								</ul>
 							</div>
@@ -225,7 +261,8 @@
 					</section>
 					<!-- 스킬 빌드 -->
 					<section class="con3">
-						<h2>가렌 스킬 빌드 ></h2><!--아무도 없음-->
+						<h2>가렌 스킬 빌드 ></h2>
+						<!--아무도 없음-->
 						<ul>
 							<li>
 								<div class="champ-skillbuild">
@@ -270,24 +307,30 @@
 					</section>
 					<!-- 아이템 빌드 -->
 					<section class="con4">
-						<h2>가렌 아이템 빌드</h2><!--이지수-->
+						<h2>가렌 아이템 빌드</h2>
+						<!--이지수-->
 						<ul>
 							<li>
 								<h3>시작 아이템</h3>
 								<div class="item-build">
 									<div>
 										<div th:id="${item1.id}" class="item-buildstart">
-											<img th:src="@{'/img/item/'+${item1.id}+'.png'}" alt="아이템 이미지">
+											<img th:src="@{'/img/item/'+${item1.id}+'.png'}"
+												alt="아이템 이미지">
 										</div>
-										<div th:id="${item3.id}" class="item-buildstart">
-											<img th:src="@{'/img/item/'+${item3.id}+'.png'}" alt="아이템 이미지">
+										<div th:id="${item2.id}" class="item-buildstart">
+											<img th:src="@{'/img/item/'+${item3.id}+'.png'}"
+												alt="아이템 이미지">
 										</div>
 									</div>
 									<p>
 									<div class="order-block">
-										<strong>선택비율</strong><br> <span>게임수asdasdas</span>
+										<strong th:id="${itemPickRate1}"
+											th:text="${itemPickRate1} + '%'">선택비율</strong> <br> <span
+											th:id="${itemCount1}" th:text="${itemCount1} + 게임">게임수asdasdas</span>
 									</div>
-									<div class="order-vic">승률</div>
+									<div class="order-vic" th:id="${itemWinRate1}"
+										th:text="${itemWinRate1}  + '%'">승률</div>
 									</p>
 								</div>
 							</li>
@@ -349,7 +392,8 @@
 								</div>
 							</li>
 						</ul>
-						<h3>가렌 추천 빌드</h3><!--이지수-->
+						<h3>가렌 추천 빌드</h3>
+						<!--이지수-->
 						<ul>
 							<li>
 								<div class="item-recommendation">
@@ -478,7 +522,7 @@
 										alt="스킨 이미지" />
 									<div class="skin-name">
 										<p th:text="${skin.name}"></p>
-										
+
 									</div>
 								</div>
 							</div>
@@ -490,56 +534,71 @@
 				<div class="con-right">
 					<!-- 소환사 주문 -->
 					<section class="summoner-order">
-						<h2>소환사 주문</h2> <!--이지수-->
+						<h2>소환사 주문</h2>
+						<!--이지수-->
 						<ul>
 							<li>
 								<div>
 									<div th:id="${summoner1.key}">
-										<img alt="소환사 스펠 이미지" th:src="@{'/img/summoner-spell/'+${summoner1.id}+'.png'}" />
+										<img alt="소환사 스펠 이미지"
+											th:src="@{'/img/summoner-spell/'+${summoner1.id}+'.png'}" />
 									</div>
 									<div th:id="${summoner2.key}">
-										<img alt="소환사 스펠 이미지" th:src="@{'/img/summoner-spell/'+${summoner2.id}+'.png'}" />
+										<img alt="소환사 스펠 이미지"
+											th:src="@{'/img/summoner-spell/'+${summoner2.id}+'.png'}" />
 									</div>
 								</div>
 								<p>
 								<div class="order-block">
-									<strong>선택비율</strong> <span>게임수asdasdas</span>
+									<strong th:id="${summonerSpellSetCountRate1}"
+										th:text="${summonerSpellSetCountRate1}  + '%'">선택비율</strong> <span
+										th:id="${summonerSpellSet1Count1}"
+										th:text="${summonerSpellSet1Count1} + 게임">게임수asdasdas</span>
 								</div>
-								<div class="order-vic" th:text="${summonerSpellSet1Win}"></div>
+								<div class="order-vic" th:text="${summonerSpellSet1Win}  + '%'"></div>
 								</p>
 							</li>
 							<li>
 								<div>
 									<div th:id="${summoner3.key}">
-										<img alt="소환사 스펠 이미지" th:src="@{'/img/summoner-spell/'+${summoner3.id}+'.png'}" />
+										<img alt="소환사 스펠 이미지"
+											th:src="@{'/img/summoner-spell/'+${summoner3.id}+'.png'}" />
 									</div>
 									<div th:id="${summoner4.key}">
-										<img alt="소환사 스펠 이미지" th:src="@{'/img/summoner-spell/'+${summoner4.id}+'.png'}" />
+										<img alt="소환사 스펠 이미지"
+											th:src="@{'/img/summoner-spell/'+${summoner4.id}+'.png'}" />
 									</div>
 								</div>
 								<p>
 								<div class="order-block">
-									<strong>선택비율</strong> <span>게임수asdasdas</span>
+									<strong th:id="${summonerSpellSetCountRate2}"
+										th:text="${summonerSpellSetCountRate2}  + '%'">선택비율</strong> <span
+										th:id="${summonerSpellSet1Count2}"
+										th:text="${summonerSpellSet1Count2} + 게임">게임수asdasdas</span>
 								</div>
-								<div class="order-vic" th:text="${summonerSpellSet2Win}"></div>
+								<div class="order-vic" th:text="${summonerSpellSet2Win}  + '%'"></div>
 								</p>
 							</li>
 						</ul>
 					</section>
 					<!-- 카운터 -->
 					<section class="counter">
-						<h2>카운터 ></h2> <!--진성님-->
+						<h2>카운터 ></h2>
+						<!--진성님-->
 						<ul>
 							<li>
 								<h3>상대하기 어려운 챔피언</h3>
 								<div class="counter-champ">
-									<div>
+									<div th:each="champion : ${topChampions}">
 										<div class="counter-wrap">
-											<img src="/img/GarenE.webp" alt="">
+											<img
+												th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
+												alt="Champion Icon" />
 										</div>
-										<p class="counter-ratio">44.06%</p>
+										<p class="counter-ratio"
+											th:text="${champion.stats.winRate + '%'}">승률</p>
 										<div class="counter-game">
-											<p>판수</p>
+											<p th:text="${matchCounts[champion.championName]}">게임 횟수</p>
 											<p>게임</p>
 										</div>
 									</div>
@@ -588,13 +647,16 @@
 							<li>
 								<h3>상대하기 쉬운 챔피언</h3>
 								<div class="counter-champ">
-									<div>
+									<div th:each="champion : ${bottomChampions}">
 										<div class="counter-wrap">
-											<img src="/img/GarenE.webp" alt="">
+											<img
+												th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
+												alt="Champion Icon" />
 										</div>
-										<p class="counter-ratio" style="color: var(--point3);">44.06%</p>
+										<p class="counter-ratio"
+											th:text="${champion.stats.winRate + '%'}">승률</p>
 										<div class="counter-game">
-											<p>판수</p>
+											<p th:text="${matchCounts[champion.championName]}">게임 횟수</p>
 											<p>게임</p>
 										</div>
 									</div>
@@ -667,7 +729,8 @@
                   </li> -->
 						</ul>
 					</section>
-					<!-- 장인 랭킹 --><!--진성님-->
+					<!-- 장인 랭킹 -->
+					<!--진성님-->
 					<section class="champ-rank">
 						<h2>가렌 장인 랭킹 ></h2>
 						<ul>
@@ -732,160 +795,160 @@
     </script>
 <script th:inline="javascript" defer>
 document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
-	let target = await fetch("/info/passive/"+[[${champion.id}]]).then(data=>data.text());
-	tooltip(
-			  element,
-			  target,
-		      {
-		        gap: 20,
-		        backgroundColor: "var(--gray2)",
-		        borderRadius: "1rem",
-		      },
-		      {
-		        fontSize: "15px",
-		        width: "250px",
-		        padding:"10px"
-		      }
-		    );
-	
+   let target = await fetch("/info/passive/"+[[${champion.id}]]).then(data=>data.text());
+   tooltip(
+           element,
+           target,
+            {
+              gap: 20,
+              backgroundColor: "var(--gray2)",
+              borderRadius: "1rem",
+            },
+            {
+              fontSize: "15px",
+              width: "250px",
+              padding:"10px"
+            }
+          );
+   
 });
 
-	</script>
+   </script>
 
 <script th:inline="javascript" defer>
-	 
-	document.querySelectorAll(".champ-spelltooltip").forEach(async (element)=>{
-		let target = await fetch("/info/spell/"+[[${champion.id}]]+"/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+    
+   document.querySelectorAll(".champ-spelltooltip").forEach(async (element)=>{
+      let target = await fetch("/info/spell/"+[[${champion.id}]]+"/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".main-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".main-rune ul li").forEach(async (element)=>{
+      let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".sub-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".sub-rune ul li").forEach(async (element)=>{
+      let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 color:"#48C4B7",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".fragments-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/perkdetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".fragments-rune ul li").forEach(async (element)=>{
+      let target = await fetch("/info/perkdetailinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 color:"#48C4B7",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".summoner-order ul li div div").forEach(async (element)=>{
-		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".summoner-order ul li div div").forEach(async (element)=>{
+      let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 color:"#48C4B7",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 <script th:inline="javascript" defer>
-	
-	document.querySelectorAll(".item-buildstart").forEach(async (element)=>{
-		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
+   
+   document.querySelectorAll(".item-buildstart").forEach(async (element)=>{
+      let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "var(--gray2)",
+                 borderRadius: "1rem",
+               },
+               {
+                 fontSize: "15px",
+                 color:"#48C4B7",
+                 width: "250px",
+                 padding:"10px"
+               }
+             );
+      
+   });
   
-	</script>
+   </script>
 </html>

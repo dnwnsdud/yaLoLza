@@ -1,0 +1,3342 @@
+[
+  {
+    "championId": "1",
+    "championName": "Annie",
+    "krchampionName": "애니",
+    "stats": {
+      "wins": 34,
+      "losses": 41,
+      "picks": 75,
+      "kills": 615,
+      "deaths": 821,
+      "assists": 1890,
+      "goldEarned": 12456,
+      "cs": 27,
+      "kda": 3.1,
+      "tier": "3 티어",
+      "tierScore": 91,
+      "winrate": 45.3,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "2",
+    "championName": "Olaf",
+    "krchampionName": "올라프",
+    "stats": {
+      "wins": 11,
+      "losses": 14,
+      "picks": 25,
+      "kills": 233,
+      "deaths": 283,
+      "assists": 451,
+      "goldEarned": 12467,
+      "cs": 41,
+      "kda": 2.4,
+      "tier": "4 티어",
+      "tierScore": 82,
+      "winrate": 44,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "3",
+    "championName": "Galio",
+    "krchampionName": "갈리오",
+    "stats": {
+      "wins": 16,
+      "losses": 22,
+      "picks": 38,
+      "kills": 219,
+      "deaths": 385,
+      "assists": 996,
+      "goldEarned": 11831,
+      "cs": 29,
+      "kda": 3.2,
+      "tier": "4 티어",
+      "tierScore": 81,
+      "winrate": 42.1,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "4",
+    "championName": "TwistedFate",
+    "krchampionName": "트위스티드 페이트",
+    "stats": {
+      "wins": 67,
+      "losses": 56,
+      "picks": 123,
+      "kills": 1121,
+      "deaths": 1231,
+      "assists": 2766,
+      "goldEarned": 13310,
+      "cs": 49,
+      "kda": 3.2,
+      "tier": "1 티어",
+      "tierScore": 112,
+      "winrate": 54.5,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "5",
+    "championName": "XinZhao",
+    "krchampionName": "신 짜오",
+    "stats": {
+      "wins": 20,
+      "losses": 18,
+      "picks": 38,
+      "kills": 439,
+      "deaths": 468,
+      "assists": 770,
+      "goldEarned": 13965,
+      "cs": 37,
+      "kda": 2.6,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 52.6,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "6",
+    "championName": "Urgot",
+    "krchampionName": "우르곳",
+    "stats": {
+      "wins": 11,
+      "losses": 13,
+      "picks": 24,
+      "kills": 265,
+      "deaths": 289,
+      "assists": 549,
+      "goldEarned": 13909,
+      "cs": 61,
+      "kda": 2.8,
+      "tier": "4 티어",
+      "tierScore": 82,
+      "winrate": 45.8,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "7",
+    "championName": "Leblanc",
+    "krchampionName": "르블랑",
+    "stats": {
+      "wins": 46,
+      "losses": 58,
+      "picks": 104,
+      "kills": 1395,
+      "deaths": 1114,
+      "assists": 1995,
+      "goldEarned": 13562,
+      "cs": 26,
+      "kda": 3,
+      "tier": "3 티어",
+      "tierScore": 90,
+      "winrate": 44.2,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "8",
+    "championName": "Vladimir",
+    "krchampionName": "블라디미르",
+    "stats": {
+      "wins": 40,
+      "losses": 31,
+      "picks": 71,
+      "kills": 704,
+      "deaths": 714,
+      "assists": 1573,
+      "goldEarned": 13574,
+      "cs": 47,
+      "kda": 3.2,
+      "tier": "1 티어",
+      "tierScore": 113,
+      "winrate": 56.3,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "9",
+    "championName": "FiddleSticks",
+    "krchampionName": "피들스틱",
+    "stats": {
+      "wins": 37,
+      "losses": 40,
+      "picks": 77,
+      "kills": 737,
+      "deaths": 910,
+      "assists": 1801,
+      "goldEarned": 13300,
+      "cs": 37,
+      "kda": 2.8,
+      "tier": "3 티어",
+      "tierScore": 97,
+      "winrate": 48.1,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "10",
+    "championName": "Kayle",
+    "krchampionName": "케일",
+    "stats": {
+      "wins": 41,
+      "losses": 51,
+      "picks": 92,
+      "kills": 865,
+      "deaths": 950,
+      "assists": 2212,
+      "goldEarned": 13952,
+      "cs": 70,
+      "kda": 3.2,
+      "tier": "3 티어",
+      "tierScore": 90,
+      "winrate": 44.6,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "11",
+    "championName": "MasterYi",
+    "krchampionName": "마스터 이",
+    "stats": {
+      "wins": 49,
+      "losses": 34,
+      "picks": 83,
+      "kills": 1150,
+      "deaths": 990,
+      "assists": 1316,
+      "goldEarned": 13426,
+      "cs": 33,
+      "kda": 2.5,
+      "tier": "1 티어",
+      "tierScore": 119,
+      "winrate": 59,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "12",
+    "championName": "Alistar",
+    "krchampionName": "알리스타",
+    "stats": {
+      "wins": 30,
+      "losses": 25,
+      "picks": 55,
+      "kills": 257,
+      "deaths": 612,
+      "assists": 1862,
+      "goldEarned": 12244,
+      "cs": 15,
+      "kda": 3.5,
+      "tier": "1 티어",
+      "tierScore": 110,
+      "winrate": 54.5,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "13",
+    "championName": "Ryze",
+    "krchampionName": "라이즈",
+    "stats": {
+      "wins": 35,
+      "losses": 32,
+      "picks": 67,
+      "kills": 635,
+      "deaths": 608,
+      "assists": 1467,
+      "goldEarned": 13344,
+      "cs": 56,
+      "kda": 3.5,
+      "tier": "2 티어",
+      "tierScore": 105,
+      "winrate": 52.2,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "14",
+    "championName": "Sion",
+    "krchampionName": "사이온",
+    "stats": {
+      "wins": 14,
+      "losses": 23,
+      "picks": 37,
+      "kills": 272,
+      "deaths": 519,
+      "assists": 924,
+      "goldEarned": 13348,
+      "cs": 41,
+      "kda": 2.3,
+      "tier": "4 티어",
+      "tierScore": 73,
+      "winrate": 37.8,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "15",
+    "championName": "Sivir",
+    "krchampionName": "시비르",
+    "stats": {
+      "wins": 49,
+      "losses": 47,
+      "picks": 96,
+      "kills": 867,
+      "deaths": 925,
+      "assists": 2709,
+      "goldEarned": 13831,
+      "cs": 86,
+      "kda": 3.9,
+      "tier": "2 티어",
+      "tierScore": 103,
+      "winrate": 51,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "16",
+    "championName": "Soraka",
+    "krchampionName": "소라카",
+    "stats": {
+      "wins": 27,
+      "losses": 41,
+      "picks": 68,
+      "kills": 156,
+      "deaths": 524,
+      "assists": 2094,
+      "goldEarned": 10933,
+      "cs": 8,
+      "kda": 4.3,
+      "tier": "4 티어",
+      "tierScore": 80,
+      "winrate": 39.7,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "17",
+    "championName": "Teemo",
+    "krchampionName": "티모",
+    "stats": {
+      "wins": 63,
+      "losses": 61,
+      "picks": 124,
+      "kills": 1012,
+      "deaths": 1212,
+      "assists": 2679,
+      "goldEarned": 13369,
+      "cs": 39,
+      "kda": 3,
+      "tier": "2 티어",
+      "tierScore": 105,
+      "winrate": 50.8,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "18",
+    "championName": "Tristana",
+    "krchampionName": "트리스타나",
+    "stats": {
+      "wins": 56,
+      "losses": 43,
+      "picks": 99,
+      "kills": 1157,
+      "deaths": 1028,
+      "assists": 1729,
+      "goldEarned": 14266,
+      "cs": 73,
+      "kda": 2.8,
+      "tier": "1 티어",
+      "tierScore": 114,
+      "winrate": 56.6,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "19",
+    "championName": "Warwick",
+    "krchampionName": "워윅",
+    "stats": {
+      "wins": 15,
+      "losses": 19,
+      "picks": 34,
+      "kills": 302,
+      "deaths": 385,
+      "assists": 608,
+      "goldEarned": 12246,
+      "cs": 24,
+      "kda": 2.4,
+      "tier": "4 티어",
+      "tierScore": 82,
+      "winrate": 44.1,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "20",
+    "championName": "Nunu",
+    "krchampionName": "누누와 윌럼프",
+    "stats": {
+      "wins": 42,
+      "losses": 37,
+      "picks": 79,
+      "kills": 763,
+      "deaths": 857,
+      "assists": 2138,
+      "goldEarned": 12720,
+      "cs": 32,
+      "kda": 3.4,
+      "tier": "2 티어",
+      "tierScore": 107,
+      "winrate": 53.2,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "21",
+    "championName": "MissFortune",
+    "krchampionName": "미스 포츈",
+    "stats": {
+      "wins": 73,
+      "losses": 86,
+      "picks": 159,
+      "kills": 1856,
+      "deaths": 1585,
+      "assists": 3616,
+      "goldEarned": 13819,
+      "cs": 62,
+      "kda": 3.5,
+      "tier": "3 티어",
+      "tierScore": 96,
+      "winrate": 45.9,
+      "pickrate": 1.3
+    }
+  },
+  {
+    "championId": "22",
+    "championName": "Ashe",
+    "krchampionName": "애쉬",
+    "stats": {
+      "wins": 60,
+      "losses": 60,
+      "picks": 120,
+      "kills": 969,
+      "deaths": 1122,
+      "assists": 2929,
+      "goldEarned": 12768,
+      "cs": 52,
+      "kda": 3.5,
+      "tier": "2 티어",
+      "tierScore": 104,
+      "winrate": 50,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "23",
+    "championName": "Tryndamere",
+    "krchampionName": "트린다미어",
+    "stats": {
+      "wins": 15,
+      "losses": 32,
+      "picks": 47,
+      "kills": 470,
+      "deaths": 514,
+      "assists": 920,
+      "goldEarned": 12687,
+      "cs": 42,
+      "kda": 2.7,
+      "tier": "4 티어",
+      "tierScore": 61,
+      "winrate": 31.9,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "24",
+    "championName": "Jax",
+    "krchampionName": "잭스",
+    "stats": {
+      "wins": 35,
+      "losses": 31,
+      "picks": 66,
+      "kills": 845,
+      "deaths": 842,
+      "assists": 1190,
+      "goldEarned": 13644,
+      "cs": 33,
+      "kda": 2.4,
+      "tier": "2 티어",
+      "tierScore": 107,
+      "winrate": 53,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "25",
+    "championName": "Morgana",
+    "krchampionName": "모르가나",
+    "stats": {
+      "wins": 69,
+      "losses": 62,
+      "picks": 131,
+      "kills": 915,
+      "deaths": 1095,
+      "assists": 3921,
+      "goldEarned": 12552,
+      "cs": 34,
+      "kda": 4.4,
+      "tier": "2 티어",
+      "tierScore": 109,
+      "winrate": 52.7,
+      "pickrate": 1.1
+    }
+  },
+  {
+    "championId": "26",
+    "championName": "Zilean",
+    "krchampionName": "질리언",
+    "stats": {
+      "wins": 36,
+      "losses": 44,
+      "picks": 80,
+      "kills": 466,
+      "deaths": 644,
+      "assists": 2290,
+      "goldEarned": 12558,
+      "cs": 45,
+      "kda": 4.3,
+      "tier": "3 티어",
+      "tierScore": 91,
+      "winrate": 45,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "27",
+    "championName": "Singed",
+    "krchampionName": "신지드",
+    "stats": {
+      "wins": 23,
+      "losses": 27,
+      "picks": 50,
+      "kills": 321,
+      "deaths": 634,
+      "assists": 1442,
+      "goldEarned": 12566,
+      "cs": 36,
+      "kda": 2.8,
+      "tier": "3 티어",
+      "tierScore": 92,
+      "winrate": 46,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "28",
+    "championName": "Evelynn",
+    "krchampionName": "이블린",
+    "stats": {
+      "wins": 10,
+      "losses": 10,
+      "picks": 20,
+      "kills": 270,
+      "deaths": 191,
+      "assists": 324,
+      "goldEarned": 13525,
+      "cs": 20,
+      "kda": 3.1,
+      "tier": "3 티어",
+      "tierScore": 90,
+      "winrate": 50,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "29",
+    "championName": "Twitch",
+    "krchampionName": "트위치",
+    "stats": {
+      "wins": 49,
+      "losses": 40,
+      "picks": 89,
+      "kills": 1302,
+      "deaths": 1010,
+      "assists": 1940,
+      "goldEarned": 15545,
+      "cs": 64,
+      "kda": 3.2,
+      "tier": "1 티어",
+      "tierScore": 111,
+      "winrate": 55.1,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "30",
+    "championName": "Karthus",
+    "krchampionName": "카서스",
+    "stats": {
+      "wins": 36,
+      "losses": 40,
+      "picks": 76,
+      "kills": 791,
+      "deaths": 1055,
+      "assists": 2098,
+      "goldEarned": 13992,
+      "cs": 48,
+      "kda": 2.7,
+      "tier": "3 티어",
+      "tierScore": 96,
+      "winrate": 47.4,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "31",
+    "championName": "Chogath",
+    "krchampionName": "초가스",
+    "stats": {
+      "wins": 47,
+      "losses": 48,
+      "picks": 95,
+      "kills": 960,
+      "deaths": 904,
+      "assists": 2055,
+      "goldEarned": 13152,
+      "cs": 37,
+      "kda": 3.3,
+      "tier": "2 티어",
+      "tierScore": 100,
+      "winrate": 49.5,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "32",
+    "championName": "Amumu",
+    "krchampionName": "아무무",
+    "stats": {
+      "wins": 44,
+      "losses": 39,
+      "picks": 83,
+      "kills": 510,
+      "deaths": 1019,
+      "assists": 2146,
+      "goldEarned": 11877,
+      "cs": 19,
+      "kda": 2.6,
+      "tier": "2 티어",
+      "tierScore": 107,
+      "winrate": 53,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "33",
+    "championName": "Rammus",
+    "krchampionName": "람머스",
+    "stats": {
+      "wins": 21,
+      "losses": 21,
+      "picks": 42,
+      "kills": 241,
+      "deaths": 473,
+      "assists": 1079,
+      "goldEarned": 11863,
+      "cs": 21,
+      "kda": 2.8,
+      "tier": "3 티어",
+      "tierScore": 97,
+      "winrate": 50,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "34",
+    "championName": "Anivia",
+    "krchampionName": "애니비아",
+    "stats": {
+      "wins": 34,
+      "losses": 27,
+      "picks": 61,
+      "kills": 515,
+      "deaths": 465,
+      "assists": 1446,
+      "goldEarned": 12939,
+      "cs": 47,
+      "kda": 4.2,
+      "tier": "1 티어",
+      "tierScore": 112,
+      "winrate": 55.7,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "35",
+    "championName": "Shaco",
+    "krchampionName": "샤코",
+    "stats": {
+      "wins": 50,
+      "losses": 40,
+      "picks": 90,
+      "kills": 1064,
+      "deaths": 798,
+      "assists": 2022,
+      "goldEarned": 13464,
+      "cs": 24,
+      "kda": 3.9,
+      "tier": "1 티어",
+      "tierScore": 112,
+      "winrate": 55.6,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "36",
+    "championName": "DrMundo",
+    "krchampionName": "문도 박사",
+    "stats": {
+      "wins": 20,
+      "losses": 22,
+      "picks": 42,
+      "kills": 233,
+      "deaths": 381,
+      "assists": 815,
+      "goldEarned": 11284,
+      "cs": 32,
+      "kda": 2.8,
+      "tier": "3 티어",
+      "tierScore": 92,
+      "winrate": 47.6,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "37",
+    "championName": "Sona",
+    "krchampionName": "소나",
+    "stats": {
+      "wins": 35,
+      "losses": 31,
+      "picks": 66,
+      "kills": 291,
+      "deaths": 570,
+      "assists": 2371,
+      "goldEarned": 12089,
+      "cs": 17,
+      "kda": 4.7,
+      "tier": "2 티어",
+      "tierScore": 107,
+      "winrate": 53,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "38",
+    "championName": "Kassadin",
+    "krchampionName": "카사딘",
+    "stats": {
+      "wins": 24,
+      "losses": 25,
+      "picks": 49,
+      "kills": 648,
+      "deaths": 580,
+      "assists": 947,
+      "goldEarned": 13715,
+      "cs": 31,
+      "kda": 2.8,
+      "tier": "3 티어",
+      "tierScore": 98,
+      "winrate": 49,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "39",
+    "championName": "Irelia",
+    "krchampionName": "이렐리아",
+    "stats": {
+      "wins": 32,
+      "losses": 46,
+      "picks": 78,
+      "kills": 982,
+      "deaths": 1037,
+      "assists": 1533,
+      "goldEarned": 14782,
+      "cs": 88,
+      "kda": 2.4,
+      "tier": "4 티어",
+      "tierScore": 83,
+      "winrate": 41,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "40",
+    "championName": "Janna",
+    "krchampionName": "잔나",
+    "stats": {
+      "wins": 38,
+      "losses": 33,
+      "picks": 71,
+      "kills": 194,
+      "deaths": 544,
+      "assists": 2552,
+      "goldEarned": 11889,
+      "cs": 19,
+      "kda": 5,
+      "tier": "2 티어",
+      "tierScore": 108,
+      "winrate": 53.5,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "41",
+    "championName": "Gangplank",
+    "krchampionName": "갱플랭크",
+    "stats": {
+      "wins": 37,
+      "losses": 30,
+      "picks": 67,
+      "kills": 797,
+      "deaths": 604,
+      "assists": 1222,
+      "goldEarned": 14317,
+      "cs": 53,
+      "kda": 3.3,
+      "tier": "1 티어",
+      "tierScore": 111,
+      "winrate": 55.2,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "42",
+    "championName": "Corki",
+    "krchampionName": "코르키",
+    "stats": {
+      "wins": 36,
+      "losses": 48,
+      "picks": 84,
+      "kills": 802,
+      "deaths": 862,
+      "assists": 2018,
+      "goldEarned": 13610,
+      "cs": 47,
+      "kda": 3.3,
+      "tier": "4 티어",
+      "tierScore": 87,
+      "winrate": 42.9,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "43",
+    "championName": "Karma",
+    "krchampionName": "카르마",
+    "stats": {
+      "wins": 61,
+      "losses": 71,
+      "picks": 132,
+      "kills": 1177,
+      "deaths": 1184,
+      "assists": 3651,
+      "goldEarned": 13116,
+      "cs": 28,
+      "kda": 4.1,
+      "tier": "3 티어",
+      "tierScore": 96,
+      "winrate": 46.2,
+      "pickrate": 1.1
+    }
+  },
+  {
+    "championId": "44",
+    "championName": "Taric",
+    "krchampionName": "타릭",
+    "stats": {
+      "wins": 9,
+      "losses": 8,
+      "picks": 17,
+      "kills": 68,
+      "deaths": 152,
+      "assists": 624,
+      "goldEarned": 11947,
+      "cs": 20,
+      "kda": 4.6,
+      "tier": "3 티어",
+      "tierScore": 96,
+      "winrate": 52.9,
+      "pickrate": 0.1
+    }
+  },
+  {
+    "championId": "45",
+    "championName": "Veigar",
+    "krchampionName": "베이가",
+    "stats": {
+      "wins": 56,
+      "losses": 67,
+      "picks": 123,
+      "kills": 1219,
+      "deaths": 1174,
+      "assists": 2697,
+      "goldEarned": 13251,
+      "cs": 56,
+      "kda": 3.3,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 45.5,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "48",
+    "championName": "Trundle",
+    "krchampionName": "트런들",
+    "stats": {
+      "wins": 20,
+      "losses": 27,
+      "picks": 47,
+      "kills": 386,
+      "deaths": 530,
+      "assists": 1004,
+      "goldEarned": 12651,
+      "cs": 34,
+      "kda": 2.6,
+      "tier": "4 티어",
+      "tierScore": 82,
+      "winrate": 42.6,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "50",
+    "championName": "Swain",
+    "krchampionName": "스웨인",
+    "stats": {
+      "wins": 34,
+      "losses": 33,
+      "picks": 67,
+      "kills": 575,
+      "deaths": 699,
+      "assists": 1968,
+      "goldEarned": 13034,
+      "cs": 38,
+      "kda": 3.6,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 50.7,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "51",
+    "championName": "Caitlyn",
+    "krchampionName": "케이틀린",
+    "stats": {
+      "wins": 81,
+      "losses": 86,
+      "picks": 167,
+      "kills": 1938,
+      "deaths": 1541,
+      "assists": 3398,
+      "goldEarned": 14172,
+      "cs": 67,
+      "kda": 3.5,
+      "tier": "2 티어",
+      "tierScore": 101,
+      "winrate": 48.5,
+      "pickrate": 1.4
+    }
+  },
+  {
+    "championId": "53",
+    "championName": "Blitzcrank",
+    "krchampionName": "블리츠크랭크",
+    "stats": {
+      "wins": 77,
+      "losses": 74,
+      "picks": 151,
+      "kills": 1075,
+      "deaths": 1493,
+      "assists": 3523,
+      "goldEarned": 11886,
+      "cs": 16,
+      "kda": 3.1,
+      "tier": "2 티어",
+      "tierScore": 106,
+      "winrate": 51,
+      "pickrate": 1.3
+    }
+  },
+  {
+    "championId": "54",
+    "championName": "Malphite",
+    "krchampionName": "말파이트",
+    "stats": {
+      "wins": 71,
+      "losses": 74,
+      "picks": 145,
+      "kills": 1585,
+      "deaths": 1757,
+      "assists": 3115,
+      "goldEarned": 13360,
+      "cs": 25,
+      "kda": 2.7,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 49,
+      "pickrate": 1.2
+    }
+  },
+  {
+    "championId": "55",
+    "championName": "Katarina",
+    "krchampionName": "카타리나",
+    "stats": {
+      "wins": 34,
+      "losses": 54,
+      "picks": 88,
+      "kills": 1208,
+      "deaths": 1081,
+      "assists": 1582,
+      "goldEarned": 14027,
+      "cs": 35,
+      "kda": 2.6,
+      "tier": "4 티어",
+      "tierScore": 78,
+      "winrate": 38.6,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "56",
+    "championName": "Nocturne",
+    "krchampionName": "녹턴",
+    "stats": {
+      "wins": 14,
+      "losses": 19,
+      "picks": 33,
+      "kills": 425,
+      "deaths": 404,
+      "assists": 591,
+      "goldEarned": 13569,
+      "cs": 34,
+      "kda": 2.5,
+      "tier": "4 티어",
+      "tierScore": 79,
+      "winrate": 42.4,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "57",
+    "championName": "Maokai",
+    "krchampionName": "마오카이",
+    "stats": {
+      "wins": 56,
+      "losses": 36,
+      "picks": 92,
+      "kills": 421,
+      "deaths": 939,
+      "assists": 2606,
+      "goldEarned": 12419,
+      "cs": 28,
+      "kda": 3.2,
+      "tier": "OP",
+      "tierScore": 123,
+      "winrate": 60.9,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "58",
+    "championName": "Renekton",
+    "krchampionName": "레넥톤",
+    "stats": {
+      "wins": 23,
+      "losses": 23,
+      "picks": 46,
+      "kills": 459,
+      "deaths": 511,
+      "assists": 998,
+      "goldEarned": 13503,
+      "cs": 47,
+      "kda": 2.9,
+      "tier": "3 티어",
+      "tierScore": 97,
+      "winrate": 50,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "59",
+    "championName": "JarvanIV",
+    "krchampionName": "자르반 4세",
+    "stats": {
+      "wins": 53,
+      "losses": 39,
+      "picks": 92,
+      "kills": 1042,
+      "deaths": 1086,
+      "assists": 2938,
+      "goldEarned": 13722,
+      "cs": 27,
+      "kda": 3.7,
+      "tier": "1 티어",
+      "tierScore": 116,
+      "winrate": 57.6,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "60",
+    "championName": "Elise",
+    "krchampionName": "엘리스",
+    "stats": {
+      "wins": 24,
+      "losses": 13,
+      "picks": 37,
+      "kills": 461,
+      "deaths": 403,
+      "assists": 865,
+      "goldEarned": 14246,
+      "cs": 31,
+      "kda": 3.3,
+      "tier": "OP",
+      "tierScore": 127,
+      "winrate": 64.9,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "61",
+    "championName": "Orianna",
+    "krchampionName": "오리아나",
+    "stats": {
+      "wins": 41,
+      "losses": 46,
+      "picks": 87,
+      "kills": 813,
+      "deaths": 811,
+      "assists": 2483,
+      "goldEarned": 13436,
+      "cs": 49,
+      "kda": 4.1,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 47.1,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "62",
+    "championName": "MonkeyKing",
+    "krchampionName": "오공",
+    "stats": {
+      "wins": 29,
+      "losses": 31,
+      "picks": 60,
+      "kills": 671,
+      "deaths": 699,
+      "assists": 1338,
+      "goldEarned": 14149,
+      "cs": 31,
+      "kda": 2.9,
+      "tier": "3 티어",
+      "tierScore": 97,
+      "winrate": 48.3,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "63",
+    "championName": "Brand",
+    "krchampionName": "브랜드",
+    "stats": {
+      "wins": 62,
+      "losses": 52,
+      "picks": 114,
+      "kills": 1027,
+      "deaths": 1115,
+      "assists": 2482,
+      "goldEarned": 12763,
+      "cs": 43,
+      "kda": 3.1,
+      "tier": "1 티어",
+      "tierScore": 110,
+      "winrate": 54.4,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "64",
+    "championName": "LeeSin",
+    "krchampionName": "리 신",
+    "stats": {
+      "wins": 56,
+      "losses": 67,
+      "picks": 123,
+      "kills": 1657,
+      "deaths": 1292,
+      "assists": 2792,
+      "goldEarned": 14323,
+      "cs": 32,
+      "kda": 3.4,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 45.5,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "67",
+    "championName": "Vayne",
+    "krchampionName": "베인",
+    "stats": {
+      "wins": 51,
+      "losses": 61,
+      "picks": 112,
+      "kills": 1256,
+      "deaths": 1164,
+      "assists": 1748,
+      "goldEarned": 13713,
+      "cs": 60,
+      "kda": 2.6,
+      "tier": "3 티어",
+      "tierScore": 92,
+      "winrate": 45.5,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "68",
+    "championName": "Rumble",
+    "krchampionName": "럼블",
+    "stats": {
+      "wins": 45,
+      "losses": 43,
+      "picks": 88,
+      "kills": 988,
+      "deaths": 970,
+      "assists": 2097,
+      "goldEarned": 13265,
+      "cs": 40,
+      "kda": 3.2,
+      "tier": "2 티어",
+      "tierScore": 103,
+      "winrate": 51.1,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "69",
+    "championName": "Cassiopeia",
+    "krchampionName": "카시오페아",
+    "stats": {
+      "wins": 24,
+      "losses": 16,
+      "picks": 40,
+      "kills": 496,
+      "deaths": 406,
+      "assists": 892,
+      "goldEarned": 15008,
+      "cs": 52,
+      "kda": 3.4,
+      "tier": "1 티어",
+      "tierScore": 117,
+      "winrate": 60,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "72",
+    "championName": "Skarner",
+    "krchampionName": "스카너",
+    "stats": {
+      "wins": 3,
+      "losses": 4,
+      "picks": 7,
+      "kills": 37,
+      "deaths": 57,
+      "assists": 147,
+      "goldEarned": 10036,
+      "cs": 16,
+      "kda": 3.2,
+      "tier": "4 티어",
+      "tierScore": 70,
+      "winrate": 42.9,
+      "pickrate": 0.1
+    }
+  },
+  {
+    "championId": "74",
+    "championName": "Heimerdinger",
+    "krchampionName": "하이머딩거",
+    "stats": {
+      "wins": 27,
+      "losses": 27,
+      "picks": 54,
+      "kills": 405,
+      "deaths": 517,
+      "assists": 1330,
+      "goldEarned": 13353,
+      "cs": 52,
+      "kda": 3.4,
+      "tier": "2 티어",
+      "tierScore": 100,
+      "winrate": 50,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "75",
+    "championName": "Nasus",
+    "krchampionName": "나서스",
+    "stats": {
+      "wins": 18,
+      "losses": 23,
+      "picks": 41,
+      "kills": 306,
+      "deaths": 419,
+      "assists": 924,
+      "goldEarned": 13025,
+      "cs": 50,
+      "kda": 2.9,
+      "tier": "4 티어",
+      "tierScore": 85,
+      "winrate": 43.9,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "76",
+    "championName": "Nidalee",
+    "krchampionName": "니달리",
+    "stats": {
+      "wins": 64,
+      "losses": 76,
+      "picks": 140,
+      "kills": 1633,
+      "deaths": 1140,
+      "assists": 3228,
+      "goldEarned": 13704,
+      "cs": 25,
+      "kda": 4.3,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 45.7,
+      "pickrate": 1.2
+    }
+  },
+  {
+    "championId": "77",
+    "championName": "Udyr",
+    "krchampionName": "우디르",
+    "stats": {
+      "wins": 16,
+      "losses": 13,
+      "picks": 29,
+      "kills": 295,
+      "deaths": 344,
+      "assists": 720,
+      "goldEarned": 13556,
+      "cs": 35,
+      "kda": 3,
+      "tier": "2 티어",
+      "tierScore": 104,
+      "winrate": 55.2,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "78",
+    "championName": "Poppy",
+    "krchampionName": "뽀삐",
+    "stats": {
+      "wins": 17,
+      "losses": 24,
+      "picks": 41,
+      "kills": 273,
+      "deaths": 442,
+      "assists": 924,
+      "goldEarned": 12367,
+      "cs": 21,
+      "kda": 2.7,
+      "tier": "4 티어",
+      "tierScore": 80,
+      "winrate": 41.5,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "79",
+    "championName": "Gragas",
+    "krchampionName": "그라가스",
+    "stats": {
+      "wins": 36,
+      "losses": 31,
+      "picks": 67,
+      "kills": 748,
+      "deaths": 674,
+      "assists": 1400,
+      "goldEarned": 13744,
+      "cs": 33,
+      "kda": 3.2,
+      "tier": "2 티어",
+      "tierScore": 108,
+      "winrate": 53.7,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "80",
+    "championName": "Pantheon",
+    "krchampionName": "판테온",
+    "stats": {
+      "wins": 53,
+      "losses": 47,
+      "picks": 100,
+      "kills": 1330,
+      "deaths": 1042,
+      "assists": 1809,
+      "goldEarned": 13824,
+      "cs": 25,
+      "kda": 3,
+      "tier": "2 티어",
+      "tierScore": 107,
+      "winrate": 53,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "81",
+    "championName": "Ezreal",
+    "krchampionName": "이즈리얼",
+    "stats": {
+      "wins": 77,
+      "losses": 78,
+      "picks": 155,
+      "kills": 1688,
+      "deaths": 1328,
+      "assists": 3129,
+      "goldEarned": 13585,
+      "cs": 61,
+      "kda": 3.6,
+      "tier": "2 티어",
+      "tierScore": 103,
+      "winrate": 49.7,
+      "pickrate": 1.3
+    }
+  },
+  {
+    "championId": "82",
+    "championName": "Mordekaiser",
+    "krchampionName": "모데카이저",
+    "stats": {
+      "wins": 43,
+      "losses": 31,
+      "picks": 74,
+      "kills": 694,
+      "deaths": 776,
+      "assists": 1402,
+      "goldEarned": 12998,
+      "cs": 35,
+      "kda": 2.7,
+      "tier": "1 티어",
+      "tierScore": 117,
+      "winrate": 58.1,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "83",
+    "championName": "Yorick",
+    "krchampionName": "요릭",
+    "stats": {
+      "wins": 9,
+      "losses": 4,
+      "picks": 13,
+      "kills": 92,
+      "deaths": 125,
+      "assists": 291,
+      "goldEarned": 13129,
+      "cs": 47,
+      "kda": 3.1,
+      "tier": "OP",
+      "tierScore": 128,
+      "winrate": 69.2,
+      "pickrate": 0.1
+    }
+  },
+  {
+    "championId": "84",
+    "championName": "Akali",
+    "krchampionName": "아칼리",
+    "stats": {
+      "wins": 43,
+      "losses": 53,
+      "picks": 96,
+      "kills": 1336,
+      "deaths": 1155,
+      "assists": 1725,
+      "goldEarned": 14100,
+      "cs": 26,
+      "kda": 2.7,
+      "tier": "3 티어",
+      "tierScore": 91,
+      "winrate": 44.8,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "85",
+    "championName": "Kennen",
+    "krchampionName": "케넨",
+    "stats": {
+      "wins": 26,
+      "losses": 32,
+      "picks": 58,
+      "kills": 606,
+      "deaths": 623,
+      "assists": 1161,
+      "goldEarned": 12842,
+      "cs": 33,
+      "kda": 2.8,
+      "tier": "3 티어",
+      "tierScore": 90,
+      "winrate": 44.8,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "86",
+    "championName": "Garen",
+    "krchampionName": "가렌",
+    "stats": {
+      "wins": 30,
+      "losses": 33,
+      "picks": 63,
+      "kills": 647,
+      "deaths": 621,
+      "assists": 1192,
+      "goldEarned": 13018,
+      "cs": 34,
+      "kda": 3,
+      "tier": "3 티어",
+      "tierScore": 96,
+      "winrate": 47.6,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "89",
+    "championName": "Leona",
+    "krchampionName": "레오나",
+    "stats": {
+      "wins": 31,
+      "losses": 28,
+      "picks": 59,
+      "kills": 246,
+      "deaths": 587,
+      "assists": 1582,
+      "goldEarned": 11369,
+      "cs": 16,
+      "kda": 3.1,
+      "tier": "2 티어",
+      "tierScore": 106,
+      "winrate": 52.5,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "90",
+    "championName": "Malzahar",
+    "krchampionName": "말자하",
+    "stats": {
+      "wins": 37,
+      "losses": 28,
+      "picks": 65,
+      "kills": 440,
+      "deaths": 596,
+      "assists": 1486,
+      "goldEarned": 13264,
+      "cs": 82,
+      "kda": 3.2,
+      "tier": "1 티어",
+      "tierScore": 114,
+      "winrate": 56.9,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "91",
+    "championName": "Talon",
+    "krchampionName": "탈론",
+    "stats": {
+      "wins": 16,
+      "losses": 21,
+      "picks": 37,
+      "kills": 605,
+      "deaths": 473,
+      "assists": 637,
+      "goldEarned": 15327,
+      "cs": 47,
+      "kda": 2.6,
+      "tier": "4 티어",
+      "tierScore": 84,
+      "winrate": 43.2,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "92",
+    "championName": "Riven",
+    "krchampionName": "리븐",
+    "stats": {
+      "wins": 33,
+      "losses": 28,
+      "picks": 61,
+      "kills": 751,
+      "deaths": 685,
+      "assists": 1158,
+      "goldEarned": 13724,
+      "cs": 38,
+      "kda": 2.8,
+      "tier": "2 티어",
+      "tierScore": 109,
+      "winrate": 54.1,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "96",
+    "championName": "KogMaw",
+    "krchampionName": "코그모",
+    "stats": {
+      "wins": 33,
+      "losses": 37,
+      "picks": 70,
+      "kills": 777,
+      "deaths": 734,
+      "assists": 1657,
+      "goldEarned": 13766,
+      "cs": 56,
+      "kda": 3.3,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 47.1,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "98",
+    "championName": "Shen",
+    "krchampionName": "쉔",
+    "stats": {
+      "wins": 29,
+      "losses": 21,
+      "picks": 50,
+      "kills": 387,
+      "deaths": 479,
+      "assists": 1329,
+      "goldEarned": 12643,
+      "cs": 22,
+      "kda": 3.6,
+      "tier": "1 티어",
+      "tierScore": 116,
+      "winrate": 58,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "99",
+    "championName": "Lux",
+    "krchampionName": "럭스",
+    "stats": {
+      "wins": 55,
+      "losses": 63,
+      "picks": 118,
+      "kills": 945,
+      "deaths": 959,
+      "assists": 3687,
+      "goldEarned": 13432,
+      "cs": 46,
+      "kda": 4.8,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 46.6,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "101",
+    "championName": "Xerath",
+    "krchampionName": "제라스",
+    "stats": {
+      "wins": 61,
+      "losses": 43,
+      "picks": 104,
+      "kills": 1062,
+      "deaths": 796,
+      "assists": 2758,
+      "goldEarned": 13503,
+      "cs": 40,
+      "kda": 4.8,
+      "tier": "1 티어",
+      "tierScore": 119,
+      "winrate": 58.7,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "102",
+    "championName": "Shyvana",
+    "krchampionName": "쉬바나",
+    "stats": {
+      "wins": 16,
+      "losses": 24,
+      "picks": 40,
+      "kills": 378,
+      "deaths": 423,
+      "assists": 815,
+      "goldEarned": 13350,
+      "cs": 44,
+      "kda": 2.8,
+      "tier": "4 티어",
+      "tierScore": 77,
+      "winrate": 40,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "103",
+    "championName": "Ahri",
+    "krchampionName": "아리",
+    "stats": {
+      "wins": 54,
+      "losses": 76,
+      "picks": 130,
+      "kills": 1224,
+      "deaths": 1293,
+      "assists": 2984,
+      "goldEarned": 13143,
+      "cs": 50,
+      "kda": 3.3,
+      "tier": "4 티어",
+      "tierScore": 87,
+      "winrate": 41.5,
+      "pickrate": 1.1
+    }
+  },
+  {
+    "championId": "104",
+    "championName": "Graves",
+    "krchampionName": "그레이브즈",
+    "stats": {
+      "wins": 59,
+      "losses": 58,
+      "picks": 117,
+      "kills": 1785,
+      "deaths": 1251,
+      "assists": 2245,
+      "goldEarned": 15835,
+      "cs": 79,
+      "kda": 3.2,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 50.4,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "105",
+    "championName": "Fizz",
+    "krchampionName": "피즈",
+    "stats": {
+      "wins": 40,
+      "losses": 49,
+      "picks": 89,
+      "kills": 1077,
+      "deaths": 1046,
+      "assists": 1590,
+      "goldEarned": 12939,
+      "cs": 25,
+      "kda": 2.5,
+      "tier": "3 티어",
+      "tierScore": 91,
+      "winrate": 44.9,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "106",
+    "championName": "Volibear",
+    "krchampionName": "볼리베어",
+    "stats": {
+      "wins": 15,
+      "losses": 23,
+      "picks": 38,
+      "kills": 254,
+      "deaths": 389,
+      "assists": 783,
+      "goldEarned": 11898,
+      "cs": 25,
+      "kda": 2.7,
+      "tier": "4 티어",
+      "tierScore": 76,
+      "winrate": 39.5,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "107",
+    "championName": "Rengar",
+    "krchampionName": "렝가",
+    "stats": {
+      "wins": 12,
+      "losses": 14,
+      "picks": 26,
+      "kills": 365,
+      "deaths": 347,
+      "assists": 435,
+      "goldEarned": 14196,
+      "cs": 29,
+      "kda": 2.3,
+      "tier": "4 티어",
+      "tierScore": 86,
+      "winrate": 46.2,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "110",
+    "championName": "Varus",
+    "krchampionName": "바루스",
+    "stats": {
+      "wins": 82,
+      "losses": 73,
+      "picks": 155,
+      "kills": 2132,
+      "deaths": 1478,
+      "assists": 3461,
+      "goldEarned": 15024,
+      "cs": 58,
+      "kda": 3.8,
+      "tier": "1 티어",
+      "tierScore": 110,
+      "winrate": 52.9,
+      "pickrate": 1.3
+    }
+  },
+  {
+    "championId": "111",
+    "championName": "Nautilus",
+    "krchampionName": "노틸러스",
+    "stats": {
+      "wins": 46,
+      "losses": 45,
+      "picks": 91,
+      "kills": 369,
+      "deaths": 1016,
+      "assists": 2646,
+      "goldEarned": 11694,
+      "cs": 19,
+      "kda": 3,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 50.5,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "112",
+    "championName": "Viktor",
+    "krchampionName": "빅토르",
+    "stats": {
+      "wins": 49,
+      "losses": 26,
+      "picks": 75,
+      "kills": 925,
+      "deaths": 762,
+      "assists": 1897,
+      "goldEarned": 14995,
+      "cs": 59,
+      "kda": 3.7,
+      "tier": "OP",
+      "tierScore": 131,
+      "winrate": 65.3,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "113",
+    "championName": "Sejuani",
+    "krchampionName": "세주아니",
+    "stats": {
+      "wins": 23,
+      "losses": 15,
+      "picks": 38,
+      "kills": 253,
+      "deaths": 382,
+      "assists": 1065,
+      "goldEarned": 12380,
+      "cs": 30,
+      "kda": 3.5,
+      "tier": "1 티어",
+      "tierScore": 118,
+      "winrate": 60.5,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "114",
+    "championName": "Fiora",
+    "krchampionName": "피오라",
+    "stats": {
+      "wins": 22,
+      "losses": 20,
+      "picks": 42,
+      "kills": 467,
+      "deaths": 443,
+      "assists": 771,
+      "goldEarned": 13556,
+      "cs": 41,
+      "kda": 2.8,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 52.4,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "115",
+    "championName": "Ziggs",
+    "krchampionName": "직스",
+    "stats": {
+      "wins": 35,
+      "losses": 48,
+      "picks": 83,
+      "kills": 558,
+      "deaths": 705,
+      "assists": 2004,
+      "goldEarned": 12347,
+      "cs": 46,
+      "kda": 3.6,
+      "tier": "4 티어",
+      "tierScore": 85,
+      "winrate": 42.2,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "117",
+    "championName": "Lulu",
+    "krchampionName": "룰루",
+    "stats": {
+      "wins": 42,
+      "losses": 40,
+      "picks": 82,
+      "kills": 316,
+      "deaths": 633,
+      "assists": 2736,
+      "goldEarned": 11792,
+      "cs": 24,
+      "kda": 4.8,
+      "tier": "2 티어",
+      "tierScore": 103,
+      "winrate": 51.2,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "119",
+    "championName": "Draven",
+    "krchampionName": "드레이븐",
+    "stats": {
+      "wins": 32,
+      "losses": 45,
+      "picks": 77,
+      "kills": 1029,
+      "deaths": 788,
+      "assists": 1395,
+      "goldEarned": 15396,
+      "cs": 60,
+      "kda": 3.1,
+      "tier": "4 티어",
+      "tierScore": 84,
+      "winrate": 41.6,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "120",
+    "championName": "Hecarim",
+    "krchampionName": "헤카림",
+    "stats": {
+      "wins": 5,
+      "losses": 22,
+      "picks": 27,
+      "kills": 252,
+      "deaths": 352,
+      "assists": 573,
+      "goldEarned": 12745,
+      "cs": 35,
+      "kda": 2.3,
+      "tier": "4 티어",
+      "tierScore": 31,
+      "winrate": 18.5,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "121",
+    "championName": "Khazix",
+    "krchampionName": "카직스",
+    "stats": {
+      "wins": 38,
+      "losses": 37,
+      "picks": 75,
+      "kills": 1167,
+      "deaths": 795,
+      "assists": 1324,
+      "goldEarned": 14776,
+      "cs": 33,
+      "kda": 3.1,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 50.7,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "122",
+    "championName": "Darius",
+    "krchampionName": "다리우스",
+    "stats": {
+      "wins": 42,
+      "losses": 29,
+      "picks": 71,
+      "kills": 793,
+      "deaths": 766,
+      "assists": 1280,
+      "goldEarned": 13018,
+      "cs": 37,
+      "kda": 2.7,
+      "tier": "1 티어",
+      "tierScore": 119,
+      "winrate": 59.2,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "126",
+    "championName": "Jayce",
+    "krchampionName": "제이스",
+    "stats": {
+      "wins": 50,
+      "losses": 59,
+      "picks": 109,
+      "kills": 1413,
+      "deaths": 1032,
+      "assists": 2598,
+      "goldEarned": 14020,
+      "cs": 46,
+      "kda": 3.9,
+      "tier": "3 티어",
+      "tierScore": 93,
+      "winrate": 45.9,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "127",
+    "championName": "Lissandra",
+    "krchampionName": "리산드라",
+    "stats": {
+      "wins": 47,
+      "losses": 22,
+      "picks": 69,
+      "kills": 659,
+      "deaths": 820,
+      "assists": 1788,
+      "goldEarned": 13195,
+      "cs": 53,
+      "kda": 3,
+      "tier": "OP",
+      "tierScore": 137,
+      "winrate": 68.1,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "131",
+    "championName": "Diana",
+    "krchampionName": "다이애나",
+    "stats": {
+      "wins": 31,
+      "losses": 23,
+      "picks": 54,
+      "kills": 672,
+      "deaths": 647,
+      "assists": 1181,
+      "goldEarned": 13762,
+      "cs": 37,
+      "kda": 2.9,
+      "tier": "1 티어",
+      "tierScore": 115,
+      "winrate": 57.4,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "133",
+    "championName": "Quinn",
+    "krchampionName": "퀸",
+    "stats": {
+      "wins": 34,
+      "losses": 21,
+      "picks": 55,
+      "kills": 733,
+      "deaths": 566,
+      "assists": 1103,
+      "goldEarned": 14430,
+      "cs": 54,
+      "kda": 3.2,
+      "tier": "OP",
+      "tierScore": 124,
+      "winrate": 61.8,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "134",
+    "championName": "Syndra",
+    "krchampionName": "신드라",
+    "stats": {
+      "wins": 26,
+      "losses": 42,
+      "picks": 68,
+      "kills": 791,
+      "deaths": 675,
+      "assists": 1466,
+      "goldEarned": 13682,
+      "cs": 49,
+      "kda": 3.3,
+      "tier": "4 티어",
+      "tierScore": 77,
+      "winrate": 38.2,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "136",
+    "championName": "AurelionSol",
+    "krchampionName": "아우렐리온 솔",
+    "stats": {
+      "wins": 27,
+      "losses": 29,
+      "picks": 56,
+      "kills": 604,
+      "deaths": 556,
+      "assists": 1333,
+      "goldEarned": 13900,
+      "cs": 58,
+      "kda": 3.5,
+      "tier": "3 티어",
+      "tierScore": 97,
+      "winrate": 48.2,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "141",
+    "championName": "Kayn",
+    "krchampionName": "케인",
+    "stats": {
+      "wins": 24,
+      "losses": 22,
+      "picks": 46,
+      "kills": 514,
+      "deaths": 593,
+      "assists": 878,
+      "goldEarned": 13330,
+      "cs": 35,
+      "kda": 2.3,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 52.2,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "142",
+    "championName": "Zoe",
+    "krchampionName": "조이",
+    "stats": {
+      "wins": 34,
+      "losses": 40,
+      "picks": 74,
+      "kills": 788,
+      "deaths": 686,
+      "assists": 1658,
+      "goldEarned": 13173,
+      "cs": 31,
+      "kda": 3.6,
+      "tier": "3 티어",
+      "tierScore": 93,
+      "winrate": 45.9,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "143",
+    "championName": "Zyra",
+    "krchampionName": "자이라",
+    "stats": {
+      "wins": 32,
+      "losses": 33,
+      "picks": 65,
+      "kills": 434,
+      "deaths": 634,
+      "assists": 1961,
+      "goldEarned": 13794,
+      "cs": 53,
+      "kda": 3.8,
+      "tier": "3 티어",
+      "tierScore": 99,
+      "winrate": 49.2,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "145",
+    "championName": "Kaisa",
+    "krchampionName": "카이사",
+    "stats": {
+      "wins": 58,
+      "losses": 82,
+      "picks": 140,
+      "kills": 1594,
+      "deaths": 1175,
+      "assists": 2683,
+      "goldEarned": 13698,
+      "cs": 58,
+      "kda": 3.6,
+      "tier": "4 티어",
+      "tierScore": 87,
+      "winrate": 41.4,
+      "pickrate": 1.2
+    }
+  },
+  {
+    "championId": "147",
+    "championName": "Seraphine",
+    "krchampionName": "세라핀",
+    "stats": {
+      "wins": 31,
+      "losses": 46,
+      "picks": 77,
+      "kills": 426,
+      "deaths": 734,
+      "assists": 2604,
+      "goldEarned": 12350,
+      "cs": 44,
+      "kda": 4.1,
+      "tier": "4 티어",
+      "tierScore": 81,
+      "winrate": 40.3,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "150",
+    "championName": "Gnar",
+    "krchampionName": "나르",
+    "stats": {
+      "wins": 24,
+      "losses": 15,
+      "picks": 39,
+      "kills": 422,
+      "deaths": 419,
+      "assists": 928,
+      "goldEarned": 13919,
+      "cs": 45,
+      "kda": 3.2,
+      "tier": "OP",
+      "tierScore": 120,
+      "winrate": 61.5,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "154",
+    "championName": "Zac",
+    "krchampionName": "자크",
+    "stats": {
+      "wins": 25,
+      "losses": 23,
+      "picks": 48,
+      "kills": 299,
+      "deaths": 463,
+      "assists": 1178,
+      "goldEarned": 11865,
+      "cs": 22,
+      "kda": 3.2,
+      "tier": "2 티어",
+      "tierScore": 101,
+      "winrate": 52.1,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "157",
+    "championName": "Yasuo",
+    "krchampionName": "야스오",
+    "stats": {
+      "wins": 54,
+      "losses": 58,
+      "picks": 112,
+      "kills": 1147,
+      "deaths": 1291,
+      "assists": 2065,
+      "goldEarned": 13624,
+      "cs": 67,
+      "kda": 2.5,
+      "tier": "3 티어",
+      "tierScore": 98,
+      "winrate": 48.2,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "161",
+    "championName": "Velkoz",
+    "krchampionName": "벨코즈",
+    "stats": {
+      "wins": 51,
+      "losses": 41,
+      "picks": 92,
+      "kills": 824,
+      "deaths": 805,
+      "assists": 2209,
+      "goldEarned": 12751,
+      "cs": 35,
+      "kda": 3.8,
+      "tier": "1 티어",
+      "tierScore": 112,
+      "winrate": 55.4,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "163",
+    "championName": "Taliyah",
+    "krchampionName": "탈리야",
+    "stats": {
+      "wins": 24,
+      "losses": 32,
+      "picks": 56,
+      "kills": 517,
+      "deaths": 627,
+      "assists": 1349,
+      "goldEarned": 13651,
+      "cs": 55,
+      "kda": 3,
+      "tier": "4 티어",
+      "tierScore": 86,
+      "winrate": 42.9,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "164",
+    "championName": "Camille",
+    "krchampionName": "카밀",
+    "stats": {
+      "wins": 13,
+      "losses": 12,
+      "picks": 25,
+      "kills": 267,
+      "deaths": 320,
+      "assists": 511,
+      "goldEarned": 13518,
+      "cs": 30,
+      "kda": 2.4,
+      "tier": "3 티어",
+      "tierScore": 98,
+      "winrate": 52,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "166",
+    "championName": "Akshan",
+    "krchampionName": "아크샨",
+    "stats": {
+      "wins": 20,
+      "losses": 35,
+      "picks": 55,
+      "kills": 654,
+      "deaths": 574,
+      "assists": 890,
+      "goldEarned": 14614,
+      "cs": 64,
+      "kda": 2.7,
+      "tier": "4 티어",
+      "tierScore": 73,
+      "winrate": 36.4,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "200",
+    "championName": "Belveth",
+    "krchampionName": "벨베스",
+    "stats": {
+      "wins": 14,
+      "losses": 16,
+      "picks": 30,
+      "kills": 361,
+      "deaths": 357,
+      "assists": 601,
+      "goldEarned": 13559,
+      "cs": 47,
+      "kda": 2.7,
+      "tier": "4 티어",
+      "tierScore": 87,
+      "winrate": 46.7,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "201",
+    "championName": "Braum",
+    "krchampionName": "브라움",
+    "stats": {
+      "wins": 17,
+      "losses": 18,
+      "picks": 35,
+      "kills": 126,
+      "deaths": 309,
+      "assists": 1058,
+      "goldEarned": 11369,
+      "cs": 9,
+      "kda": 3.8,
+      "tier": "3 티어",
+      "tierScore": 91,
+      "winrate": 48.6,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "202",
+    "championName": "Jhin",
+    "krchampionName": "진",
+    "stats": {
+      "wins": 82,
+      "losses": 78,
+      "picks": 160,
+      "kills": 2169,
+      "deaths": 1292,
+      "assists": 3488,
+      "goldEarned": 14887,
+      "cs": 64,
+      "kda": 4.4,
+      "tier": "2 티어",
+      "tierScore": 107,
+      "winrate": 51.2,
+      "pickrate": 1.3
+    }
+  },
+  {
+    "championId": "203",
+    "championName": "Kindred",
+    "krchampionName": "킨드레드",
+    "stats": {
+      "wins": 29,
+      "losses": 34,
+      "picks": 63,
+      "kills": 714,
+      "deaths": 642,
+      "assists": 1288,
+      "goldEarned": 13788,
+      "cs": 61,
+      "kda": 3.1,
+      "tier": "3 티어",
+      "tierScore": 93,
+      "winrate": 46,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "221",
+    "championName": "Zeri",
+    "krchampionName": "제리",
+    "stats": {
+      "wins": 37,
+      "losses": 40,
+      "picks": 77,
+      "kills": 1013,
+      "deaths": 840,
+      "assists": 1767,
+      "goldEarned": 15400,
+      "cs": 92,
+      "kda": 3.3,
+      "tier": "3 티어",
+      "tierScore": 97,
+      "winrate": 48.1,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "222",
+    "championName": "Jinx",
+    "krchampionName": "징크스",
+    "stats": {
+      "wins": 78,
+      "losses": 54,
+      "picks": 132,
+      "kills": 1440,
+      "deaths": 1329,
+      "assists": 3114,
+      "goldEarned": 14231,
+      "cs": 80,
+      "kda": 3.4,
+      "tier": "OP",
+      "tierScore": 122,
+      "winrate": 59.1,
+      "pickrate": 1.1
+    }
+  },
+  {
+    "championId": "223",
+    "championName": "TahmKench",
+    "krchampionName": "탐 켄치",
+    "stats": {
+      "wins": 25,
+      "losses": 23,
+      "picks": 48,
+      "kills": 367,
+      "deaths": 420,
+      "assists": 1119,
+      "goldEarned": 12585,
+      "cs": 27,
+      "kda": 3.5,
+      "tier": "2 티어",
+      "tierScore": 101,
+      "winrate": 52.1,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "233",
+    "championName": "Briar",
+    "krchampionName": "브라이어",
+    "stats": {
+      "wins": 18,
+      "losses": 10,
+      "picks": 28,
+      "kills": 300,
+      "deaths": 382,
+      "assists": 506,
+      "goldEarned": 12936,
+      "cs": 29,
+      "kda": 2.1,
+      "tier": "OP",
+      "tierScore": 123,
+      "winrate": 64.3,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "234",
+    "championName": "Viego",
+    "krchampionName": "비에고",
+    "stats": {
+      "wins": 38,
+      "losses": 35,
+      "picks": 73,
+      "kills": 1041,
+      "deaths": 755,
+      "assists": 1295,
+      "goldEarned": 13966,
+      "cs": 32,
+      "kda": 3.1,
+      "tier": "2 티어",
+      "tierScore": 105,
+      "winrate": 52.1,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "235",
+    "championName": "Senna",
+    "krchampionName": "세나",
+    "stats": {
+      "wins": 61,
+      "losses": 59,
+      "picks": 120,
+      "kills": 1107,
+      "deaths": 1002,
+      "assists": 3506,
+      "goldEarned": 13782,
+      "cs": 45,
+      "kda": 4.6,
+      "tier": "2 티어",
+      "tierScore": 105,
+      "winrate": 50.8,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "236",
+    "championName": "Lucian",
+    "krchampionName": "루시안",
+    "stats": {
+      "wins": 61,
+      "losses": 72,
+      "picks": 133,
+      "kills": 1739,
+      "deaths": 1332,
+      "assists": 2522,
+      "goldEarned": 14155,
+      "cs": 70,
+      "kda": 3.2,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 45.9,
+      "pickrate": 1.1
+    }
+  },
+  {
+    "championId": "238",
+    "championName": "Zed",
+    "krchampionName": "제드",
+    "stats": {
+      "wins": 55,
+      "losses": 50,
+      "picks": 105,
+      "kills": 1538,
+      "deaths": 1202,
+      "assists": 1977,
+      "goldEarned": 14257,
+      "cs": 40,
+      "kda": 2.9,
+      "tier": "2 티어",
+      "tierScore": 106,
+      "winrate": 52.4,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "240",
+    "championName": "Kled",
+    "krchampionName": "클레드",
+    "stats": {
+      "wins": 6,
+      "losses": 6,
+      "picks": 12,
+      "kills": 101,
+      "deaths": 134,
+      "assists": 286,
+      "goldEarned": 12767,
+      "cs": 29,
+      "kda": 2.9,
+      "tier": "4 티어",
+      "tierScore": 85,
+      "winrate": 50,
+      "pickrate": 0.1
+    }
+  },
+  {
+    "championId": "245",
+    "championName": "Ekko",
+    "krchampionName": "에코",
+    "stats": {
+      "wins": 48,
+      "losses": 35,
+      "picks": 83,
+      "kills": 1135,
+      "deaths": 962,
+      "assists": 1565,
+      "goldEarned": 13444,
+      "cs": 33,
+      "kda": 2.8,
+      "tier": "1 티어",
+      "tierScore": 117,
+      "winrate": 57.8,
+      "pickrate": 0.7
+    }
+  },
+  {
+    "championId": "246",
+    "championName": "Qiyana",
+    "krchampionName": "키아나",
+    "stats": {
+      "wins": 11,
+      "losses": 15,
+      "picks": 26,
+      "kills": 376,
+      "deaths": 341,
+      "assists": 477,
+      "goldEarned": 14675,
+      "cs": 32,
+      "kda": 2.5,
+      "tier": "4 티어",
+      "tierScore": 79,
+      "winrate": 42.3,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "254",
+    "championName": "Vi",
+    "krchampionName": "바이",
+    "stats": {
+      "wins": 31,
+      "losses": 19,
+      "picks": 50,
+      "kills": 711,
+      "deaths": 644,
+      "assists": 911,
+      "goldEarned": 14030,
+      "cs": 29,
+      "kda": 2.5,
+      "tier": "OP",
+      "tierScore": 124,
+      "winrate": 62,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "266",
+    "championName": "Aatrox",
+    "krchampionName": "아트록스",
+    "stats": {
+      "wins": 61,
+      "losses": 49,
+      "picks": 110,
+      "kills": 1372,
+      "deaths": 1210,
+      "assists": 2195,
+      "goldEarned": 13976,
+      "cs": 36,
+      "kda": 2.9,
+      "tier": "1 티어",
+      "tierScore": 112,
+      "winrate": 55.5,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "267",
+    "championName": "Nami",
+    "krchampionName": "나미",
+    "stats": {
+      "wins": 23,
+      "losses": 27,
+      "picks": 50,
+      "kills": 176,
+      "deaths": 343,
+      "assists": 1756,
+      "goldEarned": 11124,
+      "cs": 11,
+      "kda": 5.6,
+      "tier": "3 티어",
+      "tierScore": 92,
+      "winrate": 46,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "268",
+    "championName": "Azir",
+    "krchampionName": "아지르",
+    "stats": {
+      "wins": 39,
+      "losses": 24,
+      "picks": 63,
+      "kills": 664,
+      "deaths": 644,
+      "assists": 1394,
+      "goldEarned": 13842,
+      "cs": 67,
+      "kda": 3.2,
+      "tier": "OP",
+      "tierScore": 124,
+      "winrate": 61.9,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "350",
+    "championName": "Yuumi",
+    "krchampionName": "유미",
+    "stats": {
+      "wins": 31,
+      "losses": 35,
+      "picks": 66,
+      "kills": 255,
+      "deaths": 291,
+      "assists": 2476,
+      "goldEarned": 11316,
+      "cs": 4,
+      "kda": 9.4,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 47,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "360",
+    "championName": "Samira",
+    "krchampionName": "사미라",
+    "stats": {
+      "wins": 47,
+      "losses": 45,
+      "picks": 92,
+      "kills": 1499,
+      "deaths": 1059,
+      "assists": 1467,
+      "goldEarned": 14822,
+      "cs": 61,
+      "kda": 2.8,
+      "tier": "2 티어",
+      "tierScore": 103,
+      "winrate": 51.1,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "412",
+    "championName": "Thresh",
+    "krchampionName": "쓰레쉬",
+    "stats": {
+      "wins": 64,
+      "losses": 65,
+      "picks": 129,
+      "kills": 691,
+      "deaths": 1243,
+      "assists": 4117,
+      "goldEarned": 11766,
+      "cs": 19,
+      "kda": 3.9,
+      "tier": "2 티어",
+      "tierScore": 103,
+      "winrate": 49.6,
+      "pickrate": 1.1
+    }
+  },
+  {
+    "championId": "420",
+    "championName": "Illaoi",
+    "krchampionName": "일라오이",
+    "stats": {
+      "wins": 21,
+      "losses": 15,
+      "picks": 36,
+      "kills": 309,
+      "deaths": 363,
+      "assists": 727,
+      "goldEarned": 12663,
+      "cs": 42,
+      "kda": 2.9,
+      "tier": "1 티어",
+      "tierScore": 111,
+      "winrate": 58.3,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "421",
+    "championName": "RekSai",
+    "krchampionName": "렉사이",
+    "stats": {
+      "wins": 5,
+      "losses": 0,
+      "picks": 5,
+      "kills": 73,
+      "deaths": 55,
+      "assists": 126,
+      "goldEarned": 15930,
+      "cs": 27,
+      "kda": 3.6,
+      "tier": "OP",
+      "tierScore": 185,
+      "winrate": 100,
+      "pickrate": 0
+    }
+  },
+  {
+    "championId": "427",
+    "championName": "Ivern",
+    "krchampionName": "아이번",
+    "stats": {
+      "wins": 7,
+      "losses": 8,
+      "picks": 15,
+      "kills": 23,
+      "deaths": 102,
+      "assists": 458,
+      "goldEarned": 10621,
+      "cs": 9,
+      "kda": 4.7,
+      "tier": "4 티어",
+      "tierScore": 83,
+      "winrate": 46.7,
+      "pickrate": 0.1
+    }
+  },
+  {
+    "championId": "429",
+    "championName": "Kalista",
+    "krchampionName": "칼리스타",
+    "stats": {
+      "wins": 22,
+      "losses": 32,
+      "picks": 54,
+      "kills": 683,
+      "deaths": 514,
+      "assists": 955,
+      "goldEarned": 14346,
+      "cs": 73,
+      "kda": 3.2,
+      "tier": "4 티어",
+      "tierScore": 82,
+      "winrate": 40.7,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "432",
+    "championName": "Bard",
+    "krchampionName": "바드",
+    "stats": {
+      "wins": 30,
+      "losses": 17,
+      "picks": 47,
+      "kills": 391,
+      "deaths": 357,
+      "assists": 1275,
+      "goldEarned": 12781,
+      "cs": 26,
+      "kda": 4.7,
+      "tier": "OP",
+      "tierScore": 125,
+      "winrate": 63.8,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "497",
+    "championName": "Rakan",
+    "krchampionName": "라칸",
+    "stats": {
+      "wins": 22,
+      "losses": 23,
+      "picks": 45,
+      "kills": 143,
+      "deaths": 379,
+      "assists": 1558,
+      "goldEarned": 11384,
+      "cs": 12,
+      "kda": 4.5,
+      "tier": "3 티어",
+      "tierScore": 95,
+      "winrate": 48.9,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "498",
+    "championName": "Xayah",
+    "krchampionName": "자야",
+    "stats": {
+      "wins": 61,
+      "losses": 52,
+      "picks": 113,
+      "kills": 1324,
+      "deaths": 1154,
+      "assists": 2486,
+      "goldEarned": 15007,
+      "cs": 85,
+      "kda": 3.3,
+      "tier": "2 티어",
+      "tierScore": 109,
+      "winrate": 54,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "516",
+    "championName": "Ornn",
+    "krchampionName": "오른",
+    "stats": {
+      "wins": 14,
+      "losses": 21,
+      "picks": 35,
+      "kills": 189,
+      "deaths": 370,
+      "assists": 982,
+      "goldEarned": 12588,
+      "cs": 30,
+      "kda": 3.2,
+      "tier": "4 티어",
+      "tierScore": 74,
+      "winrate": 40,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "517",
+    "championName": "Sylas",
+    "krchampionName": "사일러스",
+    "stats": {
+      "wins": 52,
+      "losses": 53,
+      "picks": 105,
+      "kills": 1498,
+      "deaths": 1313,
+      "assists": 1913,
+      "goldEarned": 13952,
+      "cs": 30,
+      "kda": 2.6,
+      "tier": "2 티어",
+      "tierScore": 100,
+      "winrate": 49.5,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "518",
+    "championName": "Neeko",
+    "krchampionName": "니코",
+    "stats": {
+      "wins": 45,
+      "losses": 45,
+      "picks": 90,
+      "kills": 836,
+      "deaths": 856,
+      "assists": 2093,
+      "goldEarned": 12898,
+      "cs": 40,
+      "kda": 3.4,
+      "tier": "2 티어",
+      "tierScore": 101,
+      "winrate": 50,
+      "pickrate": 0.8
+    }
+  },
+  {
+    "championId": "523",
+    "championName": "Aphelios",
+    "krchampionName": "아펠리오스",
+    "stats": {
+      "wins": 30,
+      "losses": 30,
+      "picks": 60,
+      "kills": 644,
+      "deaths": 586,
+      "assists": 1166,
+      "goldEarned": 14263,
+      "cs": 81,
+      "kda": 3.1,
+      "tier": "2 티어",
+      "tierScore": 101,
+      "winrate": 50,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "526",
+    "championName": "Rell",
+    "krchampionName": "렐",
+    "stats": {
+      "wins": 11,
+      "losses": 7,
+      "picks": 18,
+      "kills": 61,
+      "deaths": 190,
+      "assists": 675,
+      "goldEarned": 12070,
+      "cs": 18,
+      "kda": 3.9,
+      "tier": "1 티어",
+      "tierScore": 112,
+      "winrate": 61.1,
+      "pickrate": 0.2
+    }
+  },
+  {
+    "championId": "555",
+    "championName": "Pyke",
+    "krchampionName": "파이크",
+    "stats": {
+      "wins": 68,
+      "losses": 52,
+      "picks": 120,
+      "kills": 1723,
+      "deaths": 1114,
+      "assists": 1937,
+      "goldEarned": 13140,
+      "cs": 10,
+      "kda": 3.3,
+      "tier": "1 티어",
+      "tierScore": 117,
+      "winrate": 56.7,
+      "pickrate": 1
+    }
+  },
+  {
+    "championId": "711",
+    "championName": "Vex",
+    "krchampionName": "벡스",
+    "stats": {
+      "wins": 32,
+      "losses": 28,
+      "picks": 60,
+      "kills": 670,
+      "deaths": 648,
+      "assists": 1422,
+      "goldEarned": 13771,
+      "cs": 45,
+      "kda": 3.2,
+      "tier": "2 티어",
+      "tierScore": 107,
+      "winrate": 53.3,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "777",
+    "championName": "Yone",
+    "krchampionName": "요네",
+    "stats": {
+      "wins": 51,
+      "losses": 52,
+      "picks": 103,
+      "kills": 1141,
+      "deaths": 1281,
+      "assists": 2033,
+      "goldEarned": 13992,
+      "cs": 57,
+      "kda": 2.5,
+      "tier": "2 티어",
+      "tierScore": 100,
+      "winrate": 49.5,
+      "pickrate": 0.9
+    }
+  },
+  {
+    "championId": "875",
+    "championName": "Sett",
+    "krchampionName": "세트",
+    "stats": {
+      "wins": 22,
+      "losses": 30,
+      "picks": 52,
+      "kills": 379,
+      "deaths": 569,
+      "assists": 1078,
+      "goldEarned": 12241,
+      "cs": 33,
+      "kda": 2.6,
+      "tier": "4 티어",
+      "tierScore": 85,
+      "winrate": 42.3,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "876",
+    "championName": "Lillia",
+    "krchampionName": "릴리아",
+    "stats": {
+      "wins": 36,
+      "losses": 34,
+      "picks": 70,
+      "kills": 710,
+      "deaths": 693,
+      "assists": 1603,
+      "goldEarned": 13892,
+      "cs": 44,
+      "kda": 3.3,
+      "tier": "2 티어",
+      "tierScore": 104,
+      "winrate": 51.4,
+      "pickrate": 0.6
+    }
+  },
+  {
+    "championId": "887",
+    "championName": "Gwen",
+    "krchampionName": "그웬",
+    "stats": {
+      "wins": 22,
+      "losses": 20,
+      "picks": 42,
+      "kills": 437,
+      "deaths": 456,
+      "assists": 800,
+      "goldEarned": 13146,
+      "cs": 37,
+      "kda": 2.7,
+      "tier": "2 티어",
+      "tierScore": 102,
+      "winrate": 52.4,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "888",
+    "championName": "Renata",
+    "krchampionName": "레나타 글라스크",
+    "stats": {
+      "wins": 26,
+      "losses": 34,
+      "picks": 60,
+      "kills": 239,
+      "deaths": 534,
+      "assists": 2078,
+      "goldEarned": 11772,
+      "cs": 15,
+      "kda": 4.3,
+      "tier": "4 티어",
+      "tierScore": 87,
+      "winrate": 43.3,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "895",
+    "championName": "Nilah",
+    "krchampionName": "닐라",
+    "stats": {
+      "wins": 18,
+      "losses": 21,
+      "picks": 39,
+      "kills": 468,
+      "deaths": 442,
+      "assists": 725,
+      "goldEarned": 13793,
+      "cs": 64,
+      "kda": 2.7,
+      "tier": "4 티어",
+      "tierScore": 89,
+      "winrate": 46.2,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "897",
+    "championName": "KSante",
+    "krchampionName": "크산테",
+    "stats": {
+      "wins": 22,
+      "losses": 36,
+      "picks": 58,
+      "kills": 426,
+      "deaths": 618,
+      "assists": 1268,
+      "goldEarned": 11924,
+      "cs": 35,
+      "kda": 2.7,
+      "tier": "4 티어",
+      "tierScore": 76,
+      "winrate": 37.9,
+      "pickrate": 0.5
+    }
+  },
+  {
+    "championId": "901",
+    "championName": "Smolder",
+    "krchampionName": "스몰더",
+    "stats": {
+      "wins": 22,
+      "losses": 16,
+      "picks": 38,
+      "kills": 415,
+      "deaths": 402,
+      "assists": 927,
+      "goldEarned": 14412,
+      "cs": 78,
+      "kda": 3.3,
+      "tier": "1 티어",
+      "tierScore": 113,
+      "winrate": 57.9,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "902",
+    "championName": "Milio",
+    "krchampionName": "밀리오",
+    "stats": {
+      "wins": 24,
+      "losses": 14,
+      "picks": 38,
+      "kills": 90,
+      "deaths": 251,
+      "assists": 1549,
+      "goldEarned": 11929,
+      "cs": 16,
+      "kda": 6.5,
+      "tier": "OP",
+      "tierScore": 123,
+      "winrate": 63.2,
+      "pickrate": 0.3
+    }
+  },
+  {
+    "championId": "910",
+    "championName": "Hwei",
+    "krchampionName": "흐웨이",
+    "stats": {
+      "wins": 23,
+      "losses": 29,
+      "picks": 52,
+      "kills": 464,
+      "deaths": 498,
+      "assists": 1444,
+      "goldEarned": 13547,
+      "cs": 36,
+      "kda": 3.8,
+      "tier": "4 티어",
+      "tierScore": 89,
+      "winrate": 44.2,
+      "pickrate": 0.4
+    }
+  },
+  {
+    "championId": "950",
+    "championName": "Naafiri",
+    "krchampionName": "나피리",
+    "stats": {
+      "wins": 16,
+      "losses": 10,
+      "picks": 26,
+      "kills": 399,
+      "deaths": 275,
+      "assists": 429,
+      "goldEarned": 14417,
+      "cs": 46,
+      "kda": 3,
+      "tier": "1 티어",
+      "tierScore": 117,
+      "winrate": 61.5,
+      "pickrate": 0.2
+    }
+  }
+]

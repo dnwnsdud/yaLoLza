@@ -1,6 +1,7 @@
 package com.web.project.dto.championstats;
 
 import java.util.Collection;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -10,9 +11,19 @@ public class CounterChampionDTO {
 
     private String championName;
 
+    private String championkrName;
+    
     private CounterStatsDTO stats;
 
-    public String getChampionId() {
+    public String getChampionkrName() {
+		return championkrName;
+	}
+
+	public void setChampionkrName(String championkrName) {
+		this.championkrName = championkrName;
+	}
+
+	public String getChampionId() {
         return championId;
     }
 
