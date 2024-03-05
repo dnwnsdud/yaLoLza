@@ -3,9 +3,12 @@ package com.web.project.dto.runeSpell;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
 
-@Data
+
+
 public class DataEntry {
 
 	private long gameStartTime;//게임 시작 타임 아직은 안 쓸 예정

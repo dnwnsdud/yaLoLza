@@ -94,8 +94,7 @@
 								<ul class="main-first">
 									<li th:each="j : ${mainRune.slots[0].runes}"
 										th:with="rune=${j}" th:id="${rune.id}">
-										<div
-											th:class="${rune.id}==${primaryPerk234[0]}? 'color-icon':'gray-icon'">
+										<div th:class="${rune.id}==${primaryPerk234[0]}? 'color-icon':'gray-icon'">
 											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
@@ -176,21 +175,18 @@
 								</ul>
 								<ul class="perkslot1">
 									<li th:id="${perklist[0].id}">
-										<div
-											th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')">
-											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
+										<div th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')">
+										<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
 										</div>
-									</li>
+									</li>			
 									<li th:id="${perklist[1].id}">
-										<div
-											th:class="${perklist[1].id}==${statperks1}? 'color-icon':(${perklist[1].id}==${statperks1}? 'color-icon':'gray-icon')">
-											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[1].icon}}" />
+										<div th:class="${perklist[1].id}==${statperks1}? 'color-icon':(${perklist[1].id}==${statperks1}? 'color-icon':'gray-icon')">
+										<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[1].icon}}" />
 										</div>
 									</li>
 									<li th:id="${perklist[2].id}">
-										<div
-											th:class="${perklist[2].id}==${statperks1}? 'color-icon':(${perklist[2].id}==${statperks1}? 'color-icon':'gray-icon')">
-											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[2].icon}}" />
+										<div th:class="${perklist[2].id}==${statperks1}? 'color-icon':(${perklist[2].id}==${statperks1}? 'color-icon':'gray-icon')">
+										<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[2].icon}}" />
 										</div>
 									</li>
 								</ul>
@@ -228,9 +224,9 @@
 									</li>
 									<li class="select-ratio">
 										<p>
-											<strong th:id="${runePickRate1}"
-												th:text="${runePickRate1} + '%'">룬선택비율</strong> <br /> <span
-												th:id="${runeCount1}" th:text="${runeCount1} + 게임">1223654게임</span>
+											<strong th:id="${runePickRate1}" th:text="${runePickRate1} + '%'">룬선택비율</strong> 
+											<br /> 
+											<span th:id="${runeCount1}" th:text="${runeCount1} + 게임">1223654게임</span>
 										</p>
 										<p th:id="${runeWinRate1}" th:text="${runeWinRate1} + '%'">승률</p>
 									</li>
@@ -249,9 +245,9 @@
 									</li>
 									<li class="select-ratio">
 										<p>
-											<strong th:id="${runePickRate2}"
-												th:text="${runePickRate2} + '%'">룬선택비율</strong> <br /> <span
-												th:id="${runeCount2}" th:text="${runeCount2} + 게임">1223654게임</span>
+											<strong th:id="${runePickRate2}" th:text="${runePickRate2} + '%'">룬선택비율</strong> 
+											<br /> 
+											<span th:id="${runeCount2}" th:text="${runeCount2} + 게임">1223654게임</span>
 										</p>
 										<p th:id="${runeWinRate2}" th:text="${runeWinRate2} + '%'">승률</p>
 									</li>
@@ -319,18 +315,16 @@
 												alt="아이템 이미지">
 										</div>
 										<div th:id="${item2.id}" class="item-buildstart">
-											<img th:src="@{'/img/item/'+${item3.id}+'.png'}"
-												alt="아이템 이미지">
+											<img th:src="@{'/img/item/'+${item3.id}+'.png'}" alt="아이템 이미지">
 										</div>
 									</div>
 									<p>
 									<div class="order-block">
-										<strong th:id="${itemPickRate1}"
-											th:text="${itemPickRate1} + '%'">선택비율</strong> <br> <span
-											th:id="${itemCount1}" th:text="${itemCount1} + 게임">게임수asdasdas</span>
+										<strong th:id="${itemPickRate1}" th:text="${itemPickRate1} + '%'">선택비율</strong>
+										<br> 
+										<span th:id="${itemCount1}" th:text="${itemCount1} + 게임">게임수asdasdas</span>
 									</div>
-									<div class="order-vic" th:id="${itemWinRate1}"
-										th:text="${itemWinRate1}  + '%'">승률</div>
+									<div class="order-vic" th:id="${itemWinRate1}" th:text="${itemWinRate1}  + '%'">승률</div>
 									</p>
 								</div>
 							</li>
@@ -550,10 +544,9 @@
 								</div>
 								<p>
 								<div class="order-block">
-									<strong th:id="${summonerSpellSetCountRate1}"
-										th:text="${summonerSpellSetCountRate1}  + '%'">선택비율</strong> <span
-										th:id="${summonerSpellSet1Count1}"
-										th:text="${summonerSpellSet1Count1} + 게임">게임수asdasdas</span>
+									<strong th:id="${summonerSpellSetCountRate1}" th:text="${summonerSpellSetCountRate1}  + '%'">선택비율</strong> 
+									
+									<span th:id="${summonerSpellSet1Count1}" th:text="${summonerSpellSet1Count1} + 게임">게임수asdasdas</span>
 								</div>
 								<div class="order-vic" th:text="${summonerSpellSet1Win}  + '%'"></div>
 								</p>
@@ -571,10 +564,9 @@
 								</div>
 								<p>
 								<div class="order-block">
-									<strong th:id="${summonerSpellSetCountRate2}"
-										th:text="${summonerSpellSetCountRate2}  + '%'">선택비율</strong> <span
-										th:id="${summonerSpellSet1Count2}"
-										th:text="${summonerSpellSet1Count2} + 게임">게임수asdasdas</span>
+									<strong th:id="${summonerSpellSetCountRate2}" th:text="${summonerSpellSetCountRate2}  + '%'">선택비율</strong> 
+									
+									<span th:id="${summonerSpellSet1Count2}" th:text="${summonerSpellSet1Count2} + 게임">게임수asdasdas</span>
 								</div>
 								<div class="order-vic" th:text="${summonerSpellSet2Win}  + '%'"></div>
 								</p>

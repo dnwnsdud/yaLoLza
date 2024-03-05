@@ -2,6 +2,10 @@ package com.web.project.dto.runeSpell;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+import lombok.Data;
+
 public class Styles {
 
 	

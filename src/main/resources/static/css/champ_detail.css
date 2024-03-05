@@ -1,6 +1,11 @@
 body {
   background-color: var(--point7);
 }
+.gray-icon{
+	filter:grayscale(1)
+}
+
+
 /* 챔피언 정보 시작*/
 .con1 {
   background-color: var(--point8);
