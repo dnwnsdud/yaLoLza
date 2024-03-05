@@ -277,7 +277,7 @@ public class ChampionsPage {
             List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
 //            출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
 			model.addAttribute("perklist", perklist);
-            Map<Integer, String> keysRuneImage = RuneData.keysRuneImage();
+            Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
             model.addAttribute("keysRuneImage", keysRuneImage);
 			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
 			model.addAttribute("summoner1", spell);

@@ -485,7 +485,7 @@ import com.web.project.system.SummonerData;
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
 		   		  //진비 챔피언 이름 영어-> 한글
 		  		 Map<String, String> keysChamName = ChampionData.keysChamName();
-		  		Map<Long, String> keysRuneImage = RuneData.keysRuneImageLong();
+		  		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
 		  		//matchsssinfoList.get(0).getBody().getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getStyle().get
 		  		Map<Long, String> keysChamSpell = SummonerData.keysSumSpellLong();
 		  		Map<String, List<Spell>> keysChamSkill = ChampionData.keysChamSkill();
