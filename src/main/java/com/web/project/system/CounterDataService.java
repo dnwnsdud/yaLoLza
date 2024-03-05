@@ -1,5 +1,6 @@
 package com.web.project.system;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Service;
 import com.web.project.dto.championstats.CounterChampionDTO;
 import com.web.project.dto.championstats.CounterCountDTO;
 import com.web.project.dto.championstats.CounterPositionDTO;
-import com.web.project.system.CounterJsonReader;
 
 @Service
 public class CounterDataService {
@@ -90,13 +90,22 @@ public class CounterDataService {
 	    }
 
 	    otherChampions.sort((champion1, champion2) -> Double.compare(champion2.getStats().getWinRate(), champion1.getStats().getWinRate()));
+	    
+	    // 상위 5개 챔피언 추출
+	    List<CounterChampionDTO> topChampions = otherChampions.stream().limit(5).collect(Collectors.toList());
+
+	    // 하위 5개 챔피언 추출
+	    List<CounterChampionDTO> bottomChampions = otherChampions.stream().sorted((champion1, champion2) -> Double.compare(champion1.getStats().getWinRate(), champion2.getStats().getWinRate())).limit(5).collect(Collectors.toList());
+
+	    modelData.put("topChampions", topChampions);
+	    modelData.put("bottomChampions", bottomChampions);
 
 	    modelData.put("selectedChampionName", champion);
-	    modelData.put("additionalChampionName", additionalChampion);
 	    modelData.put("targetCounters", targetCounters);
 	    modelData.put("otherChampions", otherChampions);
 	    modelData.put("matchCounts", matchCounts);
-
+	    modelData.put("selectedChampionName", champion);
+	    
 	    return modelData;
 	}
 
