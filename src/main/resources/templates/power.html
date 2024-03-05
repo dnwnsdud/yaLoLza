@@ -305,7 +305,11 @@
                         <div>
                           <div class="img-wrap"><img loading="lazy"
                               th:src="@{'/img/champion/'+${match.body.info.participants[z].championName} + '.png'}"
-                              alt="" /></div>
+                              alt="" />
+                         <div class="tenchamps-level">
+                          <span  th:text="${match.body.info.participants[z].champLevel}"></span>
+                          </div>
+                              </div>
                         </div>
                         <div class="vic-spell">
                           <div>
@@ -534,7 +538,11 @@
                         <div>
                           <div class="img-wrap"><img loading="lazy"
                               th:src="@{'/img/champion/'+${match.body.info.participants[nz].championName} + '.png'}"
-                              alt="" /></div>
+                              alt="" />
+                          <div class="tenchamps-level">
+                          <span  th:text="${match.body.info.participants[nz].champLevel}"></span>
+                          </div>
+                              </div>
                         </div>
                         <div class="vic-spell">
                           <div>
