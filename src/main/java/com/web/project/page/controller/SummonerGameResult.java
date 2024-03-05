@@ -55,7 +55,7 @@ import com.web.project.system.SummonerData;
  
 
   @Controller  
-  @RequestMapping("/newlolkia") 
+  @RequestMapping("/yalolza.gg") 
   public class SummonerGameResult {
 	  
 	@Autowired
@@ -92,7 +92,7 @@ import com.web.project.system.SummonerData;
   this.restTemplate = restTemplateBuilder.build();
   }
     
-  @GetMapping("/userinfo/{name}")
+  @GetMapping("/summoners/{name}")
   public String findUser(@PathVariable String  name, Model model,String keyword) {	      
 	    String summonername =  name.replace("%20", " ");
 	    String tag = "KR1";

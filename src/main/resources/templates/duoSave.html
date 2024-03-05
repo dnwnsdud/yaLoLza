@@ -17,7 +17,7 @@
 			<div class="label-summonerName" id="summonerName">소환사 이름 (KR)</div>
 			<div class="summonerName">
 				<input type="text" autocomplete="off" class="input-summonerName" placeholder="플레이어 이름 + #KR1"
-					name="summonerName" readonly rerequired th:if="${#authorization.expression('isAuthenticated()')}"
+					name="summonerName"  rerequired th:if="${#authorization.expression('isAuthenticated()')}"
 					th:value="${#authentication.principal.nickname}">
 				<!-- 로그인하지 않은 경우에는 비어있는 입력란을 보여줍니다. -->
 				<input type="text" autocomplete="off" class="input-summonerName" placeholder="플레이어 이름 + #KR1"

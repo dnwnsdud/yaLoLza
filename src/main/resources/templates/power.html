@@ -29,7 +29,7 @@
           <p class="user-id">
             <span th:text="${'소환사 레벨'+summoner.summonerLevel}"></span>
           </p>
-          <form th:action="@{'/newlolkia/userinfo/' + ${summoner.summonername} + '-'+ ${summoner.tag}}" method="get">
+          <form th:action="@{'/yalolza.gg/summoners/' + ${summoner.summonername} + '-'+ ${summoner.tag}}" method="get">
 
 
             <input type="hidden" id="keyword" name="keyword">
@@ -237,7 +237,7 @@
                         th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt="" />
                     </div>
                     <span>
-					<a th:href="@{'/newlolkia/userinfo/' + ${ match.body.info.participants[i].riotIdGameName + '-' + match.body.info.participants[i].riotIdTagline}}"
+					<a th:href="@{'/yalolza.gg/summoners/' + ${ match.body.info.participants[i].riotIdGameName + '-' + match.body.info.participants[i].riotIdTagline}}"
 					   th:text="${match.body.info.participants[i].summonerName == '' ? match.body.info.participants[i].riotIdGameName : match.body.info.participants[i].riotIdGameName}">
 					</a>
                       </span>
@@ -249,7 +249,7 @@
                         th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt="" />
                     </div>
                    <span>
-					<a th:href="@{'/newlolkia/userinfo/' + ${ match.body.info.participants[i].riotIdGameName + '-' + match.body.info.participants[i].riotIdTagline}}"
+					<a th:href="@{'/yalolza.gg/summoners/' + ${ match.body.info.participants[i].riotIdGameName + '-' + match.body.info.participants[i].riotIdTagline}}"
 					   th:text="${match.body.info.participants[i].summonerName == '' ? match.body.info.participants[i].riotIdGameName : match.body.info.participants[i].riotIdGameName}">
 					</a>
                    </span>
@@ -323,7 +323,7 @@
                         </div>
                         <p>
                    <strong>
-					<a th:href="@{'/newlolkia/userinfo/' + ${ match.body.info.participants[z].riotIdGameName + '-' + match.body.info.participants[z].riotIdTagline}}"
+					<a th:href="@{'/yalolza.gg/summoners/' + ${ match.body.info.participants[z].riotIdGameName + '-' + match.body.info.participants[z].riotIdTagline}}"
 					   th:text="${match.body.info.participants[z].summonerName == '' ? match.body.info.participants[z].riotIdGameName : match.body.info.participants[z].riotIdGameName}">
 					</a>
                    </strong>
@@ -552,7 +552,7 @@
                         </div>
                         <p>
                     <strong>
-					<a th:href="@{'/newlolkia/userinfo/' + ${ match.body.info.participants[nz].riotIdGameName + '-' + match.body.info.participants[nz].riotIdTagline}}"
+					<a th:href="@{'/yalolza.gg/summoners/' + ${ match.body.info.participants[nz].riotIdGameName + '-' + match.body.info.participants[nz].riotIdTagline}}"
 					   th:text="${match.body.info.participants[nz].summonerName == '' ? match.body.info.participants[nz].riotIdGameName : match.body.info.participants[nz].riotIdGameName}">
 					</a>
                    </strong><br/>
@@ -618,7 +618,7 @@
                             th:text="${match.body.info.participants[nz].totalMinionsKilled + match.body.info.participants[nz].totalAllyJungleMinionsKilled +match.body.info.participants[nz].totalEnemyJungleMinionsKilled}">211</span><br />
                           <span
                             th:text=" '분당 ' + ${(match.body.info.participants[nz].totalMinionsKilled + match.body.info.participants[nz].totalAllyJungleMinionsKilled +match.body.info.participants[nz].totalEnemyJungleMinionsKilled) /(match.body.info.gameDuration/ 60 )}">분당
-                            4.6</span>
+                            4.6</span>	
                         </p>
                       </li>
                       <li>
