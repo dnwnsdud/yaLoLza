@@ -19,7 +19,15 @@
 
 <script src="/js/home.js" defer></script>
 <script src="/js/position.js" defer></script>
-
+<script>
+    function submitForm(e) {
+		e.preventDefault();
+        var inputValue = document.getElementById("searchInput").value;
+        
+        var url = "/yalolza.gg/summoners/" + inputValue;
+        window.location.href = url;
+    }
+</script>
 </head>
 
 <body>
@@ -58,10 +66,10 @@
         </div>
     </header>
     <figure>
-        <div class="homesearch">
-            <input type="text" placeholder="챔피언 혹은 ID를 검색하세요.">
-            <button>검색</button>
-        </div>
+        <form class="homesearch" id="searchForm" action="yalolza.gg/summoners/" method="get" >
+            <input type="text" id="searchInput" name="name" placeholder="챔피언 혹은 ID를 검색하세요.">
+            <button onclick="submitForm()">검색</button>
+        </form>
 
 
         <h2>주목해야 할 챔피언(KR)</h2>

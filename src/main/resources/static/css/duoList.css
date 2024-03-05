@@ -382,6 +382,9 @@ input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
    fill: white
 }
 
+.plus>svg>path {
+	fill: var(--point3);
+}
 .modal .close > svg{
    width: 100%;
 }
