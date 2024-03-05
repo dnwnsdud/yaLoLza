@@ -198,7 +198,6 @@
         var position = url.searchParams.get("position");
 
         btn.forEach((e) => {
-          console.log(btn.id);
           e.id.replace(`${position}`);
           if (e.id == position) e.id = "on";
         });
@@ -207,6 +206,24 @@
             "/yalolza.gg/champions?tier=EMERALD&position=TOP";
         }
       });
+      document.addEventListener("DOMContentLoaded", function() {
+    	   	let champList = document.querySelector(".champ-face");
+    	    let champions = champList.querySelectorAll("li");
+    	    
+    	    let sortedChampions = Array.from(champions).sort(function(a, b) {
+    	        let champNameA = a.querySelector("p").innerText;
+    	        let champNameB = b.querySelector("p").innerText;
+    	        return champNameA.localeCompare(champNameB, "ko");
+    	    });
+
+    	    champions.forEach(function(champion) {
+    	        champion.remove();
+    	    });
+
+    	    sortedChampions.forEach(function(champion) {
+    	        champList.appendChild(champion);
+    	    });
+    	});
     </script>
     <br />
     <br />

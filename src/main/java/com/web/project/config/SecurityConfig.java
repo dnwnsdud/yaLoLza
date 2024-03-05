@@ -63,9 +63,12 @@ public class SecurityConfig {
 					auth
 						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 						.requestMatchers(
-								"/admin",
-								"/admin/**",
+							"/admin",
+							"/admin/**",
+							"/static",
 							"/yalolza.gg",
+							"/yalolza.gg/static",
+							"/yalolza.gg/static/**",
 							"/yalolza.gg/**",
 							"/yalolza.gg/champions",
 							"/yalolza.gg/champions/**",
