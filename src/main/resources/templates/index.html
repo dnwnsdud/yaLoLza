@@ -19,14 +19,25 @@
 
 <script src="/js/home.js" defer></script>
 <script src="/js/position.js" defer></script>
-<script>
-    function submitForm(e) {
-		e.preventDefault();
-        var inputValue = document.getElementById("searchInput").value;
+<script defer>
+   function submitForm(event) {
+	   console.log("실행")
+    event.preventDefault(); 
+    var inputValue = document.getElementById('searchInput').value;
+    var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
+    if (inputValue.includes('#')) {
+		console.log("첫번째")
+        var modifiedValue = inputValue.replace(/@/g, '-');
+        var submitURL = "localhost:9998/yalolza/summoners/" + modifiedValue;
+    } else {
+       console.log("예외")
+        var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
         
-        var url = "/yalolza.gg/summoners/" + inputValue;
-        window.location.href = url;
+        window.location.href = submitURL;
     }
+    console.log("마지막")
+    window.location.href = submitURL;
+}
 </script>
 </head>
 
@@ -66,7 +77,7 @@
         </div>
     </header>
     <figure>
-        <form class="homesearch" id="searchForm" action="yalolza.gg/summoners/" method="get" >
+        <form class="homesearch" id="searchForm"  method="get" >
             <input type="text" id="searchInput" name="name" placeholder="챔피언 혹은 ID를 검색하세요.">
             <button onclick="submitForm()">검색</button>
         </form>
