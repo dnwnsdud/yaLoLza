@@ -513,8 +513,7 @@ import com.web.project.system.SummonerData;
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
 				    model.addAttribute("summonerchamsper", summonerchamsper);
-				    model.addAttribute("matchsssinfoList", matchsssinfoList);
-	 	 		    
+				    model.addAttribute("matchsssinfoList", matchsssinfoList);	 	 		    
 			  		model.addAttribute("matchspurchase", summnnerItemTimeStempSS);
 			  		model.addAttribute("matchsskill", summonerskilllups);
 			  		model.addAttribute("matchsskilltree", summonerskillluptree);
@@ -541,7 +540,7 @@ import com.web.project.system.SummonerData;
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {
-
+   
     	  //키워드 유무는 갱신버튼의 유무
     	  // 키워드가 없는 경우의 처리
     	  if (keyword == null) { 

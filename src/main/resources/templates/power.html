@@ -102,46 +102,7 @@
         <div class="user-right">
 		  <section th:replace="fragments.html :: results-fragment(totalgame=${summonerall[7]}, wingame=${summonerall[0]}, winper=${summonerall[6]}, kill=${summonerall[1]}, death=${summonerall[2]}, assist=${summonerall[3]}, kda=${summonerall[4]}, killper=${summonerall[5]}, most=${summonermost})"/>
           <!-- 최근 20전 -->
-          <section class="user-result">
-            <ul class="user-graphtitle">
-              <li>
-                <h3
-                  th:text="${ summonerall[7] + '전 ' + summonerall[0] + '승 ' + (summonerall[7] - summonerall[0]) + '패'}">
-                  20전 8승 12패</h3>
-                <div class="graph-wrap">
-                  <span id="siwwin" th:text="${summonerall[0]}" style="display: none;"></span>
-                  <span id="sjwtotal" th:text="${summonerall[7] - summonerall[0]}" style="display: none;"></span>
-                  <canvas id="myChart" style="width: 100px; height: 100px">
-                  </canvas>
-                  <span class="graph-donut" th:text="${summonerall[6] +'%'}">50%</span>
-                </div>
-              </li>
-              <li>
-                <p class="user-kda">
-                  <span th:text="${summonerall[1] + '/'+ summonerall[2] + '/'+ summonerall[3] }">킬/데스/어시</span><br />
-                  <strong th:text="${summonerall[4] + 'KDA' }">2.8 KDA</strong><br />
-                  <span style="color: var(--point10); font-size: 1.5rem" th:text="${ '킬관여 ' +summonerall[5] + '%' }">
-                  </span>
-                </p>
-              </li>
-            </ul>
-            <ul class="user-most3">
-              <h3 th:text="${'플레이한 챔피언 (최근 '+ summonerall[7] + ' 게임)'}"></h3>
-              <div class="most-flex">
-                <li th:each="stats, statIndex : ${summonermost}" th:if="${statIndex.index < 3}">
-                  <div class="user-most3kda">
-                    <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/champion/'+${stats[0]} + '.png'}"
-                        alt="" /></div>
-                    <p>
-                      <strong th:text="${stats[2]*100/stats[1] + '%'}">70%</strong><br />
-                      <span th:text="${stats[2] + '승 ' + (stats[1] - stats[2]) + '패'}">3승 2패</span><br />
-                      <span th:text="${stats[6]}">2.78 KDA</span>
-                    </p>
-                  </div>
-                </li>
-              </div>
-            </ul>
-          </section>
+	      <section th:replace="fragments.html :: results-fragment(totalgame=${summonerall[7]}, wingame=${summonerall[0]}, winper=${summonerall[6]}, kill=${summonerall[1]}, death=${summonerall[2]}, assist=${summonerall[3]}, kda=${summonerall[4]}, killper=${summonerall[5]}, most=${summonermost})"/>
           <!-- 유저 게임 정보 -->
           <!-- 반복점 시작 -->
           <div th:each="match , i : ${matchsssinfoList}">
@@ -899,6 +860,7 @@
             </div>
             <!--감싼것-->
           </div>
+<<<<<<< Updated upstream
          <!--유저챔피언시작-->
          
            <section class="user-totalchampions">
@@ -959,6 +921,19 @@
           <!--유저챔피언끝-->          
           
           
+=======
+          <script>
+			  let count = 5;
+			  async function ff(){
+				  console.log(`${window.location.pathname.replace("/yalolza.gg/more/","")}/${count}`)
+				  let text = await fetch(`${window.location.pathname.replace("/yalolza.gg/more/","")}/${count}`).then(r=>r.text());
+				  count += 5;
+				  text = text.replace(/[^\\]*<body>/i, "").replace(/<\/body>[^\\]*/i, "");
+				  document.querySelector("div.user-right").innerHTML += text;
+			  }
+		  </script>
+          <div onclick="ff()">aa</div>
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
