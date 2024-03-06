@@ -15,6 +15,7 @@
 
 </head>
 <body>
+	<header th:replace="~{/header :: header}"></header>
    <div>
       <!-- 챔피언 정보-->
       <section class="con1">
@@ -24,7 +25,7 @@
                   th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}"
                   alt="챔피언 이미지" />
             </div>
-            <h1>
+            <h1 class="champhead">
                <strong style="font-size: 3rem;" th:text="${champion.name}"></strong><!--아무도 없음-->
                <span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
                   style="font-size: 1.3rem" class="tier">1티어</span>
@@ -129,9 +130,6 @@
 							</div>
 							<div class="sub-rune">
 								<!--이지수-->
-								<ul>
-									<li></li>
-								</ul>
 								<ul class="sub-main">
 									<li th:id="${subRune.id}"><img alt="룬모음 이미지"
 										th:src="@{'/img/'+${subRune.icon}}" /></li>
@@ -166,12 +164,7 @@
 								<p th:text="${subRune.name}"></p>
 							</div>
 							<div class="fragments-rune" th:with="value=5112"> <!--perk 임의의 값-->
-								<ul>
-									<li></li>
-								</ul>
-								<ul>
-									<li></li>
-								</ul>
+							
 								<ul class="perkslot1">
 									<li th:id="${perklist[0].id}">
 										<div th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')">
@@ -662,7 +655,7 @@
 												th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
 												alt="Champion Icon" />
 										</div>
-										<p class="counter-ratio"
+										<p class="counter-ratio1"
 											th:text="${champion.stats.winRate + '%'}">승률</p>
 										<div class="counter-game">
 											<p th:text="${matchCounts[champion.championName]}">게임 횟수</p>
@@ -711,31 +704,6 @@
 									</div>
 								</div>
 							</li>
-							<!-- <li>    
-                      <h3>상대하기 쉬운 챔피언</h3>
-                      <div class="counter-champ">
-                          <div>
-                              <div class="counter-wrap"><img src="/img/GarenE.webp" alt=""></div>
-                              <p class="counter-ratio2">44.06%</p>
-                          </div>
-                          <div>
-                              <div class="counter-wrap"><img src="" alt=""></div>
-                              <p class="counter-ratio2">44.06%</p>
-                          </div>
-                          <div>
-                              <div class="counter-wrap"><img src="" alt=""></div>
-                              <p class="counter-ratio2">44.06%</p>
-                          </div>
-                          <div>
-                              <div class="counter-wrap"><img src="" alt=""></div>
-                              <p class="counter-ratio2">44.06%</p>
-                          </div>
-                          <div>
-                              <div class="counter-wrap"><img src="" alt=""></div>
-                              <p class="counter-ratio2">44.06%</p>
-                          </div>
-                      </div>
-                  </li> -->
                   </ul>
                </section>
                <!-- 장인 랭킹 --><!--진성님-->
@@ -798,6 +766,7 @@
          </div>
       </div>
    </div>
+   <footer th:replace="~{/footer :: footer}"></footer>
 </body>
 <script>
     </script>
@@ -813,6 +782,7 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
               borderRadius: "1rem",
             },
             {
+			  color:"var(--white)",
               fontSize: "15px",
               width: "250px",
               padding:"10px"

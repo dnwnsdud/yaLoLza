@@ -6,6 +6,7 @@ const swiper = new Swiper(".homeswiper", {
     delay: "5000",
     disableOnInteraction: false,
   },
+  slideToClickedSlide : true,
   spaceBetween: 30,
   rewind: true,
   navigation: {
