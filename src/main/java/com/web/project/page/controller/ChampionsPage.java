@@ -48,6 +48,9 @@ import com.web.project.system.TierPositionService;
 
 import lombok.NoArgsConstructor;
 
+import com.web.project.system.StatisticChampion;
+ 
+
 @Controller
 @RequestMapping("/yalolza.gg/champions")
 public class ChampionsPage {
@@ -80,15 +83,16 @@ public class ChampionsPage {
 	//챔피언 전체 페이지 - 진성+진비
 	@GetMapping("")
 	public String getChampionsData(@RequestParam(required = false, defaultValue = "EMERALD") String tier,
-			@RequestParam(required = false, defaultValue = "TOP") String position, Model model) {
-//		List<Champion> data = ChampionData.imagedata();
-//		model.addAttribute("data", data);
-		List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position);
-		model.addAttribute("selectedTier", tier);
-		model.addAttribute("positionData", uniqueChampions);
-		model.addAttribute("position", position);
-
-		return "champ";
+	                               @RequestParam(required = false, defaultValue = "TOP") String position, Model model) {
+		List<Champion> data = ChampionData.imagedata();
+		model.addAttribute("data", data);
+	    List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position, model);
+	    Map<String, String> championPositions = tierPositionService.getChampionPositions(tier, position);
+	    model.addAttribute("selectedTier", tier);
+	    model.addAttribute("positionData", uniqueChampions);
+	    model.addAttribute("position", position);
+	    model.addAttribute("championPositions", championPositions);
+	    return "champ";
 	}
 
 	
@@ -132,9 +136,6 @@ public class ChampionsPage {
 	
 	
 	
-	
-	
-	
 	@GetMapping("/{champion}/build")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
 	public String ChampionsDetail(
 			Model model,
@@ -152,9 +153,11 @@ public class ChampionsPage {
 	        model.addAttribute("winrate", championData.getStats().getWinrate());
 	        model.addAttribute("pickrate", championData.getStats().getPickrate());
 	        model.addAttribute("banrate", championData.getStats().getBanrate());
+	        model.addAttribute("champtier", championData.getStats().getChamptier());
 	        championData.getStats().getWinrate();
 	        championData.getStats().getPickrate();
 	        championData.getStats().getBanrate();
+	        championData.getStats().getChamptier();
 	    } else {
 	        model.addAttribute("error", "챔피언 데이터를 찾을 수 없습니다: " + champion);
 	        return "error";
@@ -168,7 +171,7 @@ public class ChampionsPage {
 	        return "error";
 	    }
 
-	    List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position);
+	    List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position, model);
 	    model.addAttribute("selectedTier", tier);
 	    model.addAttribute("positionData", uniqueChampions);
 	    model.addAttribute("position", position);

@@ -26,7 +26,7 @@ public class YoutubeService {
 		String type = "video";
 		int maxResults = 12;
 		String order = "viewCount";
-		LocalDateTime MonthsAgo = LocalDateTime.now().minusMonths(12);
+		LocalDateTime MonthsAgo = LocalDateTime.now().minusMonths(3);
 		DateTimeFormatter datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		String publishedAfter = MonthsAgo.format(datetime);
 		String relevanceLanguage = "ko";

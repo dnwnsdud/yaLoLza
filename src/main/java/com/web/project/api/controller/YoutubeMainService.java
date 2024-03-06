@@ -20,12 +20,12 @@ public class YoutubeMainService {
 
 	public String youtubeGenerator() {
 
-		String query = "롤 리그오브레전드";
+		String query = "롤 이슈";
 
 		String apiUrl = "https://www.googleapis.com/youtube/v3/search";
 		String part = "snippet";
 		String type = "video";
-		int maxResults = 1;
+		int maxResults = 4;
 		String order = "viewCount";
 		LocalDateTime MonthsAgo = LocalDateTime.now().minusMonths(1);
 		DateTimeFormatter datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -56,7 +56,7 @@ public class YoutubeMainService {
 			JsonObject snippet = video.getAsJsonObject("snippet");
 			String title = snippet.get("title").getAsString();
 
-			String iframeCode = "<iframe width=\"1320\" height=\"743\" " + "src=\"https://www.youtube.com/embed/"
+			String iframeCode = "<iframe width=\"565\" height=\"318\" " + "src=\"https://www.youtube.com/embed/"
 					+ videoId + "\" " + "title=\"" + title + "\" frameborder=\"0\" "
 					+ "allow=\"accelerometer; picture-in-picture;\" "
 					+ "allowfullscreen></iframe>";

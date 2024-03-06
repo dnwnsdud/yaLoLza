@@ -20,66 +20,33 @@
 <script src="/js/home.js" defer></script>
 <script src="/js/position.js" defer></script>
 <script defer>
-   function submitForm(event) {
-	   console.log("실행")
-    event.preventDefault(); 
-    var inputValue = document.getElementById('searchInput').value;
-    var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
-    if (inputValue.includes('#')) {
-		console.log("첫번째")
-        var modifiedValue = inputValue.replace(/@/g, '-');
-        var submitURL = "localhost:9998/yalolza/summoners/" + modifiedValue;
-    } else {
-       console.log("예외")
-        var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
-        
-        window.location.href = submitURL;
+    function submitForm(event) {
+        event.preventDefault();
+        var inputValue = document.getElementById('searchInput').value;
+
+        if (inputValue.includes('#')) {
+            var modifiedValue = inputValue.replace(/@/g, '-');
+            var submitURL = "http://localhost:9998/yalolza.gg/summoners/" + modifiedValue;
+        } else {
+            var submitURL = "http://localhost:9998/yalolza.gg/summoners/" + encodeURIComponent(inputValue)+"-KR1";
+        }
+
+        // URL에서 쿼리 스트링 제거
+        var newURL = submitURL.split('?')[0];
+
+        // 새로운 URL로 이동
+        window.location.href = newURL;
     }
-    console.log("마지막")
-    window.location.href = submitURL;
-}
 </script>
 </head>
 
 <body>
 	<div class="wrap">
-		<header>
-			<div class="mw">
-				<h1>
-					<a th:href="@{/yalolza.gg/}"><img th:src="@{/img/mainlogo.png}"
-						alt="" /></a>
-				</h1>
-				<nav>
-					<div class="hd-nav">
-
-
-                    <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
-                    <div><a href="#">칼바람</a></div>
-                    <div><a href="#">통계</a></div>
-                    <div><a href="#">랭킹</a></div>
-                    <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
-                    <div><a th:href="@{/duo.yalolza.gg/list}">DUO</a></div>
-                </div>
-                <div class="btn">
-                    <button><a sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
-	
-     				<button><a sec:authorize="hasRole('USER')" th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button>
-     				<button><a sec:authorize="hasRole('USER')" th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
-                    <button>
-						
-     				<button><a sec:authorize="hasRole('ADMIN')" th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button>
-     				<button><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}">관리자페이지</a></button>
-                    <button>
-                        <i class="fa-regular fa-sun"></i>
-                    </button>
-                </div>
-            </nav>
-        </div>
-    </header>
+		 <header th:replace="~{/header :: header}"></header>
     <figure>
         <form class="homesearch" id="searchForm"  method="get" >
             <input type="text" id="searchInput" name="name" placeholder="챔피언 혹은 ID를 검색하세요.">
-            <button onclick="submitForm()">검색</button>
+            <button onclick="submitForm(event)">검색</button>
         </form>
 
 
@@ -127,8 +94,12 @@
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Zyra}"></div>
 				</div>
             </div>
-        <div class="swiper-button-next next1"></div>
-        <div class="swiper-button-prev prev1"></div>
+        <div class="swiper-button-next next1">
+			<i class="fa-solid fa-caret-right"></i></i>
+		</div>
+        <div class="swiper-button-prev prev1">
+			<i class="fa-solid fa-caret-left"></i>
+		</div>
         </div>
 </figure>
 <div class="layoutBox">
@@ -251,27 +222,7 @@
 	<div class="videoBox" th:each="video : ${youtubeVideos}"
 		th:utext="${video}"></div>
 </div>
-<footer>
-	<div class="ft-wrap">
-		<div class="idv">
-			<p>
-				<a th:href="@{/yalolza.gg/useterms}">이용약관</a>
-			</p>
-			<p>
-				<a th:href="@{/yalolza.gg/privacy}">개인정보처리방침</a>
-			</p>
-		</div>
-		<div class="lol">
-			<span>YALOLZA.GG is hosted by LOL Analytics, Inc. YALOLZA.GG
-				isn’t endorsed by Riot Games and doesn’t reflect the views or
-				opinions of Riot Games or anyone officially involved in producing
-				or managing League of Legends. League of Legends and Riot Games
-				are trademarks or registered trademarks of Riot Games, Inc. League
-				of Legends © Riot Games, Inc.</span><br />
-			<p>LOL Analytics, Inc. © 2024</p>
-		</div>
-	</div>
-</footer>
+ <footer th:replace="~{/footer :: footer}"></footer>
 </div>
 					
 

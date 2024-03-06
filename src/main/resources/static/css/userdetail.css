@@ -1,3 +1,6 @@
+
+
+
 /* 유저 정보 시작*/
 .con1 {
   background-color: var(--point8);
@@ -38,6 +41,13 @@ h1 .user-id span {
 }
 h1 p {
   padding-top: 10px;
+}
+#gangsin{
+	padding:5px;
+	font-size: 1.3rem;
+    border-radius: 0.5rem;
+    color:white;
+	background-color: var(--gray1);
 }
 .user-tier {
   display: flex;
@@ -95,22 +105,72 @@ h1 p {
 /* 유저 정보 끝*/
 /* 유저 랭크 시작 */
 .img-wrap2 {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #000;
+  border: 1px solid #7674748e;
   border-radius: 50%;
   background-color: #76747465;
 }
-.ranktier2 .img-wrap2 img {
-  width: 150%;
-  height: 150%;
-  border-radius: 50%;
-}
 
 .img-wrap2 img {
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+}
+.summonerchamps-level{
+	
+	position: relative;
+	left:-10px;
+	bottom:-30px;
+	color:white;
+	z-index: 10;
+	background-color:rgb(83, 83, 83);
+	border-radius: 15px;
+}
+.summonerchamps-level span{
+	
+   display:block;
+   position:absolute;
+   font-size:12px;
+   text-align:center;
+   line-height:30px;
+    right:-10px;
+    bottom:-10px;  
+	width:30px;
+	height:30px;
+	color:white;
+	background-color:rgb(83, 83, 83);
+	border-radius: 15px;
+}
+.tenchamps-level{
+	
+	position: relative;
+	left:-10px;
+	bottom:-30px;
+	color:white;
+	z-index: 10;
+	background-color:black;
+	border-radius: 15px;
+}
+.tenchamps-level span{
+	
+   display:block;
+   position:absolute;
+   font-size:12px;
+   text-align:center;
+   line-height:18px;
+    right:-10px;
+    bottom:30px;  
+	width:18px;
+	height:18px;
+	color:white;
+	background-color:black;
+	border-radius: 9px;
+}
+.ranktier2 {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -153,9 +213,13 @@ h1 p {
   font-size: 2.5rem;
   font-weight: bold;
 }
-.ranktier3 {
+.ranktier3  {
+
   line-height: 2rem;
-  text-align: right;
+  text-align: left;
+}
+.ranktier3 span{
+	  white-space: nowrap;
 }
 /* 유저 랭크 끝 */
 /* 모스트 10 시작 */
@@ -172,6 +236,9 @@ h1 p {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+.most-champname{
+	width:150px
 }
 .user-most .most-champtext {
   text-align: right;
@@ -303,9 +370,9 @@ h1 p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .usergame-id > span {
   width: 100px;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -614,6 +681,10 @@ h1 p {
 .sub-rune {
   padding: 0 20px 0 20px;
 }
+.sub-rune{
+	border-right: 1px solid #f0f0f0;;
+	border-left: 1px solid #f0f0f0;;
+}
 .usergame-runeinfo .main-zero,
 .main-first,
 .sub-main {
@@ -645,6 +716,11 @@ h1 p {
 .usergame-runeinfo {
   padding-bottom: 40px;
 }
+.rune-subject{
+	text-align: center;
+	color: white;
+	font-size: 15px
+}
 .usergame-runeinfo .fragments-runegrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -652,9 +728,28 @@ h1 p {
   padding: 50px 20px 20px 20px;
   gap: 20px;
 }
+.sub-rune{
+	 margin-top: 40px;
+   
+}
+.fragments-rune{
+	
+	padding-left:15px;
+	 margin-top: 130px;
+  
+}
+.fragments-rune ul{
+	padding:5px;
+	gap: 10px;
+}
+.fragments-rune ul img{
+	padding:5px;
+	gap: 10px;
+}
 
 /*  유저 룬 정보 끝 */
 .gray-icon img {
+  opacity:0.5;
   filter: grayscale(100%);
 }
 /* 토글 시작 */

@@ -2,17 +2,16 @@
 
 
 body {
-	background-color: #292a30;
+	background-color: #10131c;
 	color: white;
 }
 
 .duoView {
 	width: 800px;
 	margin: auto;
-	border: 1px solid black;
-	margin-top: 150px;
+	margin-top: 100px;
 	border-radius: 10px;
-	background-color: #45464d;
+	background-color: #292e45;
 	margin-bottom: 50px;
 	
 
@@ -21,15 +20,29 @@ body {
 .duoView>.viewtitle {
 	font-size: 25px;
 	padding: 15px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid gray;
+	display:flex;
+	gap:10px;
+	margin-bottom:10px;
 }
 
-.duoView>.viewtitle>li,
-.duoView>.viewtitle>h2 {
-	display: inline-block;
+.positionBox{
+	display:grid;
+	grid-template-columns:1fr 1.5fr 1fr;
 }
 
+.positionBox > div > span,
+.positionBox > div > li, h3{
+	padding:15px;
+}
 
+.type{
+	width:100px;
+	height:50px;
+	padding:15px;
+	border-radius:10px;
+	border: 1px solid gray;
+}
 .mikeBox {
 	width: 18px;
 }
@@ -45,21 +58,20 @@ body {
 
 .btn {
 	display: inline-block;
-	border: 1px solid gray;
 	border-radius: 10px;
 	text-align: center;
 	margin-left: 10px;
 	width: 380px;
+	background-color:#282830;
 }
 
 .back {
 	display: block;
-	border: 1px solid gray;
 	border-radius: 10px;
 	text-align: center;
 	margin: 10px;
 	width: 777px;
-	background-color: #00bba3;
+	background-color: #282830;
 
 }
 
@@ -70,15 +82,15 @@ div.yourBox {
 
 .Box {
 	width: 50px;
-	border: 1px solid gray;
 	border-radius: 5px;
 	padding: 10px;
 	display: inline-block;
+	border: 1px solid gray;
 }
 
 #positionBox>.Box>svg>path:nth-of-type(1),
 .yourBox>.Box>svg>path:nth-of-type(1) {
-	fill: #00bba3
+	fill: #007aff
 }
 #positionBox>.Box>svg>path:nth-of-type(2),
 .yourBox>.Box>svg>path:nth-of-type(2) {
@@ -95,20 +107,49 @@ div.yourBox {
 
 .for-password>input {
 		width: 355px;
-		background-color: #45464d;
-		border: 1px solid gray;
+		background-color: #282830;
 		border-radius: 10px;
 		padding: 10px;
 		color: white;
 		margin:10px;
 		padding: 13px;
 		font-size:16px;
+		border: none;
 }
 
 input.submitBtn{
 	width:380px;
 	margin-left:4px;
+		cursor: pointer;
 }
 form{
 	padding:0px;
+}
+.playInfo{
+	margin:0 20px;
+	border-radius:10px;
+	height: 168px;
+}
+.playInfo > div{
+	display:grid;
+	grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;
+	text-align:center;
+	align-items: center;
+}
+
+.playMenu{
+	padding:10px;
+	margin-bottom:5px;
+	border-bottom:1px solid gray;
+	background-color:#232D3F
+}
+.champImage{
+	width:40px;
+	border-radius:50%;
+	overflow: hidden;	
+	margin-left:50px;
+}
+
+.champImage > img{
+	width:100%;
 }

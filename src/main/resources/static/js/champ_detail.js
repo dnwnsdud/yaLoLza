@@ -51,7 +51,9 @@ function tooltip(
       let arrow = document.createElement("div");
       document.body.appendChild(div);
       div.setAttribute("tooltip-window-dependency", "");
-      if (typeof tag === "string") div.innerHTML = tag;
+      if (typeof tag === "string"){
+		  div.innerHTML = tag.replaceAll("&lt;","<").replaceAll("&gt;",">");
+	  }  
       else if (typeof tag === "object" && tag instanceof Promise) {
         tag = await tag;
         if (typeof tag === "string") div.innerHTML = tag;
@@ -63,7 +65,6 @@ function tooltip(
       div.style.position = "absolute";
       div.style.minWidth = "16px";
       div.style.minHeight = "16px";
-      div.style.overflow = "hidden";
       div.style.borderRadius = options.borderRadius || "0";
       for (let key in styleOptions) {
         div.style[key] = styleOptions[key];

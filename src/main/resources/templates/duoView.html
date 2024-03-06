@@ -12,7 +12,7 @@
     <div class="duoView">
       <div class="viewtitle">
         <h2 th:text="${duoview.summonerName}"></h2>
-        <li>
+        <div>
           <div class="mikeBox" th:if="${duoview.ismike}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,80 +45,91 @@
               ></path>
             </svg>
           </div>
-        </li>
+        </div>
       </div>
 
       <ul>
-        <br />
         <span>티어</span>
         <li th:text="${duoview.tier}"></li>
         <br />
-        <span>주포지션</span>
-        <li>
-          <div
-            id="positionBox"
-            class="positionBox"
-            th:switch="${duoview.myposition.name()}"
-          >
-            <div class="AllBox Box" th:case="ALL"></div>
-            <div class="TopBox Box" th:case="TOP"></div>
-            <div class="JungleBox Box" th:case="JUNGLE"></div>
-            <div class="MidBox Box" th:case="MID"></div>
-            <div class="BottomBox Box" th:case="BOTTOM"></div>
-            <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+        <div class="positionBox">
+          <div>
+            <span>주포지션</span>
+            <li>
+              <div
+                id="positionBox"
+                class="positionBox"
+                th:switch="${duoview.myposition.name()}"
+              >
+                <div class="AllBox Box" th:case="ALL"></div>
+                <div class="TopBox Box" th:case="TOP"></div>
+                <div class="JungleBox Box" th:case="JUNGLE"></div>
+                <div class="MidBox Box" th:case="MID"></div>
+                <div class="BottomBox Box" th:case="BOTTOM"></div>
+                <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+              </div>
+            </li>
           </div>
-        </li>
-        <br />
-        <span>찾는포지션</span>
-        <li>
-          <div
-            class="yourBox"
-            th:each="position : ${duoview.yourposition}"
-            th:switch="${position.name()}"
-          >
-            <div class="AllBox Box" th:case="ALL"></div>
-            <div class="TopBox Box" th:case="TOP"></div>
-            <div class="JungleBox Box" th:case="JUNGLE"></div>
-            <div class="MidBox Box" th:case="MID"></div>
-            <div class="BottomBox Box" th:case="BOTTOM"></div>
-            <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+          <div>
+            <span>찾는포지션</span>
+            <li>
+              <div
+                class="yourBox"
+                th:each="position : ${duoview.yourposition}"
+                th:switch="${position.name()}"
+              >
+                <div class="AllBox Box" th:case="ALL"></div>
+                <div class="TopBox Box" th:case="TOP"></div>
+                <div class="JungleBox Box" th:case="JUNGLE"></div>
+                <div class="MidBox Box" th:case="MID"></div>
+                <div class="BottomBox Box" th:case="BOTTOM"></div>
+                <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+              </div>
+            </li>
           </div>
-        </li>
-        <br />
-        <span>큐타입</span>
-        <li th:switch="${duoview.queuetype.name()}">
-          <div th:case="RANKED_SOLO">솔로랭크</div>
-          <div th:case="RANKED_FLEX">자유랭크</div>
-          <div th:case="NORMAL">빠른대전</div>
-        </li>
-        <br /><br />
+          <div>
+            <span>큐타입</span>
+            <li th:switch="${duoview.queuetype.name()}">
+              <div class="type" th:case="RANKED_SOLO">솔로랭크</div>
+              <div class="type" th:case="RANKED_FLEX">자유랭크</div>
+              <div class="type" th:case="NORMAL">빠른대전</div>
+            </li>
+          </div>
+        </div>
+
         <div>
-    <h3>최근 게임 정보</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>챔피언</th>
-            <th>라운드</th>
-            <th>승리</th>
-            <th>킬</th>
-            <th>데스</th>
-            <th>어시스트</th>
-        </tr>
-        </thead>
-<tbody>
-    <tr th:each="champion : ${mostChampions}">
-     
-		<td><img th:src="@{/img/champion/{championName}.png(championName=${champion.mostChampion})}" alt="Champion Icon" /></td>				
-        <td th:text="${champion.round}"></td> <!-- 라운드 수 -->
-        <td th:text="${champion.wins}"></td> <!-- 승리 수 -->
-        <td th:text="${champion.kills}"></td> <!-- 킬 수 -->
-        <td th:text="${champion.deaths}"></td> <!-- 데스 수 -->
-        <td th:text="${champion.assists}"></td> <!-- 어시스트 수 -->
-    </tr>
-</tbody>
-    </table>
-</div><br />
-<!--        <span>최근선호챔피언</span>
+          <h3>최근 게임 정보</h3>
+          <div class="playInfo">
+            <div class="playMenu">
+              <div>챔피언</div>
+              <div>라운드</div>
+              <div>승리</div>
+              <div>킬</div>
+              <div>데스</div>
+              <div>어시스트</div>
+            </div>
+            <div th:each="champion : ${mostChampions}">
+              <div class="champImage">
+                <img
+                  th:src="@{/img/champion/{championName}.png(championName=${champion.mostChampion})}"
+                  alt="Champion Icon"
+                />
+              </div>
+              <div th:text="${champion.round}"></div>
+              <!-- 라운드 수 -->
+              <div th:text="${champion.wins}"></div>
+              <!-- 승리 수 -->
+              <div th:text="${champion.kills}"></div>
+              <!-- 킬 수 -->
+              <div th:text="${champion.deaths}"></div>
+              <!-- 데스 수 -->
+              <div th:text="${champion.assists}"></div>
+              <!-- 어시스트 수 -->
+            </div>
+          </div>
+        </div>
+        <br />
+        <!--        <span>최근선호챔피언</span>
         <li th:text="${duoview.chamption}"></li>-->
         <br />
         <span>메모</span>
@@ -174,8 +185,5 @@
         </form>
       </ul>
     </div>
-    
-
-    
   </body>
 </html>

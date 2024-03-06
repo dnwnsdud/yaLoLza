@@ -73,9 +73,9 @@
 					<li>CS</li>
 					<li>골드</li>
 				</ul>
-				<div th:each="champion : ${aramChampions}">
+				<div th:each="champion, stat : ${aramChampions}">
 					<ul>
-						<li>1</li>
+						 <li th:text="${stat.count}">1</li>
 						<li>
 							<div class="img-wrap">
 								<a

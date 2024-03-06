@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.project.dto.championstats.AramChampionDTO;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
+@RequestMapping("/yalolza.gg")
 public class StaticController {
 
     private final JsonReader jsonReader;
@@ -35,7 +37,7 @@ public class StaticController {
         this.aramStatsJsonReader = aramStatsJsonReader;
     }
 
-    @GetMapping("/static")
+    @GetMapping("/yalolza.gg/champions/static")
     public String getChampionsData(
         @RequestParam(required = false, defaultValue = "ALL") String tier,
         @RequestParam(required = false, defaultValue = "ALL") String position,
