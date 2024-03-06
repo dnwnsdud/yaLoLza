@@ -1,29 +1,32 @@
 
-const ctx = document.getElementById("myChart");
+document.addEventListener("DOMContentLoaded", function() {
+  const ctx = document.getElementById("myChart");
 
-const s  = document.getElementById("siwwin");
-const w  = document.getElementById("sjwtotal");
-const sValue = parseInt(s.textContent || s.innerText, 10);
-const wValue = parseInt(w.textContent || w.innerText, 10);
+  const s  = document.getElementById("siwwin");
+  const w  = document.getElementById("sjwtotal");
+  const sValue = parseInt(s.textContent || s.innerText, 10);
+  const wValue = parseInt(w.textContent || w.innerText, 10);
 
-console.log("안녕 차트야 ");
-new Chart(ctx, {
-  type: "doughnut",
-  data: {
-    datasets: [
-      {
-        data: [wValue,sValue ],
-        borderWidth: 0,
-        backgroundColor: ["#ff0558", "#007aff"],
-      },
-    ],
-  },
-  options: {
-    plugins: {
-      tooltip: { enabled: false },
-      title: "myChart", // 수정된 부분: "id" 대신 "title"
+  console.log("안녕 차트야 ");
+  
+  new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      datasets: [
+        {
+          data: [wValue, sValue],
+          borderWidth: 0,
+          backgroundColor: ["#ff0558", "#007aff"],
+        },
+      ],
     },
-  },
+    options: {
+      plugins: {
+        tooltip: { enabled: false },
+        title: "myChart",
+      },
+    },
+  });
 });
 
 let btn = document.querySelectorAll(".usergame-btn > button");
@@ -81,4 +84,18 @@ function allresult(){
     totalchampions.style.display = "none";
     userleft.style.display = "block";
     userright.style.display = "block";
+}
+
+  let count = 11;
+ async function morematch() {
+  let newPath = window.location.pathname.replace("/yalolza.gg/summoners/", "");
+  console.log(`https://yalolza.gg/more/${newPath}/${count}`);
+  let text = await fetch(`/yalolza.gg/more/${newPath}/${count}`).then(r => r.text());
+  count += 5;
+  text = text.replace(/[^\\]*<body>/i, "").replace(/<\/body>[^\\]*/i, "");
+
+
+
+  // 하고넣자
+  document.querySelector("div.user-right").innerHTML += text;
 }

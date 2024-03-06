@@ -30,7 +30,7 @@
 	      </li>
 	    </ul>
 	    <ul class="user-most3">
-	      <h3 th:text="${'플레이한 챔피언 (최근 '+ wingame + ' 게임)'}"></h3>
+	      <h3 th:text="${'플레이한 챔피언 (최근 '+ totalgame + ' 게임)'}"></h3>
 	      <div class="most-flex">
 	        <li th:each="stats, statIndex : ${most}" th:if="${statIndex.index < 3}">
 	          <div class="user-most3kda">
