@@ -185,31 +185,8 @@ h4 {
 .homeswiper .next1::after{
 	display: none;
 }
-.homeswiper .prev1 img,
-.homeswiper .next1 img{
-	width: 100%;
-}
-.homeswiper .prev1{
-	top: 40px;
-	left: 75%;
-	color: var(--point3);	
-	width: 40px;
-	height: 50px; 
-	font-size: 4rem;
-	background-color: #1e2233;
-	display: flex;
-	border-radius: 0.5rem;
-}
-.homeswiper .next1{
-	right: 21%;
-	top: 40px;	
-	width: 40px; 
-      height: 50px; 
-     font-size: 4rem;
-     color: var(--point3);
-	background-color: #1e2233;
-	border-radius: 0.5rem;
-}
+
+
 /*-------------------------------------------------커뮤-------------------------------------------*/
 .commu_list, #commuDescriptor {
   display: grid; 
