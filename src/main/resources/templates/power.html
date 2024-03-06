@@ -160,28 +160,19 @@
                 <div>
                   <li class="usergame-grade">
                     <div class="usergame-grade">
-                      <div class="img-wrap2"><img loading="lazy"
-                          th:src="@{'/img/champion/'+${match.body.info.participants[summonermatchnum[i.index]].championName} + '.png'}"
-                          alt="" />
-                          <div class="summonerchamps-level">
-                          <span  th:text="${match.body.info.participants[summonermatchnum[i.index]].champLevel}"></span>
-                          </div>
-                          </div>
-                      <div class="usergame-flex">
-                        <div class="img-wrap1"><img loading="lazy"
-                            th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner1Id]} + '.png'}"
-                            alt="" /></div>
-                        <div class="img-wrap1"><img loading="lazy"
-                            th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner2Id]} + '.png'}"
-                            alt="" /></div>
+                      <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/champion/'+${match.body.info.participants[summonermatchnum[i.index]].championName} + '.png'}"alt="" />
+                          <div class="summonerchamps-level"><span  th:text="${match.body.info.participants[summonermatchnum[i.index]].champLevel}"></span></div></div>
+                      <div class="usergame-flex1">
+                        <div class="img-wrap1" th:id="${match.body.info.participants[summonermatchnum[i.index]].summoner1Id}"><img loading="lazy" th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner1Id]} + '.png'}" alt="" /></div>
+                        <div class="img-wrap1" th:id="${match.body.info.participants[summonermatchnum[i.index]].summoner2Id}"><img loading="lazy" th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner2Id]} + '.png'}" alt="" /></div>
                       </div>
-                      <div class="usergame-flex">
-                        <div class="img-wrap1"><img loading="lazy"
-                            th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].selections[0].perk]}}"
-                            alt="" /></div>
-                        <div class="img-wrap1"><img loading="lazy"
-                            th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style]}}"
-                            alt="" /></div>
+                      <div class="usergame-flex2">
+                        <div class="img-wrap1" th:id="${match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].selections[0].perk}">
+                          <img loading="lazy" th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].selections[0].perk]}}" alt="" />
+                        </div>
+                        <div class="img-wrap1" th:id="${match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style}">
+                          <img loading="lazy" th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style]}}" alt="" />
+                        </div>
                       </div>
                       <div class="usergame-kda">
                         <span th:text="${match.body.info.participants[summonermatchnum[i.index]].kills + '/' + 
@@ -228,7 +219,7 @@
                 </div>
 
                 <div class="usergame-items">
-                  <li class="img-wrap1" th:each="itemIndex : ${#numbers.sequence(0, 6)}">
+                  <li class="img-wrap1" th:each="itemIndex : ${#numbers.sequence(0, 6)}"th:id="${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]}">
                     <img loading="lazy"
                       th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]} + '.png'}"
                       alt="" />
@@ -238,7 +229,7 @@
               <ul class="usergame-ten" th:with="part = ${match.body.info}">
                 <li>
                   <div class="usergame-id" th:each=" i  : ${#numbers.sequence(0, 4)}">
-                    <div class="img-wrap3"><img loading="lazy"
+                    <div class="img-wrap3" th:id="${match.body.info.participants[i].championName}"><img loading="lazy"
                         th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt="" />
                     </div>
                     <span>
@@ -250,7 +241,7 @@
                 </li>
                 <li>
                   <div class="usergame-id" th:each=" i  : ${#numbers.sequence(5, 9)}">
-                    <div class="img-wrap3"><img loading="lazy"
+                    <div class="img-wrap3" th:id="${match.body.info.participants[i].championName}"><img loading="lazy"
                         th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt="" />
                     </div>
                    <span>
@@ -304,7 +295,7 @@
                     <ul class="vic-team" th:each="z : ${#numbers.sequence(www, www + 4)}">
                       <li>
                         <div>
-                          <div class="img-wrap"><img loading="lazy"
+                          <div class="img-wrap" th:id="${match.body.info.participants[z].championName}"><img loading="lazy"
                               th:src="@{'/img/champion/'+${match.body.info.participants[z].championName} + '.png'}"
                               alt="" />
                          <div class="tenchamps-level">
@@ -314,18 +305,18 @@
                         </div>
                         <div class="vic-spell">
                           <div>
-                            <div class="img-wrap3"><img loading="lazy"
+                            <div class="img-wrap3" th:id="${match.body.info.participants[z].summoner1Id}"><img loading="lazy"
                                 th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[z].summoner1Id]} + '.png'}"
                                 alt="" /></div>
-                            <div class="img-wrap3"><img loading="lazy"
+                            <div class="img-wrap3" th:id="${match.body.info.participants[z].summoner2Id}"><img loading="lazy"
                                 th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[z].summoner2Id]} + '.png'}"
                                 alt="" /></div>
                           </div>
                           <div>
-                            <div class="img-wrap3"><img loading="lazy"
+                            <div class="img-wrap3" th:id="${match.body.info.participants[z].Perks.Styles[0].selections[0].perk}"><img loading="lazy"
                                 th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[z].Perks.Styles[0].selections[0].perk]}}"
                                 alt="" /></div>
-                            <div class="img-wrap3"><img loading="lazy"
+                            <div class="img-wrap3" th:id="${match.body.info.participants[z].Perks.Styles[1].style}"><img loading="lazy"
                                 th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[z].Perks.Styles[1].style]}}"
                                 alt="" /></div>
                           </div>
@@ -401,7 +392,7 @@
                       <li>
 
                         <ul class="victotal-items">
-                          <div class="img-wrap3" th:each="itemIndex : ${#numbers.sequence(0, 6)}">
+                          <div class="img-wrap3" th:each="itemIndex : ${#numbers.sequence(0, 6)}" th:id="${match.body.info.participants[z]['item' + itemIndex]}">
                             <img loading="lazy"
                               th:src="@{'/img/item/'+${match.body.info.participants[z]['item' + itemIndex]} + '.png'}"
                               alt="" />
@@ -904,5 +895,46 @@
   </div>
   <footer th:replace="~{/footer :: footer}"></footer>
 </body>
-
+<script th:inline="javascript" defer>
+	document.querySelectorAll(".usergame-flex1 div").forEach(async (element)=>{
+		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".usergame-flex2 div").forEach(async (element)=>{
+		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
 </html>

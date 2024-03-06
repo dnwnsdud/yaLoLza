@@ -48,6 +48,9 @@ import com.web.project.system.TierPositionService;
 
 import lombok.NoArgsConstructor;
 
+import com.web.project.system.StatisticChampion;
+ 
+
 @Controller
 @RequestMapping("/yalolza.gg/champions")
 public class ChampionsPage {
