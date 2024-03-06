@@ -130,12 +130,12 @@
 }
 #champstatic_rank ul li.champinfo{
 	display: grid;
-	grid-template-columns: 1fr 2fr;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+	grid-template-columns: 1fr 1fr;
+	
+	
 }
 #champstatic_rank ul li.champinfo .img-wrap{
 	margin-left:auto;
 }
+
 /* 티어별 통계 끝 */
