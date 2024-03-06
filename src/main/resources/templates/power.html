@@ -67,7 +67,7 @@
               </li>
 
               <li class="ranktier3">
-                <span th:text="${summoner.wins}+'승'"></span><br />
+                <span th:text="${summoner.wins+'승'}"></span><br/>
                 <span th:text="${summoner.losses+'패'}"></span>
               </li>
             </ul>
@@ -107,8 +107,8 @@
                   th:text="${ summonerall[7] + '전 ' + summonerall[0] + '승 ' + (summonerall[7] - summonerall[0]) + '패'}">
                   20전 8승 12패</h3>
                 <div class="graph-wrap">
-                  <span id="siwwin" th:text="${summonerall[0]}"></span>
-                  <span id="sjwtotal" th:text="${summonerall[7] - summonerall[0]}"></span>
+                  <span id="siwwin" th:text="${summonerall[0]}" style="display: none;"></span>
+                  <span id="sjwtotal" th:text="${summonerall[7] - summonerall[0]}" style="display: none;"></span>
                   <canvas id="myChart" style="width: 100px; height: 100px">
                   </canvas>
                   <span class="graph-donut" th:text="${summonerall[6] +'%'}">50%</span>
@@ -654,14 +654,14 @@
                 <section class="usergame-itembuild">
                   <ul class="itembuild-start">
                     <li th:each="purchase,z : ${matchspurchase[i.index]}">
-                      <div class="itembuild-group">
-                        <div th:each="key: ${#numbers.sequence(1, purchase.size() - 1)}">
-                          <div class="img-wrap1">
-                            <img loading="lazy" th:src="@{'/img/item/'+${purchase[key]} + '.png'}" alt="" />
-                          </div>
-                        </div>
-                        <p th:text="${purchase[0]} + '분'">0:00</p>
-                      </div>
+                     <div class="itembuild-group">
+						    <div th:each="key, iterStat : ${#numbers.sequence(1, purchase.size() - 1)}">
+						        <div class="img-wrap1">
+						            <img loading="lazy" th:src="@{'/img/item/'+${purchase[key]} + '.png'}" alt="" />
+						        </div>
+						        <p th:if="${iterStat.index == 0}" th:text="${purchase[0]} + '분'">0:00</p>
+						    </div>
+						</div>
                      <div class="item-arrow" th:if="${z.index + 1 < matchspurchase[i.index].size()}">-></div>
                     </li>
                   </ul>

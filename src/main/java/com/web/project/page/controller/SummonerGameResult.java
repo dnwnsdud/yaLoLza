@@ -102,7 +102,7 @@ import com.web.project.system.SummonerData;
 	    String encryptedSummonerId;
 	    String leag4url;
 	    //조회할 매치 갯수
-	    long matchnum = 2; 
+	    long matchnum = 10; 
 	    //매치인포 리스트
 	    List<ResponseEntity<Match>> matchsssinfoList = new ArrayList<>();
 	    //찾을 소환사
