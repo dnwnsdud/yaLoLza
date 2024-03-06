@@ -55,9 +55,7 @@ public class DuoPage {
 	
 	@Autowired
 	PasswordEncoder encoder;
-	
-	@Autowired
-	Calall summoenrsmost;
+
 
 	@Autowired
 	public DuoPage(Duoservice duoService, UserService userService) {

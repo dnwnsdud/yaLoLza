@@ -57,7 +57,7 @@ public class SendEmailService {
         System.out.println("이메일 전송함");
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(mailDTO.getAddress());
-        message.setSubject(sendEmailService.FROM_ADDRESS);
+        message.setSubject(SendEmailService.FROM_ADDRESS);
         message.setText(mailDTO.getMessage());
         message.setFrom("0503kkyymm@naver.com");
         message.setReplyTo("0503kkyymm@naver.com");
