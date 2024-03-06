@@ -26,20 +26,20 @@
   height: 100%;
   border-radius: 1rem;
 }
-h1 {
+.user-main {
   flex: 1;
   color: var(--gray3);
   padding-top: 10px;
 }
-h1 strong {
+.user-main strong {
   font-weight: bold;
   color: var(--white);
 }
-h1 .user-id span {
+.user-main .user-id span {
   font-size: 1.7rem;
   color: var(--gray3);
 }
-h1 p {
+.user-main p {
   padding-top: 10px;
 }
 #gangsin{

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -12,6 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
   <script src="/js/userdetail.js" defer></script>
+  <script src="/js/champ_detail.js" defer></script>
   <script src="/js/position.js" defer></script>
 
 </head>
@@ -24,7 +25,7 @@
       <div class="dec">
         <div class="champ-main"><img loading="lazy" th:src="@{'/img/profileicon/'+${summoner.profileIconId} + '.png'}"
             alt="Item Image" /></div>
-        <h1>
+        <h1 class="user-main">
           <strong style="font-size: 3rem" th:text="${summoner.summonername}"></strong>
           <span style="font-size: 2rem" th:text=" '#'+${summoner.tag}">#444</span><br />
           <p class="user-id">
@@ -896,7 +897,7 @@
   <footer th:replace="~{/footer :: footer}"></footer>
 </body>
 <script th:inline="javascript" defer>
-	document.querySelectorAll(".usergame-flex1 div").forEach(async (element)=>{
+	document.querySelectorAll(".usergame-flex1 .img-wrap1").forEach(async (element)=>{
 		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
 		tooltip(
 				  element,
