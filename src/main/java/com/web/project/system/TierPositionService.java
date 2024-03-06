@@ -22,7 +22,6 @@ import com.web.project.dto.championstats.TierDataDTO;
 import com.web.project.system.CounterJsonReader;
 import com.web.project.system.JsonReader;
 
-
 @Service
 public class TierPositionService {
 
@@ -36,34 +35,36 @@ public class TierPositionService {
 	}
 
 	public List<ChampionStatsDTO> getChampionsData(String tier, String position, Model model) {
-	    try {
-	        TierDataDTO tierData = jsonReader.readJsonFile(tier);
-	        List<ChampionStatsDTO> allChampions = new ArrayList<>();
-	        Map<String, String> championOriginalPositions = new HashMap<>();
-	        Map<String, ChampionStatsDTO> bestChampions = new HashMap<>();
+		try {
+			TierDataDTO tierData = jsonReader.readJsonFile(tier);
+			List<ChampionStatsDTO> allChampions = new ArrayList<>();
+			Map<String, String> championOriginalPositions = new HashMap<>();
+			Map<String, ChampionStatsDTO> bestChampions = new HashMap<>();
 
-	        if (position.equals("ALL")) {
-	            for (Map.Entry<String, List<ChampionStatsDTO>> entry : tierData.getPositions().entrySet()) {
-	                for (ChampionStatsDTO champion : entry.getValue()) {
-	                    ChampionStatsDTO bestChampion = bestChampions.get(champion.getChampionName());
-	                    if (bestChampion == null || champion.getStats().getTierScore() > bestChampion.getStats().getTierScore()) {
-	                        bestChampions.put(champion.getChampionName(), champion);
-	                        championOriginalPositions.put(champion.getChampionName(), entry.getKey());
-	                    }
-	                }
-	            }
-	            allChampions.addAll(bestChampions.values());
-	            model.addAttribute("championOriginalPositions", championOriginalPositions);
-	        } else {
-	            allChampions.addAll(tierData.getPositions().getOrDefault(position, Collections.emptyList()));
-	        }
+			if (position.equals("ALL")) {
+				for (Map.Entry<String, List<ChampionStatsDTO>> entry : tierData.getPositions().entrySet()) {
+					for (ChampionStatsDTO champion : entry.getValue()) {
+						ChampionStatsDTO bestChampion = bestChampions.get(champion.getChampionName());
+						if (bestChampion == null
+								|| champion.getStats().getTierScore() > bestChampion.getStats().getTierScore()) {
+							bestChampions.put(champion.getChampionName(), champion);
+							championOriginalPositions.put(champion.getChampionName(), entry.getKey());
+						}
+					}
+				}
+				allChampions.addAll(bestChampions.values());
+				model.addAttribute("championOriginalPositions", championOriginalPositions);
+			} else {
+				allChampions.addAll(tierData.getPositions().getOrDefault(position, Collections.emptyList()));
+			}
 
-	        allChampions.sort((champ1, champ2) -> Double.compare(champ2.getStats().getTierScore(), champ1.getStats().getTierScore()));
-	        return allChampions;
-	    } catch (Exception e) {
-	        System.out.println("ERROR : " + e.getMessage());
-	        return null;
-	    }
+			allChampions.sort((champ1, champ2) -> Double.compare(champ2.getStats().getTierScore(),
+					champ1.getStats().getTierScore()));
+			return allChampions;
+		} catch (Exception e) {
+			System.out.println("ERROR : " + e.getMessage());
+			return null;
+		}
 	}
 
 	public ChampionStatsDTO getChampionDataByName(String tier, String position, String championName) {
@@ -86,4 +87,23 @@ public class TierPositionService {
 			return null;
 		}
 	}
+
+	public Map<String, String> getChampionPositions(String tier, String position) {
+		try {
+			TierDataDTO tierData = jsonReader.readJsonFile(tier);
+			Map<String, String> championPositions = new HashMap<>();
+			if (position.equals("ALL")) {
+				for (Map.Entry<String, List<ChampionStatsDTO>> entry : tierData.getPositions().entrySet()) {
+					for (ChampionStatsDTO champion : entry.getValue()) {
+						championPositions.put(champion.getChampionName(), entry.getKey());
+					}
+				}
+			}
+			return championPositions;
+		} catch (Exception e) {
+			System.out.println("ERROR: " + e.getMessage());
+			return Collections.emptyMap();
+		}
+	}
+
 }

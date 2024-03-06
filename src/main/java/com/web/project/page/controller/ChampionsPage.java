@@ -84,10 +84,11 @@ public class ChampionsPage {
 		List<Champion> data = ChampionData.imagedata();
 		model.addAttribute("data", data);
 	    List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position, model);
-
+	    Map<String, String> championPositions = tierPositionService.getChampionPositions(tier, position);
 	    model.addAttribute("selectedTier", tier);
 	    model.addAttribute("positionData", uniqueChampions);
 	    model.addAttribute("position", position);
+	    model.addAttribute("championPositions", championPositions);
 	    return "champ";
 	}
 
