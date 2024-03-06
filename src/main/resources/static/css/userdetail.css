@@ -126,7 +126,6 @@ h1 p {
 	left:-10px;
 	bottom:-30px;
 	color:white;
-	z-index: 10;
 	background-color:rgb(83, 83, 83);
 	border-radius: 15px;
 }
@@ -151,7 +150,6 @@ h1 p {
 	left:-10px;
 	bottom:-30px;
 	color:white;
-	z-index: 10;
 	background-color:black;
 	border-radius: 15px;
 }

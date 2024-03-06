@@ -72,7 +72,7 @@ public class ChampionInfo {
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
 		return "summonerspellinfo";
-	}
+	} 
 	@GetMapping("/itemdetailinfo/{id}")
 	public String iteminfo(Model model,@PathVariable String id) {
 		log.info("itemdetailinfo");	
@@ -129,5 +129,5 @@ public class ChampionInfo {
 		model.addAttribute("keysPerk", keysPerk);
 		return "mapping";
 	}
-	
+	 
 }

@@ -13,6 +13,7 @@
 
   <script src="/js/userdetail.js" defer></script>
   <script src="/js/position.js" defer></script>
+  <script src="/js/champ_detail.js" defer></script>
 
 </head>
 
@@ -66,7 +67,7 @@
                   <span th:text="${summoner.leaguePoints}+'LP'"></span>
                 </div>
               </li>
-
+ 
               <li class="ranktier3">
                 <span th:text="${summoner.wins+'승'}"></span><br/>
                 <span th:text="${summoner.losses+'패'}"></span>
@@ -294,7 +295,7 @@
                   <div th:with="www=${summonermatchnum[i.index] >= 5 ? 5 : 0}">
                     <ul class="vic-team" th:each="z : ${#numbers.sequence(www, www + 4)}">
                       <li>
-                        <div>
+                        <div class="champion">
                           <div class="img-wrap" th:id="${match.body.info.participants[z].championName}"><img loading="lazy"
                               th:src="@{'/img/champion/'+${match.body.info.participants[z].championName} + '.png'}"
                               alt="" />
@@ -304,7 +305,7 @@
                               </div>
                         </div>
                         <div class="vic-spell">
-                          <div>
+                          <div class="spell">
                             <div class="img-wrap3" th:id="${match.body.info.participants[z].summoner1Id}"><img loading="lazy"
                                 th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[z].summoner1Id]} + '.png'}"
                                 alt="" /></div>
@@ -312,7 +313,7 @@
                                 th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[z].summoner2Id]} + '.png'}"
                                 alt="" /></div>
                           </div>
-                          <div>
+                          <div class="rune">
                             <div class="img-wrap3" th:id="${match.body.info.participants[z].Perks.Styles[0].selections[0].perk}"><img loading="lazy"
                                 th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[z].Perks.Styles[0].selections[0].perk]}}"
                                 alt="" /></div>
@@ -527,8 +528,8 @@
                     <ul class="vic-team" style="background-color: var(--point11)"
                       th:each="nz : ${#numbers.sequence(nww, nww + 4)}">
                       <li>
-                        <div>
-                          <div class="img-wrap"><img loading="lazy"
+                        <div class="champion">
+                          <div class="img-wrap" th:id="${match.body.info.participants[nz].championName}"><img loading="lazy"
                               th:src="@{'/img/champion/'+${match.body.info.participants[nz].championName} + '.png'}"
                               alt="" />
                           <div class="tenchamps-level">
@@ -537,19 +538,19 @@
                               </div>
                         </div>
                         <div class="vic-spell">
-                          <div>
-                            <div class="img-wrap3"><img loading="lazy"
+                          <div class="spell">
+                            <div class="img-wrap3" th:id="${match.body.info.participants[nz].summoner1Id}"><img loading="lazy"
                                 th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[nz].summoner1Id]} + '.png'}"
                                 alt="" /></div>
-                            <div class="img-wrap3"><img loading="lazy"
+                            <div class="img-wrap3" th:id="${match.body.info.participants[nz].summoner2Id}"><img loading="lazy"
                                 th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[nz].summoner2Id]} + '.png'}"
                                 alt="" /></div>
                           </div>
-                          <div>
-                            <div class="img-wrap3"><img loading="lazy"
+                          <div class="rune">
+                            <div class="img-wrap3" th:id="${match.body.info.participants[nz].Perks.Styles[0].selections[0].perk}"><img loading="lazy"
                                 th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[nz].Perks.Styles[0].selections[0].perk]}}"
                                 alt="" /></div>
-                            <div class="img-wrap3"><img loading="lazy"
+                            <div class="img-wrap3" th:id="${match.body.info.participants[nz].Perks.Styles[1].style}"><img loading="lazy"
                                 th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[nz].Perks.Styles[1].style]}}"
                                 alt="" /></div>
                           </div>
@@ -918,6 +919,129 @@
 	</script>
   <script th:inline="javascript" defer>
 	document.querySelectorAll(".usergame-flex2 div").forEach(async (element)=>{
+		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+		if(element.id%100==0){
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
+			        padding:"10px"
+			      }
+			    );
+		}else{
+			tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		}
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".usergame-id div").forEach(async (element)=>{
+		let target = await fetch("/info/championNameinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".usergame-items li").forEach(async (element)=>{
+		if (element.id==0) return;
+		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".vic-team li .champion >div").forEach(async (element)=>{
+		let target = await fetch("/info/championNameinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".vic-spell .spell >div").forEach(async (element)=>{
+		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".vic-spell .rune >div").forEach(async (element)=>{
 		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
 		tooltip(
 				  element,

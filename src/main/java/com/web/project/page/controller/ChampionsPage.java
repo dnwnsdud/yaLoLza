@@ -54,7 +54,7 @@ import com.web.project.system.StatisticChampion;
 @Controller
 @RequestMapping("/yalolza.gg/champions")
 public class ChampionsPage {
-	
+
 	 @Autowired
 	    private YoutubeService youtubeService;
 	
