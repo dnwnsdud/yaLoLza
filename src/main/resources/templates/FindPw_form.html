@@ -4,20 +4,28 @@
     <meta charset="UTF-8">
     <title>비밀번호 찾기</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="/css/myrest.css" />
+<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/myrest.css" />
+<link rel="stylesheet" href="/css/findPw_form.css" />
 </head>
 <body>
-    <h1>비밀번호 찾기</h1>
+   <a th:href="@{/yalolza.gg}"
+      ><img th:src="@{/img/logo.png}" class="logo" alt="logo"
+    /></a>
+    <h1 class="findpw-title">비밀번호 찾기</h1>
+   <div class="findpw_box">
     <div>
-        <label for="userName">아이디:</label>
-        <input type="text" id="userName" name="userName" required>
+        <!-- <label for="userName">아이디:</label> -->
+        <input type="text" placeholder="아이디" id="userName" name="userName" required>
     </div>
     <div>
-        <label for="userEmail">이메일:</label>
-        <input type="email" id="userEmail" name="userEmail" required>
+       <!--  <label for="userEmail">이메일:</label> -->
+        <input type="email" placeholder="이메일" id="userEmail" name="userEmail" required>
     </div>
     <button id="checkUser">정보 확인</button>
     <button id="sendEmail" disabled>임시 비밀번호 발송</button><br/><br/>
-	 <a th:href="@{/yalolza.gg}">메인 으로</a> <br/><br/>
+	</div>
     <script>
         $(document).ready(function() {
             $('#checkUser').click(function() {

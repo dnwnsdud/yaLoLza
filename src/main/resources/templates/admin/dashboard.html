@@ -27,7 +27,16 @@
     <!--    <span th:if="${user}" th:text="|${user.autho}-${user.nickname} 관리자님 환영합니다.|">아이디 존재</span><br/>
    <span th:unless="${user}">아이디 비존재</span><br/>
  -->
+ 
+
     <div class="userinfo_box">
+     <iframe src="http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=1709131979018&to=1709736779018&theme=light&panelId=219" width="450" height="200" frameborder="0"></iframe>
+ <iframe src="http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=1709131798549&to=1709736598549&theme=light&panelId=167" width="450" height="200" frameborder="0"></iframe>
+ <iframe src="http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=1709131888953&to=1709736688953&theme=light&panelId=226" width="450" height="200" frameborder="0"></iframe>
+ 
+    
+    
+    
       <h1 class="userinfo_title">유저리스트</h1>
       <div class="userinfo">
         <ul class="dash_ul">
@@ -56,8 +65,8 @@
               method="post"
             >
               <input type="hidden" th:name="id" th:value="${user.id}" />
-              <button type="submit" onclick="return confirmDelete();">
-                회원삭제
+              <button type="submit" class="delete" onclick="return confirmDelete();">
+                삭제
               </button>
             </form>
           </li>

@@ -10,7 +10,7 @@ body{
 .dec,
 .champ-statistics,
 .champ-tip {
-  max-width: 1320px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
 }
@@ -87,7 +87,7 @@ body{
   font-size: 2rem;
 }
 .user-tip {
-  max-width: 1320px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   padding: 10px;
@@ -578,7 +578,7 @@ body{
   position: absolute;
   bottom: 5%;
   right: 45%;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--white);
 }
 .object-progress li:nth-of-type(2) {
@@ -589,7 +589,7 @@ body{
   position: absolute;
   bottom: 5%;
   right: 44%;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--white);
 }
 

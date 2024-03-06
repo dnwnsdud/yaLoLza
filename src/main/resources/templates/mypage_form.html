@@ -30,14 +30,19 @@
     <div class="mw2">
       <h1>내 정보</h1>
       <div class="my-info">
-        <span th:if="${user}" th:text="|${user.nickname}님 환영합니다!|">
+        <span th:if="${user}" th:text="|${user.nickname} 님|">
           아이디 존재</span
         >
         <span th:unless="${user}">nono</span>
+        <div>
+        
       </div>
       <!-- 닉네임 변경 버튼 -->
 
       <div>
+      	<div class="emailtitle">이메일</div>
+        <span th:if="${user}" th:text="${user.email}" class="emailform"></span>
+      	</div>
         <div class="nicktitle">닉네임</div>
         <form
           action="/yalolza.gg/user/mypage/change-username"
@@ -48,7 +53,7 @@
             for="newNickname"
             class="mypage-nick"
             th:text="|${user.nickname}|"
-            style="font-size: 3rem"
+            style="font-size: 2.3rem"
           ></label>
           <div
             th:if="${nicknameError}"
