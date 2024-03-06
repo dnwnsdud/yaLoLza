@@ -72,22 +72,27 @@ public class Match {
         LocalDateTime creationTime = LocalDateTime.ofInstant(creationInstant, ZoneOffset.UTC);
         LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
 
-        long hoursDiff = java.time.Duration.between(creationTime, now).toHours();
-      
-        if(hoursDiff < 24) {
-        	caludate =  hoursDiff +"시간전";
-        }else if(24 <= hoursDiff && hoursDiff < 720) {
-        	
-        	long classDate = Math.round((double) hoursDiff / 24);
-        	if(classDate == 0 || classDate ==1 ) {
-        		caludate =  classDate +"하루전";
-        	}
-        	 caludate =  classDate +"일전";
-        }else if(hoursDiff >= 720) {
-        	long classDate = Math.round((double) hoursDiff / 720);
-       	 caludate =  classDate +"달전";
-       }
-    }  
+        long minutesDiff = java.time.Duration.between(creationTime, now).toMinutes(); // 분 단위의 차이 계산
+
+        if (minutesDiff < 60) {
+            caludate = minutesDiff + "분 전";
+        } else {
+            long hoursDiff = minutesDiff / 60;
+            if (hoursDiff < 24) {
+                caludate = hoursDiff + "시간 전";
+            } else if (24 <= hoursDiff && hoursDiff < 720) {
+                long daysDiff = hoursDiff / 24;
+                if (daysDiff <= 1) {
+                    caludate = daysDiff + "하루 전";
+                } else {
+                    caludate = daysDiff + "일 전";
+                }
+            } else if (hoursDiff >= 720) {
+                long monthsDiff = hoursDiff / 720;
+                caludate = monthsDiff + "달 전";
+            }
+        }
+    } 
         
         public void teammaxdmg() {
  
