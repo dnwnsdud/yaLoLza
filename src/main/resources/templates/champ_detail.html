@@ -605,7 +605,7 @@
 							<li>
 								<h3>상대하기 어려운 챔피언</h3>
 								<div class="counter-champ">
-									<div th:each="champion : ${topChampions}">
+									<div th:each="champion : ${bottomChampions}">
 										<div class="counter-wrap">
 											<img
 												th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
@@ -623,7 +623,7 @@
 							<li>
 								<h3>상대하기 쉬운 챔피언</h3>
 								<div class="counter-champ">
-									<div th:each="champion : ${bottomChampions}">
+									<div th:each="champion : ${topChampions}">
 										<div class="counter-wrap">
 											<img
 												th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
