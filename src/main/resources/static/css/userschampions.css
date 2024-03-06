@@ -1,0 +1,53 @@
+.user-totalchampions {
+  background-color: var(--point8);
+  margin-top: 10px;
+  border-radius: 1rem;
+  width: 100%;
+  color: var(--gray3);
+}
+
+table {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+thead {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 10px;
+  background-color: var(--point5);
+}
+thead tr {
+  width: 100%;
+}
+thead tr th {
+  padding: 10px;
+}
+tbody {
+  background-color: var(--point6);
+}
+tbody tr td {
+  padding: 10px;
+  font-size: 1.3rem;
+}
+table tr.collapse {
+  display: grid;
+  grid-template-columns: 1fr 3fr repeat(8, 2fr);
+}
+
+.champface2 {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.champface > div {
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.champface1 {
+  text-align: center;
+}

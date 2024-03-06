@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/myrest.css" />
   <link rel="stylesheet" href="/css/common.css" />
   <link rel="stylesheet" href="/css/userdetail.css" />
+  <link rel="stylesheet" href="/css/userschampions.css"/>
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
   <script src="/js/userdetail.js" defer></script>
@@ -99,6 +100,7 @@
           </section>
         </div>
         <div class="user-right">
+		  <section th:replace="fragments.html :: results-fragment(totalgame=${summonerall[7]}, wingame=${summonerall[0]}, winper=${summonerall[6]}, kill=${summonerall[1]}, death=${summonerall[2]}, assist=${summonerall[3]}, kda=${summonerall[4]}, killper=${summonerall[5]}, most=${summonermost})"/>
           <!-- 최근 20전 -->
           <section class="user-result">
             <ul class="user-graphtitle">
@@ -897,6 +899,66 @@
             </div>
             <!--감싼것-->
           </div>
+         <!--유저챔피언시작-->
+         
+           <section class="user-totalchampions">
+        <table>
+          <thead>
+            <tr class="collapse">
+              <th>#</th>
+              <th>챔피언</th>
+              <th>승률</th>
+              <th>평점</th>
+              <th>골드</th>
+              <th>CS</th>
+              <th>평균 킬</th>
+              <th>평균 데스</th>
+              <th>평균 가한 피해량</th>
+              <th>평균 받은 피해량</th>
+            </tr>
+          </thead>
+          <tbody>
+			 <tr class="collapse" th:each="chamspers,ch : ${summonerchamsper}">
+              <td class="champface2" style="background-color: var(--point5)" th:>
+                1
+              </td>
+              <td class="champface">
+                <div>
+                  <div class="img-wrap4">
+                    <img src="/img/Garen.webp" alt="" />
+                  </div>
+                  <span style="color: var(--white)">챔피언</span>
+                </div>
+              </td>
+              <td class="champface1">
+                <p>
+                  <strong style="color: var(--point10)">62%</strong>
+                  <span>(47게임)</span>
+                </p>
+                <p>
+                  <span>29승</span>
+                  <span>18패</span>
+                </p>
+              </td>
+              <td class="champface1">
+                <strong style="color: var(--point3)">4.36</strong><br />
+                <span>8.7/</span>
+                <span>4.2/</span>
+                <span>9.7</span>
+              </td>
+              <td class="champface2">12314</td>
+              <td class="champface2">123.5(8.5)</td>
+              <td class="champface2">7.5</td>
+              <td class="champface2">4.3</td>
+              <td class="champface2">25,123</td>
+              <td class="champface2">29.123</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+          <!--유저챔피언끝-->          
+          
+          
         </div>
       </div>
     </div>
