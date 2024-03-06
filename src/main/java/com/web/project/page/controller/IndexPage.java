@@ -47,9 +47,9 @@ public class IndexPage {
 	@GetMapping("/")
     public String index(Model model){
 		
-			List<Community> communityList = this.communityRepository.findTop10ByOrderByCreateDateDesc();
+//			List<Community> communityList = this.communityRepository.findTop10ByOrderByCreateDateDesc();
 			List<Duo> duoList = duoService.getAllDuos();
-	        model.addAttribute("communityList", communityList);
+//	        model.addAttribute("communityList", communityList);
 			model.addAttribute("duoList", duoList);
 	        model.addAttribute("youtubeVideos", youtubeService.youtubeGenerator());
 	    	new Connect("total","duo.yalolza.gg", "index");

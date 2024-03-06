@@ -56,7 +56,7 @@ public class YoutubeMainService {
 			JsonObject snippet = video.getAsJsonObject("snippet");
 			String title = snippet.get("title").getAsString();
 
-			String iframeCode = "<iframe width=\"1320\" height=\"743\" " + "src=\"https://www.youtube.com/embed/"
+			String iframeCode = "<iframe width=\"1000\" height=\"562\" " + "src=\"https://www.youtube.com/embed/"
 					+ videoId + "\" " + "title=\"" + title + "\" frameborder=\"0\" "
 					+ "allow=\"accelerometer; picture-in-picture;\" "
 					+ "allowfullscreen></iframe>";
