@@ -1,5 +1,5 @@
 body {
-  background-color: var(--point7);
+  background-color: var(--point18);
 }
 .gray-icon{
 	filter:grayscale(1)
@@ -8,7 +8,7 @@ body {
 
 /* 챔피언 정보 시작*/
 .con1 {
-  background-color: var(--point8);
+  background-color: var(--point19);
 }
 .dec,
 .champ-statistics,
@@ -20,7 +20,6 @@ body {
 .dec {
   padding: 30px;
   gap: 30px;
-  border-top: 1px solid var(--gray1);
 }
 .champ-main {
   width: 90px;
@@ -31,11 +30,11 @@ body {
   height: 100%;
   border-radius: 1rem;
 }
-h1 {
+.champhead {
   flex: 1;
   color: var(--gray3);
 }
-h1 strong {
+.champhead strong {
   font-weight: bold;
   color: var(--white);
   padding-right: 10px;
@@ -80,7 +79,7 @@ h1 strong {
   text-align: center;
 }
 .champ-tip button {
-  background-color: var(--point8);
+  background-color: var(--point19);
   font-family: inherit;
   color: var(--white);
   font-size: 1.7rem;
@@ -90,12 +89,10 @@ h1 strong {
   transition: 0.3s;
 }
 .champ-tip button:hover {
-  font-weight: bold;
-}
-.champ-tip button:focus {
-  background-color: var(--point7);
+  background-color: var(--point3);
   border-radius: 0.5rem;
 }
+
 /* 챔피언 정보 끝*/
 /* 글자 지정 시작*/
 section strong {
@@ -137,7 +134,7 @@ section span {
 .summoner-order,
 .counter,
 .champ-rank {
-  background-color: var(--point8);
+  background-color: var(--point19);
   margin-top: 10px;
   border-radius: 1rem;
   width: 100%;
@@ -183,6 +180,9 @@ h2 {
   height: 100%;
   border-radius: 50%;
 }
+.sub-rune{
+	padding-top: 45px;
+}
 .main-rune p,
 .sub-rune p,
 .fragments-rune p {
@@ -202,6 +202,7 @@ h2 {
 .con2 .fragments-rune {
   width: 20%;
   padding-bottom: 30px;
+  padding-top: 90px;	
 }
 .con2 .fragments-rune ul {
   padding: 10px;
@@ -310,7 +311,7 @@ h2 {
   padding: 15px;
   color: var(--gray3);
   font-size: 1.7rem;
-  background-color: var(--point9);
+  background-color: var(--point20);
 }
 .con4 ul {
   width: 100%;
@@ -438,13 +439,19 @@ h2 {
   font-size: 1.5rem;
   padding-bottom: 10px;
 }
+.counter .counter-ratio1{
+	color: var(--point3);
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+}
 .counter .counter-game {
   color: var(--gray3);
   font-size: 1.3rem;
   line-height: 1.5rem;
-  border-top: 1px solid var(--gray1);
+  border-top: 1px dotted var(--gray3);
   padding-top: 10px;
   text-align: center;
+  display: flex;
 }
 
 /* 카운터 끝 */
