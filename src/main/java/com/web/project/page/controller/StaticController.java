@@ -37,7 +37,7 @@ public class StaticController {
         this.aramStatsJsonReader = aramStatsJsonReader;
     }
 
-    @GetMapping("/yalolza.gg/champions/static")
+    @GetMapping("/static")
     public String getChampionsData(
         @RequestParam(required = false, defaultValue = "ALL") String tier,
         @RequestParam(required = false, defaultValue = "ALL") String position,

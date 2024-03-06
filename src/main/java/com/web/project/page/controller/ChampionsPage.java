@@ -96,18 +96,7 @@ public class ChampionsPage {
 	}
 
 	
-	@GetMapping("/{champion}/counter/{position}")
-	public String getCounterData(@PathVariable String position, @PathVariable("champion") String champion,
-			@RequestParam(name = "champion", required = false) String additionalChampion, Model model) {
-		try {
-			Map<String, Object> modelData = counterDataService.getCounterData(position, champion, additionalChampion);
-			model.addAllAttributes(modelData);
-			return "counter_detail";
-		} catch (IOException e) {
-			model.addAttribute("error", "error: " + e.getMessage());
-			return "error";
-		}
-	}
+	
 	
 
 	@GetMapping("/res")
@@ -345,10 +334,24 @@ public class ChampionsPage {
     	
 		return "champ_detail";
 	}
+	
+//	@GetMapping("/{champion}/counter/{position}")
+//	public String getCounterData(@PathVariable String position, @PathVariable("champion") String champion,
+//			@RequestParam(name = "champion", required = false) String additionalChampion, Model model) {
+//		try {
+//			Map<String, Object> modelData = counterDataService.getCounterData(position, champion, additionalChampion);
+//			model.addAllAttributes(modelData);
+//			return "counter_detail";
+//		} catch (IOException e) {
+//			model.addAttribute("error", "error: " + e.getMessage());
+//			return "error";
+//		}
+//	}
  
-	@GetMapping("/{champion}/counter")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
-	public String ChampionsCounter(
+	@GetMapping("/{champion}/counter/{position}")	
+	public String getCounterData(
 			Model model,
+			@RequestParam(name = "champion", required = false) String additionalChampion,
 			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
 			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
 			@PathVariable("champion") String championid
@@ -360,50 +363,20 @@ public class ChampionsPage {
 			String rawData = Files.readString(Paths.get(filePath));
 			List<DataEntry> data = StatisticChampion.parseJson(rawData);
 			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
+			Map<String, Object> modelData = counterDataService.getCounterData(position, championid, additionalChampion);
+			model.addAllAttributes(modelData);
 			
-//			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
-//			System.out.println(mainStyle);
-//			Runes runes = RuneData.runes(mainStyle);
-//			model.addAttribute("mainRune", runes);
-//			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
-//			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
-//			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
-//			model.addAttribute("primaryPerk234", primaryStylePerks234);
-//			runes = RuneData.runes(8400);
-//			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
-//			model.addAttribute("secondaryPerk12", subStylePerks12);
-//			model.addAttribute("subRune", runes);
-//			List<Perk> perklist = RuneData.perklist();
-//			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
-//			List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
-//			List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
-//			List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
-//			출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
-//				model.addAttribute("perklist", perklist);
-//			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
-//			model.addAttribute("summoner1", spell);
-//			spell = SummonerData.findspell(Spelllist1.get(1).toString());
-//			model.addAttribute("summoner2", spell);
-//			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
-//			spell = SummonerData.findspell(Spelllist2.get(0).toString());
-//			model.addAttribute("summoner3", spell);
-//			spell = SummonerData.findspell(Spelllist2.get(1).toString());
-//			model.addAttribute("summoner4", spell);
-//			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("no DATA");
 		}
-		Item item = ItemData.item("1001");
-		model.addAttribute("item1", item);
-		item = ItemData.item("1001");
-		model.addAttribute("item2", item);
-		item = ItemData.item("3364");
-		model.addAttribute("item3", item);
+
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
+		
 		new Connect("total","yalolza.gg", "champions","detail");
-		return "champ_counter";
+		return "counter_detail";
 	}
 	@GetMapping("/{champion}/rune")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
 	public String ChampionsRune(
