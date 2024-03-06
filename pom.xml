@@ -148,7 +148,7 @@
       </dependency>
       
       
-      	        <!-- 메일 보내기 -->
+                 <!-- 메일 보내기 -->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>

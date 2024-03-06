@@ -5,19 +5,15 @@ body{
 
 figure {
     width: 100%;
-    /* height: 100px; */
     background-color: #1c284a;
     border: 0.1px solid #1c284a;;
-    /* background-image:url("/img/mainbg.webp");
-    background-repeat: no-repeat; 
-    background-position: center;
-    background-size: cover; */
+    
 }
 .homesearch {
     max-width: 1000px;
     margin: 50px auto;
     display: flex;
-    height: 70px;
+    height: 60px;
     border-radius: 1rem;
     overflow: hidden;
 }
@@ -52,11 +48,11 @@ h2 {
 }
 .homeswiper {
     width: 100%;
-    height: 600px;
-    /* height: 100%; */
+    height: 500px;
+    margin-bottom: 4rem;
 }
 .homeswiper .swiper-wrapper {
-    height: 600px;
+    height: 500px;
     display: flex;
     align-items: flex-end;
 }
@@ -120,7 +116,7 @@ h2 {
     width: 65%;
     height: 100%;
     color: var(--gray3);
-    padding: 30px;
+    padding: 0 30px 10px 30px;
 }
 .swiperimg-name {
     display: flex;
@@ -129,17 +125,17 @@ h2 {
     height: 100px;
 }
 .swiperimg-name h3 {
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .swiper-slide-active table {
     width: 100%;
     color: var(--white);
-    font-size: 2rem;
+    font-size: 1.7rem;
     text-align: center;
 }
 .swiper-slide-active table tbody td {
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 30px;
 }
 
@@ -149,7 +145,7 @@ h2 {
     border-radius: 1rem;
 }
 .champ-point {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 .champ-point p{
 	 overflow-y: scroll;
@@ -169,7 +165,7 @@ h4 {
 }
 .champ-point button {
     font-family: inherit;
-    padding: 10px;
+    padding: 15px;
     display: flex;
     margin-left: auto;
     color: var(--point2);
@@ -177,9 +173,43 @@ h4 {
     font-weight: bold;
     border-radius: 1rem;
     font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
 }
-
-
+.champ-point button:hover{
+	background-color: var(--point2);
+	color: var(--white);
+}
+.homeswiper .prev1::after,
+.homeswiper .next1::after{
+	display: none;
+}
+.homeswiper .prev1 img,
+.homeswiper .next1 img{
+	width: 100%;
+}
+.homeswiper .prev1{
+	top: 40px;
+	left: 75%;
+	color: var(--point3);	
+	width: 40px;
+	height: 50px; 
+	font-size: 4rem;
+	background-color: #1e2233;
+	display: flex;
+	border-radius: 0.5rem;
+}
+.homeswiper .next1{
+	right: 21%;
+	top: 40px;	
+	width: 40px; 
+      height: 50px; 
+     font-size: 4rem;
+     color: var(--point3);
+	background-color: #1e2233;
+	border-radius: 0.5rem;
+}
 /*-------------------------------------------------커뮤-------------------------------------------*/
 .commu_list, #commuDescriptor {
   display: grid; 
