@@ -1,189 +1,153 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/myrest.css" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/champ.css" />
-    <script src="/js/position.js" defer></script>
-  </head>
-  <body>
-    <header th:replace="~{/header :: header}"></header>
-    <br />
-    <br />
-    <div class="con1-wrap">
-      <section class="con1">
-        <div class="champ-tier">
-          <select
-            name="tier"
-            id="tier"
-            onchange="updateUrl('tier', this.value)"
-          >
-            <option value="Challenger">Challenger</option>
-            <option value="Grandmaster">Grandmaster</option>
-            <option value="Master">Master</option>
-            <option value="Diamond">Diamond</option>
-            <option value="Emerald">Emerald</option>
-            <option value="Platinum">Platinum</option>
-            <option value="Gold">Gold</option>
-            <option value="Silver">Silver</option>
-            <option value="Bronze">Bronze</option>
-            <option value="Iron">Iron</option>
-          </select>
-        </div>
-        <div class="champ-position">
-          <nav>
-            <button
-              class="position-btn"
-              id="ALL"
-              onclick="updateUrl('position', 'ALL')"
-            >
-              전체
-            </button>
-            <button
-              class="position-btn"
-              id="TOP"
-              onclick="updateUrl('position', 'TOP')"
-            >
-              탑
-            </button>
-            <button
-              class="position-btn"
-              id="JUNGLE"
-              onclick="updateUrl('position', 'JUNGLE')"
-            >
-              정글
-            </button>
-            <button
-              class="position-btn"
-              id="MIDDLE"
-              onclick="updateUrl('position', 'MIDDLE')"
-            >
-              미드
-            </button>
-            <button
-              class="position-btn"
-              id="BOTTOM"
-              onclick="updateUrl('position', 'BOTTOM')"
-            >
-              원딜
-            </button>
-            <button
-              class="position-btn"
-              id="UTILITY"
-              onclick="updateUrl('position', 'UTILITY')"
-            >
-              서포터
-            </button>
-          </nav>
-        </div>
-      </section>
-    </div>
-    <div class="champ-con">
-      <section class="con2">
-        <div class="champ-btn"></div>
-        <ul class="champ-face">
-          <li th:each="champion : ${positionData}">
-            <a
-              th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position}, championName=${champion.championName})}"
-            >
-              <div>
-                <img
-                  th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
-                  alt=""
-                />
-              </div>
-              <p th:text="${champion.krchampionName}"></p>
-            </a>
-          </li>
-        </ul>
-      </section>
-      <section class="con3">
-        <table>
-          <thead>
-            <tr>
-              <th>순위</th>
-              <th>챔피언</th>
-              <th>티어</th>
-              <th>포지션</th>
-              <th>승률</th>
-              <th>픽률</th>
-              <th>벤율</th>
-              <th>상대하기 어려운챔피언</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr th:each="champion, stat : ${positionData}" class="champ-body">
-              <td th:text="${stat.count}"></td>
-              <td>
-                <div class="img-wrap">
-                  <a
-                    th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position}, championName=${champion.championName})}"
-                  >
-                    <img
-                      th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
-                      alt="Champion Icon"
-                    />
-                  </a>
-                </div>
-                <p class="champ-name">
-                  <a th:text="${champion.krchampionName}" href="#"></a>
-                </p>
-              </td>
-              <td>
-                <center>
-                  <div class="img-wrap" th:switch="${champion.stats.champtier}">
-                    <div th:case="OP">
-                      <img src="/img/tier/icon-tier-op.svg" />
-                    </div>
-                    <div th:case="'1 티어'">
-                      <img src="/img/tier/icon-tier-1.svg" />
-                    </div>
-                    <div th:case="'2 티어'">
-                      <img src="/img/tier/icon-tier-2.svg" />
-                    </div>
-                    <div th:case="'3 티어'">
-                      <img src="/img/tier/icon-tier-3.svg" />
-                    </div>
-                    <div th:case="'4 티어'">
-                      <img src="/img/tier/icon-tier-4.svg" />
-                    </div>
-                  </div>
-                </center>
-              </td>
-              <td>
-                <center>
-                  <div class="img-wrap" th:switch="${champion.position}">
-                    <div class="TopBox box" th:case="TOP"></div>
-                    <div class="JungleBox box" th:case="JUNGLE"></div>
-                    <div class="MidBox box" th:case="MIDDLE"></div>
-                    <div class="BottomBox box" th:case="BOTTOM"></div>
-                    <div class="SupporterBox box" th:case="UTILITY"></div>
-                  </div>
-                </center>
-              </td>
-              <td th:text="${champion.stats.winrate} + '%'"></td>
-              <td th:text="${champion.stats.pickrate} + '%'"></td>
-              <td th:text="${champion.stats.banrate} + '%'"></td>
-              <td>
-                <div class="img-wrap">
-                  <a href=""><img src="/img/Garen.webp" alt="" /></a>
-                </div>
-                <div class="img-wrap">
-                  <a href=""><img src="/img/Garen.webp" alt="" /></a>
-                </div>
-                <div class="img-wrap">
-                  <a href=""><img src="/img/Garen.webp" alt="" /></a>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </div>
-    <script>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link rel="stylesheet" href="/css/myrest.css" />
+<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/champ.css" />
+<script src="/js/position.js" defer></script>
+</head>
+<body>
+	<header th:replace="~{/header :: header}"></header>
+	<br />
+	<br />
+	<div class="con1-wrap">
+		<section class="con1">
+			<div class="champ-tier">
+				<select name="tier" id="tier"
+					onchange="updateUrl('tier', this.value)">
+					<option value="CHALLENGER"
+						th:selected="${selectedTier == 'CHALLENGER'}">Challenger</option>
+					<option value="GRANDMASTER"
+						th:selected="${selectedTier == 'GRANDMASTER'}">Grandmaster</option>
+					<option value="MASTER" th:selected="${selectedTier == 'MASTER'}">Master</option>
+					<option value="DIAMOND" th:selected="${selectedTier == 'DIAMOND'}">Diamond</option>
+					<option value="EMERALD" th:selected="${selectedTier == 'EMERALD'}">Emerald</option>
+					<option value="PLATINUM"
+						th:selected="${selectedTier == 'PLATINUM'}">Platinum</option>
+					<option value="GOLD" th:selected="${selectedTier == 'GOLD'}">Gold</option>
+					<option value="SILVER" th:selected="${selectedTier == 'SILVER'}">Silver</option>
+					<option value="BRONZE" th:selected="${selectedTier == 'BRONZE'}">Bronze</option>
+					<option value="IRON" th:selected="${selectedTier == 'IRON'}">Iron</option>
+				</select>
+			</div>
+			<div class="champ-position">
+				<nav>
+					<button class="position-btn" id="ALL"
+						onclick="updateUrl('position', 'ALL')">전체</button>
+					<button class="position-btn" id="TOP"
+						onclick="updateUrl('position', 'TOP')">탑</button>
+					<button class="position-btn" id="JUNGLE"
+						onclick="updateUrl('position', 'JUNGLE')">정글</button>
+					<button class="position-btn" id="MIDDLE"
+						onclick="updateUrl('position', 'MIDDLE')">미드</button>
+					<button class="position-btn" id="BOTTOM"
+						onclick="updateUrl('position', 'BOTTOM')">원딜</button>
+					<button class="position-btn" id="UTILITY"
+						onclick="updateUrl('position', 'UTILITY')">서포터</button>
+				</nav>
+			</div>
+		</section>
+	</div>
+	<div class="champ-con">
+		<section class="con2">
+			<div class="champ-btn"></div>
+			<ul class="champ-face">
+				<li th:each="champion : ${positionData}"><a
+					th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position == 'ALL' ? championOriginalPositions[champion.championName] : position}, championName=${champion.championName})}">
+						<div>
+							<img
+								th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
+								alt="" />
+						</div>
+						<p th:text="${champion.krchampionName}"></p>
+				</a></li>
+			</ul>
+		</section>
+		<section class="con3">
+			<table>
+				<thead>
+					<tr>
+						<th>순위</th>
+						<th>챔피언</th>
+						<th>티어</th>
+						<th>포지션</th>
+						<th>승률</th>
+						<th>픽률</th>
+						<th>벤율</th>
+						<th>상대하기 어려운챔피언</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="champion, stat : ${positionData}" class="champ-body">
+						<td th:text="${stat.count}"></td>
+						<td>
+							<div class="img-wrap">
+								<a
+									th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position == 'ALL' ? championOriginalPositions[champion.championName] : position}, championName=${champion.championName})}">
+									<img
+									th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
+									alt="Champion Icon" />
+								</a>
+							</div>
+							<p class="champ-name">
+								<a th:text="${champion.krchampionName}" href="#"></a>
+							</p>
+						</td>
+						<td>
+							<center>
+								<div class="img-wrap" th:switch="${champion.stats.champtier}">
+									<div th:case="OP">
+										<img src="/img/tier/icon-tier-op.svg" />
+									</div>
+									<div th:case="'1 티어'">
+										<img src="/img/tier/icon-tier-1.svg" />
+									</div>
+									<div th:case="'2 티어'">
+										<img src="/img/tier/icon-tier-2.svg" />
+									</div>
+									<div th:case="'3 티어'">
+										<img src="/img/tier/icon-tier-3.svg" />
+									</div>
+									<div th:case="'4 티어'">
+										<img src="/img/tier/icon-tier-4.svg" />
+									</div>
+								</div>
+							</center>
+						</td>
+						<td>
+							<center>
+								<div class="img-wrap" th:switch="${champion.position}">
+									<div class="TopBox box" th:case="TOP"></div>
+									<div class="JungleBox box" th:case="JUNGLE"></div>
+									<div class="MidBox box" th:case="MIDDLE"></div>
+									<div class="BottomBox box" th:case="BOTTOM"></div>
+									<div class="SupporterBox box" th:case="UTILITY"></div>
+								</div>
+							</center>
+						</td>
+						<td th:text="${champion.stats.winrate} + '%'"></td>
+						<td th:text="${champion.stats.pickrate} + '%'"></td>
+						<td th:text="${champion.stats.banrate} + '%'"></td>
+						<td>
+							<div class="img-wrap">
+								<a href=""><img src="/img/Garen.webp" alt="" /></a>
+							</div>
+							<div class="img-wrap">
+								<a href=""><img src="/img/Garen.webp" alt="" /></a>
+							</div>
+							<div class="img-wrap">
+								<a href=""><img src="/img/Garen.webp" alt="" /></a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<script>
       const btn = document.querySelectorAll(".champ-position>nav>button");
       // URL 업데이트
       function updateUrl(key, value) {
@@ -225,8 +189,8 @@
     	    });
     	});
     </script>
-    <br />
-    <br />
-    <footer th:replace="~{/footer :: footer}"></footer>
-  </body>
+	<br />
+	<br />
+	<footer th:replace="~{/footer :: footer}"></footer>
+</body>
 </html>
