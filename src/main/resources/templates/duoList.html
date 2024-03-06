@@ -255,27 +255,69 @@
 									</div>
 								</div>
 							</li>
-<!--							<ul th:each="mostChampion : ${duo.mostChampions}">
-    							<li>
-									<img th:src="@{/img/champion/{championName}.png(championName=${mostChampion.mostChampion})}" alt="Champion Icon" />
-								</li>
-    							<li><span th:text="${mostChampion.round} + '경기 '+${mostChampion.wins} + '승'"></span></li>
-    							<li><span th:text="${mostChampion.kills} + '/'+${mostChampion.deaths} + '/'+${mostChampion.assists}"></span></li>
-							</ul>-->
-							                     <li>
+							
+							
+							
+
+<!--						<ul th:unless="${#lists.isEmpty(duo.mostChampions)}" th:each="mostChampion, iterStat : ${duo.mostChampions}">
+    						<li>
+        						<img th:src="@{/img/champion/{championName}.png(championName=${mostChampion.mostChampion})}" alt="Champion Icon" />
+    						</li>
+    						<li><span th:text="${mostChampion.round} + '경기 ' + ${mostChampion.wins} + '승'"></span></li>
+    						<li><span th:text="${mostChampion.kills} + '/' + ${mostChampion.deaths} + '/' + ${mostChampion.assists}"></span></li>
+						</ul>
+						<ul th:if="${#lists.isEmpty(duo.mostChampions)}">
+    						<li>
+        						<span>데이터가 없습니다.</span>
+    						</li>
+						</ul>
+						<ul th:if="${#lists.isEmpty(duo.mostChampions)}">
+    						<li>
+        						<span>데이터가 없습니다.</span>
+    						</li>
+						</ul>
+						<ul th:if="${#lists.isEmpty(duo.mostChampions)}">
+    						<li>
+        						<span>데이터가 없습니다.</span>
+    						</li>
+						</ul>-->
+
+
+					
+					<li th:unless="${#lists.isEmpty(duo.mostChampions)}">
                      <img th:each="mostChampion : ${duo.mostChampions}" th:src="@{/img/champion/{championName}.png(championName=${mostChampion.mostChampion})}" alt="Champion Icon" />
                      </li>
-                        <li th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins + duo.MostChampions[2].wins},
+                     
+ 
+                        <li th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins + duo.MostChampions[2].wins},
                                   rounds=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}">
                                <span th:text="${wins * 100 / rounds} + '%'"></span>
                      </li>
-                     <li th:with="kill=${duo.MostChampions[0].kills + duo.MostChampions[1].kills + duo.MostChampions[2].kills},
+
+
+                     <li th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="kill=${duo.MostChampions[0].kills + duo.MostChampions[1].kills + duo.MostChampions[2].kills},
                          death=${duo.MostChampions[0].deaths + duo.MostChampions[1].deaths + duo.MostChampions[2].deaths},
                          assist=${duo.MostChampions[0].assists + duo.MostChampions[1].assists + duo.MostChampions[2].assists},
                          round=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}
                          ">
                          <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + '/' +  ${#numbers.formatDecimal(death / round, 1, 1)} +'/'+ ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
                      </li>
+
+
+    						<li th:if="${#lists.isEmpty(duo.mostChampions)}">
+        						<span>데이터가 없습니다.</span>
+    						</li>
+    						<li th:if="${#lists.isEmpty(duo.mostChampions)}">
+        						<span>데이터가 없습니다.</span>
+    						</li>
+    						<li th:if="${#lists.isEmpty(duo.mostChampions)}">
+        						<span>데이터가 없습니다.</span>
+    						</li>
+                     
+                     
+                     
+                     
+                     
 							<li th:text="${duo.memo}"></li>
 							<li th:text="${duo.createdDate}" class="createdDate"></li>
 						</ul>
