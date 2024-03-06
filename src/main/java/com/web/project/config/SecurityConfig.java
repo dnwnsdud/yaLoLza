@@ -65,6 +65,7 @@ public class SecurityConfig {
 						.requestMatchers(
 								"/admin",
 								"/admin/**",
+								"/static",
 							"/yalolza.gg",
 							"/yalolza.gg/**",
 							"/yalolza.gg/champions",

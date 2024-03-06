@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="/css/static.css" />
 </head>
 <body>
-	<div>
+	<header th:replace="~{/header :: header}"></header>
+		<br/>
+	<div class="staticContainer">
 		<!-- 챔피언 통계 -->
 		<section class="con1">
 			<div class="dec">
@@ -77,7 +79,7 @@
 					th:each="champion, stat : ${positionData}">
 					<ul>
 						<li th:text="${stat.count}">1</li>
-						<li>
+						<li class="champinfo">
 							<div class="img-wrap">
 								<a
 									th:href="@{/img/champion/{championName}(championName=${champion.championName})}">
@@ -143,7 +145,11 @@
 					</ul>
 				</div> -->
 			</section>
+			</div>
 		</div>
+			<br/>
+			<br/>
+          <footer th:replace="~{/footer :: footer}"></footer>
 		<script>
 			// URL 업데이트
 			function updateUrl(key, value) {

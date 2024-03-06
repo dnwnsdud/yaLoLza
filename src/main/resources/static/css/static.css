@@ -1,5 +1,11 @@
+.staticContainer{
+	max-width: 1320px;
+	margin:0 auto;
+}
 .con1 {
   background-color: var(--point8);
+  border-radius: 10px;
+  overflow: hidden;
 }
 .dec {
   max-width: 1320px;
@@ -89,6 +95,7 @@
   justify-content: center;
   gap: 10px;
 }
+
 .progress-bar {
   width: 90px;
   height: 15px;
@@ -120,5 +127,15 @@
 }
 #myChart {
   color: var(--gray1);
+}
+#champstatic_rank ul li.champinfo{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+#champstatic_rank ul li.champinfo .img-wrap{
+	margin-left:auto;
 }
 /* 티어별 통계 끝 */

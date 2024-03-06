@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/yalolza.gg")
 public class StaticController {
 
     private final JsonReader jsonReader;
