@@ -119,7 +119,7 @@
 						</td>
 						<td>
 							<center>
-								<div class="img-wrap" th:switch="${champion.position}">
+								<div class="img-wrap" td th:switch="${position == 'ALL' ? championOriginalPositions[champion.championName] : position}">
 									<div class="TopBox box" th:case="TOP"></div>
 									<div class="JungleBox box" th:case="JUNGLE"></div>
 									<div class="MidBox box" th:case="MIDDLE"></div>

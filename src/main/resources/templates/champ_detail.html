@@ -27,7 +27,7 @@
 				<h1>
 					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong>
 					<!--아무도 없음-->
-					<span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
+					<span style="font-size: 2rem" th:text="'빌드 -'+' '+${position}">빌드 - 포지션</span><br /> <span
 						style="font-size: 1.3rem" class="tier" th:text="${champtier}"></span>
 					<div class="champ-skill">
 
@@ -627,46 +627,6 @@
 											<p>게임</p>
 										</div>
 									</div>
-									<div>
-										<div class="counter-wrap">
-											<img src="" alt="">
-										</div>
-										<p class="counter-ratio">44.06%</p>
-										<div class="counter-game">
-											<p>판수</p>
-											<p>게임</p>
-										</div>
-									</div>
-									<div>
-										<div class="counter-wrap">
-											<img src="" alt="">
-										</div>
-										<p class="counter-ratio">44.06%</p>
-										<div class="counter-game">
-											<p>판수</p>
-											<p>게임</p>
-										</div>
-									</div>
-									<div>
-										<div class="counter-wrap">
-											<img src="" alt="">
-										</div>
-										<p class="counter-ratio">44.06%</p>
-										<div class="counter-game">
-											<p>판수</p>
-											<p>게임</p>
-										</div>
-									</div>
-									<div>
-										<div class="counter-wrap">
-											<img src="" alt="">
-										</div>
-										<p class="counter-ratio">44.06%</p>
-										<div class="counter-game">
-											<p>판수</p>
-											<p>게임</p>
-										</div>
-									</div>
 								</div>
 							</li>
 							<li>
@@ -682,46 +642,6 @@
 											th:text="${champion.stats.winRate + '%'}">승률</p>
 										<div class="counter-game">
 											<p th:text="${matchCounts[champion.championName]}">게임 횟수</p>
-											<p>게임</p>
-										</div>
-									</div>
-									<div>
-										<div class="counter-wrap">
-											<img src="" alt="">
-										</div>
-										<p class="counter-ratio" style="color: var(--point3);">44.06%</p>
-										<div class="counter-game">
-											<p>판수</p>
-											<p>게임</p>
-										</div>
-									</div>
-									<div>
-										<div class="counter-wrap">
-											<img src="" alt="">
-										</div>
-										<p class="counter-ratio" style="color: var(--point3);">44.06%</p>
-										<div class="counter-game">
-											<p>판수</p>
-											<p>게임</p>
-										</div>
-									</div>
-									<div>
-										<div class="counter-wrap">
-											<img src="" alt="">
-										</div>
-										<p class="counter-ratio" style="color: var(--point3);">44.06%</p>
-										<div class="counter-game">
-											<p>판수</p>
-											<p>게임</p>
-										</div>
-									</div>
-									<div>
-										<div class="counter-wrap">
-											<img src="" alt="">
-										</div>
-										<p class="counter-ratio" style="color: var(--point3);">44.06%</p>
-										<div class="counter-game">
-											<p>판수</p>
 											<p>게임</p>
 										</div>
 									</div>
