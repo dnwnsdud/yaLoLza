@@ -75,10 +75,13 @@
              </div>
            </div>
            <div>
-             <span style="color: var(--point10)"
-               th:with=" sss = ${match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? 0 : 1}"
-               th:text="${'킬관여 '+ ((match.body.info.participants[summonermatchnum[i.index]].kills+match.body.info.participants[summonermatchnum[i.index]].assists) * 100 / match.body.info.teams[sss].objectives.champion.kills) +'%'}">킬관여
-               45%</span><br />
+           <span style="color: var(--point10)"
+      th:with="sss=${match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? 0 : 1}"
+      th:text="${'킬관여 ' + ((match.body.info.participants[summonermatchnum[i.index]].kills +
+         match.body.info.participants[summonermatchnum[i.index]].assists) == 0 && match.body.info.teams[sss].objectives.champion.kills == 0 ? 0 : ((match.body.info.participants[summonermatchnum[i.index]].kills +
+        match.body.info.participants[summonermatchnum[i.index]].assists) * 100 / (match.body.info.teams[sss].objectives.champion.kills == 0 ? 1 : match.body.info.teams[sss].objectives.champion.kills))) + '%'}">
+      킬관여 45%
+    </span><br />
 
              <span
                th:text="'제어 와드'+${match.body.info.participants[summonermatchnum[i.index]].visionWardsBoughtInGame}"></span><br />

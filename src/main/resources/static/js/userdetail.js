@@ -29,8 +29,8 @@ console.log("차트야나왔어");
   });
 }
 chartt();
-let btn = document.querySelectorAll(".usergame-btn > button");
 
+let btn = document.querySelectorAll(".usergame-btn > button");
 btn.forEach((bt) => {
   bt.addEventListener("click", (e) => {
 	  console.log("클릭")
@@ -77,6 +77,9 @@ function champions(){
     userleft.style.display = "none";
     userright.style.display = "none";
 }
+
+
+
 
 function allresult(){
 	totalchampionsbutton.style.backgroundColor = "var(--point8)";

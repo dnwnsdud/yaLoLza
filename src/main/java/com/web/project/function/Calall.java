@@ -101,6 +101,14 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
 	            }
 	        }
 
+	        // 리스트에 1, 2, 3 중 하나가 없으면 남은 숫자를 넣어줌
+	        List<Long> remainingNumbers = Arrays.asList(1L, 2L, 3L);
+	        for (Long remainingNumber : remainingNumbers) {
+	            if (!result.contains(remainingNumber)) {
+	                result.add(remainingNumber);
+	            }
+	        }
+
 	        return result;
 	    }
 	    
