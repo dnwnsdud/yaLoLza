@@ -207,6 +207,13 @@ input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
 .ChampionBox > img{
 	width:100%;
 }
+
+.empty{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+
 /*-----------------------------------duosave--------------------------------------*/
 
 .modal .duo-find {
@@ -312,8 +319,8 @@ input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
    margin-top:20px;
 }
 
-.modal .register,
-.modal .back {
+.modal .register
+ {
    width: 400px;
    padding: 17px 0;
    border-radius: 10px;
@@ -398,7 +405,7 @@ input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
 }
 
 .plus>svg>path {
-	fill: var(--point3);
+	fill: var(--gray3);
 }
 .modal .close > svg{
    width: 100%;
@@ -410,4 +417,18 @@ input[type='radio']:checked+label>div>svg>path:nth-of-type(1) {
 }
 .mike-po{
 	text-align: center;
+}
+
+.modal .listBack{
+	width: 344px;
+   padding: 17px 0;
+   border-radius: 10px;
+   background-color: #282830;
+   color: var(--white);
+   cursor: pointer;
+   border: none;
+   font-family: inherit;
+   font-size: 2rem;
+   height: 58px;
+   text-align: center;
 }

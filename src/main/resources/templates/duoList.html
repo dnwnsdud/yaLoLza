@@ -176,7 +176,7 @@
                   <li>티어</li>
                   <li>찾는 포지션</li>
                   <li>최근선호챔피언</li>
-                  <li>최근 전적</li>
+                  <li>최근 승률</li>
                   <li>KDA</li>
                   <li>메모</li>
                   <li>등록일시</li>
@@ -304,14 +304,14 @@
                      </li>
 
 
-                      <li th:if="${#lists.isEmpty(duo.mostChampions)}">
-                          <span>데이터가 없습니다.</span>
+                      <li class="empty" th:if="${#lists.isEmpty(duo.mostChampions)}">
+                          <span>x</span>
                       </li>
-                      <li th:if="${#lists.isEmpty(duo.mostChampions)}">
-                          <span>데이터가 없습니다.</span>
+                      <li class="empty" th:if="${#lists.isEmpty(duo.mostChampions)}">
+                          <span>x</span>
                       </li>
-                      <li th:if="${#lists.isEmpty(duo.mostChampions)}">
-                          <span>데이터가 없습니다.</span>
+                      <li class="empty" th:if="${#lists.isEmpty(duo.mostChampions)}">
+                          <span>x</span>
                       </li>
                      
                      

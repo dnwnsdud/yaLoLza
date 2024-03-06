@@ -16,14 +16,12 @@ body {
 	width: 300px;
 	font-size: 17px;
 	background-color: #282830;
-	border: 2px solid gray;
 }
 
 
 .container {
 	width: 800px;
 	margin: auto;
-	border: 1px solid gray;
 	margin-top: 100px;
 	padding: 50px;
 	border-radius: 10px;
@@ -32,9 +30,9 @@ body {
 
 .Box {
 	width: 50px;
-	border: 1px solid gray;
 	border-radius: 5px;
 	padding: 5px;
+	border:1px solid gray;
 }
 
 .allContainer>div {
@@ -78,7 +76,7 @@ input[type='radio']+label {
 }
 
 input[type='radio']:checked+label>div {
-	background-color: #00bba3;
+	background-color: #007aff;
 }
 
 input[type='checkbox'] {
@@ -90,7 +88,7 @@ input[type='checkbox']+label {
 }
 
 input[type='checkbox']:checked+label>div {
-	background-color: #00bba3;
+	background-color: #007aff;
 }
 
 input[type='radio']+label>div>svg {
@@ -120,20 +118,18 @@ input[type='checkbox']:checked+label>div>svg>path:nth-of-type(1) {
 	width: 400px;
 	padding: 17px 0;
 	border-radius: 10px;
-	border: 1px solid gray;
 	color: white;
 	background-color: #282830;
-
+	cursor: pointer;
+	border: none;
 }
 
 .back {
 	padding: 18px 0;
 	width: 400px;
-	border: 1px solid gray;
 	border-radius: 10px;
 	text-align: center;
 	background-color:#282830;
-
 }
 
 .memo {
@@ -153,7 +149,8 @@ input[type='checkbox']:checked+label>div>svg>path:nth-of-type(1) {
 
 input[type="text"]{
 	background-color:#282830 ;
-	border: 1px solid gray;
 	color:white;
 	border-radius:5px;
+	border: none;
+	padding: 10px;
 }

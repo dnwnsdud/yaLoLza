@@ -9,7 +9,6 @@ body {
 .duoView {
 	width: 800px;
 	margin: auto;
-	border: 1px solid gray;
 	margin-top: 100px;
 	border-radius: 10px;
 	background-color: #292e45;
@@ -40,9 +39,9 @@ body {
 .type{
 	width:100px;
 	height:50px;
-	border:1px solid gray;
 	padding:15px;
 	border-radius:10px;
+	border: 1px solid gray;
 }
 .mikeBox {
 	width: 18px;
@@ -59,7 +58,6 @@ body {
 
 .btn {
 	display: inline-block;
-	border: 1px solid gray;
 	border-radius: 10px;
 	text-align: center;
 	margin-left: 10px;
@@ -69,7 +67,6 @@ body {
 
 .back {
 	display: block;
-	border: 1px solid gray;
 	border-radius: 10px;
 	text-align: center;
 	margin: 10px;
@@ -85,15 +82,15 @@ div.yourBox {
 
 .Box {
 	width: 50px;
-	border: 1px solid gray;
 	border-radius: 5px;
 	padding: 10px;
 	display: inline-block;
+	border: 1px solid gray;
 }
 
 #positionBox>.Box>svg>path:nth-of-type(1),
 .yourBox>.Box>svg>path:nth-of-type(1) {
-	fill: #00bba3
+	fill: #007aff
 }
 #positionBox>.Box>svg>path:nth-of-type(2),
 .yourBox>.Box>svg>path:nth-of-type(2) {
@@ -111,26 +108,27 @@ div.yourBox {
 .for-password>input {
 		width: 355px;
 		background-color: #282830;
-		border: 1px solid gray;
 		border-radius: 10px;
 		padding: 10px;
 		color: white;
 		margin:10px;
 		padding: 13px;
 		font-size:16px;
+		border: none;
 }
 
 input.submitBtn{
 	width:380px;
 	margin-left:4px;
+		cursor: pointer;
 }
 form{
 	padding:0px;
 }
 .playInfo{
 	margin:0 20px;
-	border:1px solid gray;
 	border-radius:10px;
+	height: 168px;
 }
 .playInfo > div{
 	display:grid;
