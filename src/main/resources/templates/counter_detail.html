@@ -22,7 +22,7 @@
 				<h1>
 					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong>
 					<!--아무도 없음-->
-					<span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
+					<span  style="font-size: 2rem" >빌드 - 포지션</span><br /> <span
 						style="font-size: 1.3rem" class="tier">1티어</span>
 					<div class="champ-skill">
 
@@ -52,13 +52,13 @@
 			<div class="champ-statistics">
 				<!--진성님-->
 				<div>
-					<span>승률</span><br /> <strong>50.55%</strong>
+					<span>승률</span><br /> <strong th:text="${winrate}+ '%'">50.55%</strong>
 				</div>
 				<div>
-					<span>픽률</span><br /> <strong>6.5%</strong>
+					<span>픽률</span><br /> <strong th:text="${pickrate}+ '%'">6.5%</strong>
 				</div>
 				<div>
-					<span>밴율</span><br /> <strong>5.23%</strong>
+					<span>밴율</span><br /> <strong th:text="${banrate}+ '%'">5.23%</strong>
 				</div>
 			</div>
 			<div class="champ-tip">
