@@ -466,7 +466,7 @@ body{
   width: 100%;
   align-items: center;
   padding: 5px 10px 10px 10px;
-  background-color: var(--point12);
+  background-color:rgba(83, 131, 232, 0.3);
 }
 .vic-spell {
   display: flex;
