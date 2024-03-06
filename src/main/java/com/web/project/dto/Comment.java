@@ -29,7 +29,7 @@ import lombok.Setter;
         sequenceName = "seq_comment",
         initialValue = 100000,
         allocationSize = 1
-)
+) 
 
 public class Comment {
 	@Id

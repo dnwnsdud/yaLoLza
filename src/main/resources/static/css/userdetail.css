@@ -1,9 +1,11 @@
 
-
+body{
+	background-color: var(--point18);
+}
 
 /* 유저 정보 시작*/
 .con1 {
-  background-color: var(--point8);
+  background-color: var(--point19);
 }
 .dec,
 .champ-statistics,
@@ -26,28 +28,34 @@
   height: 100%;
   border-radius: 1rem;
 }
-h1 {
+.user-main {
   flex: 1;
   color: var(--gray3);
   padding-top: 10px;
 }
-h1 strong {
+.user-main strong {
   font-weight: bold;
   color: var(--white);
 }
-h1 .user-id span {
+.user-main .user-id span {
   font-size: 1.7rem;
   color: var(--gray3);
 }
-h1 p {
+.user-main p {
   padding-top: 10px;
 }
 #gangsin{
-	padding:5px;
+	margin-top: 2rem;
 	font-size: 1.3rem;
     border-radius: 0.5rem;
     color:white;
-	background-color: var(--gray1);
+	background-color: var(--point3);
+	border:none;
+	width: 10rem;
+	height: 4rem;
+	font-size: 1.5rem;
+	font-family: inherit;
+	
 }
 .user-tier {
   display: flex;
@@ -86,7 +94,7 @@ h1 p {
   gap: 50px;
 }
 .user-tip button {
-  background-color: var(--point8);
+  background-color: var(--point19);
   font-family: inherit;
   color: var(--white);
   font-size: 2rem;
@@ -97,6 +105,8 @@ h1 p {
 }
 .user-tip button:hover {
   font-weight: bold;
+  background-color: var(--point3);
+  border-radius: 0.5rem;
 }
 .user-tip button:focus {
   background-color: var(--point7);
@@ -192,7 +202,7 @@ h1 p {
 .usergame-itembuild,
 .usergame-skillbuild,
 .usergame-runeinfo {
-  background-color: var(--point8);
+  background-color: var(--point19);
   margin-top: 10px;
   border-radius: 1rem;
   width: 100%;
@@ -249,7 +259,7 @@ h1 p {
 }
 .user-most button {
   width: 100%;
-  background-color: var(--gray2);
+  background-color: var(--point19);
   color: var(--gray3);
   border-radius: 0.5rem;
   padding: 20px 10px 20px 10px;
@@ -257,6 +267,7 @@ h1 p {
   font-size: 1.5rem;
   border: none;
   cursor: pointer;
+  border-top:1px solid var(--point18);
 }
 /* 모스트 10 끝 */
 /* 20게임 그래프 시작 */
@@ -385,7 +396,7 @@ h1 p {
   width: 100%;
   border: none;
   border-left: 1px dotted var(--gray2);
-  background-color: var(--point8);
+  background-color: var(--point19);
   cursor: pointer;
   padding: 100px 10px 10px 10px;
   color: var(--gray3);
@@ -403,17 +414,17 @@ h1 p {
   width: 100%;
   padding: 10px;
   border-radius: 1rem;
-  background-color: var(--point8);
+  background-color: var(--point19);
   text-align: center;
   font-size: 1.5rem;
   color: var(--gray3);
-  border: 1px solid var(--gray3);
   cursor: pointer;
-}
+  border:1px solid var(--gray2);
+  }
 .btn-build.on,
 .btn-all.on,
 .usergame-menunavi button:focus {
-  background: var(--gray2);
+  background: var(--point3);
   color: var(--white);
 }
 /* 유저 메뉴 끝*/
