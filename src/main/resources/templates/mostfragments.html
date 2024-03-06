@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<div th:each="match , i : ${matchsssinfoList}">
+	<div class="usermathall" th:each="match , i : ${matchsssinfoList}">
    <section class="usergame-result">
      <ul>
        <li class="usergame-times">
@@ -127,7 +127,7 @@
          </div>
        </li>
        <li class="usergame-btn">
-         <button>∨</button>
+         <button onclick="toggleUserGameClick()">∨</button>
        </li>
      </ul>
    </section>

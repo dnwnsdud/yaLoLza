@@ -30,7 +30,7 @@ console.log("차트야나왔어");
 }
 chartt();
 
-let btn = document.querySelectorAll(".usergame-btn > button");
+/*let btn = document.querySelectorAll(".usergame-btn > button");
 btn.forEach((bt) => {
   bt.addEventListener("click", (e) => {
 	  console.log("클릭")
@@ -76,10 +76,18 @@ function champions(){
     totalchampions.style.display = "block";
     userleft.style.display = "none";
     userright.style.display = "none";
+}*/
+
+function toggleUserGameClick() {
+    var clickedButton = event.currentTarget;
+    var userMathAll = clickedButton.closest('.usermathall');
+    var userGameClick = userMathAll.querySelector('.usergame-click');
+
+    if (userGameClick) {
+        // userGameClick이 존재하면 display를 토글합니다.
+        userGameClick.style.display = (userGameClick.style.display === 'none' || userGameClick.style.display === '') ? 'block' : 'none';
+    }
 }
-
-
-
 
 function allresult(){
 	totalchampionsbutton.style.backgroundColor = "var(--point8)";
