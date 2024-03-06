@@ -20,23 +20,24 @@
 <script src="/js/home.js" defer></script>
 <script src="/js/position.js" defer></script>
 <script defer>
-    function submitForm(event) {
-        event.preventDefault();
-        var inputValue = document.getElementById('searchInput').value;
-
-        if (inputValue.includes('#')) {
-            var modifiedValue = inputValue.replace(/@/g, '-');
-            var submitURL = "http://localhost:9998/yalolza.gg/summoners/" + modifiedValue;
-        } else {
-            var submitURL = "http://localhost:9998/yalolza.gg/summoners/" + encodeURIComponent(inputValue)+"-KR1";
-        }
-
-        // URL에서 쿼리 스트링 제거
-        var newURL = submitURL.split('?')[0];
-
-        // 새로운 URL로 이동
-        window.location.href = newURL;
+   function submitForm(event) {
+	   console.log("실행")
+    event.preventDefault(); 
+    var inputValue = document.getElementById('searchInput').value;
+    var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
+    if (inputValue.includes('#')) {
+		console.log("첫번째")
+        var modifiedValue = inputValue.replace(/@/g, '-');
+        var submitURL = "localhost:9998/yalolza/summoners/" + modifiedValue;
+    } else {
+       console.log("예외")
+        var submitURL = "localhost:9998/yalolza/summoners/" + inputValue;
+        
+        window.location.href = submitURL;
     }
+    console.log("마지막")
+    window.location.href = submitURL;
+}
 </script>
 </head>
 
@@ -45,7 +46,7 @@
 		<header>
 			<div class="mw">
 				<h1>
-					<a th:href="@{/yalolza.gg/}"><img th:src="@{/img/mainlogo.png}"
+					<a th:href="@{/yalolza.gg}"><img th:src="@{/img/mainlogo.png}"
 						alt="" /></a>
 				</h1>
 				<nav>
@@ -54,7 +55,7 @@
 
                     <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
                     <div><a href="#">칼바람</a></div>
-                    <div><a th:href="@{/yalolza.gg/static}">통계</a></div>
+                    <div><a href="#">통계</a></div>
                     <div><a href="#">랭킹</a></div>
                     <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
                     <div><a th:href="@{/duo.yalolza.gg/list}">DUO</a></div>
@@ -78,7 +79,7 @@
     <figure>
         <form class="homesearch" id="searchForm"  method="get" >
             <input type="text" id="searchInput" name="name" placeholder="챔피언 혹은 ID를 검색하세요.">
-            <button onclick="submitForm(event)">검색</button>
+            <button onclick="submitForm()">검색</button>
         </form>
 
 

@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="/css/static.css" />
 </head>
 <body>
-<header th:replace="~{/header :: header}"></header>
 	<div>
 		<!-- 챔피언 통계 -->
 		<section class="con1">
@@ -108,7 +107,6 @@
 						<li th:text="${champion.stats.goldEarned}"></li>
 					</ul>
 				</div>
-				 
 				<!-- <div th:if="${queueType == 'ARAM'}"
 					th:each="champion : ${aramChampions}">
 					<ul>
@@ -145,7 +143,6 @@
 					</ul>
 				</div> -->
 			</section>
-			<footer th:replace="~{/footer :: footer}"></footer>
 		</div>
 		<script>
 			// URL 업데이트
@@ -162,7 +159,7 @@
 				var position = url.searchParams.get("position");
 
 				if (!tier && !position) {
-					window.location.href = '/yalolza.gg/static?tier=ALL&position=ALL';
+					window.location.href = '/static?tier=ALL&position=ALL';
 				}
 			});
 		</script>

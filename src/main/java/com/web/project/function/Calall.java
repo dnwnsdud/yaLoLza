@@ -270,36 +270,7 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
 		  
 	}
 	
-	/*
-	 * public static String getQueueType(int queueId) { Map<Integer, String>
-	 * queueTypeMap = createQueueTypeMap(); return
-	 * queueTypeMap.getOrDefault(queueId, "기타"); }
-	 */
 	
-    public static Map<Long, String> createQueueTypeMap() {
-        Map<Long, String> queueTypeMap = new HashMap<>();
-        queueTypeMap.put((long) 400, "일반");  // Normal Draft Pick -> 일반
-        queueTypeMap.put((long) 420, "솔랭");  // Ranked Solo/Duo -> 솔랭
-        queueTypeMap.put((long) 430, "일반");  // Normal Blind Pick -> 일반
-        queueTypeMap.put((long) 440, "자유랭");  // Ranked Flex -> 자랭
-        queueTypeMap.put((long) 450, "무작위 총력전");  // ARAM -> 칼바람
-        queueTypeMap.put((long) 700, "격전");  // Clash -> 격전
-        queueTypeMap.put((long) 800, "AI");   // Deprecated
-        queueTypeMap.put((long) 810, "AI");   // Deprecated
-        queueTypeMap.put((long) 820, "AI");   // Deprecated
-        queueTypeMap.put((long) 830, "AI");   // AI Intro Bot -> AI대전
-        queueTypeMap.put((long) 840, "AI");   // AI Beginner Bot -> AI대전
-        queueTypeMap.put((long) 850, "AI");   // AI Intermediate Bot -> AI대전
-        queueTypeMap.put((long) 1900, "URF");  // URF -> URF
-        queueTypeMap.put((long) 920, "포로왕");  // Poro King -> 포로왕
-        queueTypeMap.put((long) 1020, "단일");  // One for All -> 단일
-        queueTypeMap.put((long) 1300, "돌넥");  // Nexus Blitz -> 돌넥
-        queueTypeMap.put((long) 1400, "궁주문서");  // Ultimate Spellbook -> 궁주문서
-        queueTypeMap.put((long) 2000, "튜토리얼");  // Tutorial 1 -> 튜토리얼
-        queueTypeMap.put((long) 2010, "튜토리얼");  // Tutorial 2 -> 튜토리얼
-        queueTypeMap.put((long) 2020, "튜토리얼");  // Tutorial 3 -> 튜토리얼
-        return queueTypeMap;
-    }
 	
 	
 	

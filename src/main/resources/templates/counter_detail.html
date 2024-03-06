@@ -15,7 +15,7 @@
 		<div class="countdetail-left">
 			<section class="champ-comparison">
 				<h2
-					th:text="${targetCounters[0].championkrName} + ' vs ' + ${targetCounters[1].championkrName}">챔피언vs챔피언</h2>
+					th:text="${targetCounters[0].championName} + ' vs ' + ${targetCounters[1].championName}">챔피언vs챔피언</h2>
 				<ul class="champ-counterdet">
 					<li class="counter-wrap1">
 						<div class="img-wrap">
@@ -36,9 +36,9 @@
 						<div class="progress-bar">
 							<div class="filler"></div>
 							<div id="progresschamp-name1"
-								th:text="${targetCounters[0].championkrName}">챔피언</div>
+								th:text="${targetCounters[0].championName}">챔피언</div>
 							<div id="progresschamp-name2"
-								th:text="${targetCounters[1].championkrName}">챔피언</div>
+								th:text="${targetCounters[1].championName}">챔피언</div>
 						</div>
 					</li>
 					<li class="counter-wrap2">
@@ -161,7 +161,7 @@
 								</a>
 							</div>
 						</li>
-						<li><span th:text="${champion.championkrName}">챔피언</span></li>
+						<li><span th:text="${champion.championName}">챔피언</span></li>
 						<li style="color: var(--point3)"
 							th:text="${champion.stats.winRate + '%'}">승률</li>
 						<li style="color: var(--gray3)"

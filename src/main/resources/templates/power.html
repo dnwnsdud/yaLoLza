@@ -17,7 +17,6 @@
 </head>
 
 <body>
-	<header th:replace="~{/header :: header}"></header>
   <div>
     <!-- 유저 정보 -->
     <section class="con1">
@@ -35,12 +34,12 @@
 
             <input type="hidden" id="keyword" name="keyword">
 
-            <button id="gangsin" type="submit">전적 갱신</button>
+            <button type="submit">갱신하기</button>
           </form>
           <div class="user-tier">
-       <!--      <div>S2023 S2 티어</div>
+            <div>S2023 S2 티어</div>
             <div>S2023 S1 티어</div>
-            <div>S2022 티어</div> -->
+            <div>S2022 티어</div>
           </div>
         </h1>
       </div>
@@ -68,14 +67,14 @@
               </li>
 
               <li class="ranktier3">
-                <span th:text="${summoner.wins+'승'}"></span><br/>
+                <span th:text="${summoner.wins}+'승'"></span><br />
                 <span th:text="${summoner.losses+'패'}"></span>
               </li>
             </ul>
           </section>
           <!-- 모스트 10 챔피언 -->
           <section class="user-most">
-            <h2>모스트 5 챔피언</h2>           
+            <h2>모스트 10 챔피언</h2>
             <ul th:each="chamsper , iterStat : ${summonerchamsper}" th:if="${iterStat.index lt 5}">
               <li class="most-champname">
                 <div class="img-wrap"><img loading="lazy" th:src="@{'/img/champion/'+${chamsper[0]} + '.png'}" alt="" />
@@ -108,8 +107,8 @@
                   th:text="${ summonerall[7] + '전 ' + summonerall[0] + '승 ' + (summonerall[7] - summonerall[0]) + '패'}">
                   20전 8승 12패</h3>
                 <div class="graph-wrap">
-                  <span id="siwwin" th:text="${summonerall[0]}" style="display: none;"></span>
-                  <span id="sjwtotal" th:text="${summonerall[7] - summonerall[0]}" style="display: none;"></span>
+                  <span id="siwwin" th:text="${summonerall[0]}"></span>
+                  <span id="sjwtotal" th:text="${summonerall[7] - summonerall[0]}"></span>
                   <canvas id="myChart" style="width: 100px; height: 100px">
                   </canvas>
                   <span class="graph-donut" th:text="${summonerall[6] +'%'}">50%</span>
@@ -125,7 +124,7 @@
               </li>
             </ul>
             <ul class="user-most3">
-              <h3 th:text="${'플레이한 챔피언 (최근 '+ summonerall[7] + ' 게임)'}"></h3>
+              <h3>모스트3 챔피언</h3>
               <div class="most-flex">
                 <li th:each="stats, statIndex : ${summonermost}" th:if="${statIndex.index < 3}">
                   <div class="user-most3kda">
@@ -147,7 +146,7 @@
             <section class="usergame-result">
               <ul>
                 <li class="usergame-times">
-                  <strong style="font-size: 1.8rem" th:text="${keysquetype[match.body.info.queueId]}"></strong><br />
+                  <strong style="font-size: 1.8rem" th:text="${match.body.info.queueId}"></strong><br />
                   <span style="font-size: 1.8rem" th:text="${match.body.caludate}">몇시간 전</span>
                 </li>
                 <li class="usergame-timess">
@@ -160,19 +159,24 @@
                 <div>
                   <li class="usergame-grade">
                     <div class="usergame-grade">
-                      <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/champion/'+${match.body.info.participants[summonermatchnum[i.index]].championName} + '.png'}"alt="" />
-                          <div class="summonerchamps-level"><span  th:text="${match.body.info.participants[summonermatchnum[i.index]].champLevel}"></span></div></div>
-                      <div class="usergame-flex1">
-                        <div class="img-wrap1" th:id="${match.body.info.participants[summonermatchnum[i.index]].summoner1Id}"><img loading="lazy" th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner1Id]} + '.png'}" alt="" /></div>
-                        <div class="img-wrap1" th:id="${match.body.info.participants[summonermatchnum[i.index]].summoner2Id}"><img loading="lazy" th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner2Id]} + '.png'}" alt="" /></div>
+                      <div class="img-wrap2"><img loading="lazy"
+                          th:src="@{'/img/champion/'+${match.body.info.participants[summonermatchnum[i.index]].championName} + '.png'}"
+                          alt="" /></div>
+                      <div class="usergame-flex">
+                        <div class="img-wrap1"><img loading="lazy"
+                            th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner1Id]} + '.png'}"
+                            alt="" /></div>
+                        <div class="img-wrap1"><img loading="lazy"
+                            th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[summonermatchnum[i.index]].summoner2Id]} + '.png'}"
+                            alt="" /></div>
                       </div>
-                      <div class="usergame-flex2">
-                        <div class="img-wrap1" th:id="${match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].selections[0].perk}">
-                          <img loading="lazy" th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].selections[0].perk]}}" alt="" />
-                        </div>
-                        <div class="img-wrap1" th:id="${match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style}">
-                          <img loading="lazy" th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style]}}" alt="" />
-                        </div>
+                      <div class="usergame-flex">
+                        <div class="img-wrap1"><img loading="lazy"
+                            th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[0].selections[0].perk]}}"
+                            alt="" /></div>
+                        <div class="img-wrap1"><img loading="lazy"
+                            th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[summonermatchnum[i.index]].Perks.Styles[1].style]}}"
+                            alt="" /></div>
                       </div>
                       <div class="usergame-kda">
                         <span th:text="${match.body.info.participants[summonermatchnum[i.index]].kills + '/' + 
@@ -219,7 +223,7 @@
                 </div>
 
                 <div class="usergame-items">
-                  <li class="img-wrap1" th:each="itemIndex : ${#numbers.sequence(0, 6)}"th:id="${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]}">
+                  <li class="img-wrap1" th:each="itemIndex : ${#numbers.sequence(0, 6)}">
                     <img loading="lazy"
                       th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]} + '.png'}"
                       alt="" />
@@ -229,7 +233,7 @@
               <ul class="usergame-ten" th:with="part = ${match.body.info}">
                 <li>
                   <div class="usergame-id" th:each=" i  : ${#numbers.sequence(0, 4)}">
-                    <div class="img-wrap3" th:id="${match.body.info.participants[i].championName}"><img loading="lazy"
+                    <div class="img-wrap3"><img loading="lazy"
                         th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt="" />
                     </div>
                     <span>
@@ -241,7 +245,7 @@
                 </li>
                 <li>
                   <div class="usergame-id" th:each=" i  : ${#numbers.sequence(5, 9)}">
-                    <div class="img-wrap3" th:id="${match.body.info.participants[i].championName}"><img loading="lazy"
+                    <div class="img-wrap3"><img loading="lazy"
                         th:src="@{'/img/champion/'+${match.body.info.participants[i].championName} + '.png'}" alt="" />
                     </div>
                    <span>
@@ -295,28 +299,24 @@
                     <ul class="vic-team" th:each="z : ${#numbers.sequence(www, www + 4)}">
                       <li>
                         <div>
-                          <div class="img-wrap" th:id="${match.body.info.participants[z].championName}"><img loading="lazy"
+                          <div class="img-wrap"><img loading="lazy"
                               th:src="@{'/img/champion/'+${match.body.info.participants[z].championName} + '.png'}"
-                              alt="" />
-                         <div class="tenchamps-level">
-                          <span  th:text="${match.body.info.participants[z].champLevel}"></span>
-                          </div>
-                              </div>
+                              alt="" /></div>
                         </div>
                         <div class="vic-spell">
                           <div>
-                            <div class="img-wrap3" th:id="${match.body.info.participants[z].summoner1Id}"><img loading="lazy"
+                            <div class="img-wrap3"><img loading="lazy"
                                 th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[z].summoner1Id]} + '.png'}"
                                 alt="" /></div>
-                            <div class="img-wrap3" th:id="${match.body.info.participants[z].summoner2Id}"><img loading="lazy"
+                            <div class="img-wrap3"><img loading="lazy"
                                 th:src="@{'/img/summoner-spell/'+${keysChamSpell[match.body.info.participants[z].summoner2Id]} + '.png'}"
                                 alt="" /></div>
                           </div>
                           <div>
-                            <div class="img-wrap3" th:id="${match.body.info.participants[z].Perks.Styles[0].selections[0].perk}"><img loading="lazy"
+                            <div class="img-wrap3"><img loading="lazy"
                                 th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[z].Perks.Styles[0].selections[0].perk]}}"
                                 alt="" /></div>
-                            <div class="img-wrap3" th:id="${match.body.info.participants[z].Perks.Styles[1].style}"><img loading="lazy"
+                            <div class="img-wrap3"><img loading="lazy"
                                 th:src="@{'/img/'+${keysRuneImage[match.body.info.participants[z].Perks.Styles[1].style]}}"
                                 alt="" /></div>
                           </div>
@@ -392,7 +392,7 @@
                       <li>
 
                         <ul class="victotal-items">
-                          <div class="img-wrap3" th:each="itemIndex : ${#numbers.sequence(0, 6)}" th:id="${match.body.info.participants[z]['item' + itemIndex]}">
+                          <div class="img-wrap3" th:each="itemIndex : ${#numbers.sequence(0, 6)}">
                             <img loading="lazy"
                               th:src="@{'/img/item/'+${match.body.info.participants[z]['item' + itemIndex]} + '.png'}"
                               alt="" />
@@ -530,11 +530,7 @@
                         <div>
                           <div class="img-wrap"><img loading="lazy"
                               th:src="@{'/img/champion/'+${match.body.info.participants[nz].championName} + '.png'}"
-                              alt="" />
-                          <div class="tenchamps-level">
-                          <span  th:text="${match.body.info.participants[nz].champLevel}"></span>
-                          </div>
-                              </div>
+                              alt="" /></div>
                         </div>
                         <div class="vic-spell">
                           <div>
@@ -646,14 +642,14 @@
                 <section class="usergame-itembuild">
                   <ul class="itembuild-start">
                     <li th:each="purchase,z : ${matchspurchase[i.index]}">
-                     <div class="itembuild-group">
-						    <div th:each="key, iterStat : ${#numbers.sequence(1, purchase.size() - 1)}">
-						        <div class="img-wrap1">
-						            <img loading="lazy" th:src="@{'/img/item/'+${purchase[key]} + '.png'}" alt="" />
-						        </div>
-						        <p th:if="${iterStat.index == 0}" th:text="${purchase[0]} + '분'">0:00</p>
-						    </div>
-						</div>
+                      <div class="itembuild-group">
+                        <div th:each="key: ${#numbers.sequence(1, purchase.size() - 1)}">
+                          <div class="img-wrap1">
+                            <img loading="lazy" th:src="@{'/img/item/'+${purchase[key]} + '.png'}" alt="" />
+                          </div>
+                        </div>
+                        <p th:text="${purchase[0]} + '분'">0:00</p>
+                      </div>
                      <div class="item-arrow" th:if="${z.index + 1 < matchspurchase[i.index].size()}">-></div>
                     </li>
                   </ul>
@@ -778,7 +774,7 @@
                           </div>
                         </li>
                       </ul>
-                      <p class="rune-subject" th:text="${mainRune.name}"></p>
+                      <p th:text="${mainRune.name}"></p>
                     </div>
                     <div class="sub-rune"
                       th:with="subRune=${runeslist[keysRunes[__${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}__]]}">
@@ -816,13 +812,9 @@
                           </div>
                         </li>
                       </ul>
-                      <p class="rune-subject" th:text="${subRune.name}"></p>
+                      <p th:text="${subRune.name}"></p>
                     </div>
-                    <div class="fragments-rune"
-                         th:with="value1=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.offense},
-                                 value2=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.flex},
-                                 value3=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.defense}                            
-                         "> 
+                    <div class="fragments-rune" th:with="value=5112"> <!--perk 임의의 값-->
                       <ul>
                         <li></li>
                       </ul>
@@ -831,57 +823,56 @@
                       </ul>
                       <ul class="perkslot1">
                         <li class="img-wrap" th:id="${perklist[0].id}">
-                          <div th:class="${perklist[0].id}==${value1}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[0].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[1].id}">
-                          <div th:class="${perklist[1].id}==${value1}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[1].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[1].icon}}" />
-                            
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[2].id}">
-                          <div th:class="${perklist[2].id}==${value1}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[2].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[2].icon}}" />
                           </div>
                         </li>
                       </ul>
                       <ul class="perkslot2">
                         <li class="img-wrap" th:id="${perklist[3].id}">
-                          <div th:class="${perklist[3].id}==${value2}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[3].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[3].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[4].id}">
-                          <div th:class="${perklist[4].id}==${value2}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[4].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[4].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[5].id}">
-                          <div th:class="${perklist[5].id}==${value2}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[5].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[5].icon}}" />
                           </div>
                         </li>
                       </ul>
                       <ul class="perkslot3">
                         <li class="img-wrap" th:id="${perklist[6].id}">
-                          <div th:class="${perklist[6].id}==${value3}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[6].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[6].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[7].id}">
-                          <div th:class="${perklist[7].id}==${value3}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[7].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[7].icon}}" />
                           </div>
                         </li>
                         <li class="img-wrap" th:id="${perklist[8].id}">
-                          <div th:class="${perklist[8].id}==${value3}? 'color-icon':'gray-icon'">
+                          <div th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'">
                             <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[8].icon}}" />
                           </div>
                         </li>
                       </ul>
-                      <p class="rune-subject">능력치 파편</p>
+                      <p>능력치 파편</p> <!--이지수-->
                     </div>
                   </div>
                 </section>
@@ -893,48 +884,6 @@
       </div>
     </div>
   </div>
-  <footer th:replace="~{/footer :: footer}"></footer>
 </body>
-<script th:inline="javascript" defer>
-	document.querySelectorAll(".usergame-flex1 div").forEach(async (element)=>{
-		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".usergame-flex2 div").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
+
 </html>

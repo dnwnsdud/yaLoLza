@@ -107,49 +107,49 @@ public class DuoPage {
 //	    }
 //	}
 		
-	   @PostMapping("/create")
-	   public String saveDuo(@ModelAttribute Duo duoDto, Model model, RedirectAttributes redirectAttributes, Principal principal) {
-	       // 폼에서 받은 Duo 객체를 받음
+	@PostMapping("/create")
+	public String saveDuo(@ModelAttribute Duo duoDto, Model model, RedirectAttributes redirectAttributes, Principal principal) {
+	    // 폼에서 받은 Duo 객체를 받음
 
-	       if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
-	           model.addAttribute("message", "듀오 등록 실패: 2개의 패스워드가 일치하지 않습니다.");
-	           model.addAttribute("searchUrl", "/duo.yalolza.gg/save");
-	           return "message"; // 패스워드가 일치하지 않을 경우 메시지 페이지 반환
-	       }
-	       
-	       try {
-	           List<Object[]> most = cal.calDuoMost(duoDto.getSummonerName());
-	      
-	           if (most.isEmpty()) {
-	               model.addAttribute("message", "듀오 등록 실패: MostChampions 정보가 없습니다.");
-	               model.addAttribute("searchUrl", "/duo.yalolza.gg/list");
-	               return "message"; 
-	           }
+	    if (!duoDto.getDuopassword1().equals(duoDto.getDuopassword2())) {
+	        model.addAttribute("message", "듀오 등록 실패: 2개의 패스워드가 일치하지 않습니다.");
+	        model.addAttribute("searchUrl", "/duo.yalolza.gg/save");
+	        return "message"; // 패스워드가 일치하지 않을 경우 메시지 페이지 반환
+	    }
+	    
+	    try {
+	        List<Object[]> most = cal.calDuoMost(duoDto.getSummonerName());
+	   
+	        if (most.isEmpty()) {
+	            model.addAttribute("message", "듀오 등록 실패: MostChampions 정보가 없습니다.");
+	            model.addAttribute("searchUrl", "/duo.yalolza.gg/list");
+	            return "message"; 
+	        }
 
-	           duoDao.save(duoDto);
+	        duoDao.save(duoDto);
 
-	           for (Object[] data : most) {
-	               MostChampions mostChampion = new MostChampions();
-	               mostChampion.setMostChampion(data[0].toString());
-	               mostChampion.setRound(Long.parseLong(data[1].toString()));
-	               mostChampion.setWins(Long.parseLong(data[2].toString()));
-	               mostChampion.setKills(Double.parseDouble(data[3].toString()));
-	               mostChampion.setDeaths(Double.parseDouble(data[4].toString()));
-	               mostChampion.setAssists(Double.parseDouble(data[5].toString()));
-	               mostChampion.setDuo(duoDto); // 해당 MostChampion이 어떤 Duo에 속하는지 설정
+	        for (Object[] data : most) {
+	            MostChampions mostChampion = new MostChampions();
+	            mostChampion.setMostChampion(data[0].toString());
+	            mostChampion.setRound(Long.parseLong(data[1].toString()));
+	            mostChampion.setWins(Long.parseLong(data[2].toString()));
+	            mostChampion.setKills(Double.parseDouble(data[3].toString()));
+	            mostChampion.setDeaths(Double.parseDouble(data[4].toString()));
+	            mostChampion.setAssists(Double.parseDouble(data[5].toString()));
+	            mostChampion.setDuo(duoDto); // 해당 MostChampion이 어떤 Duo에 속하는지 설정
 
-	               // MostChampions 엔티티를 디비에 저장
-	               mostChampions.save(mostChampion);
-	           }
+	            // MostChampions 엔티티를 디비에 저장
+	            mostChampions.save(mostChampion);
+	        }
 
-	           // 리다이렉트
-	           return "redirect:/duo.yalolza.gg/list"; 
-	       } catch (Exception e) {
-	           model.addAttribute("message", "소환사 검색 결과가 없습니다. 리스트로 돌아갑니다.: " + e.getMessage());
-	           model.addAttribute("searchUrl", "/duo.yalolza.gg/list");
-	           return "message"; // 저장 중 문제 발생 시 메시지 페이지 반환
-	       }
-	   }
+	        // 리다이렉트
+	        return "redirect:/duo.yalolza.gg/list"; 
+	    } catch (Exception e) {
+	        model.addAttribute("message", "소환사 검색 결과가 없습니다. 리스트로 돌아갑니다.: " + e.getMessage());
+	        model.addAttribute("searchUrl", "/duo.yalolza.gg/list");
+	        return "message"; // 저장 중 문제 발생 시 메시지 페이지 반환
+	    }
+	}
 
 	@GetMapping("/searchByPosition")
 	@ResponseBody

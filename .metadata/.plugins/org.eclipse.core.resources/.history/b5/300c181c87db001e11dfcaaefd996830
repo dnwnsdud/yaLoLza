@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>비밀번호 찾기</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/community.css}" />
+</head>
+<body>
+	 <a th:href="@{/yalolza.gg}"
+      ><img th:src="@{/img/logo.png}" class="logo" alt="logo"
+    /></a>
+    <h1>비밀번호 찾기</h1>
+    <div>
+        <label for="userName">아이디:</label>
+        <input type="text" id="userName" name="userName" required>
+    </div>
+    <div>
+        <label for="userEmail">이메일:</label>
+        <input type="email" id="userEmail" name="userEmail" required>
+    </div>
+    <button id="checkUser">정보 확인</button>
+    <button id="sendEmail" disabled>임시 비밀번호 발송</button><br/><br/>
+	 <a th:href="@{/yalolza.gg}">메인 으로</a> <br/><br/>
+    <script>
+        $(document).ready(function() {
+            $('#checkUser').click(function() {
+                var userEmail = $('#userEmail').val();
+                var userName = $('#userName').val();
+
+                $.ajax({
+                    url: '/yalolza.gg/user/check/findPw',
+                    type: 'GET',
+                    data: {
+                        userEmail: userEmail,
+                        userName: userName
+                    },
+                    success: function(response) {
+                        if(response.check) {
+                            alert('정보가 확인되었습니다. 임시 비밀번호 발송을 진행해주세요.');
+                            $('#sendEmail').prop('disabled', false);
+                        } else {
+                            alert('정보를 확인할 수 없습니다. 입력하신 정보를 다시 확인해주세요.');
+                        }
+                    },
+                    error: function() {
+                        alert('서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+                    }
+                });
+            });
+
+            $('#sendEmail').click(function() {
+                var userEmail = $('#userEmail').val();
+                var userName = $('#userName').val();
+
+                $.ajax({
+                    url: '/yalolza.gg/user/check/findPw/sendEmail',
+                    type: 'POST',
+                    data: {
+                        userEmail: userEmail,
+                        userName: userName
+                    },
+                    success: function() {
+                        alert('임시 비밀번호가 이메일로 발송되었습니다. 이메일을 확인해주세요.');
+                    },
+                    error: function() {
+                        alert('이메일 발송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

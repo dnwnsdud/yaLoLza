@@ -63,12 +63,9 @@ public class SecurityConfig {
 					auth
 						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 						.requestMatchers(
-							"/admin",
-							"/admin/**",
-							"/static",
+								"/admin",
+								"/admin/**",
 							"/yalolza.gg",
-							"/yalolza.gg/static",
-							"/yalolza.gg/static/**",
 							"/yalolza.gg/**",
 							"/yalolza.gg/champions",
 							"/yalolza.gg/champions/**",
@@ -114,7 +111,8 @@ public class SecurityConfig {
 						.loginPage("/yalolza.gg/user/login")
 						.usernameParameter("username")
 						.passwordParameter("password")
-						.failureUrl("/yalolza.gg/user/login?error")
+						.failureUrl("/yalolza.gg/user/login")
+//						.defaultSuccessUrl("/yalolza.gg",true)	
 						.permitAll()
 				)
 				.oauth2Login(login->
@@ -125,6 +123,7 @@ public class SecurityConfig {
 								.userService(oauth2service)
 						)
 						.failureUrl("/yalolza.gg/user/login")
+//						.defaultSuccessUrl("/yalolza.gg",true)
 						.permitAll()
 				)
 				
