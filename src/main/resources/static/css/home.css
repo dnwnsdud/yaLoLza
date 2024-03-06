@@ -306,7 +306,11 @@ div.yourBox {
 }
 
 .videoBox{
-	padding:100px 160px;
+	padding:50px 80px;
 	background-color:#292e45;
 	border-radius:10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap:30px;
+	justify-content: center;
 }
