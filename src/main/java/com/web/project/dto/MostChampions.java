@@ -37,7 +37,7 @@ public class MostChampions {
   	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_MostChampions")
     private Long id;
-	 
+	  
   	 @ManyToOne
      @JoinColumn(name = "duo_id") // 수정: 테이블에 맞게 칼럼명 변경
      private Duo duo;

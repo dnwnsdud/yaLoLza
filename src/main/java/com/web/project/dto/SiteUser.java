@@ -51,7 +51,7 @@ public class SiteUser implements UserDetails, OAuth2User {
 	    @Column(unique = true, nullable = false)
 	    private String username;
 
-	    @Column(unique = true, nullable = false) 
+	    @Column(unique = true, nullable = false)  
 	    private String nickname;
 
 	    private String password;

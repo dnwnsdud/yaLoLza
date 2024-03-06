@@ -34,7 +34,7 @@ import lombok.Setter;
         sequenceName = "seq_community",
         initialValue = 100000,
         allocationSize = 1
-)
+) 
 public class Community {
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")

@@ -18,7 +18,7 @@ public class MailDTO {
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
+	} 
 	public String getTitle() {
 		return title;
 	}

@@ -18,4 +18,4 @@ public class CommunityForm {
     private String content;
 
 
-}
+} 

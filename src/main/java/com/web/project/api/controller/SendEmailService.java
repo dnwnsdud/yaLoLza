@@ -31,7 +31,7 @@ public class SendEmailService {
                 + "로그인 후에 비밀번호를 변경을 해주세요.");
         updatePassword(str, userEmail);
         return dto;
-    }
+    } 
 
     // 임시 비밀번호 업데이트
     public void updatePassword (String str, String userEmail){
