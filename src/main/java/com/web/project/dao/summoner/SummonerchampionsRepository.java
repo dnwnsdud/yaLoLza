@@ -15,7 +15,7 @@ public interface SummonerchampionsRepository extends JpaRepository<Summonerchamp
 	 List<Summonerchampions> findBySummoner(Summoner summoner);
 	  
 	 //챔이름 ,kda,cs,가한딜,받은딜,판수,승수
-	 @Query("SELECT s.champion, ROUND(AVG(s.championkda), 2), AVG(s.csaverage), AVG(s.damagedealt), AVG(s.damagetaken), COUNT(s.champion), SUM(s.win) FROM Summonerchampions s WHERE s.summoner.id = :summoner GROUP BY s.champion ORDER BY COUNT(s.champion) DESC")
+	 @Query("SELECT s.champion, ROUND(AVG(s.championkda), 2), AVG(s.csaverage), AVG(s.damagedealt), AVG(s.damagetaken), COUNT(s.champion), SUM(s.win),AVG(s.goldearned),AVG(s.championkills),AVG(s.championdeaths),AVG(s.championassists) FROM Summonerchampions s WHERE s.summoner.id = :summoner GROUP BY s.champion ORDER BY COUNT(s.champion) DESC")
 	 List<Object[]> findAvgStatsAndCountByChampionGroupByChampion(@Param("summoner") Long summonerId);
 	 
 }

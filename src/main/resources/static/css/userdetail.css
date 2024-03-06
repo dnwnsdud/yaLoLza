@@ -179,7 +179,15 @@ h1 p {
   width: 35%;
 }
 .user-right {
+	position:relative;
   width: 65%;
+}
+.user-right button#summoenr-matchmore {
+  position: absolute;
+  bottom: -40px;
+  padding:10px;
+  text-align:center;
+  width: 100%;
 }
 .user-ranktier,
 .user-most,
@@ -214,7 +222,7 @@ h1 p {
   font-weight: bold;
 }
 .ranktier3  {
-
+ 
   line-height: 2rem;
   text-align: left;
 }

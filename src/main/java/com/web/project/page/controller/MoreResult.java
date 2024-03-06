@@ -213,26 +213,7 @@ import com.web.project.system.SummonerData;
     
     	 //찾는 유저가 db에 없을때   
 
-            newSummoner = Summoner.builder()
-	                     .summonername(summonername)
-	                     .tag(tag)
-	                     .summonerLevel(sommenerinfo.getBody().getSummonerLevel())
-	                     .profileIconId(sommenerinfo.getBody().getProfileIconId())
-	                     .recenttier(recenttier)
-	                     .leaguePoints(leaguePoints)
-	                     .wins(summonerwins)
-	                     .losses(summonerlosses)
-	                     //나중에 여기서 if문으로 자랭도 추가해보쟈
-	                     .build();
-	             summonerRepository.save(newSummoner);
-			   
-	            tierlog = Summonertierlog.builder()
-	            		.summoner(newSummoner)
-	            		.summonertier(recenttier)
-	            		.point(leaguePoints)
-	            		.build(); 
-	             summonertierlogRepository.save(tierlog);
-	             
+
   
 		  		   //puuid로 최근 매치추출   
 		  		    match5url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid;
@@ -271,11 +252,11 @@ import com.web.project.system.SummonerData;
 		  			    //메치아이디 큐타입아이디 저장
 		  			  System.out.println("큐타입아이디");
 			  			  summonermatchs = Summonermatchs.builder()
-			  					  .summoner(newSummoner)
+			  					  .summoner(findsummoner)
 				  				  .matchnum(matchids[i])
 				  				  .queueid(matchdata2.getBody().getInfo().getQueueId())
 				  				  .build();
-			  			      summonermatchsRepository.save(summonermatchs); 
+			  			  
 			  			    Long startTime = matchdata2.getBody().getInfo().getGameCreation();
                            Long endTime = matchdata2.getBody().getInfo().getGameEndTimestamp();
                            Long resulttime = conveter.convertMilliseconds(endTime-startTime);
@@ -307,7 +288,7 @@ import com.web.project.system.SummonerData;
 				  			    			  matchdata2.getBody().getInfo().getTeams().get(1).getObjectives().getChampion().getKills();
 				  					    Summonerchampions summonerchampions = Summonerchampions.builder()
 				  					              // Summoner를 설정
-				  					  		.summoner(newSummoner)
+				  					  		.summoner(findsummoner)
 			  					            .position(matchParticipants.get(z).getTeamPosition())
 			  					            .champion(matchParticipants.get(z).getChampionName())
 			  					            .csaverage(Math.round((matchParticipants.get(z).getTotalMinionsKilled().doubleValue()/resulttime.doubleValue())*10)/10.0)
@@ -321,7 +302,7 @@ import com.web.project.system.SummonerData;
 			  					            .championassists(matchParticipants.get(z).getAssists())
 			  					            .killpers((matchParticipants.get(z).getAssists() + matchParticipants.get(z).getKills())*100 / (totalteamkills == 0 ? 1 : totalteamkills))
 			  					            .build();
-				  					    summonerchampionsRepository.save(summonerchampions);
+				  				
 				  					  //모스트정리  
 				  					  summonermost.add(summonerchampions); 
 				  					//넘버추가

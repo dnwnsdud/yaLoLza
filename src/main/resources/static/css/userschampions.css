@@ -1,4 +1,5 @@
 .user-totalchampions {
+  display:none;
   background-color: var(--point8);
   margin-top: 10px;
   border-radius: 1rem;

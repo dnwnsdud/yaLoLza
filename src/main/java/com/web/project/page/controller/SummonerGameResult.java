@@ -320,6 +320,7 @@ import com.web.project.system.SummonerData;
 			  					            .championdeaths(matchParticipants.get(z).getDeaths())
 			  					            .championassists(matchParticipants.get(z).getAssists())
 			  					            .killpers((matchParticipants.get(z).getAssists() + matchParticipants.get(z).getKills())*100 / (totalteamkills == 0 ? 1 : totalteamkills))
+			  					            .goldearned(matchParticipants.get(z).getGoldEarned())
 			  					            .build();
 				  					    summonerchampionsRepository.save(summonerchampions);
 				  					  //모스트정리  
@@ -613,6 +614,7 @@ import com.web.project.system.SummonerData;
   					            .championdeaths(matchParticipants.get(z).getDeaths())
   					            .championassists(matchParticipants.get(z).getAssists())
   					            .killpers((matchParticipants.get(z).getAssists() + matchParticipants.get(z).getKills())*100 / totalteamkills)
+  					            .goldearned(matchParticipants.get(z).getGoldEarned())
   					            .build();
 	  					    
 	  					  //모스트정리  
@@ -1022,12 +1024,13 @@ import com.web.project.system.SummonerData;
 				  					            .championdeaths(matchParticipants.get(z).getDeaths())
 				  					            .championassists(matchParticipants.get(z).getAssists())
 				  					            .killpers((matchParticipants.get(z).getAssists() + matchParticipants.get(z).getKills())*100 / totalteamkills)
+				  					            .goldearned(matchParticipants.get(z).getGoldEarned())
 				  					            .build();
-					  					    
+					  					     
 					  					  //모스트정리  
 					  					  summonermost.add(summonerchampions);      
-							    	      	    
-							    	    
+							     	      	    
+							     	    
 						    }			  				   
 						   }
 						    }	  		  
@@ -1055,7 +1058,7 @@ import com.web.project.system.SummonerData;
 						    
 						    
 						    
-						    
+						     
 					  		  //모스트추출
 					  		  Map<String, DoubleSummaryStatistics> championStatsMap = summonermost.stream()
 					  		        .collect(Collectors.groupingBy(
