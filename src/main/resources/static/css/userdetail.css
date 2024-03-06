@@ -127,7 +127,7 @@ h1 p {
 	bottom:-30px;
 	color:white;
 	z-index: 10;
-	background-color:black;
+	background-color:rgb(83, 83, 83);
 	border-radius: 15px;
 }
 .summonerchamps-level span{
@@ -142,7 +142,7 @@ h1 p {
 	width:30px;
 	height:30px;
 	color:white;
-	background-color:black;
+	background-color:rgb(83, 83, 83);
 	border-radius: 15px;
 }
 .tenchamps-level{
