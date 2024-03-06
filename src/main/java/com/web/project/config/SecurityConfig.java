@@ -73,7 +73,7 @@ public class SecurityConfig {
 							"/yalolza.gg/champions",
 							"/yalolza.gg/champions/**",
 							"/yalolza.gg/ranking/**",
-							"/yalolza.gg/statistics/**",
+							"/yalolza.gg/static/**",
 							"/yalolza.gg/summoners/**", 
 							"/duo.yalolza.gg/**", 
 							"/duo.yalolza.gg/list/**", 
