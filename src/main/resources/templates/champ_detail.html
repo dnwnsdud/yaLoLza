@@ -5,35 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
 <link rel="stylesheet"
-   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/css/myrest.css" />
 <link rel="stylesheet" href="/css/common.css" />
 <link rel="stylesheet" href="/css/champ_detail.css" />
 <script
-   src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/champ_detail.js" defer></script>
 
 </head>
 <body>
-   <div>
-      <!-- 챔피언 정보-->
-      <section class="con1">
-         <div class="dec">
-            <div class="champ-main">
-               <img
-                  th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}"
-                  alt="챔피언 이미지" />
-            </div>
-            <h1>
-               <strong style="font-size: 3rem;" th:text="${champion.name}"></strong><!--아무도 없음-->
-               <span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
-                  style="font-size: 1.3rem" class="tier">1티어</span>
-               <div class="champ-skill">
+	<div>
+		<!-- 챔피언 정보-->
+		<section class="con1">
+			<div class="dec">
+				<div class="champ-main">
+					<img
+						th:src="@{'/img/'+${champion.image.group}+'/'+${champion.image.full}}"
+						alt="챔피언 이미지" />
+				</div>
+				<h1>
+					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong>
+					<!--아무도 없음-->
+					<span style="font-size: 2rem">빌드 - 포지션</span><br /> <span
+						style="font-size: 1.3rem" class="tier" th:text="${champtier}"></span>
+					<div class="champ-skill">
 
-                  <div class="champ-passivetooltip">
-                     <img alt="패시브 이미지"
-                        th:src="@{'/img/'+${champion.passive.image.group}+'/'+${champion.passive.image.full}}">
-                  </div>
+						<div class="champ-passivetooltip">
+							<img alt="패시브 이미지"
+								th:src="@{'/img/'+${champion.passive.image.group}+'/'+${champion.passive.image.full}}">
+						</div>
 
 						<div class="champ-spelltooltip" id='Q'>
 							<img th:src="@{'/img/spell/'+${champion.spells[0].id}+'.png'}"
@@ -56,14 +57,13 @@
 			<div class="champ-statistics">
 				<!--진성님-->
 				<div>
-					<span>승률</span><br /> 
-					<strong th:text = "${winrate}+ '%'">50.55%</strong>
+					<span>승률</span><br /> <strong th:text="${winrate}+ '%'">50.55%</strong>
 				</div>
 				<div>
-					<span>픽률</span><br /> <strong th:text = "${pickrate}+ '%'">6.5%</strong>
+					<span>픽률</span><br /> <strong th:text="${pickrate}+ '%'">6.5%</strong>
 				</div>
 				<div>
-					<span>밴율</span><br /> <strong th:text = "${banrate}+ '%'">5.23%</strong>
+					<span>밴율</span><br /> <strong th:text="${banrate}+ '%'">5.23%</strong>
 				</div>
 			</div>
 			<div class="champ-tip">
@@ -72,7 +72,8 @@
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/rune'}"><button>룬</button></a>
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/item'}"><button>아이템</button></a>
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/skill'}"><button>스킬</button></a>
-				<a th:href="@{'/yalolza.gg/champions/'+${champion.id}+'/tip?query=' + ${champion.name}}"><button>팁</button></a>
+				<a
+					th:href="@{'/yalolza.gg/champions/'+${champion.id}+'/tip?query=' + ${champion.name}}"><button>팁</button></a>
 			</div>
 		</section>
 		<!-- 룬 세팅 -->
@@ -93,7 +94,8 @@
 								<ul class="main-first">
 									<li th:each="j : ${mainRune.slots[0].runes}"
 										th:with="rune=${j}" th:id="${rune.id}">
-										<div th:class="${rune.id}==${primaryPerk234[0]}? 'color-icon':'gray-icon'">
+										<div
+											th:class="${rune.id}==${primaryPerk234[0]}? 'color-icon':'gray-icon'">
 											<img alt="룬 이미지" th:src="@{'/img/'+${rune.icon}}" />
 										</div>
 									</li>
@@ -165,7 +167,8 @@
 								</ul>
 								<p th:text="${subRune.name}"></p>
 							</div>
-							<div class="fragments-rune" th:with="value=5112"> <!--perk 임의의 값-->
+							<div class="fragments-rune" th:with="value=5112">
+								<!--perk 임의의 값-->
 								<ul>
 									<li></li>
 								</ul>
@@ -174,51 +177,60 @@
 								</ul>
 								<ul class="perkslot1">
 									<li th:id="${perklist[0].id}">
-										<div th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')">
-										<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
+										<div
+											th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')">
+											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
 										</div>
-									</li>			
+									</li>
 									<li th:id="${perklist[1].id}">
-										<div th:class="${perklist[1].id}==${statperks1}? 'color-icon':(${perklist[1].id}==${statperks1}? 'color-icon':'gray-icon')">
-										<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[1].icon}}" />
+										<div
+											th:class="${perklist[1].id}==${statperks1}? 'color-icon':(${perklist[1].id}==${statperks1}? 'color-icon':'gray-icon')">
+											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[1].icon}}" />
 										</div>
 									</li>
 									<li th:id="${perklist[2].id}">
-										<div th:class="${perklist[2].id}==${statperks1}? 'color-icon':(${perklist[2].id}==${statperks1}? 'color-icon':'gray-icon')">
-										<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[2].icon}}" />
+										<div
+											th:class="${perklist[2].id}==${statperks1}? 'color-icon':(${perklist[2].id}==${statperks1}? 'color-icon':'gray-icon')">
+											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[2].icon}}" />
 										</div>
 									</li>
 								</ul>
 								<ul class="perkslot2">
 									<li th:id="${perklist[3].id}">
-										<div th:class="${perklist[3].id}==${value}? 'color-icon':'gray-icon'">
+										<div
+											th:class="${perklist[3].id}==${value}? 'color-icon':'gray-icon'">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[3].icon}}" />
 										</div>
 									</li>
 									<li th:id="${perklist[4].id}">
-										<div th:class="${perklist[4].id}==${value}? 'color-icon':'gray-icon'">
+										<div
+											th:class="${perklist[4].id}==${value}? 'color-icon':'gray-icon'">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[4].icon}}" />
-											</div>
+										</div>
 									</li>
 									<li th:id="${perklist[5].id}">
-										<div th:class="${perklist[5].id}==${value}? 'color-icon':'gray-icon'">
+										<div
+											th:class="${perklist[5].id}==${value}? 'color-icon':'gray-icon'">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[5].icon}}" />
 										</div>
 									</li>
 								</ul>
 								<ul class="perkslot3">
 									<li th:id="${perklist[6].id}">
-										<div th:class="${perklist[6].id}==${value}? 'color-icon':'gray-icon'">
+										<div
+											th:class="${perklist[6].id}==${value}? 'color-icon':'gray-icon'">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[6].icon}}" />
-											</div>
+										</div>
 									</li>
 									<li th:id="${perklist[7].id}">
-										<div th:class="${perklist[7].id}==${value}? 'color-icon':'gray-icon'">
+										<div
+											th:class="${perklist[7].id}==${value}? 'color-icon':'gray-icon'">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[7].icon}}" />
 										</div>
 									</li>
 									<li th:id="${perklist[8].id}">
-										<div th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'">
+										<div
+											th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[8].icon}}" />
 										</div>
 									</li>
@@ -241,9 +253,9 @@
 									</li>
 									<li class="select-ratio">
 										<p>
-											<strong th:id="${runePickRate1}" th:text="${runePickRate1} + '%'">룬선택비율</strong> 
-											<br /> 
-											<span th:id="${runeCount1}" th:text="${runeCount1} + 게임">1223654게임</span>
+											<strong th:id="${runePickRate1}"
+												th:text="${runePickRate1} + '%'">룬선택비율</strong> <br /> <span
+												th:id="${runeCount1}" th:text="${runeCount1} + 게임">1223654게임</span>
 										</p>
 										<p th:id="${runeWinRate1}" th:text="${runeWinRate1} + '%'">승률</p>
 									</li>
@@ -262,9 +274,9 @@
 									</li>
 									<li class="select-ratio">
 										<p>
-											<strong th:id="${runePickRate2}" th:text="${runePickRate2} + '%'">룬선택비율</strong> 
-											<br /> 
-											<span th:id="${runeCount2}" th:text="${runeCount2} + 게임">1223654게임</span>
+											<strong th:id="${runePickRate2}"
+												th:text="${runePickRate2} + '%'">룬선택비율</strong> <br /> <span
+												th:id="${runeCount2}" th:text="${runeCount2} + 게임">1223654게임</span>
 										</p>
 										<p th:id="${runeWinRate2}" th:text="${runeWinRate2} + '%'">승률</p>
 									</li>
@@ -332,16 +344,18 @@
 												alt="아이템 이미지">
 										</div>
 										<div th:id="${item2.id}" class="item-buildstart">
-											<img th:src="@{'/img/item/'+${item3.id}+'.png'}" alt="아이템 이미지">
+											<img th:src="@{'/img/item/'+${item3.id}+'.png'}"
+												alt="아이템 이미지">
 										</div>
 									</div>
 									<p>
 									<div class="order-block">
-										<strong th:id="${itemPickRate1}" th:text="${itemPickRate1} + '%'">선택비율</strong>
-										<br> 
-										<span th:id="${itemCount1}" th:text="${itemCount1} + 게임">게임수asdasdas</span>
+										<strong th:id="${itemPickRate1}"
+											th:text="${itemPickRate1} + '%'">선택비율</strong> <br> <span
+											th:id="${itemCount1}" th:text="${itemCount1} + 게임">게임수asdasdas</span>
 									</div>
-									<div class="order-vic" th:id="${itemWinRate1}" th:text="${itemWinRate1}  + '%'">승률</div>
+									<div class="order-vic" th:id="${itemWinRate1}"
+										th:text="${itemWinRate1}  + '%'">승률</div>
 									</p>
 								</div>
 							</li>
@@ -561,9 +575,10 @@
 								</div>
 								<p>
 								<div class="order-block">
-									<strong th:id="${summonerSpellSetCountRate1}" th:text="${summonerSpellSetCountRate1}  + '%'">선택비율</strong> 
-									
-									<span th:id="${summonerSpellSet1Count1}" th:text="${summonerSpellSet1Count1} + 게임">게임수asdasdas</span>
+									<strong th:id="${summonerSpellSetCountRate1}"
+										th:text="${summonerSpellSetCountRate1}  + '%'">선택비율</strong> <span
+										th:id="${summonerSpellSet1Count1}"
+										th:text="${summonerSpellSet1Count1} + 게임">게임수asdasdas</span>
 								</div>
 								<div class="order-vic" th:text="${summonerSpellSet1Win}  + '%'"></div>
 								</p>
@@ -581,9 +596,10 @@
 								</div>
 								<p>
 								<div class="order-block">
-									<strong th:id="${summonerSpellSetCountRate2}" th:text="${summonerSpellSetCountRate2}  + '%'">선택비율</strong> 
-									
-									<span th:id="${summonerSpellSet1Count2}" th:text="${summonerSpellSet1Count2} + 게임">게임수asdasdas</span>
+									<strong th:id="${summonerSpellSetCountRate2}"
+										th:text="${summonerSpellSetCountRate2}  + '%'">선택비율</strong> <span
+										th:id="${summonerSpellSet1Count2}"
+										th:text="${summonerSpellSet1Count2} + 게임">게임수asdasdas</span>
 								</div>
 								<div class="order-vic" th:text="${summonerSpellSet2Win}  + '%'"></div>
 								</p>
@@ -736,68 +752,69 @@
                           </div>
                       </div>
                   </li> -->
-                  </ul>
-               </section>
-               <!-- 장인 랭킹 --><!--진성님-->
-               <section class="champ-rank">
-                  <h2>가렌 장인 랭킹 ></h2>
-                  <ul>
-                     <li>
-                        <ul>
-                           <p>1</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                     <li>
-                        <ul>
-                           <p>2</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                     <li>
-                        <ul>
-                           <p>3</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                     <li>
-                        <ul>
-                           <p>4</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                     <li>
-                        <ul>
-                           <p>5</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                  </ul>
-               </section>
-            </div>
-         </div>
-      </div>
-   </div>
+						</ul>
+					</section>
+					<!-- 장인 랭킹 -->
+					<!--진성님-->
+					<section class="champ-rank">
+						<h2>가렌 장인 랭킹 ></h2>
+						<ul>
+							<li>
+								<ul>
+									<p>1</p>
+									<div>
+										<img src="" alt="">
+									</div>
+									<strong style="font-size: 1.7rem;">아이디</strong>
+								</ul>
+								<p class="rank-flex">게임수</p>
+							</li>
+							<li>
+								<ul>
+									<p>2</p>
+									<div>
+										<img src="" alt="">
+									</div>
+									<strong style="font-size: 1.7rem;">아이디</strong>
+								</ul>
+								<p class="rank-flex">게임수</p>
+							</li>
+							<li>
+								<ul>
+									<p>3</p>
+									<div>
+										<img src="" alt="">
+									</div>
+									<strong style="font-size: 1.7rem;">아이디</strong>
+								</ul>
+								<p class="rank-flex">게임수</p>
+							</li>
+							<li>
+								<ul>
+									<p>4</p>
+									<div>
+										<img src="" alt="">
+									</div>
+									<strong style="font-size: 1.7rem;">아이디</strong>
+								</ul>
+								<p class="rank-flex">게임수</p>
+							</li>
+							<li>
+								<ul>
+									<p>5</p>
+									<div>
+										<img src="" alt="">
+									</div>
+									<strong style="font-size: 1.7rem;">아이디</strong>
+								</ul>
+								<p class="rank-flex">게임수</p>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 <script>
     </script>

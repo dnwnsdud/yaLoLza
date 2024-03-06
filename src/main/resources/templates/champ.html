@@ -40,17 +40,13 @@
 					<button class="position-btn" id="TOP"
 						onclick="updateUrl('position', 'TOP')">탑</button>
 					<button class="position-btn" id="JUNGLE"
-						onclick="updateUrl('position', 'JUNGLE')">
-						정글</button>
+						onclick="updateUrl('position', 'JUNGLE')">정글</button>
 					<button class="position-btn" id="MIDDLE"
-						onclick="updateUrl('position', 'MIDDLE')">
-						미드</button>
+						onclick="updateUrl('position', 'MIDDLE')">미드</button>
 					<button class="position-btn" id="BOTTOM"
-						onclick="updateUrl('position', 'BOTTOM')">
-						원딜</button>
+						onclick="updateUrl('position', 'BOTTOM')">원딜</button>
 					<button class="position-btn" id="UTILITY"
-						onclick="updateUrl('position', 'UTILITY')">
-						서포터</button>
+						onclick="updateUrl('position', 'UTILITY')">서포터</button>
 				</nav>
 			</div>
 		</section>
@@ -60,7 +56,7 @@
 			<div class="champ-btn"></div>
 			<ul class="champ-face">
 				<li th:each="champion : ${positionData}"><a
-					th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position}, championName=${champion.championName})}">
+					th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position == 'ALL' ? championOriginalPositions[champion.championName] : position}, championName=${champion.championName})}">
 						<div>
 							<img
 								th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
@@ -90,7 +86,7 @@
 						<td>
 							<div class="img-wrap">
 								<a
-									th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position}, championName=${champion.championName})}">
+									th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position == 'ALL' ? championOriginalPositions[champion.championName] : position}, championName=${champion.championName})}">
 									<img
 									th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
 									alt="Champion Icon" />
