@@ -51,19 +51,19 @@
 			</div>
 			<div class="champ-statistics">
 				<!--진성님-->
-				<div>
-					<span>승률</span><br /> <strong>50.55%</strong>
+			<div>
+					<span>승률</span><br /> <strong th:text="${chamption.winrate}+ '%'">50.55%</strong>
 				</div>
 				<div>
-					<span>픽률</span><br /> <strong>6.5%</strong>
+					<span>픽률</span><br /> <strong th:text="${pickrate}+ '%'">6.5%</strong>
 				</div>
 				<div>
-					<span>밴율</span><br /> <strong>5.23%</strong>
+					<span>밴율</span><br /> <strong th:text="${banrate}+ '%'">5.23%</strong>
 				</div>
 			</div>
 			<div class="champ-tip">
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/build'}"><button>빌드</button></a>
-				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/counter'}"><button>카운터</button></a>
+				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/counter/'+${position}}"><button>카운터</button></a>
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/rune'}"><button>룬</button></a>
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/item'}"><button>아이템</button></a>
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/skill'}"><button>스킬</button></a>
