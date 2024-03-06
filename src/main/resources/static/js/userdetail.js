@@ -1,7 +1,7 @@
 
-document.addEventListener("DOMContentLoaded", function() {
+function chartt() {
   const ctx = document.getElementById("myChart");
-
+console.log("차트야나왔어");
   const s  = document.getElementById("siwwin");
   const w  = document.getElementById("sjwtotal");
   const sValue = parseInt(s.textContent || s.innerText, 10);
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
       },
     },
   });
-});
-
+}
+chartt();
 let btn = document.querySelectorAll(".usergame-btn > button");
 
 btn.forEach((bt) => {
@@ -95,7 +95,8 @@ function allresult(){
   text = text.replace(/[^\\]*<body>/i, "").replace(/<\/body>[^\\]*/i, "");
 
 
-
+  
   // 하고넣자
   document.querySelector("div.user-right").innerHTML += text;
+  chartt();
 }
