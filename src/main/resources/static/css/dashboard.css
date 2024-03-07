@@ -29,13 +29,27 @@
   font-size: 10px;
 }
 
+.server-btn{
+	margin-top:10rem;
+	width: 10rem;
+	height: 4rem;
+	background: var(--gray3);
+	color:white;
+	font-weight: bold;
+	border:none;
+	border-radius: 0.7rem;
+}
+.server-btn:hover{
+	background-color: var(--point3);
+	cursor: pointer;
+}
 .usergraph{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	column-gap: 2rem;
 	row-gap: 2rem;
 	grid-template-rows: repeat(2, 1fr);
-	margin: 7rem 0 5rem 0;
+	margin: 2rem 0 5rem 0;
 }
 
 
@@ -51,6 +65,7 @@
 	font-weight: bold;
 	text-align: left;
 	font-size: 1.5rem;
+	margin-top: 2rem;
 }
 
 .userinfo{
@@ -63,6 +78,7 @@
 .userinfo_box{
 	width: 60%;
 	margin:auto;
+	height: 100%;
 }
 .userinfo > ul > li{
 	width: 100%;
@@ -135,6 +151,7 @@
 	font-size: 1.5rem;
 	font-weight: bold;
 	width: 20rem;
+	margin-top: 5rem;
 }
 
 .dash_grid{
