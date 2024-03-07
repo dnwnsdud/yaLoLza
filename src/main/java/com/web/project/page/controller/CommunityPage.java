@@ -191,6 +191,7 @@ public class CommunityPage {
 
 	        communityService.create(communityForm.getTitle(),
 	                communityForm.getContent(), category, file, siteUser);
+	        Counter.Increment("totalCount",1);
 	        Counter.Increment("commuCount",1);
 	        return "redirect:/talk.yalolza.gg/community/list/%s".formatted(type);
 	    }
@@ -202,6 +203,7 @@ public class CommunityPage {
 //	    if(!community.getAuthor().getU) 회원 넘어오면 해야돼
 	        this.communityService.delete(community);
 	        Counter.Decrement("commuCount",1);
+	        Counter.Decrement("totalCount",1);
 	        return "redirect:/talk.yalolza.gg/community/";
 	    }
 

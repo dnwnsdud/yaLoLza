@@ -20,6 +20,7 @@ import com.web.project.dto.runeSpell.DataEntry;
 import com.web.project.dto.runeSpell.ItemWinRate;
 import com.web.project.dto.runeSpell.RuneWinRate;
 import com.web.project.dto.runeSpell.Selections;
+import com.web.project.dto.runeSpell.StatPerks;
 import com.web.project.dto.runeSpell.Styles;
 import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 
@@ -149,7 +150,6 @@ public class StatisticChampion {
 	                             });
 	                   
 	    	}  
-	    	System.out.println(perklist);
 	    	
 	    	
 	    	Map<List<Integer>, Long> perkCountMap = perklist.stream()
@@ -221,7 +221,6 @@ public class StatisticChampion {
                              });
                    
     	}  
-    	System.out.println(perklist2);
     	
     	
     	Map<List<Integer>, Long> perkCountMap = perklist2.stream()
@@ -428,21 +427,21 @@ public class StatisticChampion {
 
     }
 	
-	public static List<String> caculateStatPerks(List<DataEntry> filteredData) {
-	    List<String> result = new ArrayList<>();
+	public static List<StatPerks> caculateStatPerks(List<DataEntry> filteredData) {
+	    List<StatPerks> result = new ArrayList<>();
 	    
 	    if (!filteredData.isEmpty()) {
-	        Map<String, Integer> counter = new HashMap<>();
+	        Map<StatPerks, Integer> counter = new HashMap<>();
 	        
 	        // 각 데이터 항목에서 statPerks 조합을 추출하고 등장 횟수를 계산
 	        for (DataEntry entry : filteredData) {
-	            String statPerksCombination = entry.getPerks().getStatPerks().toString();
+	        	StatPerks statPerksCombination = entry.getPerks().getStatPerks();
 	            counter.put(statPerksCombination, counter.getOrDefault(statPerksCombination, 0) + 1);
 	        }
 	        
 	        // 가장 많이 등장한 조합을 찾음
 	        int maxCount = Collections.max(counter.values());
-	        for (Map.Entry<String, Integer> entry : counter.entrySet()) {
+	        for (Map.Entry<StatPerks, Integer> entry : counter.entrySet()) {
 	            if (entry.getValue() == maxCount) {
 	                result.add(entry.getKey());
 	            }
