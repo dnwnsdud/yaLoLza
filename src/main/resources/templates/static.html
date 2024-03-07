@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="/css/static.css" />
 </head>
 <body>
-	<div>
+	<header th:replace="~{/header :: header}"></header>
+	<br />
+	<div class="staticContainer">
 		<!-- 챔피언 통계 -->
 		<section class="con1">
 			<div class="dec">
@@ -144,6 +146,7 @@
 				</div> -->
 			</section>
 		</div>
+		    
 		<script>
 			// URL 업데이트
 			function updateUrl(key, value) {
@@ -163,5 +166,8 @@
 				}
 			});
 		</script>
+		
 </body>
+<br />
+    <footer th:replace="~{/footer :: footer}"></footer>
 </html>
