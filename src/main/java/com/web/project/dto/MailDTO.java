@@ -26,7 +26,7 @@ public class MailDTO {
 		this.title = title;
 	}
 	public String getMessage() {
-		return message;
+		return message; 
 	}
 	public void setMessage(String message) {
 		this.message = message;

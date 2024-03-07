@@ -36,4 +36,4 @@ public interface UserRepository extends JpaRepository<SiteUser, Long> {
 	void updatePw(@Param("pw") String pw, @Param("indexId") Long indexId);
 	
 }
-
+ 
