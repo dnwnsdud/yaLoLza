@@ -100,6 +100,10 @@ body{
 .user-tip button:hover {
   font-weight: bold;
 }
+.user-tip button:focus{
+	background-color: var(--point7);
+	border-radius: 0.5rem;
+}
 
 /* 유저 정보 끝*/
 /* 유저 랭크 시작 */
@@ -416,7 +420,12 @@ h2 {
   border: 1px solid var(--font);
   cursor: pointer;
 }
-
+.btn-build.on,
+.btn-all.on,
+.usergame-menunavi button:focus {
+  background: var(--gray2);
+  color: var(--white);
+}
 /* 유저 메뉴 끝*/
 /* 승리 정보 시작*/
 .victory-nav {
