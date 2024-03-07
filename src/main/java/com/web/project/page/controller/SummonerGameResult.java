@@ -455,7 +455,7 @@ import com.web.project.system.SummonerData;
 			        		   summonerskilllup.add(s);
 			        	   }
 			      //스킬트리순서정립
-			      skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+			      skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
 
                       
 			      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
@@ -564,7 +564,7 @@ import com.web.project.system.SummonerData;
   		    }
   		    
   		     
-  		    
+  		     
 		    for (int i = 0; i < matchsssList.size(); i++) {
   			    matchdata2 = restTemplate.getForEntity(matchsssList.get(i), Match.class);
   			  matchdata2.getBody().updateCaludate(); 
@@ -746,7 +746,7 @@ import com.web.project.system.SummonerData;
 	        		   summonerskilllup.add(s);
 	        	   }
 	        	 
-	        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+	        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
              
 			      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
 			            SummonerTimeList summonerTime = SummonerTimeList.builder()
@@ -784,6 +784,7 @@ import com.web.project.system.SummonerData;
 		      summonerskilllups.add(summonerskilllup);
 		      summonerskillluptree.add(skilltree);
 		}
+  		
   		  Map<Long, String>keysquetype = Calall.createQueueTypeMap();
  		 Map<String, String> keysChamName = ChampionData.keysChamName();
  		Map<Long, String> keysRuneImage = RuneData.keysRuneImage();
@@ -1155,7 +1156,7 @@ import com.web.project.system.SummonerData;
 					        		   summonerskilllup.add(s);
 					        	   }
 					        	 
-					        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+					        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
 				             
 							      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
 							            SummonerTimeList summonerTime = SummonerTimeList.builder()

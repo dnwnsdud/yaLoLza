@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.hibernate.annotations.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,47 +70,56 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
 	    }
 	    
 	    //스킬 순서 코드
-	    public static List<Long> getTopNFrequentNumbers(List<Long> inputList, int n) {
+	    public static List<Long> getTopNFrequentNumbers(List<Long> inputList) {
+	    	int count1 =0;
+    		int count2 =0;
+    		int count3 =0;
+    		int scont1 =0;
+    		int scont2 =0;
+    		int scont3 =0;
+    		List<Long>ad = new ArrayList<Long>();
 	        // 숫자별 빈도수를 저장하는 맵
-	        Map<Long, Long> frequencyMap = inputList.stream()
-	                .collect(Collectors.groupingBy(num -> num, Collectors.counting()));
+	    	List<Long> a =new ArrayList<Long>();
+	    	inputList.forEach(s->{
+	    		if(s!=4) {
+	    			System.out.println(s);
+	    			a.add(s);
+	    		}
+	    	});
+	    	
+	    	for(int i = 0 ;  i< a.size() ; i++) {
+	    	
+	    		if(a.get(i) == 1) {
+	    			count1 +=1;
+	    		}else if(a.get(i) == 2) {
+	    			count2 +=1;
+				}else if(a.get(i) == 3) {
+					count3 +=1;
+				}
+	    		
+	    	}
+	    	for (int i = 0 ;  i< a.size() ; i++) {
+	    		if(a.get(i) == 1) {
+	    			scont1 +=1;
+	    			if(count1 == scont1) {
+	    				ad.add(1L);
+	    			}
+	    		}else if(a.get(i) == 2) {
+	    			scont2 +=1;
+	    			if(count2 ==scont2) {
+	    				ad.add(2L);
+	    			}
+				}else if(a.get(i) == 3) {
+					scont3 +=1;
+					if(count3 ==scont3) {
+	    				ad.add(3L);
+	    			}
+				}
+	    	}
+	    	
 
-	        // 빈도수를 기준으로 내림차순으로 정렬
-	        List<Long> sortedNumbers = frequencyMap.entrySet().stream()
-	                .sorted(Map.Entry.<Long, Long>comparingByValue().reversed())
-	                .map(Map.Entry::getKey)
-	                .collect(Collectors.toList());
-
-	        // 결과 리스트에 추가
-	        List<Long> result = new ArrayList<>();
-	        Iterator<Long> iterator = sortedNumbers.iterator();
-
-	        while (iterator.hasNext() && result.size() < n) {
-	            Long currentNumber = iterator.next();
-
-	            // 숫자 4가 있으면 4를 제외하고 다음 조회 숫자를 넣어줌
-	            if (currentNumber == 4) {
-	                while (iterator.hasNext()) {
-	                    Long nextNumber = iterator.next();
-	                    if (nextNumber != 4) {
-	                        result.add(nextNumber);
-	                        break;
-	                    }
-	                }
-	            } else {
-	                result.add(currentNumber);
-	            }
-	        }
-
-	        // 리스트에 1, 2, 3 중 하나가 없으면 남은 숫자를 넣어줌
-	        List<Long> remainingNumbers = Arrays.asList(1L, 2L, 3L);
-	        for (Long remainingNumber : remainingNumbers) {
-	            if (!result.contains(remainingNumber)) {
-	                result.add(remainingNumber);
-	            }
-	        }
-
-	        return result;
+	    	
+   return ad;
 	    }
 	    
 	//db저장할 칼 데이터
