@@ -36,12 +36,41 @@
     <a href="http://localhost:3000/d/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1">서버관리</a>
     </button>
     </div>
-    <div class="usergraph">
-     <iframe src="http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=1709131979018&to=1709736779018&theme=light&panelId=219" width="550" height="250" frameborder="0"></iframe>
-	 <iframe src="http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=1709131798549&to=1709736598549&theme=light&panelId=167" width="550" height="250" frameborder="0"></iframe>
-	 <iframe src="http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=1709131888953&to=1709736688953&theme=light&panelId=226" width="550" height="250" frameborder="0"></iframe>
-	 <iframe src="http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=1709186272021&to=1709791072021&theme=light&panelId=232" width="550" height="250" frameborder="0"></iframe>
-    </div>
+      <div class="usergraph">
+	    <iframe width="550" height="250" frameborder="0"></iframe>
+	    <iframe width="550" height="250" frameborder="0"></iframe>
+	    <iframe width="550" height="250" frameborder="0"></iframe>
+	    <iframe width="550" height="250" frameborder="0"></iframe>
+	</div>
+
+<script>
+    function getCurrentTime() {
+        return new Date().getTime();
+    }
+
+    function formatTime(time) {
+        return Math.floor(time);
+    }
+
+    function updateIframeURLs() {
+        var currentTime = getCurrentTime();
+        var oneDaysAgo = currentTime - (1 * 24 * 60 * 60 * 1000); 
+        var twoDaysAgo = currentTime - (2 * 24 * 60 * 60 * 1000); 
+        var sevenDaysAgo = currentTime - (7 * 24 * 60 * 60 * 1000); 
+        var tenDaysAgo = currentTime - (10 * 24 * 60 * 60 * 1000); 
+
+        // Get all iframes
+        var iframes = document.querySelectorAll('iframe');
+
+            iframes[0].src = "http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=" + formatTime(sevenDaysAgo) + "&to=" + formatTime(currentTime) + "&theme=light&panelId=219";
+            iframes[1].src = "http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=" + formatTime(sevenDaysAgo) + "&to=" + formatTime(currentTime) + "&theme=light&panelId=167";
+            iframes[2].src = "http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=" + formatTime(sevenDaysAgo) + "&to=" + formatTime(currentTime) + "&theme=light&panelId=226";
+            iframes[3].src = "http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=" + formatTime(sevenDaysAgo) + "&to=" + formatTime(currentTime) + "&theme=light&panelId=232";
+
+    }
+
+    updateIframeURLs();
+</script>
     
     
       <h1 class="userinfo_title">유저리스트</h1>
