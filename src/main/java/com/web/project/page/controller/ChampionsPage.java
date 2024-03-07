@@ -299,16 +299,17 @@ public class ChampionsPage {
 			List<ItemStatistics> firstItemData = StatisticItemSkill.parseJson(Files.readString(Paths.get(StatisticfilePath)));
 			List<ItemStatistics> filteredItemStatistic = StatisticItemSkill.filterStatistic(firstItemData, tier, position, championid);
 
-			List<ItemStatistics> first =StatisticItemSkill.caculateFirstItems(filteredItemStatistic);
-			System.out.println(first.get(0).getWinRate());
-			model.addAttribute("firstItem", first.get(0).getItems()[0]);
-			model.addAttribute("firstItemPickCount", first.get(0).getPickCount());
-			model.addAttribute("firstItemPickRate", first.get(0).getPickCount()/first.get(0).getTotalCount());
-			model.addAttribute("firstItemWinRate", first.get(0).getWinRate());
-			model.addAttribute("secondItem", first.get(1).getItems()[0]);
-			model.addAttribute("secondItemPickCount", first.get(1).getPickCount());
-			model.addAttribute("secondItemPickRate", first.get(1).getPickCount()/first.get(1).getTotalCount());
-			model.addAttribute("secondItemWinRate", first.get(1).getWinRate());
+			List<ItemStatistics> firstItem =StatisticItemSkill.caculateFirstItems(filteredItemStatistic);
+			
+			System.out.println(firstItem.get(0).getWinRate());
+			model.addAttribute("firstItem", firstItem.get(0).getItems()[0]);
+			model.addAttribute("firstItemPickCount", firstItem.get(0).getPickCount());
+			model.addAttribute("firstItemPickRate", firstItem.get(0).getPickCount()/firstItem.get(0).getTotalCount());
+			model.addAttribute("firstItemWinRate", firstItem.get(0).getWinRate());
+			model.addAttribute("secondItem", firstItem.get(1).getItems()[0]);
+			model.addAttribute("secondItemPickCount", firstItem.get(1).getPickCount());
+			model.addAttribute("secondItemPickRate", firstItem.get(1).getPickCount()/firstItem.get(1).getTotalCount());
+			model.addAttribute("secondItemWinRate", firstItem.get(1).getWinRate());
 			
 			
 			
@@ -316,17 +317,21 @@ public class ChampionsPage {
 			List<ItemStatistics> itemData = StatisticItemSkill.parseJson(Files.readString(Paths.get(StatisticfilePath)));
 			filteredItemStatistic = StatisticItemSkill.filterStatistic(itemData, tier, position, championid);
 			
-			 
-			
+			List<ItemStatistics> items5 =StatisticItemSkill.caculateItems(filteredItemStatistic);
+			model.addAttribute("items5", items5);		
 			
 			link = "/firstSkill";
 			List<SkillStatistics> firstSkilldata = StatisticItemSkill.parseJson2(Files.readString(Paths.get(StatisticfilePath)));
 			List<SkillStatistics> filteredSkillStatistic = StatisticItemSkill.filterStatistic2(firstSkilldata, tier, position, championid);
 			
+			List<SkillStatistics> firstSkill =StatisticItemSkill.caculateFirstSkills(filteredSkillStatistic);
+			model.addAttribute("firstSkill", firstSkill);	
+			firstSkill.get(0).getSkillList();
 			
 			link = "/skill";
 			List<SkillStatistics> skilldata = StatisticItemSkill.parseJson2(Files.readString(Paths.get(StatisticfilePath)));
 			filteredSkillStatistic = StatisticItemSkill.filterStatistic2(skilldata, tier, position, championid);
+			
 			
 			
 			
