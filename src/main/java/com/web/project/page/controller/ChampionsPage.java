@@ -203,7 +203,7 @@ public class ChampionsPage {
 			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
             List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
             List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
-            List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
+            //List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
             //출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
 			model.addAttribute("perklist", perklist);
 			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
@@ -211,16 +211,16 @@ public class ChampionsPage {
 			spell = SummonerData.findspell(Spelllist1.get(1).toString());			
 			model.addAttribute("summoner2", spell);
 			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
-			spell = SummonerData.findspell(Spelllist2.get(0).toString());
-			model.addAttribute("summoner3", spell);
-			spell = SummonerData.findspell(Spelllist2.get(1).toString());
-			model.addAttribute("summoner4", spell);
-			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
+			//spell = SummonerData.findspell(Spelllist2.get(0).toString());
+			//model.addAttribute("summoner3", spell);
+			//spell = SummonerData.findspell(Spelllist2.get(1).toString());
+			//model.addAttribute("summoner4", spell);
+			//model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
 			
 			model.addAttribute("summonerSpellSetCountRate1", ((double)Math.round(summonerSpellSet12.get(0).getCountRate()*10000)/100));
 			model.addAttribute("summonerSpellSet1Count1", summonerSpellSet12.get(0).getSetCount());
-			model.addAttribute("summonerSpellSetCountRate2", ((double)Math.round(summonerSpellSet12.get(1).getCountRate()*10000)/100));
-			model.addAttribute("summonerSpellSet1Count2", summonerSpellSet12.get(1).getSetCount());
+			//model.addAttribute("summonerSpellSetCountRate2", ((double)Math.round(summonerSpellSet12.get(1).getCountRate()*10000)/100));
+			//model.addAttribute("summonerSpellSet1Count2", summonerSpellSet12.get(1).getSetCount());
 			
 			
 			
@@ -317,21 +317,21 @@ public class ChampionsPage {
 			model.addAttribute("listpick2", itemlist.get(1).getPickCount());			
 			model.addAttribute("listPickRate2", 
 					(double)Math.round((double)itemlist.get(1).getPickCount()/(double)itemlist.get(1).getTotalCount()*10000)/100);
-			
-			model.addAttribute("listWin3", ((double)Math.round(itemlist.get(2).getWinRate()*10000)/100));
-			model.addAttribute("listpick3", itemlist.get(2).getPickCount());			
-			model.addAttribute("listPickRate3", 
-					(double)Math.round((double)itemlist.get(2).getPickCount()/(double)itemlist.get(2).getTotalCount()*10000)/100);
-			
-			model.addAttribute("listWin4", ((double)Math.round(itemlist.get(3).getWinRate()*10000)/100));
-			model.addAttribute("listpick4", itemlist.get(3).getPickCount());			
-			model.addAttribute("listPickRate4", 
-					(double)Math.round((double)itemlist.get(3).getPickCount()/(double)itemlist.get(3).getTotalCount()*10000)/100);
-			
-			model.addAttribute("listWin5", ((double)Math.round(itemlist.get(4).getWinRate()*10000)/100));
-			model.addAttribute("listpick5", itemlist.get(4).getPickCount());			
-			model.addAttribute("listPickRate5", 
-					(double)Math.round((double)itemlist.get(4).getPickCount()/(double)itemlist.get(4).getTotalCount()*10000)/100);
+			 
+//			model.addAttribute("listWin3", ((double)Math.round(itemlist.get(2).getWinRate()*10000)/100));
+//			model.addAttribute("listpick3", itemlist.get(2).getPickCount());			
+//			model.addAttribute("listPickRate3", 
+//					(double)Math.round((double)itemlist.get(2).getPickCount()/(double)itemlist.get(2).getTotalCount()*10000)/100);
+//			
+//			model.addAttribute("listWin4", ((double)Math.round(itemlist.get(3).getWinRate()*10000)/100));
+//			model.addAttribute("listpick4", itemlist.get(3).getPickCount());			
+//			model.addAttribute("listPickRate4", 
+//					(double)Math.round((double)itemlist.get(3).getPickCount()/(double)itemlist.get(3).getTotalCount()*10000)/100);
+//			
+//			model.addAttribute("listWin5", ((double)Math.round(itemlist.get(4).getWinRate()*10000)/100));
+//			model.addAttribute("listpick5", itemlist.get(4).getPickCount());			
+//			model.addAttribute("listPickRate5", 
+//					(double)Math.round((double)itemlist.get(4).getPickCount()/(double)itemlist.get(4).getTotalCount()*10000)/100);
 			
 			
 			link = "/firstSkill";
