@@ -368,28 +368,28 @@ public class ChampionsPage {
 			
 			
 				
-			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
-			String item1 =  String.valueOf(items.get(0).getItemId());
-			String itemCount1 =  String.valueOf(items.get(0).getItemCount());
-			String itemPickRate1 =  String.valueOf(items.get(0).getpickRate());
-			String itemWinRate1 =  String.valueOf(items.get(0).getWinRate());
-			
-			String item2 =  String.valueOf(items.get(1).getItemId());
-			String item3 =  String.valueOf(items.get(2).getItemId());
-			
-			
-			
-			Item item = ItemData.item(item1);
-			model.addAttribute("item1", item);
-			model.addAttribute("itemCount1", itemCount1);			
-			model.addAttribute("itemPickRate1", ((double)Math.round(Double.parseDouble(itemPickRate1)*10000)/100));
-			model.addAttribute("itemWinRate1", ((double)Math.round(Double.parseDouble(itemWinRate1)*10000)/100));
-			
-			
-			item = ItemData.item(item2);
-			model.addAttribute("item2", item);
-			item = ItemData.item(item3);
-			model.addAttribute("item3", item);
+//			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
+//			String item1 =  String.valueOf(items.get(0).getItemId());
+//			String itemCount1 =  String.valueOf(items.get(0).getItemCount());
+//			String itemPickRate1 =  String.valueOf(items.get(0).getpickRate());
+//			String itemWinRate1 =  String.valueOf(items.get(0).getWinRate());
+//			
+//			String item2 =  String.valueOf(items.get(1).getItemId());
+//			String item3 =  String.valueOf(items.get(2).getItemId());
+//			
+//			
+//			
+//			Item item = ItemData.item(item1);
+//			model.addAttribute("item1", item);
+//			model.addAttribute("itemCount1", itemCount1);			
+//			model.addAttribute("itemPickRate1", ((double)Math.round(Double.parseDouble(itemPickRate1)*10000)/100));
+//			model.addAttribute("itemWinRate1", ((double)Math.round(Double.parseDouble(itemWinRate1)*10000)/100));
+//			
+//			
+//			item = ItemData.item(item2);
+//			model.addAttribute("item2", item);
+//			item = ItemData.item(item3);
+//			model.addAttribute("item3", item);
 			
 			
 			
