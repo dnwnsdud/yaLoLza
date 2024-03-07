@@ -80,7 +80,6 @@ body {
    grid-template-columns: repeat(6, 1fr);
    font-size: 1rem;
    color: var(--font);
-   border-top: 1px solid var(--border);
 }
 
 .champ-face li {

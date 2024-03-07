@@ -18,7 +18,6 @@
 				<h2>통계</h2>
 				<div class="user-tip">
 					<button>챔피언별 통계</button>
-					<button>티어별 통계</button>
 				</div>
 			</div>
 		</section>
@@ -79,7 +78,7 @@
 					th:each="champion, stat : ${positionData}">
 					<ul>
 						<li th:text="${stat.count}">1</li>
-						<li>
+						<li class="champinfo">
 							<div class="img-wrap">
 								<a
 									th:href="@{/img/champion/{championName}(championName=${champion.championName})}">
@@ -109,42 +108,8 @@
 						<li th:text="${champion.stats.goldEarned}"></li>
 					</ul>
 				</div>
-				<!-- <div th:if="${queueType == 'ARAM'}"
-					th:each="champion : ${aramChampions}">
-					<ul>
-						<li>1</li>
-						<li>
-							<div class="img-wrap">
-								<a
-									th:href="@{/img/champion/{championName}(championName=${champion.championName})}">
-									<img
-									th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
-									alt="Champion Icon" />
-								</a>
-							</div>
-							<p th:text="${champion.krChampionName}"></p>
-						</li>
-						<li th:text="${champion.stats.picks}">Plays</li>
-						<li th:text="${champion.stats.kda}">KDA</li>
-						<li>
-							<div class="progress-bar">
-								<div class="filler"
-									th:style="'width:' + ${champion.stats.winrate} + '%'"></div>
-							</div> <span th:text="${champion.stats.winrate} + '%'"></span>
-						</li>
-						<li>
-							<div class="progress-bar1">
-								<div class="filler1"
-									th:style="'width:' + ${champion.stats.pickrate} + '%'"></div>
-							</div> <span th:text="${champion.stats.pickrate} + '%'"></span>
-						</li>
-						<li>0</li>
-						항상 0으로 표시
-						<li th:text="${champion.stats.cs}"></li>
-						<li th:text="${champion.stats.goldEarned}"></li>
-					</ul>
-				</div> -->
 			</section>
+			</div>
 		</div>
 		    
 		<script>
