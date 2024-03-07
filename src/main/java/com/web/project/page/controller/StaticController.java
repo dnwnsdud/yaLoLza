@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.web.project.dto.championstats.AramChampionDTO;
 import com.web.project.dto.championstats.ChampionStatsDTO;
 import com.web.project.dto.championstats.TierDataDTO;
+import com.web.project.metrics.count.Connect;
 import com.web.project.system.AramDataService;
 import com.web.project.system.AramStatsJsonReader;
 import com.web.project.system.JsonReader;
@@ -49,6 +50,7 @@ public class StaticController {
             try {
                 AramChampionDTO[] aramChampions = aramStatsJsonReader.readAramStatsJsonFile();
                 model.addAttribute("aramChampions", Arrays.asList(aramChampions));
+            	new Connect("total","yalolza.gg", "static","aram");
                 return "aram"; // ARAM 데이터를 포함한 뷰 반환
             } catch (IOException e) {
                 model.addAttribute("error", "ERROR: " + e.getMessage());
@@ -91,6 +93,7 @@ public class StaticController {
         } catch (Exception e) {
             model.addAttribute("error", "ERROR: " + e.getMessage());
         }
+    	new Connect("total","yalolza.gg", "static","champion");
         return "static";
     }
 }

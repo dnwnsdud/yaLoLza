@@ -56,7 +56,8 @@ public class SecurityConfig {
 						"/duo/**",
 						"/img/**",
 						"/css/**",
-						"/js/**"
+						"/js/**",
+						"/monitoring/**"
 					)
 				)
 				.authorizeHttpRequests(auth->
@@ -99,7 +100,9 @@ public class SecurityConfig {
 							"/js/**",
 							"/json/**",
 							"/datas/**",
-							"/info/**"
+							"/info/**",
+							"/monitoring/**"
+
 						).permitAll()
 						.requestMatchers(
 								"/user/mypage"

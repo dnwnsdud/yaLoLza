@@ -47,6 +47,7 @@ import com.web.project.function.Calall;
 import com.web.project.function.MillisecondsConverter;
 import com.web.project.function.SummonerTimeList;
 import com.web.project.function.SummonerTimeListSS;
+import com.web.project.metrics.count.Connect;
 import com.web.project.save.MatchRepository;
 import com.web.project.save.MatchService;
 import com.web.project.system.ChampionData;
@@ -1238,7 +1239,7 @@ import com.web.project.system.SummonerData;
     	       
     }
  
-		
+  		new Connect("total","yalolza.gg", "summoners");
 	  return "power"; 
 
    } 
