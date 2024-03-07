@@ -411,27 +411,27 @@
 
                   <ul class="usergame-objects" th:with="tt=${match.body.info.teams[sss]}">
                     <li>
-                      <div class="img-wrap4 baron"></div>
+                      <div class="img-wrap4 baron" id="baron"></div>
                       <span th:text="${tt.objectives.baron.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 dragon"></div>
+                      <div class="img-wrap4 dragon" id="dragon"></div>
                       <span th:text="${tt.objectives.dragon.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 bug"></div>
+                      <div class="img-wrap4 bug" id="horde"></div>
                       <span th:text="${tt.objectives.horde.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 larva"></div>
+                      <div class="img-wrap4 larva" id="riftHerald"></div>
                       <span th:text="${tt.objectives.riftHerald.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 tower"></div>
+                      <div class="img-wrap4 tower" id="tower"></div>
                       <span th:text="${tt.objectives.tower.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 suppressor"></div>
+                      <div class="img-wrap4 suppressor" id="inhibitor"></div>
                       <span th:text="${tt.objectives.inhibitor.kills}">1</span>
                     </li>
                   </ul>
@@ -469,27 +469,27 @@
                   </ul>
                   <ul class="usergame-objects" th:with="ntt=${match.body.info.teams[nsss]}">
                     <li>
-                      <div class="img-wrap4 baron"></div>
+                      <div class="img-wrap4 baron" id="baron"></div>
                       <span th:text="${ntt.objectives.baron.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 dragon"></div>
+                      <div class="img-wrap4 dragon" id="dragon"></div>
                       <span th:text="${ntt.objectives.dragon.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 bug"></div>
+                      <div class="img-wrap4 bug" id="horde"></div>
                       <span th:text="${ntt.objectives.horde.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 larva"></div>
+                      <div class="img-wrap4 larva" id="riftHerald"></div>
                       <span th:text="${ntt.objectives.riftHerald.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 tower"></div>
+                      <div class="img-wrap4 tower" id="tower"></div>
                       <span th:text="${ntt.objectives.tower.kills}">1</span>
                     </li>
                     <li>
-                      <div class="img-wrap4 suppressor"></div>
+                      <div class="img-wrap4 suppressor" id="inhibitor"></div>
                       <span th:text="${ntt.objectives.inhibitor.kills}">1</span>
                     </li>
                   </ul>
@@ -629,7 +629,7 @@
                       <li>
 
                         <ul class="victotal-items">
-                          <div class="img-wrap3" th:each="itemIndex : ${#numbers.sequence(0, 6)}">
+                          <div class="img-wrap3" th:each="itemIndex : ${#numbers.sequence(0, 6)}" th:id="${match.body.info.participants[nz]['item' + itemIndex]}">
                             <img loading="lazy"
                               th:src="@{'/img/item/'+${match.body.info.participants[nz]['item' + itemIndex]} + '.png'}"
                               alt="" />
@@ -649,7 +649,7 @@
                     <li th:each="purchase,z : ${matchspurchase[i.index]}">
                      <div class="itembuild-group">
 						    <div th:each="key, iterStat : ${#numbers.sequence(1, purchase.size() - 1)}">
-						        <div class="img-wrap1">
+						        <div class="img-wrap1" th:id="${purchase[key]}">
 						            <img loading="lazy" th:src="@{'/img/item/'+${purchase[key]} + '.png'}" alt="" />
 						        </div>
 						        <p th:if="${iterStat.index == 0}" th:text="${purchase[0]} + '분'">0:00</p>
@@ -662,20 +662,20 @@
                 <section class="usergame-skillbuild"
                   th:with="cham=${match.body.info.participants[summonermatchnum[i.index]].championName}">
                   <ul class="userskill-qwe" th:with="stree=${matchsskilltree[i.index]}">
-                    <li class="img-wrap3"><img loading="lazy"
+                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[0]==1?Q:(stree[0]==2?W:E)}"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[0] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                     <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
-                    <li class="img-wrap3"><img loading="lazy"
+                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[1]==1?Q:(stree[1]==2?W:E)}"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[1] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                     <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
-                    <li class="img-wrap3"><img loading="lazy"
+                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[2]==1?Q:(stree[2]==2?W:E)}"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[2] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                   </ul>
                   <ul>
-                    <div class="skillbuild-grid">
+                    <div class="skillbuild-grid" >
                       <li style="
                           color: var(--white);
                           font-size: 1.3rem;
@@ -684,7 +684,7 @@
                         Q
                       </li>
 
-                      <li class="img-wrap3"><img loading="lazy"
+                      <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/Q'"><img loading="lazy"
                           th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][0]?.id}+ '.png'}"
                           alt="" /></li>
                       <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 1 ? (s.index +1) : ''}">
@@ -698,7 +698,7 @@
                         ">
                         W
                       </li>
-                      <li class="img-wrap3"><img loading="lazy"
+                      <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/W'"><img loading="lazy"
                           th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][1]?.id}+ '.png'}"
                           alt="" /></li>
                       <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 2 ? (s.index +1) : ''}">
@@ -712,7 +712,7 @@
                         ">
                         E
                       </li>
-                      <li class="img-wrap3"><img loading="lazy"
+                      <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/E'"><img loading="lazy"
                           th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][2]?.id}+ '.png'}"
                           alt="" /></li>
                       <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 3 ? (s.index +1) : ''}">
@@ -726,7 +726,7 @@
                         ">
                         R
                       </li>
-                      <li class="img-wrap3"><img loading="lazy"
+                      <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/R'"><img loading="lazy"
                           th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][3]?.id}+ '.png'}"
                           alt="" /></li>
                       <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 4 ? (s.index +1) : ''}">
@@ -1012,7 +1012,7 @@
 			      {
 			        fontSize: "15px",
 			        color:"#48C4B7",
-			        width: "250px",
+			        width: "auto",
 			        padding:"10px"
 			      }
 			    );
@@ -1043,6 +1043,46 @@
   <script th:inline="javascript" defer>
 	document.querySelectorAll(".vic-spell .rune >div").forEach(async (element)=>{
 		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+				if(element.id%100==0){
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
+			        padding:"10px"
+			      }
+			    );
+		}else{
+			tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		}
+		
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".victotal-items div").forEach(async (element)=>{
+		if (element.id==0) return;
+		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
 		tooltip(
 				  element,
 				  target,
@@ -1055,6 +1095,192 @@
 			        fontSize: "15px",
 			        color:"#48C4B7",
 			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".usergame-objects li div").forEach(async (element)=>{
+		let target = await fetch("/info/objectinfo/"+element.id).then(data=>data.text());
+
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+  <script th:inline="javascript" defer>
+	document.querySelectorAll(".itembuild-group div div").forEach(async (element)=>{
+		if (element.id==0) return;
+		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+	  <script th:inline="javascript" defer>
+	document.querySelectorAll(".skillbuild-grid .img-wrap3").forEach(async (element)=>{
+		let target = await fetch("/info/spell/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+		  <script th:inline="javascript" defer>
+	document.querySelectorAll(".userskill-qwe .img-wrap3").forEach(async (element)=>{
+		let target = await fetch("/info/spell/"+element.id).then(data=>data.text());	
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
+			        padding:"10px"
+			      }
+			    );
+		
+	});
+	</script>
+	
+	<script th:inline="javascript" defer>
+	document.querySelectorAll(".main-rune ul li").forEach(async (element)=>{
+		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+				if(element.id%100==0){
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
+			        padding:"10px"
+			      }
+			    );
+		}else{
+			tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		}
+		
+	});
+	</script>
+	  <script th:inline="javascript" defer>
+	document.querySelectorAll(".sub-rune ul li").forEach(async (element)=>{
+		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
+				if(element.id%100==0){
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
+			        padding:"10px"
+			      }
+			    );
+		}else{
+			tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "250px",
+			        padding:"10px"
+			      }
+			    );
+		}
+		
+	});
+	</script>
+	  <script th:inline="javascript" defer>
+	document.querySelectorAll(".fragments-rune ul li").forEach(async (element)=>{
+		let target = await fetch("/info/perkdetailinfo/"+element.id).then(data=>data.text());
+		tooltip(
+				  element,
+				  target,
+			      {
+			        gap: 20,
+			        backgroundColor: "var(--gray2)",
+			        borderRadius: "1rem",
+			      },
+			      {
+			        fontSize: "15px",
+			        color:"#48C4B7",
+			        width: "auto",
 			        padding:"10px"
 			      }
 			    );
