@@ -28,6 +28,10 @@
                  </button>
                  <button sec:authorize="isAuthenticated()" ><a 
                  th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
+                    <button sec:authorize="hasRole('ADMIN')">
+                    <a 
+                 th:href="@{/admin/dashboard}">관리페이지</a></button>
+                   
                     <button class="darkchange">
                         <i class="fa-regular fa-sun"></i>
                     </button>
