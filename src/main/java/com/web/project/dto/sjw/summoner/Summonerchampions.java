@@ -47,7 +47,7 @@ public class Summonerchampions {
     private Long championdeaths;//데스
     private Long championassists;//어시
     private Long killpers;//킬관여율
-    
+    private Long goldearned;//골드
     @Override
     public String toString() {
         return "Summonerchampions{" +
@@ -62,6 +62,7 @@ public class Summonerchampions {
                 ", damageTaken=" + damagetaken +
                 ", queueId=" + queueId +
                 ", win=" + win +
+                ", goldearnde=" + goldearned +
                 '}';
     }
 }

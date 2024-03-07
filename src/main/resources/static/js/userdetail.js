@@ -1,33 +1,36 @@
 
-const ctx = document.getElementById("myChart");
+function chartt() {
+  const ctx = document.getElementById("myChart");
+console.log("차트야나왔어");
+  const s  = document.getElementById("siwwin");
+  const w  = document.getElementById("sjwtotal");
+  const sValue = parseInt(s.textContent || s.innerText, 10);
+  const wValue = parseInt(w.textContent || w.innerText, 10);
 
-const s  = document.getElementById("siwwin");
-const w  = document.getElementById("sjwtotal");
-const sValue = parseInt(s.textContent || s.innerText, 10);
-const wValue = parseInt(w.textContent || w.innerText, 10);
-
-console.log("안녕 차트야 ");
-new Chart(ctx, {
-  type: "doughnut",
-  data: {
-    datasets: [
-      {
-        data: [wValue,sValue ],
-        borderWidth: 0,
-        backgroundColor: ["#ff0558", "#007aff"],
-      },
-    ],
-  },
-  options: {
-    plugins: {
-      tooltip: { enabled: false },
-      title: "myChart", // 수정된 부분: "id" 대신 "title"
+  console.log("안녕 차트야 ");
+  
+  new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      datasets: [
+        {
+          data: [wValue, sValue],
+          borderWidth: 0,
+          backgroundColor: ["#ff0558", "#007aff"],
+        },
+      ],
     },
-  },
-});
+    options: {
+      plugins: {
+        tooltip: { enabled: false },
+        title: "myChart",
+      },
+    },
+  });
+}
+chartt();
 
 let btn = document.querySelectorAll(".usergame-btn > button");
-
 btn.forEach((bt) => {
   bt.addEventListener("click", (e) => {
 	  console.log("클릭")
@@ -61,3 +64,42 @@ btnbuild.forEach((e, index) => {
     btnall[index].classList.remove("on");
   });
 });
+
+let totalchampions =document.querySelector(".user-totalchampions");
+let totalchampionsbutton =document.querySelector(".totalchampionsbutton");
+let userleft =document.querySelector(".user-left");
+let userright =document.querySelector(".user-right");
+
+function champions(){
+	totalchampionsbutton.style.backgroundColor = "var(--point7)";
+    totalchampionsbutton.style.borderRadius = "0.5rem";
+    totalchampions.style.display = "block";
+    userleft.style.display = "none";
+    userright.style.display = "none";
+}
+
+
+
+
+function allresult(){
+	totalchampionsbutton.style.backgroundColor = "var(--point8)";
+    totalchampionsbutton.style.borderRadius = "none";
+    totalchampions.style.display = "none";
+    userleft.style.display = "block";
+    userright.style.display = "block";
+}
+
+  let count = 11;
+ async function morematch() {
+  let newPath = window.location.pathname.replace("/yalolza.gg/summoners/", "");
+  console.log(`https://yalolza.gg/more/${newPath}/${count}`);
+  let text = await fetch(`/yalolza.gg/more/${newPath}/${count}`).then(r => r.text());
+  count += 5;
+  text = text.replace(/[^\\]*<body>/i, "").replace(/<\/body>[^\\]*/i, "");
+
+
+  
+  // 하고넣자
+  document.querySelector("div.user-right").innerHTML += text;
+  chartt();
+}

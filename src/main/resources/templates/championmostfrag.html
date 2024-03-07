@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section class="user-result" th:fragment="results-fragment(totalgame, wingame, winper, kill, death, assist, kda, killper, most)">
+	    <ul class="user-graphtitle">
+	      <li>
+	        <h3
+	          th:text="${ totalgame + '전 ' + wingame + '승 ' + (totalgame - wingame) + '패'}">
+	          20전 8승 12패</h3>
+	        <div class="graph-wrap">
+	          <span id="siwwin" th:text="${wingame}" style="display: none;"></span>
+	          <span id="sjwtotal" th:text="${totalgame - wingame}" style="display: none;"></span>
+	          <canvas id="myChart" style="width: 100px; height: 100px">
+	          </canvas>
+	          <span class="graph-donut" th:text="${winper +'%'}">50%</span>
+	        </div>
+	      </li>
+	      <li>
+	        <p class="user-kda">
+	          <span th:text="${kill + '/'+ death + '/'+ assist }">킬/데스/어시</span><br />
+	          <strong th:text="${kda + 'KDA' }">2.8 KDA</strong><br />
+	          <span style="color: var(--point10); font-size: 1.5rem" th:text="${ '킬관여 ' +killper + '%' }">
+	          </span>
+	        </p>
+	      </li>
+	    </ul>
+	    <ul class="user-most3">
+	      <h3 th:text="${'플레이한 챔피언 (최근 '+ totalgame + ' 게임)'}"></h3>
+	      <div class="most-flex">
+	        <li th:each="stats, statIndex : ${most}" th:if="${statIndex.index < 3}">
+	          <div class="user-most3kda">
+	            <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/champion/'+${stats[0]} + '.png'}"
+	                alt="" /></div>
+	            <p>
+	              <strong th:text="${stats[2]*100/stats[1] + '%'}">70%</strong><br />
+	              <span th:text="${stats[2] + '승 ' + (stats[1] - stats[2]) + '패'}">3승 2패</span><br />
+	              <span th:text="${stats[6]}">2.78 KDA</span>
+	            </p>
+	          </div>
+	        </li>
+	      </div>
+	    </ul>
+	  </section>
+</body>
+</html>

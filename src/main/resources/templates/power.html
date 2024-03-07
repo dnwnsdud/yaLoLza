@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="/css/myrest.css" />
   <link rel="stylesheet" href="/css/common.css" />
   <link rel="stylesheet" href="/css/userdetail.css" />
+  <link rel="stylesheet" href="/css/userschampions.css"/>
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-
+  
   <script src="/js/userdetail.js" defer></script>
   <script src="/js/champ_detail.js" defer></script>
   <script src="/js/position.js" defer></script>
@@ -48,11 +49,66 @@
       </div>
       <div class="user-statistics"></div>
       <div class="user-tip">
-        <button>종합</button>
-        <button>챔피언</button>
+        <button onclick="allresult()">종합</button>
+        <button class="totalchampionsbutton" onclick="champions()">챔피언</button>
       </div>
       <!--솔로랭크-->
     </section>
+    
+            <!--유저챔피언시작-->        
+<section class="user-totalchampions">
+        <table>
+          <thead>
+            <tr class="collapse">
+              <th>#</th>
+              <th>챔피언</th>
+              <th>승률</th>
+              <th>평점</th>
+              <th>골드</th>
+              <th>CS</th>
+              <th>평균 킬</th>
+              <th>평균 데스</th>
+              <th>평균 가한 피해량</th>
+              <th>평균 받은 피해량</th>
+            </tr>
+          </thead>
+          <tbody>
+			 <tr class="collapse" th:each="chamspers,ch : ${summonerchamsper}">
+              <td class="champface2" style="background-color: var(--point5)" th:text="${ch.index}">
+                1
+              </td>
+              <td class="champface">
+                <div>
+                  <div class="img-wrap4">
+                    <img  th:src="@{'/img/champion/'+${chamspers[0]} + '.png'}" alt="" />
+                  </div>
+                  <span style="color: var(--white)" th:text="${keysChamName[chamspers[0]]}">챔피언</span>
+                </div>
+              </td>
+              <td class="champface1">
+                <p>
+                  <strong style="color: var(--point10)" th:text="${(chamspers[6]*100/chamspers[5]) +'%'}">62%</strong>
+                  <span th:text="${'('+chamspers[5]  +'게임)'}">(47게임)</span>
+                </p>
+                <p>
+                  <span th:text="${chamspers[6]  +'승'}">29승</span>
+                  <span th:text="${chamspers[5] - chamspers[6] +'패'}">18패</span>
+                </p>
+              </td>
+              <td class="champface1">
+                <strong style="color: var(--point3)" th:text="${chamspers[1]}">4.36</strong><br />
+              </td>
+              <td class="champface2" th:text="${chamspers[7]}">12314</td>
+              <td class="champface2" th:text="${chamspers[2]}">123.5(8.5)</td>
+              <td class="champface2" th:text="${chamspers[8]}">7.5</td>
+              <td class="champface2" th:text="${chamspers[9]}">4.3</td>
+              <td class="champface2" th:text="${chamspers[3]}">25,123</td>
+              <td class="champface2" th:text="${chamspers[4]}">29.123</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+          <!--유저챔피언끝-->    
     <div class="mw">
       <div class="item-flex">
         <div class="user-left">
@@ -98,54 +154,17 @@
               </li>
             </ul>
 
-            <button><a href="#">더보기</a></button>
+            <button onclick="champions()">더보기</button>
           </section>
         </div>
         <div class="user-right">
+
           <!-- 최근 20전 -->
-          <section class="user-result">
-            <ul class="user-graphtitle">
-              <li>
-                <h3
-                  th:text="${ summonerall[7] + '전 ' + summonerall[0] + '승 ' + (summonerall[7] - summonerall[0]) + '패'}">
-                  20전 8승 12패</h3>
-                <div class="graph-wrap">
-                  <span id="siwwin" th:text="${summonerall[0]}" style="display: none;"></span>
-                  <span id="sjwtotal" th:text="${summonerall[7] - summonerall[0]}" style="display: none;"></span>
-                  <canvas id="myChart" style="width: 100px; height: 100px">
-                  </canvas>
-                  <span class="graph-donut" th:text="${summonerall[6] +'%'}">50%</span>
-                </div>
-              </li>
-              <li>
-                <p class="user-kda">
-                  <span th:text="${summonerall[1] + '/'+ summonerall[2] + '/'+ summonerall[3] }">킬/데스/어시</span><br />
-                  <strong th:text="${summonerall[4] + 'KDA' }">2.8 KDA</strong><br />
-                  <span style="color: var(--point10); font-size: 1.5rem" th:text="${ '킬관여 ' +summonerall[5] + '%' }">
-                  </span>
-                </p>
-              </li>
-            </ul>
-            <ul class="user-most3">
-              <h3 th:text="${'플레이한 챔피언 (최근 '+ summonerall[7] + ' 게임)'}"></h3>
-              <div class="most-flex">
-                <li th:each="stats, statIndex : ${summonermost}" th:if="${statIndex.index < 3}">
-                  <div class="user-most3kda">
-                    <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/champion/'+${stats[0]} + '.png'}"
-                        alt="" /></div>
-                    <p>
-                      <strong th:text="${stats[2]*100/stats[1] + '%'}">70%</strong><br />
-                      <span th:text="${stats[2] + '승 ' + (stats[1] - stats[2]) + '패'}">3승 2패</span><br />
-                      <span th:text="${stats[6]}">2.78 KDA</span>
-                    </p>
-                  </div>
-                </li>
-              </div>
-            </ul>
-          </section>
+          <section th:replace="championmostfrag.html :: results-fragment(totalgame=${summonerall[7]}, wingame=${summonerall[0]}, winper=${summonerall[6]}, kill=${summonerall[1]}, death=${summonerall[2]}, assist=${summonerall[3]}, kda=${summonerall[4]}, killper=${summonerall[5]}, most=${summonermost})">
+		  </section>
           <!-- 유저 게임 정보 -->
           <!-- 반복점 시작 -->
-          <div th:each="match , i : ${matchsssinfoList}">
+          <div class="usermathall" th:each="match , i : ${matchsssinfoList}">
             <section class="usergame-result">
               <ul>
                 <li class="usergame-times">
@@ -205,10 +224,13 @@
                       </div>
                     </div>
                     <div>
-                      <span style="color: var(--point10)"
-                        th:with=" sss = ${match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? 0 : 1}"
-                        th:text="${'킬관여 '+ ((match.body.info.participants[summonermatchnum[i.index]].kills+match.body.info.participants[summonermatchnum[i.index]].assists) * 100 / match.body.info.teams[sss].objectives.champion.kills) +'%'}">킬관여
-                        45%</span><br />
+                         <span style="color: var(--point10)"
+					      th:with="sss=${match.body.info.participants[summonermatchnum[i.index]].teamId == 100 ? 0 : 1}"
+					      th:text="${'킬관여 ' + ((match.body.info.participants[summonermatchnum[i.index]].kills +
+					         match.body.info.participants[summonermatchnum[i.index]].assists) == 0 && match.body.info.teams[sss].objectives.champion.kills == 0 ? 0 : ((match.body.info.participants[summonermatchnum[i.index]].kills +
+					        match.body.info.participants[summonermatchnum[i.index]].assists) * 100 / (match.body.info.teams[sss].objectives.champion.kills == 0 ? 1 : match.body.info.teams[sss].objectives.champion.kills))) + '%'}">
+					      킬관여 45%
+					    </span><br />
 
                       <span
                         th:text="'제어 와드'+${match.body.info.participants[summonermatchnum[i.index]].visionWardsBoughtInGame}"></span><br />
@@ -891,7 +913,10 @@
             </div>
             <!--감싼것-->
           </div>
+         <!-- 메치 추가버튼 -->
+            <button id="summoenr-matchmore" onclick="morematch()">더 보기</button>      
         </div>
+        
       </div>
     </div>
   </div>
