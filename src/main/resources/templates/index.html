@@ -19,11 +19,11 @@
 
 <script src="/js/home.js" defer></script>
 <script src="/js/position.js" defer></script>
+<script src="/js/common.js" defer></script>
 <script defer>
     function submitForm(event) {
         event.preventDefault();
         var inputValue = document.getElementById('searchInput').value;
-
         if (inputValue.includes('#')) {
             var modifiedValue = inputValue.replace(/@/g, '-');
             var submitURL = "http://localhost:9998/yalolza.gg/summoners/" + modifiedValue;

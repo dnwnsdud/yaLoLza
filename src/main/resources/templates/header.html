@@ -4,6 +4,7 @@
  	  <meta charset="UTF-8">
  	  <title>Insert title here</title>
 </head>
+
 <body>
 	<header th:fragment="header">
         <div class="mw">
@@ -25,7 +26,7 @@
      				<button><a sec:authorize="isAuthenticated()" 
      				th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button><button><a sec:authorize="isAuthenticated()" 
      				th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
-                    <button>
+                    <button class="darkchange">
                         <i class="fa-regular fa-sun"></i>
                     </button>
                 </div>
