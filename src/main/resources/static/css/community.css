@@ -148,12 +148,14 @@
   margin: 2rem auto 1rem auto;
   height: 100%;
   width: 100%;
+  color:white;
+  padding:2rem 0;
 }
 
 .paging > ul {
   display: flex;
-  margin: auto;
-  width: 20rem;
+  justify-content: center;
+ 	
 }
 
 .paging > ul > li {
