@@ -182,30 +182,21 @@ public class ChampionsPage {
 			
 			//룬 등장 횟수
 			int RuneGameCount = StatisticChampion.calculateRuneGameCount(filteredData, primaryStyleFirstPerk.get(0).getMainRune());
-			System.out.println("playedrunecount :" +RuneGameCount);
 			//#####
 			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));
-			System.out.println("mainStyle : " +mainStyle);
 			Runes runes = RuneData.runes(mainStyle);
 			//####
 			model.addAttribute("mainRune", runes);
 			List<Integer> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
 			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
 			model.addAttribute("primaryPerk234", primaryStylePerks234);
-			System.out.println(primaryStylePerks234);
-			System.out.println("메인룬 1 : " + primaryStylePerks234.get(0));
-			System.out.println("룬 2 : " + primaryStylePerks234.get(1));
-			System.out.println("룬 3 : " + primaryStylePerks234.get(2));
-			System.out.println("룬 4 : " + primaryStylePerks234.get(3));
 			
 
 			
 			Integer subStyle = Integer.parseInt(StatisticChampion.subStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));			
-			System.out.println("서브룬 : " +subStyle);
 			runes = RuneData.runes(subStyle);
 			
 			List<Integer> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
-			System.out.println(subStylePerks12);
 			
 			model.addAttribute("secondaryPerk12", subStylePerks12);
 			model.addAttribute("subRune", runes);
@@ -249,7 +240,6 @@ public class ChampionsPage {
 			model.addAttribute("keysSubRuneImage", keysRuneImage.get(SubRuneimage));
 			
 			
-									   System.out.println("2빠 메인룬 : " + primaryStyleFirstPerk.get(1).getMainRune());			
 			String mainStyle2 = StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(1).getMainRune());
 			String subStyle2 = StatisticChampion.subStyle(filteredData, primaryStyleFirstPerk.get(1).getMainRune());
 			
@@ -274,7 +264,6 @@ public class ChampionsPage {
 			model.addAttribute("statperks1",statperks.get(0).getDefense());		
 			model.addAttribute("statperks2",statperks.get(0).getFlex());		
 			model.addAttribute("statperks3",statperks.get(0).getOffense());	
-			System.out.println("이거뭐임" + statperks.get(0).getDefense());
 			
 			
 			
@@ -354,7 +343,6 @@ public class ChampionsPage {
 			List<SkillStatistics> firstSkill = StatisticItemSkill.caculateFirstSkills(firstSkillStatistic);
 			
 			model.addAttribute("firstSkill", firstSkill);
-			System.out.println(" 안아줘요 !!! : " + firstSkill.get(0).getSkillList()[0]);
 			
 			model.addAttribute("skillWinRate", ((double)Math.round(firstSkill.get(0).getWinRate()*10000)/100));		
 			model.addAttribute("skillPickCount", firstSkill.get(0).getPickCount());			

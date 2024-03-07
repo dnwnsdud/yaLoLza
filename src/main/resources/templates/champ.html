@@ -55,8 +55,8 @@
 		<section class="con2">
 			<div class="champ-btn"></div>
 			<ul class="champ-face">
-				<li th:each="champion : ${positionData}"><a
-					th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position == 'ALL' ? championOriginalPositions[champion.championName] : position}, championName=${champion.championName})}">
+				<li th:each="champion : ${positionData}">
+					<a th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position == 'ALL' ? championOriginalPositions[champion.championName] : position}, championName=${champion.championName})}">
 						<div>
 							<img
 								th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
