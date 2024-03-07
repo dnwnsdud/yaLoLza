@@ -182,14 +182,13 @@ public class ChampionsPage {
 			
 			//룬 등장 횟수
 			int RuneGameCount = StatisticChampion.calculateRuneGameCount(filteredData, primaryStyleFirstPerk.get(0).getMainRune());
-			//#####
 			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(0).getMainRune()));
 			Runes runes = RuneData.runes(mainStyle);
-			//####
 			model.addAttribute("mainRune", runes);
 			List<Integer> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
 			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
 			model.addAttribute("primaryPerk234", primaryStylePerks234);
+			
 			
 
 			
@@ -243,7 +242,6 @@ public class ChampionsPage {
 			String mainStyle2 = StatisticChampion.mainStyle(filteredData, primaryStyleFirstPerk.get(1).getMainRune());
 			String subStyle2 = StatisticChampion.subStyle(filteredData, primaryStyleFirstPerk.get(1).getMainRune());
 			
-			System.out.println(mainStyle2);
 			
 			
 			Long Runeimage2 = Long.valueOf(mainStyle2);				
@@ -257,16 +255,17 @@ public class ChampionsPage {
 			Long SubRuneimage2 = Long.valueOf(subStyle);	
 			keysRuneImage.get(SubRuneimage2);
 			model.addAttribute("keysSubRuneImage2", keysRuneImage.get(SubRuneimage2));
-
-			
+  
+			   
 			List<StatPerks> statperks = StatisticChampion.caculateStatPerks(filteredData);
-			
+			Map<String, List<Spell>> keysChamSkill = ChampionData.keysChamSkill();
+			model.addAttribute("keysChamSkill", keysChamSkill);
 			model.addAttribute("statperks1",statperks.get(0).getDefense());		
 			model.addAttribute("statperks2",statperks.get(0).getFlex());		
 			model.addAttribute("statperks3",statperks.get(0).getOffense());	
 			
 			
-			
+			 
 			//String rawData = Files.readString(Paths.get(filePath));
 			//List<DataEntry> data = StatisticChampion.parseJson(rawData);
 			
@@ -292,11 +291,11 @@ public class ChampionsPage {
 					((double)Math.round((double)firstItem.get(0).getPickCount()/(double)firstItem.get(0).getTotalCount()*10000)/100));		
 			model.addAttribute("firstItemWinRate", ((double)Math.round(firstItem.get(0).getWinRate()*10000)/100));
 			
-			model.addAttribute("secondItem", firstItem.get(1).getItem());
-			model.addAttribute("secondItemPickCount", firstItem.get(1).getPickCount());
-			model.addAttribute("secondItemPickRate", 
-					((double)Math.round((double)firstItem.get(1).getPickCount()/(double)firstItem.get(1).getTotalCount()*10000)/100));
-			model.addAttribute("secondItemWinRate",  ((double)Math.round(firstItem.get(1).getWinRate()*10000)/100));
+//			model.addAttribute("secondItem", firstItem.get(1).getItem());
+//			model.addAttribute("secondItemPickCount", firstItem.get(1).getPickCount());
+//			model.addAttribute("secondItemPickRate", 
+//					((double)Math.round((double)firstItem.get(1).getPickCount()/(double)firstItem.get(1).getTotalCount()*10000)/100));
+//			model.addAttribute("secondItemWinRate",  ((double)Math.round(firstItem.get(1).getWinRate()*10000)/100));
 			
 			
 			link = "/item";
@@ -369,33 +368,33 @@ public class ChampionsPage {
 			
 			
 				
-			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
-			String item1 =  String.valueOf(items.get(0).getItemId());
-			String itemCount1 =  String.valueOf(items.get(0).getItemCount());
-			String itemPickRate1 =  String.valueOf(items.get(0).getpickRate());
-			String itemWinRate1 =  String.valueOf(items.get(0).getWinRate());
-			
-			String item2 =  String.valueOf(items.get(1).getItemId());
-			String item3 =  String.valueOf(items.get(2).getItemId());
-			
-			
-			
-			Item item = ItemData.item(item1);
-			model.addAttribute("item1", item);
-			model.addAttribute("itemCount1", itemCount1);			
-			model.addAttribute("itemPickRate1", ((double)Math.round(Double.parseDouble(itemPickRate1)*10000)/100));
-			model.addAttribute("itemWinRate1", ((double)Math.round(Double.parseDouble(itemWinRate1)*10000)/100));
-			
-			
-			item = ItemData.item(item2);
-			model.addAttribute("item2", item);
-			item = ItemData.item(item3);
-			model.addAttribute("item3", item);
-			
-			
+//			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
+//			String item1 =  String.valueOf(items.get(0).getItemId());
+//			String itemCount1 =  String.valueOf(items.get(0).getItemCount());
+//			String itemPickRate1 =  String.valueOf(items.get(0).getpickRate());
+//			String itemWinRate1 =  String.valueOf(items.get(0).getWinRate());
+//			
+//			String item2 =  String.valueOf(items.get(1).getItemId());
+//			String item3 =  String.valueOf(items.get(2).getItemId());
+//			
+//			
+//			
+//			Item item = ItemData.item(item1);
+//			model.addAttribute("item1", item);
+//			model.addAttribute("itemCount1", itemCount1);			
+//			model.addAttribute("itemPickRate1", ((double)Math.round(Double.parseDouble(itemPickRate1)*10000)/100));
+//			model.addAttribute("itemWinRate1", ((double)Math.round(Double.parseDouble(itemWinRate1)*10000)/100));
+//			
+//			
+//			item = ItemData.item(item2);
+//			model.addAttribute("item2", item);
+//			item = ItemData.item(item3);
+//			model.addAttribute("item3", item);
 			
 			
 			
+			
+			 
 			
 		} catch (IOException e) {
 			e.printStackTrace();

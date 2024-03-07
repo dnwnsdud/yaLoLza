@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 public class StatPerks {
-
+ 
 	
 	private int defense;
 	private int flex;
