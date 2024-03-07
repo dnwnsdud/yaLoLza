@@ -75,7 +75,7 @@ public class ChampionsPage {
 	//챔피언 전체 페이지 - 진성+진비
 	@GetMapping("")
 	public String getChampionsData(@RequestParam(required = false, defaultValue = "EMERALD") String tier,
-	                               @RequestParam(required = false, defaultValue = "TOP") String position, Model model) {
+	                               @RequestParam(required = false, defaultValue = "TOP") String position, Model model) throws IOException {
 		List<Champion> data = ChampionData.imagedata();
 		model.addAttribute("data", data);
 	    List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position, model);
@@ -84,6 +84,21 @@ public class ChampionsPage {
 	    model.addAttribute("positionData", uniqueChampions);
 	    model.addAttribute("position", position);
 	    model.addAttribute("championPositions", championPositions);
+	    
+	    Map<String, List<CounterChampionDTO>> counters = new HashMap<String, List<CounterChampionDTO>>();
+	    for(ChampionStatsDTO dto : uniqueChampions) {
+	    	Map<String, Object> counter;
+	    	if(position.equalsIgnoreCase("ALL"))
+	    		counter= counterDataService.getCounterData(championPositions.get(dto.getChampionName()), dto.getChampionName(), null, 3);
+	    	else
+	    		counter= counterDataService.getCounterData(position, dto.getChampionName(), null, 3);
+	    	counters.put(dto.getChampionName(),(List<CounterChampionDTO>)counter.get("topChampions"));
+	    }
+	    //System.out.println(counters.get("LeeSin").get(0));
+	    model.addAttribute("counterChampions", counters);
+	    
+	    
+	    
 	    return "champ";
 	}
 

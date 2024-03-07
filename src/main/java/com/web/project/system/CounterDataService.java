@@ -20,16 +20,28 @@ import com.web.project.dto.championstats.CounterPositionDTO;
 public class CounterDataService {
 
 	private final CounterJsonReader counterJsonReader;
+	private CounterPositionDTO counterData;
+	private Map<String, List<CounterCountDTO>> positionsData;
 
 	@Autowired
 	public CounterDataService(CounterJsonReader counterJsonReader) {
 		this.counterJsonReader = counterJsonReader;
+		this.counterData = null;
+		this.positionsData = new HashMap<String, List<CounterCountDTO>>();
 	}
-
-	public Map<String, Object> getCounterData(String position, String champion, String additionalChampion) throws IOException {
+	public Map<String, Object> getCounterData(String position, String champion, String additionalChampion) throws IOException{
+		return getCounterData(position,champion, additionalChampion, 5);
+	}
+	public Map<String, Object> getCounterData(String position, String champion, String additionalChampion, int limitCount) throws IOException {
 	    Map<String, Object> modelData = new HashMap<>();
-	    CounterPositionDTO counterData = counterJsonReader.readCounterJsonFile();
-	    List<CounterCountDTO> positionData = getPositionData(position, counterData);
+	    if(counterData == null) counterData = counterJsonReader.readCounterJsonFile();
+	    List<CounterCountDTO> positionData = null;
+	    if(positionsData.get(position) == null) {
+	    	positionData = getPositionData(position, counterData);
+	    	positionsData.put(position, positionData);
+	    }
+	    else
+	    	positionData = positionsData.get(position);
 
 	    if (positionData == null) {
 	        modelData.put("error", "Data not found");
@@ -92,10 +104,10 @@ public class CounterDataService {
 	    otherChampions.sort((champion1, champion2) -> Double.compare(champion2.getStats().getWinRate(), champion1.getStats().getWinRate()));
 	    
 	    // 상위 5개 챔피언 추출
-	    List<CounterChampionDTO> topChampions = otherChampions.stream().limit(5).collect(Collectors.toList());
+	    List<CounterChampionDTO> topChampions = otherChampions.stream().limit(limitCount).collect(Collectors.toList());
 
 	    // 하위 5개 챔피언 추출
-	    List<CounterChampionDTO> bottomChampions = otherChampions.stream().sorted((champion1, champion2) -> Double.compare(champion1.getStats().getWinRate(), champion2.getStats().getWinRate())).limit(5).collect(Collectors.toList());
+	    List<CounterChampionDTO> bottomChampions = otherChampions.stream().sorted((champion1, champion2) -> Double.compare(champion1.getStats().getWinRate(), champion2.getStats().getWinRate())).limit(limitCount).collect(Collectors.toList());
 
 	    modelData.put("topChampions", topChampions);
 	    modelData.put("bottomChampions", bottomChampions);

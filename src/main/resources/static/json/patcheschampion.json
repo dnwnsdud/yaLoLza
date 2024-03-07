@@ -1,0 +1,242 @@
+{
+ "patch": {
+  "14.3": {
+    "Varus": {
+      "krchampionName": "바루스",
+      "championName": "Varus",
+      "position": "BOTTOM",
+      "stats": {
+        "wins": 979,
+        "losses": 920,
+        "picks": 1899,
+        "winRate": 51.6,
+        "pickRate": 4.3,
+        "banRate": 1.4
+      }
+    },
+    "Kaisa": {
+      "krchampionName": "카이사",
+      "championName": "Kaisa",
+      "position": "BOTTOM",
+      "stats": {
+        "wins": 1028,
+        "losses": 1092,
+        "picks": 2120,
+        "winRate": 48.5,
+        "pickRate": 4.8,
+        "banRate": 0.4
+      }
+    },
+    "TwistedFate": {
+      "krchampionName": "트위스티드 페이트",
+      "championName": "TwistedFate",
+      "position": "MIDDLE",
+      "stats": {
+        "wins": 806,
+        "losses": 700,
+        "picks": 1506,
+        "winRate": 53.5,
+        "pickRate": 3.4,
+        "banRate": 7.9
+      }
+    },
+    "Renekton": {
+      "krchampionName": "레넥톤",
+      "championName": "Renekton",
+      "position": "TOP",
+      "stats": {
+        "wins": 269,
+        "losses": 278,
+        "picks": 547,
+        "winRate": 49.2,
+        "pickRate": 1.2,
+        "banRate": 0.9
+      }
+    },
+    "Jayce": {
+      "krchampionName": "제이스",
+      "championName": "Jayce",
+      "position": "TOP",
+      "stats": {
+        "wins": 510,
+        "losses": 584,
+        "picks": 1094,
+        "winRate": 46.6,
+        "pickRate": 2.5,
+        "banRate": 1.8
+      }
+    },
+    "AurelionSol": {
+      "krchampionName": "아우렐리온 솔",
+      "championName": "AurelionSol",
+      "position": "MIDDLE",
+      "stats": {
+        "wins": 206,
+        "losses": 169,
+        "picks": 375,
+        "winRate": 54.9,
+        "pickRate": 0.8,
+        "banRate": 0.5
+      }
+    },
+    "Bard": {
+      "krchampionName": "바드",
+      "championName": "Bard",
+      "position": "UTILITY",
+      "stats": {
+        "wins": 504,
+        "losses": 435,
+        "picks": 939,
+        "winRate": 53.7,
+        "pickRate": 2.1,
+        "banRate":  0.2
+      }
+    },
+    "Zyra": {
+      "krchampionName": "자이라",
+      "championName": "Zyra",
+      "position": "UTILITY",
+      "stats": {
+        "wins": 517,
+        "losses": 442,
+        "picks": 959,
+        "winRate": 53.9,
+        "pickRate": 2.1,
+        "banRate": 2.2
+      }
+    },
+    "Smolder": {
+      "krchampionName": "스몰더",
+      "championName": "Smolder",
+      "position": "BOTTOM",
+      "stats": {
+        "wins": 855,
+        "losses": 956,
+        "picks": 1811,
+        "winRate": 47.2,
+        "pickRate": 4.1,
+        "banRate": 4.9
+      }
+    }
+  },
+  "14.4": {
+    "Kaisa": {
+      "krchampionName": "카이사",
+      "championName": "Kaisa",
+      "position": "BOTTOM",
+      "stats": {
+        "wins": 1346,
+        "losses": 1463,
+        "picks": 2809,
+        "winRate": 47.9,
+        "pickRate": 6.3,
+        "banRate": 0.1
+      }
+    },
+    "Varus": {
+      "krchampionName": "바루스",
+      "championName": "Varus",
+      "position": "BOTTOM",
+      "stats": {
+        "wins": 1511,
+        "losses": 1547,
+        "picks": 3058,
+        "winRate": 49.4,
+        "pickRate": 6.9,
+        "banRate": 1.4
+      }
+    },
+    "TwistedFate": {
+      "krchampionName": "트위스티드 페이트",
+      "championName": "TwistedFate",
+      "position": "MIDDLE",
+      "stats": {
+        "wins": 1157,
+        "losses": 922,
+        "picks": 2079,
+        "winRate": 55.7,
+        "pickRate": 4.7,
+        "banRate": 15.4
+      }
+    },
+    "Bard": {
+      "krchampionName": "바드",
+      "championName": "Bard",
+      "position": "UTILITY",
+      "stats": {
+        "wins": 1135,
+        "losses": 942,
+        "picks": 2077,
+        "winRate": 54.6,
+        "pickRate": 4.7,
+        "banRate": 2.1
+      }
+    },
+    "AurelionSol": {
+      "krchampionName": "아우렐리온 솔",
+      "championName": "AurelionSol",
+      "position": "MIDDLE",
+      "stats": {
+        "wins": 347,
+        "losses": 262,
+        "picks": 609,
+        "winRate": 57,
+        "pickRate": 1.4,
+        "banRate": 0.3
+      }
+    },
+    "Smolder": {
+      "krchampionName": "스몰더",
+      "championName": "Smolder",
+      "position": "BOTTOM",
+      "stats": {
+        "wins": 2292,
+        "losses": 2482,
+        "picks": 4774,
+        "winRate": 48,
+        "pickRate": 10.7,
+        "banRate": 8.5
+      }
+    },
+    "Jayce": {
+      "krchampionName": "제이스",
+      "championName": "Jayce",
+      "position": "TOP",
+      "stats": {
+        "wins": 679,
+        "losses": 676,
+        "picks": 1355,
+        "winRate": 50.1,
+        "pickRate": 3,
+        "banRate": 1.2
+      }
+    },
+    "Zyra": {
+      "krchampionName": "자이라",
+      "championName": "Zyra",
+      "position": "UTILITY",
+      "stats": {
+        "wins": 458,
+        "losses": 450,
+        "picks": 908,
+        "winRate": 50.4,
+        "pickRate": 2,
+        "banRate": 0.9
+      }
+    },
+    "Renekton": {
+      "krchampionName": "레넥톤",
+      "championName": "Renekton",
+      "position": "TOP",
+      "stats": {
+        "wins": 384,
+        "losses": 410,
+        "picks": 794,
+        "winRate": 48.4,
+        "pickRate": 1.8,
+        "banRate": 0.7
+      }
+    }
+  }
+}
+}

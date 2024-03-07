@@ -72,7 +72,8 @@
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/rune'}"><button>룬</button></a>
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/item'}"><button>아이템</button></a>
 				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/skill'}"><button>스킬</button></a>
-				<a th:href="@{'/yalolza.gg/champions/' + ${champion.id}+'/tip?query=' + ${champion.name}}"><button>팁</button></a>
+				<a
+					th:href="@{'/yalolza.gg/champions/'+${champion.id}+'/tip?query=' + ${champion.name}}"><button>팁</button></a>
 			</div>
 		</section>
 		<div class=gridContainer>
