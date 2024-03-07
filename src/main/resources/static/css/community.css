@@ -24,8 +24,35 @@
   --gap-ss: 20px;
   font-size: 10px;
 }
+:root[data-theme="dark"] {
+  --background: #10131c;
+  --section: #232d3f;
+  --table: #292e45;
+  --font: #bbbbbb;
+  --title:  #fff;
+  --border: #5f5f5f;
+  --h2:#232d3f;
+  --vic:#213a9626;
+  --def:#E3464626;
+ --point13:#2b3040;
+  --point14:#4f5770;
+}
+
+:root[data-theme="light"] {
+  --background:#ebeef1;
+  --section: #fff;
+   --table: #f7f7f9;
+  --font: #5f5f5f;
+  --title:#1e1e1e;
+  --border: #bbbbbb;
+  --h2:#f1f3ff;
+  --vic:#219ce01a;
+  --def:#ff48611a;
+  --point13:#e6ecf3;
+  --point14:#d3dce9;
+}
 .back {
-  background-color: #10131c;
+  background-color: var(--background);
 }
 .community {
   margin: auto;
@@ -49,7 +76,7 @@
 .commu_libox {
   width: 12rem;
   height: 12rem;
-  background-color: #10131c;
+  background-color: var(--section);
   margin: auto;
   border-radius: 7px;
   overflow: hidden;
@@ -58,7 +85,7 @@
 .commu_libox2 {
   width: 12rem;
   height: 3rem;
-  background-color: #10131c;
+  background-color: var(--section);
   margin: 1rem auto;
   border-radius: 7px;
 }
@@ -69,7 +96,7 @@
   height: 3rem;
   line-height: 3rem;
   padding-left: 2rem;
-  color: var(--white);
+  color: var(--title);
 }
 
 .commu_libox > ul > li > a,
@@ -80,7 +107,7 @@
 
 .commu_libox > ul > li:hover,
 .commu_libox2 > ul > li:hover {
-  background-color: rgba(59, 130, 246, 0.2);
+  background-color: var(--vic);
   width: 12rem;
   border-radius: 7px;
 }
@@ -108,7 +135,7 @@
   font-size: 1rem;
   background: var(--point4);
   border-radius: 0.5rem;
-  color: var(--white);
+  color: var(--title);
 }
 
 .table_tr2 > td {
@@ -169,11 +196,11 @@
   display: flex;
   text-align: center;
 
-  background-color: #10131c;
-  color: white;
+  background-color: var(--section);
+  color: var(--title);
 }
 .commu_ul1_ul {
-  border-bottom: 1px solid var(--gray1);
+  border-bottom: 1px solid var(--border);
   font-size: 1.3rem;
   text-align: center;
   padding: 1rem 0;
@@ -183,7 +210,7 @@
   line-height: 4rem;
   height: 4rem;
   width: 100%;
-  border-bottom: 1px solid var(--gray1);
+  border-bottom: 1px solid var(--border);
 }
 /**{*/
 /*    background-color: rgb(59 130 246 / .10);*/
@@ -262,7 +289,7 @@
   height: 3rem;
   border-radius: 7px;
   border: 1px solid var(--gray2);
-  background-color: transparent;
+  background-color: var(--section);
 }
 
 .searchbtn {
@@ -308,7 +335,7 @@
 }
 
 .commu_ul1_ul2:hover {
-  background-color: rgba(0, 1, 33, 0.9);
+  background-color: var(--background);
 }
 .alert {
   color: red;

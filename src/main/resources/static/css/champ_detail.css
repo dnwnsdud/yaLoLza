@@ -1,5 +1,5 @@
 body {
-  background-color: var(--point18);
+  background-color: var(--background);
 }
 .gray-icon{
 	filter:grayscale(1)
@@ -8,7 +8,7 @@ body {
 
 /* 챔피언 정보 시작*/
 .con1 {
-  background-color: var(--point19);
+  background-color: var(--section);
 }
 .dec,
 .champ-statistics,
@@ -32,11 +32,11 @@ body {
 }
 .champhead {
   flex: 1;
-  color: var(--gray3);
+  color: var(--font);
 }
 .champhead strong {
   font-weight: bold;
-  color: var(--white);
+  color: var(--title);
   padding-right: 10px;
 }
 .tier {
@@ -57,19 +57,19 @@ body {
 }
 .champ-statistics {
   padding: 0 3rem 3rem 3rem;
-  border-bottom: 1px solid var(--gray1);
+  border-bottom: 1px solid var(--border);
 }
 .champ-statistics div {
   width: 150px;
-  border-left: 1px solid var(--gray1);
+  border-left: 1px solid var(--border);
   padding-left: 1rem;
 }
 .champ-statistics span {
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.7rem;
 }
 .champ-statistics strong {
-  color: var(--white);
+  color: var(--title);
   font-size: 2rem;
 }
 
@@ -79,9 +79,9 @@ body {
   text-align: center;
 }
 .champ-tip button {
-  background-color: var(--point19);
+  background-color: var(--section);
   font-family: inherit;
-  color: var(--white);
+  color: var(--title);
   font-size: 1.7rem;
   padding: 15px 30px 15px 30px;
   border: none;
@@ -96,11 +96,11 @@ body {
 /* 챔피언 정보 끝*/
 /* 글자 지정 시작*/
 section strong {
-  color: var(--white);
+  color: var(--title);
   font-size: 1.3rem;
 }
 section span {
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.2rem;
 }
 .order-vic {
@@ -134,16 +134,17 @@ section span {
 .summoner-order,
 .counter,
 .champ-rank {
-  background-color: var(--point19);
+  background-color: var(--section);
   margin-top: 10px;
   border-radius: 1rem;
   width: 100%;
 }
 h2 {
+	background-color: var(--h2);
   padding: 15px;
-  color: var(--white);
+  color: var(--font);
   font-size: 1.7rem;
-  border-bottom: 1px solid var(--gray1);
+  border-bottom: 1px solid var(--border);
 }
 .con2 .champ-rune {
   display: flex;
@@ -153,7 +154,7 @@ h2 {
 .sub-rune {
   padding: 0 10px 0 10px;
   width: 25%;
-  border-right: 1px solid var(--gray2);
+  border-right: 1px solid var(--border);
 }
 .con2 .main-zero,
 .main-first,
@@ -189,7 +190,7 @@ h2 {
   padding: 20px 20px 0 20px;
   display: flex;
   justify-content: center;
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.3rem;
 }
 .con2 .sub-rune .sub-main {
@@ -211,7 +212,7 @@ h2 {
   width: 40%;
 }
 .rune-select ul {
-  border: 1px solid var(--gray2);
+  border: 1px solid var(--border);
   width: 100%;
   height: 130px;
   display: block;
@@ -244,12 +245,12 @@ h2 {
 }
 .select-first li strong,
 .select-second li strong {
-  color: var(--white);
+  color: var(--title);
   line-height: 2rem;
 }
 .select-first li span,
 .select-second li span {
-  color: var(--gray3);
+  color: var(--font);
 }
 .select-ratio p:nth-child(2) {
   color: var(--point3);
@@ -286,11 +287,11 @@ h2 {
   gap: 5px;
 }
 .con3 p {
-  color: var(--white);
+  color: var(--title);
   font-weight: bold;
   font-size: 1.4rem;
   padding: 8px;
-  background-color: var(--gray2);
+  background-color: var(--table);
   border-radius: 0.5rem;
 }
 .con3 li:nth-child(2) {
@@ -309,9 +310,9 @@ h2 {
 .con4 h3,
 .counter h3 {
   padding: 15px;
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.7rem;
-  background-color: var(--point20);
+  background-color: var(--table);
 }
 .con4 ul {
   width: 100%;
@@ -385,7 +386,7 @@ h2 {
   padding-bottom: 15px;
 }
 .summoner-order ul li {
-  border-top: 1px solid var(--gray2);
+ 
   width: 100%;
   padding: 15px;
   display: flex;
@@ -408,11 +409,11 @@ h2 {
   text-align: center;
 }
 .summoner-order strong {
-  color: var(--white);
+  color: var(--title);
   font-size: 1.3rem;
 }
 .summoner-order span {
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.2rem;
 }
 /* 소환사 주문 끝 */
@@ -445,10 +446,10 @@ h2 {
   padding-bottom: 10px;
 }
 .counter .counter-game {
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.3rem;
   line-height: 1.5rem;
-  border-top: 1px dotted var(--gray3);
+  border-top: 1px dotted var(--font);
   padding-top: 10px;
   text-align: center;
   display: flex;
@@ -479,7 +480,7 @@ h2 {
   border-radius: 50%;
 }
 .champ-rank p {
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.3rem;
 }
 /* 장인랭킹 끝 */

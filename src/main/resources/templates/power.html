@@ -14,6 +14,7 @@
   <script src="/js/userdetail.js" defer></script>
   <script src="/js/champ_detail.js" defer></script>
   <script src="/js/position.js" defer></script>
+  <script src="/js/common.js" defer></script>
 
 </head>
 
@@ -38,11 +39,6 @@
 
             <button id="gangsin" type="submit">전적 갱신</button>
           </form>
-          <div class="user-tier">
-       <!--      <div>S2023 S2 티어</div>
-            <div>S2023 S1 티어</div>
-            <div>S2022 티어</div> -->
-          </div>
         </h1>
       </div>
       <div class="user-statistics"></div>
@@ -91,7 +87,7 @@
               </li>
               <li class="most-champtext">
 
-                <strong th:text="'승수 '+${chamsper[6]}">승률</strong>
+                <strong style="color: var(--point10);" th:text="'승수 '+${chamsper[6]}">승률</strong>
                 <br />
                 <span th:text="'판수 '+${chamsper[5]}">게임수</span>
               </li>
@@ -323,7 +319,7 @@
                           </div>
                         </div>
                         <p>
-                   <strong>
+                   <strong style="color: var(--title);">
 					<a th:href="@{'/yalolza.gg/summoners/' + ${ match.body.info.participants[z].riotIdGameName + '-' + match.body.info.participants[z].riotIdTagline}}"
 					   th:text="${match.body.info.participants[z].summonerName == '' ? match.body.info.participants[z].riotIdGameName : match.body.info.participants[z].riotIdGameName}">
 					</a>
@@ -332,7 +328,7 @@
                       </li>
                       <li>
                         <p>
-                          <span th:text="${match.body.info.participants[z].kills + '/' + 
+                          <span style="color: var(--font);" th:text="${match.body.info.participants[z].kills + '/' + 
 	                               match.body.info.participants[z].deaths + '/' +
 	                               match.body.info.participants[z].assists
 	              }">3/4/6(45%)</span><br />
@@ -347,12 +343,12 @@
                             th:text="perpect"></span>
 
                         <div th:unless="${match.body.info.participants[z].deaths == 0}">
-                          <span th:if="${(match.body.info.participants[z].kills + 0.0 +
+                          <span style="color: var(--font);" th:if="${(match.body.info.participants[z].kills + 0.0 +
 					                     match.body.info.participants[z].assists) /
 					                    match.body.info.participants[z].deaths < 10}" th:text="${' ' + #numbers.formatDecimal((match.body.info.participants[z].kills + 0.0 +
 					                     match.body.info.participants[z].assists) /
 					                    match.body.info.participants[z].deaths ,1, 2)}" />
-                          <span th:unless="${(match.body.info.participants[z].kills + 0.0 +
+                          <span style="color: var(--font);" th:unless="${(match.body.info.participants[z].kills + 0.0 +
 					                     match.body.info.participants[z].assists) /
 					                    match.body.info.participants[z].deaths < 10}" th:text="${#numbers.formatDecimal((match.body.info.participants[z].kills + 0.0 +
 					                     match.body.info.participants[z].assists) /
@@ -364,28 +360,28 @@
                       </li>
                       <li>
                         <div th:with=" dmg =${match.body.info.participants[z].totalDamageDealtToChampions}">
-                          <span th:text="${dmg}">4554</span><br />
+                          <span style="color: var(--font);" th:text="${dmg}">4554</span><br />
                           <progress id="progress1" th:value="${dmg}" min="0" th:max="${match.body.maxdmg}"></progress>
                         </div>
                       </li>
                       <li>
                         <div th:with=" dfs =${match.body.info.participants[z].totalDamageTaken}">
-                          <span th:text="${dfs}">4554</span><br />
+                          <span style="color: var(--font);" th:text="${dfs}">4554</span><br />
                           <progress id="progress2" th:value="${dfs}" min="0" th:max="${match.body.maxdmged}"></progress>
                         </div>
                       </li>
                       <li>
                         <p>
-                          <span th:text="${match.body.info.participants[z].visionWardsBoughtInGame}">4(제어)</span><br />
-                          <span th:text="${match.body.info.participants[z].wardsPlaced+'/'+
+                          <span style="color: var(--font);" th:text="${match.body.info.participants[z].visionWardsBoughtInGame}">4(제어)</span><br />
+                          <span style="color: var(--font);" th:text="${match.body.info.participants[z].wardsPlaced+'/'+
                        match.body.info.participants[z].wardsKilled}">14/3</span>
                         </p>
                       </li>
                       <li>
                         <p>
-                          <span
+                          <span style="color: var(--font);"
                             th:text="${match.body.info.participants[z].totalMinionsKilled + match.body.info.participants[z].totalAllyJungleMinionsKilled +match.body.info.participants[z].totalEnemyJungleMinionsKilled}">211</span><br />
-                          <span
+                          <span style="color: var(--font);"
                             th:text=" '분당 ' + ${(match.body.info.participants[z].totalMinionsKilled + match.body.info.participants[z].totalAllyJungleMinionsKilled +match.body.info.participants[z].totalEnemyJungleMinionsKilled) /(match.body.info.gameDuration/ 60 )}">분당
                             4.6</span>
                         </p>
@@ -525,7 +521,7 @@
                     </li>
                   </ul>
                   <div th:with="nww=${summonermatchnum[i.index] >= 5 ? 0 : 5}">
-                    <ul class="vic-team" style="background-color: var(--point11)"
+                    <ul class="vic-team" style="background-color: var(--def)"
                       th:each="nz : ${#numbers.sequence(nww, nww + 4)}">
                       <li>
                         <div>
@@ -556,7 +552,7 @@
                           </div>
                         </div>
                         <p>
-                    <strong>
+                    <strong style="color: var(--title);">
 					<a th:href="@{'/yalolza.gg/summoners/' + ${ match.body.info.participants[nz].riotIdGameName + '-' + match.body.info.participants[nz].riotIdTagline}}"
 					   th:text="${match.body.info.participants[nz].summonerName == '' ? match.body.info.participants[nz].riotIdGameName : match.body.info.participants[nz].riotIdGameName}">
 					</a>
@@ -566,7 +562,7 @@
                       </li>
                       <li>
                         <p>
-                          <span th:text="${match.body.info.participants[nz].kills + '/' + 
+                          <span style="color: var(--font);" th:text="${match.body.info.participants[nz].kills + '/' + 
 	                               match.body.info.participants[nz].deaths + '/' +
 	                               match.body.info.participants[nz].assists
 	              }">3/4/6(45%)</span><br />
@@ -581,12 +577,12 @@
                             th:text="perpect"></span>
 
                         <div th:unless="${match.body.info.participants[nz].deaths == 0}">
-                          <span th:if="${(match.body.info.participants[nz].kills + 0.0 +
+                          <span style="color: var(--font);" th:if="${(match.body.info.participants[nz].kills + 0.0 +
 					                     match.body.info.participants[nz].assists) /
 					                    match.body.info.participants[nz].deaths < 10}" th:text="${' ' + #numbers.formatDecimal((match.body.info.participants[nz].kills + 0.0 +
 					                     match.body.info.participants[nz].assists) /
 					                    match.body.info.participants[nz].deaths ,1, 2)}" />
-                          <span th:unless="${(match.body.info.participants[nz].kills + 0.0 +
+                          <span style="color: var(--font);" th:unless="${(match.body.info.participants[nz].kills + 0.0 +
 					                     match.body.info.participants[nz].assists) /
 					                    match.body.info.participants[nz].deaths < 10}" th:text="${#numbers.formatDecimal((match.body.info.participants[nz].kills + 0.0 +
 					                     match.body.info.participants[nz].assists) /
@@ -598,13 +594,13 @@
                       </li>
                       <li>
                         <div th:with=" ndmg =${match.body.info.participants[nz].totalDamageDealtToChampions}">
-                          <span th:text="${ndmg}">4554</span><br />
+                          <span style="color: var(--font);" th:text="${ndmg}">4554</span><br />
                           <progress id="progress1" th:value="${ndmg}" min="0" th:max="${match.body.maxdmg}"></progress>
                         </div>
                       </li>
                       <li>
                         <div th:with=" ndfs =${match.body.info.participants[nz].totalDamageTaken}">
-                          <span th:text="${ndfs}">4554</span><br />
+                          <span style="color: var(--font);" th:text="${ndfs}">4554</span><br />
                           <progress id="progress2" th:value="${ndfs}" min="0"
                             th:max="${match.body.maxdmged}"></progress>
                         </div>
@@ -612,16 +608,16 @@
                       </li>
                       <li>
                         <p>
-                          <span th:text="${match.body.info.participants[nz].visionWardsBoughtInGame}">4(제어)</span><br />
-                          <span th:text="${match.body.info.participants[nz].wardsPlaced+'/'+
+                          <span style="color: var(--font);" th:text="${match.body.info.participants[nz].visionWardsBoughtInGame}">4(제어)</span><br />
+                          <span style="color: var(--font);" th:text="${match.body.info.participants[nz].wardsPlaced+'/'+
                        match.body.info.participants[nz].wardsKilled}">14/3</span>
                         </p>
                       </li>
                       <li>
                         <p>
-                          <span
+                          <span style="color: var(--font);"
                             th:text="${match.body.info.participants[nz].totalMinionsKilled + match.body.info.participants[nz].totalAllyJungleMinionsKilled +match.body.info.participants[nz].totalEnemyJungleMinionsKilled}">211</span><br />
-                          <span
+                          <span style="color: var(--font);"
                             th:text=" '분당 ' + ${(match.body.info.participants[nz].totalMinionsKilled + match.body.info.participants[nz].totalAllyJungleMinionsKilled +match.body.info.participants[nz].totalEnemyJungleMinionsKilled) /(match.body.info.gameDuration/ 60 )}">분당
                             4.6</span>	
                         </p>
@@ -662,22 +658,22 @@
                 <section class="usergame-skillbuild"
                   th:with="cham=${match.body.info.participants[summonermatchnum[i.index]].championName}">
                   <ul class="userskill-qwe" th:with="stree=${matchsskilltree[i.index]}">
-                    <li class="img-wrap3"><img loading="lazy"
+                    <li class="img-wrap"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[0] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                     <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
-                    <li class="img-wrap3"><img loading="lazy"
+                    <li class="img-wrap"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[1] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                     <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
-                    <li class="img-wrap3"><img loading="lazy"
+                    <li class="img-wrap"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[2] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                   </ul>
                   <ul>
                     <div class="skillbuild-grid">
                       <li style="
-                          color: var(--white);
+                          color: var(--title);
                           font-size: 1.3rem;
                           font-weight: bold;
                         ">
@@ -687,12 +683,12 @@
                       <li class="img-wrap3"><img loading="lazy"
                           th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][0]?.id}+ '.png'}"
                           alt="" /></li>
-                      <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 1 ? (s.index +1) : ''}">
+                      <li style="color: var(--title);" th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 1 ? (s.index +1) : ''}">
                       </li>
                     </div>
                     <div class="skillbuild-grid">
                       <li style="
-                          color: var(--white);
+                          color: var(--title);
                           font-size: 1.3rem;
                           font-weight: bold;
                         ">
@@ -701,12 +697,12 @@
                       <li class="img-wrap3"><img loading="lazy"
                           th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][1]?.id}+ '.png'}"
                           alt="" /></li>
-                      <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 2 ? (s.index +1) : ''}">
+                      <li style="color: var(--title);" th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 2 ? (s.index +1) : ''}">
                       </li>
                     </div>
                     <div class="skillbuild-grid">
                       <li style="
-                          color: var(--white);
+                          color: var(--title);
                           font-size: 1.3rem;
                           font-weight: bold;
                         ">
@@ -715,12 +711,11 @@
                       <li class="img-wrap3"><img loading="lazy"
                           th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][2]?.id}+ '.png'}"
                           alt="" /></li>
-                      <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 3 ? (s.index +1) : ''}">
+                      <li style="color: var(--title);" th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 3 ? (s.index +1) : ''}">
                       </li>
                     </div>
                     <div class="skillbuild-grid">
-                      <li style="
-                          color: var(--white);
+                      <li style="color: var(--title);
                           font-size: 1.3rem;
                           font-weight: bold;
                         ">
@@ -729,7 +724,7 @@
                       <li class="img-wrap3"><img loading="lazy"
                           th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][3]?.id}+ '.png'}"
                           alt="" /></li>
-                      <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 4 ? (s.index +1) : ''}">
+                      <li style="color: var(--title);" th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 4 ? (s.index +1) : ''}">
                       </li>
                     </div>
 
@@ -779,7 +774,7 @@
                           </div>
                         </li>
                       </ul>
-                      <p class="rune-subject" th:text="${mainRune.name}"></p>
+                      <p style="color: var(--title);" class="rune-subject" th:text="${mainRune.name}"></p>
                     </div>
                     <div class="sub-rune"
                       th:with="subRune=${runeslist[keysRunes[__${match.body.info.participants[summonermatchnum[i.index]].Perks.styles[1].style}__]]}">
@@ -817,7 +812,7 @@
                           </div>
                         </li>
                       </ul>
-                      <p class="rune-subject" th:text="${subRune.name}"></p>
+                      <p style="color: var(--title);" class="rune-subject" th:text="${subRune.name}"></p>
                     </div>
                     <div class="fragments-rune"
                          th:with="value1=${match.body.info.participants[summonermatchnum[i.index]].Perks.statPerks.offense},
@@ -882,7 +877,7 @@
                           </div>
                         </li>
                       </ul>
-                      <p class="rune-subject">능력치 파편</p>
+                      <p style="color: var(--title);" class="rune-subject">능력치 파편</p>
                     </div>
                   </div>
                 </section>
