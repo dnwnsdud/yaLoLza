@@ -83,7 +83,7 @@ public class ChampionsPage {
 	//챔피언 전체 페이지 - 진성+진비
 	@GetMapping("")
 	public String getChampionsData(@RequestParam(required = false, defaultValue = "EMERALD") String tier,
-	                               @RequestParam(required = false, defaultValue = "TOP") String position, Model model) {
+	                               @RequestParam(required = false, defaultValue = "TOP") String position, Model model) throws IOException {
 		List<Champion> data = ChampionData.imagedata();
 		model.addAttribute("data", data);
 	    List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position, model);
@@ -92,6 +92,21 @@ public class ChampionsPage {
 	    model.addAttribute("positionData", uniqueChampions);
 	    model.addAttribute("position", position);
 	    model.addAttribute("championPositions", championPositions);
+	    
+	    Map<String, List<CounterChampionDTO>> counters = new HashMap<String, List<CounterChampionDTO>>();
+	    for(ChampionStatsDTO dto : uniqueChampions) {
+	    	Map<String, Object> counter;
+	    	if(position.equalsIgnoreCase("ALL"))
+	    		counter= counterDataService.getCounterData(championPositions.get(dto.getChampionName()), dto.getChampionName(), null, 3);
+	    	else
+	    		counter= counterDataService.getCounterData(position, dto.getChampionName(), null, 3);
+	    	counters.put(dto.getChampionName(),(List<CounterChampionDTO>)counter.get("topChampions"));
+	    }
+	    //System.out.println(counters.get("LeeSin").get(0));
+	    model.addAttribute("counterChampions", counters);
+	    
+	    
+	    
 	    return "champ";
 	}
 
@@ -556,68 +571,43 @@ public class ChampionsPage {
 		return "champ_skill";
 	}
 	@GetMapping("/{champion}/tip")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
-	public String ChampionsTip(
-			Model model,
-			@RequestParam String query,
-			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
-			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
-			@PathVariable("champion") String championid
-			) {
-		Champion champion = ChampionData.championinfo(championid);
-		model.addAttribute("champion",champion);
-        model.addAttribute("youtubeVideos", youtubeService.youtubeGenerator(query));
+	   public String ChampionsTip(
+	         Model model,
+	         @PathVariable String champion,
+	         @RequestParam String query,
+	         @RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
+	         @RequestParam(name="position",required = false, defaultValue = "TOP") String position,
+	         @PathVariable("champion") String championid
+	         ) {
 
-		String filePath = defaultFilePath + tier + "/data.json"; // 파일 경로 수정
-		try {
-			String rawData = Files.readString(Paths.get(filePath));
-			List<DataEntry> data = StatisticChampion.parseJson(rawData);
-			List<DataEntry> filteredData = StatisticChampion.filterData(data, tier, position, championid);
-			
-//			Integer mainStyle = Integer.parseInt(StatisticChampion.mainStyle(filteredData));
-//			System.out.println(mainStyle);
-//			Runes runes = RuneData.runes(mainStyle);
-//			model.addAttribute("mainRune", runes);
-//			String primaryStyleFirstPerk = StatisticChampion.calculatePrimaryStyleFirstPerk1(filteredData);
-//			List<String> primaryStylePerks234 = StatisticChampion.calculatePrimaryStylePerks234(filteredData);
-//			model.addAttribute("primaryPerk1", primaryStyleFirstPerk);
-//			model.addAttribute("primaryPerk234", primaryStylePerks234);
-//			runes = RuneData.runes(8400);
-//			List<String> subStylePerks12 = StatisticChampion.calculateSubStylePerks12(filteredData);
-//			model.addAttribute("secondaryPerk12", subStylePerks12);
-//			model.addAttribute("subRune", runes);
-//			List<Perk> perklist = RuneData.perklist();
-//			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk);
-//			List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
-//			List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
-//			List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
-//			출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
-//				model.addAttribute("perklist", perklist);
-//			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
-//			model.addAttribute("summoner1", spell);
-//			spell = SummonerData.findspell(Spelllist1.get(1).toString());
-//			model.addAttribute("summoner2", spell);
-//			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
-//			spell = SummonerData.findspell(Spelllist2.get(0).toString());
-//			model.addAttribute("summoner3", spell);
-//			spell = SummonerData.findspell(Spelllist2.get(1).toString());
-//			model.addAttribute("summoner4", spell);
-//			model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("no DATA");
-		}
-		Item item = ItemData.item("1001");
-		model.addAttribute("item1", item);
-		item = ItemData.item("1001");
-		model.addAttribute("item2", item);
-		item = ItemData.item("3364");
-		model.addAttribute("item3", item);
-		Map<String, String> summonerkey = SummonerData.keysSumSpell();
-		model.addAttribute("summonerkey", summonerkey);
-		new Connect("total","yalolza.gg", "champions","detail");
-		return "champ_tip";
-	}
-	
-	 
+	        model.addAttribute("youtubeVideos", youtubeService.youtubeGenerator(query));
+
+	        ChampionStatsDTO championData = tierPositionService.getChampionDataByName(tier, position, champion);
+	       
+	       if (championData != null) {
+	           model.addAttribute("champion", championData);
+	           model.addAttribute("winrate", championData.getStats().getWinrate());
+	           model.addAttribute("pickrate", championData.getStats().getPickrate());
+	           model.addAttribute("banrate", championData.getStats().getBanrate());
+	           model.addAttribute("champtier", championData.getStats().getChamptier());
+	           championData.getStats().getWinrate();
+	           championData.getStats().getPickrate();
+	           championData.getStats().getBanrate();
+	           championData.getStats().getChamptier();
+	       } else {
+	           model.addAttribute("error", "챔피언 데이터를 찾을 수 없습니다: " + champion);
+	           return "error";
+	       }
+		    List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position, model);
+		    model.addAttribute("selectedTier", tier);
+		    model.addAttribute("positionData", uniqueChampions);
+		    model.addAttribute("position", position);
+	       
+	       Champion champion1 = ChampionData.championinfo(championid);
+	      model.addAttribute("champion",champion1);
+	      new Connect("total","yalolza.gg", "champions","detail");
+	      return "champ_tip";
+	   }
+	  
 
 }
