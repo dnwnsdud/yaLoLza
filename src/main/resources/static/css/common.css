@@ -51,6 +51,7 @@
   --def:#E3464626;
  --point13:#2b3040;
   --point14:#4f5770;
+  --modal: #1e2233;
 }
 
 :root[data-theme="light"] {
@@ -65,6 +66,7 @@
   --def:#ff48611a;
   --point13:#e6ecf3;
   --point14:#d3dce9;
+   --modal: #ebeef1;
 }
 /* 자주 쓰이는 거 시작*/
 .item-flex {
