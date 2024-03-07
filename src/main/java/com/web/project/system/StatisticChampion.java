@@ -308,9 +308,9 @@ public class StatisticChampion {
     // 등장 횟수를 기준으로 내림차순으로 정렬
     result.sort(Comparator.comparingInt(ItemWinRate::getItemCount).reversed());
 
-    // 상위 3개의 아이템만 리스트로 반환
-    if (result.size() > 3) {
-        result = result.subList(0, 3);
+    // 상위 5개의 아이템만 리스트로 반환
+    if (result.size() > 5) {
+        result = result.subList(0, 5);
     }
     return result;
 

@@ -189,19 +189,19 @@
 								<ul class="perkslot2">
 									<li th:id="${perklist[3].id}">
 										<div
-											th:class="${perklist[3].id}==${value}? 'color-icon':'gray-icon'">
+											th:class="${perklist[3].id}==${statperks2}? 'color-icon':(${perklist[3].id}==${statperks2}? 'color-icon':'gray-icon')">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[3].icon}}" />
 										</div>
 									</li>
 									<li th:id="${perklist[4].id}">
 										<div
-											th:class="${perklist[4].id}==${value}? 'color-icon':'gray-icon'">
+											th:class="${perklist[4].id}==${statperks2}? 'color-icon':(${perklist[4].id}==${statperks2}? 'color-icon':'gray-icon')">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[4].icon}}" />
 										</div>
 									</li>
 									<li th:id="${perklist[5].id}">
 										<div
-											th:class="${perklist[5].id}==${value}? 'color-icon':'gray-icon'">
+											th:class="${perklist[5].id}==${statperks2}? 'color-icon':(${perklist[5].id}==${statperks2}? 'color-icon':'gray-icon')">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[5].icon}}" />
 										</div>
 									</li>
@@ -209,19 +209,19 @@
 								<ul class="perkslot3">
 									<li th:id="${perklist[6].id}">
 										<div
-											th:class="${perklist[6].id}==${value}? 'color-icon':'gray-icon'">
+											th:class="${perklist[6].id}==${statperks3}? 'color-icon':(${perklist[6].id}==${statperks2}? 'color-icon':'gray-icon')">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[6].icon}}" />
 										</div>
 									</li>
 									<li th:id="${perklist[7].id}">
 										<div
-											th:class="${perklist[7].id}==${value}? 'color-icon':'gray-icon'">
+											th:class="${perklist[7].id}==${statperks3}? 'color-icon':(${perklist[7].id}==${statperks2}? 'color-icon':'gray-icon')">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[7].icon}}" />
 										</div>
 									</li>
 									<li th:id="${perklist[8].id}">
 										<div
-											th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'">
+											th:class="${perklist[8].id}==${statperks3}? 'color-icon':(${perklist[8].id}==${statperks2}? 'color-icon':'gray-icon')">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[8].icon}}" />
 										</div>
 									</li>
