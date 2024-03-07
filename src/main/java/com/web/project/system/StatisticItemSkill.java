@@ -110,7 +110,7 @@ public class StatisticItemSkill {
 	        // 상위 2개 아이템만 추출
 	        // 20번 이상 등장해야 함
 	        List<ItemStatistics> topTwoItems = filteredStatistic.stream()
-	        		.filter(stat-> stat.getPickCount() > 20 )
+	        		.filter(stat-> stat.getPickCount() > 10 )
 	                .limit(2)
 	                .collect(Collectors.toList());
 	        return topTwoItems;
@@ -123,7 +123,7 @@ public class StatisticItemSkill {
         // 상위 5등 템트리 추출
         // 12번 이상 등장해야 함
         List<ItemListStatistics> Items = filteredStatistic.stream()
-        		.filter(stat-> stat.getPickCount() > 12 )
+        		.filter(stat-> stat.getPickCount() > 5 )
                 .limit(5)
                 .collect(Collectors.toList());
         return Items;
@@ -134,7 +134,7 @@ public class StatisticItemSkill {
 		filteredStatistic.sort(Comparator.comparingDouble(SkillStatistics::getWinRate).reversed());	        
 
 		List<SkillStatistics> firstSkill = filteredStatistic.stream()
-        	.filter(stat-> stat.getPickCount() > 12 )
+        	.filter(stat-> stat.getPickCount() > 5 )
             .limit(3)
             .collect(Collectors.toList());
 		return firstSkill;
@@ -143,7 +143,7 @@ public class StatisticItemSkill {
 	public static List<SkillStatistics> caculateSkills(List<SkillStatistics> filteredStatistic){		
 		filteredStatistic.sort(Comparator.comparingDouble(SkillStatistics::getWinRate).reversed());	        
 	    List<SkillStatistics> mostSkill = filteredStatistic.stream()
-        		.filter(stat-> stat.getPickCount() > 12 )
+        		.filter(stat-> stat.getPickCount() > 5 )
 	            .limit(3)
 	            .collect(Collectors.toList());
 	    return mostSkill;

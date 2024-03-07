@@ -150,7 +150,6 @@ public class StatisticChampion {
 	                             });
 	                   
 	    	}  
-	    	System.out.println(perklist);
 	    	
 	    	
 	    	Map<List<Integer>, Long> perkCountMap = perklist.stream()
@@ -222,7 +221,6 @@ public class StatisticChampion {
                              });
                    
     	}  
-    	System.out.println(perklist2);
     	
     	
     	Map<List<Integer>, Long> perkCountMap = perklist2.stream()
