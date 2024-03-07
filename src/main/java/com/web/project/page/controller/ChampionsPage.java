@@ -4,13 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,18 +17,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.project.api.controller.YoutubeService;
 import com.web.project.dto.championstats.ChampionStatsDTO;
-import com.web.project.dto.championstats.CounterChampionDTO;
-import com.web.project.dto.championstats.CounterCountDTO;
-import com.web.project.dto.championstats.CounterPositionDTO;
-import com.web.project.dto.championstats.TierDataDTO;
 import com.web.project.dto.info.Perk;
 import com.web.project.dto.info.Runes;
 import com.web.project.dto.info.Champion.Champion;
 import com.web.project.dto.info.Champion.Spell;
 import com.web.project.dto.info.item.Item;
 import com.web.project.dto.runeSpell.DataEntry;
+import com.web.project.dto.runeSpell.ItemListStatistics;
+import com.web.project.dto.runeSpell.ItemStatistics;
 import com.web.project.dto.runeSpell.ItemWinRate;
 import com.web.project.dto.runeSpell.RuneWinRate;
+import com.web.project.dto.runeSpell.SkillStatistics;
+import com.web.project.dto.runeSpell.StatPerks;
 import com.web.project.dto.runeSpell.SummonerSpellSetWinRate;
 import com.web.project.metrics.count.Connect;
 import com.web.project.system.ChampionData;
@@ -43,12 +38,9 @@ import com.web.project.system.ItemData;
 import com.web.project.system.JsonReader;
 import com.web.project.system.RuneData;
 import com.web.project.system.StatisticChampion;
+import com.web.project.system.StatisticItemSkill;
 import com.web.project.system.SummonerData;
 import com.web.project.system.TierPositionService;
-
-import lombok.NoArgsConstructor;
-
-import com.web.project.system.StatisticChampion;
  
 
 @Controller
@@ -275,27 +267,125 @@ public class ChampionsPage {
 			Long SubRuneimage2 = Long.valueOf(subStyle);	
 			keysRuneImage.get(SubRuneimage2);
 			model.addAttribute("keysSubRuneImage2", keysRuneImage.get(SubRuneimage2));
-			
-			
 
 			
+			List<StatPerks> statperks = StatisticChampion.caculateStatPerks(filteredData);
+			
+			model.addAttribute("statperks1",statperks.get(0).getDefense());		
+			model.addAttribute("statperks2",statperks.get(0).getFlex());		
+			model.addAttribute("statperks3",statperks.get(0).getOffense());	
+			System.out.println("이거뭐임" + statperks.get(0).getDefense());
 			
 			
 			
-			List<String> statperks = StatisticChampion.caculateStatPerks(filteredData);
+			//String rawData = Files.readString(Paths.get(filePath));
+			//List<DataEntry> data = StatisticChampion.parseJson(rawData);
 			
-			model.addAttribute("statperks1",statperks.get(0));		
-			model.addAttribute("statperks2",statperks.get(1));		
-			model.addAttribute("statperks3",statperks.get(2));	
-			System.out.println(statperks.get(0));
-			System.out.println(statperks.get(1));
-			System.out.println(statperks.get(2));
+			
+			String link = "";
+			link = "/firstItem";
+			String StatisticfilePath = defaultFilePath + tier + link + "Statistics.json"; // 파일 경로 수정
+			//System.out.println("경로" + StatisticfilePath);
+			
+			String rawStatistic = Files.readString(Paths.get(StatisticfilePath));		
+			List<ItemStatistics> parsedData =  StatisticItemSkill.parseJson(rawStatistic);
+			List<ItemStatistics> firstItemData = StatisticItemSkill.filterStatistic(parsedData, tier, position, championid);
+			
+
+
+			
+			//2개만 반환함
+			List<ItemStatistics> firstItem =StatisticItemSkill.caculateFirstItems(firstItemData);
+
+			model.addAttribute("firstItem", firstItem.get(0).getItem());
+			model.addAttribute("firstItemPickCount", firstItem.get(0).getPickCount());
+			model.addAttribute("firstItemPickRate", 
+					((double)Math.round((double)firstItem.get(0).getPickCount()/(double)firstItem.get(0).getTotalCount()*10000)/100));		
+			model.addAttribute("firstItemWinRate", ((double)Math.round(firstItem.get(0).getWinRate()*10000)/100));
+			
+			model.addAttribute("secondItem", firstItem.get(1).getItem());
+			model.addAttribute("secondItemPickCount", firstItem.get(1).getPickCount());
+			model.addAttribute("secondItemPickRate", 
+					((double)Math.round((double)firstItem.get(1).getPickCount()/(double)firstItem.get(1).getTotalCount()*10000)/100));
+			model.addAttribute("secondItemWinRate",  ((double)Math.round(firstItem.get(1).getWinRate()*10000)/100));
+			
+			
+			link = "/item";
+			String StatisticfilePath2 = defaultFilePath + tier + link + "Statistics.json"; // 파일 경로 수정
+			String rawStatistic2 = Files.readString(Paths.get(StatisticfilePath2));		
+			List<ItemListStatistics> parsedDatas =  StatisticItemSkill.parseJson3(rawStatistic2);
+			List<ItemListStatistics> ItemStatistic = StatisticItemSkill.filterStatistic3(parsedDatas, tier, position, championid);
+			List<ItemListStatistics> itemlist = StatisticItemSkill.caculateItems(ItemStatistic);
+			
+
+			model.addAttribute("ItemStatistic", itemlist);
+
+			model.addAttribute("listWin1", ((double)Math.round(itemlist.get(0).getWinRate()*10000)/100));
+			model.addAttribute("listpick1", itemlist.get(0).getPickCount());			
+			model.addAttribute("listPickRate1", 
+					(double)Math.round((double)itemlist.get(0).getPickCount()/(double)itemlist.get(0).getTotalCount()*10000)/100);
+			
+			model.addAttribute("listWin2", ((double)Math.round(itemlist.get(1).getWinRate()*10000)/100));
+			model.addAttribute("listpick2", itemlist.get(1).getPickCount());			
+			model.addAttribute("listPickRate2", 
+					(double)Math.round((double)itemlist.get(1).getPickCount()/(double)itemlist.get(1).getTotalCount()*10000)/100);
+			
+			model.addAttribute("listWin3", ((double)Math.round(itemlist.get(2).getWinRate()*10000)/100));
+			model.addAttribute("listpick3", itemlist.get(2).getPickCount());			
+			model.addAttribute("listPickRate3", 
+					(double)Math.round((double)itemlist.get(2).getPickCount()/(double)itemlist.get(2).getTotalCount()*10000)/100);
+			
+			model.addAttribute("listWin4", ((double)Math.round(itemlist.get(3).getWinRate()*10000)/100));
+			model.addAttribute("listpick4", itemlist.get(3).getPickCount());			
+			model.addAttribute("listPickRate4", 
+					(double)Math.round((double)itemlist.get(3).getPickCount()/(double)itemlist.get(3).getTotalCount()*10000)/100);
+			
+			model.addAttribute("listWin5", ((double)Math.round(itemlist.get(4).getWinRate()*10000)/100));
+			model.addAttribute("listpick5", itemlist.get(4).getPickCount());			
+			model.addAttribute("listPickRate5", 
+					(double)Math.round((double)itemlist.get(4).getPickCount()/(double)itemlist.get(4).getTotalCount()*10000)/100);
+			
+			
+			link = "/firstSkill";
+			String StatisticfilePath3 = defaultFilePath + tier + link + "Statistics.json"; // 파일 경로 수정
+			String rawStatistic3 = Files.readString(Paths.get(StatisticfilePath3));		
+			List<SkillStatistics> parsedFirstSkill =  StatisticItemSkill.parseJson2(rawStatistic3);
+			List<SkillStatistics> firstSkillStatistic = StatisticItemSkill.filterStatistic2(parsedFirstSkill, tier, position, championid);
+			List<SkillStatistics> firstSkill = StatisticItemSkill.caculateFirstSkills(firstSkillStatistic);
+			
+			model.addAttribute("firstSkill", firstSkill);
+			System.out.println(" 안아줘요 !!! : " + firstSkill.get(0).getSkillList()[0]);
+			
+			model.addAttribute("skillWinRate", ((double)Math.round(firstSkill.get(0).getWinRate()*10000)/100));		
+			model.addAttribute("skillPickCount", firstSkill.get(0).getPickCount());			
+			model.addAttribute("skillPickRate", 
+					(double)Math.round((double)firstSkill.get(0).getPickCount()/(double)firstSkill.get(0).getTotalCount()*10000)/100);
+			
+			
+			
+			
+			
+			link = "/skill";
+			String StatisticfilePath4 = defaultFilePath + tier + link + "Statistics.json"; // 파일 경로 수정
+			String rawStatistic4 = Files.readString(Paths.get(StatisticfilePath4));		
+			List<SkillStatistics> parsedSkill =  StatisticItemSkill.parseJson2(rawStatistic4);
+			List<SkillStatistics> skillStatistic = StatisticItemSkill.filterStatistic2(parsedSkill, tier, position, championid);
+			List<SkillStatistics> skill = StatisticItemSkill.caculateFirstSkills(skillStatistic);
+			
+			model.addAttribute("skill", skill);
+			
+			model.addAttribute("skillListWinRate", ((double)Math.round(skill.get(0).getWinRate()*10000)/100));		
+			model.addAttribute("skillListPickCount", skill.get(0).getPickCount());			
+			model.addAttribute("skillListPickRate", 
+					(double)Math.round((double)skill.get(0).getPickCount()/(double)skill.get(0).getTotalCount()*10000)/100);
+			
+			
+				
 			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
 			String item1 =  String.valueOf(items.get(0).getItemId());
 			String itemCount1 =  String.valueOf(items.get(0).getItemCount());
 			String itemPickRate1 =  String.valueOf(items.get(0).getpickRate());
 			String itemWinRate1 =  String.valueOf(items.get(0).getWinRate());
-			System.out.println("아이템 등장횟수" +itemCount1);
 			
 			String item2 =  String.valueOf(items.get(1).getItemId());
 			String item3 =  String.valueOf(items.get(2).getItemId());
@@ -306,9 +396,7 @@ public class ChampionsPage {
 			model.addAttribute("item1", item);
 			model.addAttribute("itemCount1", itemCount1);			
 			model.addAttribute("itemPickRate1", ((double)Math.round(Double.parseDouble(itemPickRate1)*10000)/100));
-			System.out.println("선택 비율" + itemPickRate1);
 			model.addAttribute("itemWinRate1", ((double)Math.round(Double.parseDouble(itemWinRate1)*10000)/100));
-			System.out.println("승률" + itemWinRate1);
 			
 			
 			item = ItemData.item(item2);

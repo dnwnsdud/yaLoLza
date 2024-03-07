@@ -1,136 +1,113 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/myrest.css" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/static.css" />
-  </head>
-  <body>
-    <header th:replace="~{/header :: header}"></header>
-    <br />
-    <div class="staticContainer">
-      <!-- 챔피언 통계 -->
-      <section class="con1">
-        <div class="dec">
-          <h2>통계</h2>
-          <div class="user-tip">
-            <button>챔피언별 통계</button>
-            <button>티어별 통계</button>
-          </div>
-        </div>
-      </section>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link rel="stylesheet" href="/css/myrest.css" />
+<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/static.css" />
+</head>
+<body>
+	<div>
+		<!-- 챔피언 통계 -->
+		<section class="con1">
+			<div class="dec">
+				<h2>통계</h2>
+				<div class="user-tip">
+					<button>챔피언별 통계</button>
+					<button>티어별 통계</button>
+				</div>
+			</div>
+		</section>
 
-      <!-- 조건 버튼 -->
-      <div class="mw1">
-        <section id="champbtn">
-          <ul>
-            <li>
-              <h3>큐 타입</h3>
-              <div>
-                <button onclick="updateUrl('queueType', 'RANKED')">
-                  솔로랭크
-                </button>
-                <button onclick="updateUrl('queueType', 'ARAM')">칼바람</button>
-              </div>
-            </li>
-            <li>
-              <h3>티어</h3>
-              <div>
-                <button onclick="updateUrl('tier', 'ALL')">전체</button>
-                <button onclick="updateUrl('tier', 'IRON')">Iron</button>
-                <button onclick="updateUrl('tier', 'BRONZE')">Bronze</button>
-                <button onclick="updateUrl('tier', 'SILVER')">Silver</button>
-                <button onclick="updateUrl('tier', 'GOLD')">Gold</button>
-                <button onclick="updateUrl('tier', 'PLATINUM')">
-                  Platinum
-                </button>
-                <button onclick="updateUrl('tier', 'EMERALD')">Emerald</button>
-                <button onclick="updateUrl('tier', 'DIAMOND')">Diamond</button>
-                <button onclick="updateUrl('tier', 'MASTER')">Master</button>
-                <button onclick="updateUrl('tier', 'GRANDMASTER')">
-                  Grandmaster
-                </button>
-                <button onclick="updateUrl('tier', 'CHALLENGER')">
-                  Challenger
-                </button>
-              </div>
-            </li>
-            <li>
-              <h3>포지션</h3>
-              <div>
-                <button onclick="updateUrl('position', 'ALL')">전체</button>
-                <button onclick="updateUrl('position', 'TOP')">탑</button>
-                <button onclick="updateUrl('position', 'JUNGLE')">정글</button>
-                <button onclick="updateUrl('position', 'MIDDLE')">미드</button>
-                <button onclick="updateUrl('position', 'BOTTOM')">원딜</button>
-                <button onclick="updateUrl('position', 'UTILITY')">
-                  서포터
-                </button>
-              </div>
-            </li>
-          </ul>
-        </section>
-        <section id="champstatic_rank">
-          <ul>
-            <li>#</li>
-            <li>챔피언</li>
-            <li>플레이수</li>
-            <li>평점</li>
-            <li>승률</li>
-            <li>게임당 픽률</li>
-            <li>게임당 밴율</li>
-            <li>CS</li>
-            <li>골드</li>
-          </ul>
-          <div
-            th:if="${queueType != 'ARAM'}"
-            th:each="champion, stat : ${positionData}"
-          >
-            <ul>
-              <li th:text="${stat.count}">1</li>
-              <li class="champinfo">
-                <div class="img-wrap">
-                  <a
-                    th:href="@{/img/champion/{championName}(championName=${champion.championName})}"
-                  >
-                    <img
-                      th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
-                      alt="Champion Icon"
-                    />
-                  </a>
-                </div>
-                <p th:text="${champion.krchampionName}"></p>
-              </li>
-              <li th:text="${champion.stats.picks}"></li>
-              <li th:text="${champion.stats.kda}"></li>
-              <li>
-                <div class="progress-bar">
-                  <div
-                    class="filler"
-                    th:style="'width:' + ${champion.stats.winrate} + '%'"
-                  ></div>
-                </div>
-                <span th:text="${champion.stats.winrate} + '%'"></span>
-              </li>
-              <li>
-                <div class="progress-bar1">
-                  <div
-                    class="filler1"
-                    th:style="'width:' + ${champion.stats.pickrate} + '%'"
-                  ></div>
-                </div>
-                <span th:text="${champion.stats.pickrate} + '%'"></span>
-              </li>
-              <li th:text="${champion.stats.banrate}"></li>
-              <li th:text="${champion.stats.cs}"></li>
-              <li th:text="${champion.stats.goldEarned}"></li>
-            </ul>
-          </div>
-
-          <!-- <div th:if="${queueType == 'ARAM'}"
+		<!-- 조건 버튼 -->
+		<div class="mw1">
+			<section id="champbtn">
+				<ul>
+					<li>
+						<h3>큐 타입</h3>
+						<div>
+							<button onclick="updateUrl('queueType', 'RANKED')">솔로랭크</button>
+							<button onclick="updateUrl('queueType', 'ARAM')">칼바람</button>
+						</div>
+					</li>
+					<li>
+						<h3>티어</h3>
+						<div>
+							<button onclick="updateUrl('tier', 'ALL')">전체</button>
+							<button onclick="updateUrl('tier', 'IRON')">Iron</button>
+							<button onclick="updateUrl('tier', 'BRONZE')">Bronze</button>
+							<button onclick="updateUrl('tier', 'SILVER')">Silver</button>
+							<button onclick="updateUrl('tier', 'GOLD')">Gold</button>
+							<button onclick="updateUrl('tier', 'PLATINUM')">Platinum</button>
+							<button onclick="updateUrl('tier', 'EMERALD')">Emerald</button>
+							<button onclick="updateUrl('tier', 'DIAMOND')">Diamond</button>
+							<button onclick="updateUrl('tier', 'MASTER')">Master</button>
+							<button onclick="updateUrl('tier', 'GRANDMASTER')">Grandmaster</button>
+							<button onclick="updateUrl('tier', 'CHALLENGER')">Challenger</button>
+						</div>
+					</li>
+					<li>
+						<h3>포지션</h3>
+						<div>
+							<button onclick="updateUrl('position', 'ALL')">전체</button>
+							<button onclick="updateUrl('position', 'TOP')">탑</button>
+							<button onclick="updateUrl('position', 'JUNGLE')">정글</button>
+							<button onclick="updateUrl('position', 'MIDDLE')">미드</button>
+							<button onclick="updateUrl('position', 'BOTTOM')">원딜</button>
+							<button onclick="updateUrl('position', 'UTILITY')">서포터</button>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<section id="champstatic_rank">
+				<ul>
+					<li>#</li>
+					<li>챔피언</li>
+					<li>플레이수</li>
+					<li>평점</li>
+					<li>승률</li>
+					<li>게임당 픽률</li>
+					<li>게임당 밴율</li>
+					<li>CS</li>
+					<li>골드</li>
+				</ul>
+				<div th:if="${queueType != 'ARAM'}"
+					th:each="champion, stat : ${positionData}">
+					<ul>
+						<li th:text="${stat.count}">1</li>
+						<li>
+							<div class="img-wrap">
+								<a
+									th:href="@{/img/champion/{championName}(championName=${champion.championName})}">
+									<img
+									th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
+									alt="Champion Icon" />
+								</a>
+							</div>
+							<p th:text="${champion.krchampionName}"></p>
+						</li>
+						<li th:text="${champion.stats.picks}"></li>
+						<li th:text="${champion.stats.kda}"></li>
+						<li>
+							<div class="progress-bar">
+								<div class="filler"
+									th:style="'width:' + ${champion.stats.winrate} + '%'"></div>
+							</div> <span th:text="${champion.stats.winrate} + '%'"></span>
+						</li>
+						<li>
+							<div class="progress-bar1">
+								<div class="filler1"
+									th:style="'width:' + ${champion.stats.pickrate} + '%'"></div>
+							</div> <span th:text="${champion.stats.pickrate} + '%'"></span>
+						</li>
+						<li th:text="${champion.stats.banrate}"></li>
+						<li th:text="${champion.stats.cs}"></li>
+						<li th:text="${champion.stats.goldEarned}"></li>
+					</ul>
+				</div>
+				<!-- <div th:if="${queueType == 'ARAM'}"
 					th:each="champion : ${aramChampions}">
 					<ul>
 						<li>1</li>
@@ -165,30 +142,26 @@
 						<li th:text="${champion.stats.goldEarned}"></li>
 					</ul>
 				</div> -->
-        </section>
-      </div>
-    </div>
-    <br />
-    <br />
-    <footer th:replace="~{/footer :: footer}"></footer>
-    <script>
-      // URL 업데이트
-      function updateUrl(key, value) {
-        var url = new URL(window.location.href);
-        url.searchParams.set(key, value);
+			</section>
+		</div>
+		<script>
+			// URL 업데이트
+			function updateUrl(key, value) {
+				var url = new URL(window.location.href);
+				url.searchParams.set(key, value);
 
-        window.location.href = url.href;
-      }
+				window.location.href = url.href;
+			}
 
-      document.addEventListener("DOMContentLoaded", function () {
-        var url = new URL(window.location.href);
-        var tier = url.searchParams.get("tier");
-        var position = url.searchParams.get("position");
+			document.addEventListener('DOMContentLoaded', function() {
+				var url = new URL(window.location.href);
+				var tier = url.searchParams.get("tier");
+				var position = url.searchParams.get("position");
 
-        if (!tier && !position) {
-          window.location.href = "/yalolza.gg/static?tier=ALL&position=ALL";
-        }
-      });
-    </script>
-  </body>
+				if (!tier && !position) {
+					window.location.href = '/yalolza.gg/champions/static?tier=ALL&position=ALL';
+				}
+			});
+		</script>
+</body>
 </html>
