@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.project.api.controller.YoutubeService;
 import com.web.project.dto.championstats.ChampionStatsDTO;
+import com.web.project.dto.championstats.CounterChampionDTO;
 import com.web.project.dto.info.Perk;
 import com.web.project.dto.info.Runes;
 import com.web.project.dto.info.Champion.Champion;
@@ -657,40 +659,44 @@ public class ChampionsPage {
 		new Connect("total","yalolza.gg", "champions","detail");
 		return "champ_skill";
 	}
-	@GetMapping("/{champion}/tip")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
-	public String ChampionsTip(
-			Model model,
-			@PathVariable String champion,
-			@RequestParam String query,
-			@RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
-			@RequestParam(name="position",required = false, defaultValue = "TOP") String position,
-			@PathVariable("champion") String championid
-			) {
+	  @GetMapping("/{champion}/tip")  //http://localhost:9998/yalolza.gg/champions/Aatrox/build?tier=EMERALD&position=TOP
+      public String ChampionsTip(
+            Model model,
+            @PathVariable String champion,
+            @RequestParam String query,
+            @RequestParam(name="tier",required = false, defaultValue = "EMERALD") String tier,
+            @RequestParam(name="position",required = false, defaultValue = "TOP") String position,
+            @PathVariable("champion") String championid
+            ) {
 
-        model.addAttribute("youtubeVideos", youtubeService.youtubeGenerator(query));
+           model.addAttribute("youtubeVideos", youtubeService.youtubeGenerator(query));
 
-        ChampionStatsDTO championData = tierPositionService.getChampionDataByName(tier, position, champion);
-	    
-	    if (championData != null) {
-	        model.addAttribute("champion", championData);
-	        model.addAttribute("winrate", championData.getStats().getWinrate());
-	        model.addAttribute("pickrate", championData.getStats().getPickrate());
-	        model.addAttribute("banrate", championData.getStats().getBanrate());
-	        model.addAttribute("champtier", championData.getStats().getChamptier());
-	        championData.getStats().getWinrate();
-	        championData.getStats().getPickrate();
-	        championData.getStats().getBanrate();
-	        championData.getStats().getChamptier();
-	    } else {
-	        model.addAttribute("error", "챔피언 데이터를 찾을 수 없습니다: " + champion);
-	        return "error";
-	    }
-	    
-	    Champion champion1 = ChampionData.championinfo(championid);
-		model.addAttribute("champion",champion1);
-		new Connect("total","yalolza.gg", "champions","detail");
-		return "champ_tip";
-	}
+           ChampionStatsDTO championData = tierPositionService.getChampionDataByName(tier, position, champion);
+          
+          if (championData != null) {
+              model.addAttribute("champion", championData);
+              model.addAttribute("winrate", championData.getStats().getWinrate());
+              model.addAttribute("pickrate", championData.getStats().getPickrate());
+              model.addAttribute("banrate", championData.getStats().getBanrate());
+              model.addAttribute("champtier", championData.getStats().getChamptier());
+              championData.getStats().getWinrate();
+              championData.getStats().getPickrate();
+              championData.getStats().getBanrate();
+              championData.getStats().getChamptier();
+          } else {
+              model.addAttribute("error", "챔피언 데이터를 찾을 수 없습니다: " + champion);
+              return "error";
+          }
+          List<ChampionStatsDTO> uniqueChampions = tierPositionService.getChampionsData(tier, position, model);
+          model.addAttribute("selectedTier", tier);
+          model.addAttribute("positionData", uniqueChampions);
+          model.addAttribute("position", position);
+          
+          Champion champion1 = ChampionData.championinfo(championid);
+         model.addAttribute("champion",champion1);
+         new Connect("total","yalolza.gg", "champions","detail");
+         return "champ_tip";
+      }
 	
 	 
 
