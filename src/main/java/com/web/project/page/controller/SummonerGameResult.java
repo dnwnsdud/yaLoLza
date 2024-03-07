@@ -455,7 +455,7 @@ import com.web.project.system.SummonerData;
 			        		   summonerskilllup.add(s);
 			        	   }
 			      //스킬트리순서정립
-			      skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+			      skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
 
                       
 			      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
@@ -745,7 +745,7 @@ import com.web.project.system.SummonerData;
 	        		   summonerskilllup.add(s);
 	        	   }
 	        	 
-	        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+	        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
              
 			      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
 			            SummonerTimeList summonerTime = SummonerTimeList.builder()
@@ -1154,7 +1154,7 @@ import com.web.project.system.SummonerData;
 					        		   summonerskilllup.add(s);
 					        	   }
 					        	 
-					        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+					        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
 				             
 							      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
 							            SummonerTimeList summonerTime = SummonerTimeList.builder()
