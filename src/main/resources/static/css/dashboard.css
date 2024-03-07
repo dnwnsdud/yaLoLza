@@ -28,10 +28,23 @@
   --gap-ss: 20px;
   font-size: 10px;
 }
+
+.usergraph{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 2rem;
+	row-gap: 2rem;
+	grid-template-rows: repeat(2, 1fr);
+	margin: 7rem 0 5rem 0;
+}
+
+
+
 .admin-title{
-	font-size: 2rem;
+	font-size: 3rem;
 	text-align: center;
 	font-weight: bold;
+	margin-top: 2rem;
 }
 
 .userinfo_title{
@@ -75,6 +88,9 @@
 	font-size: 1.4rem;
 	text-align: center;
 }
+
+
+
 .commu_ul > li,
 .comment_ul > li{
 	font-weight: bold;

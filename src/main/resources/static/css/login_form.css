@@ -35,7 +35,7 @@
     margin: auto;
     display: block;
     align-items: center;
-    margin-top: 5rem;
+    margin-top: 13rem;
 }
 
 .login-title{
@@ -97,7 +97,7 @@
 
 .joingobox{
     display: flex;
-	max-width:60rem;
+	max-width:90%;
     margin: auto;
     margin-top: 5rem;
     font-size: 1.5rem;

@@ -45,7 +45,7 @@
 }
 .modal .nick-name,
 .modal2 .password-name {
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--gray1);
   text-align: center;
   margin-top: 20px;
@@ -94,6 +94,8 @@ border-bottom:1px solid #ccc;
   font-family: inherit;
   font-size: 1.5rem;
 }
+
+
 .modal2 input[type="text"],
 .modal2 input[type="password"] {
   cursor: pointer;
@@ -113,14 +115,15 @@ border-bottom:1px solid #ccc;
   margin: 2.5rem 0 0 3rem;
 }
 .mw2 {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   height: 100%;
 }
 h1 {
   font-size: 3rem;
   width: 100%;
-  margin-top: 250px;
+  margin-top: 160px;
+  font-weight: bold;
 }
 .nickform,
 .emailform {
@@ -137,7 +140,7 @@ h2 {
 .nicktitle,
 .emailtitle {
   margin-top: 30px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 .my-info {
@@ -178,12 +181,18 @@ h2 {
   justify-content: right;
 }
 .unregist input[type="submit"] {
-  width: 110px;
+  width: 80px;
   font-family: inherit;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding: 15px;
   background-color: var(--gray3);
   color: var(--white);
   border: none;
   border-radius: 0.5rem;
+}
+
+.unregist input[type="submit"]:hover,
+.modal input[type="submit"]:hover,
+.modal2 input[type="submit"]:hover{
+	background-color: var(--point3);
 }

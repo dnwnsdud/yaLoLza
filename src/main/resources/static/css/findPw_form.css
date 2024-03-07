@@ -8,7 +8,7 @@
 .findpw-title{
 	font-size:2.5rem;
 	text-align:center;
-	margin:15rem auto 2rem auto;
+	margin:20rem auto 2rem auto;
 }
 
 
@@ -35,4 +35,14 @@
 	background-color:var(--point3);
 	color:white;
 	border-radius:0.5rem;
+}
+
+.gologin{
+	text-align: right;
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+.gologin:hover{
+	color:var(--point3);
 }

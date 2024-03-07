@@ -114,6 +114,7 @@ public class SecurityConfig {
 						.loginPage("/yalolza.gg/user/login")
 						.usernameParameter("username")
 						.passwordParameter("password")
+						.defaultSuccessUrl("/yalolza.gg/")
 						.failureUrl("/yalolza.gg/user/login?error")
 						.permitAll()
 				)
@@ -131,7 +132,7 @@ public class SecurityConfig {
 				.logout(out->
 					out
 						.logoutRequestMatcher(new AntPathRequestMatcher("/yalolza.gg/user/logout"))
-						.logoutSuccessUrl("/yalolza.gg")
+						.logoutSuccessUrl("/yalolza.gg/")
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.permitAll()
@@ -152,7 +153,7 @@ public class SecurityConfig {
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         SimpleUrlAuthenticationSuccessHandler successHandler = new SimpleUrlAuthenticationSuccessHandler();
         successHandler.setUseReferer(true); // 성공 후 referer를 사용하여 이전 페이지로 이동
-        successHandler.setDefaultTargetUrl("/yalolza.gg"); // 기본적으로 이동할 페이지 설정
+        successHandler.setDefaultTargetUrl("/yalolza.gg/"); // 기본적으로 이동할 페이지 설정
         return successHandler;
     }
     
