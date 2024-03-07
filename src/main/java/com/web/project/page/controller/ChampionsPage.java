@@ -57,8 +57,8 @@ public class ChampionsPage {
 
 	 @Autowired
 	    private YoutubeService youtubeService;
-	
-	
+
+	 
 	private final JsonReader jsonReader;
 	private final CounterJsonReader counterJsonReader;
 	private final CounterDataService counterDataService;

@@ -32,17 +32,9 @@
             <span th:text="${'소환사 레벨'+summoner.summonerLevel}"></span>
           </p>
           <form th:action="@{'/yalolza.gg/summoners/' + ${summoner.summonername} + '-'+ ${summoner.tag}}" method="get">
-
-
             <input type="hidden" id="keyword" name="keyword">
-
             <button id="gangsin" type="submit">전적 갱신</button>
           </form>
-          <div class="user-tier">
-       <!--      <div>S2023 S2 티어</div>
-            <div>S2023 S1 티어</div>
-            <div>S2022 티어</div> -->
-          </div>
         </h1>
       </div>
       <div class="user-statistics"></div>
@@ -191,12 +183,12 @@
 					                     match.body.info.participants[summonermatchnum[i.index]].assists) /
 					                    match.body.info.participants[summonermatchnum[i.index]].deaths < 10}" th:text="${' ' + #numbers.formatDecimal((match.body.info.participants[summonermatchnum[i.index]].kills + 0.0 +
 					                     match.body.info.participants[summonermatchnum[i.index]].assists) /
-					                    match.body.info.participants[summonermatchnum[i.index]].deaths ,1, 2)}" />
+					                    match.body.info.participants[summonermatchnum[i.index]].deaths ,1, 2)}"></span>
                           <span th:unless="${(match.body.info.participants[summonermatchnum[i.index]].kills + 0.0 +
 					                     match.body.info.participants[summonermatchnum[i.index]].assists) /
 					                    match.body.info.participants[summonermatchnum[i.index]].deaths < 10}" th:text="${#numbers.formatDecimal((match.body.info.participants[summonermatchnum[i.index]].kills + 0.0 +
 					                     match.body.info.participants[summonermatchnum[i.index]].assists) /
-					                    match.body.info.participants[summonermatchnum[i.index]].deaths ,2, 2)}" />
+					                    match.body.info.participants[summonermatchnum[i.index]].deaths ,2, 2)}" ></span>
 
                         </div>
 
@@ -220,11 +212,7 @@
                 </div>
 
                 <div class="usergame-items">
-                  <li class="img-wrap1" th:each="itemIndex : ${#numbers.sequence(0, 6)}"th:id="${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]}">
-                    <img loading="lazy"
-                      th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]} + '.png'}"
-                      alt="" />
-                  </li>
+                  	<li class="img-wrap1" th:each="itemIndex : ${#numbers.sequence(0, 6)}"th:id="${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]}"><img loading="lazy" th:src="@{'/img/item/'+${match.body.info.participants[summonermatchnum[i.index]]['item' + itemIndex]} + '.png'}" alt="" />	</li>
                 </div>
               </ul>
               <ul class="usergame-ten" th:with="part = ${match.body.info}">
@@ -331,7 +319,7 @@
                         </p>
                       </li>
                       <li>
-                        <p>
+                        
                           <span th:text="${match.body.info.participants[z].kills + '/' + 
 	                               match.body.info.participants[z].deaths + '/' +
 	                               match.body.info.participants[z].assists
@@ -351,16 +339,16 @@
 					                     match.body.info.participants[z].assists) /
 					                    match.body.info.participants[z].deaths < 10}" th:text="${' ' + #numbers.formatDecimal((match.body.info.participants[z].kills + 0.0 +
 					                     match.body.info.participants[z].assists) /
-					                    match.body.info.participants[z].deaths ,1, 2)}" />
+					                    match.body.info.participants[z].deaths ,1, 2)}" ></span>
                           <span th:unless="${(match.body.info.participants[z].kills + 0.0 +
 					                     match.body.info.participants[z].assists) /
 					                    match.body.info.participants[z].deaths < 10}" th:text="${#numbers.formatDecimal((match.body.info.participants[z].kills + 0.0 +
 					                     match.body.info.participants[z].assists) /
-					                    match.body.info.participants[z].deaths ,2, 2)}" />
+					                    match.body.info.participants[z].deaths ,2, 2)}" /></span>
 
                         </div>
 
-                        </p>
+                 
                       </li>
                       <li>
                         <div th:with=" dmg =${match.body.info.participants[z].totalDamageDealtToChampions}">
@@ -565,7 +553,7 @@
                         </p>
                       </li>
                       <li>
-                        <p>
+        
                           <span th:text="${match.body.info.participants[nz].kills + '/' + 
 	                               match.body.info.participants[nz].deaths + '/' +
 	                               match.body.info.participants[nz].assists
@@ -585,16 +573,16 @@
 					                     match.body.info.participants[nz].assists) /
 					                    match.body.info.participants[nz].deaths < 10}" th:text="${' ' + #numbers.formatDecimal((match.body.info.participants[nz].kills + 0.0 +
 					                     match.body.info.participants[nz].assists) /
-					                    match.body.info.participants[nz].deaths ,1, 2)}" />
+					                    match.body.info.participants[nz].deaths ,1, 2)}" ></span>
                           <span th:unless="${(match.body.info.participants[nz].kills + 0.0 +
 					                     match.body.info.participants[nz].assists) /
 					                    match.body.info.participants[nz].deaths < 10}" th:text="${#numbers.formatDecimal((match.body.info.participants[nz].kills + 0.0 +
 					                     match.body.info.participants[nz].assists) /
-					                    match.body.info.participants[nz].deaths ,2, 2)}" />
+					                    match.body.info.participants[nz].deaths ,2, 2)}" ></span>
 
                         </div>
 
-                        </p>
+  
                       </li>
                       <li>
                         <div th:with=" ndmg =${match.body.info.participants[nz].totalDamageDealtToChampions}">
@@ -609,7 +597,7 @@
                             th:max="${match.body.maxdmged}"></progress>
                         </div>
                       </li>
-                      </li>
+            
                       <li>
                         <p>
                           <span th:text="${match.body.info.participants[nz].visionWardsBoughtInGame}">4(제어)</span><br />
@@ -659,18 +647,17 @@
                     </li>
                   </ul>
                 </section>
-                <section class="usergame-skillbuild"
-                  th:with="cham=${match.body.info.participants[summonermatchnum[i.index]].championName}">
+                <section class="usergame-skillbuild" th:with="cham=${match.body.info.participants[summonermatchnum[i.index]].championName}">
                   <ul class="userskill-qwe" th:with="stree=${matchsskilltree[i.index]}">
-                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[0]==1?Q:(stree[0]==2?W:E)}"><img loading="lazy"
+                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[0] == 1 ? 'Q' :(stree[1] == 2 ? 'W' : 'E')}"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[0] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                     <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
-                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[1]==1?Q:(stree[1]==2?W:E)}"><img loading="lazy"
+                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[1] == 1 ? 'Q' :(stree[1] == 2 ? 'W' : 'E')}"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[1] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                     <li style="color: var(--white); font-size: 1.2rem; padding: 0 10px 0 10px;">-></li>
-                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[2]==1?Q:(stree[2]==2?W:E)}"><img loading="lazy"
+                    <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/'+${stree[2] == 1 ? 'Q' : (stree[2] == 2 ? 'W' : 'E')}"><img loading="lazy"
                         th:src="@{'/img/spell/'+${keysChamSkill[cham == 'FiddleSticks' ?  'Fiddlesticks': cham ][stree[2] - 1]?.id}+ '.png'}"
                         alt="" /></li>
                   </ul>
@@ -719,11 +706,7 @@
                       </li>
                     </div>
                     <div class="skillbuild-grid">
-                      <li style="
-                          color: var(--white);
-                          font-size: 1.3rem;
-                          font-weight: bold;
-                        ">
+                      <li style="color: var(--white);font-size: 1.3rem;font-weight: bold;">
                         R
                       </li>
                       <li class="img-wrap3" th:id="${cham == 'FiddleSticks' ?  'Fiddlesticks': cham}+'/R'"><img loading="lazy"
@@ -731,8 +714,9 @@
                           alt="" /></li>
                       <li th:each="skill , s : ${matchsskill[i.index]}" th:text="${skill == 4 ? (s.index +1) : ''}">
                       </li>
-                    </div>
-
+                      </div>
+                      </ul>
+                    
                 </section>
                 <!-- 유저 룬 정보 -->
                 <section class="usergame-runeinfo">
@@ -897,394 +881,107 @@
   <footer th:replace="~{/footer :: footer}"></footer>
 </body>
 <script th:inline="javascript" defer>
-	document.querySelectorAll(".usergame-flex1 div").forEach(async (element)=>{
-		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".usergame-flex2 div").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-		if(element.id%100==0){
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		}else{
-			tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		}
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".usergame-id div").forEach(async (element)=>{
-		let target = await fetch("/info/championNameinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".usergame-items li").forEach(async (element)=>{
-		if (element.id==0) return;
-		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".vic-team li .champion >div").forEach(async (element)=>{
-		let target = await fetch("/info/championNameinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".vic-spell .spell >div").forEach(async (element)=>{
-		let target = await fetch("/info/summonerinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".vic-spell .rune >div").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-				if(element.id%100==0){
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		}else{
-			tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		}
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".victotal-items div").forEach(async (element)=>{
-		if (element.id==0) return;
-		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".usergame-objects li div").forEach(async (element)=>{
-		let target = await fetch("/info/objectinfo/"+element.id).then(data=>data.text());
 
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-  <script th:inline="javascript" defer>
-	document.querySelectorAll(".itembuild-group div div").forEach(async (element)=>{
-		if (element.id==0) return;
-		let target = await fetch("/info/itemdetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-	  <script th:inline="javascript" defer>
-	document.querySelectorAll(".skillbuild-grid .img-wrap3").forEach(async (element)=>{
-		let target = await fetch("/info/spell/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-		  <script th:inline="javascript" defer>
-	document.querySelectorAll(".userskill-qwe .img-wrap3").forEach(async (element)=>{
-		let target = await fetch("/info/spell/"+element.id).then(data=>data.text());	
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
-	
-	<script th:inline="javascript" defer>
-	document.querySelectorAll(".main-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-				if(element.id%100==0){
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		}else{
-			tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		}
-		
-	});
-	</script>
-	  <script th:inline="javascript" defer>
-	document.querySelectorAll(".sub-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/runedetailinfo/"+element.id).then(data=>data.text());
-				if(element.id%100==0){
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		}else{
-			tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "250px",
-			        padding:"10px"
-			      }
-			    );
-		}
-		
-	});
-	</script>
-	  <script th:inline="javascript" defer>
-	document.querySelectorAll(".fragments-rune ul li").forEach(async (element)=>{
-		let target = await fetch("/info/perkdetailinfo/"+element.id).then(data=>data.text());
-		tooltip(
-				  element,
-				  target,
-			      {
-			        gap: 20,
-			        backgroundColor: "var(--gray2)",
-			        borderRadius: "1rem",
-			      },
-			      {
-			        fontSize: "15px",
-			        color:"#48C4B7",
-			        width: "auto",
-			        padding:"10px"
-			      }
-			    );
-		
-	});
-	</script>
+function tooltipGenerator(
+  tooltipSelector,
+  fetchLink,
+  color = "#48C4B7",
+  width = "250px"
+) {
+  document.querySelectorAll(tooltipSelector).forEach(async (element) => {
+    if (element.id == 0) return;
+    let target = await fetch(fetchLink + element.id).then((data) =>
+      data.text()
+    );
+    tooltip(
+      element,
+      target,
+      {
+        gap: 20,
+        backgroundColor: "var(--gray2)",
+        borderRadius: "1rem",
+      },
+      {
+        fontSize: "15px",
+        color: color,
+        width: width,
+        padding: "10px",
+      }
+    );
+  });
+}
+let datas = [
+  {
+    tooltip: ".usergame-flex1 div",
+    link: "/info/summonerinfo/",
+  },
+  {
+    tooltip: ".usergame-flex2 div",
+    link: "/info/runedetailinfo/",
+  },
+  {
+    tooltip: ".usergame-id div",
+    link: "/info/championNameinfo/",
+  },
+  {
+    tooltip: ".usergame-items li",
+    link: "/info/itemdetailinfo/",
+  },
+  {
+    tooltip: ".vic-team li .champion >div",
+    link: "/info/championNameinfo/",
+  },
+  {
+    tooltip: ".vic-spell .spell >div",
+    link: "/info/summonerinfo/",
+  },
+  {
+    tooltip: ".vic-spell .rune >div",
+    link: "/info/runedetailinfo/",
+  },
+  {
+    tooltip: ".victotal-items div",
+    link: "/info/itemdetailinfo/",
+  },
+  {
+    tooltip: ".usergame-objects li div",
+    link: "/info/objectinfo/",
+  },
+  {
+    tooltip: ".itembuild-group div .img-wrap1",
+    link: "/info/itemdetailinfo/",
+  },
+  {
+    tooltip: ".skillbuild-grid .img-wrap3",
+    link: "/info/spell/",
+  },
+  {
+    tooltip: ".userskill-qwe .img-wrap3",
+    link: "/info/spell/",
+  },
+  {
+    tooltip: ".main-rune ul li",
+    link: "/info/runedetailinfo/",
+  },
+  {
+    tooltip: ".sub-rune ul .img-wrap",
+    link: "/info/runedetailinfo/",
+  },
+  {
+    tooltip: ".fragments-rune ul .img-wrap",
+    link: "/info/perkdetailinfo/",
+  },
+];
+
+for (let index in datas) {
+	setTimeout(()=>{
+		tooltipGenerator(
+			    datas[index].tooltip,
+			    datas[index].link,
+			    datas[index].color ? target.color : "#48C4B7",
+			 	datas[index].width ? target.width : "250px"
+			  );
+	}, index * 500);
+}
+</script>
 </html>
