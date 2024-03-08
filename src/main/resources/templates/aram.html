@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="/css/myrest.css" />
 <link rel="stylesheet" href="/css/common.css" />
 <link rel="stylesheet" href="/css/static.css" />
+
+<script src="/js/common.js" defer></script>
 </head>
 <body>
 	<header th:replace="~{/header :: header}"></header>
@@ -18,7 +20,6 @@
 				<h2>통계</h2>
 				<div class="user-tip">
 					<button>챔피언별 통계</button>
-					<button>티어별 통계</button>
 				</div>
 			</div>
 		</section>
@@ -31,7 +32,7 @@
 						<h3>큐 타입</h3>
 						<div>
 							<button onclick="updateUrl('queueType', 'RANKED')">솔로랭크</button>
-							<button onclick="updateUrl('queueType', 'ARAM')">칼바람</button>
+							<button style="background-color: var(--point3);" onclick="updateUrl('queueType', 'ARAM')">칼바람</button>
 						</div>
 					</li>
 					<li>

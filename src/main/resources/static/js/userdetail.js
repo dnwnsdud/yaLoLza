@@ -6,7 +6,6 @@ function champions() {
     let userleft = document.querySelector(".user-left");
     let userright = document.querySelector(".user-right");
 
-    totalchampionsbutton.style.backgroundColor = "var(--point7)";
     totalchampionsbutton.style.borderRadius = "0.5rem";
     totalchampions.style.display = "block";
     userleft.style.display = "none";
@@ -19,7 +18,6 @@ function allresult() {
     let userleft = document.querySelector(".user-left");
     let userright = document.querySelector(".user-right");
 
-    totalchampionsbutton.style.backgroundColor = "var(--point8)";
     totalchampionsbutton.style.borderRadius = "none";
     totalchampions.style.display = "none";
     userleft.style.display = "block";
@@ -113,7 +111,7 @@ async function morematch() {
     count += 5;
     text = text.replace(/[^\\]*<body>/i, "").replace(/<\/body>[^\\]*/i, "");
 
-    document.querySelector("div.user-right").innerHTML += text;
+    document.querySelector("div.donghuck").innerHTML += text;
     chartt();
     addEventListenersToButtons();
 }

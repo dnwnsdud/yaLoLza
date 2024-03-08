@@ -81,7 +81,7 @@ textarea{
     margin-bottom: 1rem;
 	background-color: var(--section);
 	border-radius: 7px;
-	color:white;
+	color:var(--font);
 }
 
 .wrtiebtn{

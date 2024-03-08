@@ -15,7 +15,6 @@
   <script src="/js/userdetail.js" defer></script>
   <script src="/js/champ_detail.js" defer></script>
   <script src="/js/position.js" defer></script>
-  <script src="/js/champ_detail.js" defer></script>
   <script src="/js/common.js" defer></script>
 
 </head>
@@ -48,7 +47,8 @@
       <!--솔로랭크-->
     </section>
     
-            <!--유저챔피언시작-->        
+            <!--유저챔피언시작--> 
+            <div class="mw">       
 <section class="user-totalchampions">
         <table>
           <thead>
@@ -67,7 +67,7 @@
           </thead>
           <tbody>
 			 <tr class="collapse" th:each="chamspers,ch : ${summonerchamsper}">
-              <td class="champface2" style="background-color: var(--point5)" th:text="${ch.index}">
+              <td class="champface2" style="background-color: var(--table)" th:text="${ch.index}">
                 1
               </td>
               <td class="champface">
@@ -101,6 +101,7 @@
           </tbody>
         </table>
       </section>
+      </div>
           <!--유저챔피언끝-->    
     <div class="mw">
       <div class="item-flex">
@@ -151,7 +152,7 @@
           </section>
         </div>
         <div class="user-right">
-
+	<div class="donghuck">	
           <!-- 최근 20전 -->
           <section th:replace="championmostfrag.html :: results-fragment(totalgame=${summonerall[7]}, wingame=${summonerall[0]}, winper=${summonerall[6]}, kill=${summonerall[1]}, death=${summonerall[2]}, assist=${summonerall[3]}, kda=${summonerall[4]}, killper=${summonerall[5]}, most=${summonermost})">
 		  </section>
@@ -901,12 +902,16 @@
             </div>
             <!--감싼것-->
           </div>
-         <!-- 메치 추가버튼 -->
-            <button id="summoenr-matchmore" onclick="morematch()">더 보기</button>      
-        </div>
-        
-      </div>
+			 
+        	</div>
+        	 <!-- 메치 추가버튼 -->
+            
+				<div id="summoenr-matchmore" onclick="morematch()">더 보기</div>  
+        	<!-- 지울거--> 
+        </div>	             
+      </div>  
     </div>
+       
   </div>
   <footer th:replace="~{/footer :: footer}"></footer>
 </body>

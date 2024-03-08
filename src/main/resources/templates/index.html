@@ -126,7 +126,7 @@
             th:text="${community.title.substring(0, 15)} + '...'"></a> <span
             th:if="${#lists.size(community.commentList)>0}"
             th:text="'[' + ${#lists.size(community.commentList)} + ']'"
-            class="comment_number" style="color: #aaa"></span></li>
+            class="comment_number" style="color: var(--font)"></span></li>
          <li th:if="${community.siteUser != null}"
             th:text="${community.siteUser.nickname}"></li>
          <li th:text="${#temporals.format(community.createDate, 'MM-dd')}"></li>
@@ -152,7 +152,7 @@
                      <li style="display: none;" th:text="${duo.id}"></li>
                      <li th:each="pos : ${duo.yourposition}" th:data-type="${pos}"
                         style="display: none;"></li>
-                     <li th:text="${duo.summonerName}"></li>
+                     <li style="color: var(--title);" th:text="${duo.summonerName}"></li>
 
                      <li>
                         <div id="positionBox" class="positionBox"
@@ -165,7 +165,7 @@
                            <div class="SupporterBox Box" th:case="SUPPORTER"></div>
                         </div>
                      </li>
-                     <li th:text="${duo.tier}"></li>
+                     <li style="color: var(--title);" th:text="${duo.tier}"></li>
                      <li>
 
                         <div th:if="${duo.yourposition.size() < 4}" class="yourBox"
@@ -208,7 +208,7 @@
                         </div>
                      </li>
 
-                     <li th:text="${duo.memo}"></li>
+                     <li style="color: var(--title);" th:text="${duo.memo}"></li>
 
                   </ul>
                </a>

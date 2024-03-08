@@ -16,7 +16,6 @@ body {
 .dec {
   padding: 30px 30px 0 30px;
   gap: 30px;
-  border-top: 1px solid var(--border);
 }
 .champ-main {
   width: 120px;
@@ -45,10 +44,19 @@ body {
 }
 #gangsin {
   margin-top: 2rem;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   border-radius: 0.5rem;
-  color: title;
-  background-color: var(--gray1);
+  color: var(--title);
+  background-color: var(--vic);
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transition: 0.3s;
+}
+#gangsin:hover{
+	background-color: var(--point3);
 }
 .user-tier {
   display: flex;
@@ -102,10 +110,14 @@ body {
   border-radius: 0.5rem;
 }
 .user-tip button:focus {
-  background-color: var(--point7);
+  background-color: var(--point3);
   border-radius: 0.5rem;
 }
-
+.totalchampionsbutton:hover{
+  font-weight: bold;
+  background-color: var(--point3);
+  border-radius: 0.5rem;
+}
 /* 유저 정보 끝*/
 /* 유저 랭크 시작 */
 .img-wrap2 {
@@ -179,14 +191,31 @@ body {
 .user-right {
   position: relative;
   width: 65%;
+  
 }
-.user-right button#summoenr-matchmore {
-  position: absolute;
-  bottom: -40px;
-  padding: 10px;
-  text-align: center;
-  width: 100%;
+/*더보기 버튼 시작*/
+#summoenr-matchmore{
+	width:100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 50px;
+	padding: 15px;
+	font-family: inherit;
+	font-size: 1.5rem;
+	background-color: var(--section);
+	color: var(--title);
+	border-radius: 0.5rem;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
+#summoenr-matchmore:hover{
+	background-color: var(--point3)}
+/*더보기 버튼 끝*/
 .user-ranktier,
 .user-most,
 .user-result,

@@ -60,7 +60,7 @@
 <div id="duo-title">
 <h1>DUO</h1>
 </div>
-   <div class="mw1">
+   <div class="mw1" style="height: 100vh;">
       <div class="container">
          <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -268,15 +268,15 @@
                      
                         <li th:if="${duo.mostChampions.size()>2}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins + duo.MostChampions[2].wins},
                                   rounds=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}">
-                               <span th:text="${wins * 100 / rounds} + '%'"></span>
+                               <span style="color: var(--title);" th:text="${wins * 100 / rounds} + '%'"></span>
                      	</li>
                         <li th:if="${duo.mostChampions.size()==2}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins},
                                   rounds=${duo.MostChampions[0].round + duo.MostChampions[1].round}">
-                               <span th:text="${wins * 100 / rounds} + '%'"></span>
+                               <span style="color: var(--title);" th:text="${wins * 100 / rounds} + '%'"></span>
                      	</li>
                         <li th:if="${duo.mostChampions.size()==1}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins},
                                   rounds=${duo.MostChampions[0].round}">
-                               <span th:text="${wins * 100 / rounds} + '%'"></span>
+                               <span style="color: var(--title);" th:text="${wins * 100 / rounds} + '%'"></span>
                      	</li>
 		
 
@@ -285,21 +285,21 @@
                          assist=${duo.MostChampions[0].assists + duo.MostChampions[1].assists + duo.MostChampions[2].assists},
                          round=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}
                          ">
-                         <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
+                         <span style="color: var(--title);" th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
                                        </li>
                      <li th:if="${duo.mostChampions.size()==2}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="kill=${duo.MostChampions[0].kills + duo.MostChampions[1].kills},
                          death=${duo.MostChampions[0].deaths + duo.MostChampions[1].deaths},
                          assist=${duo.MostChampions[0].assists + duo.MostChampions[1].assists},
                          round=${duo.MostChampions[0].round + duo.MostChampions[1].round}
                          ">
-                         <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
+                         <span style="color: var(--title);" th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
                                        </li>
                      <li th:if="${duo.mostChampions.size()==1}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="kill=${duo.MostChampions[0].kills},
                          death=${duo.MostChampions[0].deaths},
                          assist=${duo.MostChampions[0].assists},
                          round=${duo.MostChampions[0].round}
                          ">
-                         <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
+                         <span style="color: var(--title);" th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
                                        </li>
                                        
 

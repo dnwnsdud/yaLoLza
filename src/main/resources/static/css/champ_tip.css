@@ -7,3 +7,6 @@
 	grid-template-columns:repeat(3, 1fr);
 	gap:15px;
 }
+.champ-video{
+	border: 1px solid white;
+}

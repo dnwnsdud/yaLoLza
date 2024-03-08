@@ -1,9 +1,12 @@
+body{
+	background-color: var(--background);
+}
 .staticContainer{
 	max-width: 1320px;
 	margin:0 auto;
 }
 .con1 {
-  background-color: var(--point8);
+  background-color: var(--section);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -12,11 +15,11 @@
   margin: 0 auto;
   padding: 30px 30px 0 30px;
   gap: 30px;
-  border-top: 1px solid var(--gray1);
 }
 .dec h2 {
   padding: 0 20px 20px 40px;
   font-size: 3rem;
+  color: var(--title);
 }
 .user-tip {
   max-width: 1320px;
@@ -26,9 +29,9 @@
   gap: 50px;
 }
 .user-tip button {
-  background-color: var(--point8);
+  background-color: var(--section);
   font-family: inherit;
-  color: var(--white);
+  color: var(--title);
   font-size: 2rem;
   padding: 15px 40px 15px 40px;
   border: none;
@@ -38,16 +41,12 @@
 .user-tip button:hover {
   font-weight: bold;
 }
-.user-tip button:focus {
-  background-color: var(--point7);
-  border-radius: 0.5rem;
-}
 
 /* 챔피언 통계 버튼 시작*/
 #champbtn,
 #champstatic_rank,
 #tierstatic_ratio {
-  background-color: var(--point8);
+  background-color: var(--section);
   margin-top: 10px;
   border-radius: 1rem;
   width: 100%;
@@ -56,8 +55,8 @@
 
 #champbtn ul li {
   display: flex;
-  color: var(--gray3);
-  border-bottom: 1px dotted var(--point15);
+  color: var(--font);
+  border-bottom: 1px dotted var(--table);
   align-items: center;
 }
 #champbtn ul li h3 {
@@ -72,8 +71,8 @@
 #champbtn ul li button {
   padding: 10px 15px 10px 15px;
   border-radius: 1rem;
-  background-color: var(--point15);
-  color: var(--white);
+  background-color: var(--vic);
+  color: var(--title);
   font-family: inherit;
   border: none;
   cursor: pointer;
@@ -85,9 +84,9 @@
   display: grid;
   grid-template-columns: 1fr 3fr 2fr 1fr 2fr 2fr 2fr 1fr 1fr;
   padding: 10px 0 10px 0;
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.3rem;
-  border-bottom: 1px dotted var(--point15);
+  border-bottom: 1px dotted var(--table);
 }
 #champstatic_rank ul li {
   display: flex;
@@ -114,7 +113,7 @@
 .filler1 {
   height: 100%;
   width: 50%;
-  background-color: var(--point17);
+  background-color: var(--point10);
 }
 /* 챔피언 통계 순위 끝 */
 /* 티어별 통계 시작 */
