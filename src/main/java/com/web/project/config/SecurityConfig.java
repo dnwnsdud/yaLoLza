@@ -102,7 +102,9 @@ public class SecurityConfig {
 							"/json/**",
 							"/datas/**",
 							"/info/**",
-							"/monitoring/**"
+							"/monitoring/**",
+							"/error/**",
+							"/error"
 
 						).permitAll()
 						.requestMatchers(
