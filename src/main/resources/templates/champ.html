@@ -133,7 +133,7 @@
 						<td th:text="${champion.stats.banrate} + '%'"></td>
 						<td>
 							<div class="img-wrap" th:each="img : ${counterChampions.get(champion.getChampionName())}">
-								<a href=""><img th:src="${'/img/champion/' + img.championName + '.png'}" alt="" /></a>
+								<a th:href="@{/yalolza.gg/champions/{championName}/counter/{position}(championName=${champion.championName}, position=${position}, champion=${img.championName})}"><img th:src="${'/img/champion/' + img.championName + '.png'}" alt="" /></a>
 							</div>
 						</td>
 					</tr>

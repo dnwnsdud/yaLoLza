@@ -28,7 +28,7 @@
             <h1 class="champhead">
                <strong style="font-size: 3rem;" th:text="${champion.name}"></strong><!--아무도 없음-->
                <span style="font-size: 2rem" th:text="${position}">빌드 - 포지션</span><br /> <span
-                  style="font-size: 1.3rem" class="tier">1티어</span>
+                  style="font-size: 1.3rem" class="tier" th:text=${champtier}>1티어</span>
                <div class="champ-skill">
 
 						<div class="champ-passivetooltip">
@@ -607,9 +607,11 @@
 								<div class="counter-champ">
 									<div th:each="champion : ${bottomChampions}">
 										<div class="counter-wrap">
+											<a th:href="@{/yalolza.gg/champions/{championName}/counter/{position}(championName=${selectedChampionName}, position=${position}, champion=${champion.championName})}">
 											<img
 												th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
 												alt="Champion Icon" />
+											</a>
 										</div>
 										<p class="counter-ratio"
 											th:text="${champion.stats.winRate + '%'}">승률</p>
@@ -625,9 +627,11 @@
 								<div class="counter-champ">
 									<div th:each="champion : ${topChampions}">
 										<div class="counter-wrap">
+											<a th:href="@{/yalolza.gg/champions/{championName}/counter/{position}(championName=${selectedChampionName}, position=${position}, champion=${champion.championName})}">
 											<img
 												th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
 												alt="Champion Icon" />
+											</a>
 										</div>
 										<p class="counter-ratio1"
 											th:text="${champion.stats.winRate + '%'}">승률</p>
