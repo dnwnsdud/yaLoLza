@@ -185,13 +185,11 @@ import com.web.project.system.SummonerData;
    			  "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"+summonername+"/"+tag+"?api_key="+apiKey;
       
 	   //잘못된 서머너 입력시 트라이케치로 피이지 이동
-        System.out.println("완료1");
 	      try {
 	    	    summoner =  restTemplate.getForEntity(sommenerurl, SummonerResponse.class);
 		} catch (Exception e) {
 		  return "xpage";
 		} 
-	      System.out.println("완료2");
   	    	puuid = summoner.getBody().getPuuid();
 	  	    //summonerV5 정보 추출
 		  	puuidurl = 
@@ -242,7 +240,6 @@ import com.web.project.system.SummonerData;
 		  		    String[] matchids =match5s.getBody();
 	   
 
-		  		  System.out.println("이게리스트다" + Arrays.toString(matchids));
 		  		    //match-v5로 각 매치 정보 추출		    
 		  		    //1)url추출
 		  		    List<String> matchsssList = new ArrayList<>();
@@ -260,17 +257,14 @@ import com.web.project.system.SummonerData;
 		  		    }
   
 		  		   //2)메치인포 추출  이게 좀 걸린다
-		  		    System.out.println(matchsssList.size());
 		  		    for (int i = 0; i < matchsssList.size(); i++) {
 	 	   		    	
-		  		    	System.out.println("시작 터지나 " + i);
 		  			    matchdata2 = restTemplate.getForEntity(matchsssList.get(i), Match.class);
 		  			    matchdata2.getBody().updateCaludate();
 		  			    matchdata2.getBody().teammaxdfs();
 		  			    matchdata2.getBody().teammaxdmg();
                          
 		  			    //메치아이디 큐타입아이디 저장
-		  			  System.out.println("큐타입아이디");
 			  			  summonermatchs = Summonermatchs.builder()
 			  					  .summoner(newSummoner)
 				  				  .matchnum(matchids[i])
@@ -298,9 +292,7 @@ import com.web.project.system.SummonerData;
 				  			    String  matchname = matchParticipants.get(z).getSummonerName().toLowerCase();
 				  			    String  matchname2 = matchParticipants.get(z).getRiotIdGameName().toLowerCase();	
 				  			       if(matchname.equals(summonername.toLowerCase()) || matchname2.equals(summonername.toLowerCase())) {
-				  			     	   System.out.println("여기안들어와있나봐");
 				  			    	 summonerGameNumber.add(z);
-				  			    	System.out.println("사이즈" +summonerGameNumber.size());
 	                                //매치에서 소환사 정보 넣어주기
 				  			    	  long totalteamkills =
 				  			    			  matchdata2.getBody().getInfo().getParticipants().get(z).getTeamId() == 100 ? 
@@ -337,7 +329,6 @@ import com.web.project.system.SummonerData;
 			  			}  
 
 			  		  
-             System.out.println("서머너사이즈"+summonermost.size());
 		  		  //모스트추출
 		  		    
 		  		 //일단 전체 
@@ -495,8 +486,7 @@ import com.web.project.system.SummonerData;
                  summonerskillluptree.add(skilltree);
 	      }
      
-   System.out.println("리스트야" +summonerskillluptree);
-   System.out.println("리스트 개수야" +summonerskillluptree.size());
+
 	 	  		  
 		  		 Summoner  collectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
 		  		 List<Object[]> summonerchamsper =summonerchampionsRepository.findAvgStatsAndCountByChampionGroupByChampion(collectsummoner.getId());
@@ -510,7 +500,6 @@ import com.web.project.system.SummonerData;
 		  		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
 		  		List<Runes> runeslist = RuneData.runeslist();
 		  		List<Perk> perklist = RuneData.perklist();
-		  		System.out.println("이제넣을꺼야");
 /////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
@@ -598,7 +587,6 @@ import com.web.project.system.SummonerData;
 	  			    			  matchdata2.getBody().getInfo().getParticipants().get(z).getTeamId() == 100 ? 
 	  			    			  matchdata2.getBody().getInfo().getTeams().get(0).getObjectives().getChampion().getKills()	:
 	  			    			  matchdata2.getBody().getInfo().getTeams().get(1).getObjectives().getChampion().getKills();
-	  			    	  System.out.println(totalteamkills);
 	  					    Summonerchampions summonerchampions = Summonerchampions.builder()
 	  					        // Summoner를 설정 디비는 모스트를위해
 	  					  		.summoner(collectsummoner)
@@ -825,7 +813,6 @@ import com.web.project.system.SummonerData;
 /////////////////////////////////////////////////////////////////////////////////////////////////////
       } 
     	  else {
-    		  System.out.println("키워드로왔어");
     		  //키워드 유무는 갱신버튼의 유무
     	        // 키워드가 있는 경우의 처리
     		  Summoner  collectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
@@ -836,7 +823,6 @@ import com.web.project.system.SummonerData;
     		  collectsummoner.setLeaguePoints(leaguePoints);
     		  collectsummoner.setWins(summonerwins);
     		  collectsummoner.setLosses(summonerlosses);
-    		  System.out.println("어디서 터진거지 1");
  
 	           summonerRepository.save(collectsummoner);  
 	            tierlog = Summonertierlog.builder()
@@ -846,7 +832,6 @@ import com.web.project.system.SummonerData;
 	            		.build(); 
 	             summonertierlogRepository.save(tierlog);
 	             
-	             System.out.println("어디서 터진거지 2");
 		  		   //puuid로 최근 매치추출   
 		  		    match5url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid;
 		  		    String finalmatch5url = match5url + "/ids?start=0&count="+matchnum+"&api_key=" + apiKey;
@@ -869,10 +854,8 @@ import com.web.project.system.SummonerData;
 				     List<String> matchsssList = new ArrayList<>();
 				     //타임스탬프
 				     List<String> matchstimestamp = new ArrayList<>();
-				     System.out.println("어디서 터진거지 3");
 				     if(resultMatchList.size() == 0) {
 				    	 //걸러진 매치기록이 하나도 없을때 그냥디비가지고온다
-				  		    System.out.println("없으니 그냥할게");
 				  		    for (int i = 0; i < dbmatchnumList.size(); i++) {
 				  		      String matchinfoUrl = "https://asia.api.riotgames.com/lol/match/v5/matches/" + dbmatchnumList.get(i) + "/?api_key=" + apiKey;
 				  		      matchsssList.add(matchinfoUrl);
@@ -886,7 +869,6 @@ import com.web.project.system.SummonerData;
 				  		    }				  		    
 				     }
                      else if(resultMatchList.size() > 0) {
-                    	 System.out.println("있었어?");
 		    		  		    for (int i = 0; i < matchids.length; i++) {
 		    		  		      String matchinfoUrl = "https://asia.api.riotgames.com/lol/match/v5/matches/" + matchids[i] + "/?api_key=" + apiKey;
 		    		  		      matchsssList.add(matchinfoUrl);
@@ -894,7 +876,6 @@ import com.web.project.system.SummonerData;
     		   		    
     		  		  
 		    		  		    //1)mattime 큐id이용  타임스탬프 추출
-		    		  		  System.out.println("있었어?12");
 		    		 for (int i = 0; i < matchids.length; i++) {
 		    		  		      String matchtimefoUrl = "https://asia.api.riotgames.com/lol/match/v5/matches/" + matchids[i] +"/timeline"+ "?api_key=" + apiKey;
 		    		  		    matchstimestamp.add(matchtimefoUrl);
@@ -908,7 +889,6 @@ import com.web.project.system.SummonerData;
 						  				  .build();
 					  			      summonermatchsRepository.save(summonermatchs); 
 							    }
-						      System.out.println("있었어?34");
 					      //걸러진 매치 기록이 있을때
 				  		    //1) 디비 저장할 리스트 충 추출matchurl추출	
 						      List<String> fordbmatchs= new ArrayList<>();
@@ -918,7 +898,6 @@ import com.web.project.system.SummonerData;
 				  		    }
 				  		     
 				  		  for (int i = 0; i < fordbmatchs.size(); i++) {
-				  			System.out.println("있었어?232323");
 				  			       matchdata2 = restTemplate.getForEntity(matchsssList.get(i), Match.class);
 				  			       matchParticipants = matchdata2.getBody().getInfo().getParticipants();
 				  	  			    matchdata2.getBody().updateCaludate(); 

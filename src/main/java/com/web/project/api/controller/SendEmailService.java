@@ -56,14 +56,12 @@ public class SendEmailService {
 
     // 메일 보내기
     public void mailSend (MailDTO mailDTO){
-        System.out.println("이메일 전송함");
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(mailDTO.getAddress());
         message.setSubject(SendEmailService.FROM_ADDRESS);
         message.setText(mailDTO.getMessage());
         message.setFrom("0503kkyymm@naver.com");
         message.setReplyTo("0503kkyymm@naver.com");
-        System.out.println("message" + message);
         mailSender.send(message);
     }
 
