@@ -41,7 +41,6 @@ public class ItemData {
 	public static Items items () {
 		String url3 = "https://ddragon.leagueoflegends.com/cdn/14.3.1/data/ko_KR/item.json";
 		JSONObject ite1 = Ajax.JsonTObj(Ajax.GETO(url3));
-		System.out.println("itemjson");
 		Items items = new Items();
 		items.setType(ite1.getString("type"));
 		items.setVersion(ite1.getString("version"));
@@ -68,7 +67,6 @@ public class ItemData {
 			JSONObject ite3 = ite2.getJSONObject(keylist.get(i));
 			if(!ite3.has("into")) list.add(keylist.get(i));
 		}
-		System.out.println(list);
 		return list;
 		
 	}

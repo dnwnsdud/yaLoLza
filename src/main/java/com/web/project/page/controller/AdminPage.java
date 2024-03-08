@@ -47,7 +47,6 @@ public class AdminPage {
 
 	@GetMapping("/dashboard")
 	public String adminpage(@AuthenticationPrincipal SiteUser user, Model model) {
-		System.out.println("관리자 페이지 들어간다");
 
 		model.addAttribute("user", user);
 

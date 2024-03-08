@@ -82,7 +82,6 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
           List<Long> a =new ArrayList<Long>();
           inputList.forEach(s->{
              if(s!=4) {
-                System.out.println(s);
                 a.add(s);
              }
           });
@@ -152,7 +151,6 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
         // 오류 발생 시 "xpage"로 리다이렉트
            throw new Exception("소환사 조회를 못해요");
      }
-       System.out.println("여기까진했으");
        puuid = summoner.getBody().getPuuid(); 
        
        matchurl = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid;
@@ -275,14 +273,12 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
                       .reversed()
                       .thenComparing(Comparator.<Object[], Double>comparing(statistics -> Double.valueOf(statistics[7].toString())).reversed())  // 횟수가 같으면 킬관여 평균을 기준으로 내림차순 정렬
               ); 
-               System.out.println("여기까지도 마지막");
           
           
        MostTop3 = championStatisticsss.stream().limit(3).collect(Collectors.toList());    
           
           
      }
-        System.out.println("여기는어쩔꺼여");    
    //이름 횟수  승리합  킬 데스 어시 kda 킬관여
    return  MostTop3;   
         

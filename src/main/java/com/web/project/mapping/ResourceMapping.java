@@ -18,7 +18,6 @@ initParams = {
 public class ResourceMapping extends HttpServlet{
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-System.out.println(req.getPathInfo());  //요청한 사이트 출력
 String info = req.getPathInfo();
 String token= info.substring(info.lastIndexOf('.')+1); 
 if(token.equalsIgnoreCase("json")) {  //js파일들 가져오기

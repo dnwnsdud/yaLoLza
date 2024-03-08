@@ -54,7 +54,6 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 			OAuth2User user = super.loadUser(userRequest);
 			String provider = userRequest.getClientRegistration().getRegistrationId();
 			
-			System.out.println(provider);
 			
 			SiteUser dto = new SiteUser();
 			
@@ -69,9 +68,7 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 				dto.setProvider(provider);
 				SiteUser find = userRepository.findByUsername(dto.getUsername());
 				if(find !=null) return find;			
-//				for(String key : response.keySet()) {
-//					System.out.printf("%s = %s\n", key, response.get(key));
-//				}
+
 				
 				userRepository.save(dto);
 			}
@@ -85,9 +82,7 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 				SiteUser find = userRepository.findByUsername(dto.getUsername());
 				if(find !=null) return find;		
 					for(String key : response.keySet()) {
-						System.out.printf("%s = %s\n", key, response.get(key));
 					}
-//				dto.AddAuth("USER");
 				dto.setAutho(UserRole.USER);
 				dto.setProvider(provider);
 				userRepository.save(dto);			
@@ -102,19 +97,14 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 				SiteUser find = userRepository.findByUsername(dto.getUsername());
 				if(find !=null) return find;			
 					for(String key : response.keySet()) {
-						System.out.printf("%s = %s\n", key, response.get(key));
 					}
-//				dto.AddAuth("USER");
 				dto.setAutho(UserRole.USER);
 				dto.setProvider(provider);
 				userRepository.save(dto);
 			}
 			else throw new OAuth2AuthenticationException("Not Found");
 			
-//			Map<String, Object> attrs = user.getAttributes();
-//			for(String key : attrs.keySet()) {
-//				System.out.printf("%s = %s\n", key, attrs.get(key).toString());
-//			}
+
 			return dto;
 		}
 
@@ -122,7 +112,6 @@ public class UserService extends DefaultOAuth2UserService implements UserDetails
 			return userRepository.findAllByOrderByIdDesc();
 		}
 
-		//닉네임 수정?
 		public boolean changeNickname(String newNickname) {
 			 String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
 		 
