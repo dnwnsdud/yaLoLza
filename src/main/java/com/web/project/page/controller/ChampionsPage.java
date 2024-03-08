@@ -285,9 +285,7 @@ public class ChampionsPage {
 			//2개만 반환함
 			List<ItemStatistics> firstItem =StatisticItemSkill.caculateFirstItems(firstItemData);
 
-			if (firstItem == null) {				
-				return "error";
-			}
+			
 			model.addAttribute("firstItem", firstItem.get(0).getItem());
 			model.addAttribute("firstItemPickCount", firstItem.get(0).getPickCount());
 			model.addAttribute("firstItemPickRate", 
@@ -352,7 +350,9 @@ public class ChampionsPage {
 					(double)Math.round((double)firstSkill.get(0).getPickCount()/(double)firstSkill.get(0).getTotalCount()*10000)/100);
 			
 			
-			
+			System.out.println(firstSkill.get(0).getSkillList()[0]);
+			System.out.println(firstSkill.get(0).getSkillList()[1]);
+			System.out.println(firstSkill.get(0).getSkillList()[2]);
 			
 			
 			link = "/skill";

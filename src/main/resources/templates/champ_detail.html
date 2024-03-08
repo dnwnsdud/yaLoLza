@@ -285,17 +285,14 @@
 						<ul>
 							<li>
 								<div class="champ-skillbuild">
-									<div>
-										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[0]-1].id}+'.png'}"
-								alt="스펠 이미지" />
+									<div class="champ-spelltooltip" th:id="${firstSkill.get(0).getSkillList()[0] == 1 ? 'Q' : (firstSkill.get(0).getSkillList()[0] == 2 ? 'W' : 'E')}">
+   										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[0]-1].id}+'.png'}" alt="스펠 이미지" />
 									</div>
-									<div>
-										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[1]-1].id}+'.png'}"
-								alt="스펠 이미지" />
+									<div class="champ-spelltooltip" th:id="${firstSkill.get(0).getSkillList()[1] == 1 ? 'Q' : (firstSkill.get(0).getSkillList()[1] == 2 ? 'W' : 'E')}">
+   										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[1]-1].id}+'.png'}" alt="스펠 이미지" />
 									</div>
-									<div>
-										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[2]-1].id}+'.png'}"
-								alt="스펠 이미지" />
+									<div class="champ-spelltooltip" th:id="${firstSkill.get(0).getSkillList()[2] == 1 ? 'Q' : (firstSkill.get(0).getSkillList()[2] == 2 ? 'W' : 'E')}">
+   										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[2]-1].id}+'.png'}" alt="스펠 이미지" />
 									</div>
 								</div>
 								
