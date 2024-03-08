@@ -91,10 +91,10 @@
               <td class="champface1">
                 <strong style="color: var(--point3)" th:text="${chamspers[1]}">4.36</strong><br />
               </td>
-              <td class="champface2" th:text="${chamspers[7]}">12314</td>
+              <td class="champface2" th:text="${#numbers.formatDecimal(chamspers[7],1,1) }">12314</td>
               <td class="champface2" th:text="${chamspers[2]}">123.5(8.5)</td>
-              <td class="champface2" th:text="${chamspers[8]}">7.5</td>
-              <td class="champface2" th:text="${chamspers[9]}">4.3</td>
+              <td class="champface2" th:text="${#numbers.formatDecimal(chamspers[8],1,1)}">7.5</td>
+              <td class="champface2" th:text="${#numbers.formatDecimal(chamspers[9],1,1)}">4.3</td>
               <td class="champface2" th:text="${chamspers[3]}">25,123</td>
               <td class="champface2" th:text="${chamspers[4]}">29.123</td>
             </tr>
@@ -113,7 +113,7 @@
               <li class="ranktier2">
                 <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/tier/'+${summoner.recenttier} + '.png'}" alt="" /></div>
                 <div>
-                  <h3 th:text="${summoner.recenttier}"></h3>
+                 <h3 th:text="${summoner.recenttier +' ' +summoner.rank}"></h3>
                   <br />
                   <span th:text="${summoner.leaguePoints}+'LP'"></span>
                 </div>

@@ -57,6 +57,7 @@ public class Summoner {
      private Long leaguePoints;
      private Long wins;
      private Long losses;
+     private String rank;
 	
 	 @OneToMany(cascade = CascadeType.ALL,mappedBy = "summoner")
 	 private List<Summonertierlog> tierlog;
