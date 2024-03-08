@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.web.project.api.controller.CommentService;
 import com.web.project.api.controller.CommunityService;
 import com.web.project.api.controller.UserService;
 import com.web.project.dao.CommunityRepository;
+import com.web.project.dto.Comment;
 import com.web.project.dto.Community;
 import com.web.project.dto.CommunityForm;
 import com.web.project.dto.SiteUser;
@@ -40,6 +42,7 @@ public class CommunityPage {
 	 private final CommunityRepository communityRepository;
 	    private final CommunityService communityService;
 	    private final UserService userService;
+	    private final CommentService commentService;
 
 	    @GetMapping("/")
 	    public String first() {
@@ -95,10 +98,13 @@ public class CommunityPage {
 	    }
 
 	    @GetMapping(value="/detail/{id}")
-	    public String detail(Model model, @PathVariable("id") Integer id) {
+	    public String detail(Model model, @PathVariable("id") Integer id,
+	    					@RequestParam(defaultValue = "0") int page) {
 
 	        Community community = this.communityService.getCommu(id);
+	        Page<Comment> paging = commentService.getCommentPage(community, page);
 	        model.addAttribute("community", community);
+	        model.addAttribute("paging", paging);
 	    	new Connect("total","talk.yalolza.gg", "community", "detail");
 	        return "commu_detail";
 	    }

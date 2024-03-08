@@ -44,24 +44,55 @@
 
     <form th:action="@{|/talk.yalolza.gg/comment/create/${community.id}|}" method="post" class="comment_form">
         <textarea name="content" id="content" rows="10" class="comment"></textarea>
+       	<div class="comment_box">
         <input type="submit" value="등록" class="comment_input">
+        </div>
     </form>
     <div class="commentlist">
-        <ul th:each="comment : ${community.commentList}">
+        <ul th:each="comment : ${paging}">
             <li>
                 <div  class="commentname" th:if="${comment.author}!=null" th:text="${comment.author.nickname}" ></div>
                 <div th:text="${comment.content}" class="comment_content"></div>
                <div class="commentdate_delete">
                 	<div th:text="${#temporals.format(comment.createDate, 'yyyy-MM-dd')}" class="comment_date"></div>
+                	<div class="comment-deletebox">
                 	<a href="javascript:void(0);" class="delete" th:data-uri="@{|/talk.yalolza.gg/comment/delete/${comment.id}|}"
                    	sec:authorize="isAuthenticated()"
                    	th:if="${comment.author!= null and #authentication.getName() == comment.author.username}"
-                   	th:text="삭제" id="commentdelete"></a>
+                   	th:text="삭제" id="commentdelete">
+                   	</a>	
+                   	</div>
             	</div>
             </li>
         </ul>
     </div>
+    
+    
+    
+
 </div>
+   <div th:if="${!paging.isEmpty() && paging.totalPages > 1}" class="paging">
+    <ul>
+        <li th:if="${paging.number != 0}">
+            <a th:href="@{|?page=${paging.number-1}|}">
+                <span>이전</span>
+            </a>
+        </li>
+        <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+            th:if="${page >= paging.number-5 and page <= paging.number+5}"  >
+            <a th:text="${page+1}" th:href="@{|?page=${page}|}"> </a>
+        </li>
+        <li th:if="${paging.number < paging.totalPages - 1}">
+            <a th:href="@{|?page=${paging.number+1}|}">
+                <span>다음</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+
           <footer th:replace="~{/footer :: footer}"></footer>
 </body>
 
