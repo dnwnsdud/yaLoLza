@@ -111,7 +111,7 @@
             <h2>솔로랭크</h2>
             <ul>
               <li class="ranktier2">
-                <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/tier/'+${summoner.recenttier} + '.jpg'}" alt="" /></div>
+                <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/tier/'+${summoner.recenttier} + '.png'}" alt="" /></div>
                 <div>
                   <h3 th:text="${summoner.recenttier}"></h3>
                   <br />
@@ -915,108 +915,4 @@
   </div>
   <footer th:replace="~{/footer :: footer}"></footer>
 </body>
-<script th:inline="javascript" defer>
-
-
-/* function tooltipGenerator(
-  tooltipSelector,
-  fetchLink,
-  color = "#fff",
-  width = "250px"
-) {
-  document.querySelectorAll(tooltipSelector).forEach(async (element) => {
-    if (element.id == 0) return;
-    let target = await fetch(fetchLink + element.id).then((data) =>
-      data.text()
-    );
-    tooltip(
-      element,
-      target,
-      {
-        gap: 20,
-        backgroundColor: "rgba(16,19,28,0.8)",
-        borderRadius: "1rem",
-      },
-      {
-        fontSize: "15px",
-        color: color,
-        width: width,
-        padding: "10px",
-      }
-    );
-  });
-}
-let datas = [
-  {
-    tooltip: ".usergame-flex1 div",
-    link: "/info/summonerinfo/",
-  },
-  {
-    tooltip: ".usergame-flex2 div",
-    link: "/info/runedetailinfo/",
-  },
-  {
-    tooltip: ".usergame-id div",
-    link: "/info/championNameinfo/",
-  },
-  {
-    tooltip: ".usergame-items li",
-    link: "/info/itemdetailinfo/",
-  },
-  {
-    tooltip: ".vic-team li .champion >div",
-    link: "/info/championNameinfo/",
-  },
-  {
-    tooltip: ".vic-spell .spell >div",
-    link: "/info/summonerinfo/",
-  },
-  {
-    tooltip: ".vic-spell .rune >div",
-    link: "/info/runedetailinfo/",
-  },
-  {
-    tooltip: ".victotal-items div",
-    link: "/info/itemdetailinfo/",
-  },
-  {
-    tooltip: ".usergame-objects li div",
-    link: "/info/objectinfo/",
-  },
-  {
-    tooltip: ".itembuild-group div .img-wrap1",
-    link: "/info/itemdetailinfo/",
-  },
-  {
-    tooltip: ".skillbuild-grid .img-wrap3",
-    link: "/info/spell/",
-  },
-  {
-    tooltip: ".userskill-qwe .img-wrap3",
-    link: "/info/spell/",
-  },
-  {
-    tooltip: ".main-rune ul li",
-    link: "/info/runedetailinfo/",
-  },
-  {
-    tooltip: ".sub-rune ul .img-wrap",
-    link: "/info/runedetailinfo/",
-  },
-  {
-    tooltip: ".fragments-rune ul .img-wrap",
-    link: "/info/perkdetailinfo/",
-  },
-];
-for (let index in datas) {
-	setTimeout(()=>{
-		tooltipGenerator(
-			    datas[index].tooltip,
-			    datas[index].link,
-			    datas[index].color ? target.color : "#fff",
-			 	datas[index].width ? target.width : "250px"
-			  );
-	}, index * 500);
-} */
-</script>
 </html>
