@@ -414,16 +414,16 @@
 						<ul>
 							<li>
 								<div class="item-recommendation">
-									<div class="recommendation">
-										<div>
+									<div class="item-build">
+										<div th:id="${ItemStatistic.get(0).getItemList()[0]}" class="item-buildstart">
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(0).getItemList()[0]}+'.png'}"
 												alt="아이템 이미지">
 										</div>
-										<div>
+										<div th:id="${ItemStatistic.get(0).getItemList()[1]}" class="item-buildstart">
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(0).getItemList()[1]}+'.png'}"
 												alt="아이템 이미지">
 										</div>
-										<div>
+										<div th:id="${ItemStatistic.get(0).getItemList()[2]}" class="item-buildstart">
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(0).getItemList()[2]}+'.png'}"
 												alt="아이템 이미지">
 										</div>
