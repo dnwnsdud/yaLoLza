@@ -64,8 +64,8 @@ public class SecurityConfig {
 					auth
 						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 						.requestMatchers(
-							"/admin",
-							"/admin/**",
+//							"/admin",
+//							"/admin/**",
 							"/static",
 							"/yalolza.gg",
 							"/yalolza.gg/static",
@@ -106,7 +106,7 @@ public class SecurityConfig {
 
 						).permitAll()
 						.requestMatchers(
-								"/user/mypage"
+								"/yalolza.gg/user/mypage"
 								).hasAnyRole("USER", "ADMIN")
 						.requestMatchers(
 								"/admin/dashboard"
