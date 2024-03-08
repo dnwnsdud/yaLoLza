@@ -327,7 +327,7 @@
 					</section>
 					<!-- 아이템 빌드 -->
 					<section class="con4">
-						<h2>  아이템 빌드</h2>
+						<h2>아이템 빌드</h2>
 						<ul>
 							<li>
 								<h3>시작 아이템</h3>
@@ -412,7 +412,7 @@
 								</div> -->
 							</li>
 						</ul>
-						<h3>가렌 추천 빌드</h3>
+						<h3>추천 빌드</h3>
 						<!--이지수-->
 						<ul>
 							<li>
@@ -447,25 +447,22 @@
 								<div class="item-recommendation">
 									<div class="recommendation">
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(1).getItemList()[0]}+'.png'}"
-												alt="아이템 이미지">
+											
 										</div>
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(1).getItemList()[1]}+'.png'}"
-												alt="아이템 이미지">
+										
 										</div>
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(1).getItemList()[2]}+'.png'}"
-												alt="아이템 이미지">
+										
 										</div>
 									</div>
 									<p>
-									<div class="order-block">
-										<strong th:text="${listPickRate2} + '%'">선택비율</strong><br> 
+									<div>
+										<strong></strong><br> 
 										
-										<span th:text="${listpick2} + 게임">게임수asdasdas</span>
+										<span></span>
 									</div>
-									<div class="order-vic" th:text="${listWin2} + '%'">승률</div>
+									<div class="order-vic"></div>
 									</p>
 								</div>
 							</li>
@@ -474,26 +471,23 @@
 							<li>
 								<div class="item-recommendation">
 									<div class="recommendation">
-										<!-- <div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(2).getItemList()[0]}+'.png'}"
-												alt="아이템 이미지">
+										<div>
+											
 										</div>
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(2).getItemList()[1]}+'.png'}"
-												alt="아이템 이미지">
+											
 										</div>
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(2).getItemList()[2]}+'.png'}"
-												alt="아이템 이미지">
-										</div> -->
+											
+										</div>
 									</div>
 									<p>
-									<!-- <div class="order-block">
-										<strong th:text="${listPickRate3} + '%'">선택비율</strong><br> 
+									<div class="order-block">
+										<strong></strong><br> 
 										
-										<span th:text="${listpick3} + 게임">게임수asdasdas</span>
+										<span></span>
 									</div>
-									<div class="order-vic" th:text="${listWin3} + '%'">승률</div> -->
+									<div class="order-vic"></div>
 									</p>
 								</div>
 							</li>
@@ -502,26 +496,23 @@
 							<li>
 								<div class="item-recommendation">
 									<div class="recommendation">
-										<!-- <div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(3).getItemList()[0]}+'.png'}"
-												alt="아이템 이미지">
+										<div>
+											
 										</div>
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(3).getItemList()[1]}+'.png'}"
-												alt="아이템 이미지">
+											
 										</div>
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(3).getItemList()[2]}+'.png'}"
-												alt="아이템 이미지">
-										</div> -->
+											
+										</div>
 									</div>
 									<p>
 									<div class="order-block">
-										<!-- <strong th:text="${listPickRate4} + '%'">선택비율</strong><br> 
+										<strong></strong><br> 
 										
-										<span th:text="${listpick4} + 게임">게임수asdasdas</span>
+										<span></span>
 									</div>
-									<div class="order-vic" th:text="${listWin4} + '%'">승률</div> -->
+									<div class="order-vic"></div>
 									</p>
 								</div>
 							</li>
@@ -530,26 +521,23 @@
 							<li>
 								<div class="item-recommendation">
 									<div class="recommendation">
-										<!-- <div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(4).getItemList()[0]}+'.png'}"
-												alt="아이템 이미지">
+										<div>
+											
 										</div>
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(4).getItemList()[1]}+'.png'}"
-												alt="아이템 이미지">
+											
 										</div>
 										<div>
-											<img th:src="@{'/img/item/'+${ItemStatistic.get(4).getItemList()[2]}+'.png'}"
-												alt="아이템 이미지">
-										</div> -->
+											
+										</div>
 									</div>
 									<p>
 									<div class="order-block">
-										<!-- <strong th:text="${listPickRate5} + '%'">선택비율</strong><br> 
+										<strong></strong><br> 
 										
-										<span th:text="${listpick5} + 게임">게임수asdasdas</span>
+										<span></span>
 									</div>
-									<div class="order-vic" th:text="${listWin5} + '%'">승률</div> -->
+									<div class="order-vic"></div>
 									</p>
 								</div>
 							</li>
@@ -605,23 +593,23 @@
 							</li>
 							<li>
 								<div>
-									<div th:id="${summoner3.key}">
+									<!-- <div th:id="${summoner3.key}">
 										<img alt="소환사 스펠 이미지"
 											th:src="@{'/img/summoner-spell/'+${summoner3.id}+'.png'}" />
 									</div>
 									<div th:id="${summoner4.key}">
 										<img alt="소환사 스펠 이미지"
 											th:src="@{'/img/summoner-spell/'+${summoner4.id}+'.png'}" />
-									</div>
+									</div> -->
 								</div>
 								<p>
 								<div class="order-block">
-									<strong th:id="${summonerSpellSetCountRate2}"
+									<!-- <strong th:id="${summonerSpellSetCountRate2}"
 										th:text="${summonerSpellSetCountRate2}  + '%'">선택비율</strong> <span
 										th:id="${summonerSpellSet1Count2}"
-										th:text="${summonerSpellSet1Count2} + 게임">게임수asdasdas</span>
+										th:text="${summonerSpellSet1Count2} + 게임">게임수asdasdas</span> -->
 								</div>
-								<div class="order-vic" th:text="${summonerSpellSet2Win}  + '%'"></div>
+								<div class="order-vic"></div>
 								</p>
 							</li>
 						</ul>

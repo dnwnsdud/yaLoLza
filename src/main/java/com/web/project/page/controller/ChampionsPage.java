@@ -302,6 +302,9 @@ public class ChampionsPage {
 			//2개만 반환함
 			List<ItemStatistics> firstItem =StatisticItemSkill.caculateFirstItems(firstItemData);
 
+			if (firstItem == null) {				
+				return "error";
+			}
 			model.addAttribute("firstItem", firstItem.get(0).getItem());
 			model.addAttribute("firstItemPickCount", firstItem.get(0).getPickCount());
 			model.addAttribute("firstItemPickRate", 
@@ -330,11 +333,11 @@ public class ChampionsPage {
 			model.addAttribute("listPickRate1", 
 					(double)Math.round((double)itemlist.get(0).getPickCount()/(double)itemlist.get(0).getTotalCount()*10000)/100);
 			
-			model.addAttribute("listWin2", ((double)Math.round(itemlist.get(1).getWinRate()*10000)/100));
-			model.addAttribute("listpick2", itemlist.get(1).getPickCount());			
-			model.addAttribute("listPickRate2", 
-					(double)Math.round((double)itemlist.get(1).getPickCount()/(double)itemlist.get(1).getTotalCount()*10000)/100);
-			 
+//			model.addAttribute("listWin2", ((double)Math.round(itemlist.get(1).getWinRate()*10000)/100));
+//			model.addAttribute("listpick2", itemlist.get(1).getPickCount());			
+//			model.addAttribute("listPickRate2", 
+//					(double)Math.round((double)itemlist.get(1).getPickCount()/(double)itemlist.get(1).getTotalCount()*10000)/100);
+//			
 //			model.addAttribute("listWin3", ((double)Math.round(itemlist.get(2).getWinRate()*10000)/100));
 //			model.addAttribute("listpick3", itemlist.get(2).getPickCount());			
 //			model.addAttribute("listPickRate3", 
@@ -350,6 +353,7 @@ public class ChampionsPage {
 //			model.addAttribute("listPickRate5", 
 //					(double)Math.round((double)itemlist.get(4).getPickCount()/(double)itemlist.get(4).getTotalCount()*10000)/100);
 			
+//			
 			
 			link = "/firstSkill";
 			String StatisticfilePath3 = defaultFilePath + tier + link + "Statistics.json"; // 파일 경로 수정
