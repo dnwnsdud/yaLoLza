@@ -35,19 +35,19 @@
 						</div>
 
 						<div class="champ-spelltooltip" id='Q'>
-							<img th:src="@{'/img/spell/'+${champion.spells[0].id}+'.png'}"
+							<img th:src="@{'/img/spell/'+${champion.spells[0].id}+'.jpg'}"
 								alt="스펠 이미지" />
 						</div>
 						<div class="champ-spelltooltip" id='W'>
-							<img th:src="@{'/img/spell/'+${champion.spells[1].id}+'.png'}"
+							<img th:src="@{'/img/spell/'+${champion.spells[1].id}+'.jpg'}"
 								alt="스펠 이미지" />
 						</div>
 						<div class="champ-spelltooltip" id='E'>
-							<img th:src="@{'/img/spell/'+${champion.spells[2].id}+'.png'}"
+							<img th:src="@{'/img/spell/'+${champion.spells[2].id}+'.jpg'}"
 								alt="스펠 이미지" />
 						</div>
 						<div class="champ-spelltooltip" id='R'>
-							<img th:src="@{'/img/spell/'+${champion.spells[3].id}+'.png'}"
+							<img th:src="@{'/img/spell/'+${champion.spells[3].id}+'.jpg'}"
 								alt="스펠 이미지" />
 						</div>
 				</h1>
@@ -85,7 +85,7 @@
 								th:href="@{/yalolza.gg/champions/{championName}/counter/{position}(position=${position},championName=${targetCounters[0].championName})}">
 								<!--/yalolza.gg/champions/Aatrox/counter/top?champion=Riven-->
 								<img
-								th:src="@{'/img/champion/' + ${targetCounters[0].championName} + '.png'}"
+								th:src="@{'/img/champion/' + ${targetCounters[0].championName} + '.jpg'}"
 								alt="Champion Icon" />
 							</a>
 						</div>
@@ -108,7 +108,7 @@
 							<a
 								th:href="@{/yalolza.gg/champions/{championName}/counter/{position}(position=${position},championName=${targetCounters[1].championName})}">
 								<img
-								th:src="@{'/img/champion/' + ${targetCounters[1].championName} + '.png'}"
+								th:src="@{'/img/champion/' + ${targetCounters[1].championName} + '.jpg'}"
 								alt="Champion Icon" />
 							</a>
 						</div>
@@ -218,7 +218,7 @@
 									th:href="@{/yalolza.gg/champions/{championName}/counter/{position}(position=${position}, championName=${selectedChampionName}, champion=${champion.championName})}">
 									
 									<img
-									th:src="@{'/img/champion/' + ${champion.championName} + '.png'}"
+									th:src="@{'/img/champion/' + ${champion.championName} + '.jpg'}"
 									alt="Champion Icon" />
 								</a>
 							</div>

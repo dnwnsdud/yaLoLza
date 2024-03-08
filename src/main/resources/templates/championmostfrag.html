@@ -34,7 +34,7 @@
 	      <div class="most-flex">
 	        <li th:each="stats, statIndex : ${most}" th:if="${statIndex.index < 3}">
 	          <div class="user-most3kda">
-	            <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/champion/'+${stats[0]} + '.png'}"
+	            <div class="img-wrap2"><img loading="lazy" th:src="@{'/img/champion/'+${stats[0]} + '.jpg'}"
 	                alt="" /></div>
 	            <p>
 	              <strong th:text="${stats[2]*100/stats[1] + '%'}">70%</strong><br />
