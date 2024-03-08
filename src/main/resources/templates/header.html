@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
- 	  <meta charset="UTF-8">
- 	  <title>Insert title here</title>
+      <meta charset="UTF-8">
+      <title>Insert title here</title>
 </head>
+
 <body>
-	<header th:fragment="header">
+   <header th:fragment="header">
         <div class="mw">
             <h1><a th:href="@{/yalolza.gg}"><img th:src="@{/img/mainlogo.png}" alt="" /></a></h1>
             <nav>
@@ -19,12 +20,15 @@
                     <div><a th:href="@{/duo.yalolza.gg/list}">DUO</a></div>
                 </div>
                 <div class="btn">
-                    <button><a  sec:authorize="isAnonymous()" th:href="@{/yalolza.gg/user/login}">로그인</a></button>
-	
-     				<button><a sec:authorize="isAuthenticated()" 
-     				th:href="@{/yalolza.gg/user/logout}">로그아웃</a></button><button><a sec:authorize="isAuthenticated()" 
-     				th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
-                    <button>
+                    <button  sec:authorize="isAnonymous()"><a  th:href="@{/yalolza.gg/user/login}">로그인</a></button>
+                    <button  sec:authorize="isAnonymous()"><a  th:href="@{/yalolza.gg/user/signup}">회원가입</a></button>
+   
+                 <button sec:authorize="isAuthenticated()">
+                 <a th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
+                 </button>
+                 <button sec:authorize="isAuthenticated()" ><a 
+                 th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
+                    <button class="darkchange">
                         <i class="fa-regular fa-sun"></i>
                     </button>
                 </div>

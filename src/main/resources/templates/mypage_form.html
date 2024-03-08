@@ -30,14 +30,19 @@
     <div class="mw2">
       <h1>내 정보</h1>
       <div class="my-info">
-        <span th:if="${user}" th:text="|${user.nickname}님 환영합니다!|">
+        <span th:if="${user}" th:text="|${user.nickname} 님 마이페이지 입니다.|">
           아이디 존재</span
         >
         <span th:unless="${user}">nono</span>
+        <div>
+        
       </div>
       <!-- 닉네임 변경 버튼 -->
 
       <div>
+      	<div class="emailtitle">이메일</div>
+        <span th:if="${user}" th:text="${user.email}" class="emailform"></span>
+      	</div>
         <div class="nicktitle">닉네임</div>
         <form
           action="/yalolza.gg/user/mypage/change-username"
@@ -48,7 +53,7 @@
             for="newNickname"
             class="mypage-nick"
             th:text="|${user.nickname}|"
-            style="font-size: 3rem"
+            style="font-size: 2rem"
           ></label>
           <div
             th:if="${nicknameError}"
@@ -61,7 +66,7 @@
             style="color: var(--point3); font-size: 1.5rem"
           ></div>
           <a class="btn-open-modal"
-            ><div style="color: var(--point3); font-size: 2rem; cursor: pointer;">수정</div></a
+            ><div style="color: var(--point3); font-size: 1.7rem; cursor: pointer;">수정</div></a
           >
         </form>
         <div class="modal">
@@ -88,7 +93,7 @@
             <a class="btn-open-modal2"
               ><div
                 class="passreset"
-                style="color: var(--point3); font-size: 2rem; cursor: pointer"
+                style="color: var(--point3); font-size: 1.7rem; cursor: pointer"
               >
                 비밀번호 재설정하기
               </div></a

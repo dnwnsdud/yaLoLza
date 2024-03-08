@@ -45,7 +45,7 @@
 }
 .modal .nick-name,
 .modal2 .password-name {
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--gray1);
   text-align: center;
   margin-top: 20px;
@@ -64,8 +64,10 @@
   width: 470px;
   height: 50px;
   font-size: 15px;
-  border: 5px solid rgba(0, 122, 255, 0.5);
-  border-radius: 15px;
+  /* border: 5px solid rgba(0, 122, 255, 0.5);
+  border-radius: 15px; */
+  border:none;
+border-bottom:1px solid #ccc;
   outline: none;
   padding-left: 10px;
 }
@@ -92,14 +94,18 @@
   font-family: inherit;
   font-size: 1.5rem;
 }
+
+
 .modal2 input[type="text"],
 .modal2 input[type="password"] {
   cursor: pointer;
   width: 500px;
   height: 50px;
   font-size: 15px;
-  border: 5px solid rgba(0, 122, 255, 0.5);
-  border-radius: 15px;
+  /* border: 5px solid rgba(0, 122, 255, 0.5); */
+/*   border-radius: 15px; */
+border:none;
+border-bottom:1px solid #ccc;
   outline: none;
   padding-left: 10px;
 }
@@ -109,16 +115,18 @@
   margin: 2.5rem 0 0 3rem;
 }
 .mw2 {
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto;
   height: 100%;
 }
 h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   width: 100%;
-  margin-top: 250px;
+  margin-top: 160px;
+  font-weight: bold;
 }
-.nickform {
+.nickform,
+.emailform {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -129,14 +137,15 @@ h1 {
 h2 {
   border: none;
 }
-.nicktitle {
+.nicktitle,
+.emailtitle {
   margin-top: 30px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 .my-info {
   margin-top: 30px;
-  font-size: 3rem;
+  font-size:2rem;
 }
 .mypage-nick {
   font-size: 2rem;
@@ -172,12 +181,18 @@ h2 {
   justify-content: right;
 }
 .unregist input[type="submit"] {
-  width: 130px;
+  width: 80px;
   font-family: inherit;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   padding: 15px;
   background-color: var(--gray3);
   color: var(--white);
   border: none;
   border-radius: 0.5rem;
+}
+
+.unregist input[type="submit"]:hover,
+.modal input[type="submit"]:hover,
+.modal2 input[type="submit"]:hover{
+	background-color: var(--point3);
 }

@@ -320,6 +320,7 @@ import com.web.project.system.SummonerData;
 			  					            .championdeaths(matchParticipants.get(z).getDeaths())
 			  					            .championassists(matchParticipants.get(z).getAssists())
 			  					            .killpers((matchParticipants.get(z).getAssists() + matchParticipants.get(z).getKills())*100 / (totalteamkills == 0 ? 1 : totalteamkills))
+			  					            .goldearned(matchParticipants.get(z).getGoldEarned())
 			  					            .build();
 				  					    summonerchampionsRepository.save(summonerchampions);
 				  					  //모스트정리  
@@ -454,7 +455,7 @@ import com.web.project.system.SummonerData;
 			        		   summonerskilllup.add(s);
 			        	   }
 			      //스킬트리순서정립
-			      skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+			      skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
 
                       
 			      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
@@ -513,8 +514,7 @@ import com.web.project.system.SummonerData;
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
 				    model.addAttribute("summonerchamsper", summonerchamsper);
-				    model.addAttribute("matchsssinfoList", matchsssinfoList);
-	 	 		    
+				    model.addAttribute("matchsssinfoList", matchsssinfoList);	 	 		    
 			  		model.addAttribute("matchspurchase", summnnerItemTimeStempSS);
 			  		model.addAttribute("matchsskill", summonerskilllups);
 			  		model.addAttribute("matchsskilltree", summonerskillluptree);
@@ -541,7 +541,6 @@ import com.web.project.system.SummonerData;
 ///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {
- 
     	  //키워드 유무는 갱신버튼의 유무
     	  // 키워드가 없는 경우의 처리
     	  if (keyword == null) { 
@@ -614,6 +613,7 @@ import com.web.project.system.SummonerData;
   					            .championdeaths(matchParticipants.get(z).getDeaths())
   					            .championassists(matchParticipants.get(z).getAssists())
   					            .killpers((matchParticipants.get(z).getAssists() + matchParticipants.get(z).getKills())*100 / totalteamkills)
+  					            .goldearned(matchParticipants.get(z).getGoldEarned())
   					            .build();
 	  					    
 	  					  //모스트정리  
@@ -745,7 +745,7 @@ import com.web.project.system.SummonerData;
 	        		   summonerskilllup.add(s);
 	        	   }
 	        	 
-	        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+	        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
              
 			      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
 			            SummonerTimeList summonerTime = SummonerTimeList.builder()
@@ -1023,12 +1023,13 @@ import com.web.project.system.SummonerData;
 				  					            .championdeaths(matchParticipants.get(z).getDeaths())
 				  					            .championassists(matchParticipants.get(z).getAssists())
 				  					            .killpers((matchParticipants.get(z).getAssists() + matchParticipants.get(z).getKills())*100 / totalteamkills)
+				  					            .goldearned(matchParticipants.get(z).getGoldEarned())
 				  					            .build();
-					  					    
+					  					     
 					  					  //모스트정리  
 					  					  summonermost.add(summonerchampions);      
-							    	      	    
-							    	    
+							     	      	    
+							     	    
 						    }			  				   
 						   }
 						    }	  		  
@@ -1056,7 +1057,7 @@ import com.web.project.system.SummonerData;
 						    
 						    
 						    
-						    
+						     
 					  		  //모스트추출
 					  		  Map<String, DoubleSummaryStatistics> championStatsMap = summonermost.stream()
 					  		        .collect(Collectors.groupingBy(
@@ -1153,7 +1154,7 @@ import com.web.project.system.SummonerData;
 					        		   summonerskilllup.add(s);
 					        	   }
 					        	 
-					        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup,3);
+					        	   skilltree = Calall.getTopNFrequentNumbers(summonerskilllup);
 				             
 							      for(int x =0 ; x<summonerTimePurchase.size() ; x++ ) {			    	
 							            SummonerTimeList summonerTime = SummonerTimeList.builder()
