@@ -263,7 +263,7 @@
 
 											
 		               <li class="mostChampion" th:unless="${#lists.isEmpty(duo.mostChampions)}">
-                        <div class="ChampionBox" th:each="mostChampion : ${duo.mostChampions}" ><img th:src="@{/img/champion/{championName}.png(championName=${mostChampion.mostChampion})}" alt="Champion Icon" /></div>
+                        <div class="ChampionBox" th:each="mostChampion : ${duo.mostChampions}" ><img th:src="@{/img/champion/{championName}.jpg(championName=${mostChampion.mostChampion})}" alt="Champion Icon" /></div>
                         </li>
                      
                         <li th:if="${duo.mostChampions.size()>2}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins + duo.MostChampions[2].wins},

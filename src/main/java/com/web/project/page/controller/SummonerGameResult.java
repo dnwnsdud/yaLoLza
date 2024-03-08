@@ -188,7 +188,7 @@ import com.web.project.system.SummonerData;
 	      try {
 	    	    summoner =  restTemplate.getForEntity(sommenerurl, SummonerResponse.class);
 		} catch (Exception e) {
-		  return "xpage";
+		  return "error";
 		} 
   	    	puuid = summoner.getBody().getPuuid();
 	  	    //summonerV5 정보 추출

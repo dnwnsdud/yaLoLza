@@ -148,7 +148,7 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
        try {
       summoner = restTemplate.getForEntity(summonerurl, SummonerResponse.class);
      } catch (Exception e) {
-        // 오류 발생 시 "xpage"로 리다이렉트
+        // 오류 발생 시 "error"로 리다이렉트
            throw new Exception("소환사 조회를 못해요");
      }
        puuid = summoner.getBody().getPuuid(); 
