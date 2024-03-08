@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <a th:href="@{/yalolza.gg/}"
+    <a th:href="@{/yalolza.gg}"
       ><img th:src="@{/img/logo.jpg}" class="logo" alt="logo"
     /></a>
     <!-- 메인페이지로 이동하게 href 설정 -->
@@ -62,7 +62,7 @@
             </div>
           </form>
         </div>
-        <div style="display: flex; width: 80%; margin:auto;">
+        <div style="display: flex; width: 80%; margin: auto">
           <div
             style="width: 30%; border: 0.5px solid #ccc; margin: 2rem auto"
           ></div>
@@ -74,24 +74,25 @@
 
         <div class="btns">
           <a href="/oauth2/authorization/kakao">
-            <img th:src="@{/img/kakao.jpg}" class="kakao" />
+            <img th:src="@{/img/kakao.png}" class="kakao" />
           </a>
           <a href="/oauth2/authorization/google">
-            <img th:src="@{/img/google.jpg}" class="google" />
+            <img th:src="@{/img/google.png}" class="google" />
           </a>
           <a href="/oauth2/authorization/naver">
-            <img th:src="@{/img/naver.jpg}" class="naver" />
+            <img th:src="@{/img/naver.png}" class="naver" />
           </a>
         </div>
         <!-- <a th:href="@{/home}">home 으로</a> <br/><br/> -->
         <div class="joingobox">
-       		아직 yaLoLza Member가 아니신가요?
+          아직 yaLoLza Member가 아니신가요?
           <a th:href="@{/yalolza.gg/user/signup}" class="joingo">회원가입</a>
-          
-	        <div style="margin-left:1rem;">
-	         	<a th:href="@{/yalolza.gg/user/FindPw_show}" class="findfw">비밀번호 찾기</a>
-	       	</div>
-       	
+
+          <div style="margin-left: 1rem">
+            <a th:href="@{/yalolza.gg/user/FindPw_show}" class="findfw"
+              >비밀번호 찾기</a
+            >
+          </div>
         </div>
       </div>
     </div>

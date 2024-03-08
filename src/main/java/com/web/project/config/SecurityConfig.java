@@ -64,8 +64,8 @@ public class SecurityConfig {
 					auth
 						.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 						.requestMatchers(
-							"/admin",
-							"/admin/**",
+//							"/admin",
+//							"/admin/**",
 							"/static",
 							"/yalolza.gg",
 							"/yalolza.gg/static",
@@ -106,7 +106,7 @@ public class SecurityConfig {
 
 						).permitAll()
 						.requestMatchers(
-								"/user/mypage"
+								"/yalolza.gg/user/mypage"
 								).hasAnyRole("USER", "ADMIN")
 						.requestMatchers(
 								"/admin/dashboard"
@@ -118,8 +118,9 @@ public class SecurityConfig {
 						.loginPage("/yalolza.gg/user/login")
 						.usernameParameter("username")
 						.passwordParameter("password")
-						.defaultSuccessUrl("/yalolza.gg/")
-						.failureUrl("/yalolza.gg/user/login?error")
+						.defaultSuccessUrl("/yalolza.gg")
+						.failureUrl("/yalolza.gg/user/login")
+						.defaultSuccessUrl("/yalolza.gg",true)
 						.permitAll()
 				)
 				.oauth2Login(login->
@@ -130,13 +131,14 @@ public class SecurityConfig {
 								.userService(oauth2service)
 						)
 						.failureUrl("/yalolza.gg/user/login")
+						.defaultSuccessUrl("/yalolza.gg",true)
 						.permitAll()
 				)
 				
 				.logout(out->
 					out
 						.logoutRequestMatcher(new AntPathRequestMatcher("/yalolza.gg/user/logout"))
-						.logoutSuccessUrl("/yalolza.gg/")
+						.logoutSuccessUrl("/yalolza.gg")
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.permitAll()
@@ -157,7 +159,7 @@ public class SecurityConfig {
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         SimpleUrlAuthenticationSuccessHandler successHandler = new SimpleUrlAuthenticationSuccessHandler();
         successHandler.setUseReferer(true); // 성공 후 referer를 사용하여 이전 페이지로 이동
-        successHandler.setDefaultTargetUrl("/yalolza.gg/"); // 기본적으로 이동할 페이지 설정
+        successHandler.setDefaultTargetUrl("/yalolza.gg"); // 기본적으로 이동할 페이지 설정
         return successHandler;
     }
     

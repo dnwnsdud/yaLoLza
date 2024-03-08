@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/community.css}">
 </head>
 <body>
-<a th:href="@{/yalolza.gg/}"><img th:src="@{/img/logo.jpg}" class="logo"></a>
+<a th:href="@{/yalolza.gg}"><img th:src="@{/img/logo.jpg}" class="logo"></a>
 <div class="signupbox">
 	<div sec:authorize="isAuthenticated()">
 		<div>이미 로그인한 유저입니다. 메인페이지로 돌아가세요</div>
@@ -64,13 +64,13 @@
 	</div>
 	<div class="btns">
 		<a href="/oauth2/authorization/kakao">
-			<img th:src="@{/img/kakao.jpg}" class="kakao">
+			<img th:src="@{/img/kakao.png}" class="kakao">
 		</a>
 		<a href="/oauth2/authorization/google">
-			<img th:src="@{/img/google.jpg}" class="google">
+			<img th:src="@{/img/google.png}" class="google">
 		</a>
 		<a href="/oauth2/authorization/naver">
-			<img th:src="@{/img/naver.jpg}" class="naver">
+			<img th:src="@{/img/naver.png}" class="naver">
 		</a>
 	</div>
 	<div class="logingobox">

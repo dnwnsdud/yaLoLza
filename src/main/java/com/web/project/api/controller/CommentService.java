@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.web.project.Exception.DataNotFoundException;
@@ -40,6 +43,11 @@ public class CommentService {
         } else {
             throw new DataNotFoundException("comment not");
         }
+    }
+    
+    public Page<Comment> getCommentPage(Community communtiy, int page) {
+        Pageable pageable = PageRequest.of(page, 5);
+        return commentRepository.findAllByCommunity(communtiy, pageable);    
     }
     
 	public List<Comment> getAllComments() {

@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-      <meta charset="UTF-8">
-      <title>Insert title here</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
 
-<body>
-   <header th:fragment="header">
-        <div class="mw">
-            <h1><a th:href="@{/yalolza.gg}"><img th:src="@{/img/mainlogo.jpg}" alt="" /></a></h1>
-            <nav>
-                <div class="hd-nav">
+  <body>
+    <header th:fragment="header">
+      <div class="mw">
+        <h1>
+          <a th:href="@{/yalolza.gg}"
+            ><img th:src="@{/img/mainlogo.jpg}" alt=""
+          /></a>
+        </h1>
+        <nav>
+          <div class="hd-nav">
+            <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
+            <div><a th:href="@{/yalolza.gg/champions/static}">통계</a></div>
+            <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
+            <div><a th:href="@{/duo.yalolza.gg/list}">DUO</a></div>
+          </div>
+          <div class="btn">
+            <button sec:authorize="isAnonymous()">
+              <a th:href="@{/yalolza.gg/user/login}">로그인</a>
+            </button>
+            <button sec:authorize="isAnonymous()">
+              <a th:href="@{/yalolza.gg/user/signup}">회원가입</a>
+            </button>
 
-                    <div><a th:href="@{/yalolza.gg/champions}">챔피언</a></div>
-                    <div><a th:href="@{/yalolza.gg/champions/static}">통계</a></div>
-                    <div><a th:href="@{/talk.yalolza.gg/community/}">커뮤니티</a></div>
-                    <div><a th:href="@{/duo.yalolza.gg/list}">DUO</a></div>
-                </div>
-                <div class="btn">
-                    <button  sec:authorize="isAnonymous()"><a  th:href="@{/yalolza.gg/user/login}">로그인</a></button>
-                    <button  sec:authorize="isAnonymous()"><a  th:href="@{/yalolza.gg/user/signup}">회원가입</a></button>
-   
-                 <button sec:authorize="isAuthenticated()">
+            <!-- <button sec:authorize="isAuthenticated()">
                  <a th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
-                 </button>
-                 <button sec:authorize="isAuthenticated()" ><a 
-                 th:href="@{/yalolza.gg/user/mypage}">마이페이지</a></button>
-                    <button class="darkchange">
-                        <i class="fa-regular fa-sun"></i>
-                    </button>
-                </div>
-            </nav>
-        </div>
+                 </button> -->
+            <button sec:authorize="hasRole('USER')">
+              <a th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
+            </button>
+            <button sec:authorize="hasRole('USER')">
+              <a th:href="@{/yalolza.gg/user/mypage}">마이페이지</a>
+            </button>
+
+            <button sec:authorize="hasRole('ADMIN')">
+              <a th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
+            </button>
+            <button sec:authorize="hasRole('ADMIN')">
+              <a th:href="@{/admin/dashboard}">관리자페이지</a>
+            </button>
+
+            <button class="darkchange">
+              <i class="fa-regular fa-sun"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
     </header>
-</body>
+  </body>
 </html>

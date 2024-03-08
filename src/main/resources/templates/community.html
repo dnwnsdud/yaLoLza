@@ -114,7 +114,7 @@
     </div>
 
     </div>
-    <div th:if="${!paging.isEmpty()}" class="paging">
+<!--     <div th:if="${!paging.isEmpty()}" class="paging">
         <ul>
             <li th:if="${paging.number} != 0">
                 <a th:href="@{|?page=${paging.number-1}|}">
@@ -131,7 +131,25 @@
                 </a>
             </li>
         </ul>
-    </div>
+    </div> -->
+    <div th:if="${!paging.isEmpty() && paging.totalPages > 1}" class="paging" style="color:white;">
+    <ul>
+        <li th:if="${paging.number != 0}">
+            <a th:href="@{|?page=${paging.number-1}|}">
+                <span>이전</span>
+            </a>
+        </li>
+        <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+            th:if="${page >= paging.number-5 and page <= paging.number+5}"  >
+            <a th:text="${page+1}" th:href="@{|?page=${page}|}"> </a>
+        </li>
+        <li th:if="${paging.number < paging.totalPages - 1}">
+            <a th:href="@{|?page=${paging.number+1}|}">
+                <span>다음</span>
+            </a>
+        </li>
+    </ul>
+</div>
 </div>
           <footer th:replace="~{/footer :: footer}"></footer>
 
