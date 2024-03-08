@@ -40,7 +40,6 @@ function tooltip(
       },
     };
   };
-
   let [enter, leave] = [
     async (e) => {
       // enter
@@ -58,7 +57,11 @@ function tooltip(
         tag = await tag;
         if (typeof tag === "string") div.innerHTML = tag;
         else div.appendChild(tag);
-      } else div.appendChild(tag);
+      } else if(typeof tag === 'function') {
+		  let text = await tag();
+		  div.innerHTML = text.replaceAll("&lt;","<").replaceAll("&gt;",">");
+	  }
+      else div.appendChild(tag);
       div.appendChild(arrow);
       div.style.backgroundColor = options.backgroundColor || "black";
       div.style.display = "inline-block";

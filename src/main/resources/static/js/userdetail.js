@@ -4,64 +4,80 @@ let datas = [
   {
     tooltip: ".usergame-flex1 div",
     link: "/info/summonerinfo/",
+    width: "250px",
   },
   {
     tooltip: ".usergame-flex2 div",
     link: "/info/runedetailinfo/",
+    width: "auto",
   },
   {
     tooltip: ".usergame-id div",
     link: "/info/championNameinfo/",
+    width: "auto",
   },
   {
     tooltip: ".usergame-items li",
     link: "/info/itemdetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".vic-team li .champion >div",
     link: "/info/championNameinfo/",
+    width: "auto",
   },
   {
     tooltip: ".vic-spell .spell >div",
     link: "/info/summonerinfo/",
+    width: "250px",
   },
   {
     tooltip: ".vic-spell .rune >div",
     link: "/info/runedetailinfo/",
+    width: "auto",
   },
   {
     tooltip: ".victotal-items div",
     link: "/info/itemdetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".usergame-objects li div",
     link: "/info/objectinfo/",
+    width: "auto",
   },
   {
     tooltip: ".itembuild-group div .img-wrap1",
     link: "/info/itemdetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".skillbuild-grid .img-wrap3",
     link: "/info/spell/",
+    width: "250px",
   },
   {
     tooltip: ".userskill-qwe .img-wrap3",
     link: "/info/spell/",
+    width: "250px",
   },
   {
     tooltip: ".main-rune ul li",
     link: "/info/runedetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".sub-rune ul .img-wrap",
     link: "/info/runedetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".fragments-rune ul .img-wrap",
     link: "/info/perkdetailinfo/",
+    width: "auto",
   },
 ];
+
 
 function champions() {
     // 챔피언 버튼 활성화
@@ -170,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
     champions();
     allresult();
     generateTooltips();
-    tooltip();
 });
 
 // 챔피언 버튼 클릭 이벤트
@@ -183,47 +198,94 @@ function tooltipGenerator(
     tooltipSelector,
     fetchLink,
     color = "#48C4B7",
-    width = "250px"
+    width = "250px",
+    element = null
 ) {
+	document.querySelectorAll(tooltipSelector).forEach((element)=>{
+		if(element.id == 0)return;
+		tooltip(
+	        element,
+	        async ()=>{
+				let text = await fetch(fetchLink + element.id).then((data) =>data.text());
+    			return text.replace(/[^\\]*<body>/i, "").replace(/<\/body>[^\\]*/i, "");	
+			},
+	        {
+	            gap: 20,
+	            backgroundColor: "var(--gray2)",
+	            borderRadius: "1rem",
+	        },
+	        {
+	            fontSize: "15px",
+	            color: color,
+	            width: width,
+	            padding: "10px",
+	        }
+	    );
+	});
+	
+	
+	
     // 툴팁 생성 함수
-    document.querySelectorAll(tooltipSelector).forEach(async (element) => {
-        if (element.id == 0) return;
-        let target = await fetch(fetchLink + element.id).then((data) =>
-            data.text()
-        );
-        tooltip(
-            element,
-            target,
-            {
-                gap: 20,
-                backgroundColor: "var(--gray2)",
-                borderRadius: "1rem",
-            },
-            {
-                fontSize: "15px",
-                color: color,
-                width: width,
-                padding: "10px",
-            }
-        );
-    });
+    /*
+    if(element == null){
+	    document.querySelectorAll(tooltipSelector).forEach((element) => {
+	        if (element.id == 0) return;
+	        fetch(fetchLink + element.id).then((data) =>{
+		        tooltip(
+		            element,
+		            data.text(),
+		            {
+		                gap: 20,
+		                backgroundColor: "var(--gray2)",
+		                borderRadius: "1rem",
+		            },
+		            {
+		                fontSize: "15px",
+		                color: color,
+		                width: width,
+		                padding: "10px",
+		            }
+		        );
+	        }).catch(e=>{
+				tooltipGenerator(tooltipSelector, fetchLink, color, width, element);
+			});
+	    });
+    }
+    else{
+        fetch(fetchLink + element.id).then((data) =>{
+	        tooltip(
+	            element,
+	            data.text(),
+	            {
+	                gap: 20,
+	                backgroundColor: "var(--gray2)",
+	                borderRadius: "1rem",
+	            },
+	            {
+	                fontSize: "15px",
+	                color: color,
+	                width: width,
+	                padding: "10px",
+	            }
+	        );
+        }).catch(e=>{
+			tooltipGenerator(tooltipSelector, fetchLink, color, width, element);
+		});
+	}
+	*/
 }
 
 
 // 툴팁 생성 함수 호출
 async function generateTooltips() {
     for (let index in datas) {
-        await new Promise(resolve => {
-            setTimeout(() => {
-                tooltipGenerator(
-                    datas[index].tooltip,
-                    datas[index].link,
-                    datas[index].color ? target.color : "#48C4B7",
-                    datas[index].width ? target.width : "250px"
-                );
-                resolve();
-            }, index * 500);
-        });
+        tooltipGenerator(
+            datas[index].tooltip,
+            datas[index].link,
+            datas[index].color ? datas[index].color : "#48C4B7",
+            datas[index].width ? datas[index].width : "250px"
+        );
+		
     }
 }
 
@@ -239,5 +301,4 @@ async function morematch() {
     chartt();
     generateTooltips();
     addEventListenersToButtons();
-    tooltip();
 }
