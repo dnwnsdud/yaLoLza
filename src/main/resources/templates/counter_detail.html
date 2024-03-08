@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/css/common.css" />
 <link rel="stylesheet" href="/css/champ_detail.css" />
 <link rel="stylesheet" href="/css/counter_detail.css" />
+<script src="/js/common.js" defer></script>
 </head>
 <body>
 	<header th:replace="~{/header :: header}"></header>
@@ -25,7 +26,7 @@
 					<strong style="font-size: 3rem;" th:text="${champion.name}"></strong>
 					<!--아무도 없음-->
 					<span  style="font-size: 2rem" th:text="${position}" >빌드 - 포지션</span><br /> <span
-						style="font-size: 1.3rem" class="tier">1티어</span>
+						style="font-size: 1.3rem" class="tier" th:text=${champtier}>1티어</span>
 					<div class="champ-skill">
 
 						<div class="champ-passivetooltip">
