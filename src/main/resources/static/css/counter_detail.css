@@ -8,14 +8,14 @@
 
 .champ-comparison,
 .counterde-champs {
-	background-color: var(--point19);
+	background-color: var(--table);
 	margin-top: 10px;
 	border-radius: 1rem;
 	width: 100%;
 	padding-bottom: 20px;
 }
 .champ-comparison > h2{
-		background-color: var(--point20);
+		background-color: var(--section);
 		border-radius: 10px 10px 0 0;
 
 }
@@ -29,14 +29,14 @@
 
 .counter-pa {
 	padding: 0 50px 10px 50px;
-	color: var(--gray3);
+	color: var(--font);
 	font-size: 1.5rem;
 }
 
 .counter-per {
 	display: flex;
 	justify-content: space-between;
-	color: var(--white);
+	color: var(--title);
 	font-size: 2.5rem;
 	padding-bottom: 10px;
 }
@@ -60,7 +60,7 @@
 #progresschamp-name1 {
 	position: absolute;
 	color: var(--gray1);
-	font-size: 1.1rem;
+	font-size: 1.5rem;
 	bottom: 25%;
 	left: 5%;
 }
@@ -68,7 +68,7 @@
 #progresschamp-name2 {
 	position: absolute;
 	color: var(--gray1);
-	font-size: 1.1rem;
+	font-size: 1.5rem;
 	bottom: 25%;
 	right: 5%;
 }
@@ -224,20 +224,18 @@
 	align-items: center;
 	text-align: center;
 	padding: 15px;
-	background-color: var(--point19);
-	border-radius: 10px 10px 0 0;
+	background-color: var(--table);
 }
 
 .counterde-champs ul:nth-of-type(1) {
-	color: var(--gray3);
-	background-color: var(--point20);
+	color: var(--font);
+	background-color: var(--section);
 	font-size: 1.2rem;
 }
 
 .counter-list {
-	border-top: 1px dotted var(--gray1);
-	border-bottom: 1px dotted var(--gray1);
 	cursor: pointer;
+	border-bottom: 1px solid var(--gray3);
 }
 
 .counter-list li:nth-of-type(1) {

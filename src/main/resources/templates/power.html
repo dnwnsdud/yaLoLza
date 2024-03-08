@@ -920,7 +920,7 @@
 function tooltipGenerator(
   tooltipSelector,
   fetchLink,
-  color = "#48C4B7",
+  color = "#fff",
   width = "250px"
 ) {
   document.querySelectorAll(tooltipSelector).forEach(async (element) => {
@@ -933,7 +933,7 @@ function tooltipGenerator(
       target,
       {
         gap: 20,
-        backgroundColor: "var(--gray2)",
+        backgroundColor: "rgba(16,19,28,0.8)",
         borderRadius: "1rem",
       },
       {
@@ -1013,7 +1013,7 @@ for (let index in datas) {
 		tooltipGenerator(
 			    datas[index].tooltip,
 			    datas[index].link,
-			    datas[index].color ? target.color : "#48C4B7",
+			    datas[index].color ? target.color : "#fff",
 			 	datas[index].width ? target.width : "250px"
 			  );
 	}, index * 500);
