@@ -4,62 +4,77 @@ let datas = [
   {
     tooltip: ".usergame-flex1 div",
     link: "/info/summonerinfo/",
+    width: "250px",
   },
   {
     tooltip: ".usergame-flex2 div",
     link: "/info/runedetailinfo/",
+    width: "auto",
   },
   {
     tooltip: ".usergame-id div",
     link: "/info/championNameinfo/",
+    width: "auto",
   },
   {
     tooltip: ".usergame-items li",
     link: "/info/itemdetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".vic-team li .champion >div",
     link: "/info/championNameinfo/",
+    width: "auto",
   },
   {
     tooltip: ".vic-spell .spell >div",
     link: "/info/summonerinfo/",
+    width: "250px",
   },
   {
     tooltip: ".vic-spell .rune >div",
     link: "/info/runedetailinfo/",
+    width: "auto",
   },
   {
     tooltip: ".victotal-items div",
     link: "/info/itemdetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".usergame-objects li div",
     link: "/info/objectinfo/",
+    width: "auto",
   },
   {
     tooltip: ".itembuild-group div .img-wrap1",
     link: "/info/itemdetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".skillbuild-grid .img-wrap3",
     link: "/info/spell/",
+    width: "250px",
   },
   {
     tooltip: ".userskill-qwe .img-wrap3",
     link: "/info/spell/",
+    width: "250px",
   },
   {
     tooltip: ".main-rune ul li",
     link: "/info/runedetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".sub-rune ul .img-wrap",
     link: "/info/runedetailinfo/",
+    width: "250px",
   },
   {
     tooltip: ".fragments-rune ul .img-wrap",
     link: "/info/perkdetailinfo/",
+    width: "auto",
   },
 ];
 
@@ -183,7 +198,7 @@ function tooltipGenerator(
     tooltipSelector,
     fetchLink,
     color = "#48C4B7",
-    width = "250px"
+    width 
 ) {
     // 툴팁 생성 함수
     document.querySelectorAll(tooltipSelector).forEach(async (element) => {
@@ -219,7 +234,7 @@ async function generateTooltips() {
                     datas[index].tooltip,
                     datas[index].link,
                     datas[index].color ? target.color : "#48C4B7",
-                    datas[index].width ? target.width : "250px"
+                    datas[index].width
                 );
                 resolve();
             }, index * 500);

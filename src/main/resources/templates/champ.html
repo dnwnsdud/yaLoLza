@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/css/champ.css" />
 <script src="/js/position.js" defer></script>
 <script src="/js/common.js" defer></script>
+<script src="/js/champ_detail.js" defer></script>
 </head>
 <body>
 	<header th:replace="~{/header :: header}"></header>
@@ -133,7 +134,7 @@
 						<td th:text="${champion.stats.pickrate} + '%'"></td>
 						<td th:text="${champion.stats.banrate} + '%'"></td>
 						<td>
-							<div class="img-wrap" th:each="img : ${counterChampions.get(champion.getChampionName())}">
+							<div class="img-wrap11" th:each="img : ${counterChampions.get(champion.getChampionName())}" th:id="${img.championName}">
 								<a href=""><img th:src="${'/img/champion/' + img.championName + '.png'}" alt="" /></a>
 							</div>
 						</td>
@@ -184,6 +185,29 @@
     	    });
     	});
     </script>
+    <script th:inline="javascript" defer>
+   
+   document.querySelectorAll(".champ-body td .img-wrap11").forEach(async (element)=>{
+      let target = await fetch("/info/championNameinfo/"+element.id).then(data=>data.text());
+      tooltip(
+              element,
+              target,
+               {
+                 gap: 20,
+                 backgroundColor: "rgba(16,19,28,0.8)",
+                 borderRadius: "1rem",
+               },
+               {
+				 color:"var(--white)",
+                 fontSize: "15px",
+                 width: "auto",
+                 padding:"10px"
+               }
+             );
+      
+   });
+  
+   </script>
 	<br />
 	<br />
 	<footer th:replace="~{/footer :: footer}"></footer>

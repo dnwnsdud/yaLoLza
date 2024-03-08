@@ -129,7 +129,7 @@ public class ChampionInfo {
 		Map<Integer, String> keysPerk = RuneData.keysPerk();
 		model.addAttribute("keysPerk", keysPerk);
 		return "mapping";
-	} 
+	}  
 	@GetMapping("/objectinfo/{id}")
     public String objectinfo(Model model,@PathVariable String id) {
 	    log.info("objectinfo");		  
