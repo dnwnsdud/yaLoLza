@@ -1,21 +1,22 @@
-
-
+body {
+  background-color: var(--background);
+}
 
 /* 유저 정보 시작*/
 .con1 {
-  background-color: var(--point8);
+  background-color: var(--section);
 }
 .dec,
 .champ-statistics,
 .champ-tip {
-  max-width: 1320px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
 }
 .dec {
   padding: 30px 30px 0 30px;
   gap: 30px;
-  border-top: 1px solid var(--gray1);
+  border-top: 1px solid var(--border);
 }
 .champ-main {
   width: 120px;
@@ -26,28 +27,28 @@
   height: 100%;
   border-radius: 1rem;
 }
-h1 {
+.user-main {
   flex: 1;
-  color: var(--gray3);
+  color: var(--font);
   padding-top: 10px;
 }
-h1 strong {
+.user-main strong {
   font-weight: bold;
-  color: var(--white);
+  color: var(--title);
 }
-h1 .user-id span {
+.user-main .user-id span {
   font-size: 1.7rem;
-  color: var(--gray3);
+  color: var(--font);
 }
-h1 p {
+.user-main p {
   padding-top: 10px;
 }
-#gangsin{
-	padding:5px;
-	font-size: 1.3rem;
-    border-radius: 0.5rem;
-    color:white;
-	background-color: var(--gray1);
+#gangsin {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
+  color: title;
+  background-color: var(--gray1);
 }
 .user-tier {
   display: flex;
@@ -55,7 +56,7 @@ h1 p {
   padding-top: 10px;
 }
 .user-tier div {
-  background-color: var(--gray1);
+  background-color: var(--point3);
   padding: 10px;
   font-size: 1.3rem;
   border-radius: 0.5rem;
@@ -71,24 +72,24 @@ h1 p {
   padding-left: 1rem;
 }
 .user-statistics span {
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.7rem;
 }
 .user-statistics strong {
-  color: var(--white);
+  color: var(--title);
   font-size: 2rem;
 }
 .user-tip {
-  max-width: 1320px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   padding: 10px;
   gap: 50px;
 }
 .user-tip button {
-  background-color: var(--point8);
+  background-color: var(--section);
   font-family: inherit;
-  color: var(--white);
+  color: var(--title);
   font-size: 2rem;
   padding: 15px 40px 15px 40px;
   border: none;
@@ -97,11 +98,14 @@ h1 p {
 }
 .user-tip button:hover {
   font-weight: bold;
+  background-color: var(--point3);
+  border-radius: 0.5rem;
 }
 .user-tip button:focus {
   background-color: var(--point7);
   border-radius: 0.5rem;
 }
+
 /* 유저 정보 끝*/
 /* 유저 랭크 시작 */
 .img-wrap2 {
@@ -120,55 +124,49 @@ h1 p {
   height: 120%;
   border-radius: 50%;
 }
-.summonerchamps-level{
-	
-	position: relative;
-	left:-10px;
-	bottom:-30px;
-	color:white;
-	z-index: 10;
-	background-color:rgb(83, 83, 83);
-	border-radius: 15px;
+.summonerchamps-level {
+  position: relative;
+  left: -10px;
+  bottom: -30px;
+  color: white;
+  background-color: rgb(83, 83, 83);
+  border-radius: 15px;
 }
-.summonerchamps-level span{
-	
-   display:block;
-   position:absolute;
-   font-size:12px;
-   text-align:center;
-   line-height:30px;
-    right:-10px;
-    bottom:-10px;  
-	width:30px;
-	height:30px;
-	color:white;
-	background-color:rgb(83, 83, 83);
-	border-radius: 15px;
+.summonerchamps-level span {
+  display: block;
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  line-height: 30px;
+  right: -10px;
+  bottom: -10px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  background-color: rgb(83, 83, 83);
+  border-radius: 15px;
 }
-.tenchamps-level{
-	
-	position: relative;
-	left:-10px;
-	bottom:-30px;
-	color:white;
-	z-index: 10;
-	background-color:black;
-	border-radius: 15px;
+.tenchamps-level {
+  position: relative;
+  left: -10px;
+  bottom: -30px;
+  color: white;
+  background-color: black;
+  border-radius: 15px;
 }
-.tenchamps-level span{
-	
-   display:block;
-   position:absolute;
-   font-size:12px;
-   text-align:center;
-   line-height:18px;
-    right:-10px;
-    bottom:30px;  
-	width:18px;
-	height:18px;
-	color:white;
-	background-color:black;
-	border-radius: 9px;
+.tenchamps-level span {
+  display: block;
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+  right: -10px;
+  bottom: 30px;
+  width: 18px;
+  height: 18px;
+  color: white;
+  background-color: black;
+  border-radius: 9px;
 }
 .ranktier2 {
   width: 100%;
@@ -179,7 +177,15 @@ h1 p {
   width: 35%;
 }
 .user-right {
+  position: relative;
   width: 65%;
+}
+.user-right button#summoenr-matchmore {
+  position: absolute;
+  bottom: -40px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
 }
 .user-ranktier,
 .user-most,
@@ -192,10 +198,17 @@ h1 p {
 .usergame-itembuild,
 .usergame-skillbuild,
 .usergame-runeinfo {
-  background-color: var(--point8);
+  background-color: var(--section);
   margin-top: 10px;
   border-radius: 1rem;
   width: 100%;
+}
+h2 {
+  padding: 15px;
+  color: var(--title);
+  font-size: 1.7rem;
+  border-bottom: 1px solid var(--gray1);
+  background-color: var(--h2);
 }
 .user-ranktier ul {
   display: flex;
@@ -208,38 +221,36 @@ h1 p {
   gap: 20px;
   align-items: center;
 }
-.user-ranktier h3 {
-  color: var(--white);
+.ranktier2 h3 {
+  color: var(--title);
   font-size: 2.5rem;
   font-weight: bold;
 }
-.ranktier3  {
-
+.ranktier3 {
   line-height: 2rem;
   text-align: left;
 }
-.ranktier3 span{
-	  white-space: nowrap;
+.ranktier3 span {
+  white-space: nowrap;
 }
 /* 유저 랭크 끝 */
 /* 모스트 10 시작 */
 .user-most ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
   padding: 20px 10px 20px 10px;
+  align-items: center;
 }
-.user-most ul li {
-  line-height: 2rem;
+.user-most ul li strong,
+.user-most ul li span {
+  color: var(--title);
 }
 .user-most .most-champname {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.most-champname{
-	width:150px
-}
+
 .user-most .most-champtext {
   text-align: right;
 }
@@ -249,7 +260,7 @@ h1 p {
 }
 .user-most button {
   width: 100%;
-  background-color: var(--gray2);
+  background-color: var(--section);
   color: var(--gray3);
   border-radius: 0.5rem;
   padding: 20px 10px 20px 10px;
@@ -257,6 +268,7 @@ h1 p {
   font-size: 1.5rem;
   border: none;
   cursor: pointer;
+  border-top: 1px solid var(--point18);
 }
 /* 모스트 10 끝 */
 /* 20게임 그래프 시작 */
@@ -272,7 +284,7 @@ h1 p {
 }
 .user-graphtitle h3,
 .user-most3 h3 {
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.5rem;
 }
 .user-graphtitle h3 {
@@ -297,6 +309,7 @@ h1 p {
   line-height: 3rem;
 }
 .user-kda strong {
+  color: var(--title);
   font-size: 2.5rem;
 }
 .user-most3 {
@@ -304,8 +317,8 @@ h1 p {
   width: 65%;
 }
 .most-flex {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 .user-most3kda {
   display: flex;
@@ -385,10 +398,10 @@ h1 p {
   width: 100%;
   border: none;
   border-left: 1px dotted var(--gray2);
-  background-color: var(--point8);
+  background-color: var(--section);
   cursor: pointer;
   padding: 100px 10px 10px 10px;
-  color: var(--gray3);
+  color: var(--font);
   font-size: 3rem;
 }
 
@@ -403,17 +416,18 @@ h1 p {
   width: 100%;
   padding: 10px;
   border-radius: 1rem;
-  background-color: var(--point8);
+  background-color: var(--section);
   text-align: center;
   font-size: 1.5rem;
-  color: var(--gray3);
-  border: 1px solid var(--gray3);
+  color: var(--font);
+  border: 1px solid var(--font);
   cursor: pointer;
+  border: 1px solid var(--gray2);
 }
 .btn-build.on,
 .btn-all.on,
 .usergame-menunavi button:focus {
-  background: var(--gray2);
+  background: var(--point3);
   color: var(--white);
 }
 /* 유저 메뉴 끝*/
@@ -426,7 +440,7 @@ h1 p {
   padding: 10px 10px 5px 10px;
 }
 .victory-nav h3 {
-  color: var(--gray3);
+  color: var(--font);
 }
 .victory-nav li:nth-of-type(1) {
   width: 20%;
@@ -455,7 +469,7 @@ h1 p {
   width: 100%;
   align-items: center;
   padding: 5px 10px 10px 10px;
-  background-color: var(--point12);
+  background-color: var(--vic);
 }
 .vic-spell {
   display: flex;
@@ -568,7 +582,7 @@ h1 p {
   bottom: 5%;
   right: 45%;
   font-size: 1.5rem;
-  color: var(--white);
+  color: var(--title);
 }
 .object-progress li:nth-of-type(2) {
   position: relative;
@@ -579,7 +593,7 @@ h1 p {
   bottom: 5%;
   right: 44%;
   font-size: 1.5rem;
-  color: var(--white);
+  color: var(--title);
 }
 
 /* 승리 정보 끝*/
@@ -609,7 +623,7 @@ h1 p {
   padding: 20px;
 }
 .usergame-itembuild .itembuild-start {
-  with: 100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -622,12 +636,12 @@ h1 p {
   display: flex;
 }
 .usergame-itembuild p {
-  color: var(--gray3);
+  color: var(--font);
   font-size: 1.3rem;
 }
 .item-arrow {
   display: flex;
-  color: var(--gray3);
+  color: var(--font);
   align-items: center;
   font-size: 2rem;
   font-weight: bold;
@@ -636,35 +650,39 @@ h1 p {
 /* 유저 아이템 빌드 끝*/
 /* 유저 스킬 빌드 시작*/
 .usergame-skillbuild {
+  width: 100%;
   display: flex;
-  padding: 10px;
-  gap: 20px;
+  padding: 30px;
+  justify-content: space-between;
 }
 .usergame-skillbuild .userskill-qwe {
-  display: flex;
+  width: 30%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   align-items: center;
 }
 .usergame-skillbuild .skillbuild-grid {
   display: grid;
-  grid-template-columns: repeat(17, 1fr);
+  grid-template-columns: repeat(20, 1fr);
   align-items: center;
   text-align: center;
   justify-content: center;
   place-items: center;
-  border-bottom: 1px solid var(--gray3);
 }
 .usergame-skillbuild .skillbuild-grid li {
-  height: 40px;
-  width: 40px;
+  height: 25px;
+  width: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .skillbuild-grid li:nth-child(odd) {
   background-color: var(--point13);
+  border-bottom: 1px solid var(--font);
 }
 .skillbuild-grid li:nth-child(even) {
   background-color: var(--point14);
+  border-bottom: 1px solid var(--font);
 }
 /* 유저 스킬 빌드 끝*/
 /*  유저 룬 정보 시작 */
@@ -681,9 +699,9 @@ h1 p {
 .sub-rune {
   padding: 0 20px 0 20px;
 }
-.sub-rune{
-	border-right: 1px solid #f0f0f0;;
-	border-left: 1px solid #f0f0f0;;
+.sub-rune {
+  border-right: 1px solid #f0f0f0;
+  border-left: 1px solid #f0f0f0;
 }
 .usergame-runeinfo .main-zero,
 .main-first,
@@ -716,10 +734,10 @@ h1 p {
 .usergame-runeinfo {
   padding-bottom: 40px;
 }
-.rune-subject{
-	text-align: center;
-	color: white;
-	font-size: 15px
+.rune-subject {
+  text-align: center;
+  color: var(--white);
+  font-size: 15px;
 }
 .usergame-runeinfo .fragments-runegrid {
   display: grid;
@@ -728,29 +746,31 @@ h1 p {
   padding: 50px 20px 20px 20px;
   gap: 20px;
 }
-.sub-rune{
-	 margin-top: 40px;
-   
+.sub-rune {
+  margin-top: 40px;
 }
-.fragments-rune{
-	
-	padding-left:15px;
-	 margin-top: 130px;
-  
+.fragments-rune {
+  padding-left: 15px;
+  margin-top: 130px;
 }
-.fragments-rune ul{
-	padding:5px;
-	gap: 10px;
+.fragments-rune ul {
+  padding: 5px;
+  gap: 10px;
 }
-.fragments-rune ul img{
-	padding:5px;
-	gap: 10px;
+.fragments-rune ul img {
+  padding: 5px;
+  gap: 10px;
 }
 
 /*  유저 룬 정보 끝 */
 .gray-icon img {
-  opacity:0.5;
+  opacity: 0.5;
   filter: grayscale(100%);
+}
+
+.fragments-rune .color-icon {
+  border: 1px solid var(--gray3);
+  border-radius: 50%;
 }
 /* 토글 시작 */
 .usergame-click,

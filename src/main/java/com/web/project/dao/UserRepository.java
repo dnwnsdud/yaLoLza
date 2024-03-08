@@ -29,11 +29,11 @@ public interface UserRepository extends JpaRepository<SiteUser, Long> {
 	
 	public List<SiteUser> findAllByOrderByIdDesc();
 	public Optional<SiteUser> findById(Long id);
-
+ 
 	@Modifying
 	@Transactional
 	@Query("UPDATE SiteUser u SET u.password = :pw WHERE u.id = :indexId")
 	void updatePw(@Param("pw") String pw, @Param("indexId") Long indexId);
 	
 }
-
+ 

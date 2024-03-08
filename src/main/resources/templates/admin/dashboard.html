@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>admin</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}" />
-    <link rel="stylesheet" href="/css/HeaderFooter.css" />
+
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/dashboard.css" />
     <script>
@@ -23,11 +23,56 @@
     <br />
 
     <p class="admin-title">관리자페이지</p>
+    
 
     <!--    <span th:if="${user}" th:text="|${user.autho}-${user.nickname} 관리자님 환영합니다.|">아이디 존재</span><br/>
    <span th:unless="${user}">아이디 비존재</span><br/>
  -->
+ 
+
     <div class="userinfo_box">
+    <div>
+    <button class="server-btn">
+    <a href="http://localhost:3000/d/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1">서버관리</a>
+    </button>
+    </div>
+      <div class="usergraph">
+	    <iframe width="550" height="250" frameborder="0"></iframe>
+	    <iframe width="550" height="250" frameborder="0"></iframe>
+	    <iframe width="550" height="250" frameborder="0"></iframe>
+	    <iframe width="550" height="250" frameborder="0"></iframe>
+	</div>
+
+<script>
+    function getCurrentTime() {
+        return new Date().getTime();
+    }
+
+    function formatTime(time) {
+        return Math.floor(time);
+    }
+
+    function updateIframeURLs() {
+        var currentTime = getCurrentTime();
+        var oneDaysAgo = currentTime - (1 * 24 * 60 * 60 * 1000); 
+        var twoDaysAgo = currentTime - (2 * 24 * 60 * 60 * 1000); 
+        var sevenDaysAgo = currentTime - (7 * 24 * 60 * 60 * 1000); 
+        var tenDaysAgo = currentTime - (10 * 24 * 60 * 60 * 1000); 
+
+        // Get all iframes
+        var iframes = document.querySelectorAll('iframe');
+
+            iframes[0].src = "http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=" + formatTime(sevenDaysAgo) + "&to=" + formatTime(currentTime) + "&theme=light&panelId=219";
+            iframes[1].src = "http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=" + formatTime(sevenDaysAgo) + "&to=" + formatTime(currentTime) + "&theme=light&panelId=167";
+            iframes[2].src = "http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=" + formatTime(sevenDaysAgo) + "&to=" + formatTime(currentTime) + "&theme=light&panelId=226";
+            iframes[3].src = "http://localhost:3000/d-solo/fd041a07-6ae9-494e-a2c3-989097130596/yalolza?orgId=1&from=" + formatTime(sevenDaysAgo) + "&to=" + formatTime(currentTime) + "&theme=light&panelId=232";
+
+    }
+
+    updateIframeURLs();
+</script>
+    
+    
       <h1 class="userinfo_title">유저리스트</h1>
       <div class="userinfo">
         <ul class="dash_ul">
@@ -56,8 +101,8 @@
               method="post"
             >
               <input type="hidden" th:name="id" th:value="${user.id}" />
-              <button type="submit" onclick="return confirmDelete();">
-                회원삭제
+              <button type="submit" class="delete" onclick="return confirmDelete();">
+                삭제
               </button>
             </form>
           </li>

@@ -1,6 +1,8 @@
 const swiper = new Swiper(".homeswiper", {
   slidesPerView: "auto",
   // autoHeight: true,
+  loop: true,
+  rewind: true,
   centeredSlides: true,
   autoplay: {
     delay: "5000",

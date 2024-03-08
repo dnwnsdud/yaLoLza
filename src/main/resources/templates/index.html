@@ -6,24 +6,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-	integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+   integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/myrest.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
 <script
-	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+   src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="/js/home.js" defer></script>
 <script src="/js/position.js" defer></script>
+<script src="/js/common.js" defer></script>
 <script defer>
     function submitForm(event) {
         event.preventDefault();
         var inputValue = document.getElementById('searchInput').value;
-
         if (inputValue.includes('#')) {
             var modifiedValue = inputValue.replace(/@/g, '-');
             var submitURL = "http://localhost:9998/yalolza.gg/summoners/" + modifiedValue;
@@ -41,8 +41,8 @@
 </head>
 
 <body>
-	<div class="wrap">
-		 <header th:replace="~{/header :: header}"></header>
+   <div class="wrap">
+       <header th:replace="~{/header :: header}"></header>
     <figure>
         <form class="homesearch" id="searchForm"  method="get" >
             <input type="text" id="searchInput" name="name" placeholder="챔피언 혹은 ID를 검색하세요.">
@@ -58,173 +58,173 @@
                     <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Renekton}"></div>
                 </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: Ari}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: Ari}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Ari}"></div>
-				</div>
+            </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: Jayce}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: Jayce}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Jayce}"></div>
-				</div>
+            </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: Sol}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: Sol}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Sol}"></div>
-				</div>
+            </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: Fate}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: Fate}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Fate}"></div>
-				</div>
+            </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: Kaisa}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: Kaisa}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Kaisa}"></div>
-				</div>
+            </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: Varus}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: Varus}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Varus}"></div>
-				</div>
+            </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: smol}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: smol}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: smol}"></div>
-				</div>
+            </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: bard}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: bard}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: bard}"></div>
-				</div>
+            </div>
                 <div class="swiper-slide">
-					<div class="swiper-champion" th:replace="~{/swiperchamp :: Zyra}"></div>
+               <div class="swiper-champion" th:replace="~{/swiperchamp :: Zyra}"></div>
                      <div class="swiper-champdetail" th:replace="~{/swiperdetail :: Zyra}"></div>
-				</div>
+            </div>
             </div>
         <div class="swiper-button-next next1">
-			<i class="fa-solid fa-caret-right"></i></i>
-		</div>
+         
+      </div>
         <div class="swiper-button-prev prev1">
-			<i class="fa-solid fa-caret-left"></i>
-		</div>
+      
+      </div>
         </div>
 </figure>
 <div class="layoutBox">
-	<div class="layout">
-		<div class="writeBox">
-			<a th:href="@{/talk.yalolza.gg/community/list/all}"
-				class="write_title">게시판 ></a>
-		</div>
-		<ul id="commuDescriptor">
-			<li></li>
-			<li>제목</li>
-			<li>작성자</li>
-			<li>날짜</li>
-		</ul>
-		<ul th:each="community, loop : ${communityList}" class="commu_list">
-			<li th:text="${community.category}"></li>
-			
-			<li><a
-				th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}"
-				th:if="${#strings.length(community.title) <= 15}"
-				th:text="${community.title}"></a> <a
-				th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}"
-				th:if="${#strings.length(community.title) > 15}"
-				th:text="${community.title.substring(0, 15)} + '...'"></a> <span
-				th:if="${#lists.size(community.commentList)>0}"
-				th:text="'[' + ${#lists.size(community.commentList)} + ']'"
-				class="comment_number" style="color: #aaa"></span></li>
-			<li th:if="${community.siteUser != null}"
-				th:text="${community.siteUser.nickname}"></li>
-			<li th:text="${#temporals.format(community.createDate, 'MM-dd')}"></li>
-		</ul>
-	</div>
-	<div class="layout">
-		<div class="writeBox">
-			<a th:href="@{/duo.yalolza.gg/list}" class="write_title">DUO ></a>
-		</div>
-		<div>
-			<ul id="descriptor">
-				<li style="display: none;">글 번호</li>
-				<li>소환사 이름</li>
-				<li>주 포지션</li>
-				<li>티어</li>
-				<li>찾는 포지션</li>
-				<li>메모</li>
-			</ul>
-			<div id="duoTableBody">
-				<div th:each="duo : ${duoList}">
-					<a th:href="@{|/duo.yalolza.gg/view/${duo.id}|}">
-						<ul id="item">
-							<li style="display: none;" th:text="${duo.id}"></li>
-							<li th:each="pos : ${duo.yourposition}" th:data-type="${pos}"
-								style="display: none;"></li>
-							<li th:text="${duo.summonerName}"></li>
+   <div class="layout">
+      <div class="writeBox">
+         <a th:href="@{/talk.yalolza.gg/community/list/all}"
+            class="write_title">게시판 ></a>
+      </div>
+      <ul id="commuDescriptor">
+         <li></li>
+         <li>제목</li>
+         <li>작성자</li>
+         <li>날짜</li>
+      </ul>
+      <ul th:each="community, loop : ${communityList}" class="commu_list">
+         <li th:text="${community.category}"></li>
+         
+         <li><a
+            th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}"
+            th:if="${#strings.length(community.title) <= 15}"
+            th:text="${community.title}"></a> <a
+            th:href="@{|/talk.yalolza.gg/community/detail/${community.id}|}"
+            th:if="${#strings.length(community.title) > 15}"
+            th:text="${community.title.substring(0, 15)} + '...'"></a> <span
+            th:if="${#lists.size(community.commentList)>0}"
+            th:text="'[' + ${#lists.size(community.commentList)} + ']'"
+            class="comment_number" style="color: #aaa"></span></li>
+         <li th:if="${community.siteUser != null}"
+            th:text="${community.siteUser.nickname}"></li>
+         <li th:text="${#temporals.format(community.createDate, 'MM-dd')}"></li>
+      </ul>
+   </div>
+   <div class="layout">
+      <div class="writeBox">
+         <a th:href="@{/duo.yalolza.gg/list}" class="write_title">DUO ></a>
+      </div>
+      <div>
+         <ul id="descriptor">
+            <li style="display: none;">글 번호</li>
+            <li>소환사 이름</li>
+            <li>주 포지션</li>
+            <li>티어</li>
+            <li>찾는 포지션</li>
+            <li>메모</li>
+         </ul>
+         <div id="duoTableBody">
+            <div th:each="duo : ${duoList}">
+               <a th:href="@{|/duo.yalolza.gg/view/${duo.id}|}">
+                  <ul id="item">
+                     <li style="display: none;" th:text="${duo.id}"></li>
+                     <li th:each="pos : ${duo.yourposition}" th:data-type="${pos}"
+                        style="display: none;"></li>
+                     <li th:text="${duo.summonerName}"></li>
 
-							<li>
-								<div id="positionBox" class="positionBox"
-									th:switch="${duo.myposition.name()}">
-									<div class="AllBox Box" th:case="ALL"></div>
-									<div class="TopBox Box" th:case="TOP"></div>
-									<div class="JungleBox Box" th:case="JUNGLE"></div>
-									<div class="MidBox Box" th:case="MID"></div>
-									<div class="BottomBox Box" th:case="BOTTOM"></div>
-									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-								</div>
-							</li>
-							<li th:text="${duo.tier}"></li>
-							<li>
+                     <li>
+                        <div id="positionBox" class="positionBox"
+                           th:switch="${duo.myposition.name()}">
+                           <div class="AllBox Box" th:case="ALL"></div>
+                           <div class="TopBox Box" th:case="TOP"></div>
+                           <div class="JungleBox Box" th:case="JUNGLE"></div>
+                           <div class="MidBox Box" th:case="MID"></div>
+                           <div class="BottomBox Box" th:case="BOTTOM"></div>
+                           <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+                        </div>
+                     </li>
+                     <li th:text="${duo.tier}"></li>
+                     <li>
 
-								<div th:if="${duo.yourposition.size() < 4}" class="yourBox"
-									th:each="position : ${duo.yourposition}"
-									th:switch="${position.name()}">
-									<div class="AllBox Box" th:case="ALL"></div>
-									<div class="TopBox Box" th:case="TOP"></div>
-									<div class="JungleBox Box" th:case="JUNGLE"></div>
-									<div class="MidBox Box" th:case="MID"></div>
-									<div class="BottomBox Box" th:case="BOTTOM"></div>
-									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-								</div>
-								<div th:unless="${duo.yourposition.size() < 4}">
-									<div class="yourBox"
-										th:switch="${duo.yourposition.get(0).name()}">
-										<div class="AllBox Box" th:case="ALL"></div>
-										<div class="TopBox Box" th:case="TOP"></div>
-										<div class="JungleBox Box" th:case="JUNGLE"></div>
-										<div class="MidBox Box" th:case="MID"></div>
-										<div class="BottomBox Box" th:case="BOTTOM"></div>
-										<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-									</div>
-									<div class="yourBox"
-										th:switch="${duo.yourposition.get(1).name()}">
-										<div class="AllBox Box" th:case="ALL"></div>
-										<div class="TopBox Box" th:case="TOP"></div>
-										<div class="JungleBox Box" th:case="JUNGLE"></div>
-										<div class="MidBox Box" th:case="MID"></div>
-										<div class="BottomBox Box" th:case="BOTTOM"></div>
-										<div class="SupporterBox Box" th:case="SUPPORTER"></div>
-									</div>
-									<div class="plus Box" style="border: none;">
-										<svg xmlns="http://www.w3.org/2000/svg"
-											viewBox="0 0 448 448">
-											
-									<path
-												d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-								</svg>
-									</div>
-								</div>
-							</li>
+                        <div th:if="${duo.yourposition.size() < 4}" class="yourBox"
+                           th:each="position : ${duo.yourposition}"
+                           th:switch="${position.name()}">
+                           <div class="AllBox Box" th:case="ALL"></div>
+                           <div class="TopBox Box" th:case="TOP"></div>
+                           <div class="JungleBox Box" th:case="JUNGLE"></div>
+                           <div class="MidBox Box" th:case="MID"></div>
+                           <div class="BottomBox Box" th:case="BOTTOM"></div>
+                           <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+                        </div>
+                        <div th:unless="${duo.yourposition.size() < 4}">
+                           <div class="yourBox"
+                              th:switch="${duo.yourposition.get(0).name()}">
+                              <div class="AllBox Box" th:case="ALL"></div>
+                              <div class="TopBox Box" th:case="TOP"></div>
+                              <div class="JungleBox Box" th:case="JUNGLE"></div>
+                              <div class="MidBox Box" th:case="MID"></div>
+                              <div class="BottomBox Box" th:case="BOTTOM"></div>
+                              <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+                           </div>
+                           <div class="yourBox"
+                              th:switch="${duo.yourposition.get(1).name()}">
+                              <div class="AllBox Box" th:case="ALL"></div>
+                              <div class="TopBox Box" th:case="TOP"></div>
+                              <div class="JungleBox Box" th:case="JUNGLE"></div>
+                              <div class="MidBox Box" th:case="MID"></div>
+                              <div class="BottomBox Box" th:case="BOTTOM"></div>
+                              <div class="SupporterBox Box" th:case="SUPPORTER"></div>
+                           </div>
+                           <div class="plus Box" style="border: none;">
+                              <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 448 448">
+                                 
+                           <path
+                                    d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                        </svg>
+                           </div>
+                        </div>
+                     </li>
 
-							<li th:text="${duo.memo}"></li>
+                     <li th:text="${duo.memo}"></li>
 
-						</ul>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+                  </ul>
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 <div class=youtubeContainer>
-	<h2>소환사 협곡 인기 동영상</h2>
-	<div class="videoBox" th:each="video : ${youtubeVideos}"
-		th:utext="${video}"></div>
+   <h2>소환사 협곡 인기 동영상</h2>
+   <div class="videoBox" th:each="video : ${youtubeVideos}"
+      th:utext="${video}"></div>
 </div>
  <footer th:replace="~{/footer :: footer}"></footer>
 </div>
-					
+               
 
 
 </body>

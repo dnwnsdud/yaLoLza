@@ -1,5 +1,5 @@
 body{
-		background-color: #1c284a;
+		background-color: var(--background);
 
 }
 
@@ -10,10 +10,10 @@ figure {
     
 }
 .homesearch {
-    max-width: 1000px;
+    max-width: 700px;
     margin: 50px auto;
     display: flex;
-    height: 60px;
+    height: 50px;
     border-radius: 1rem;
     overflow: hidden;
 }
@@ -152,11 +152,10 @@ h2 {
 }
 ::-webkit-scrollbar {
     border-radius: 12px 12px 12px 12px;
-   width: 5px;
+   width: 2px;
+   height: 5%;
 }
 ::-webkit-scrollbar-thumb{
-	width: 5px;
-	 height: 30%;
 	 background: var(--point3);
 	 border-radius: 12px 12px 12px 12px;
 }
@@ -185,39 +184,16 @@ h4 {
 .homeswiper .next1::after{
 	display: none;
 }
-.homeswiper .prev1 img,
-.homeswiper .next1 img{
-	width: 100%;
-}
-.homeswiper .prev1{
-	top: 40px;
-	left: 75%;
-	color: var(--point3);	
-	width: 40px;
-	height: 50px; 
-	font-size: 4rem;
-	background-color: #1e2233;
-	display: flex;
-	border-radius: 0.5rem;
-}
-.homeswiper .next1{
-	right: 21%;
-	top: 40px;	
-	width: 40px; 
-      height: 50px; 
-     font-size: 4rem;
-     color: var(--point3);
-	background-color: #1e2233;
-	border-radius: 0.5rem;
-}
+
+
 /*-------------------------------------------------커뮤-------------------------------------------*/
 .commu_list, #commuDescriptor {
   display: grid; 
   grid-template-columns: 1fr 4fr 3fr 2fr;
-  color: white;
+  color: var(--title);
 }
 #commuDescriptor{
-	background-color: #1e2233;
+	background-color: var(--table);
 }
 
 #commuDescriptor > li{
@@ -237,7 +213,7 @@ h4 {
 }
 
 .commu_list > li {
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid var(--border);
 	padding: 10px;
   text-align: center;
     font-size: 1.2rem;
@@ -253,7 +229,7 @@ h4 {
 .layout {
 	border-radius: 0.5rem;
 	margin: 10px;
-	background-color:#292e45;
+	background-color:var(--section);
 	overflow: hidden;
 	padding-bottom: 1rem;
 	padding: 10px;
@@ -270,8 +246,9 @@ h4 {
 
 
 .layout>div>ul#descriptor {
-	background-color: #1e2233;
+	background-color: var(--table);
 	font-size: 1.3rem;
+	color: var(--title);
 }
 
 .layout>div>ul,
@@ -331,13 +308,15 @@ div.yourBox {
 .youtubeContainer{
 	max-width: 1320px;
 	margin: 50px auto 50px;
-	color: white;
-	
+	color: var(--title);
+}
+.youtubeContainer h2{
+	color: var(--title);
 }
 
 .videoBox{
 	padding:50px 80px;
-	background-color:#292e45;
+	background-color: var(--section);
 	border-radius:10px;
 	display: grid;
 	grid-template-columns: 1fr 1fr;

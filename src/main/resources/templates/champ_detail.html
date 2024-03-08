@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
 <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+	integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/css/myrest.css" />
 <link rel="stylesheet" href="/css/common.css" />
@@ -12,6 +16,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/champ_detail.js" defer></script>
+<script src="/js/common.js" defer></script>
 
 </head>
 <body>
@@ -168,8 +173,9 @@
 							
 								<ul class="perkslot1">
 									<li th:id="${perklist[0].id}">
-										<div
-											th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')">
+										<div class="color-icon">
+											<!-- th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')" -->
+											
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
 										</div>
 									</li>
@@ -200,6 +206,7 @@
 										</div>
 									</li>
 									<li th:id="${perklist[5].id}">
+										<div class="color-icon">
 										<div
 											th:class="${perklist[5].id}==${value}? 'color-icon':'gray-icon'">
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[5].icon}}" />
@@ -220,8 +227,9 @@
 										</div>
 									</li>
 									<li th:id="${perklist[8].id}">
-										<div
-											th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'">
+										<div class="color-icon">
+										<!-- <div
+											th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'"> -->
 											<img alt="스탯 이미지" th:src="@{'/img/'+${perklist[8].icon}}" />
 										</div>
 									</li>
@@ -251,7 +259,7 @@
 										<p th:id="${runeWinRate1}" th:text="${runeWinRate1} + '%'">승률</p>
 									</li>
 								</ul>
-								<ul class="select-second">
+								<!-- <ul class="select-second">
 									<li>
 										<div>
 											<img th:src="@{'/img/'+${keysRuneImage2}}" alt="룬 이미지" />
@@ -271,27 +279,27 @@
 										</p>
 										<p th:id="${runeWinRate2}" th:text="${runeWinRate2} + '%'">승률</p>
 									</li>
-								</ul>
+								</ul> -->
 							</div>
 						</div>
 					</section>
 					<!-- 스킬 빌드 -->
 					<section class="con3">
-						<h2>가렌 스킬 빌드 ></h2>
+						<h2>스킬 빌드 ></h2>
 						<!--아무도 없음-->
 						<ul>
 							<li>
 								<div class="champ-skillbuild">
 									<div>
-										<img th:src="@{'/img/spell/'+${firstSkill.get(0).getSkillList()[0]}+'.png'}"
+										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[0]-1].id}+'.png'}"
 								alt="스펠 이미지" />
 									</div>
 									<div>
-										<img th:src="@{'/img/spell/'+${firstSkill.get(0).getSkillList()[0]}+'.png'}"
+										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[1]-1].id}+'.png'}"
 								alt="스펠 이미지" />
 									</div>
 									<div>
-										<img th:src="@{'/img/spell/'+${firstSkill.get(0).getSkillList()[0]}+'.png'}"
+										<img th:src="@{'/img/spell/'+${keysChamSkill[__${champion.id}__][firstSkill.get(0).getSkillList()[2]-1].id}+'.png'}"
 								alt="스펠 이미지" />
 									</div>
 								</div>
@@ -324,20 +332,18 @@
 					</section>
 					<!-- 아이템 빌드 -->
 					<section class="con4">
-						<h2>가렌 아이템 빌드</h2>
-						<!--이지수-->
+						<h2>  아이템 빌드</h2>
 						<ul>
 							<li>
 								<h3>시작 아이템</h3>
 								<div class="item-build">
 									<div>
-										<div th:id="${item1.id}" class="item-buildstart">
+										<div th:id="${firstItem}" class="item-buildstart">
 											<img th:src="@{'/img/item/'+${firstItem}+'.png'}"
 												alt="아이템 이미지">
 										</div>
-										<div th:id="${item2.id}" class="item-buildstart">
-											<img th:src="@{'/img/item/'+${item3.id}+'.png'}"
-												alt="아이템 이미지">
+										<div >
+											
 										</div>
 									</div>
 									<p>
@@ -352,7 +358,7 @@
 								</div>
 							</li>
 							<li>
-								<h3>신발</h3>
+								<!-- <h3>신발</h3>
 								<div class="item-build">
 									<div>
 										<div>
@@ -368,21 +374,18 @@
 									</div>
 									<div class="order-vic">승률</div>
 									</p>
-								</div>
+								</div> -->
 							</li>
 						</ul>
 						<ul>
 							<li>
-								<div class="item-build">
+								<!-- <div class="item-build">
 									<div>
 										<div th:id="${item1.id}" class="item-buildstart">
 											<img th:src="@{'/img/item/'+${secondItem}+'.png'}"
 												alt="아이템 이미지">
 										</div>
-										<div th:id="${item2.id}" class="item-buildstart">
-											<img th:src="@{'/img/item/'+${item3.id}+'.png'}"
-												alt="아이템 이미지">
-										</div>
+										
 									</div>
 									<p>
 									<div class="order-block">
@@ -393,10 +396,10 @@
 									<div class="order-vic" th:id="${secondItemPickRate}"
 										th:text="${secondItemWinRate}  + '%'">승률</div>
 									</p>
-								</div>
+								</div> -->
 							</li>
 							<li>
-								<div class="item-build">
+								<!-- <div class="item-build">
 									<div>
 										<div>
 											<img src="" alt="">
@@ -411,7 +414,7 @@
 									</div>
 									<div class="order-vic">승률</div>
 									</p>
-								</div>
+								</div> -->
 							</li>
 						</ul>
 						<h3>가렌 추천 빌드</h3>
@@ -476,7 +479,7 @@
 							<li>
 								<div class="item-recommendation">
 									<div class="recommendation">
-										<div>
+										<!-- <div>
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(2).getItemList()[0]}+'.png'}"
 												alt="아이템 이미지">
 										</div>
@@ -487,15 +490,15 @@
 										<div>
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(2).getItemList()[2]}+'.png'}"
 												alt="아이템 이미지">
-										</div>
+										</div> -->
 									</div>
 									<p>
-									<div class="order-block">
+									<!-- <div class="order-block">
 										<strong th:text="${listPickRate3} + '%'">선택비율</strong><br> 
 										
 										<span th:text="${listpick3} + 게임">게임수asdasdas</span>
 									</div>
-									<div class="order-vic" th:text="${listWin3} + '%'">승률</div>
+									<div class="order-vic" th:text="${listWin3} + '%'">승률</div> -->
 									</p>
 								</div>
 							</li>
@@ -504,7 +507,7 @@
 							<li>
 								<div class="item-recommendation">
 									<div class="recommendation">
-										<div>
+										<!-- <div>
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(3).getItemList()[0]}+'.png'}"
 												alt="아이템 이미지">
 										</div>
@@ -515,15 +518,15 @@
 										<div>
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(3).getItemList()[2]}+'.png'}"
 												alt="아이템 이미지">
-										</div>
+										</div> -->
 									</div>
 									<p>
 									<div class="order-block">
-										<strong th:text="${listPickRate4} + '%'">선택비율</strong><br> 
+										<!-- <strong th:text="${listPickRate4} + '%'">선택비율</strong><br> 
 										
 										<span th:text="${listpick4} + 게임">게임수asdasdas</span>
 									</div>
-									<div class="order-vic" th:text="${listWin4} + '%'">승률</div>
+									<div class="order-vic" th:text="${listWin4} + '%'">승률</div> -->
 									</p>
 								</div>
 							</li>
@@ -532,7 +535,7 @@
 							<li>
 								<div class="item-recommendation">
 									<div class="recommendation">
-										<div>
+										<!-- <div>
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(4).getItemList()[0]}+'.png'}"
 												alt="아이템 이미지">
 										</div>
@@ -543,15 +546,15 @@
 										<div>
 											<img th:src="@{'/img/item/'+${ItemStatistic.get(4).getItemList()[2]}+'.png'}"
 												alt="아이템 이미지">
-										</div>
+										</div> -->
 									</div>
 									<p>
 									<div class="order-block">
-										<strong th:text="${listPickRate5} + '%'">선택비율</strong><br> 
+										<!-- <strong th:text="${listPickRate5} + '%'">선택비율</strong><br> 
 										
 										<span th:text="${listpick5} + 게임">게임수asdasdas</span>
 									</div>
-									<div class="order-vic" th:text="${listWin5} + '%'">승률</div>
+									<div class="order-vic" th:text="${listWin5} + '%'">승률</div> -->
 									</p>
 								</div>
 							</li>
@@ -673,57 +676,57 @@
                </section>
                <!-- 장인 랭킹 --><!--진성님-->
                <section class="champ-rank">
-                  <h2>가렌 장인 랭킹 ></h2>
-                  <ul>
+                  <h2> </h2>
+                 <ul>
                      <li>
                         <ul>
-                           <p>1</p>
+                           <p></p>
                            <div>
                               <img src="" alt="">
                            </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
+                           <strong style="font-size: 1.7rem;"></strong>
                         </ul>
-                        <p class="rank-flex">게임수</p>
+                        <p class="rank-flex"></p>
                      </li>
                      <li>
                         <ul>
-                           <p>2</p>
+                           <p></p>
                            <div>
                               <img src="" alt="">
                            </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
+                           <strong style="font-size: 1.7rem;"></strong>
                         </ul>
-                        <p class="rank-flex">게임수</p>
+                        <p class="rank-flex"></p>
                      </li>
                      <li>
                         <ul>
-                           <p>3</p>
+                           <p></p>
                            <div>
                               <img src="" alt="">
                            </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
+                           <strong style="font-size: 1.7rem;"></strong>
                         </ul>
-                        <p class="rank-flex">게임수</p>
+                        <p class="rank-flex"></p>
                      </li>
                      <li>
                         <ul>
-                           <p>4</p>
+                           <p></p>
                            <div>
                               <img src="" alt="">
                            </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
+                           <strong style="font-size: 1.7rem;"></strong>
                         </ul>
-                        <p class="rank-flex">게임수</p>
+                        <p class="rank-flex"></p>
                      </li>
                      <li>
                         <ul>
-                           <p>5</p>
+                           <p></p>
                            <div>
                               <img src="" alt="">
                            </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
+                           <strong style="font-size: 1.7rem;"></strong>
                         </ul>
-                        <p class="rank-flex">게임수</p>
+                        <p class="rank-flex"></p>
                      </li>
                   </ul>
                </section>
@@ -744,7 +747,7 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
            target,
             {
               gap: 20,
-              backgroundColor: "var(--gray2)",
+              backgroundColor: "rgba(16,19,28,0.8)",
               borderRadius: "1rem",
             },
             {
@@ -767,10 +770,11 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
               target,
                {
                  gap: 20,
-                 backgroundColor: "var(--gray2)",
+                 backgroundColor: "rgba(16,19,28,0.8)",
                  borderRadius: "1rem",
                },
                {
+				 color:"var(--white)",
                  fontSize: "15px",
                  width: "250px",
                  padding:"10px"
@@ -789,10 +793,11 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
               target,
                {
                  gap: 20,
-                 backgroundColor: "var(--gray2)",
+                 backgroundColor: "rgba(16,19,28,0.8)",
                  borderRadius: "1rem",
                },
                {
+				 color:"var(--white)",
                  fontSize: "15px",
                  width: "250px",
                  padding:"10px"
@@ -811,12 +816,12 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
               target,
                {
                  gap: 20,
-                 backgroundColor: "var(--gray2)",
+                 backgroundColor: "rgba(16,19,28,0.8)",
                  borderRadius: "1rem",
                },
                {
+				 color:"var(--white)",
                  fontSize: "15px",
-                 color:"#48C4B7",
                  width: "250px",
                  padding:"10px"
                }
@@ -834,12 +839,12 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
               target,
                {
                  gap: 20,
-                 backgroundColor: "var(--gray2)",
+                 backgroundColor: "rgba(16,19,28,0.8)",
                  borderRadius: "1rem",
                },
                {
+				 color:"var(--white)",	
                  fontSize: "15px",
-                 color:"#48C4B7",
                  width: "250px",
                  padding:"10px"
                }
@@ -857,12 +862,12 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
               target,
                {
                  gap: 20,
-                 backgroundColor: "var(--gray2)",
+                 backgroundColor: "rgba(16,19,28,0.8)",
                  borderRadius: "1rem",
                },
                {
+				 color:"var(--white)",	
                  fontSize: "15px",
-                 color:"#48C4B7",
                  width: "250px",
                  padding:"10px"
                }
@@ -880,12 +885,12 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
               target,
                {
                  gap: 20,
-                 backgroundColor: "var(--gray2)",
+                 backgroundColor: "rgba(16,19,28,0.8)",
                  borderRadius: "1rem",
                },
                {
                  fontSize: "15px",
-                 color:"#48C4B7",
+                 color:"var(--white)",	
                  width: "250px",
                  padding:"10px"
                }

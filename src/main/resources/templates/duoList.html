@@ -9,6 +9,7 @@
    <link rel="stylesheet" th:href="@{/css/duoList.css}">
    <link rel="stylesheet" th:href="@{/css/common.css}">
    <script src="https://kit.fontawesome.com/286b044825.js" crossorigin="anonymous"></script>
+    <script src="/js/common.js" defer></script>
 
    <script src="/js/position.js" defer></script>
    <style>
@@ -66,7 +67,7 @@
          <div>
             <div class="menuContainer">
                <div class="for-myposition">
-                  <div class="label-myposition" id="myposition">내 포지션</div>
+                  <div class="label-myposition" style="color: var(--title);" id="myposition">내 포지션</div>
                   <input type="radio" id="mypositionAll" name="myposition" value="ALL"
                      onclick="searchDuoByPosition(this.value)">
                   <label for="mypositionAll">
@@ -102,7 +103,7 @@
 						</label>
 					</div>
 					<div class="for-yourposition">
-						<div class="label-yourposition" id="yourposition">찾는 포지션</div>
+						<div class="label-yourposition" style="color: var(--title);" id="yourposition">찾는 포지션</div>
 						<input type="radio" id="yourpositionAll" name="yourposition" value="ALL"
 							onclick="searchDuoByYourposition(this.value)">
 						<label for="yourpositionAll">
@@ -184,9 +185,9 @@
 					<div id="duoTableBody">
 						<ul id="item" th:each="duo : ${duoList}" onclick="redirectToView()"
 							th:data-type="${duo.myposition.name()}" th:data-queue="${duo.queuetype.name()}">
-							<li style="display: none;" th:text="${duo.id}"></li>
-							<li th:each="pos : ${duo.yourposition}" th:data-type="${pos}" style="display:none;"></li>
-							<li th:text="${duo.summonerName}"></li>
+							<li style="display: none; color: var(--title);" th:text="${duo.id}"></li>
+							<li th:each="pos : ${duo.yourposition}" th:data-type="${pos}" style="display:none;  color: var(--title);"></li>
+							<li style="color: var(--title);" th:text="${duo.summonerName}"></li>
 							<li>
 								<div class="mikeBox" th:if="${duo.ismike}">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow"
@@ -217,7 +218,7 @@
 									<div class="SupporterBox Box" th:case="SUPPORTER"></div>
 								</div>
 							</li>
-							 <li th:text="${duo.tier}"></li> 
+							 <li style=" color: var(--title);" th:text="${duo.tier}"></li> 
 							<li>
 
 								<div th:if="${duo.yourposition.size() < 4}" class="yourBox"
@@ -309,8 +310,8 @@
                      
                      
                      
-                     <li th:text="${duo.memo}"></li>
-                     <li th:text="${duo.createdDate}" class="createdDate"></li>
+                     <li style="color: var(--title);" th:text="${duo.memo}"></li>
+                     <li style=" color: var(--title);" th:text="${duo.createdDate}" class="createdDate"></li>
                   </ul>
 
                </div>

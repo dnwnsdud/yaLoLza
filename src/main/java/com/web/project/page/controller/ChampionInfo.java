@@ -1,5 +1,6 @@
 package com.web.project.page.controller;
-
+ 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/info")
-@Slf4j
+@Slf4j 
 public class ChampionInfo {
 	@GetMapping("/passive/{id}")
 	public String championpassive (Model model, @PathVariable String id) {  
@@ -48,7 +49,7 @@ public class ChampionInfo {
 		Spell spell = spells.get(index);
 		model.addAttribute("spell",spell);
 		return "championspell";
-	}
+	} 
 	@GetMapping("/runedetailinfo/{id}")
     public String runedetailinfo(Model model,@PathVariable Integer id) {
 	    log.info("runedetailinfo");		  
@@ -72,7 +73,7 @@ public class ChampionInfo {
 		Map<String, String> summonerkey = SummonerData.keysSumSpell();
 		model.addAttribute("summonerkey", summonerkey);
 		return "summonerspellinfo";
-	}
+	} 
 	@GetMapping("/itemdetailinfo/{id}")
 	public String iteminfo(Model model,@PathVariable String id) {
 		log.info("itemdetailinfo");	
@@ -128,6 +129,20 @@ public class ChampionInfo {
 		Map<Integer, String> keysPerk = RuneData.keysPerk();
 		model.addAttribute("keysPerk", keysPerk);
 		return "mapping";
-	}
-	
+	} 
+	@GetMapping("/objectinfo/{id}")
+    public String objectinfo(Model model,@PathVariable String id) {
+	    log.info("objectinfo");		  
+	    Map<String, String> objectkey=new HashMap<>();
+	    objectkey.put("baron","바론");
+	    objectkey.put("dragon","드래곤");
+	    objectkey.put("horde","협곡의 전령");
+	    objectkey.put("riftHerald","공허 유충");
+	    objectkey.put("tower","타워");
+	    objectkey.put("inhibitor","억제기");
+        model.addAttribute("object", objectkey.get(id));
+      
+        return "objectinfo";
+    }
+	   
 }

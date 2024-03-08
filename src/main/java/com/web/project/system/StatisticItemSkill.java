@@ -110,8 +110,8 @@ public class StatisticItemSkill {
 	        // 상위 2개 아이템만 추출
 	        // 20번 이상 등장해야 함
 	        List<ItemStatistics> topTwoItems = filteredStatistic.stream()
-	        		.filter(stat-> stat.getPickCount() > 5 )
-	                .limit(2)
+	        		.filter(stat-> stat.getPickCount() > 10 )
+	                .limit(1)
 	                .collect(Collectors.toList());
 	        return topTwoItems;
 	    }
