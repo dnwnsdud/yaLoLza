@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.web.project.dto.championstats.AramChampionDTO;
 import com.web.project.dto.championstats.ChampionStatsDTO;
 import com.web.project.dto.championstats.TierDataDTO;
+import com.web.project.metrics.count.Connect;
 import com.web.project.system.AramDataService;
 import com.web.project.system.AramStatsJsonReader;
 import com.web.project.system.JsonReader;
@@ -22,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/yalolza.gg")
+@RequestMapping("/yalolza.gg/champions")
 public class StaticController {
 
     private final JsonReader jsonReader;
@@ -37,7 +38,7 @@ public class StaticController {
         this.aramStatsJsonReader = aramStatsJsonReader;
     }
 
-    @GetMapping("/yalolza.gg/champions/static")
+    @GetMapping("/static")
     public String getChampionsData(
         @RequestParam(required = false, defaultValue = "ALL") String tier,
         @RequestParam(required = false, defaultValue = "ALL") String position,
@@ -49,6 +50,7 @@ public class StaticController {
             try {
                 AramChampionDTO[] aramChampions = aramStatsJsonReader.readAramStatsJsonFile();
                 model.addAttribute("aramChampions", Arrays.asList(aramChampions));
+            	new Connect("total","yalolza.gg", "static","aram");
                 return "aram"; // ARAM 데이터를 포함한 뷰 반환
             } catch (IOException e) {
                 model.addAttribute("error", "ERROR: " + e.getMessage());
@@ -91,6 +93,7 @@ public class StaticController {
         } catch (Exception e) {
             model.addAttribute("error", "ERROR: " + e.getMessage());
         }
+    	new Connect("total","yalolza.gg", "static","champion");
         return "static";
     }
 }

@@ -141,7 +141,8 @@ public class DuoPage {
 	               // MostChampions 엔티티를 디비에 저장
 	               mostChampions.save(mostChampion);
 	           }
-
+	           Counter.Increment("totalCount",1);
+	           Counter.Increment("duoCount",1);
 	           // 리다이렉트
 	           return "redirect:/duo.yalolza.gg/list"; 
 	       } catch (Exception e) {
@@ -256,6 +257,7 @@ public class DuoPage {
 		    
 //				return "message"; 
 			        Counter.Decrement("duoCount", 1);
+			        Counter.Decrement("totalCount",1);
 					return "redirect:/duo.yalolza.gg/list"; 
 		    }
 

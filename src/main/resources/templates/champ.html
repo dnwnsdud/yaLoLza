@@ -56,8 +56,8 @@
 		<section class="con2">
 			<div class="champ-btn"></div>
 			<ul class="champ-face">
-				<li th:each="champion : ${positionData}"><a
-					th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position == 'ALL' ? championOriginalPositions[champion.championName] : position}, championName=${champion.championName})}">
+				<li th:each="champion : ${positionData}">
+					<a th:href="@{/yalolza.gg/champions/{championName}/build(tier=${selectedTier}, position=${position == 'ALL' ? championOriginalPositions[champion.championName] : position}, championName=${champion.championName})}">
 						<div>
 							<img
 								th:src="@{/img/champion/{championName}.png(championName=${champion.championName})}"
@@ -133,14 +133,8 @@
 						<td th:text="${champion.stats.pickrate} + '%'"></td>
 						<td th:text="${champion.stats.banrate} + '%'"></td>
 						<td>
-							<div class="img-wrap">
-								<a href=""><img src="/img/Garen.webp" alt="" /></a>
-							</div>
-							<div class="img-wrap">
-								<a href=""><img src="/img/Garen.webp" alt="" /></a>
-							</div>
-							<div class="img-wrap">
-								<a href=""><img src="/img/Garen.webp" alt="" /></a>
+							<div class="img-wrap" th:each="img : ${counterChampions.get(champion.getChampionName())}">
+								<a href=""><img th:src="${'/img/champion/' + img.championName + '.png'}" alt="" /></a>
 							</div>
 						</td>
 					</tr>

@@ -259,38 +259,52 @@
 							
 							
 							
-
-
 					
+
+											
 		               <li class="mostChampion" th:unless="${#lists.isEmpty(duo.mostChampions)}">
                         <div class="ChampionBox" th:each="mostChampion : ${duo.mostChampions}" ><img th:src="@{/img/champion/{championName}.png(championName=${mostChampion.mostChampion})}" alt="Champion Icon" /></div>
                         </li>
                      
- 
-                        <li style=" color: var(--title);" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins + duo.MostChampions[2].wins},
+                        <li th:if="${duo.mostChampions.size()>2}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins + duo.MostChampions[2].wins},
                                   rounds=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}">
                                <span th:text="${wins * 100 / rounds} + '%'"></span>
-                     </li>
+                     	</li>
+                        <li th:if="${duo.mostChampions.size()==2}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins + duo.MostChampions[1].wins},
+                                  rounds=${duo.MostChampions[0].round + duo.MostChampions[1].round}">
+                               <span th:text="${wins * 100 / rounds} + '%'"></span>
+                     	</li>
+                        <li th:if="${duo.mostChampions.size()==1}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="wins=${duo.MostChampions[0].wins},
+                                  rounds=${duo.MostChampions[0].round}">
+                               <span th:text="${wins * 100 / rounds} + '%'"></span>
+                     	</li>
+		
 
-
-                     <li style=" color: var(--title);" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="kill=${duo.MostChampions[0].kills + duo.MostChampions[1].kills + duo.MostChampions[2].kills},
+                     <li th:if="${duo.mostChampions.size()>2}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="kill=${duo.MostChampions[0].kills + duo.MostChampions[1].kills + duo.MostChampions[2].kills},
                          death=${duo.MostChampions[0].deaths + duo.MostChampions[1].deaths + duo.MostChampions[2].deaths},
                          assist=${duo.MostChampions[0].assists + duo.MostChampions[1].assists + duo.MostChampions[2].assists},
                          round=${duo.MostChampions[0].round + duo.MostChampions[1].round + duo.MostChampions[2].round}
                          ">
                          <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
-                     </li>
+                                       </li>
+                     <li th:if="${duo.mostChampions.size()==2}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="kill=${duo.MostChampions[0].kills + duo.MostChampions[1].kills},
+                         death=${duo.MostChampions[0].deaths + duo.MostChampions[1].deaths},
+                         assist=${duo.MostChampions[0].assists + duo.MostChampions[1].assists},
+                         round=${duo.MostChampions[0].round + duo.MostChampions[1].round}
+                         ">
+                         <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
+                                       </li>
+                     <li th:if="${duo.mostChampions.size()==1}" th:unless="${#lists.isEmpty(duo.mostChampions)}" th:with="kill=${duo.MostChampions[0].kills},
+                         death=${duo.MostChampions[0].deaths},
+                         assist=${duo.MostChampions[0].assists},
+                         round=${duo.MostChampions[0].round}
+                         ">
+                         <span th:text="${#numbers.formatDecimal(kill / round, 1, 1)} + ' ' +'/' + ' ' +  ${#numbers.formatDecimal(death / round, 1, 1)} + ' ' + '/'+ ' ' + ${#numbers.formatDecimal(assist / round, 1, 1)}"></span> 
+                                       </li>
+                                       
 
 
-                      <li class="empty" th:if="${#lists.isEmpty(duo.mostChampions)}">
-                          <span>x</span>
-                      </li>
-                      <li class="empty" th:if="${#lists.isEmpty(duo.mostChampions)}">
-                          <span>x</span>
-                      </li>
-                      <li class="empty" th:if="${#lists.isEmpty(duo.mostChampions)}">
-                          <span>x</span>
-                      </li>
+                    
                      
                      
                      
