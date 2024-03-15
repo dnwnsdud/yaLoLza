@@ -502,7 +502,6 @@ import com.web.project.system.SummonerData;
 		  		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
 		  		List<Runes> runeslist = RuneData.runeslist();
 		  		List<Perk> perklist = RuneData.perklist();
-/////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
 				    model.addAttribute("summonerchamsper", summonerchamsper);
@@ -530,7 +529,6 @@ import com.web.project.system.SummonerData;
 			  		model.addAttribute("perklist", perklist);
 			  		//큐타입 추가 
 			  		model.addAttribute("keysquetype", keysquetype);
-///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       }else {
     	  //키워드 유무는 갱신버튼의 유무
@@ -782,7 +780,6 @@ import com.web.project.system.SummonerData;
  		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
  		List<Runes> runeslist = RuneData.runeslist();
  		List<Perk> perklist = RuneData.perklist();
-/////////////////////////////////////////////////////////////////////////////////////////////////////		    
 		    model.addAttribute("test", "디비정보다 시키들아");
 		    model.addAttribute("summoner", collectsummoner);
 		    //이건통계라 넣자
@@ -812,7 +809,6 @@ import com.web.project.system.SummonerData;
 	  		model.addAttribute("perklist", perklist);
 	  		//큐타입 추가 
 	  		model.addAttribute("keysquetype", keysquetype);
-/////////////////////////////////////////////////////////////////////////////////////////////////////
       } 
     	  else {
     		  //키워드 유무는 갱신버튼의 유무
@@ -1183,7 +1179,6 @@ import com.web.project.system.SummonerData;
 				 		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
 				 		List<Runes> runeslist = RuneData.runeslist();
 				 		List<Perk> perklist = RuneData.perklist();
-	/////////////////////////////////////////////////////////////////////////////////////////////////////				     
 					     //따끈한 서머너
 					   Summoner  newcollectsummoner  = summonerRepository.findBySummonernameAndTag(summonername,tag);
 					     //소환사//챔이름 ,kda,cs,가한딜,받은딜,판수,승수 

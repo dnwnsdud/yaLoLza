@@ -88,11 +88,5 @@ public class AdminPage {
 		model.addAttribute("community", community);
 		return "commu_detail";
 	}
-//	 @GetMapping("/view_comment")
-//	 public String viewComment(@RequestParam Integer id, Model model) {
-//		 Comment comment = commentService.getComment(id);
-//		 model.addAttribute("comment", comment);
-//		 return "commu_detail";
-//	 }
 
 }

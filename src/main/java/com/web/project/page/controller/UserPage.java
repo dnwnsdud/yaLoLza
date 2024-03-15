@@ -109,9 +109,7 @@ public class UserPage {
     public String changeUsername (@RequestParam("newNickname")  String newNickname, Model model, RedirectAttributes redirectAttributes) {
        boolean result = userService.changeNickname(newNickname);
        if(!result) {
-        //   model.addAttribute("nicknameError", "이미 존재하는 닉네임 입니다.");
         redirectAttributes.addFlashAttribute("nicknameError", "이미 존재하는 닉네임 입니다.");
-        //   return "mypage_form";
         return "redirect:/yalolza.gg/user/mypage";
        }else{
         redirectAttributes.addFlashAttribute("nicknameChange", "닉네임 변경 성공했습니다. 재접속시 변경된 닉네임이 적용됩니다." );
@@ -133,15 +131,6 @@ public class UserPage {
         return "redirect:/yalolza.gg/user/mypage";
     }
 
-//   @GetMapping("/mypage/change-pass")
-//   public String showChangPassForm (Model model) {
-//      return "pass_form";
-//   }
-//
-//   @GetMapping("/mypage/change-nickname")
-//   public String showChangeNicknameForm (Model model) {
-//      return "nickname_form";
-//    }
  // Email + name 일치하는지
  	@GetMapping("/check/findPw")
  	public @ResponseBody Map<String,Boolean> pwFind (@RequestParam("userEmail") String userEmail, @RequestParam("userName") String userName) {

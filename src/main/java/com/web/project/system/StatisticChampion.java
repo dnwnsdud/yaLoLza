@@ -237,29 +237,6 @@ public class StatisticChampion {
     	 }
 	    return subStylePerks12;
 	}
-// 
-//        if (!filteredData.isEmpty()) {
-//            Map<Integer, Long> counter = filteredData.stream()
-//                    .flatMap(entry -> entry.getPerks().getStyles().stream())
-//                    .filter(style -> "subStyle".equals(style.getDescription()))
-//                    .flatMap(style -> style.getSelections().stream())
-//                    .collect(Collectors.groupingBy(Selections::getPerk, Collectors.counting()));
-//
-//            for (int i = 0; i < 2; i++) {
-//                Long maxCount = Collections.max(counter.values());
-//                String perk = counter.entrySet().stream()
-//                        .filter(entry -> entry.getValue() == maxCount)
-//                        .map(Map.Entry::getKey)
-//                        .findFirst()
-//                        .map(String::valueOf)
-//                        .orElse("");
-//                subStylePerks12.add(perk);
-//                counter.remove(Integer.parseInt(perk)); // 최대 등장 횟수의 perk를 리스트에 추가한 후 제거합니다.
-//            }
-//        }
-//        return subStylePerks12;
-//    }
-    
     
      
 	public static List<ItemWinRate> calculateItemPreference(List<DataEntry> filteredData) {

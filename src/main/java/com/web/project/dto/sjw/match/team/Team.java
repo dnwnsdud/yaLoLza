@@ -43,9 +43,6 @@ import lombok.NoArgsConstructor;
 	  @JoinColumn(name = "teams_id")
 	  private Info info;
  
-//	  @OneToMany(cascade = {CascadeType.ALL})
-//	  private List<Ban>bans;
-	  
 	  @OneToOne(cascade = CascadeType.ALL, mappedBy = "team")
 	  private Objectives objectives;
 	  

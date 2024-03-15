@@ -45,11 +45,6 @@ public class Community {
 	    private String content;
 
 	    private LocalDateTime createDate;
-//	    private String createDate;
-	//
-//	    public void setCreateDate(LocalDateTime createAt) {
-//	        this.createDate = Time.timesAgo(createAt);
-//	    }
 
 
 

@@ -57,19 +57,7 @@ public class Duoservice {
     	return duoRepository.findAllByOrderByCreatedDateDesc();
     }
     
-//	public boolean isPasswordMatching(Long id, Long duopassword) {
-//	    // 비밀번호 유효성 검증 로직 추가
-//	    Duo duo = duoRepository.findById(id).orElse(null);
-//	    return duo != null && duopassword.equals(duo.getDuopassword());
-//	}
-	
 
-  
-	/*
-	 * public List<Duo> getDuoByTiertype(Tier tier) { return
-	 * duoRepository.findByTierOrderByIdDesc(tier); }
-	 */
-    
     public List<Duo> getAllDuosWithMostChampions() {
         List<Duo> duoList = duoRepository.findAllByOrderByCreatedDateDesc(); // 먼저 모든 Duo 객체를 가져옵니다.
 

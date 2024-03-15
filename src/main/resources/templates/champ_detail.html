@@ -166,9 +166,7 @@
                      
                         <ul class="perkslot1">
                            <li th:id="${perklist[0].id}">
-                              <div class="color-icon">
-                                 <!-- th:class="${perklist[0].id}==${statperks1}? 'color-icon':(${perklist[0].id}==${statperks1}? 'color-icon':'gray-icon')" -->
-                                 
+                              <div class="color-icon">                                 
                                  <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[0].icon}}" />
                               </div>
                            </li>
@@ -221,9 +219,7 @@
                            </li>
                            <li th:id="${perklist[8].id}">
                               <div class="color-icon">
-                              <!-- <div
-                                 th:class="${perklist[8].id}==${value}? 'color-icon':'gray-icon'"> -->
-                                 <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[8].icon}}" />
+                              <img alt="스탯 이미지" th:src="@{'/img/'+${perklist[8].icon}}" />
                               </div>
                            </li>
                         </ul>
@@ -252,27 +248,7 @@
                               <p th:id="${runeWinRate1}" th:text="${runeWinRate1} + '%'">승률</p>
                            </li>
                         </ul>
-                        <!-- <ul class="select-second">
-                           <li>
-                              <div>
-                                 <img th:src="@{'/img/'+${keysRuneImage2}}" alt="룬 이미지" />
-                              </div>
-                              <div>
-                                 <img th:src="@{'/img/'+${keyPerk2}}" alt="룬 이미지" />
-                              </div>
-                              <div>
-                                 <img th:src="@{'/img/'+${keysSubRuneImage2}}" alt="룬 이미지" />
-                              </div>
-                           </li>
-                           <li class="select-ratio">
-                              <p>
-                                 <strong th:id="${runePickRate2}"
-                                    th:text="${runePickRate2} + '%'">룬선택비율</strong> <br /> <span
-                                    th:id="${runeCount2}" th:text="${runeCount2} + 게임">1223654게임</span>
-                              </p>
-                              <p th:id="${runeWinRate2}" th:text="${runeWinRate2} + '%'">승률</p>
-                           </li>
-                        </ul> -->
+                      
                      </div>
                   </div>
                </section>
@@ -348,63 +324,15 @@
                         </div>
                      </li>
                      <li>
-                        <!-- <h3>신발</h3>
-                        <div class="item-build">
-                           <div>
-                              <div>
-                                 <img src="" alt="">
-                              </div>
-                              <div>
-                                 <img src="" alt="">
-                              </div>
-                           </div>
-                           <p>
-                           <div class="order-block">
-                              <strong>선택비율</strong><br> <span>게임수asdasdas</span>
-                           </div>
-                           <div class="order-vic">승률</div>
-                           </p>
-                        </div> -->
+                       
                      </li>
                   </ul>
                   <ul>
                      <li>
-                        <!-- <div class="item-build">
-                           <div>
-                              <div th:id="${item1.id}" class="item-buildstart">
-                                 <img th:src="@{'/img/item/'+${secondItem}+'.jpg'}"
-                                    alt="아이템 이미지">
-                              </div>
-                              
-                           </div>
-                           <p>
-                           <div class="order-block">
-                              <strong th:id="${secondItemPickRate}"
-                                 th:text="${secondItemPickRate} + '%'">선택비율</strong> <br> <span
-                                 th:id="${secondItemPickCount}" th:text="${secondItemPickCount} + 게임">게임수asdasdas</span>
-                           </div>
-                           <div class="order-vic" th:id="${secondItemPickRate}"
-                              th:text="${secondItemWinRate}  + '%'">승률</div>
-                           </p>
-                        </div> -->
+                        
                      </li>
                      <li>
-                        <!-- <div class="item-build">
-                           <div>
-                              <div>
-                                 <img src="" alt="">
-                              </div>
-                              <div>
-                                 <img src="" alt="">
-                              </div>
-                           </div>
-                           <p>
-                           <div class="order-block">
-                              <strong>선택비율</strong><br> <span>게임수asdasdas</span>
-                           </div>
-                           <div class="order-vic">승률</div>
-                           </p>
-                        </div> -->
+                   
                      </li>
                   </ul>
                   <h3>추천 빌드</h3>
@@ -489,23 +417,13 @@
                      </li>
                      <li>
                         <div>
-                           <!-- <div th:id="${summoner3.key}">
-                              <img alt="소환사 스펠 이미지"
-                                 th:src="@{'/img/summoner-spell/'+${summoner3.id}+'.jpg'}" />
-                           </div>
-                           <div th:id="${summoner4.key}">
-                              <img alt="소환사 스펠 이미지"
-                                 th:src="@{'/img/summoner-spell/'+${summoner4.id}+'.jpg'}" />
-                           </div> -->
+                          
                         </div>
                         <p>
-                        <div class="order-block">
-                           <!-- <strong th:id="${summonerSpellSetCountRate2}"
-                              th:text="${summonerSpellSetCountRate2}  + '%'">선택비율</strong> <span
-                              th:id="${summonerSpellSet1Count2}"
-                              th:text="${summonerSpellSet1Count2} + 게임">게임수asdasdas</span> -->
-                        </div>
-                        <div class="order-vic"></div>
+                        	<div class="order-block">
+                    
+                       	 	</div>
+                        	s<div class="order-vic"></div>
                         </p>
                      </li>
                   </ul>
@@ -555,59 +473,7 @@
                </section>
                <!-- 장인 랭킹 --><!--진성님-->
                <section class="champ-rank">
-                 <!-- <h2>가렌 장인 랭킹 ></h2>
-                 <ul>
-                     <li>
-                        <ul>
-                           <p>1</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                     <li>
-                        <ul>
-                           <p>2</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                     <li>
-                        <ul>
-                           <p>3</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                     <li>
-                        <ul>
-                           <p>4</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                     <li>
-                        <ul>
-                           <p>5</p>
-                           <div>
-                              <img src="" alt="">
-                           </div>
-                           <strong style="font-size: 1.7rem;">아이디</strong>
-                        </ul>
-                        <p class="rank-flex">게임수</p>
-                     </li>
-                  </ul> -->
+                
                </section>
             </div>
          </div>
@@ -778,5 +644,4 @@ document.querySelectorAll(".champ-passivetooltip").forEach(async (element)=>{
    });
   
    </script>
-</html>3
 </html>

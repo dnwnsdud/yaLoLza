@@ -16,5 +16,4 @@ public interface SummonermatchsRepository extends JpaRepository<Summonermatchs, 
          
 	  List<Summonermatchs> findBySummoner(Summoner summoner);
 	  
-	//  List<Double> findAllCsAveragesByChampion(String champion);
 }

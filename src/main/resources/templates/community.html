@@ -114,24 +114,6 @@
     </div>
 
     </div>
-<!--     <div th:if="${!paging.isEmpty()}" class="paging">
-        <ul>
-            <li th:if="${paging.number} != 0">
-                <a th:href="@{|?page=${paging.number-1}|}">
-                    <span>이전</span>
-                </a>
-            </li>
-            <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
-                th:if="${page >= paging.number-5 and page <= paging.number+5}"  >
-                <a th:text="${page+1}" th:href="@{|?page=${page}|}"> </a>
-            </li>
-            <li th:if="${#lists.size(paging) >= paging.number}">
-                <a th:href="@{|?page=${paging.number+1}|}">
-                    <span>다음</span>
-                </a>
-            </li>
-        </ul>
-    </div> -->
     <div th:if="${!paging.isEmpty() && paging.totalPages > 1}" class="paging" style="color:white;">
     <ul>
         <li th:if="${paging.number != 0}">
@@ -169,25 +151,6 @@
     const humerbtns = document.querySelector('.humerbtns');
     const videobtns = document.querySelector('.videobtns');
     const qnabtns = document.querySelector('.qnabtns');
-    // allbtn.addEventListener("click", (e) => {
-    //     allbtn.style.backgroundColor = "white";
-    //     bestbtn.style.backgroundColor = "transparent";
-    //     allbtn.style.boxShadow = " 1px 1px 1px 1px #ccc";
-    //     bestbtn.style.boxShadow = "none";
-    // });
-    // bestbtn.addEventListener("click", (e) => {
-    //     bestbtn.style.backgroundColor = "white";
-    //     allbtn.style.backgroundColor = "transparent";
-    //     allbtn.style.boxShadow = "none";
-    //     bestbtn.style.boxShadow = " 1px 1px 1px 1px #ccc";
-    // });
-    //
-    // const allbtns = document.querySelector(".allbtns");
-    // allbtns.addEventListener("click", (e) => {
-    //     allbtns.style.borderLeft = "3px solid black";
-    // });
-
-
 
     if(location.href.indexOf('localhost:9998/talk.yalolza.gg/community/list/best') > -1) {
             bestbtn.style.backgroundColor = "white";

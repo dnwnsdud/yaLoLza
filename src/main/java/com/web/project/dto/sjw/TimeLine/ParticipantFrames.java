@@ -17,10 +17,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ParticipantFrames {
-    private List<ParticipantNum> participantNum;
-	/*
-	 * private ParticipantInfo participantInfo; private Map<Long, ParticipantInfo>
-	 * participantFrames;
-	 */
-   private Long  timestamp;
+	private List<ParticipantNum> participantNum;
+	private Long timestamp;
 }

@@ -284,11 +284,6 @@ import com.web.project.dto.sjw.summoner.Summonermatchs;
         
    }
    
-   /*
-    * public static String getQueueType(int queueId) { Map<Integer, String>
-    * queueTypeMap = createQueueTypeMap(); return
-    * queueTypeMap.getOrDefault(queueId, "기타"); }
-    */
    
     public static Map<Long, String> createQueueTypeMap() {
         Map<Long, String> queueTypeMap = new HashMap<>();

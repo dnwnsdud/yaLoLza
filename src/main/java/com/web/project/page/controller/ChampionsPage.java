@@ -60,11 +60,6 @@ public class ChampionsPage {
 	// 참고로 perk = rune
 	private String defaultFilePath;
 
-//	public ChampionsPage() {
-//		System.out.println("CALL datafile");
-//	    this.defaultFilePath = "src/main/resources/static/datas/RANKED_SOLO_5x5/";	    
-//	    System.out.println(defaultFilePath);
-//	}
 
 	public ChampionsPage(JsonReader jsonReader, CounterJsonReader counterJsonReader,
 			CounterDataService counterDataService, TierPositionService tierPositionService) {
@@ -220,24 +215,15 @@ public class ChampionsPage {
 			double runeWinRate = StatisticChampion.calculateRuneWinRate(filteredData,primaryStyleFirstPerk.get(0).getMainRune());
             List<SummonerSpellSetWinRate> summonerSpellSet12 = StatisticChampion.calculateSummonerSpellSet(filteredData);
             List<Integer> Spelllist1 = new ArrayList<Integer>(summonerSpellSet12.get(0).getSpellSet());
-            //List<Integer> Spelllist2 = new ArrayList<Integer>(summonerSpellSet12.get(1).getSpellSet());
-            //출처: https://hianna.tistory.com/555 [어제 오늘 내일:티스토리]
 			model.addAttribute("perklist", perklist);
 			Spell spell = SummonerData.findspell(Spelllist1.get(0).toString());
 			model.addAttribute("summoner1", spell);
 			spell = SummonerData.findspell(Spelllist1.get(1).toString());			
 			model.addAttribute("summoner2", spell);
 			model.addAttribute("summonerSpellSet1Win", ((double)Math.round(summonerSpellSet12.get(0).getWinRate()*10000)/100));
-			//spell = SummonerData.findspell(Spelllist2.get(0).toString());
-			//model.addAttribute("summoner3", spell);
-			//spell = SummonerData.findspell(Spelllist2.get(1).toString());
-			//model.addAttribute("summoner4", spell);
-			//model.addAttribute("summonerSpellSet2Win", ((double)Math.round(summonerSpellSet12.get(1).getWinRate()*10000)/100));
 			
 			model.addAttribute("summonerSpellSetCountRate1", ((double)Math.round(summonerSpellSet12.get(0).getCountRate()*10000)/100));
 			model.addAttribute("summonerSpellSet1Count1", summonerSpellSet12.get(0).getSetCount());
-			//model.addAttribute("summonerSpellSetCountRate2", ((double)Math.round(summonerSpellSet12.get(1).getCountRate()*10000)/100));
-			//model.addAttribute("summonerSpellSet1Count2", summonerSpellSet12.get(1).getSetCount());
 			
 			
 			
@@ -283,14 +269,11 @@ public class ChampionsPage {
 			
 			
 			 
-			//String rawData = Files.readString(Paths.get(filePath));
-			//List<DataEntry> data = StatisticChampion.parseJson(rawData);
 			
 			
 			String link = "";
 			link = "/firstItem";
 			String StatisticfilePath = defaultFilePath + tier + link + "Statistics.json"; // 파일 경로 수정
-			//System.out.println("경로" + StatisticfilePath);
 			
 			String rawStatistic = Files.readString(Paths.get(StatisticfilePath));		
 			List<ItemStatistics> parsedData =  StatisticItemSkill.parseJson(rawStatistic);
@@ -311,12 +294,6 @@ public class ChampionsPage {
 					((double)Math.round((double)firstItem.get(0).getPickCount()/(double)firstItem.get(0).getTotalCount()*10000)/100));		
 			model.addAttribute("firstItemWinRate", ((double)Math.round(firstItem.get(0).getWinRate()*10000)/100));
 			
-//			model.addAttribute("secondItem", firstItem.get(1).getItem());
-//			model.addAttribute("secondItemPickCount", firstItem.get(1).getPickCount());
-//			model.addAttribute("secondItemPickRate", 
-//					((double)Math.round((double)firstItem.get(1).getPickCount()/(double)firstItem.get(1).getTotalCount()*10000)/100));
-//			model.addAttribute("secondItemWinRate",  ((double)Math.round(firstItem.get(1).getWinRate()*10000)/100));
-			
 			
 			link = "/item";
 			String StatisticfilePath2 = defaultFilePath + tier + link + "Statistics.json"; // 파일 경로 수정
@@ -332,26 +309,6 @@ public class ChampionsPage {
 			model.addAttribute("listpick1", itemlist.get(0).getPickCount());			
 			model.addAttribute("listPickRate1", 
 					(double)Math.round((double)itemlist.get(0).getPickCount()/(double)itemlist.get(0).getTotalCount()*10000)/100);
-			
-//			model.addAttribute("listWin2", ((double)Math.round(itemlist.get(1).getWinRate()*10000)/100));
-//			model.addAttribute("listpick2", itemlist.get(1).getPickCount());			
-//			model.addAttribute("listPickRate2", 
-//					(double)Math.round((double)itemlist.get(1).getPickCount()/(double)itemlist.get(1).getTotalCount()*10000)/100);
-//			
-//			model.addAttribute("listWin3", ((double)Math.round(itemlist.get(2).getWinRate()*10000)/100));
-//			model.addAttribute("listpick3", itemlist.get(2).getPickCount());			
-//			model.addAttribute("listPickRate3", 
-//					(double)Math.round((double)itemlist.get(2).getPickCount()/(double)itemlist.get(2).getTotalCount()*10000)/100);
-//			
-//			model.addAttribute("listWin4", ((double)Math.round(itemlist.get(3).getWinRate()*10000)/100));
-//			model.addAttribute("listpick4", itemlist.get(3).getPickCount());			
-//			model.addAttribute("listPickRate4", 
-//					(double)Math.round((double)itemlist.get(3).getPickCount()/(double)itemlist.get(3).getTotalCount()*10000)/100);
-//			
-//			model.addAttribute("listWin5", ((double)Math.round(itemlist.get(4).getWinRate()*10000)/100));
-//			model.addAttribute("listpick5", itemlist.get(4).getPickCount());			
-//			model.addAttribute("listPickRate5", 
-//					(double)Math.round((double)itemlist.get(4).getPickCount()/(double)itemlist.get(4).getTotalCount()*10000)/100);
 			
 //			
 			
@@ -389,29 +346,6 @@ public class ChampionsPage {
 			
 			
 				
-//			List<ItemWinRate> items = StatisticChampion.calculateItemPreference(filteredData);
-//			String item1 =  String.valueOf(items.get(0).getItemId());
-//			String itemCount1 =  String.valueOf(items.get(0).getItemCount());
-//			String itemPickRate1 =  String.valueOf(items.get(0).getpickRate());
-//			String itemWinRate1 =  String.valueOf(items.get(0).getWinRate());
-//			
-//			String item2 =  String.valueOf(items.get(1).getItemId());
-//			String item3 =  String.valueOf(items.get(2).getItemId());
-//			
-//			
-//			
-//			Item item = ItemData.item(item1);
-//			model.addAttribute("item1", item);
-//			model.addAttribute("itemCount1", itemCount1);			
-//			model.addAttribute("itemPickRate1", ((double)Math.round(Double.parseDouble(itemPickRate1)*10000)/100));
-//			model.addAttribute("itemWinRate1", ((double)Math.round(Double.parseDouble(itemWinRate1)*10000)/100));
-//			
-//			
-//			item = ItemData.item(item2);
-//			model.addAttribute("item2", item);
-//			item = ItemData.item(item3);
-//			model.addAttribute("item3", item);
-			
 			
 			
 			
@@ -430,19 +364,6 @@ public class ChampionsPage {
     	
 		return "champ_detail";
 	}
-	
-//	@GetMapping("/{champion}/counter/{position}")
-//	public String getCounterData(@PathVariable String position, @PathVariable("champion") String champion,
-//			@RequestParam(name = "champion", required = false) String additionalChampion, Model model) {
-//		try {
-//			Map<String, Object> modelData = counterDataService.getCounterData(position, champion, additionalChampion);
-//			model.addAllAttributes(modelData);
-//			return "counter_detail";
-//		} catch (IOException e) {
-//			model.addAttribute("error", "error: " + e.getMessage());
-//			return "error";
-//		}
-//	}
  
 	@GetMapping("/{champion}/counter/{position}")	
 	public String getCounterData(

@@ -16,25 +16,6 @@
     <div class="commu_formbox">
     <h5 style="color: var(--title);" class="commu_form_title" th:text="${boardName}"></h5>
 
-<!--            <select>-->
-<!--                <option value="free" th:href="@{/community/create/free}">자유게시판</option>-->
-<!--                <option value="humer" th:href="@{/community/create/humer}">유머게시판</option>-->
-<!--                <option value="video" th:href="@{/community/create/video}">영상게시판</option>-->
-<!--            </select>-->
-<!--    <div>-->
-<!--        <a th:href="@{/community/create/free}" >자유게시판</a>-->
-<!--        <a th:href="@{/community/create/humer}" >유머게시판</a>-->
-<!--        <a th:href="@{/community/create/video}" >영상게시판</a>-->
-<!--    </div>-->
-
-
-<!--        <select th:field="*{types}">-->
-<!--            <option th:each="communityEnum : ${communityEnums}"-->
-<!--                    th:value="${communityEnum}"-->
-<!--                    th:text="${communityEnum.getGroup()}"-->
-<!--                    th:selected="${communityEnum == type}"></option>-->
-<!--        </select>-->
-
     <form  th:object="${communityForm}" method="post" enctype="multipart/form-data" >
             
 		<div th:if="${#fields.hasAnyErrors()}" class="error">

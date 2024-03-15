@@ -73,10 +73,6 @@ public class Duo {
 	String memo;
 	@Column
 	String tier;
-//	@Column
-//	@Temporal(TemporalType.TIMESTAMP)
-//	Date duodate;
-	
 	// api
 	  @OneToMany(mappedBy = "duo", cascade = CascadeType.ALL)
 	   private List<MostChampions> mostChampions;
@@ -94,10 +90,6 @@ public class Duo {
         lastModifiedDate = new Date();
     }
 	
-//	@PrePersist
-//	private void showduodate() {
-//        duodate = new Date();
-//    }
 
     @ManyToOne
 	@JoinColumn(name = "site_user_id")

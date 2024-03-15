@@ -15,7 +15,6 @@ public class Champion {
 	public String name;
 	public String key;
 	public ChampionImage image;
-//	public List<Tag> tags;
 	public List<String> tags;
 	public String partype;
 	public Stat stats;

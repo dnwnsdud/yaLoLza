@@ -39,7 +39,6 @@ public class SummonerData {
 			JSONObject sum3 = sum2.getJSONObject(keylist.get(i));
 			keysSumSpell.put(sum3.getString("key"), sum3.getString("id"));
 		}
-//		System.out.println(keysSumSpell);
 		return keysSumSpell;
 	}
 	
@@ -54,7 +53,6 @@ public class SummonerData {
 			JSONObject sum3 = sum2.getJSONObject(keylist.get(i));
 			keysSumSpell.put(sum3.getLong("key"), sum3.getString("id"));
 		}
-//		System.out.println(keysSumSpell);
 		return keysSumSpell;
 	}
 }

@@ -103,24 +103,6 @@ public class SiteUser implements UserDetails, OAuth2User {
 	    //인증 (Authentication)
 	    //인가 (Authorization)
 
-	    //	@ElementCollection
-//		Set<String> auth = new HashSet<String>(); // 인가 중복 되면 안도
-//		public void AddAuth(String auth) {
-//			this.auth.add(auth);
-//		}
-//		public void RemoveAuth(String auth) {
-//			this.auth.remove(auth);
-//		}
-	//
-//		@Override
-//		public Collection<? extends GrantedAuthority> getAuthorities() {
-//			ArrayList<GrantedAuthority> autho = new ArrayList<>();
-//			// ROLE_ 권한을 넣어줘야 한다
-//			for(String sauth : auth) {
-//				autho.add(new SimpleGrantedAuthority("ROLE_" + sauth));
-//			}
-//			return autho;
-//		}
 	    @Override
 	    public boolean isAccountNonExpired() {
 	        return true;

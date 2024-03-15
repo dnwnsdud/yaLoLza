@@ -27,10 +27,6 @@
             <button sec:authorize="isAnonymous()">
               <a th:href="@{/yalolza.gg/user/signup}">회원가입</a>
             </button>
-
-            <!-- <button sec:authorize="isAuthenticated()">
-                 <a th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
-                 </button> -->
             <button sec:authorize="hasRole('USER')">
               <a th:href="@{/yalolza.gg/user/logout}">로그아웃</a>
             </button>

@@ -11,7 +11,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/files/**")
-                .addResourceLocations("file:///D:/backend_jge/work2/yaLoLza/src/main/resources/files/");
+                .addResourceLocations("file:////Users/wjy/Documents/GitHub/yaLoLza/src/main/resources/file/");
 
     }
 // 경로 고치기 

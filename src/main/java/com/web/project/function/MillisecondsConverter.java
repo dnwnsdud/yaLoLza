@@ -13,9 +13,7 @@ import lombok.Data;
 public class MillisecondsConverter {
 
 	public Long convertMilliseconds(Long milliseconds) {
-//        long seconds = milliseconds / 1000;
 		Long minutes = milliseconds / 1000 / 60;
-//        long hours = minutes / 60;
 
 		return minutes;
 	}

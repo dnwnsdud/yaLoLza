@@ -29,25 +29,6 @@ public class CommunityService {
 
     private final CommunityRepository communityRepository;
 
-//    public Page<Community> getList(int page,
-//                                   String category,
-//                                   String keyword){
-//        List<Sort.Order> sorts = new ArrayList<>();
-//        sorts.add(Sort.Order.desc("createDate"));
-//        Pageable pageable = PageRequest.of(page, 15, Sort.by(sorts));
-//        if ("전체".equals(category)) {
-//            return this.communityRepository.findAll(keyword, pageable);
-//        } else {
-//            return this.communityRepository.findAllByCategory(pageable, category, keyword);
-//        }
-//    }
-//    public Page<Community> getListQna(int page, String category) {
-//        List<Sort.Order> sorts = new ArrayList<>();
-//        sorts.add(Sort.Order.desc("createDate"));
-//        Pageable pageable = PageRequest.of(page, 15, Sort.by(sorts));
-//
-//        return this.communityRepository.findQna(pageable, category);
-//    }
 
 
     public Page<Community> getList(int page, String category, String keyword) {
@@ -128,7 +109,6 @@ public class CommunityService {
                 file.transferTo(saveFile);
 
                 c.setFilename(fileName);
-//			        c.setFilePath("/files/" + fileName); /*저장된파일의이름,저장된파일의경로*/
                 filePaths.add(fileadd + fileName);
             }
         }
@@ -160,10 +140,6 @@ public class CommunityService {
 
                 //랜덤 이름 만들어줌
                 UUID uuid = UUID.randomUUID();
-
-                /*
-                 * //저장될 파일 이름 지정 String fileName = uuid + "_" + file.getOriginalFilename();
-                 */
                 String fileName;
                 String fileadd;
                 if(file.getOriginalFilename().indexOf(".mp4") != -1) {
@@ -182,7 +158,6 @@ public class CommunityService {
                 file.transferTo(saveFile);
 
                 community.setFilename(fileName);
-//			        c.setFilePath("/files/" + fileName); /*저장된파일의이름,저장된파일의경로*/
                 filePaths.add(fileadd + fileName);
             }
         }

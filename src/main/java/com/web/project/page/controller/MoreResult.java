@@ -206,10 +206,8 @@ import com.web.project.system.SummonerData;
          Long summonerwins = sommenerleagueinfo.getBody().length != 0 ?  sommenerleagueinfo.getBody()[0].getWins() : 0; 
          Long summonerlosses = sommenerleagueinfo.getBody().length != 0 ?  sommenerleagueinfo.getBody()[0].getLosses() : 0;
          
- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
          
     
-    	 //찾는 유저가 db에 없을때   
 
 
   
@@ -480,7 +478,6 @@ import com.web.project.system.SummonerData;
 		  		Map<Integer, Integer> keysRunes=RuneData.keysRunes();
 		  		List<Runes> runeslist = RuneData.runeslist();
 		  		List<Perk> perklist = RuneData.perklist();
-/////////////////////////////////////////////////////////////////////////////////////////////////////	  		 
 				    model.addAttribute("summoner", collectsummoner);
 				    model.addAttribute("summonermatchnum", summonerGameNumber);
 				    model.addAttribute("summonerchamsper", summonerchamsper);
@@ -509,7 +506,6 @@ import com.web.project.system.SummonerData;
 			  		model.addAttribute("perklist", perklist);
 			  		//큐타입 추가 
 			  		model.addAttribute("keysquetype", keysquetype);
-///////////////////////////////////////////////////////////////////////////////////////////////////			  		
   	 //찾는 유저가 db에 있을때
       
     	       

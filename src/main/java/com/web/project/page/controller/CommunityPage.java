@@ -48,12 +48,6 @@ public class CommunityPage {
 	    public String first() {
 	        return "redirect:/talk.yalolza.gg/community/list/all";
 	    }
-	    //    @GetMapping("/list")
-//	    public String list(Model model){
-//	        List<Community> clist = this.communityService.getList();
-//	        model.addAttribute("community", clist);
-//	        return "community";
-//	    }
 
 	    @GetMapping("/index")
 	    public String index(Model model){
@@ -125,35 +119,6 @@ public class CommunityPage {
 
 	        return "commu_form";
 	    }
-	//@ModelAttribute("communityEnums")
-	//public CommunityEnum[] communityEnums(){
-//	        return CommunityEnum.values();
-	//}
-
-
-//	    @PostMapping("/create")
-//	    public String CommuCreate(@RequestParam(value="title") String title, @RequestParam(value="content") String content) {
-//	        return "redirect:/community/list";
-//	    }
-
-//	    @PostMapping("/create/{type}")
-//	    public String CommuCreate(@Valid CommunityForm communityForm,
-//	                              @PathVariable String type,
-//	                              BindingResult bindingResult) throws IOException {
-//	        if(bindingResult.hasErrors()){
-//	            return "commu_form";
-//	        }
-//	        String category = switch (type) {
-//	            case "free" -> CommunityEnum.FREE.getGroup();
-//	            case "humer" -> CommunityEnum.HUMER.getGroup();
-//	            case "video" -> CommunityEnum.VIDEO.getGroup();
-//	            default -> throw new RuntimeException("올바르지 않습니다.");
-//	        };
-	//
-//	        communityService.create(communityForm.getTitle(),
-//	                communityForm.getContent(), category);
-//	        return "redirect:/community/list/%s".formatted(type);
-//	    }
 
 	    @PreAuthorize("isAuthenticated()")
         @PostMapping("/create/qna")
