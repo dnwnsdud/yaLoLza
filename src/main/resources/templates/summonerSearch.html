@@ -67,7 +67,7 @@
           </thead>
           <tbody>
 			 <tr class="collapse" th:each="chamspers,ch : ${summonerchamsper}">
-              <td class="champface2" style="background-color: var(--table)" th:text="${ch.index}">
+              <td class="champface2" style="background-color: var(--table)" th:text="${ch.index+1}">
                 1
               </td>
               <td class="champface">
@@ -95,8 +95,8 @@
               <td class="champface2" th:text="${chamspers[2]}">123.5(8.5)</td>
               <td class="champface2" th:text="${#numbers.formatDecimal(chamspers[8],1,1)}">7.5</td>
               <td class="champface2" th:text="${#numbers.formatDecimal(chamspers[9],1,1)}">4.3</td>
-              <td class="champface2" th:text="${chamspers[3]}">25,123</td>
-              <td class="champface2" th:text="${chamspers[4]}">29.123</td>
+              <td class="champface2" th:text="${#numbers.formatDecimal(chamspers[3],1,0)}">25,123</td>
+              <td class="champface2" th:text="${#numbers.formatDecimal(chamspers[4],1,0)}">29.123</td>
             </tr>
           </tbody>
         </table>
